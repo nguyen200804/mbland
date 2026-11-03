@@ -677,10 +677,6 @@
 
 
 
-
-
-
-
 /* ===== START TEAMS ===== */
 .mbland_aboutUs_teamSection {
 	padding: 130px 0 100px;
@@ -782,6 +778,7 @@
 	border-radius: 12px;
 	overflow: hidden;
 	height: 600px !important;
+	max-width: 450px;
 }
 
 .mbland_aboutUs_teamSection_memberCard {

@@ -14,21 +14,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (document.querySelector(".mbland_aboutUs_teamSection_members")) {
     new Swiper(".mbland_aboutUs_teamSection_members", {
-      slidesPerView: 1,
-      spaceBetween: 20,
+      slidesPerView: "auto",
+      spaceBetween: 24,
       loop: false,
-      navigation: {
-        nextEl: ".mbland_aboutUs_teamSection_membersNext",
-        prevEl: ".mbland_aboutUs_teamSection_membersPrev",
-      },
-      pagination: {
-        el: ".mbland_aboutUs_teamSection_membersPagination",
-        clickable: true,
-      },
-      breakpoints: {
-        768: { slidesPerView: 2, spaceBetween: 20 },
-        1200: { slidesPerView: 3, spaceBetween: 24 },
-      },
+      // navigation: {
+      //   nextEl: ".mbland_aboutUs_teamSection_membersNext",
+      //   prevEl: ".mbland_aboutUs_teamSection_membersPrev",
+      // },
+      // pagination: {
+      //   el: ".mbland_aboutUs_teamSection_membersPagination",
+      //   clickable: true,
+      // },
+      // breakpoints: {
+      //   768: { slidesPerView: 2, spaceBetween: 20 },
+      //   1200: { slidesPerView: 3, spaceBetween: 24 },
+      // },
     });
   }
 });
