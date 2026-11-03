@@ -284,42 +284,159 @@
 
 
 
-/* ===== START INFO ===== */
-.mbland_about_info {
+/* ===== START SECTION INFO ===== */
+.mbland_homepage_info {
 	position: relative;
 	z-index: 1;
+	padding: 68px 0 100px;
 }
 
-.mbland_about_info_container {
+.mbland_homepage_info .container {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	max-width: 1280px;
+	padding-top: 0;
+	margin-top: -32px;
 }
 
-.mbland_about_info_marquee {
+.mbland_homepage_info_title {
+	font-family: "GanhType", sans-serif;
+	font-size: 250px;
+	font-weight: 600;
+	color: var(--color-02);
+	display: flex;
+}
+
+.mbland_homepage_info_titleNumber {
+	line-height: 0.8em;
+	align-self: center;
+	font-size: 1.12em;
+	color: #B70C2C;
+}
+
+.mbland_homepage_info_titleGroup {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding-bottom: 0.096em;
+}
+
+.mbland_homepage_info_titlePlus {
+	font-size: 0.66em;
+	line-height: 0.3em;
+	font-weight: 400;
+	color: var(--color-02);
+	margin-left: -0.02em;
+}
+
+.mbland_homepage_info_titleContent {
+	display: flex;
+	flex-direction: column;
+	gap: 0.064em;
+	position: relative;
+	margin-left: -0.1em;
+	z-index: 2;
+}
+
+.mbland_homepage_info_titleContent::before {
+	content: "";
+	width: 0.936em;
+	height: 0.784em;
+	background: #fff;
+	display: inline-block;
+	border-radius: 50%;
 	position: absolute;
-	top: 0;
+	top: 50%;
+	left: 0px;
+	transform: translate(-0.276em, -50%);
+	z-index: 0;
+	filter: blur(0.07em);
+}
+
+.mbland_homepage_info_titleUnit {
+	font-size: 0.135em;
+	font-weight: 400;
+	line-height: 0.8em;
+	color: rgb(30 73 156 / 20%);
+	position: relative;
+	z-index: 0;
+}
+
+.mbland_homepage_info_titleLabel {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	position: relative;
+	z-index: 0;
+
+}
+
+.mbland_homepage_info_titleText {
+	font-size: 0.19em;
+	font-weight: 400;
+	line-height: 0.85em;
+	color: #1E499C;
+}
+
+.mbland_homepage_info_titleYear {
+	font-weight: 400;
+	color: #1E499C;
+	line-height: 1.2;
+	font-size: 0.08em;
+	padding-left: 0.7em;
+	border-left: 1px solid #1E499C;
+	margin-left: 1.4em;
+}
+
+
+.mbland_homepage_info_desc {
+	max-width: 1100px;
+	text-align: center;
+	margin-top: 50px;
+	font-family: 'GanhType';
+	letter-spacing: 0.05em;
+}
+
+.mbland_homepage_info_cta {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 20px;
+	margin-top: 40px;
+}
+
+a.mbland_homepage_info_ctaOutline {
+	background-color: var(--color-09);
+	color: var(--color-02);
+	border: 1px solid var(--color-02);
+}
+
+.mbland_homepage_info_marquee {
 	z-index: 0;
 	width: 100%;
 	overflow: hidden;
 	white-space: nowrap;
-	padding: 10px 0;
 	opacity: 0.05;
 	display: flex;
 	align-items: center;
-	gap: 60px;
 }
 
-.mbland_about_info_marqueeText {
+.mbland_homepage_info_marqueeItem {
+	display: flex;
+	animation: slideLeftToRight 15s linear infinite;
+}
+
+.mbland_homepage_info_marquee p {
 	font-size: 120px;
 	display: inline-block;
-	animation: slideLeftToRight 15s linear infinite;
 	margin: 0;
 	padding: 0;
-	color: var(--color-02);
-	line-height: 1;
+	color: #1E499C;
+	line-height: 0.75em;
+	margin-right: 60px;
 	font-weight: 600;
+	font-family: "Inter";
 }
 
 @keyframes slideLeftToRight {
@@ -328,37 +445,11 @@
 	}
 
 	100% {
-		transform: translateX(-150%);
+		transform: translateX(-50%);
 	}
 }
 
-.mbland_about_info_desc {
-	text-align: center;
-	width: 100%;
-	max-width: 700px;
-}
-
-@media (max-width: 1024px) {
-	.mbland_about_info_title {
-		width: 60%;
-	}
-
-	.mbland_about_info_titleImg {
-		width: 100%;
-	}
-
-	.mbland_about_info_desc {
-		width: 100%;
-	}
-}
-
-@media (max-width: 768px) {
-	.mbland_about_info_title {
-		width: 90%;
-	}
-}
-
-/* ===== END INFO ===== */
+/* ===== END SECTION INFO ===== */
 
 
 

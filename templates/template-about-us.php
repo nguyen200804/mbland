@@ -95,33 +95,51 @@ get_header();
 
 
 
-<!-- ===== START INFO ===== -->
-<section class="mbland_about_info">
-	<div class="mbland_about_info_marquee">
-		<p class="mbland_about_info_marqueeText">TASMANIA & PARTNERS</p>
-		<p class="mbland_about_info_marqueeText">TASMANIA & PARTNERS</p>
-		<p class="mbland_about_info_marqueeText">TASMANIA & PARTNERS</p>
+<!-- ===== START SECTION INFO ===== -->
+<section class="mbland_homepage_info">
+	<div class="mbland_homepage_info_marquee">
+		<div class="mbland_homepage_info_marqueeItem">
+<p>MBLAND ASSET MANAGEMENT</p>
+		<p>MBLAND ASSET MANAGEMENT</p>
+		<p>MBLAND ASSET MANAGEMENT</p>
+		<p>MBLAND ASSET MANAGEMENT</p>
+</div>
 	</div>
-	<div class="container mbland_about_info_container">
-		<div class="mbland_about_info_title">
-			<img class="mbland_about_info_titleImg"
-				 src="/wp-content/uploads/2025/10/Muoi-nam-hanh-trinh.png"
-				 alt="Mười năm hành trình"
-				 title="Mười năm hành trình"
-				 />
+	<div class="container">
+		<div class="mbland_homepage_info_title">
+			<p class="mbland_homepage_info_titleNumber">10</p>
+			<div class="mbland_homepage_info_titleGroup">
+				<p class="mbland_homepage_info_titlePlus">+</p>
+				<div class="mbland_homepage_info_titleContent">
+					<p class="mbland_homepage_info_titleUnit">Năm</p>
+					<p class="mbland_homepage_info_titleLabel"><span class="mbland_homepage_info_titleText">Hành Trình</span><span class="mbland_homepage_info_titleYear">2015 </span></p>
+				</div>
+			</div>
 		</div>
-		<p class="mbland_about_info_desc">
-			Được thành lập vào năm 2015, Tasmania & Partners là tập đoàn đa
-			ngành, đã và đang đầu tư một số dự án trong và ngoài nước thuộc
-			lĩnh vực Tài chính - Bất động sản - Du lịch Dịch vụ dưới thương
-			hiệu của một số Công ty con - Công ty liên kết như MBland
-			Holdings, F&S Investment, Tonkin Properties, Golden Field,.. với
-			các dự án trọng điểm tại Đà Nẵng, Hội An, Quảng Ngãi, Hà Nội,
-			Quảng Ninh, Nha Trang, Tp Hồ Chí Minh,...
+		<p class="mbland_homepage_info_desc">
+			Được thành lập vào năm 2015, MBLand Asset Management là tập đoàn đa ngành, đã và đang đầu tư một số dự án trong và ngoài nước thuộc lĩnh vực Tài chính - Bất động sản - Du lịch Dịch vụ dưới thương hiệu của một số Công ty con - Công ty liên kết như MBland Holdings, F&S Investment, Tonkin Properties, Golden Field,.. với các dự án trọng điểm tại Đà Nẵng, Hội An, Quảng Ngãi, Hà Nội, Quảng Ninh, Nha Trang, Tp Hồ Chí Minh,...
 		</p>
+		<div class="mbland_homepage_info_cta">
+			
+      <?php 
+      get_template_part( 'template-parts/ui/button', null, array(
+    'url'   => '/gioi-thieu',
+    'label' => 'KHÁM PHÁ VỀ CHÚNG TÔI',
+    'class' => 'mbland_homepage_info_ctaPrimary',
+    'title' => 'KHÁM PHÁ VỀ CHÚNG TÔI',
+) );
+      ?>
+			<a
+			   class="hn-tasmania-cta-btn mbland_homepage_info_ctaOutline"
+			   href="/linh-vuc/bat-dong-san"
+			   title="Lĩnh vực hoạt động"
+			   >
+				LĨNH VỰC HOẠT ĐỘNG
+			</a>
+		</div>
 	</div>
 </section>
-<!-- ===== END INFO ===== -->
+<!-- ===== END SECTION INFO ===== -->
 
 
 
