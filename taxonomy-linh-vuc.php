@@ -43,6 +43,51 @@ $projects = new WP_Query( array(
 ) );
 ?>
 
+
+<section>
+	<div>
+		<div class="container">
+			<div>
+				<div><?php echo do_shortcode('[hn_breadcrumb]'); ?></div>
+			<h1>Bất động sản</h1>
+			<p>Kiến tạo những dự án bất động sản giá trị, kết hợp tầm nhìn đầu tư chiến lược cùng định hướng phát triển bền vững, góp phần nâng tầm không gian sống và giá trị đô thị.</p>
+			</div>
+			<div>
+
+			</div>
+		
+		</div>
+
+	</div>
+	<div>
+		<div class="container">
+			<div>
+				<p>Thảo Điền Boutique Marina</p>
+				<p>Được quy hoạch theo mô hình tổ hợp khép kín, dự án tích hợp hệ thống tiện ích và dịch vụ hiện đại, bao gồm khách sạn, nhà hàng, bến du thuyền, spa,.... Mang đến trải nghiệm trọn vẹn trong một không gian tiện nghi, riêng tư và đẳng cấp.</p>
+				<div></div>
+				<hr />
+				<div>
+					
+				</div>
+			</div>
+			<div>
+
+			</div>
+		
+		</div>
+		
+	</div>
+</section>
+
+
+
+
+
+
+
+
+
+
 <!-- ===== START SECTION LINH VUC HERO ===== -->
 <section class="mbland_linhVuc_hero">
 	<div class="container mbland_linhVuc_hero_container">
@@ -56,6 +101,9 @@ $projects = new WP_Query( array(
 	</div>
 </section>
 <!-- ===== END SECTION LINH VUC HERO ===== -->
+
+
+
 
 <?php if ( ! empty( $sub_terms ) && ! is_wp_error( $sub_terms ) ) : ?>
 <!-- ===== START SECTION LINH VUC CATEGORIES ===== -->
@@ -72,6 +120,10 @@ $projects = new WP_Query( array(
 </section>
 <!-- ===== END SECTION LINH VUC CATEGORIES ===== -->
 <?php endif; ?>
+
+
+
+
 
 <!-- ===== START SECTION LINH VUC PROJECTS ===== -->
 <section class="mbland_linhVuc_projects">
