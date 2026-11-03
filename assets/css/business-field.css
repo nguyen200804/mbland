@@ -1,0 +1,224 @@
+.hn-tasmania-bds .container {
+  padding-bottom: 30px;
+  padding-top: 10px;
+}
+.hn-tasmania-bds-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+}
+.hn-tasmania-scroll-to-explore {
+  cursor: pointer;
+}
+.hn-tasmania-scroll-to-explore img {
+  width: 80px;
+}
+.hn-tasmania-bds-term-item-location {
+  display: flex;
+  gap: 10px;
+}
+.hn-tasmania-bds-term-item-location-icon img {
+  width: 14px;
+  height: 14px;
+}
+.hn-tasmania-bds-term-item-location-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.hn-tasmania-bds-term-item-location-text-wrapper span {
+  font-size: 12px;
+  color: var(--color-02);
+}
+/* Banner*/
+.hn-tasmania-banner {
+  position: relative;
+  overflow: hidden;
+}
+@keyframes bounce {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.1);
+  }
+  60% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.hn-tasmania-banner .hn-tasmania-banner-image {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  animation: bounce 8s ease infinite;
+}
+
+.hn-tasmania-banner-content {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+.hn-tasmania-banner-content .container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.hn-tasmania-banner-content-1 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--color-09);
+}
+.hn-tasmania-banner-content-1 .line {
+  height: 100%;
+  width: 1px;
+  border-left: 1px solid var(--color-09);
+}
+.hn-tasmania-banner-content-2 {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  color: var(--color-09);
+  gap: 20px;
+}
+.hn-tasmania-banner-content-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 15px;
+}
+.hn-tasmania-banner-content-title {
+  font-family: "FZPoppins", "GanhType", sans-serif;
+  font-weight: 600;
+  color: var(--color-09);
+}
+.hn-tasmania-banner-content-desc p {
+  color: var(--color-09);
+}
+.hn-tasmania-banner-content-main
+  .hn-tasmania-bds-term-item-location-text-wrapper
+  span {
+  color: var(--color-09);
+}
+.hn-tasmania-banner-content-main .hn-tasmania-bds-term-item-location-text p {
+  color: var(--color-09);
+}
+.hn-tasmania-banner-content-cta .hn-tasmania-cta-btn {
+  background: #ffffff4d;
+  color: var(--color-09);
+  transition: 0.3s ease;
+}
+.hn-tasmania-banner-content-cta:hover .hn-tasmania-cta-btn {
+  background: #e9254a4d;
+}
+
+/* ================ Cac term con =====================*/
+.hn-tasmania-bds-term:nth-child(2n) {
+  background: var(--bg-color-02);
+}
+.hn-tasmania-bds-term-swiper {
+  margin-top: 30px;
+}
+.hn-tasmania-bds-term-swiper .swiper-wrapper {
+  padding-bottom: 20px;
+}
+.hn-tasmania-bds-term-item {
+  box-shadow: 0px 3px 15px 0px #c2c2c250;
+  background: var(--color-09);
+}
+.hn-tasmania-bds-term-item-image {
+  overflow: hidden;
+}
+.hn-tasmania-bds-term-item-image img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  display: block;
+  transition: 0.3s ease;
+}
+.hn-tasmania-bds-term-item-image:hover img {
+  transform: scale(1.1);
+}
+.hn-tasmania-bds-term-item-content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 40px;
+}
+.hn-tasmania-bds-term-item-content h3 {
+  font-weight: 600;
+}
+.hn-tasmania-bds-term-item-content-desc {
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Giới hạn 2 dòng */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.hn-tasmania-bds-term-item-location {
+  border-top: 1px solid var(--color-06);
+  padding-top: 10px;
+}
+
+.hn-tasmania-bds-term-item-location-text p {
+  color: var(--color-05);
+  font-weight: 500;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Giới hạn 2 dòng */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.hn-tasmania-bds-term-item-cta .hn-tasmania-cta-btn {
+  padding: 10px 30px;
+  background: var(--bg-color-01);
+  transition: 0.3s ease;
+  color: var(--color-02);
+}
+.hn-tasmania-bds-term-item-cta:hover .hn-tasmania-cta-btn {
+  background: var(--color-02);
+  color: var(--color-09);
+}
+
+/* Swiper Styles */
+.hn-tasmania-bds-term-swiper {
+  overflow: hidden; /* Ẩn overflow cho slider */
+}
+.hn-tasmania-bds-term-swiper .swiper-slide {
+  height: auto; /* Giữ height tự nhiên cho item */
+}
+
+@media (max-width: 768px) {
+  .hn-tasmania-bds-term-item-content {
+    padding: 20px;
+  }
+  .hn-tasmania-banner-content-2 {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+  }
+}
+@media (max-width: 576px) {
+  .hn-tasmania-banner-content .container {
+    padding: 30px 10px;
+  }
+  .hn-tasmania-banner .hn-tasmania-banner-image {
+    height: 500px;
+  }
+}
+@media (max-width: 480px) {
+  .hn-tasmania-bds-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .hn-tasmania-scroll-to-explore {
+    align-self: center;
+  }
+  .hn-tasmania-scroll-to-explore img {
+    width: 70px;
+  }
+}

@@ -1,0 +1,138 @@
+/* Block */
+.mbland-footer {
+    background-color: #8A0218;
+    padding: 60px 0;
+    color: #fff;
+}
+.mbland-footer .container { 
+    max-width: 1550px;
+}
+
+/* Wrapper */
+.mbland-footer__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+}
+
+/* Khối trên (trái): thương hiệu + mạng xã hội */
+.mbland-footer__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+/* Thương hiệu + liên hệ */
+.mbland-footer__brand { }
+.mbland-footer__logo-link {
+    display: inline-block;
+}
+.mbland-footer__logo { }
+
+.mbland-footer__contact-list {
+    font-size: 16px;
+    margin-top: 32px;
+}
+.mbland-footer__contact-item {
+display: flex;
+}
+.mbland-footer__contact-item:not(:first-child) {
+	margin-top: 12px;
+}
+.mbland-footer__contact-icon {
+    min-width: 1.5em;
+    width: 1.5em;
+    margin-right: 0.5em;
+    fill: #fff;
+}
+.mbland-footer__contact-text { 
+    font-family: 'GanhType';
+    letter-spacing: 0.05em;
+    font-weight: 300;
+    color: #FFFFFFCC;
+}
+
+/* Mạng xã hội */
+.mbland-footer__social { }
+.mbland-footer__social-title {
+    font-family: 'FZPoppins';
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1em;
+    color: #FFFFFFCC;
+}
+.mbland-footer__social-list {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+.mbland-footer__social-item { }
+.mbland-footer__social-link {
+    min-width: 36px;
+    width: 36px;
+    display: flex;
+}
+.mbland-footer__social-link:hover { }
+.mbland-footer__social-link--facebook { }
+.mbland-footer__social-link--instagram { }
+.mbland-footer__social-link--linkedin { }
+.mbland-footer__social-link--youtube { }
+.mbland-footer__social-link--zalo { }
+.mbland-footer__social-icon {
+    fill: #fff;
+	transition: fill .3s ease;
+}
+.mbland-footer__social-icon:hover {
+    fill: #fffc;
+}
+
+/* Menu (phải) */
+.mbland-footer__nav {
+    display: flex;
+    justify-content: space-between;
+}
+.mbland-footer__nav-col { }
+.mbland-footer__nav-title {
+    font-family: 'FZPoppins';
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1.5em;
+    color: #fffc;
+    border-bottom: 0.5px solid #fffc;
+}
+.mbland-footer__nav-list { }
+.mbland-footer__nav-item {
+	margin-top: 10px;
+	display: flex;
+}
+.mbland-footer__nav-link {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1.5em;
+    letter-spacing: 0%;
+    color: #fffc;
+    transition: color .3s ease;
+}
+.mbland-footer__nav-link:hover { 
+color: #fff;
+}
+
+/* Bản quyền */
+.mbland-footer__bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.mbland-footer__divider {
+    width: 50px;
+}
+.mbland-footer__copyright {
+	    color: #fff;
+}
+.mbland-footer__copyright-link {
+    color: #fff;
+	transition: color .3s ease;
+}
+.mbland-footer__copyright-link:hover {
+    color: #fffc;
+}

@@ -1,0 +1,603 @@
+.hn__career {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  font-family: "FZPoppins";
+}
+
+.hn-tasmania-career .container {
+  padding-top: 10px;
+}
+
+/* ============ Banner====================	 */
+.hn-tasmania-career .banner-heading .title,
+.banner-heading h1 {
+  font-family: "GanhType";
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 120%;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--color-02);
+}
+.banner-heading p {
+  font-family: "FZPoppins";
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 30px;
+  text-align: center;
+  padding-bottom: 20px;
+}
+.banner-heading img {
+  width: 100%;
+  height: 40vh;
+  object-fit: cover;
+}
+.banner-text {
+  position: relative;
+  margin-top: 20px;
+  margin-bottom: 60px;
+}
+.banner-text img {
+  height: 500px;
+  width: 100%;
+  object-fit: center;
+  display: block;
+}
+/* ===============Body===================== */
+.hn__career-left {
+  width: 20%;
+}
+.hn__career-right {
+  flex: 1;
+}
+
+.hn__career-desc {
+  color: #555;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+/* ==============Thanh tìm kiếm======================= */
+.form-career {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 40px;
+}
+.form-career input {
+  flex: 1;
+  border-radius: 12px;
+  border: none;
+  background: #f9f4ea;
+  font-family: "FZPoppins";
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: #000;
+  padding: 12px 14px 12px 44px;
+  background: #f9f4ea url("/wp-content/uploads/2025/10/Search.svg") no-repeat
+    14px center;
+  background-size: 18px;
+  outline: none;
+}
+
+.form-career h2 {
+  font-family: "FZPoppins";
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 150%;
+  text-transform: uppercase;
+  color: (--color-02);
+}
+.form-career button {
+  padding: 10px 30px;
+  background: var(--color-02);
+  border: none;
+  color: #fff;
+  border-radius: 12px;
+  font-family: "FZPoppins";
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 150%;
+  text-transform: uppercase;
+}
+/* ==============Filter====================================	 */
+.hn__filter {
+  border-radius: 12px;
+  padding: 20px;
+}
+.hn__filter .filter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.hn__filter h3.title {
+  font-weight: 600;
+  color: var(--color-04);
+  font-size: 18px;
+  text-transform: uppercase;
+  margin: 0;
+  text-align: left;
+}
+.hn__filter .reset-filter {
+  background: none;
+  border: none;
+  color: var(--color-05);
+  font-weight: 600;
+  font-size: 12px;
+  cursor: pointer;
+  text-decoration: underline;
+  text-transform: uppercase;
+  padding: 0;
+}
+.hn__filter h3 {
+  font-weight: 600;
+  color: var(--color-04);
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+.hn__filter .filter-group {
+  margin-bottom: 25px;
+}
+.hn__filter .filter-options {
+  max-height: 250px; /* Ước tính cho 5 radio (khoảng 25-26px mỗi label + margin) */
+  overflow-y: auto;
+}
+.hn__filter label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-size: 15px;
+  margin-top: 5px;
+}
+.hn__filter input[type="radio"] {
+  accent-color: var(--color-04);
+}
+.hn__filter input[type="radio"]:checked {
+  accent-color: var(--color-02);
+}
+.hn__filter label:has(input[type="radio"]:checked) {
+  color: var(--color-02);
+}
+
+/* Job list */
+.hn__job-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.hn__job-item {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.hn__job-item h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #000;
+  margin: 10px 0 15px;
+}
+.hn__job-item .deadline {
+  color: var(--color-02);
+  font-weight: 600;
+  font-size: 18px;
+}
+.hn__job-item .deadline-title {
+  color: #000;
+}
+.hn__job-item .info {
+  color: #555;
+  margin: 6px 0;
+}
+.hn__job-item .apply-btn {
+  border: 1px solid var(--color-02);
+  color: var(--color-02);
+  border-radius: 30px;
+  padding: 6px 18px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  padding: 9px 26px;
+  white-space: nowrap;
+  text-transform: uppercase;
+  font-size: 18px;
+}
+.hn__job-item .apply-btn:hover {
+  background: var(--color-02);
+  color: #fff;
+}
+/* Textfield Bo loc	 */
+.hn__filter .filter-text {
+  width: 100%;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-family: "FZPoppins";
+  font-size: 15px;
+  margin-bottom: 10px;
+  /*   background: #fff; */
+  transition: border-color 0.3s ease;
+  padding: 10px 6px 10px 36px;
+  background: #f9f4ea url(/wp-content/uploads/2025/10/Search.svg) no-repeat 14px
+    center;
+  background-size: 15px;
+}
+.hn__filter .filter-text:focus {
+  outline: none;
+  border-color: var(--color-02);
+}
+
+/* ============Phan trang ====================== */
+.pagination-ajax {
+  text-align: center;
+  margin-top: 20px;
+}
+.pagination-ajax .page-link {
+  display: inline-block;
+  padding: 8px 16px;
+  margin: 0 3px;
+  color: #656565;
+  border-radius: 8px;
+  background: #f9f4ea;
+  font-family: "FZPoppins";
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 100%;
+}
+.pagination-ajax .page-link.is-active {
+  color: #fff;
+  background: var(--color-02);
+}
+.pagination-ajax .page-link.is-disabled {
+  pointer-events: none;
+}
+.pagination-ajax .page-link.is-disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: default;
+}
+
+/* ====================RESPONSIVE================================== */
+
+@media (max-width: 1400px) {
+  .hn-tasmania-career .banner-heading .title,
+  .banner-heading h1 {
+    font-size: 54px;
+  }
+  .banner-heading p {
+    font-size: 17px;
+  }
+
+  .hn__career-left {
+    width: 16vw;
+  }
+}
+
+@media (max-width: 1200px) {
+  .hn-tasmania-career .banner-heading .title,
+  .banner-heading h1 {
+    font-size: 48px;
+  }
+  .banner-heading p {
+    font-size: 16px;
+  }
+
+  .hn__career {
+    gap: 32px;
+  }
+  .hn__career-left {
+    width: 18vw;
+  }
+  .hn__job-item h2 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 1024px) {
+  /* Banner */
+  .hn-tasmania-career .banner-heading .title,
+  .banner-heading h1 {
+    font-size: 36px;
+  }
+  .banner-heading img {
+    height: 34vh;
+  }
+  .banner-text-img .text-right {
+    right: -40px;
+    top: 20px;
+  }
+  .text-right h2 {
+    font-size: 32px;
+    width: 80%;
+  }
+
+  .banner-text {
+    margin-bottom: 20px;
+    margin-top: 10px;
+  }
+
+  .banner-text-img .text-left {
+    width: 70%;
+    font-size: 14px;
+    line-height: 22px;
+    padding: 12px 16px;
+    bottom: 35px;
+  }
+
+  /* Layout chính */
+  .hn__career {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .hn__career-left,
+  .hn__career-right {
+    width: 100%;
+  }
+
+  /* Ô tìm kiếm */
+  .form-career {
+    gap: 10px;
+    flex-wrap: wrap;
+    padding-bottom: 0;
+  }
+  .form-career button {
+    display: none;
+  }
+  .form-career h2 {
+    width: 100%;
+    font-size: 18px;
+    margin-bottom: -4px;
+  }
+  .form-career input {
+    font-size: 15px;
+    padding: 12px 12px 12px 40px;
+    background-size: 16px;
+  }
+  .form-career button {
+    padding: 12px 18px;
+    font-size: 14px;
+  }
+
+  /* FILTER 3 CỘT – nằm ngay dưới form */
+  .hn__filter {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    padding: 12px;
+    background: transparent;
+    border: 0;
+  }
+  .hn__filter .filter-header {
+    grid-column: 1 / -1;
+    margin-bottom: 10px;
+  }
+  .hn__filter h3.title {
+    font-size: 16px;
+  }
+  .hn__filter .reset-filter {
+    font-size: 13px;
+  }
+  .hn__filter .filter-group {
+    margin: 0;
+    background: #fff8f8;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 10px 12px;
+  }
+  .hn__filter h3 {
+    font-size: 14px;
+    text-align: center;
+  }
+  .hn__filter label {
+    font-size: 13px;
+  }
+
+  .hn__job-item {
+    gap: 10px;
+  }
+  .hn__job-item h2 {
+    font-size: 18px;
+  }
+  .hn__job-item .info {
+    font-size: 14px;
+  }
+  .hn__job-item .apply-btn {
+    padding: 8px 18px;
+    font-size: 14px;
+  }
+
+  .pagination-ajax {
+    margin-top: 16px;
+  }
+  .pagination-ajax .page-link {
+    padding: 8px 14px;
+    font-size: 14px;
+  }
+}
+
+/* Dropdown bar ẩn mặc định, chỉ hiện ở <=768px */
+.hn__filter-dropdown {
+  display: none;
+}
+@media (max-width: 768px) {
+  .hn-tasmania-career .banner-heading .title,
+  .banner-heading h1 {
+    font-size: 32px;
+  }
+  .banner-text-img .text-right {
+    right: -16px;
+  }
+  .text-right h2 {
+    font-size: 28px;
+  }
+  .text-right .banner-btn {
+    font-size: 14px;
+    height: auto;
+  }
+  .hn__job-item h2 {
+    font-size: 18px;
+  }
+
+  /* Ẩn filter radio cũ */
+  .hn__filter {
+    display: none !important;
+  }
+
+  /* Hiện 3 dropdown nằm dưới form */
+  .hn__filter-dropdown {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin: 12px 0 16px;
+    background: transparent;
+    width: 100%;
+  }
+  .hn__filter-dropdown .filter-header {
+    grid-column: 1 / -1;
+    margin-bottom: 10px;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .hn__filter-dropdown .title {
+    font-weight: 600;
+    color: var(--color-04);
+    font-size: 14px;
+    text-transform: uppercase;
+    margin: 0;
+    text-align: left;
+  }
+  .hn__filter-dropdown .reset-filter {
+    background: none;
+    border: none;
+    color: var(--color-05);
+    font-weight: 600;
+    font-size: 12px;
+    cursor: pointer;
+    text-decoration: underline;
+    text-transform: uppercase;
+    padding: 0;
+  }
+  .hn__filter-dropdown .select-wrap {
+    position: relative;
+    width: 100%;
+  }
+  .hn__filter-dropdown label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--color-04);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+  .hn__filter-dropdown select {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 12px;
+    border: 1px solid #eee;
+    background: transparent;
+    font-size: 14px;
+    outline: none;
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23999" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 18px;
+    color: inherit;
+  }
+  .hn__filter-dropdown select option:checked {
+    color: var(--color-02);
+    background-color: #fff;
+  }
+}
+
+@media (max-width: 576px) {
+  /* Banner */
+  .hn-tasmania-career .banner-heading .title,
+  .banner-heading h1 {
+    font-size: 28px;
+  }
+  .banner-heading p {
+    font-size: 14px;
+    line-height: 24px;
+  }
+  .banner-heading img {
+    height: 32vh;
+  }
+
+  .banner-text-img .text-right {
+    right: 0;
+    top: 12px;
+    align-items: flex-end;
+  }
+  .text-right h2 {
+    font-size: 22px;
+    width: auto;
+    color: #191919;
+    background: rgba(255, 255, 255, 0.6);
+    padding: 4px 8px;
+    border-radius: 8px;
+  }
+  .text-right .banner-btn {
+    font-size: 13px;
+    padding: 7px 14px;
+    border-radius: 40px;
+    align-self: flex-end;
+  }
+  .banner-text-img .text-left {
+    width: 88%;
+    font-size: 13px;
+    line-height: 20px;
+    bottom: 22px;
+    padding: 10px 12px;
+  }
+
+  /* Form */
+  .form-career h2 {
+    font-size: 16px;
+  }
+  .form-career input {
+    font-size: 14px;
+    padding: 10px 10px 10px 38px;
+    background-size: 15px;
+  }
+  .form-career button {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+
+  .hn__filter-dropdown {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .hn__job-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+  }
+
+  /* Job list */
+  .hn__job-item h2 {
+    font-size: 17px;
+  }
+  .hn__job-item .info,
+  .hn__job-item .deadline {
+    font-size: 13.5px;
+  }
+  .hn__job-item .apply-btn {
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+
+  .pagination-ajax .page-link {
+    padding: 7px 12px;
+    font-size: 13px;
+  }
+}

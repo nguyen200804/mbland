@@ -1,0 +1,548 @@
+.job-detail-header {
+  display: flex;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #c5c5c5;
+  margin-bottom: 50px;
+  justify-content: space-between;
+}
+.job-detail-header .left {
+  flex: 1;
+}
+.job-detail-header .right {
+  flex: 1;
+  display: flex;
+  align-items: end;
+  justify-content: end;
+}
+.job-detail-header h1 {
+  font-family: "GanhType";
+  color: var(--color-02);
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 120%;
+}
+
+.job-detail-header .address {
+  color: #444;
+  margin-bottom: 10px;
+}
+.job-detail-header .title {
+  font-family: "FZPoppins";
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 120%;
+}
+
+.badges {
+  margin-bottom: 20px;
+}
+.badges .badge {
+  background: var(--color-02);
+  color: #fff;
+  padding: 10px 28px;
+  border-radius: 50px;
+  margin-right: 8px;
+  font-size: 15px;
+}
+
+/*=============== Body===================== */
+.job-detail-body {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  padding-bottom: 40px;
+}
+
+/* Tab */
+.deadline-box {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.deadline-box .deadline {
+  display: flex;
+  gap: 10px;
+}
+.deadline-title {
+  font-weight: 500;
+  color: var(--color-02);
+  align-self: center;
+}
+.job-sidebar {
+  background: #f9f4ea;
+  padding: 20px;
+  border-radius: 16px;
+  position: sticky;
+  top: 100px;
+  align-self: flex-start; /* để sticky theo cột, không bị stretch */
+  z-index: 2;
+}
+.section-sidebar {
+  font-weight: 500;
+  line-height: 24px;
+  color: #6b6b6b;
+}
+.section-sidebar .title {
+  color: #191919;
+}
+.job-main {
+  flex: 1;
+}
+.job-description__item:not(:first-child) {
+  padding-top: 25px;
+}
+.job-description__item--content > div:(:first-child) {
+  padding-bottom: 20px;
+}
+.job-description__item p, .job-description__item span{
+  padding-bottom: 10px;
+  color: #000;
+}
+.job-main h2 {
+  font-family: "FZPoppins";
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 32px;
+  color: var(--color-02) !important;
+/*   margin-bottom: 20px; */
+}
+.job-main h2:not(:first-child) {
+  margin-top: 40px;
+}
+.job-description__item--content p,
+.job-description__item--content span{
+	color: #000;
+	padding-bottom: 5px;
+}
+.job-main p, .job-main span{
+  padding-bottom: 5px;
+}
+.job-main h3 {
+  font-family: "FZPoppins";
+  font-weight: 500;
+  margin-bottom: 5px;
+  color: var(--color-02) !important;
+  font-size: 20px;
+}
+.job-main h4, .job-main h5, .job-main h6{
+  font-family: "FZPoppins";
+  font-weight: 500;
+  margin-bottom: 5px;
+  color: var(--color-02) !important;
+  font-size: 16px;
+}
+.job-main ul,
+.job-main ol {
+  list-style-position: outside !important;
+  list-style-type: decimal !important;
+  display: block !important;
+  padding-left: 2em !important;
+}
+
+.job-main li {
+  display: list-item !important;
+  list-style-type: disc !important;
+  font-family: "FZPoppins";
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+  padding-bottom: 10px;
+}
+
+.job-main ul {
+  list-style: revert !important;
+}
+.job-main ol {
+  list-style-type: decimal !important; /* hiện số 1,2,3 */
+}
+.job-main ol li {
+  list-style-type: decimal !important;
+  display: list-item !important;
+  font-family: "FZPoppins";
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+  padding-bottom: 10px;
+}
+/* Làm đậm phần số thứ tự */
+.job-main ol li::marker {
+  font-weight: 600;
+}
+
+/* Banner */
+.banner-section img {
+  width: 100%;
+  height: 20vh;
+  object-fit: cover;
+  border-radius: 16px;
+}
+/* ===========Tin tuyển dụng khác================== */
+.related-jobs {
+  margin-top: 80px;
+  margin-bottom: 100px;
+  font-family: "FZPoppins", sans-serif;
+  width: 100%;
+}
+.related-jobs h2 {
+  font-size: 26px;
+  color: var(--color-02);
+  font-weight: 700;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+	flex-wrap: wrap-reverse;
+	gap: 15px;
+  justify-content: space-between;
+	line-height: 1;
+}
+.related-jobs .view-all {
+  float: right;
+  font-size: 16px;
+  color: var(--color-02);
+  text-decoration: none;
+  font-weight: 500;
+}
+.related-jobs .hn__job-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+.related-jobs .hn__job-item-other {
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+  max-width: 100%;
+}
+.related-jobs .hn__job-item-other h3 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #000;
+  margin: 6px 0;
+}
+.related-jobs .hn__job-item-other .deadline {
+  color: var(--color-02);
+  font-weight: 600;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.related-jobs .hn__job-item-other .deadline-title {
+  color: #000;
+}
+.related-jobs .hn__job-item-other .info {
+  color: #555;
+  margin: 6px 0;
+}
+.related-jobs .hn__job-item-other .apply-btn {
+  border: 1px solid var(--color-02);
+  color: var(--color-02);
+  border-radius: 30px;
+  padding: 8px 20px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+.related-jobs .hn__job-item-other .apply-btn:hover {
+  background: var(--color-02);
+  color: #fff;
+}
+
+/* ===================== RESPONSIVE ===================== */
+
+@media (max-width: 1600px) {
+  .job-detail-header h1 {
+    font-size: 28px;
+  }
+  .job-detail-body {
+    gap: 32px;
+  }
+  .related-jobs .hn__job-grid {
+    gap: 24px;
+  }
+}
+
+@media (max-width: 1400px) {
+  .job-detail-header {
+    margin-bottom: 40px;
+  }
+  .job-detail-header h1 {
+    font-size: 26px;
+  }
+  .job-detail-header .title {
+    font-size: 15px;
+  }
+  .badges .badge {
+    padding: 8px 22px;
+    font-size: 14px;
+  }
+  .job-main h2 {
+    font-size: 20px;
+    line-height: 30px;
+  }
+  .job-main li {
+    font-size: 15.5px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .job-detail-header {
+    gap: 16px;
+  }
+  .job-detail-header h1 {
+    font-size: 24px;
+  }
+  .job-detail-header .right {
+    align-items: flex-end;
+  }
+  .badges .badge {
+    padding: 8px 18px;
+    font-size: 13px;
+  }
+  .job-detail-body {
+    gap: 28px;
+  }
+  .section-sidebar {
+    font-size: 14px;
+    line-height: 22px;
+  }
+  .deadline-title {
+    font-size: 14px;
+  }
+  .job-main h2 {
+    font-size: 19px;
+  }
+  .job-main h3 {
+    font-size: 15px;
+  }
+  .job-main h4, .job-main h5, .job-main h6{
+  font-size: 14px;
+  }
+  .job-main li {
+    font-size: 15px;
+    line-height: 1.65;
+  }
+  .related-jobs h2 {
+    font-size: 24px;
+  }
+  .related-jobs .hn__job-item-other h3 {
+    font-size: 17px;
+  }
+  .banner-section img {
+    height: 24vh;
+  }
+}
+
+@media (max-width: 992px) {
+  .job-detail-header {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .job-detail-header .right {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .badges {
+    margin-top: 6px;
+  }
+  .badges .badge {
+    display: inline-block;
+    margin: 0 6px 6px 0;
+  }
+
+  .job-detail-body {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .job-main {
+    order: 2;
+  }
+  .job-sidebar {
+    width: 100%;
+    order: 1;
+    position: static;
+    top: auto;
+  }
+  /* deadline-box hiển thị 2 cột, hàng đầu span 2 cột */
+  .deadline-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "deadline deadline"
+      "salary   address"
+      "level    experience";
+    gap: 14px;
+  }
+
+  /* Map item vào grid-area */
+  .deadline-box .deadline {
+    grid-area: deadline;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .deadline-box .section-sidebar:nth-of-type(1) {
+    grid-area: salary;
+  }
+  .deadline-box .section-sidebar:nth-of-type(2) {
+    grid-area: address;
+  }
+  .deadline-box .section-sidebar:nth-of-type(3) {
+    grid-area: level;
+  }
+  .deadline-box .section-sidebar:nth-of-type(4) {
+    grid-area: experience;
+  }
+
+  .related-jobs .hn__job-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .banner-section img {
+    height: 26vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .job-detail-header h1 {
+    font-size: 22px;
+  }
+  .job-detail-header .title,
+  .job-detail-header .address {
+    font-size: 14px;
+  }
+
+  .job-sidebar {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 16px;
+    border-radius: 12px;
+  }
+  .section-sidebar {
+    font-size: 13.5px;
+    line-height: 21px;
+  }
+  .deadline-title {
+    font-size: 13.5px;
+  }
+
+  .job-main h2 {
+    font-size: 17px;
+    line-height: 26px;
+    padding-bottom: 8px;
+  }
+  .job-main h3 {
+    font-size: 14px;
+    padding: 12px 0;
+  }
+  .job-main ul,
+  .job-main ol {
+    padding-left: 1.4em !important;
+  }
+  .job-main li {
+    font-size: 14px;
+    line-height: 1.6;
+    padding-bottom: 8px;
+  }
+
+  .badges .badge {
+    padding: 7px 16px;
+    font-size: 12.5px;
+  }
+
+  .related-jobs h2 {
+    font-size: 22px;
+  }
+  .related-jobs .hn__job-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .related-jobs .hn__job-item-other h3 {
+    font-size: 16px;
+  }
+  .related-jobs .hn__job-item-other .apply-btn {
+    padding: 7px 16px;
+    font-size: 14px;
+  }
+
+  .banner-section img {
+    height: 24vh;
+  }
+}
+
+@media (max-width: 576px) {
+  .job-detail-header {
+    padding-bottom: 14px;
+    margin-bottom: 32px;
+  }
+  .job-detail-header h1 {
+    font-size: 20px;
+  }
+  .job-detail-header .address {
+    font-size: 13px;
+  }
+
+  .badges .badge {
+    padding: 6px 14px;
+    border-radius: 40px;
+    font-size: 12px;
+  }
+
+  .job-detail-body {
+    gap: 16px;
+  }
+  .job-sidebar {
+    padding: 14px;
+  }
+  .section-sidebar {
+    font-size: 13px;
+  }
+  .deadline-title {
+    font-size: 13px;
+  }
+
+  .job-main h2 {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .job-main h3 {
+    font-size: 13.5px;
+  }
+  .job-main li {
+    font-size: 13.5px;
+    line-height: 1.55;
+  }
+
+  .related-jobs {
+    margin-top: 60px;
+    margin-bottom: 70px;
+  }
+  .related-jobs h2 {
+    font-size: 20px;
+  }
+  .related-jobs .view-all {
+    font-size: 14px;
+  }
+  .related-jobs .hn__job-item-other .info {
+    font-size: 14px;
+  }
+  .related-jobs .hn__job-item-other .apply-btn {
+    font-size: 13.5px;
+    padding: 7px 14px;
+  }
+
+  .banner-section img {
+    height: 22vh;
+  }
+}

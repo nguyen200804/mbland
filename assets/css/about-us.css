@@ -1,0 +1,828 @@
+/* ===== START HERO SECTION ===== */
+.mbland_about_hero_img {
+	aspect-ratio: 1920/550;
+	object-fit: cover;
+}
+
+/* ===== END HERO SECTION ===== */
+
+
+
+
+
+
+
+
+
+
+
+/* ===== START INTRO ===== */
+.mbland_about_overview {
+	padding: 70px 0 80px;
+}
+.mbland_about_intro {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	padding-bottom: 40px;
+	max-width: 1230px;
+	margin: 0 auto;
+}
+
+.mbland_about_intro_title {
+	text-transform: uppercase;
+}
+
+.mbland_about_intro_content {
+	font-family: "FZPoppins";
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 30px;
+	letter-spacing: 0%;
+	text-align: center;
+	color: #656565;
+	padding-bottom: 10px;
+}
+
+@media (max-width: 1600px) {
+	.mbland_about_intro_title {
+		font-size: 44px;
+	}
+}
+
+@media (max-width: 1400px) {
+	.mbland_about_intro_title {
+		font-size: 40px;
+	}
+}
+
+@media (max-width: 1200px) {
+	.mbland_about_intro_title {
+		font-size: 36px;
+	}
+}
+
+@media (max-width: 768px) {
+	.mbland_about_intro_title {
+		font-size: 30px;
+	}
+}
+
+/* ===== END INTRO ===== */
+
+
+
+
+
+/* ===== START VALUES ===== */
+.mbland_about_values {
+	display: grid;
+	grid-template-columns: repeat(4, 350px);
+	gap: 10px;
+	padding-bottom: 40px;
+	justify-content: center;
+}
+
+.mbland_about_values_item {
+	position: relative;
+	padding: 20px;
+	width: 100%;
+	min-height: 350px;
+	overflow: hidden;
+	transition: all 0.3s ease;
+	cursor: pointer;
+	background: #fdf9f2;
+}
+
+.mbland_about_values_center {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+	transition: all 0.4s ease;
+}
+
+.mbland_about_values_title {
+	font-family: "FZPoppins";
+	font-weight: 600;
+	font-size: 46px;
+	line-height: 1em;
+	text-align: center;
+	text-transform: uppercase;
+	color: #0C1DB7;
+	margin-bottom: 8px;
+}
+
+.mbland_about_values_title.en {
+	font-size: 27px;
+}
+
+.mbland_about_values_label {
+	font-family: "FZPoppins";
+	color: #0C1DB7;
+	text-align: center;
+	font-weight: 500;
+	font-size: 11px;
+	line-height: 100%;
+	letter-spacing: 36%;
+	text-transform: uppercase;
+}
+
+.mbland_about_values_bg,
+.mbland_about_values_hover {
+	display: none;
+}
+
+/* Inner border of item */
+.mbland_about_values_item::before {
+	content: "";
+	position: absolute;
+	inset: 20px;
+	border: 1px solid #0C1DB718;
+	pointer-events: none;
+	transition: all 0.3s ease;
+}
+
+.mbland_about_values_item:hover::before {
+	display: none;
+}
+
+/* hover */
+.mbland_about_values_hover {
+	position: absolute;
+	bottom: 30px;
+	left: 35px;
+	right: 35px;
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
+	opacity: 0;
+	transition: opacity .3s ease;
+}
+
+.mbland_about_values_tag {
+	color: #fdf9f2;
+	border-bottom: 1px solid #fdf9f2;
+	padding-bottom: 10px;
+	font-family: 'FZPoppins';
+	font-weight: 600;
+	font-size: 12px;
+	line-height: 100%;
+	letter-spacing: 0%;
+	text-transform: uppercase;
+}
+
+.mbland_about_values_desc {
+	font-family: "FZPoppins";
+	font-weight: 500;
+	font-size: 15px;
+	line-height: 150%;
+	letter-spacing: 0%;
+	color: #fdf9f2;
+	padding-top: 10px;
+
+}
+
+.mbland_about_values_bg {
+	position: absolute;
+	top: 0px;
+	right: 0;
+	z-index: 1;
+	display: block;
+}
+
+.mbland_about_values_item:hover .mbland_about_values_center {
+	position: absolute;
+	top: 35px;
+	left: 35px;
+	text-align: left;
+	transform: translate(0, 0);
+}
+
+.mbland_about_values_item:hover {
+	background-color: #1E499C;
+}
+
+.mbland_about_values_item:hover .mbland_about_values_title,
+.mbland_about_values_item:hover .mbland_about_values_label {
+	color: #fff;
+	text-align: left;
+}
+
+.mbland_about_values_item:hover .mbland_about_values_hover,
+.mbland_about_values_item:hover .mbland_about_values_bg {
+	opacity: 1;
+}
+
+@media (max-width: 1600px) {
+	.mbland_about_values_title {
+		font-size: 40px;
+	}
+
+	.mbland_about_values_title.en {
+		font-size: 24px;
+	}
+}
+
+@media (max-width: 1500px) {
+	.mbland_about_values {
+		grid-template-columns: repeat(2, minmax(0, 350px));
+	}
+}
+
+@media (max-width: 1400px) {
+	.mbland_about_values {
+		gap: 24px;
+	}
+
+	.mbland_about_values_title {
+		font-size: 36px;
+	}
+
+	.mbland_about_values_title.en {
+		font-size: 20px;
+	}
+}
+
+@media (max-width: 992px) {
+	.mbland_about_values {
+		gap: 16px;
+	}
+}
+
+@media (max-width: 768px) {
+	.mbland_about_values {
+		grid-template-columns: minmax(0, 350px);
+	}
+
+	.mbland_about_values_title {
+		font-size: 26px;
+	}
+
+	.mbland_about_values_label {
+		font-size: 9px;
+	}
+}
+
+@media (max-width: 576px) {
+	.mbland_about_values {
+		gap: 12px;
+	}
+
+	.mbland_about_values_title {
+		font-size: 24px;
+	}
+}
+
+/* ===== END VALUES ===== */
+
+
+
+
+
+/* ===== START INFO ===== */
+.mbland_about_info {
+	position: relative;
+	z-index: 1;
+}
+
+.mbland_about_info_container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	max-width: 1280px;
+}
+
+.mbland_about_info_marquee {
+	position: absolute;
+	top: 0;
+	z-index: 0;
+	width: 100%;
+	overflow: hidden;
+	white-space: nowrap;
+	padding: 10px 0;
+	opacity: 0.05;
+	display: flex;
+	align-items: center;
+	gap: 60px;
+}
+
+.mbland_about_info_marqueeText {
+	font-size: 120px;
+	display: inline-block;
+	animation: slideLeftToRight 15s linear infinite;
+	margin: 0;
+	padding: 0;
+	color: var(--color-02);
+	line-height: 1;
+	font-weight: 600;
+}
+
+@keyframes slideLeftToRight {
+	0% {
+		transform: translateX(0);
+	}
+
+	100% {
+		transform: translateX(-150%);
+	}
+}
+
+.mbland_about_info_desc {
+	text-align: center;
+	width: 100%;
+	max-width: 700px;
+}
+
+@media (max-width: 1024px) {
+	.mbland_about_info_title {
+		width: 60%;
+	}
+
+	.mbland_about_info_titleImg {
+		width: 100%;
+	}
+
+	.mbland_about_info_desc {
+		width: 100%;
+	}
+}
+
+@media (max-width: 768px) {
+	.mbland_about_info_title {
+		width: 90%;
+	}
+}
+
+/* ===== END INFO ===== */
+
+
+
+
+
+/* ===== START GOALS ===== */
+.mbland_about_goals {
+	padding: 100px 0;
+}
+.mbland_about_goals_list {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    border-top: 1px solid rgb(183 12 44 / 30%);
+    gap: 90px;
+}
+
+/* Each block */
+.mbland_about_goals_item {
+    flex: 1;
+    padding: 50px 0;
+}
+
+.mbland_about_goals_itemDivider {
+    display: block;
+    width: 1px;
+    min-height: 100%;
+    position: relative;
+    z-index: 0;
+    background-color: rgb(183 12 44 / 30%);
+}
+
+.mbland_about_goals_itemDividerDot {
+	width: 10px;
+	height: 10px;
+	display: inline-block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	transform: translate(-50%, -50%);
+	background-color: #8A0218;
+	border-radius: 5px;
+}
+
+
+
+
+
+
+
+/* Heading with icon */
+.mbland_about_goals_head {
+    display: flex;
+    align-items: center;
+    gap: 0.3em;
+    margin-bottom: 50px;
+    font-family: 'GanhType';
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 120%;
+}
+
+.mbland_about_goals_icon {
+    width: 1.4em;
+    height: 1.4em;
+    object-fit: contain;
+}
+
+.mbland_about_goals_title {
+	font-size: 36px;
+	color: var(--color-02, #8b0000);
+}
+
+.mbland_about_goals_content {
+    font-weight: 400;
+    font-size: 16px;
+    color: #5b4e47;
+    line-height: 1.875em;
+}
+
+@media (max-width: 1200px) {
+	.mbland_about_goals_title {
+		font-size: 30px;
+	}
+
+	.mbland_about_goals_content {
+		font-size: 15px;
+		max-width: unset;
+	}
+}
+
+@media (max-width: 992px) {
+
+	/* Stack vertically, remove dividers & dots */
+	.mbland_about_goals_list {
+		flex-direction: column;
+		width: 100%;
+	}
+
+	.mbland_about_goals_list::before,
+	.mbland_about_goals_list::after {
+		display: none;
+	}
+
+	.mbland_about_goals_item {
+		border-right: none;
+		border-bottom: 1px solid #e0d5d0;
+		padding: 16px 0;
+	}
+
+	.mbland_about_goals_item:last-child {
+		border-bottom: none;
+	}
+
+	.mbland_about_goals_title {
+		font-size: 28px;
+	}
+
+	.mbland_about_goals_item:nth-child(2)::before,
+	.mbland_about_goals_item:nth-child(2)::after {
+		display: none;
+	}
+}
+
+@media (max-width: 576px) {
+	.mbland_about_goals_list {
+		padding-bottom: 24px;
+	}
+
+	.mbland_about_goals_title {
+		font-size: 24px;
+	}
+
+	.mbland_about_goals_content {
+		font-size: 14px;
+	}
+}
+
+/* ===== END GOALS ===== */
+
+
+
+
+
+
+/* ===== START SECTION COMPANY ===== */
+.mbland_homepage_company {}
+
+.mbland_homepage_company img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mbland_homepage_company_showcase {
+  width: 100%;
+  background: #8A0218;
+  padding-bottom: 72px;
+}
+
+.mbland_homepage_company .container {
+  /* padding: 0; */
+}
+
+.mbland_homepage_company_wrapper {
+  display: flex;
+}
+
+.mbland_homepage_company_media {
+  min-width: 47%;
+  width: 47%;
+}
+
+.mbland_homepage_company_image {
+  width: 100%;
+}
+
+.mbland_homepage_company_body {
+  width: 53%;
+}
+
+.mbland_homepage_company_introWrapper {}
+
+.mbland_homepage_company_showcaseWrapper {}
+
+.mbland_homepage_company_introMedia {
+  margin-bottom: -360px;
+  padding: 0 20px 24px;
+  position: relative;
+  background: #fff;
+}
+
+.mbland_homepage_company_showcaseMedia {}
+
+.mbland_homepage_company_introImage {}
+
+.mbland_homepage_company_showcaseImage {}
+
+.mbland_homepage_company_introBody {
+  padding-top: 45px;
+}
+
+.mbland_homepage_company_showcaseBody {
+      height: 360px;
+    padding-top: 20px;
+    padding-left: 20px;
+}
+
+.mbland_homepage_company_introHeader {
+  background-color: #8A0218;
+  padding: 12px;
+  border-radius: 0 120px 120px 0;
+  margin-left: -20px;
+  position: relative;
+  padding-left: 74px;
+}
+
+.mbland_homepage_company_introTitle {
+  font-family: 'FZPoppins';
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.6em;
+  letter-spacing: 0%;
+  text-transform: uppercase;
+  color: #fff;
+  margin: 0;
+}
+
+.mbland_homepage_company_introContent {
+  padding: 60px 0 60px 54px;
+}
+
+.mbland_homepage_company_introBrand {}
+
+.mbland_homepage_company_introBrandName {
+  color: #B70C2C;
+  font-family: 'FZPoppins';
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.6em;
+  letter-spacing: 0%;
+  text-transform: uppercase;
+}
+
+.mbland_homepage_company_introBrandLogo {
+  width: 100%;
+}
+
+.mbland_homepage_company_introDesc {
+  letter-spacing: 0;
+  padding-top: 16px;
+}
+
+.mbland_homepage_company_showcaseList {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.mbland_homepage_company_showcaseItem {
+    height: auto;
+    max-width: 312px;
+    background-color: #FDF9F2;
+    padding: 45px 35px 35px;
+    display: flex !important;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.mbland_homepage_company_showcaseNumber {
+    font-size: 100px;
+    -webkit-background-clip: text;
+    text-align: right;
+    line-height: 0.8em;
+    font-weight: 600;
+    -webkit-text-stroke: 0.005em #0C1DB7;
+    color: transparent;
+    background: transparent;
+    background-clip: text;
+	transition: all .3s ease;
+}
+
+.mbland_homepage_company_showcaseItem:hover .mbland_homepage_company_showcaseNumber {
+    -webkit-text-stroke: 0.000em #0C1DB7;
+    background: linear-gradient(180deg, #0C48B7 0%, rgba(32, 12, 183, 0.05) 100%);
+    background-clip: text;
+}
+
+.mbland_homepage_company_showcaseLogo {
+    height: 62px !important;
+    object-fit: contain !important;
+    object-position: left;
+}
+
+.mbland_homepage_company_showcasePagination.swiper-pagination {
+  bottom: 0;
+}
+
+.mbland_homepage_company_showcasePagination .swiper-pagination-bullet {
+  background: #fff;
+  opacity: .5;
+}
+
+.mbland_homepage_company_showcasePagination .swiper-pagination-bullet-active {
+  opacity: 1;
+}
+
+/* ===== END SECTION COMPANY ===== */
+
+
+
+
+
+
+
+
+
+/* ===== START FOUNDER ===== */
+.mbland_about_founder_wrapper {
+	display: flex;
+	align-items: center;
+}
+
+.mbland_about_founder_left {
+	padding: 40px;
+	padding-top: 0;
+	width: 60%;
+}
+
+.mbland_about_founder_right {
+	width: 40%;
+}
+
+.mbland_about_founder_subName {
+	font-family: "FZPoppins";
+	font-weight: 600;
+	font-size: 18px;
+	line-height: 30px;
+	text-transform: uppercase;
+}
+
+.mbland_about_founder_name {
+	font-family: "GanhType";
+	font-weight: 400;
+	font-size: 50px;
+	line-height: 120%;
+	color: #b70c2c;
+}
+
+.mbland_about_founder_position {
+	font-family: "FZPoppins";
+	font-weight: 500;
+	font-size: 16px;
+	/*   line-height: 30px; */
+	text-transform: uppercase;
+}
+
+.mbland_about_founder_content {
+	font-family: "FZPoppins";
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 30px;
+	width: 80%;
+	padding-top: 20px;
+}
+
+.mbland_about_founder_img {
+	width: 100%;
+	height: 750px;
+	object-fit: cover;
+}
+
+@media (max-width: 1400px) {
+	.mbland_about_founder_name {
+		font-size: 44px;
+	}
+
+	.mbland_about_founder_img {
+		height: 680px;
+	}
+}
+
+@media (max-width: 1200px) {
+	.mbland_about_founder_left {
+		padding: 24px;
+	}
+
+	.mbland_about_founder_name {
+		font-size: 40px;
+	}
+
+	.mbland_about_founder_content {
+		width: 90%;
+	}
+
+	.mbland_about_founder_img {
+		height: 600px;
+	}
+}
+
+@media (max-width: 1100px) {
+	.mbland_about_founder_name {
+		font-size: 44px;
+	}
+
+	.mbland_about_founder_img {
+		height: 680px;
+	}
+}
+
+@media (max-width: 992px) {
+	.mbland_about_founder_wrapper {
+		flex-direction: column;
+	}
+
+	.mbland_about_founder_left,
+	.mbland_about_founder_right {
+		width: 100%;
+		padding: 16px;
+	}
+
+	.mbland_about_founder_name {
+		font-size: 36px;
+	}
+
+	.mbland_about_founder_content {
+		width: 100%;
+	}
+
+	.mbland_about_founder_img {
+		height: 520px;
+	}
+}
+
+@media (max-width: 768px) {
+	.mbland_about_founder_subName {
+		font-size: 14px;
+	}
+
+	.mbland_about_founder_name {
+		font-size: 30px;
+	}
+
+	.mbland_about_founder_position {
+		font-size: 13px;
+	}
+
+	.mbland_about_founder_content {
+		font-size: 14px;
+		line-height: 24px;
+	}
+
+	.mbland_about_founder_img {
+		height: 460px;
+	}
+}
+
+@media (max-width: 576px) {
+	.mbland_about_founder_name {
+		font-size: 28px;
+	}
+
+	.mbland_about_founder_img {
+		height: 420px;
+	}
+}
+
+/* ===== END FOUNDER ===== */

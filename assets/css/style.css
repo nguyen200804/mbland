@@ -1,0 +1,190 @@
+/* Các class chung */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-01: #8a0218;
+  --color-02: #b70c2c;
+  --color-03: #ec1846;
+  --color-04: #191919;
+  --color-05: #656565;
+  --color-06: #c5c5c5;
+  --color-07: #e9e9e9;
+  --color-08: #fffdfa;
+  --color-09: #fffdfa;
+
+  --bg-color-01: #f8f1f2;
+  --bg-color-02: #f9f4ea;
+}
+
+body {
+  background-color: var(--color-09);
+  color: var(--color-04);
+  font-family: 'FZPoppins', 'GanhType', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-04);
+  font-size: 1em;
+  cursor: pointer;
+}
+
+p {
+  color: var(--color-05);
+  line-height: 1.5;
+
+}
+
+button,
+span {}
+
+ul,
+ol,
+li {
+  list-style: none;
+}
+
+h1 {
+  font-size: 2.5em;
+  color: var(--color-02);
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+h1,
+h2 {
+  font-family: 'GanhType', 'FZPoppins', sans-serif;
+  margin-bottom: 10px;
+}
+
+h2.big-h2 {
+  font-size: 3.125em;
+  /* 50px */
+}
+
+h2,
+.equalh2 {
+    color: #1E499C;
+    font-weight: 400;
+    line-height: 1.2;
+    font-size: 3.125em;
+}
+
+h3,
+.equalh3 {
+  font-weight: 400;
+  font-size: 1.875em;
+}
+
+h3.small-h3 {
+  font-size: 1.25em;
+  /* 20px */
+}
+
+/* Tablet: 769px - 1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+  h1 {
+    font-size: 2.25em;
+  }
+
+  h2,
+  .equalh2 {
+    font-size: 2em;
+  }
+
+  h2.big-h2 {
+    font-size: 2.75em;
+  }
+
+  h3,
+  .equalh3 {
+    font-size: 1.625em;
+  }
+
+  h3.small-h3 {
+    font-size: 1.125em;
+  }
+}
+
+/* Mobile: max-width 768px */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2em;
+  }
+
+  h2,
+  .equalh2 {
+    font-size: 1.75em;
+  }
+
+  h2.big-h2 {
+    font-size: 2.5em;
+  }
+
+  h3,
+  .equalh3 {
+    font-size: 1.5em;
+  }
+
+  h3.small-h3 {
+    font-size: 1em;
+  }
+}
+
+.hn-tasmania section {
+  /* width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; */
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-inline: 40px;
+  box-sizing: content-box;
+}
+
+a.hn-tasmania-cta-btn {
+  padding: 12px 30px;
+  background-color: var(--color-02);
+  color: var(--color-08);
+  border: none;
+  border-radius: 100px;
+  display: inline-flex;
+  gap: 10px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+a.hn-tasmania-cta-btn img {
+  width: 15px;
+}
+
+a.hn-tasmania-cta-btn:hover {
+  background-color: #970a21;
+}
+
+@media (max-width: 1560px) {
+  .container {
+    /* padding: 60px 60px; */
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    /* padding: 30px 40px; */
+  }
+}
+
+@media (max-width: 576px) {
+  .container {
+    /* padding: 30px 10px; */
+  }
+}
