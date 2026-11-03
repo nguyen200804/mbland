@@ -82,7 +82,6 @@
 	display: grid;
 	grid-template-columns: repeat(4, 350px);
 	gap: 10px;
-	padding-bottom: 40px;
 	justify-content: center;
 }
 
@@ -288,7 +287,6 @@
 .mbland_homepage_info {
 	position: relative;
 	z-index: 1;
-	padding: 68px 0 100px;
 }
 
 .mbland_homepage_info .container {
@@ -397,20 +395,6 @@
 	letter-spacing: 0.05em;
 }
 
-.mbland_homepage_info_cta {
-	display: flex;
-	align-items: center;
-	flex-wrap: wrap;
-	justify-content: center;
-	gap: 20px;
-	margin-top: 40px;
-}
-
-a.mbland_homepage_info_ctaOutline {
-	background-color: var(--color-09);
-	color: var(--color-02);
-	border: 1px solid var(--color-02);
-}
 
 .mbland_homepage_info_marquee {
 	z-index: 0;

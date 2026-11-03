@@ -119,24 +119,7 @@ get_header();
 		<p class="mbland_homepage_info_desc">
 			Được thành lập vào năm 2015, MBLand Asset Management là tập đoàn đa ngành, đã và đang đầu tư một số dự án trong và ngoài nước thuộc lĩnh vực Tài chính - Bất động sản - Du lịch Dịch vụ dưới thương hiệu của một số Công ty con - Công ty liên kết như MBland Holdings, F&S Investment, Tonkin Properties, Golden Field,.. với các dự án trọng điểm tại Đà Nẵng, Hội An, Quảng Ngãi, Hà Nội, Quảng Ninh, Nha Trang, Tp Hồ Chí Minh,...
 		</p>
-		<div class="mbland_homepage_info_cta">
-			
-      <?php 
-      get_template_part( 'template-parts/ui/button', null, array(
-    'url'   => '/gioi-thieu',
-    'label' => 'KHÁM PHÁ VỀ CHÚNG TÔI',
-    'class' => 'mbland_homepage_info_ctaPrimary',
-    'title' => 'KHÁM PHÁ VỀ CHÚNG TÔI',
-) );
-      ?>
-			<a
-			   class="hn-tasmania-cta-btn mbland_homepage_info_ctaOutline"
-			   href="/linh-vuc/bat-dong-san"
-			   title="Lĩnh vực hoạt động"
-			   >
-				LĨNH VỰC HOẠT ĐỘNG
-			</a>
-		</div>
+		
 	</div>
 </section>
 <!-- ===== END SECTION INFO ===== -->
