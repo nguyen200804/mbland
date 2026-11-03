@@ -400,13 +400,15 @@ get_header();
 
 
 
-<?php get_template_part( 'template-parts/components/brands' ); ?>
+<?php get_template_part( 'template-parts/sections/brands' ); ?>
 
 
 
 
 
-
+<!-- ===== START SECTION CONTACT ===== -->
+<?php get_template_part( 'template-parts/sections/contact-form' ); ?>
+<!-- ===== END SECTION CONTACT ===== -->
 
 
 

@@ -3,7 +3,7 @@
  * Component: CTA button (link styled as a button).
  *
  * Usage (label co the de trong => nut chi hien icon, nen truyen 'title' hoac 'aria'):
- * get_template_part( 'template-parts/components/button', null, array(
+ * get_template_part( 'template-parts/ui/button', null, array(
  *     'url'     => '/gioi-thieu',
  *     'label'   => 'Kết nối hợp tác ngay!',
  *     'class'   => 'hn-tasmania-about__title-cta', // optional: extra classes (layout/position)

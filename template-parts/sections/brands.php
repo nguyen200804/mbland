@@ -3,7 +3,7 @@
  * Component: Section "Các đối tác" (tiêu đề + mô tả + danh sách logo qua shortcode [logo_brand]).
  *
  * Usage:
- * get_template_part( 'template-parts/components/brands', null, array(
+ * get_template_part( 'template-parts/sections/brands', null, array(
  *     'title'     => 'Các đối tác của chúng tôi', // optional
  *     'desc'      => '...',                       // optional: để '' để ẩn mô tả
  *     'class'     => '',                          // optional: class thêm vào <section>
