@@ -682,43 +682,92 @@
 
 
 /* ===== START TEAMS ===== */
-.mbland_aboutUs_teamSection {}
+.mbland_aboutUs_teamSection {
+	padding: 130px 0 100px;
+}
 
 .mbland_aboutUs_teamSection_container {}
 
 .mbland_aboutUs_teamSection_wrapper {}
 
 /* Header */
-.mbland_aboutUs_teamSection_header {}
+.mbland_aboutUs_teamSection_header {
+	text-align: center;
+	max-width: 820px;
+	margin: 0 auto;
+}
 
 .mbland_aboutUs_teamSection_title {}
 
-.mbland_aboutUs_teamSection_desc {}
+.mbland_aboutUs_teamSection_desc {
+	font-family: 'GanhType';
+	font-weight: 400;
+	font-size: 18px;
+	line-height: 1.7em;
+	letter-spacing: 0%;
+	text-align: center;
+}
 
 /* Body */
-.mbland_aboutUs_teamSection_body {}
+.mbland_aboutUs_teamSection_body {
+	margin-top: 100px;
+}
 
 /* Featured (Chủ tịch hội đồng sáng lập) */
-.mbland_aboutUs_teamSection_featured {}
+.mbland_aboutUs_teamSection_featured {
+	display: flex;
+	gap: 8.8vw;
+	align-items: center;
+}
 
-.mbland_aboutUs_teamSection_featuredContent {}
+.mbland_aboutUs_teamSection_featuredContent {
+	flex: 66;
+}
 
 .mbland_aboutUs_teamSection_featuredHeader {}
 
-.mbland_aboutUs_teamSection_featuredPosition {}
+.mbland_aboutUs_teamSection_featuredPosition {
+	font-family: 'FZPoppins';
+	font-weight: 600;
+	font-size: 18px;
+	line-height: 1.6em;
+	letter-spacing: 0%;
+	text-transform: uppercase;
+	color: #1E499C;
+}
 
-.mbland_aboutUs_teamSection_featuredName {}
+.mbland_aboutUs_teamSection_featuredName {
+	font-family: 'FZPoppins';
+	font-weight: 600;
+	font-size: 50px;
+	line-height: 1.2em;
+	letter-spacing: 0%;
+	margin-top: 8px;
+	color: #1E499C;
+}
 
-.mbland_aboutUs_teamSection_featuredBio {}
+.mbland_aboutUs_teamSection_featuredBio {
+	font-weight: 400;
+	font-size: 16px;
+	letter-spacing: 0%;
+	margin-top: 35px;
+}
 
-.mbland_aboutUs_teamSection_featuredText {}
+.mbland_aboutUs_teamSection_featuredText {
+	line-height: 1.8em;
+	margin-bottom: 1em;
+}
 
-.mbland_aboutUs_teamSection_featuredMedia {}
+.mbland_aboutUs_teamSection_featuredMedia {
+	flex: 61;
+}
 
 .mbland_aboutUs_teamSection_featuredImage {}
 
 /* Members */
-.mbland_aboutUs_teamSection_members {}
+.mbland_aboutUs_teamSection_members {
+	margin-top: 100px;
+}
 
 .mbland_aboutUs_teamSection_membersWrapper {}
 
@@ -728,30 +777,84 @@
 
 .mbland_aboutUs_teamSection_membersPagination {}
 
-.mbland_aboutUs_teamSection_member {}
+.mbland_aboutUs_teamSection_member {
+	z-index: 0;
+}
 
-.mbland_aboutUs_teamSection_memberCard {}
+.mbland_aboutUs_teamSection_memberCard {
+	position: relative;
+}
 
-.mbland_aboutUs_teamSection_memberImage {}
+.mbland_aboutUs_teamSection_memberImage {
+	width: 100%;
+	height: 100%;
+}
 
-.mbland_aboutUs_teamSection_memberInfo {}
+.mbland_aboutUs_teamSection_memberInfo {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	background-image: linear-gradient(to bottom, transparent, black 70%);
+	padding: 40px 32px;
+}
 
-.mbland_aboutUs_teamSection_memberName {}
+.mbland_aboutUs_teamSection_memberName {
+	font-weight: 700;
+	font-size: 24px;
+	line-height: 120%;
+	letter-spacing: -0.02em;
+	color: #fff;
+}
 
-.mbland_aboutUs_teamSection_memberPosition {}
+.mbland_aboutUs_teamSection_memberPosition {
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 120%;
+	letter-spacing: -0.02em;
+	color: #D8D8D8;
+	margin-top: 8px;
+}
 
 /* Member detail (hover/overlay) */
-.mbland_aboutUs_teamSection_memberDetail {}
+.mbland_aboutUs_teamSection_memberDetail {
+	position: absolute;
+	z-index: 1;
+	bottom: 0;
+	width: 100%;
+	padding: 32px;
+	background: #fff;
+}
 
 .mbland_aboutUs_teamSection_memberDetailHeader {}
 
-.mbland_aboutUs_teamSection_memberDetailName {}
+.mbland_aboutUs_teamSection_memberDetailName {
+	font-weight: 700;
+	font-size: 24px;
+	line-height: 120%;
+	letter-spacing: -0.02em;
+	color: #1E499C;
+}
 
-.mbland_aboutUs_teamSection_memberDetailPosition {}
+.mbland_aboutUs_teamSection_memberDetailPosition {
+	color: #000A65;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 120%;
+	letter-spacing: -0.02em;
+	margin-top: 8px;
+}
 
-.mbland_aboutUs_teamSection_memberTimeline {}
+.mbland_aboutUs_teamSection_memberTimeline {
+	font-size: 13px;
+	list-style-type: disc;
+	margin-top: 32px;
+}
 
 .mbland_aboutUs_teamSection_memberTimelineItem {}
+
+.mbland_aboutUs_teamSection_memberTimelineItem+.mbland_aboutUs_teamSection_memberTimelineItem {
+	margin-top: 16px;
+}
 
 .mbland_aboutUs_teamSection_memberTimelineYear {}
 
