@@ -238,28 +238,7 @@ if (!class_exists('Popup_Walker_Nav_Menu')) {
     }
 }
 
-function custom_taxonomy_template_for_linh_vuc_hoat_dong($template) {
-    if (is_tax('linh-vuc')) { // Kiểm tra single term của taxonomy
-        $term = get_queried_object(); // Lấy term object
-        $slug = $term->slug; // Slug term (ví dụ: 'bat-dong-san')
-        
-        // Đường dẫn custom template
-        $custom_template = get_stylesheet_directory() . '/template-linh-vuc/template-' . $slug . '.php';
-        
-        if (file_exists($custom_template)) {
-            return $custom_template; // Load template tùy chỉnh
-        }
-
-        // Fallback nếu không có file theo slug
-        $fallback_template = get_stylesheet_directory() . '/templates/template-homepage.php';
-        if (file_exists($fallback_template)) {
-            return $fallback_template;
-        }
-    }
-
-    return $template; // Fallback về template mặc định
-}
-add_filter('template_include', 'custom_taxonomy_template_for_linh_vuc_hoat_dong');
+// Taxonomy linh-vuc: dung taxonomy-linh-vuc.php (WordPress tu nap theo template hierarchy)
 
 // Function để gán template tùy chỉnh cho các trang archive của terms trong taxonomy 'category'
 // (Áp dụng cho URL như /tin-tuc/term-slug/ sau khi rewrite)

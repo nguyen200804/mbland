@@ -45,6 +45,7 @@ function homenest_enqueue_scripts() {
         'template-contact-en.php'          => array( 'homenest-contact-style', 'contact.css' ),
         'template-home.php'                => array( 'homenest-homepage-style', 'homepage.css' ),
         'template-homepage.php'            => array( 'homenest-homepage-style', 'homepage.css' ),
+        'taxonomy-linh-vuc.php'    => array( 'homenest-linh-vuc-style', 'linh-vuc.css' ),
         'template-recruitment.php'         => array( 'homenest-recruitment-style', 'recruitment.css' ),
         'template-recruitment-en.php'      => array( 'homenest-recruitment-style', 'recruitment.css' ),
     );

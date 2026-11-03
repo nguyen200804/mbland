@@ -1,0 +1,29 @@
+/* Template dùng chung cho taxonomy linh-vuc (taxonomy-linh-vuc.php) */
+
+/* ===== START HERO ===== */
+.mbland_linhVuc_hero {}
+.mbland_linhVuc_hero_container {}
+.mbland_linhVuc_hero_header {}
+.mbland_linhVuc_hero_title {}
+.mbland_linhVuc_hero_desc {}
+/* ===== END HERO ===== */
+
+/* ===== START CATEGORIES ===== */
+.mbland_linhVuc_categories {}
+.mbland_linhVuc_categories_list {}
+.mbland_linhVuc_categories_item {}
+.mbland_linhVuc_categories_link {}
+/* ===== END CATEGORIES ===== */
+
+/* ===== START PROJECTS ===== */
+.mbland_linhVuc_projects {}
+.mbland_linhVuc_projects_list {}
+.mbland_linhVuc_projects_item {}
+.mbland_linhVuc_projects_link {}
+.mbland_linhVuc_projects_media {}
+.mbland_linhVuc_projects_image {}
+.mbland_linhVuc_projects_title {}
+.mbland_linhVuc_projects_pagination {}
+.mbland_linhVuc_projects_empty {}
+/* ===== END PROJECTS ===== */
+
