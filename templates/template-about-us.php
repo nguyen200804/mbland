@@ -384,9 +384,9 @@ get_header();
 							</div>
 						</article>
 					</div>
-					<div class="swiper-button-prev mbland_aboutUs_teamSection_membersPrev"></div>
+					<!-- <div class="swiper-button-prev mbland_aboutUs_teamSection_membersPrev"></div>
 					<div class="swiper-button-next mbland_aboutUs_teamSection_membersNext"></div>
-					<div class="swiper-pagination mbland_aboutUs_teamSection_membersPagination"></div>
+					<div class="swiper-pagination mbland_aboutUs_teamSection_membersPagination"></div> -->
 				</div>
 			</div>
 		</div>
