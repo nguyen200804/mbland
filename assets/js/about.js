@@ -11,6 +11,26 @@ document.addEventListener("DOMContentLoaded", function () {
       // autoplay: { delay: 3000, disableOnInteraction: false },
     });
   }
+
+  if (document.querySelector(".mbland_aboutUs_teamSection_members")) {
+    new Swiper(".mbland_aboutUs_teamSection_members", {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      loop: false,
+      navigation: {
+        nextEl: ".mbland_aboutUs_teamSection_membersNext",
+        prevEl: ".mbland_aboutUs_teamSection_membersPrev",
+      },
+      pagination: {
+        el: ".mbland_aboutUs_teamSection_membersPagination",
+        clickable: true,
+      },
+      breakpoints: {
+        768: { slidesPerView: 2, spaceBetween: 20 },
+        1200: { slidesPerView: 3, spaceBetween: 24 },
+      },
+    });
+  }
 });
 // ===== Kéo ngang bằng chuột =====
 const carousel = document.querySelector(".hn__he-thong .carousel-he-thong");

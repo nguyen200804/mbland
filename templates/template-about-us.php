@@ -271,6 +271,134 @@ get_header();
 
 
 
+<!-- ==== START SECTION TEAMS ==== -->
+<section class="mbland_aboutUs_teamSection">
+	<div class="container mbland_aboutUs_teamSection_container">
+		<div class="mbland_aboutUs_teamSection_wrapper">
+			<header class="mbland_aboutUs_teamSection_header">
+				<h2 class="mbland_aboutUs_teamSection_title">Đội ngũ lãnh đạo </h2>
+				<p class="mbland_aboutUs_teamSection_desc">Tầm nhìn chiến lược, bản lĩnh lãnh đạo và kinh nghiệm chuyên sâu là nền tảng tạo nên những giá trị khác biệt của MBLand Asset Management</p>
+			</header>
+			<div class="mbland_aboutUs_teamSection_body">
+				<article class="mbland_aboutUs_teamSection_featured">
+					<div class="mbland_aboutUs_teamSection_featuredContent">
+						<header class="mbland_aboutUs_teamSection_featuredHeader">
+							<p class="mbland_aboutUs_teamSection_featuredPosition">Chủ tịch hội đồng sáng lập</p>
+							<h3 class="mbland_aboutUs_teamSection_featuredName">Vũ Thành Huế</h3>
+						</header>
+						<div class="mbland_aboutUs_teamSection_featuredBio">
+							<p class="mbland_aboutUs_teamSection_featuredText">Tuổi lên 10 chính là thời điểm vàng, là lúc đủ độ nén, độ chín, độ bật. Dù từng trải qua sóng gió, người Tasman luôn được nhắc nhở: Khởi đầu vào mùa xuân, chúng ta phải kiến tạo nên những mùa xuân đẹp của sức trẻ và sáng tạo, mãi tươi xanh như màu áo lính!</p>
+							<p class="mbland_aboutUs_teamSection_featuredText">Ông Vũ Thành Huế hiện đang giữ vị trí Chủ tịch Hội đồng Quản trị Tập đoàn MBLand Asset Management – người đặt nền móng và dẫn dắt tập đoàn trong suốt chặng đường hình thành và phát triển. Với tầm nhìn chiến lược, tư duy đổi mới và tinh thần tiên phong, ông đã góp phần đưa MBLand Asset Management trở thành một trong những tập đoàn uy tín, đa ngành và có sức ảnh hưởng trên thị trường trong nước lẫn quốc tế.</p>
+							<p class="mbland_aboutUs_teamSection_featuredText">Với quan điểm “Con người là trung tâm, giá trị bền vững là mục tiêu”, ông Vũ Thành Huế luôn chú trọng đến việc phát triển đội ngũ nhân sự, xem đây là tài sản quý giá nhất của MBLand Asset Management. Bằng sự dẫn dắt quyết đoán, ông không chỉ định hình chiến lược kinh doanh mà còn truyền cảm hứng đổi mới, kiến tạo môi trường làm việc chuyên nghiệp, năng động và nhân văn.</p>
+						</div>
+					</div>
+					<figure class="mbland_aboutUs_teamSection_featuredMedia">
+						<img class="mbland_aboutUs_teamSection_featuredImage" src="/wp-content/uploads/2026/11/Vu-Thanh-Hue.jpg" alt="Vũ Thành Huế" title="Vũ Thành Huế">
+					</figure>
+				</article>
+
+				<div class="swiper mbland_aboutUs_teamSection_members">
+					<div class="swiper-wrapper mbland_aboutUs_teamSection_membersWrapper">
+						<article class="swiper-slide mbland_aboutUs_teamSection_member">
+							<div class="mbland_aboutUs_teamSection_memberCard">
+								<img class="mbland_aboutUs_teamSection_memberImage" src="/wp-content/uploads/2026/11/Vu-Thanh-Hue.jpg" alt="Vũ Thành Huế" title="Vũ Thành Huế">
+								<div class="mbland_aboutUs_teamSection_memberInfo">
+									<h3 class="mbland_aboutUs_teamSection_memberName"> Vũ Thị Hương Giang</h3>
+									<p class="mbland_aboutUs_teamSection_memberPosition">Chủ tịch Hội đồng Quản Trị</p>
+								</div>
+							</div>
+							<div class="mbland_aboutUs_teamSection_memberDetail">
+								<header class="mbland_aboutUs_teamSection_memberDetailHeader">
+									<p class="mbland_aboutUs_teamSection_memberDetailName"> Vũ Thị Hương Giang</p>
+									<p class="mbland_aboutUs_teamSection_memberDetailPosition">Chủ tịch Hội đồng Quản Trị</p>
+								</header>
+								<ul class="mbland_aboutUs_teamSection_memberTimeline">
+									<li class="mbland_aboutUs_teamSection_memberTimelineItem"><strong class="mbland_aboutUs_teamSection_memberTimelineYear">2012-2018: </strong> Phó Tổng Giám đốc thường trực – CEN LAND</li>
+									<li class="mbland_aboutUs_teamSection_memberTimelineItem"><strong class="mbland_aboutUs_teamSection_memberTimelineYear">2012-2018: </strong> Phó Tổng Giám đốc thường trực – CEN LAND</li>
+									<li class="mbland_aboutUs_teamSection_memberTimelineItem"><strong class="mbland_aboutUs_teamSection_memberTimelineYear">2012-2018: </strong> Phó Tổng Giám đốc thường trực – CEN LAND</li>
+									<li class="mbland_aboutUs_teamSection_memberTimelineItem"><strong class="mbland_aboutUs_teamSection_memberTimelineYear">2012-2018: </strong> Phó Tổng Giám đốc thường trực – CEN LAND</li>
+								</ul>
+							</div>
+						</article>
+						<article class="swiper-slide mbland_aboutUs_teamSection_member">
+							<div class="mbland_aboutUs_teamSection_memberCard">
+								<img class="mbland_aboutUs_teamSection_memberImage" src="/wp-content/uploads/2026/11/Vu-Thanh-Hue.jpg" alt="Vũ Thành Huế" title="Vũ Thành Huế">
+								<div class="mbland_aboutUs_teamSection_memberInfo">
+									<h3 class="mbland_aboutUs_teamSection_memberName"> Vũ Thị Hương Giang</h3>
+									<p class="mbland_aboutUs_teamSection_memberPosition">Chủ tịch Hội đồng Quản Trị</p>
+								</div>
+							</div>
+							<div class="mbland_aboutUs_teamSection_memberDetail">
+								<header class="mbland_aboutUs_teamSection_memberDetailHeader">
+									<p class="mbland_aboutUs_teamSection_memberDetailName"> Vũ Thị Hương Giang</p>
+									<p class="mbland_aboutUs_teamSection_memberDetailPosition">Chủ tịch Hội đồng Quản Trị</p>
+								</header>
+								<ul class="mbland_aboutUs_teamSection_memberTimeline">
+									<li class="mbland_aboutUs_teamSection_memberTimelineItem"><strong class="mbland_aboutUs_teamSection_memberTimelineYear">2012-2018: </strong> Phó Tổng Giám đốc thường trực – CEN LAND</li>
+									<li class="mbland_aboutUs_teamSection_memberTimelineItem"><strong class="mbland_aboutUs_teamSection_memberTimelineYear">2012-2018: </strong> Phó Tổng Giám đốc thường trực – CEN LAND</li>
+									<li class="mbland_aboutUs_teamSection_memberTimelineItem"><strong class="mbland_aboutUs_teamSection_memberTimelineYear">2012-2018: </strong> Phó Tổng Giám đốc thường trực – CEN LAND</li>
+									<li class="mbland_aboutUs_teamSection_memberTimelineItem"><strong class="mbland_aboutUs_teamSection_memberTimelineYear">2012-2018: </strong> Phó Tổng Giám đốc thường trực – CEN LAND</li>
+								</ul>
+							</div>
+						</article>
+						<article class="swiper-slide mbland_aboutUs_teamSection_member">
+							<div class="mbland_aboutUs_teamSection_memberCard">
+								<img class="mbland_aboutUs_teamSection_memberImage" src="/wp-content/uploads/2026/11/Vu-Thanh-Hue.jpg" alt="Vũ Thành Huế" title="Vũ Thành Huế">
+								<div class="mbland_aboutUs_teamSection_memberInfo">
+									<h3 class="mbland_aboutUs_teamSection_memberName"> Vũ Thị Hương Giang</h3>
+									<p class="mbland_aboutUs_teamSection_memberPosition">Chủ tịch Hội đồng Quản Trị</p>
+								</div>
+							</div>
+							<div class="mbland_aboutUs_teamSection_memberDetail">
+								<header class="mbland_aboutUs_teamSection_memberDetailHeader">
+									<p class="mbland_aboutUs_teamSection_memberDetailName"> Vũ Thị Hương Giang</p>
+									<p class="mbland_aboutUs_teamSection_memberDetailPosition">Chủ tịch Hội đồng Quản Trị</p>
+								</header>
+								<ul class="mbland_aboutUs_teamSection_memberTimeline">
+									<li class="mbland_aboutUs_teamSection_memberTimelineItem"><strong class="mbland_aboutUs_teamSection_memberTimelineYear">2012-2018: </strong> Phó Tổng Giám đốc thường trực – CEN LAND</li>
+									<li class="mbland_aboutUs_teamSection_memberTimelineItem"><strong class="mbland_aboutUs_teamSection_memberTimelineYear">2012-2018: </strong> Phó Tổng Giám đốc thường trực – CEN LAND</li>
+									<li class="mbland_aboutUs_teamSection_memberTimelineItem"><strong class="mbland_aboutUs_teamSection_memberTimelineYear">2012-2018: </strong> Phó Tổng Giám đốc thường trực – CEN LAND</li>
+									<li class="mbland_aboutUs_teamSection_memberTimelineItem"><strong class="mbland_aboutUs_teamSection_memberTimelineYear">2012-2018: </strong> Phó Tổng Giám đốc thường trực – CEN LAND</li>
+								</ul>
+							</div>
+						</article>
+						<article class="swiper-slide mbland_aboutUs_teamSection_member">
+							<div class="mbland_aboutUs_teamSection_memberCard">
+								<img class="mbland_aboutUs_teamSection_memberImage" src="/wp-content/uploads/2026/11/Vu-Thanh-Hue.jpg" alt="Vũ Thành Huế" title="Vũ Thành Huế">
+								<div class="mbland_aboutUs_teamSection_memberInfo">
+									<h3 class="mbland_aboutUs_teamSection_memberName"> Vũ Thị Hương Giang</h3>
+									<p class="mbland_aboutUs_teamSection_memberPosition">Chủ tịch Hội đồng Quản Trị</p>
+								</div>
+							</div>
+							<div class="mbland_aboutUs_teamSection_memberDetail">
+								<header class="mbland_aboutUs_teamSection_memberDetailHeader">
+									<p class="mbland_aboutUs_teamSection_memberDetailName"> Vũ Thị Hương Giang</p>
+									<p class="mbland_aboutUs_teamSection_memberDetailPosition">Chủ tịch Hội đồng Quản Trị</p>
+								</header>
+								<ul class="mbland_aboutUs_teamSection_memberTimeline">
+									<li class="mbland_aboutUs_teamSection_memberTimelineItem"><strong class="mbland_aboutUs_teamSection_memberTimelineYear">2012-2018: </strong> Phó Tổng Giám đốc thường trực – CEN LAND</li>
+									<li class="mbland_aboutUs_teamSection_memberTimelineItem"><strong class="mbland_aboutUs_teamSection_memberTimelineYear">2012-2018: </strong> Phó Tổng Giám đốc thường trực – CEN LAND</li>
+									<li class="mbland_aboutUs_teamSection_memberTimelineItem"><strong class="mbland_aboutUs_teamSection_memberTimelineYear">2012-2018: </strong> Phó Tổng Giám đốc thường trực – CEN LAND</li>
+									<li class="mbland_aboutUs_teamSection_memberTimelineItem"><strong class="mbland_aboutUs_teamSection_memberTimelineYear">2012-2018: </strong> Phó Tổng Giám đốc thường trực – CEN LAND</li>
+								</ul>
+							</div>
+						</article>
+					</div>
+					<div class="swiper-button-prev mbland_aboutUs_teamSection_membersPrev"></div>
+					<div class="swiper-button-next mbland_aboutUs_teamSection_membersNext"></div>
+					<div class="swiper-pagination mbland_aboutUs_teamSection_membersPagination"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- ==== END SECTION TEAMS ==== -->
+
+
+
+
+
+
 
 <?php get_template_part( 'template-parts/components/brands' ); ?>
 
@@ -279,59 +407,6 @@ get_header();
 
 
 
-
-<!-- ===== START FOUNDER ===== -->
-<section class="mbland_about_founder">
-	<div class="container mbland_about_founder_container">
-		<div class="mbland_about_founder_wrapper">
-			<div class="mbland_about_founder_left">
-				<span class="mbland_about_founder_subName">Nhà sáng Lập</span>
-				<h3 class="mbland_about_founder_name">Vũ Thành Huế</h3>
-				<span class="mbland_about_founder_position">Chủ tịch Hội đồng quản trị</span>
-				<p class="mbland_about_founder_content">
-					Tuổi lên 10 chính là thời điểm vàng, là lúc đủ độ nén, độ chín, độ
-					bật. Dù từng trải qua sóng gió, người Tasman luôn được nhắc nhở:
-					Khởi đầu vào mùa xuân, chúng ta phải kiến tạo nên những mùa xuân
-					đẹp của sức trẻ và sáng tạo, mãi tươi xanh như màu áo lính!
-				</p>
-				<p class="mbland_about_founder_content">
-					Ông Vũ Thành Huế hiện đang giữ vị trí Chủ tịch Hội đồng Quản trị
-					Tập đoàn Tasmania & Partners – người đặt nền móng và dẫn dắt tập
-					đoàn trong suốt chặng đường hình thành và phát triển. Với tầm nhìn
-					chiến lược, tư duy đổi mới và tinh thần tiên phong, ông đã góp
-					phần đưa Tasmania Partners trở thành một trong những tập đoàn uy
-					tín, đa ngành và có sức ảnh hưởng trên thị trường trong nước lẫn
-					quốc tế.
-				</p>
-				<p class="mbland_about_founder_content">
-					Với quan điểm “Con người là trung tâm, giá trị bền vững là mục
-					tiêu”, ông Vũ Thành Huế luôn chú trọng đến việc phát triển đội ngũ
-					nhân sự, xem đây là tài sản quý giá nhất của Tasmania Partners.
-					Bằng sự dẫn dắt quyết đoán, ông không chỉ định hình chiến lược
-					kinh doanh mà còn truyền cảm hứng đổi mới, kiến tạo môi trường làm
-					việc chuyên nghiệp, năng động và nhân văn.
-				</p>
-			</div>
-			<div class="mbland_about_founder_right">
-				<img
-					 src="/wp-content/uploads/2025/10/nha-sang-lap-scaled.jpg"
-					 alt="Nhà sáng Lập"
-					 class="mbland_about_founder_img"
-					 title="Nhà sáng Lập"
-					 />
-			</div>
-		</div>
-	</div>
-</section>
-<!-- ===== END FOUNDER ===== -->
-
-
-
-
-
-<!-- ===== START BRAND LOGO ===== -->
-<?php echo do_shortcode('[logo_brand]'); ?>
-<!-- ===== END BRAND LOGO ===== -->
 
 
 

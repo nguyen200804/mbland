@@ -2,6 +2,7 @@
 .mbland_about_hero_img {
 	aspect-ratio: 1920/550;
 	object-fit: cover;
+	width: 100%;
 }
 
 /* ===== END HERO SECTION ===== */
@@ -20,6 +21,7 @@
 .mbland_about_overview {
 	padding: 70px 0 80px;
 }
+
 .mbland_about_intro {
 	display: flex;
 	justify-content: center;
@@ -366,27 +368,28 @@
 .mbland_about_goals {
 	padding: 100px 0;
 }
+
 .mbland_about_goals_list {
-    display: flex;
-    justify-content: center;
-    position: relative;
-    border-top: 1px solid rgb(183 12 44 / 30%);
-    gap: 90px;
+	display: flex;
+	justify-content: center;
+	position: relative;
+	border-top: 1px solid rgb(183 12 44 / 30%);
+	gap: 90px;
 }
 
 /* Each block */
 .mbland_about_goals_item {
-    flex: 1;
-    padding: 50px 0;
+	flex: 1;
+	padding: 50px 0;
 }
 
 .mbland_about_goals_itemDivider {
-    display: block;
-    width: 1px;
-    min-height: 100%;
-    position: relative;
-    z-index: 0;
-    background-color: rgb(183 12 44 / 30%);
+	display: block;
+	width: 1px;
+	min-height: 100%;
+	position: relative;
+	z-index: 0;
+	background-color: rgb(183 12 44 / 30%);
 }
 
 .mbland_about_goals_itemDividerDot {
@@ -409,20 +412,20 @@
 
 /* Heading with icon */
 .mbland_about_goals_head {
-    display: flex;
-    align-items: center;
-    gap: 0.3em;
-    margin-bottom: 50px;
-    font-family: 'GanhType';
-    font-weight: 400;
-    font-size: 36px;
-    line-height: 120%;
+	display: flex;
+	align-items: center;
+	gap: 0.3em;
+	margin-bottom: 50px;
+	font-family: 'GanhType';
+	font-weight: 400;
+	font-size: 36px;
+	line-height: 120%;
 }
 
 .mbland_about_goals_icon {
-    width: 1.4em;
-    height: 1.4em;
-    object-fit: contain;
+	width: 1.4em;
+	height: 1.4em;
+	object-fit: contain;
 }
 
 .mbland_about_goals_title {
@@ -431,10 +434,10 @@
 }
 
 .mbland_about_goals_content {
-    font-weight: 400;
-    font-size: 16px;
-    color: #5b4e47;
-    line-height: 1.875em;
+	font-weight: 400;
+	font-size: 16px;
+	color: #5b4e47;
+	line-height: 1.875em;
 }
 
 @media (max-width: 1200px) {
@@ -506,36 +509,36 @@
 .mbland_homepage_company {}
 
 .mbland_homepage_company img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
 }
 
 .mbland_homepage_company_showcase {
-  width: 100%;
-  background: #8A0218;
-  padding-bottom: 72px;
+	width: 100%;
+	background: #8A0218;
+	padding-bottom: 72px;
 }
 
 .mbland_homepage_company .container {
-  /* padding: 0; */
+	/* padding: 0; */
 }
 
 .mbland_homepage_company_wrapper {
-  display: flex;
+	display: flex;
 }
 
 .mbland_homepage_company_media {
-  min-width: 47%;
-  width: 47%;
+	min-width: 47%;
+	width: 47%;
 }
 
 .mbland_homepage_company_image {
-  width: 100%;
+	width: 100%;
 }
 
 .mbland_homepage_company_body {
-  width: 53%;
+	width: 53%;
 }
 
 .mbland_homepage_company_introWrapper {}
@@ -543,10 +546,10 @@
 .mbland_homepage_company_showcaseWrapper {}
 
 .mbland_homepage_company_introMedia {
-  margin-bottom: -360px;
-  padding: 0 20px 24px;
-  position: relative;
-  background: #fff;
+	margin-bottom: -360px;
+	padding: 0 20px 24px;
+	position: relative;
+	background: #fff;
 }
 
 .mbland_homepage_company_showcaseMedia {}
@@ -556,113 +559,113 @@
 .mbland_homepage_company_showcaseImage {}
 
 .mbland_homepage_company_introBody {
-  padding-top: 45px;
+	padding-top: 45px;
 }
 
 .mbland_homepage_company_showcaseBody {
-      height: 360px;
-    padding-top: 20px;
-    padding-left: 20px;
+	height: 360px;
+	padding-top: 20px;
+	padding-left: 20px;
 }
 
 .mbland_homepage_company_introHeader {
-  background-color: #8A0218;
-  padding: 12px;
-  border-radius: 0 120px 120px 0;
-  margin-left: -20px;
-  position: relative;
-  padding-left: 74px;
+	background-color: #8A0218;
+	padding: 12px;
+	border-radius: 0 120px 120px 0;
+	margin-left: -20px;
+	position: relative;
+	padding-left: 74px;
 }
 
 .mbland_homepage_company_introTitle {
-  font-family: 'FZPoppins';
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 1.6em;
-  letter-spacing: 0%;
-  text-transform: uppercase;
-  color: #fff;
-  margin: 0;
+	font-family: 'FZPoppins';
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 1.6em;
+	letter-spacing: 0%;
+	text-transform: uppercase;
+	color: #fff;
+	margin: 0;
 }
 
 .mbland_homepage_company_introContent {
-  padding: 60px 0 60px 54px;
+	padding: 60px 0 60px 54px;
 }
 
 .mbland_homepage_company_introBrand {}
 
 .mbland_homepage_company_introBrandName {
-  color: #B70C2C;
-  font-family: 'FZPoppins';
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 1.6em;
-  letter-spacing: 0%;
-  text-transform: uppercase;
+	color: #B70C2C;
+	font-family: 'FZPoppins';
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 1.6em;
+	letter-spacing: 0%;
+	text-transform: uppercase;
 }
 
 .mbland_homepage_company_introBrandLogo {
-  width: 100%;
+	width: 100%;
 }
 
 .mbland_homepage_company_introDesc {
-  letter-spacing: 0;
-  padding-top: 16px;
+	letter-spacing: 0;
+	padding-top: 16px;
 }
 
 .mbland_homepage_company_showcaseList {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  position: relative;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	position: relative;
 }
 
 .mbland_homepage_company_showcaseItem {
-    height: auto;
-    max-width: 312px;
-    background-color: #FDF9F2;
-    padding: 45px 35px 35px;
-    display: flex !important;
-    flex-direction: column;
-    justify-content: space-between;
+	height: auto;
+	max-width: 312px;
+	background-color: #FDF9F2;
+	padding: 45px 35px 35px;
+	display: flex !important;
+	flex-direction: column;
+	justify-content: space-between;
 }
 
 .mbland_homepage_company_showcaseNumber {
-    font-size: 100px;
-    -webkit-background-clip: text;
-    text-align: right;
-    line-height: 0.8em;
-    font-weight: 600;
-    -webkit-text-stroke: 0.005em #0C1DB7;
-    color: transparent;
-    background: transparent;
-    background-clip: text;
+	font-size: 100px;
+	-webkit-background-clip: text;
+	text-align: right;
+	line-height: 0.8em;
+	font-weight: 600;
+	-webkit-text-stroke: 0.005em #0C1DB7;
+	color: transparent;
+	background: transparent;
+	background-clip: text;
 	transition: all .3s ease;
 }
 
 .mbland_homepage_company_showcaseItem:hover .mbland_homepage_company_showcaseNumber {
-    -webkit-text-stroke: 0.000em #0C1DB7;
-    background: linear-gradient(180deg, #0C48B7 0%, rgba(32, 12, 183, 0.05) 100%);
-    background-clip: text;
+	-webkit-text-stroke: 0.000em #0C1DB7;
+	background: linear-gradient(180deg, #0C48B7 0%, rgba(32, 12, 183, 0.05) 100%);
+	background-clip: text;
 }
 
 .mbland_homepage_company_showcaseLogo {
-    height: 62px !important;
-    object-fit: contain !important;
-    object-position: left;
+	height: 62px !important;
+	object-fit: contain !important;
+	object-position: left;
 }
 
 .mbland_homepage_company_showcasePagination.swiper-pagination {
-  bottom: 0;
+	bottom: 0;
 }
 
 .mbland_homepage_company_showcasePagination .swiper-pagination-bullet {
-  background: #fff;
-  opacity: .5;
+	background: #fff;
+	opacity: .5;
 }
 
 .mbland_homepage_company_showcasePagination .swiper-pagination-bullet-active {
-  opacity: 1;
+	opacity: 1;
 }
 
 /* ===== END SECTION COMPANY ===== */
@@ -675,154 +678,81 @@
 
 
 
-/* ===== START FOUNDER ===== */
-.mbland_about_founder_wrapper {
-	display: flex;
-	align-items: center;
-}
 
-.mbland_about_founder_left {
-	padding: 40px;
-	padding-top: 0;
-	width: 60%;
-}
 
-.mbland_about_founder_right {
-	width: 40%;
-}
 
-.mbland_about_founder_subName {
-	font-family: "FZPoppins";
-	font-weight: 600;
-	font-size: 18px;
-	line-height: 30px;
-	text-transform: uppercase;
-}
+/* ===== START TEAMS ===== */
+.mbland_aboutUs_teamSection {}
 
-.mbland_about_founder_name {
-	font-family: "GanhType";
-	font-weight: 400;
-	font-size: 50px;
-	line-height: 120%;
-	color: #b70c2c;
-}
+.mbland_aboutUs_teamSection_container {}
 
-.mbland_about_founder_position {
-	font-family: "FZPoppins";
-	font-weight: 500;
-	font-size: 16px;
-	/*   line-height: 30px; */
-	text-transform: uppercase;
-}
+.mbland_aboutUs_teamSection_wrapper {}
 
-.mbland_about_founder_content {
-	font-family: "FZPoppins";
-	font-weight: 400;
-	font-size: 16px;
-	line-height: 30px;
-	width: 80%;
-	padding-top: 20px;
-}
+/* Header */
+.mbland_aboutUs_teamSection_header {}
 
-.mbland_about_founder_img {
-	width: 100%;
-	height: 750px;
-	object-fit: cover;
-}
+.mbland_aboutUs_teamSection_title {}
 
-@media (max-width: 1400px) {
-	.mbland_about_founder_name {
-		font-size: 44px;
-	}
+.mbland_aboutUs_teamSection_desc {}
 
-	.mbland_about_founder_img {
-		height: 680px;
-	}
-}
+/* Body */
+.mbland_aboutUs_teamSection_body {}
 
-@media (max-width: 1200px) {
-	.mbland_about_founder_left {
-		padding: 24px;
-	}
+/* Featured (Chủ tịch hội đồng sáng lập) */
+.mbland_aboutUs_teamSection_featured {}
 
-	.mbland_about_founder_name {
-		font-size: 40px;
-	}
+.mbland_aboutUs_teamSection_featuredContent {}
 
-	.mbland_about_founder_content {
-		width: 90%;
-	}
+.mbland_aboutUs_teamSection_featuredHeader {}
 
-	.mbland_about_founder_img {
-		height: 600px;
-	}
-}
+.mbland_aboutUs_teamSection_featuredPosition {}
 
-@media (max-width: 1100px) {
-	.mbland_about_founder_name {
-		font-size: 44px;
-	}
+.mbland_aboutUs_teamSection_featuredName {}
 
-	.mbland_about_founder_img {
-		height: 680px;
-	}
-}
+.mbland_aboutUs_teamSection_featuredBio {}
 
-@media (max-width: 992px) {
-	.mbland_about_founder_wrapper {
-		flex-direction: column;
-	}
+.mbland_aboutUs_teamSection_featuredText {}
 
-	.mbland_about_founder_left,
-	.mbland_about_founder_right {
-		width: 100%;
-		padding: 16px;
-	}
+.mbland_aboutUs_teamSection_featuredMedia {}
 
-	.mbland_about_founder_name {
-		font-size: 36px;
-	}
+.mbland_aboutUs_teamSection_featuredImage {}
 
-	.mbland_about_founder_content {
-		width: 100%;
-	}
+/* Members */
+.mbland_aboutUs_teamSection_members {}
 
-	.mbland_about_founder_img {
-		height: 520px;
-	}
-}
+.mbland_aboutUs_teamSection_membersWrapper {}
 
-@media (max-width: 768px) {
-	.mbland_about_founder_subName {
-		font-size: 14px;
-	}
+.mbland_aboutUs_teamSection_membersPrev {}
 
-	.mbland_about_founder_name {
-		font-size: 30px;
-	}
+.mbland_aboutUs_teamSection_membersNext {}
 
-	.mbland_about_founder_position {
-		font-size: 13px;
-	}
+.mbland_aboutUs_teamSection_membersPagination {}
 
-	.mbland_about_founder_content {
-		font-size: 14px;
-		line-height: 24px;
-	}
+.mbland_aboutUs_teamSection_member {}
 
-	.mbland_about_founder_img {
-		height: 460px;
-	}
-}
+.mbland_aboutUs_teamSection_memberCard {}
 
-@media (max-width: 576px) {
-	.mbland_about_founder_name {
-		font-size: 28px;
-	}
+.mbland_aboutUs_teamSection_memberImage {}
 
-	.mbland_about_founder_img {
-		height: 420px;
-	}
-}
+.mbland_aboutUs_teamSection_memberInfo {}
 
-/* ===== END FOUNDER ===== */
+.mbland_aboutUs_teamSection_memberName {}
+
+.mbland_aboutUs_teamSection_memberPosition {}
+
+/* Member detail (hover/overlay) */
+.mbland_aboutUs_teamSection_memberDetail {}
+
+.mbland_aboutUs_teamSection_memberDetailHeader {}
+
+.mbland_aboutUs_teamSection_memberDetailName {}
+
+.mbland_aboutUs_teamSection_memberDetailPosition {}
+
+.mbland_aboutUs_teamSection_memberTimeline {}
+
+.mbland_aboutUs_teamSection_memberTimelineItem {}
+
+.mbland_aboutUs_teamSection_memberTimelineYear {}
+
+/* ===== END TEAMS ===== */
