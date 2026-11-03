@@ -273,19 +273,7 @@ get_header(); ?>
 
 
 
-<!-- ===== START SECTION BRANDS ===== -->
-<section class="mbland_homepage_brands">
-  <div class="container">
-    <header class="mbland_homepage_brands_header">
-      <h2 class="mbland_homepage_brands_title">Các đối tác của chúng tôi</h2>
-      <p class="mbland_homepage_brands_desc">Chúng tôi trân trọng xây dựng những mối quan hệ hợp tác chiến lược, cùng kết nối nguồn lực, phát huy thế mạnh và hướng đến những giá trị phát triển bền vững.</p>
-    </header>
-  </div>
-  <div class="mbland_homepage_brands_list">
-    <?php echo do_shortcode('[logo_brand]'); ?>
-  </div>
-</section>
-<!-- ===== END SECTION BRANDS ===== -->
+<?php get_template_part( 'template-parts/components/brands' ); ?>
 
 
 

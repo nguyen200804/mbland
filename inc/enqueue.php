@@ -19,6 +19,9 @@ function homenest_enqueue_scripts() {
     wp_enqueue_style( 'homenest-assets-style', get_template_directory_uri() . '/assets/css/style.css', array('homenest-style', 'homenest-fonts'), homenest_asset_ver('/assets/css/style.css') );
     wp_enqueue_style( 'homenest-header-style', get_template_directory_uri() . '/assets/css/layout/header.css', array('homenest-assets-style'), homenest_asset_ver('/assets/css/layout/header.css') );
 
+    // CSS component dung chung
+    wp_enqueue_style( 'homenest-brands-style', get_template_directory_uri() . '/assets/css/components/brands.css', array('homenest-assets-style'), homenest_asset_ver('/assets/css/components/brands.css') );
+
     // CSS/JS theo template (nap trong <head> / truoc </body>)
     $tpl = ! empty( $GLOBALS['template'] ) ? basename( $GLOBALS['template'] ) : '';
     $css_map = array(

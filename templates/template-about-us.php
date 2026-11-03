@@ -272,6 +272,14 @@ get_header();
 
 
 
+<?php get_template_part( 'template-parts/components/brands' ); ?>
+
+
+
+
+
+
+
 <!-- ===== START FOUNDER ===== -->
 <section class="mbland_about_founder">
 	<div class="container mbland_about_founder_container">
