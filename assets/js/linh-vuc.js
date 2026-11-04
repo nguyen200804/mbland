@@ -1,26 +1,28 @@
 /* Trang taxonomy linh-vuc (taxonomy-linh-vuc.php) */
 document.addEventListener('DOMContentLoaded', function () {
-	/* ===== PROCEDURE: thêm .active khi item cuộn đến giữa màn hình ===== */
+	/* ===== PROCEDURE: .active khi đỉnh item nằm ở nửa trên viewport (0 - 50vh) ===== */
 	var items = document.querySelectorAll('.mbland_linhvuc_procedure_item');
 	if (!items.length) return;
 
-	// Trình duyệt cũ không hỗ trợ IntersectionObserver -> kích hoạt tất cả
-	if (!('IntersectionObserver' in window)) {
-		items.forEach(function (item) { item.classList.add('active'); });
-		return;
+	var ticking = false;
+
+	function update() {
+		var half = window.innerHeight / 2;
+		items.forEach(function (item) {
+			// top <= 50vh -> active; top > 50vh (51 - 100vh) -> bỏ active
+			item.classList.toggle('active', item.getBoundingClientRect().top <= half);
+		});
+		ticking = false;
 	}
 
-	// rootMargin thu vùng quan sát thành 1 đường ngang ở giữa viewport
-	var observer = new IntersectionObserver(function (entries) {
-		entries.forEach(function (entry) {
-			entry.target.classList.toggle('active', entry.isIntersecting);
-		});
-	}, {
-		root: null,
-		rootMargin: '-50% 0px -50% 0px',
-		threshold: 0
-	});
+	function onScroll() {
+		if (!ticking) {
+			ticking = true;
+			window.requestAnimationFrame(update);
+		}
+	}
 
-	items.forEach(function (item) { observer.observe(item); });
+	window.addEventListener('scroll', onScroll, { passive: true });
+	window.addEventListener('resize', onScroll);
+	update();
 });
-
