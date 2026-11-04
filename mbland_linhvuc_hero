@@ -1,0 +1,180 @@
+<?php
+/**
+ * Template dùng chung cho các term của taxonomy `linh-vuc`
+ * (fallback khi không có template-linh-vuc/template-{slug}.php riêng).
+ *
+ * Dữ liệu: lấy các dự án (post type `du-an`) thuộc term `danh-muc-du-an` có cùng slug với term `linh-vuc` hiện tại.
+ *
+ * @package HomeNest Theme
+ */
+get_header();
+
+$current_term = get_queried_object();
+$term_slug    = $current_term->slug;
+
+// Ảnh đại diện của term (ACF field 'feature_image', giống trang chủ) - hỗ trợ return format array / ID / URL
+$term_image     = function_exists( 'get_field' ) ? get_field( 'feature_image', 'term_' . $current_term->term_id ) : false;
+$term_image_url = '';
+$term_image_alt = $current_term->name;
+if ( is_array( $term_image ) ) {
+	$term_image_url = isset( $term_image['url'] ) ? $term_image['url'] : '';
+	if ( ! empty( $term_image['alt'] ) ) {
+		$term_image_alt = $term_image['alt'];
+	}
+} elseif ( is_numeric( $term_image ) ) {
+	$term_image_url = wp_get_attachment_image_url( (int) $term_image, 'full' );
+} elseif ( is_string( $term_image ) ) {
+	$term_image_url = $term_image;
+}
+
+// Term con (nhóm dự án) của danh-muc-du-an cùng slug
+$project_term = get_term_by( 'slug', $term_slug, 'danh-muc-du-an' );
+$sub_terms    = array();
+if ( $project_term && ! is_wp_error( $project_term ) ) {
+	$sub_terms = get_terms( array(
+		'taxonomy'   => 'danh-muc-du-an',
+		'hide_empty' => true,
+		'parent'     => $project_term->term_id,
+		'orderby'    => 'name',
+		'order'      => 'ASC',
+	) );
+}
+
+// Danh sách dự án thuộc lĩnh vực
+$projects = new WP_Query( array(
+	'post_type'      => 'du-an',
+	'post_status'    => 'publish',
+	'posts_per_page' => 12,
+	'paged'          => max( 1, (int) get_query_var( 'paged' ) ),
+	'tax_query'      => array(
+		array(
+			'taxonomy' => 'danh-muc-du-an',
+			'field'    => 'slug',
+			'terms'    => $term_slug,
+		),
+	),
+	'orderby'        => 'date',
+	'order'          => 'DESC',
+) );
+?>
+
+
+
+<!-- ===== START SECTION LINH VUC HERO ===== -->
+<section class="mbland_linhvuc_hero">
+	<?php if ( $term_image_url ) : ?>
+		<img class="mbland_linhvuc_hero_background" src="<?php echo esc_url( $term_image_url ); ?>" alt="<?php echo esc_attr( $term_image_alt ); ?>" title="<?php echo esc_attr( $current_term->name ); ?>" loading="eager" decoding="async" fetchpriority="high" />
+	<?php endif; ?>
+	<div class="mbland_linhvuc_hero_inner">
+		<div class="container mbland_linhvuc_hero_container">
+			<div class="mbland_linhvuc_hero_content">
+				<div class="mbland_linhvuc_hero_breadcrumb"><?php echo do_shortcode('[hn_breadcrumb]'); ?></div>
+			<?php
+			// Bỏ tiền tố "Lĩnh vực: " mà get_the_archive_title() tự thêm vào
+			add_filter( 'get_the_archive_title_prefix', '__return_empty_string' );
+			?>
+			<h1 class="mbland_linhvuc_hero_title"><?php echo wp_kses_post( get_the_archive_title() ); ?></h1>
+			<?php remove_filter( 'get_the_archive_title_prefix', '__return_empty_string' ); ?>
+			<?php if ( get_the_archive_description() ) : ?>
+				<div class="mbland_linhvuc_hero_desc"><?php echo wp_kses_post( get_the_archive_description() ); ?></div>
+			<?php endif; ?>
+			</div>
+			<div class="mbland_linhvuc_hero_aside">
+
+			</div>
+		
+		</div>
+
+	</div>
+	<div class="mbland_linhvuc_hero_featured">
+		<div class="container mbland_linhvuc_hero_featuredContainer">
+			<div class="mbland_linhvuc_hero_featuredInfo">
+				<p class="mbland_linhvuc_hero_featuredTitle">Thảo Điền Boutique Marina</p>
+				<p class="mbland_linhvuc_hero_featuredDesc">Được quy hoạch theo mô hình tổ hợp khép kín, dự án tích hợp hệ thống tiện ích và dịch vụ hiện đại, bao gồm khách sạn, nhà hàng, bến du thuyền, spa,.... Mang đến trải nghiệm trọn vẹn trong một không gian tiện nghi, riêng tư và đẳng cấp.</p>
+				<div class="mbland_linhvuc_hero_featuredDecor"></div>
+				<hr class="mbland_linhvuc_hero_featuredDivider" />
+				<div class="mbland_linhvuc_hero_featuredLocation">
+					<span class="mbland_linhvuc_hero_featuredLocationIcon"><svg  viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M9 1.125C7.35957 1.12694 5.78688 1.77945 4.62692 2.93941C3.46696 4.09938 2.81444 5.67207 2.8125 7.3125C2.811 8.65299 3.24884 9.95704 4.059 11.025C4.059 11.025 4.22775 11.2472 4.25532 11.2793L9 16.875L13.7469 11.2764C13.7717 11.2466 13.941 11.025 13.941 11.025L13.9416 11.0233C14.7512 9.95574 15.1888 8.65235 15.1875 7.3125C15.1856 5.67207 14.5331 4.09938 13.3731 2.93941C12.2131 1.77945 10.6404 1.12694 9 1.125ZM9 9.5625C8.555 9.5625 8.11998 9.43054 7.74997 9.18331C7.37996 8.93607 7.09157 8.58467 6.92127 8.17354C6.75098 7.7624 6.70642 7.31 6.79324 6.87355C6.88005 6.43709 7.09434 6.03618 7.40901 5.72151C7.72368 5.40684 8.12459 5.19255 8.56105 5.10573C8.99751 5.01892 9.44991 5.06347 9.86104 5.23377C10.2722 5.40407 10.6236 5.69246 10.8708 6.06247C11.118 6.43248 11.25 6.86749 11.25 7.3125C11.2493 7.90901 11.012 8.48087 10.5902 8.90267C10.1684 9.32446 9.59651 9.56176 9 9.5625Z" fill="currentColor"/>
+</svg>
+</span>
+					<div class="mbland_linhvuc_hero_featuredLocationText">
+						<p class="mbland_linhvuc_hero_featuredLocationLabel">Vị trí DỰ ÁN</p>
+						<p class="mbland_linhvuc_hero_featuredLocationValue">Số 68 An Phú, Phường An Khánh, Thành phố Hồ Chí Minh</p>
+					</div>
+					
+				</div>
+			</div>
+			<div class="mbland_linhvuc_hero_featuredAction">
+				<a class="mbland_linhvuc_hero_featuredLink" href="#">
+					<span class="mbland_linhvuc_hero_featuredLinkLabel">Tìm hiểu thêm về dự án</span>
+					<svg class="mbland_linhvuc_hero_featuredLinkIcon"  viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.333 14.333V1H1m13.333 0L1 14.333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor"/></svg>
+				</a>
+
+			</div>
+		
+		</div>
+		
+	</div>
+</section>
+<!-- ===== END SECTION LINH VUC HERO ===== -->
+
+
+
+
+<?php if ( ! empty( $sub_terms ) && ! is_wp_error( $sub_terms ) ) : ?>
+<!-- ===== START SECTION LINH VUC CATEGORIES ===== -->
+<section class="mbland_linhvuc_categories">
+	<div class="container">
+		<ul class="mbland_linhvuc_categories_list">
+			<?php foreach ( $sub_terms as $sub ) : ?>
+				<li class="mbland_linhvuc_categories_item">
+					<a class="mbland_linhvuc_categories_link" href="<?php echo esc_url( get_term_link( $sub ) ); ?>"><?php echo esc_html( $sub->name ); ?></a>
+				</li>
+			<?php endforeach; ?>
+		</ul>
+	</div>
+</section>
+<!-- ===== END SECTION LINH VUC CATEGORIES ===== -->
+<?php endif; ?>
+
+
+
+
+
+<!-- ===== START SECTION LINH VUC PROJECTS ===== -->
+<section class="mbland_linhvuc_projects">
+	<div class="container">
+		<?php if ( $projects->have_posts() ) : ?>
+			<div class="mbland_linhvuc_projects_list">
+				<?php while ( $projects->have_posts() ) : $projects->the_post(); ?>
+					<article class="mbland_linhvuc_projects_item">
+						<a class="mbland_linhvuc_projects_link" href="<?php the_permalink(); ?>">
+							<figure class="mbland_linhvuc_projects_media">
+								<?php if ( has_post_thumbnail() ) : ?>
+									<?php the_post_thumbnail( 'large', array( 'class' => 'mbland_linhvuc_projects_image', 'loading' => 'lazy' ) ); ?>
+								<?php endif; ?>
+							</figure>
+							<h3 class="mbland_linhvuc_projects_title"><?php the_title(); ?></h3>
+						</a>
+					</article>
+				<?php endwhile; ?>
+			</div>
+			<nav class="mbland_linhvuc_projects_pagination">
+				<?php
+				echo paginate_links( array(
+					'total'   => $projects->max_num_pages,
+					'current' => max( 1, (int) get_query_var( 'paged' ) ),
+				) );
+				?>
+			</nav>
+		<?php else : ?>
+			<p class="mbland_linhvuc_projects_empty">Chưa có dự án nào trong lĩnh vực này.</p>
+		<?php endif; ?>
+		<?php wp_reset_postdata(); ?>
+	</div>
+</section>
+<!-- ===== END SECTION LINH VUC PROJECTS ===== -->
+
+<?php get_footer(); ?>
+

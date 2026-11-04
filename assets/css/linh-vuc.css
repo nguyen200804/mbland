@@ -1,29 +1,51 @@
 /* Template dùng chung cho taxonomy linh-vuc (taxonomy-linh-vuc.php) */
 
 /* ===== START HERO ===== */
-.mbland_linhVuc_hero {}
-.mbland_linhVuc_hero_container {}
-.mbland_linhVuc_hero_header {}
-.mbland_linhVuc_hero_title {}
-.mbland_linhVuc_hero_desc {}
+.mbland_linhvuc_hero {}
+.mbland_linhvuc_hero_container {}
+.mbland_linhvuc_hero_header {}
+/* -- hero: markup trong taxonomy-linh-vuc.php -- */
+.mbland_linhvuc_hero_background {}
+.mbland_linhvuc_hero_inner {}
+.mbland_linhvuc_hero_content {}
+.mbland_linhvuc_hero_breadcrumb {}
+.mbland_linhvuc_hero_title {}
+.mbland_linhvuc_hero_desc {}
+.mbland_linhvuc_hero_aside {}
+.mbland_linhvuc_hero_featured {}
+.mbland_linhvuc_hero_featuredContainer {}
+.mbland_linhvuc_hero_featuredInfo {}
+.mbland_linhvuc_hero_featuredTitle {}
+.mbland_linhvuc_hero_featuredDesc {}
+.mbland_linhvuc_hero_featuredDecor {}
+.mbland_linhvuc_hero_featuredDivider {}
+.mbland_linhvuc_hero_featuredLocation {}
+.mbland_linhvuc_hero_featuredLocationIcon {}
+.mbland_linhvuc_hero_featuredLocationText {}
+.mbland_linhvuc_hero_featuredLocationLabel {}
+.mbland_linhvuc_hero_featuredLocationValue {}
+.mbland_linhvuc_hero_featuredAction {}
+.mbland_linhvuc_hero_featuredLink {}
+.mbland_linhvuc_hero_featuredLinkLabel {}
+.mbland_linhvuc_hero_featuredLinkIcon {}
 /* ===== END HERO ===== */
 
 /* ===== START CATEGORIES ===== */
-.mbland_linhVuc_categories {}
-.mbland_linhVuc_categories_list {}
-.mbland_linhVuc_categories_item {}
-.mbland_linhVuc_categories_link {}
+.mbland_linhvuc_categories {}
+.mbland_linhvuc_categories_list {}
+.mbland_linhvuc_categories_item {}
+.mbland_linhvuc_categories_link {}
 /* ===== END CATEGORIES ===== */
 
 /* ===== START PROJECTS ===== */
-.mbland_linhVuc_projects {}
-.mbland_linhVuc_projects_list {}
-.mbland_linhVuc_projects_item {}
-.mbland_linhVuc_projects_link {}
-.mbland_linhVuc_projects_media {}
-.mbland_linhVuc_projects_image {}
-.mbland_linhVuc_projects_title {}
-.mbland_linhVuc_projects_pagination {}
-.mbland_linhVuc_projects_empty {}
+.mbland_linhvuc_projects {}
+.mbland_linhvuc_projects_list {}
+.mbland_linhvuc_projects_item {}
+.mbland_linhvuc_projects_link {}
+.mbland_linhvuc_projects_media {}
+.mbland_linhvuc_projects_image {}
+.mbland_linhvuc_projects_title {}
+.mbland_linhvuc_projects_pagination {}
+.mbland_linhvuc_projects_empty {}
 /* ===== END PROJECTS ===== */
 
