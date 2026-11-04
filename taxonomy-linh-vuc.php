@@ -502,22 +502,102 @@ dựng phương án quy hoạch phù hợp.</p>
 
 
 
-
-<?php if ( ! empty( $sub_terms ) && ! is_wp_error( $sub_terms ) ) : ?>
-<!-- ===== START SECTION LINH VUC CATEGORIES ===== -->
-<section class="mbland_linhvuc_categories">
+<section class="mbland_linhvuc_featuredProject">
 	<div class="container">
-		<ul class="mbland_linhvuc_categories_list">
-			<?php foreach ( $sub_terms as $sub ) : ?>
-			<li class="mbland_linhvuc_categories_item">
-				<a class="mbland_linhvuc_categories_link" href="<?php echo esc_url( get_term_link( $sub ) ); ?>"><?php echo esc_html( $sub->name ); ?></a>
-			</li>
-			<?php endforeach; ?>
-		</ul>
+		<div class="mbland_linhvuc_featuredProject_wrapper">
+			<header class="mbland_linhvuc_featuredProject_header">
+				<h2 class="mbland_linhvuc_featuredProject_title">Các dự án nổi bật</h2>
+			</header>
+			<div class="mbland_linhvuc_featuredProject_list">
+				<article class="mbland_linhvuc_featuredProject_item">
+					<div class="mbland_linhvuc_featuredProject_itemMedia">
+						<img class="mbland_linhvuc_featuredProject_itemImage" src="" alt="Dự án T18 - Đà Nẵng" />
+					</div>
+					<div class="mbland_linhvuc_featuredProject_itemBody">
+						<div class="mbland_linhvuc_featuredProject_itemHeader">
+							<h3 class="mbland_linhvuc_featuredProject_itemTitle">Dự án T18 - Đà Nẵng</h3>
+							<p class="mbland_linhvuc_featuredProject_itemDesc">Phát triển các dự án bất động sản chất lượng cao, mang lại giá trị bền vững cho cộng đồng.</p>
+						</div>
+						<hr class="mbland_linhvuc_featuredProject_itemDivider" />
+						<div class="mbland_linhvuc_featuredProject_itemLocation">
+							<span class="mbland_linhvuc_featuredProject_itemLocationIcon">
+								<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M7 0.875C5.72411 0.876505 4.50091 1.38402 3.59871 2.28621C2.69652 3.1884 2.18901 4.41161 2.1875 5.6875C2.18633 6.7301 2.52687 7.74436 3.157 8.575C3.157 8.575 3.28825 8.74781 3.30969 8.77275L7 13.125L10.6921 8.77056C10.7113 8.74738 10.843 8.575 10.843 8.575L10.8434 8.57369C11.4731 7.74335 11.8135 6.7296 11.8125 5.6875C11.811 4.41161 11.3035 3.1884 10.4013 2.28621C9.4991 1.38402 8.2759 0.876505 7 0.875ZM7 7.4375C6.65389 7.4375 6.31554 7.33486 6.02776 7.14257C5.73997 6.95028 5.51567 6.67697 5.38321 6.3572C5.25076 6.03743 5.2161 5.68556 5.28363 5.34609C5.35115 5.00663 5.51782 4.6948 5.76257 4.45006C6.00731 4.20532 6.31913 4.03865 6.6586 3.97113C6.99806 3.9036 7.34993 3.93826 7.6697 4.07071C7.98947 4.20316 8.26278 4.42747 8.45507 4.71525C8.64737 5.00304 8.75 5.34138 8.75 5.6875C8.74942 6.15145 8.56486 6.59623 8.2368 6.9243C7.90874 7.25236 7.46395 7.43692 7 7.4375Z" fill="#B70C2C"/>
+								</svg>
+							</span>
+							<div class="mbland_linhvuc_featuredProject_itemLocationText">
+								<p class="mbland_linhvuc_featuredProject_itemLocationLabel">Vị trí địa chỉ</p>
+								<p class="mbland_linhvuc_featuredProject_itemLocationValue">Trường Sa, Phường Hoà Hải, Quận Ngũ Hành Sơn, Đà Nẵng, Việt Nam</p>
+							</div>
+						</div>
+						<div class="mbland_linhvuc_featuredProject_itemAction">
+							<a href="#" class="mbland_linhvuc_featuredProject_itemLink">Xem chi tiết</a>
+						</div>
+					</div>
+				</article>
+				<article class="mbland_linhvuc_featuredProject_item">
+					<div class="mbland_linhvuc_featuredProject_itemMedia">
+						<img class="mbland_linhvuc_featuredProject_itemImage" src="" alt="Dự án T18 - Đà Nẵng" />
+					</div>
+					<div class="mbland_linhvuc_featuredProject_itemBody">
+						<div class="mbland_linhvuc_featuredProject_itemHeader">
+							<h3 class="mbland_linhvuc_featuredProject_itemTitle">Dự án T18 - Đà Nẵng</h3>
+							<p class="mbland_linhvuc_featuredProject_itemDesc">Phát triển các dự án bất động sản chất lượng cao, mang lại giá trị bền vững cho cộng đồng.</p>
+						</div>
+						<hr class="mbland_linhvuc_featuredProject_itemDivider" />
+						<div class="mbland_linhvuc_featuredProject_itemLocation">
+							<span class="mbland_linhvuc_featuredProject_itemLocationIcon">
+								<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M7 0.875C5.72411 0.876505 4.50091 1.38402 3.59871 2.28621C2.69652 3.1884 2.18901 4.41161 2.1875 5.6875C2.18633 6.7301 2.52687 7.74436 3.157 8.575C3.157 8.575 3.28825 8.74781 3.30969 8.77275L7 13.125L10.6921 8.77056C10.7113 8.74738 10.843 8.575 10.843 8.575L10.8434 8.57369C11.4731 7.74335 11.8135 6.7296 11.8125 5.6875C11.811 4.41161 11.3035 3.1884 10.4013 2.28621C9.4991 1.38402 8.2759 0.876505 7 0.875ZM7 7.4375C6.65389 7.4375 6.31554 7.33486 6.02776 7.14257C5.73997 6.95028 5.51567 6.67697 5.38321 6.3572C5.25076 6.03743 5.2161 5.68556 5.28363 5.34609C5.35115 5.00663 5.51782 4.6948 5.76257 4.45006C6.00731 4.20532 6.31913 4.03865 6.6586 3.97113C6.99806 3.9036 7.34993 3.93826 7.6697 4.07071C7.98947 4.20316 8.26278 4.42747 8.45507 4.71525C8.64737 5.00304 8.75 5.34138 8.75 5.6875C8.74942 6.15145 8.56486 6.59623 8.2368 6.9243C7.90874 7.25236 7.46395 7.43692 7 7.4375Z" fill="#B70C2C"/>
+								</svg>
+							</span>
+							<div class="mbland_linhvuc_featuredProject_itemLocationText">
+								<p class="mbland_linhvuc_featuredProject_itemLocationLabel">Vị trí địa chỉ</p>
+								<p class="mbland_linhvuc_featuredProject_itemLocationValue">Trường Sa, Phường Hoà Hải, Quận Ngũ Hành Sơn, Đà Nẵng, Việt Nam</p>
+							</div>
+						</div>
+						<div class="mbland_linhvuc_featuredProject_itemAction">
+							<a href="#" class="mbland_linhvuc_featuredProject_itemLink">Xem chi tiết</a>
+						</div>
+					</div>
+				</article>
+				<article class="mbland_linhvuc_featuredProject_item">
+					<div class="mbland_linhvuc_featuredProject_itemMedia">
+						<img class="mbland_linhvuc_featuredProject_itemImage" src="" alt="Dự án T18 - Đà Nẵng" />
+					</div>
+					<div class="mbland_linhvuc_featuredProject_itemBody">
+						<div class="mbland_linhvuc_featuredProject_itemHeader">
+							<h3 class="mbland_linhvuc_featuredProject_itemTitle">Dự án T18 - Đà Nẵng</h3>
+							<p class="mbland_linhvuc_featuredProject_itemDesc">Phát triển các dự án bất động sản chất lượng cao, mang lại giá trị bền vững cho cộng đồng.</p>
+						</div>
+						<hr class="mbland_linhvuc_featuredProject_itemDivider" />
+						<div class="mbland_linhvuc_featuredProject_itemLocation">
+							<span class="mbland_linhvuc_featuredProject_itemLocationIcon">
+								<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M7 0.875C5.72411 0.876505 4.50091 1.38402 3.59871 2.28621C2.69652 3.1884 2.18901 4.41161 2.1875 5.6875C2.18633 6.7301 2.52687 7.74436 3.157 8.575C3.157 8.575 3.28825 8.74781 3.30969 8.77275L7 13.125L10.6921 8.77056C10.7113 8.74738 10.843 8.575 10.843 8.575L10.8434 8.57369C11.4731 7.74335 11.8135 6.7296 11.8125 5.6875C11.811 4.41161 11.3035 3.1884 10.4013 2.28621C9.4991 1.38402 8.2759 0.876505 7 0.875ZM7 7.4375C6.65389 7.4375 6.31554 7.33486 6.02776 7.14257C5.73997 6.95028 5.51567 6.67697 5.38321 6.3572C5.25076 6.03743 5.2161 5.68556 5.28363 5.34609C5.35115 5.00663 5.51782 4.6948 5.76257 4.45006C6.00731 4.20532 6.31913 4.03865 6.6586 3.97113C6.99806 3.9036 7.34993 3.93826 7.6697 4.07071C7.98947 4.20316 8.26278 4.42747 8.45507 4.71525C8.64737 5.00304 8.75 5.34138 8.75 5.6875C8.74942 6.15145 8.56486 6.59623 8.2368 6.9243C7.90874 7.25236 7.46395 7.43692 7 7.4375Z" fill="#B70C2C"/>
+								</svg>
+							</span>
+							<div class="mbland_linhvuc_featuredProject_itemLocationText">
+								<p class="mbland_linhvuc_featuredProject_itemLocationLabel">Vị trí địa chỉ</p>
+								<p class="mbland_linhvuc_featuredProject_itemLocationValue">Trường Sa, Phường Hoà Hải, Quận Ngũ Hành Sơn, Đà Nẵng, Việt Nam</p>
+							</div>
+						</div>
+						<div class="mbland_linhvuc_featuredProject_itemAction">
+							<a href="#" class="mbland_linhvuc_featuredProject_itemLink">Xem chi tiết</a>
+						</div>
+					</div>
+				</article>
+			</div>
+		</div>
 	</div>
 </section>
-<!-- ===== END SECTION LINH VUC CATEGORIES ===== -->
-<?php endif; ?>
+
+
+
+
+
+
+<?php get_template_part( 'template-parts/sections/contact-form' ); ?>
 
 
 
