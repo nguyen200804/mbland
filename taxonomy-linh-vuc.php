@@ -152,7 +152,7 @@ $projects = new WP_Query( array(
 					<!-- Xuất tất cả post-type=du-an theo term của taxonomy=linh-vuc -->
 					<div class="mbland_linhvuc_listProject_item">
 						<div class="mbland_linhvuc_listProject_itemMedia">
-							<img class="mbland_linhvuc_listProject_itemImage" />
+							<img class="mbland_linhvuc_listProject_itemImage"  src="/wp-content/uploads/2025/10/Da-Nang.jpg"/>
 						</div>
 						<div class="mbland_linhvuc_listProject_itemBody">
 							<h3 class="mbland_linhvuc_listProject_itemTitle"><a class="mbland_linhvuc_listProject_itemTitleLink">Dự án T18 - Đà Nẵng</a></h3>
@@ -190,7 +190,7 @@ $projects = new WP_Query( array(
 					</div>
 					<div class="mbland_linhvuc_listProject_item">
 						<div class="mbland_linhvuc_listProject_itemMedia">
-							<img class="mbland_linhvuc_listProject_itemImage" />
+							<img class="mbland_linhvuc_listProject_itemImage" src="/wp-content/uploads/2025/10/Da-Nang.jpg"/>
 						</div>
 						<div class="mbland_linhvuc_listProject_itemBody">
 							<h3 class="mbland_linhvuc_listProject_itemTitle"><a class="mbland_linhvuc_listProject_itemTitleLink">Dự án T18 - Đà Nẵng</a></h3>
@@ -228,7 +228,7 @@ $projects = new WP_Query( array(
 					</div>
 					<div class="mbland_linhvuc_listProject_item">
 						<div class="mbland_linhvuc_listProject_itemMedia">
-							<img class="mbland_linhvuc_listProject_itemImage" />
+							<img class="mbland_linhvuc_listProject_itemImage"  src="/wp-content/uploads/2025/10/Da-Nang.jpg"/>
 						</div>
 						<div class="mbland_linhvuc_listProject_itemBody">
 							<h3 class="mbland_linhvuc_listProject_itemTitle"><a class="mbland_linhvuc_listProject_itemTitleLink">Dự án T18 - Đà Nẵng</a></h3>
