@@ -1,51 +1,224 @@
 /* Template dùng chung cho taxonomy linh-vuc (taxonomy-linh-vuc.php) */
 
 /* ===== START HERO ===== */
-.mbland_linhvuc_hero {}
+.mbland_linhvuc_hero {
+    position: relative;
+    height: calc(100vh - 90px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 .mbland_linhvuc_hero_container {}
+
 .mbland_linhvuc_hero_header {}
+
 /* -- hero: markup trong taxonomy-linh-vuc.php -- */
-.mbland_linhvuc_hero_background {}
-.mbland_linhvuc_hero_inner {}
-.mbland_linhvuc_hero_content {}
-.mbland_linhvuc_hero_breadcrumb {}
-.mbland_linhvuc_hero_title {}
-.mbland_linhvuc_hero_desc {}
+.mbland_linhvuc_hero_background {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    filter: brightness(0.8);
+}
+
+.mbland_linhvuc_hero_inner {
+    background: linear-gradient(270deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.7) 100%);
+    backdrop-filter: blur(4px);
+    padding-top: 50px;
+    padding-bottom: 32px;
+}
+
+.mbland_linhvuc_hero_content {
+    max-width: 830px;
+}
+
+.mbland_linhvuc_hero_breadcrumb {
+    margin-bottom: 12px;
+}
+
+.mbland_linhvuc_hero_breadcrumb nav {
+    margin: 0;
+}
+
+.mbland_linhvuc_hero_breadcrumb li {
+    color: #fff !important;
+}
+
+.mbland_linhvuc_hero_title {
+    font-size: 3.125em;
+    color: #fff;
+    margin: 0;
+    line-height: 1.2em;
+}
+
+.mbland_linhvuc_hero_desc {
+    margin-top: 4px;
+}
+
+.mbland_linhvuc_hero_desc * {
+    color: #fff;
+}
+
 .mbland_linhvuc_hero_aside {}
-.mbland_linhvuc_hero_featured {}
-.mbland_linhvuc_hero_featuredContainer {}
-.mbland_linhvuc_hero_featuredInfo {}
-.mbland_linhvuc_hero_featuredTitle {}
-.mbland_linhvuc_hero_featuredDesc {}
-.mbland_linhvuc_hero_featuredDecor {}
-.mbland_linhvuc_hero_featuredDivider {}
-.mbland_linhvuc_hero_featuredLocation {}
-.mbland_linhvuc_hero_featuredLocationIcon {}
-.mbland_linhvuc_hero_featuredLocationText {}
-.mbland_linhvuc_hero_featuredLocationLabel {}
-.mbland_linhvuc_hero_featuredLocationValue {}
+
+.mbland_linhvuc_hero_featured {
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0%, rgba(102, 102, 102, 0) 243.55%);
+    padding: 32px 0 100px;
+}
+
+.mbland_linhvuc_hero_featuredContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.mbland_linhvuc_hero_featuredInfo {
+    max-width: 710px;
+    background-color: #0000004D;
+    backdrop-filter: blur(10px);
+    border-radius: 24px;
+    padding: 32px;
+}
+
+.mbland_linhvuc_hero_featuredTitle {
+    font-family: 'FZPoppins';
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 50px;
+    letter-spacing: -0.02em;
+    color: #fff;
+}
+
+.mbland_linhvuc_hero_featuredDesc {
+    font-family: 'FZPoppins';
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 150%;
+    letter-spacing: -0.02em;
+    color: #fff;
+    padding: 12px 0;
+}
+
+.mbland_linhvuc_hero_featuredDecor {
+    display: flex;
+    gap: 5px;
+}
+
+.mbland_linhvuc_hero_featuredDecor svg {
+    width: 32px;
+}
+
+.mbland_linhvuc_hero_featuredDivider {
+    margin: 24px 0;
+}
+
+.mbland_linhvuc_hero_featuredLocation {
+    display: flex;
+    font-size: 14px;
+}
+
+.mbland_linhvuc_hero_featuredLocationIcon {
+    width: 1.28em;
+    height: 1.28em;
+    color: #fff;
+    margin-right: 0.35em;
+}
+
+.mbland_linhvuc_hero_featuredLocationText {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35em;
+}
+
+.mbland_linhvuc_hero_featuredLocationLabel {
+    font-size: 0.85em;
+    font-family: 'FZPoppins';
+    font-weight: 500;
+    line-height: 120%;
+    letter-spacing: 0%;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.mbland_linhvuc_hero_featuredLocationValue {
+    font-size: 1em;
+    font-family: 'FZPoppins';
+    font-weight: 600;
+    line-height: 120%;
+    color: #fff;
+}
+
 .mbland_linhvuc_hero_featuredAction {}
-.mbland_linhvuc_hero_featuredLink {}
+
+.mbland_linhvuc_hero_featuredLink {
+    font-size: 16px;
+    padding: 1.25em 2em;
+    color: #fff;
+    display: flex;
+    gap: 1em;
+    /* Fill: nền trắng bán trong suốt */
+    background: #9D9D9D99;
+
+    /* Frost -> blur nền phía sau (thêm saturate cho giống kính hơn) */
+    -webkit-backdrop-filter: blur(12px) saturate(160%);
+    backdrop-filter: blur(12px) saturate(160%);
+
+    /* Bo góc theo layer Figma */
+    border-radius: 50px;
+
+    /* Light -> viền sáng mảnh */
+    border: 1px solid rgb(255 255 255 / 0.35);
+
+    /* Depth / Light -> highlight bên trong + bóng đổ ngoài */
+    box-shadow:
+        inset 1px 1px 0 rgb(255 255 255 / 0.5),
+        /* sáng ở góc trên-trái */
+        inset -1px -1px 0 rgb(255 255 255 / 0.1),
+        0 8px 32px rgb(0 0 0 / 0.15);
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
 .mbland_linhvuc_hero_featuredLinkLabel {}
-.mbland_linhvuc_hero_featuredLinkIcon {}
+
+.mbland_linhvuc_hero_featuredLinkIcon {
+    width: 1em;
+}
+
 /* ===== END HERO ===== */
 
 /* ===== START CATEGORIES ===== */
 .mbland_linhvuc_categories {}
+
 .mbland_linhvuc_categories_list {}
+
 .mbland_linhvuc_categories_item {}
+
 .mbland_linhvuc_categories_link {}
+
 /* ===== END CATEGORIES ===== */
 
 /* ===== START PROJECTS ===== */
 .mbland_linhvuc_projects {}
-.mbland_linhvuc_projects_list {}
-.mbland_linhvuc_projects_item {}
-.mbland_linhvuc_projects_link {}
-.mbland_linhvuc_projects_media {}
-.mbland_linhvuc_projects_image {}
-.mbland_linhvuc_projects_title {}
-.mbland_linhvuc_projects_pagination {}
-.mbland_linhvuc_projects_empty {}
-/* ===== END PROJECTS ===== */
 
+.mbland_linhvuc_projects_list {}
+
+.mbland_linhvuc_projects_item {}
+
+.mbland_linhvuc_projects_link {}
+
+.mbland_linhvuc_projects_media {}
+
+.mbland_linhvuc_projects_image {}
+
+.mbland_linhvuc_projects_title {}
+
+.mbland_linhvuc_projects_pagination {}
+
+.mbland_linhvuc_projects_empty {}
+
+/* ===== END PROJECTS ===== */
