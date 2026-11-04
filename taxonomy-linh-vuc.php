@@ -404,6 +404,104 @@ $projects = new WP_Query( array(
 
 
 
+<!-- ===== START SECTION PROCEDURE  ===== -->
+<section class="mbland_linhvuc_procedure">
+	<div class="container">
+<div class="mbland_linhvuc_procedure_wrapper">
+	<header class="mbland_linhvuc_procedure_heading">
+		<h2 class="mbland_linhvuc_procedure_title">Quy trình phát triển khai dự án</h2>
+		<p class="mbland_linhvuc_procedure_desc">Mỗi dự án được triển khai theo quy trình bài bản, từ nghiên cứu tiềm năng, hoạch định chiến lược đến phát triển và vận hành, nhằm tối ưu hiệu quả đầu tư và kiến tạo giá trị bền vững.</p>
+	</header>
+	<div  class="mbland_linhvuc_procedure_list">
+		<article  class="mbland_linhvuc_procedure_item">
+			<div class="mbland_linhvuc_procedure_itemContent">
+				<span  class="mbland_linhvuc_procedure_itemNumber">01</span>
+				<div  class="mbland_linhvuc_procedure_itemTexts">
+					<p class="mbland_linhvuc_procedure_itemTag">Research & Assessment</p>
+					<h3 class="mbland_linhvuc_procedure_itemTitle">Nghiên cứu & Đánh giá</h3>
+					<p class="mbland_linhvuc_procedure_itemDesc">Phân tích thị trường, khảo sát vị trí, đánh giá tiềm năng phát triểnvà xác định cơ hội đầu tư phù hợp.</p>
+				</div>
+			</div>
+			<div class="mbland_linhvuc_procedure_itemImage">
+				<ul class="mbland_linhvuc_procedure_itemImageList">
+					<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg"/></li>
+					<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg"/></li>
+					<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg"/></li>
+				</ul>
+			</div>
+
+		</article>
+		<article  class="mbland_linhvuc_procedure_item">
+			<div class="mbland_linhvuc_procedure_itemContent">
+				<span  class="mbland_linhvuc_procedure_itemNumber">02</span>
+				<div  class="mbland_linhvuc_procedure_itemTexts">
+					<p class="mbland_linhvuc_procedure_itemTag">Investment Strategy</p>
+					<h3 class="mbland_linhvuc_procedure_itemTitle">Hoạch định chiến lược</h3>
+					<p class="mbland_linhvuc_procedure_itemDesc">Xây dựng phương án đầu tư, đánh giá tính khả thi, xác định 
+nguồn lực và định hướng phát triển dự án.</p>
+				</div>
+			</div>
+			<div class="mbland_linhvuc_procedure_itemImage">
+				<ul class="mbland_linhvuc_procedure_itemImageList">
+					<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg"/></li>
+					<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg"/></li>
+					<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg"/></li>
+				</ul>
+			</div>
+
+		</article>
+		<article  class="mbland_linhvuc_procedure_item">
+			<div class="mbland_linhvuc_procedure_itemContent">
+				<span  class="mbland_linhvuc_procedure_itemNumber">03</span>
+				<div  class="mbland_linhvuc_procedure_itemTexts">
+					<p class="mbland_linhvuc_procedure_itemTag">Legal & Master Planning</p>
+					<h3 class="mbland_linhvuc_procedure_itemTitle">Pháp lý & Quy hoạch</h3>
+					<p class="mbland_linhvuc_procedure_itemDesc">Rà soát hồ sơ pháp lý, hoàn thiện các thủ tục cần thiết và xây 
+dựng phương án quy hoạch phù hợp.</p>
+				</div>
+			</div>
+			<div class="mbland_linhvuc_procedure_itemImage">
+				<ul class="mbland_linhvuc_procedure_itemImageList">
+					<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg"/></li>
+					<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg"/></li>
+					<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg"/></li>
+				</ul>
+			</div>
+
+		</article>
+		<article  class="mbland_linhvuc_procedure_item">
+			<div class="mbland_linhvuc_procedure_itemContent">
+				<span  class="mbland_linhvuc_procedure_itemNumber">04</span>
+				<div  class="mbland_linhvuc_procedure_itemTexts">
+					<p class="mbland_linhvuc_procedure_itemTag">Design & Development</p>
+					<h3 class="mbland_linhvuc_procedure_itemTitle">Thiết kế & Phát triển</h3>
+					<p class="mbland_linhvuc_procedure_itemDesc">Định hình concept kiến trúc, tổ chức không gian, hệ thống tiện 
+ích và giải pháp thiết kế tối ưu.</p>
+				</div>
+			</div>
+			<div class="mbland_linhvuc_procedure_itemImage">
+				<ul class="mbland_linhvuc_procedure_itemImageList">
+					<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg"/></li>
+					<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg"/></li>
+					<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg"/></li>
+				</ul>
+			</div>
+
+		</article>
+
+	</div>
+
+</div>
+	</div>
+
+</section>
+
+<!-- ===== END SECTION PROCEDURE  ===== -->
+
+
+
+
+
 
 <?php if ( ! empty( $sub_terms ) && ! is_wp_error( $sub_terms ) ) : ?>
 <!-- ===== START SECTION LINH VUC CATEGORIES ===== -->
@@ -425,40 +523,7 @@ $projects = new WP_Query( array(
 
 
 
-<!-- ===== START SECTION LINH VUC PROJECTS ===== -->
 
-<!-- <section class="mbland_linhvuc_projects">
- <div class="container">
-  <?php if ( $projects->have_posts() ) : ?>
-   <div class="mbland_linhvuc_projects_list">
-	<?php while ( $projects->have_posts() ) : $projects->the_post(); ?>
-	 <article class="mbland_linhvuc_projects_item">
-	  <a class="mbland_linhvuc_projects_link" href="<?php the_permalink(); ?>">
-	   <figure class="mbland_linhvuc_projects_media">
-		<?php if ( has_post_thumbnail() ) : ?>
-		 <?php the_post_thumbnail( 'large', array( 'class' => 'mbland_linhvuc_projects_image', 'loading' => 'lazy' ) ); ?>
-		<?php endif; ?>
-	   </figure>
-	   <h3 class="mbland_linhvuc_projects_title"><?php the_title(); ?></h3>
-	  </a>
-	 </article>
-	<?php endwhile; ?>
-   </div>
-   <nav class="mbland_linhvuc_projects_pagination">
-	<?php
-echo paginate_links( array(
-	'total'   => $projects->max_num_pages,
-	'current' => max( 1, (int) get_query_var( 'paged' ) ),
-) );
-	?>
-   </nav>
-  <?php else : ?>
-   <p class="mbland_linhvuc_projects_empty">Chưa có dự án nào trong lĩnh vực này.</p>
-  <?php endif; ?>
-  <?php wp_reset_postdata(); ?>
- </div>
-</section> -->
-<!-- ===== END SECTION LINH VUC PROJECTS ===== -->
 
 <?php get_footer(); ?>
 
