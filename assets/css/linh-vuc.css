@@ -1,5 +1,6 @@
 /* Template dùng chung cho taxonomy linh-vuc (taxonomy-linh-vuc.php) */
 
+
 /* ===== START HERO ===== */
 .mbland_linhvuc_hero {
     position: relative;
@@ -194,7 +195,7 @@
 
 /* ===== START LIST PROJECT ===== */
 .mbland_linhvuc_listProject {
-    padding: 100px 0;
+    padding-top: 100px;
 }
 
 .mbland_linhvuc_listProject_wrapper {}
@@ -436,15 +437,29 @@
 
 
 /* ===== START SECTION CORE STRENGTHS ===== */
-.mbland_linhvuc_coreStrengths {}
+.mbland_linhvuc_coreStrengths {
+    padding-top: 150px;
+}
 
 .mbland_linhvuc_coreStrengths_wrapper {}
 
-.mbland_linhvuc_coreStrengths_header {}
+.mbland_linhvuc_coreStrengths_header {
+    text-align: center;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding-bottom: 72px;
+}
 
-.mbland_linhvuc_coreStrengths_title {}
+.mbland_linhvuc_coreStrengths_title {
+    margin-bottom: 24px;
+}
 
-.mbland_linhvuc_coreStrengths_desc {}
+.mbland_linhvuc_coreStrengths_desc {
+    font-family: 'GanhType';
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.6em;
+}
 
 /* ===== START VALUES ===== */
 .mbland_linhvuc_coreStrengths_list {
@@ -467,6 +482,7 @@
 
 .mbland_linhvuc_coreStrengths_itemMain {
     position: absolute;
+    width: calc(100% - 70px);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -477,7 +493,7 @@
 .mbland_linhvuc_coreStrengths_itemTitle {
     font-family: "FZPoppins";
     font-weight: 600;
-    font-size: 46px;
+    font-size: 24px;
     line-height: 1em;
     text-align: center;
     text-transform: uppercase;
