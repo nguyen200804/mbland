@@ -700,6 +700,7 @@
 
 .mbland_linhvuc_procedure_item {
     display: flex;
+    margin-bottom: 120px;
 }
 
 .mbland_linhvuc_procedure_itemContent {
@@ -718,6 +719,19 @@
     text-align: center;
     color: #1E499C;
     margin-right: 28px;
+    align-content: center;
+    position: relative;
+}
+
+.mbland_linhvuc_procedure_item:not(:last-of-type) .mbland_linhvuc_procedure_itemNumber::after {
+    content: "";
+    display: inline-block;
+    width: 2px;
+    height: 100%;
+    position: absolute;
+    background: #1E499C;
+    left: 50%;
+    top: calc(100% - 70px);
 }
 
 .mbland_linhvuc_procedure_itemTexts {
@@ -725,6 +739,7 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
+    align-self: center;
 }
 
 .mbland_linhvuc_procedure_itemTag {
@@ -758,12 +773,37 @@
 .mbland_linhvuc_procedure_itemImageList {
     display: flex;
     height: 250px;
+    gap: 8px;
 }
 
-.mbland_linhvuc_procedure_itemImageItem {}
+.mbland_linhvuc_procedure_itemImageItem {
+    flex: 1;
+    transition: flex .3s ease;
+    position: relative;
+}
+
+.mbland_linhvuc_procedure_itemImageItem::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: #19191980;
+    backdrop-filter: blur(2px);
+    opacity: 1;
+    transition: opacity .3s ease;
+}
+
+.mbland_linhvuc_procedure_itemImageItem:hover {
+    flex: 4;
+}
+
+.mbland_linhvuc_procedure_itemImageItem:hover::before {
+    opacity: 0;
+}
 
 .mbland_linhvuc_procedure_itemImagePhoto {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 /* ===== END SECTION PROCEDURE ===== */

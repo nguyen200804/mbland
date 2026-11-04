@@ -55,6 +55,9 @@ function homenest_enqueue_scripts() {
     if ( in_array( $tpl, array( 'template-about-us.php', 'template-about-en.php' ), true ) ) {
         wp_enqueue_script( 'homenest-about-script', get_template_directory_uri() . '/assets/js/about.js', array(), homenest_asset_ver('/assets/js/about.js'), true );
     }
+    if ( 'taxonomy-linh-vuc.php' === $tpl ) {
+        wp_enqueue_script( 'homenest-linh-vuc-script', get_template_directory_uri() . '/assets/js/linh-vuc.js', array(), homenest_asset_ver('/assets/js/linh-vuc.js'), true );
+    }
     if ( in_array( $tpl, array( 'template-home.php', 'template-homepage.php' ), true ) ) {
         wp_enqueue_script( 'homenest-homepage-script', get_template_directory_uri() . '/assets/js/homepage.js', array(), homenest_asset_ver('/assets/js/homepage.js'), true );
     }
