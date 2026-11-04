@@ -704,23 +704,61 @@
 
 .mbland_linhvuc_procedure_itemContent {
     width: 45%;
+    padding: 0 28px;
+    display: flex;
 }
 
-.mbland_linhvuc_procedure_itemNumber {}
+.mbland_linhvuc_procedure_itemNumber {
+    min-width: 120px;
+    font-family: 'FZPoppins';
+    font-weight: 500;
+    font-size: 90px;
+    line-height: 0.8em;
+    letter-spacing: 0%;
+    text-align: center;
+    color: #1E499C;
+    margin-right: 28px;
+}
 
-.mbland_linhvuc_procedure_itemTexts {}
+.mbland_linhvuc_procedure_itemTexts {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
 
-.mbland_linhvuc_procedure_itemTag {}
+.mbland_linhvuc_procedure_itemTag {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.4em;
+    text-align: center;
+    padding: 0.575em 1.45em;
+    background-color: #B70C2C;
+    color: #fff;
+    border-radius: 100px;
+}
 
-.mbland_linhvuc_procedure_itemTitle {}
+.mbland_linhvuc_procedure_itemTitle {
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 40px;
+    letter-spacing: -0.02em;
+}
 
-.mbland_linhvuc_procedure_itemDesc {}
+.mbland_linhvuc_procedure_itemDesc {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.575em;
+}
 
 .mbland_linhvuc_procedure_itemImage {
-    height: 55%;
+    width: 55%;
 }
 
-.mbland_linhvuc_procedure_itemImageList {}
+.mbland_linhvuc_procedure_itemImageList {
+    display: flex;
+    height: 250px;
+}
 
 .mbland_linhvuc_procedure_itemImageItem {}
 
