@@ -768,7 +768,6 @@
 
 .mbland_linhvuc_procedure_itemImage {
     width: 55%;
-    padding-right: 25%;
     transition: padding-right .3s ease;
 }
 
@@ -787,6 +786,11 @@
     display: block;
     width: 100%;
     height: 100%;
+    flex: 3;
+    transition: flex .3s ease;
+}
+
+.mbland_linhvuc_procedure_item.active .mbland_linhvuc_procedure_itemImageList::after {
     flex: 0;
 }
 
@@ -800,18 +804,20 @@
     transition: opacity .3s ease;
 }
 
-.mbland_linhvuc_procedure_item.active .mbland_linhvuc_procedure_itemImageItem:first-child,
-.mbland_linhvuc_procedure_itemImageItem:hover {
-    flex: 4;
-}
-
-.mbland_linhvuc_procedure_itemImageItem,
-.mbland_linhvuc_procedure_itemImageItem:not(:first-child):hover {
+.mbland_linhvuc_procedure_itemImageItem {
     flex: 1;
     transition: flex .3s ease;
     position: relative;
 }
 
+/* Active: ảnh đầu mở rộng; khi rê chuột vào list thì nhường cho ảnh đang hover */
+.mbland_linhvuc_procedure_item.active .mbland_linhvuc_procedure_itemImageList:not(:hover) .mbland_linhvuc_procedure_itemImageItem:first-child,
+.mbland_linhvuc_procedure_itemImageItem:hover {
+    flex: 4;
+}
+
+/* Bỏ lớp phủ tối trên ảnh đang mở rộng */
+.mbland_linhvuc_procedure_item.active .mbland_linhvuc_procedure_itemImageList:not(:hover) .mbland_linhvuc_procedure_itemImageItem:first-child::before,
 .mbland_linhvuc_procedure_itemImageItem:hover::before {
     opacity: 0;
 }
