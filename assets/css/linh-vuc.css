@@ -431,6 +431,228 @@
 
 /* ===== END LIST PROJECT ===== */
 
+
+
+
+
+/* ===== START SECTION CORE STRENGTHS ===== */
+.mbland_linhvuc_coreStrengths {}
+
+.mbland_linhvuc_coreStrengths_wrapper {}
+
+.mbland_linhvuc_coreStrengths_header {}
+
+.mbland_linhvuc_coreStrengths_title {}
+
+.mbland_linhvuc_coreStrengths_desc {}
+
+/* ===== START VALUES ===== */
+.mbland_linhvuc_coreStrengths_list {
+    display: grid;
+    grid-template-columns: repeat(4, 350px);
+    gap: 10px;
+    justify-content: center;
+}
+
+.mbland_linhvuc_coreStrengths_item {
+    position: relative;
+    padding: 20px;
+    width: 100%;
+    min-height: 350px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    background: #fdf9f2;
+}
+
+.mbland_linhvuc_coreStrengths_itemMain {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    transition: all 0.4s ease;
+}
+
+.mbland_linhvuc_coreStrengths_itemTitle {
+    font-family: "FZPoppins";
+    font-weight: 600;
+    font-size: 46px;
+    line-height: 1em;
+    text-align: center;
+    text-transform: uppercase;
+    color: #0C1DB7;
+    margin-bottom: 8px;
+}
+
+.mbland_linhvuc_coreStrengths_itemTitle.en {
+    font-size: 27px;
+}
+
+.mbland_linhvuc_coreStrengths_itemLabel {
+    font-family: "FZPoppins";
+    color: #0C1DB7;
+    text-align: center;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 100%;
+    letter-spacing: 36%;
+    text-transform: uppercase;
+}
+
+.mbland_linhvuc_coreStrengths_itemBg,
+.mbland_linhvuc_coreStrengths_itemHover {
+    display: none;
+}
+
+/* Inner border of item */
+.mbland_linhvuc_coreStrengths_item::before {
+    content: "";
+    position: absolute;
+    inset: 20px;
+    border: 1px solid #0C1DB718;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.mbland_linhvuc_coreStrengths_item:hover::before {
+    display: none;
+}
+
+/* hover */
+.mbland_linhvuc_coreStrengths_itemHover {
+    position: absolute;
+    bottom: 30px;
+    left: 35px;
+    right: 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    opacity: 0;
+    transition: opacity .3s ease;
+}
+
+.mbland_linhvuc_coreStrengths_itemTag {
+    color: #fdf9f2;
+    border-bottom: 1px solid #fdf9f2;
+    padding-bottom: 10px;
+    font-family: 'FZPoppins';
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-transform: uppercase;
+}
+
+.mbland_linhvuc_coreStrengths_itemDesc {
+    font-family: "FZPoppins";
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 150%;
+    letter-spacing: 0%;
+    color: #fdf9f2;
+    padding-top: 10px;
+
+}
+
+.mbland_linhvuc_coreStrengths_itemBg {
+    position: absolute;
+    top: 0px;
+    right: 0;
+    z-index: 1;
+    display: block;
+}
+
+.mbland_linhvuc_coreStrengths_item:hover .mbland_linhvuc_coreStrengths_itemMain {
+    position: absolute;
+    top: 35px;
+    left: 35px;
+    text-align: left;
+    transform: translate(0, 0);
+}
+
+.mbland_linhvuc_coreStrengths_item:hover {
+    background-color: #1E499C;
+}
+
+.mbland_linhvuc_coreStrengths_item:hover .mbland_linhvuc_coreStrengths_itemTitle,
+.mbland_linhvuc_coreStrengths_item:hover .mbland_linhvuc_coreStrengths_itemLabel {
+    color: #fff;
+    text-align: left;
+}
+
+.mbland_linhvuc_coreStrengths_item:hover .mbland_linhvuc_coreStrengths_itemHover,
+.mbland_linhvuc_coreStrengths_item:hover .mbland_linhvuc_coreStrengths_itemBg {
+    opacity: 1;
+}
+
+@media (max-width: 1600px) {
+    .mbland_linhvuc_coreStrengths_itemTitle {
+        font-size: 40px;
+    }
+
+    .mbland_linhvuc_coreStrengths_itemTitle.en {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 1500px) {
+    .mbland_linhvuc_coreStrengths_list {
+        grid-template-columns: repeat(2, minmax(0, 350px));
+    }
+}
+
+@media (max-width: 1400px) {
+    .mbland_linhvuc_coreStrengths_list {
+        gap: 24px;
+    }
+
+    .mbland_linhvuc_coreStrengths_itemTitle {
+        font-size: 36px;
+    }
+
+    .mbland_linhvuc_coreStrengths_itemTitle.en {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 992px) {
+    .mbland_linhvuc_coreStrengths_list {
+        gap: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .mbland_linhvuc_coreStrengths_list {
+        grid-template-columns: minmax(0, 350px);
+    }
+
+    .mbland_linhvuc_coreStrengths_itemTitle {
+        font-size: 26px;
+    }
+
+    .mbland_linhvuc_coreStrengths_itemLabel {
+        font-size: 9px;
+    }
+}
+
+@media (max-width: 576px) {
+    .mbland_linhvuc_coreStrengths_list {
+        gap: 12px;
+    }
+
+    .mbland_linhvuc_coreStrengths_itemTitle {
+        font-size: 24px;
+    }
+}
+
+/* ===== END SECTION CORE STRENGTHS ===== */
+
+
+
+
+
+
 /* ===== START CATEGORIES ===== */
 .mbland_linhvuc_categories {}
 

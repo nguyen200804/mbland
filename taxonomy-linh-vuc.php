@@ -283,6 +283,80 @@ $projects = new WP_Query( array(
 
 
 
+
+
+<!-- ===== START SECTION CORE STRENGTHS ===== -->
+ <section class="mbland_linhvuc_coreStrengths">
+	<div class="container">
+		<div class="mbland_linhvuc_coreStrengths_wrapper">
+			<header class="mbland_linhvuc_coreStrengths_header">
+				<h2 class="mbland_linhvuc_coreStrengths_title">
+					Khẳng định năng lực, kiến tạo dấu ấn
+				</h2>
+				<p class="mbland_linhvuc_coreStrengths_desc">Tầm nhìn chiến lược và định hướng đầu tư dài hạn, MBLand Asset Management không ngừng mở rộng danh mục dự án, phát huy thế mạnh trong phát triển bất động sản, hướng đến kiến tạo những công trình chất lượng và giá trị bền vững cho thị trường.</p>
+			</header>
+
+			<div class="mbland_linhvuc_coreStrengths_list">
+			<div class="mbland_linhvuc_coreStrengths_item">
+				<img src="/wp-content/uploads/2025/10/diamond.svg" alt="Icon kim cương" class="mbland_linhvuc_coreStrengths_itemBg" title="Icon kim cương"/>
+				<div class="mbland_linhvuc_coreStrengths_itemMain">
+					<h3 class="mbland_linhvuc_coreStrengths_itemTitle">Công</h3>
+					<p class="mbland_linhvuc_coreStrengths_itemLabel">Giá trị cốt lõi</p>
+				</div>
+				<div class="mbland_linhvuc_coreStrengths_itemHover">
+					<p class="mbland_linhvuc_coreStrengths_itemTag">Công - tâm - trí - tín</p>
+					<p class="mbland_linhvuc_coreStrengths_itemDesc">Cam kết sự công minh trong từng việc làm</p>
+				</div>
+			</div>
+
+			<div class="mbland_linhvuc_coreStrengths_item">
+				<img src="/wp-content/uploads/2025/10/diamond.svg" alt="Icon kim cương" class="mbland_linhvuc_coreStrengths_itemBg" title="Icon kim cương"/>
+				<div class="mbland_linhvuc_coreStrengths_itemMain">
+					<h3 class="mbland_linhvuc_coreStrengths_itemTitle">Tâm</h3>
+					<p class="mbland_linhvuc_coreStrengths_itemLabel">Giá trị cốt lõi</p>
+				</div>
+				<div class="mbland_linhvuc_coreStrengths_itemHover">
+					<p class="mbland_linhvuc_coreStrengths_itemTag">Công - tâm - trí - tín</p>
+					<p class="mbland_linhvuc_coreStrengths_itemDesc">Luôn tận tâm trong công việc - đặt cái tâm vào nghề</p>
+				</div>
+			</div>
+
+			<div class="mbland_linhvuc_coreStrengths_item">
+				<img src="/wp-content/uploads/2025/10/diamond.svg" alt="Icon kim cương" class="mbland_linhvuc_coreStrengths_itemBg" title="Icon kim cương"/>
+				<div class="mbland_linhvuc_coreStrengths_itemMain">
+					<h3 class="mbland_linhvuc_coreStrengths_itemTitle">Trí</h3>
+					<p class="mbland_linhvuc_coreStrengths_itemLabel">Giá trị cốt lõi</p>
+				</div>
+				<div class="mbland_linhvuc_coreStrengths_itemHover">
+					<p class="mbland_linhvuc_coreStrengths_itemTag">Công - tâm - trí - tín</p>
+					<p class="mbland_linhvuc_coreStrengths_itemDesc">Phương châm dùng trí tuệ để quản trị</p>
+				</div>
+			</div>
+
+			<div class="mbland_linhvuc_coreStrengths_item">
+				<img src="/wp-content/uploads/2025/10/diamond.svg" alt="Icon kim cương" class="mbland_linhvuc_coreStrengths_itemBg" title="Icon kim cương"/>
+				<div class="mbland_linhvuc_coreStrengths_itemMain">
+					<h3 class="mbland_linhvuc_coreStrengths_itemTitle">Tín</h3>
+					<p class="mbland_linhvuc_coreStrengths_itemLabel">Giá trị cốt lõi</p>
+				</div>
+				<div class="mbland_linhvuc_coreStrengths_itemHover">
+					<p class="mbland_linhvuc_coreStrengths_itemTag">Công - tâm - trí - tín</p>
+					<p class="mbland_linhvuc_coreStrengths_itemDesc">Coi trọng chữ tín - Luôn đặt uy tín lên hàng đầu</p>
+				</div>
+			</div>
+		</div>
+		</div>
+
+	</div>
+ </section>
+<!-- ===== END SECTION CORE STRENGTHS  ===== -->
+
+
+
+
+
+
+
 <?php if ( ! empty( $sub_terms ) && ! is_wp_error( $sub_terms ) ) : ?>
 <!-- ===== START SECTION LINH VUC CATEGORIES ===== -->
 <section class="mbland_linhvuc_categories">
