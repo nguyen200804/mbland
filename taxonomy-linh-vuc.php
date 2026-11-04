@@ -417,9 +417,9 @@ $projects = new WP_Query( array(
 			<div class="mbland_linhvuc_procedure_itemContent">
 				<span  class="mbland_linhvuc_procedure_itemNumber">01</span>
 				<div  class="mbland_linhvuc_procedure_itemTexts">
-					<p class="mbland_linhvuc_procedure_itemTag">Research & Assessment</p>
+					<p class="mbland_linhvuc_procedure_itemTag">Research & Assessment</p>
 					<h3 class="mbland_linhvuc_procedure_itemTitle">Nghiên cứu & Đánh giá</h3>
-					<p class="mbland_linhvuc_procedure_itemDesc">Phân tích thị trường, khảo sát vị trí, đánh giá tiềm năng phát triểnvà xác định cơ hội đầu tư phù hợp.</p>
+					<p class="mbland_linhvuc_procedure_itemDesc">Phân tích thị trường, khảo sát vị trí, đánh giá tiềm năng phát triểnvà xác định cơ hội đầu tư phù hợp.</p>
 				</div>
 			</div>
 			<div class="mbland_linhvuc_procedure_itemImage">
@@ -435,10 +435,10 @@ $projects = new WP_Query( array(
 			<div class="mbland_linhvuc_procedure_itemContent">
 				<span  class="mbland_linhvuc_procedure_itemNumber">02</span>
 				<div  class="mbland_linhvuc_procedure_itemTexts">
-					<p class="mbland_linhvuc_procedure_itemTag">Investment Strategy</p>
+					<p class="mbland_linhvuc_procedure_itemTag">Investment Strategy</p>
 					<h3 class="mbland_linhvuc_procedure_itemTitle">Hoạch định chiến lược</h3>
-					<p class="mbland_linhvuc_procedure_itemDesc">Xây dựng phương án đầu tư, đánh giá tính khả thi, xác định 
-nguồn lực và định hướng phát triển dự án.</p>
+					<p class="mbland_linhvuc_procedure_itemDesc">Xây dựng phương án đầu tư, đánh giá tính khả thi, xác định 
+nguồn lực và định hướng phát triển dự án.</p>
 				</div>
 			</div>
 			<div class="mbland_linhvuc_procedure_itemImage">
@@ -454,10 +454,10 @@ nguồn lực và định hướng phát triển dự án.</p>
 			<div class="mbland_linhvuc_procedure_itemContent">
 				<span  class="mbland_linhvuc_procedure_itemNumber">03</span>
 				<div  class="mbland_linhvuc_procedure_itemTexts">
-					<p class="mbland_linhvuc_procedure_itemTag">Legal & Master Planning</p>
+					<p class="mbland_linhvuc_procedure_itemTag">Legal & Master Planning</p>
 					<h3 class="mbland_linhvuc_procedure_itemTitle">Pháp lý & Quy hoạch</h3>
-					<p class="mbland_linhvuc_procedure_itemDesc">Rà soát hồ sơ pháp lý, hoàn thiện các thủ tục cần thiết và xây 
-dựng phương án quy hoạch phù hợp.</p>
+					<p class="mbland_linhvuc_procedure_itemDesc">Rà soát hồ sơ pháp lý, hoàn thiện các thủ tục cần thiết và xây 
+dựng phương án quy hoạch phù hợp.</p>
 				</div>
 			</div>
 			<div class="mbland_linhvuc_procedure_itemImage">
@@ -473,10 +473,10 @@ dựng phương án quy hoạch phù hợp.</p>
 			<div class="mbland_linhvuc_procedure_itemContent">
 				<span  class="mbland_linhvuc_procedure_itemNumber">04</span>
 				<div  class="mbland_linhvuc_procedure_itemTexts">
-					<p class="mbland_linhvuc_procedure_itemTag">Design & Development</p>
+					<p class="mbland_linhvuc_procedure_itemTag">Design & Development</p>
 					<h3 class="mbland_linhvuc_procedure_itemTitle">Thiết kế & Phát triển</h3>
-					<p class="mbland_linhvuc_procedure_itemDesc">Định hình concept kiến trúc, tổ chức không gian, hệ thống tiện 
-ích và giải pháp thiết kế tối ưu.</p>
+					<p class="mbland_linhvuc_procedure_itemDesc">Định hình concept kiến trúc, tổ chức không gian, hệ thống tiện 
+ích và giải pháp thiết kế tối ưu.</p>
 				</div>
 			</div>
 			<div class="mbland_linhvuc_procedure_itemImage">

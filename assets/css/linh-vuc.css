@@ -671,21 +671,40 @@
 
 
 /* ===== START SECTION PROCEDURE ===== */
-.mbland_linhvuc_procedure {}
+.mbland_linhvuc_procedure {
+    padding-top: 150px;
+}
 
 .mbland_linhvuc_procedure_wrapper {}
 
-.mbland_linhvuc_procedure_heading {}
+.mbland_linhvuc_procedure_heading {
+    max-width: 1080px;
+    margin: 0 auto 72px;
+    text-align: center;
+}
 
-.mbland_linhvuc_procedure_title {}
+.mbland_linhvuc_procedure_title {
+    margin-bottom: 24px;
+}
 
-.mbland_linhvuc_procedure_desc {}
+.mbland_linhvuc_procedure_desc {
+    font-family: 'GanhType';
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.65em;
+    letter-spacing: 0%;
+    text-align: center;
+}
 
 .mbland_linhvuc_procedure_list {}
 
-.mbland_linhvuc_procedure_item {}
+.mbland_linhvuc_procedure_item {
+    display: flex;
+}
 
-.mbland_linhvuc_procedure_itemContent {}
+.mbland_linhvuc_procedure_itemContent {
+    width: 45%;
+}
 
 .mbland_linhvuc_procedure_itemNumber {}
 
@@ -697,13 +716,17 @@
 
 .mbland_linhvuc_procedure_itemDesc {}
 
-.mbland_linhvuc_procedure_itemImage {}
+.mbland_linhvuc_procedure_itemImage {
+    height: 55%;
+}
 
 .mbland_linhvuc_procedure_itemImageList {}
 
 .mbland_linhvuc_procedure_itemImageItem {}
 
-.mbland_linhvuc_procedure_itemImagePhoto {}
+.mbland_linhvuc_procedure_itemImagePhoto {
+    width: 100%;
+}
 
 /* ===== END SECTION PROCEDURE ===== */
 
