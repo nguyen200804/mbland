@@ -63,26 +63,26 @@ $projects = new WP_Query( array(
 <!-- ===== START SECTION LINH VUC HERO ===== -->
 <section class="mbland_linhvuc_hero">
 	<?php if ( $term_image_url ) : ?>
-		<img class="mbland_linhvuc_hero_background" src="<?php echo esc_url( $term_image_url ); ?>" alt="<?php echo esc_attr( $term_image_alt ); ?>" title="<?php echo esc_attr( $current_term->name ); ?>" loading="eager" decoding="async" fetchpriority="high" />
+	<img class="mbland_linhvuc_hero_background" src="<?php echo esc_url( $term_image_url ); ?>" alt="<?php echo esc_attr( $term_image_alt ); ?>" title="<?php echo esc_attr( $current_term->name ); ?>" loading="eager" decoding="async" fetchpriority="high" />
 	<?php endif; ?>
 	<div class="mbland_linhvuc_hero_inner">
 		<div class="container mbland_linhvuc_hero_container">
 			<div class="mbland_linhvuc_hero_content">
 				<div class="mbland_linhvuc_hero_breadcrumb"><?php echo do_shortcode('[hn_breadcrumb]'); ?></div>
-			<?php
-			// Bỏ tiền tố "Lĩnh vực: " mà get_the_archive_title() tự thêm vào
-			add_filter( 'get_the_archive_title_prefix', '__return_empty_string' );
-			?>
-			<h1 class="mbland_linhvuc_hero_title"><?php echo wp_kses_post( get_the_archive_title() ); ?></h1>
-			<?php remove_filter( 'get_the_archive_title_prefix', '__return_empty_string' ); ?>
-			<?php if ( get_the_archive_description() ) : ?>
+				<?php
+				// Bỏ tiền tố "Lĩnh vực: " mà get_the_archive_title() tự thêm vào
+				add_filter( 'get_the_archive_title_prefix', '__return_empty_string' );
+				?>
+				<h1 class="mbland_linhvuc_hero_title"><?php echo wp_kses_post( get_the_archive_title() ); ?></h1>
+				<?php remove_filter( 'get_the_archive_title_prefix', '__return_empty_string' ); ?>
+				<?php if ( get_the_archive_description() ) : ?>
 				<div class="mbland_linhvuc_hero_desc"><?php echo wp_kses_post( get_the_archive_description() ); ?></div>
-			<?php endif; ?>
+				<?php endif; ?>
 			</div>
 			<div class="mbland_linhvuc_hero_aside">
 
 			</div>
-		
+
 		</div>
 
 	</div>
@@ -101,14 +101,14 @@ $projects = new WP_Query( array(
 				<hr class="mbland_linhvuc_hero_featuredDivider" />
 				<div class="mbland_linhvuc_hero_featuredLocation">
 					<span class="mbland_linhvuc_hero_featuredLocationIcon"><svg  viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M9 1.125C7.35957 1.12694 5.78688 1.77945 4.62692 2.93941C3.46696 4.09938 2.81444 5.67207 2.8125 7.3125C2.811 8.65299 3.24884 9.95704 4.059 11.025C4.059 11.025 4.22775 11.2472 4.25532 11.2793L9 16.875L13.7469 11.2764C13.7717 11.2466 13.941 11.025 13.941 11.025L13.9416 11.0233C14.7512 9.95574 15.1888 8.65235 15.1875 7.3125C15.1856 5.67207 14.5331 4.09938 13.3731 2.93941C12.2131 1.77945 10.6404 1.12694 9 1.125ZM9 9.5625C8.555 9.5625 8.11998 9.43054 7.74997 9.18331C7.37996 8.93607 7.09157 8.58467 6.92127 8.17354C6.75098 7.7624 6.70642 7.31 6.79324 6.87355C6.88005 6.43709 7.09434 6.03618 7.40901 5.72151C7.72368 5.40684 8.12459 5.19255 8.56105 5.10573C8.99751 5.01892 9.44991 5.06347 9.86104 5.23377C10.2722 5.40407 10.6236 5.69246 10.8708 6.06247C11.118 6.43248 11.25 6.86749 11.25 7.3125C11.2493 7.90901 11.012 8.48087 10.5902 8.90267C10.1684 9.32446 9.59651 9.56176 9 9.5625Z" fill="currentColor"/>
-</svg>
-</span>
+						<path d="M9 1.125C7.35957 1.12694 5.78688 1.77945 4.62692 2.93941C3.46696 4.09938 2.81444 5.67207 2.8125 7.3125C2.811 8.65299 3.24884 9.95704 4.059 11.025C4.059 11.025 4.22775 11.2472 4.25532 11.2793L9 16.875L13.7469 11.2764C13.7717 11.2466 13.941 11.025 13.941 11.025L13.9416 11.0233C14.7512 9.95574 15.1888 8.65235 15.1875 7.3125C15.1856 5.67207 14.5331 4.09938 13.3731 2.93941C12.2131 1.77945 10.6404 1.12694 9 1.125ZM9 9.5625C8.555 9.5625 8.11998 9.43054 7.74997 9.18331C7.37996 8.93607 7.09157 8.58467 6.92127 8.17354C6.75098 7.7624 6.70642 7.31 6.79324 6.87355C6.88005 6.43709 7.09434 6.03618 7.40901 5.72151C7.72368 5.40684 8.12459 5.19255 8.56105 5.10573C8.99751 5.01892 9.44991 5.06347 9.86104 5.23377C10.2722 5.40407 10.6236 5.69246 10.8708 6.06247C11.118 6.43248 11.25 6.86749 11.25 7.3125C11.2493 7.90901 11.012 8.48087 10.5902 8.90267C10.1684 9.32446 9.59651 9.56176 9 9.5625Z" fill="currentColor"/>
+						</svg>
+					</span>
 					<div class="mbland_linhvuc_hero_featuredLocationText">
 						<p class="mbland_linhvuc_hero_featuredLocationLabel">Vị trí DỰ ÁN</p>
 						<p class="mbland_linhvuc_hero_featuredLocationValue">Số 68 An Phú, Phường An Khánh, Thành phố Hồ Chí Minh</p>
 					</div>
-					
+
 				</div>
 			</div>
 			<div class="mbland_linhvuc_hero_featuredAction">
@@ -118,12 +118,167 @@ $projects = new WP_Query( array(
 				</a>
 
 			</div>
-		
+
 		</div>
-		
+
 	</div>
 </section>
 <!-- ===== END SECTION LINH VUC HERO ===== -->
+
+
+
+
+
+
+<!-- ===== START SECTION LIST PROJECT ===== -->
+<section class="mbland_linhvuc_listProject">
+	<div class="container">
+		<div class="mbland_linhvuc_listProject_wrapper">
+			<header class="mbland_linhvuc_listProject_header">
+				<h2 class="mbland_linhvuc_listProject_title">Kiến tạo không gian - Nâng tầm bất động sản</h2>
+				<p class="mbland_linhvuc_listProject_desc">Phát triển đa dạng phân khúc bất động sản, từ đô thị, nhà ở đến thương mại, văn phòng và nghỉ dưỡng, MBLand Asset Management hướng đến kiến tạo những không gian chất lượng, đáp ứng nhu cầu thị trường và mang lại giá trị đầu tư dài hạn.</p>
+			</header>
+
+			<div class="mbland_linhvuc_listProject_body">
+				<!-- Xuất các term com trực tiếp của taxonomy=linh-vuc -->
+				<div class="mbland_linhvuc_listProject_filter">
+					<ul class="mbland_linhvuc_listProject_filterList">
+						<li class="mbland_linhvuc_listProject_filterItem"><a class="mbland_linhvuc_listProject_filterLink">Đô thị & Nhà ở</a></li>
+						<li class="mbland_linhvuc_listProject_filterItem"><a class="mbland_linhvuc_listProject_filterLink">Thương mại & Văn phòng</a></li>
+						<li class="mbland_linhvuc_listProject_filterItem"><a class="mbland_linhvuc_listProject_filterLink">Khách sạn & Nghĩ dưỡng</a></li>
+					</ul>
+				</div>
+				<div class="mbland_linhvuc_listProject_content">
+					<!-- Xuất tất cả post-type=du-an theo term của taxonomy=linh-vuc -->
+					<div class="mbland_linhvuc_listProject_item">
+						<div class="mbland_linhvuc_listProject_itemMedia">
+							<img class="mbland_linhvuc_listProject_itemImage" />
+						</div>
+						<div class="mbland_linhvuc_listProject_itemBody">
+							<h3 class="mbland_linhvuc_listProject_itemTitle"><a class="mbland_linhvuc_listProject_itemTitleLink">Dự án T18 - Đà Nẵng</a></h3>
+							<div class="mbland_linhvuc_listProject_itemDesc">
+								Tổ hợp khép kín với đầy đủ các tiện ích hiện đại khách sạn, căn hô cao cấp, nhà hàng, spa…<br />
+								Với những tiện ích cao cấp hiện đại hàng đầu, cam kết mang đến chất lượng vượt trội nhất.
+							</div>
+							<hr class="mbland_linhvuc_listProject_itemDivider" />
+							<div class="mbland_linhvuc_listProject_itemLocation">
+								<span class="mbland_linhvuc_listProject_itemLocationIcon"><svg  viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M9 1.125C7.35957 1.12694 5.78688 1.77945 4.62692 2.93941C3.46696 4.09938 2.81444 5.67207 2.8125 7.3125C2.811 8.65299 3.24884 9.95704 4.059 11.025C4.059 11.025 4.22775 11.2472 4.25532 11.2793L9 16.875L13.7469 11.2764C13.7717 11.2466 13.941 11.025 13.941 11.025L13.9416 11.0233C14.7512 9.95574 15.1888 8.65235 15.1875 7.3125C15.1856 5.67207 14.5331 4.09938 13.3731 2.93941C12.2131 1.77945 10.6404 1.12694 9 1.125ZM9 9.5625C8.555 9.5625 8.11998 9.43054 7.74997 9.18331C7.37996 8.93607 7.09157 8.58467 6.92127 8.17354C6.75098 7.7624 6.70642 7.31 6.79324 6.87355C6.88005 6.43709 7.09434 6.03618 7.40901 5.72151C7.72368 5.40684 8.12459 5.19255 8.56105 5.10573C8.99751 5.01892 9.44991 5.06347 9.86104 5.23377C10.2722 5.40407 10.6236 5.69246 10.8708 6.06247C11.118 6.43248 11.25 6.86749 11.25 7.3125C11.2493 7.90901 11.012 8.48087 10.5902 8.90267C10.1684 9.32446 9.59651 9.56176 9 9.5625Z" fill="currentColor"/>
+									</svg>
+								</span>
+								<div class="mbland_linhvuc_listProject_itemLocationText">
+									<p class="mbland_linhvuc_listProject_itemLocationLabel">Vị trí DỰ ÁN</p>
+									<p class="mbland_linhvuc_listProject_itemLocationValue">Số 68 An Phú, Phường An Khánh, Thành phố Hồ Chí Minh</p>
+								</div>
+
+							</div>
+							<div class="mbland_linhvuc_listProject_itemScale">
+								<span class="mbland_linhvuc_listProject_itemScaleIcon"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M14.9998 4.16675L9.99977 6.66675V1.66675L14.9998 4.16675Z" fill="#B70C2C"/>
+									<path d="M9.99977 6.66675L14.9998 4.16675L9.99977 1.66675V6.66675ZM9.99977 6.66675V10.0001M6.66643 9.99175L2.0831 12.6084C1.95485 12.6811 1.84818 12.7865 1.77396 12.9139C1.69975 13.0412 1.66064 13.186 1.66064 13.3334C1.66064 13.4808 1.69975 13.6256 1.77396 13.753C1.84818 13.8803 1.95485 13.9857 2.0831 14.0584L9.16643 18.1084C9.4198 18.2547 9.70721 18.3317 9.99977 18.3317C10.2923 18.3317 10.5797 18.2547 10.8331 18.1084L17.9164 14.0584C18.0447 13.9857 18.1514 13.8803 18.2256 13.753C18.2998 13.6256 18.3389 13.4808 18.3389 13.3334C18.3389 13.186 18.2998 13.0412 18.2256 12.9139C18.1514 12.7865 18.0447 12.6811 17.9164 12.6084L13.3331 10.0001M5.4081 10.7084L14.5914 15.9584M14.5914 10.7084L5.41643 15.9584" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke="#B70C2C"/>
+									</svg>
+
+								</span>
+								<div class="mbland_linhvuc_listProject_itemScaleText">
+									<p class="mbland_linhvuc_listProject_itemScaleLabel">Quy mô bất động sản</p>
+									<p class="mbland_linhvuc_listProject_itemScaleValue">Khu nghĩ dưỡng phức hợp sang trọng & cao cấp</p>
+								</div>
+
+							</div>
+							<a class="mbland_linhvuc_listProject_itemLink">Xem chi tiết</a>
+						</div>
+					</div>
+					<div class="mbland_linhvuc_listProject_item">
+						<div class="mbland_linhvuc_listProject_itemMedia">
+							<img class="mbland_linhvuc_listProject_itemImage" />
+						</div>
+						<div class="mbland_linhvuc_listProject_itemBody">
+							<h3 class="mbland_linhvuc_listProject_itemTitle"><a class="mbland_linhvuc_listProject_itemTitleLink">Dự án T18 - Đà Nẵng</a></h3>
+							<div class="mbland_linhvuc_listProject_itemDesc">
+								Tổ hợp khép kín với đầy đủ các tiện ích hiện đại khách sạn, căn hô cao cấp, nhà hàng, spa…<br />
+								Với những tiện ích cao cấp hiện đại hàng đầu, cam kết mang đến chất lượng vượt trội nhất.
+							</div>
+							<hr class="mbland_linhvuc_listProject_itemDivider" />
+							<div class="mbland_linhvuc_listProject_itemLocation">
+								<span class="mbland_linhvuc_listProject_itemLocationIcon"><svg  viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M9 1.125C7.35957 1.12694 5.78688 1.77945 4.62692 2.93941C3.46696 4.09938 2.81444 5.67207 2.8125 7.3125C2.811 8.65299 3.24884 9.95704 4.059 11.025C4.059 11.025 4.22775 11.2472 4.25532 11.2793L9 16.875L13.7469 11.2764C13.7717 11.2466 13.941 11.025 13.941 11.025L13.9416 11.0233C14.7512 9.95574 15.1888 8.65235 15.1875 7.3125C15.1856 5.67207 14.5331 4.09938 13.3731 2.93941C12.2131 1.77945 10.6404 1.12694 9 1.125ZM9 9.5625C8.555 9.5625 8.11998 9.43054 7.74997 9.18331C7.37996 8.93607 7.09157 8.58467 6.92127 8.17354C6.75098 7.7624 6.70642 7.31 6.79324 6.87355C6.88005 6.43709 7.09434 6.03618 7.40901 5.72151C7.72368 5.40684 8.12459 5.19255 8.56105 5.10573C8.99751 5.01892 9.44991 5.06347 9.86104 5.23377C10.2722 5.40407 10.6236 5.69246 10.8708 6.06247C11.118 6.43248 11.25 6.86749 11.25 7.3125C11.2493 7.90901 11.012 8.48087 10.5902 8.90267C10.1684 9.32446 9.59651 9.56176 9 9.5625Z" fill="currentColor"/>
+									</svg>
+								</span>
+								<div class="mbland_linhvuc_listProject_itemLocationText">
+									<p class="mbland_linhvuc_listProject_itemLocationLabel">Vị trí DỰ ÁN</p>
+									<p class="mbland_linhvuc_listProject_itemLocationValue">Số 68 An Phú, Phường An Khánh, Thành phố Hồ Chí Minh</p>
+								</div>
+
+							</div>
+							<div class="mbland_linhvuc_listProject_itemScale">
+								<span class="mbland_linhvuc_listProject_itemScaleIcon"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M14.9998 4.16675L9.99977 6.66675V1.66675L14.9998 4.16675Z" fill="#B70C2C"/>
+									<path d="M9.99977 6.66675L14.9998 4.16675L9.99977 1.66675V6.66675ZM9.99977 6.66675V10.0001M6.66643 9.99175L2.0831 12.6084C1.95485 12.6811 1.84818 12.7865 1.77396 12.9139C1.69975 13.0412 1.66064 13.186 1.66064 13.3334C1.66064 13.4808 1.69975 13.6256 1.77396 13.753C1.84818 13.8803 1.95485 13.9857 2.0831 14.0584L9.16643 18.1084C9.4198 18.2547 9.70721 18.3317 9.99977 18.3317C10.2923 18.3317 10.5797 18.2547 10.8331 18.1084L17.9164 14.0584C18.0447 13.9857 18.1514 13.8803 18.2256 13.753C18.2998 13.6256 18.3389 13.4808 18.3389 13.3334C18.3389 13.186 18.2998 13.0412 18.2256 12.9139C18.1514 12.7865 18.0447 12.6811 17.9164 12.6084L13.3331 10.0001M5.4081 10.7084L14.5914 15.9584M14.5914 10.7084L5.41643 15.9584" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke="#B70C2C"/>
+									</svg>
+
+								</span>
+								<div class="mbland_linhvuc_listProject_itemScaleText">
+									<p class="mbland_linhvuc_listProject_itemScaleLabel">Quy mô bất động sản</p>
+									<p class="mbland_linhvuc_listProject_itemScaleValue">Khu nghĩ dưỡng phức hợp sang trọng & cao cấp</p>
+								</div>
+
+							</div>
+							<a class="mbland_linhvuc_listProject_itemLink">Xem chi tiết</a>
+						</div>
+					</div>
+					<div class="mbland_linhvuc_listProject_item">
+						<div class="mbland_linhvuc_listProject_itemMedia">
+							<img class="mbland_linhvuc_listProject_itemImage" />
+						</div>
+						<div class="mbland_linhvuc_listProject_itemBody">
+							<h3 class="mbland_linhvuc_listProject_itemTitle"><a class="mbland_linhvuc_listProject_itemTitleLink">Dự án T18 - Đà Nẵng</a></h3>
+							<div class="mbland_linhvuc_listProject_itemDesc">
+								Tổ hợp khép kín với đầy đủ các tiện ích hiện đại khách sạn, căn hô cao cấp, nhà hàng, spa…<br />
+								Với những tiện ích cao cấp hiện đại hàng đầu, cam kết mang đến chất lượng vượt trội nhất.
+							</div>
+							<hr class="mbland_linhvuc_listProject_itemDivider" />
+							<div class="mbland_linhvuc_listProject_itemLocation">
+								<span class="mbland_linhvuc_listProject_itemLocationIcon"><svg  viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M9 1.125C7.35957 1.12694 5.78688 1.77945 4.62692 2.93941C3.46696 4.09938 2.81444 5.67207 2.8125 7.3125C2.811 8.65299 3.24884 9.95704 4.059 11.025C4.059 11.025 4.22775 11.2472 4.25532 11.2793L9 16.875L13.7469 11.2764C13.7717 11.2466 13.941 11.025 13.941 11.025L13.9416 11.0233C14.7512 9.95574 15.1888 8.65235 15.1875 7.3125C15.1856 5.67207 14.5331 4.09938 13.3731 2.93941C12.2131 1.77945 10.6404 1.12694 9 1.125ZM9 9.5625C8.555 9.5625 8.11998 9.43054 7.74997 9.18331C7.37996 8.93607 7.09157 8.58467 6.92127 8.17354C6.75098 7.7624 6.70642 7.31 6.79324 6.87355C6.88005 6.43709 7.09434 6.03618 7.40901 5.72151C7.72368 5.40684 8.12459 5.19255 8.56105 5.10573C8.99751 5.01892 9.44991 5.06347 9.86104 5.23377C10.2722 5.40407 10.6236 5.69246 10.8708 6.06247C11.118 6.43248 11.25 6.86749 11.25 7.3125C11.2493 7.90901 11.012 8.48087 10.5902 8.90267C10.1684 9.32446 9.59651 9.56176 9 9.5625Z" fill="currentColor"/>
+									</svg>
+								</span>
+								<div class="mbland_linhvuc_listProject_itemLocationText">
+									<p class="mbland_linhvuc_listProject_itemLocationLabel">Vị trí DỰ ÁN</p>
+									<p class="mbland_linhvuc_listProject_itemLocationValue">Số 68 An Phú, Phường An Khánh, Thành phố Hồ Chí Minh</p>
+								</div>
+
+							</div>
+							<div class="mbland_linhvuc_listProject_itemScale">
+								<span class="mbland_linhvuc_listProject_itemScaleIcon"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M14.9998 4.16675L9.99977 6.66675V1.66675L14.9998 4.16675Z" fill="#B70C2C"/>
+									<path d="M9.99977 6.66675L14.9998 4.16675L9.99977 1.66675V6.66675ZM9.99977 6.66675V10.0001M6.66643 9.99175L2.0831 12.6084C1.95485 12.6811 1.84818 12.7865 1.77396 12.9139C1.69975 13.0412 1.66064 13.186 1.66064 13.3334C1.66064 13.4808 1.69975 13.6256 1.77396 13.753C1.84818 13.8803 1.95485 13.9857 2.0831 14.0584L9.16643 18.1084C9.4198 18.2547 9.70721 18.3317 9.99977 18.3317C10.2923 18.3317 10.5797 18.2547 10.8331 18.1084L17.9164 14.0584C18.0447 13.9857 18.1514 13.8803 18.2256 13.753C18.2998 13.6256 18.3389 13.4808 18.3389 13.3334C18.3389 13.186 18.2998 13.0412 18.2256 12.9139C18.1514 12.7865 18.0447 12.6811 17.9164 12.6084L13.3331 10.0001M5.4081 10.7084L14.5914 15.9584M14.5914 10.7084L5.41643 15.9584" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke="#B70C2C"/>
+									</svg>
+
+								</span>
+								<div class="mbland_linhvuc_listProject_itemScaleText">
+									<p class="mbland_linhvuc_listProject_itemScaleLabel">Quy mô bất động sản</p>
+									<p class="mbland_linhvuc_listProject_itemScaleValue">Khu nghĩ dưỡng phức hợp sang trọng & cao cấp</p>
+								</div>
+
+							</div>
+							<a class="mbland_linhvuc_listProject_itemLink">Xem chi tiết</a>
+						</div>
+					</div>
+
+
+					<button class="mbland_linhvuc_listProject_loadMore"><svg class="mbland_linhvuc_listProject_loadMoreIcon" width="16" height="9" viewBox="0 0 16 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1 1L8 8L15 1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="#656565"/>
+</svg>
+<span class="mbland_linhvuc_listProject_loadMoreLabel">Xem thêm</span></button>
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+</section>
+<!-- ===== END SECTION LIST PROJECT  ===== -->
+
 
 
 
@@ -134,9 +289,9 @@ $projects = new WP_Query( array(
 	<div class="container">
 		<ul class="mbland_linhvuc_categories_list">
 			<?php foreach ( $sub_terms as $sub ) : ?>
-				<li class="mbland_linhvuc_categories_item">
-					<a class="mbland_linhvuc_categories_link" href="<?php echo esc_url( get_term_link( $sub ) ); ?>"><?php echo esc_html( $sub->name ); ?></a>
-				</li>
+			<li class="mbland_linhvuc_categories_item">
+				<a class="mbland_linhvuc_categories_link" href="<?php echo esc_url( get_term_link( $sub ) ); ?>"><?php echo esc_html( $sub->name ); ?></a>
+			</li>
 			<?php endforeach; ?>
 		</ul>
 	</div>
@@ -149,37 +304,38 @@ $projects = new WP_Query( array(
 
 
 <!-- ===== START SECTION LINH VUC PROJECTS ===== -->
-<section class="mbland_linhvuc_projects">
-	<div class="container">
-		<?php if ( $projects->have_posts() ) : ?>
-			<div class="mbland_linhvuc_projects_list">
-				<?php while ( $projects->have_posts() ) : $projects->the_post(); ?>
-					<article class="mbland_linhvuc_projects_item">
-						<a class="mbland_linhvuc_projects_link" href="<?php the_permalink(); ?>">
-							<figure class="mbland_linhvuc_projects_media">
-								<?php if ( has_post_thumbnail() ) : ?>
-									<?php the_post_thumbnail( 'large', array( 'class' => 'mbland_linhvuc_projects_image', 'loading' => 'lazy' ) ); ?>
-								<?php endif; ?>
-							</figure>
-							<h3 class="mbland_linhvuc_projects_title"><?php the_title(); ?></h3>
-						</a>
-					</article>
-				<?php endwhile; ?>
-			</div>
-			<nav class="mbland_linhvuc_projects_pagination">
-				<?php
-				echo paginate_links( array(
-					'total'   => $projects->max_num_pages,
-					'current' => max( 1, (int) get_query_var( 'paged' ) ),
-				) );
-				?>
-			</nav>
-		<?php else : ?>
-			<p class="mbland_linhvuc_projects_empty">Chưa có dự án nào trong lĩnh vực này.</p>
+
+<!-- <section class="mbland_linhvuc_projects">
+ <div class="container">
+  <?php if ( $projects->have_posts() ) : ?>
+   <div class="mbland_linhvuc_projects_list">
+	<?php while ( $projects->have_posts() ) : $projects->the_post(); ?>
+	 <article class="mbland_linhvuc_projects_item">
+	  <a class="mbland_linhvuc_projects_link" href="<?php the_permalink(); ?>">
+	   <figure class="mbland_linhvuc_projects_media">
+		<?php if ( has_post_thumbnail() ) : ?>
+		 <?php the_post_thumbnail( 'large', array( 'class' => 'mbland_linhvuc_projects_image', 'loading' => 'lazy' ) ); ?>
 		<?php endif; ?>
-		<?php wp_reset_postdata(); ?>
-	</div>
-</section>
+	   </figure>
+	   <h3 class="mbland_linhvuc_projects_title"><?php the_title(); ?></h3>
+	  </a>
+	 </article>
+	<?php endwhile; ?>
+   </div>
+   <nav class="mbland_linhvuc_projects_pagination">
+	<?php
+echo paginate_links( array(
+	'total'   => $projects->max_num_pages,
+	'current' => max( 1, (int) get_query_var( 'paged' ) ),
+) );
+	?>
+   </nav>
+  <?php else : ?>
+   <p class="mbland_linhvuc_projects_empty">Chưa có dự án nào trong lĩnh vực này.</p>
+  <?php endif; ?>
+  <?php wp_reset_postdata(); ?>
+ </div>
+</section> -->
 <!-- ===== END SECTION LINH VUC PROJECTS ===== -->
 
 <?php get_footer(); ?>
