@@ -300,48 +300,96 @@ $projects = new WP_Query( array(
 			<div class="mbland_linhvuc_coreStrengths_item">
 				<img src="/wp-content/uploads/2025/10/diamond.svg" alt="Icon kim cương" class="mbland_linhvuc_coreStrengths_itemBg" title="Icon kim cương"/>
 				<div class="mbland_linhvuc_coreStrengths_itemMain">
-					<h3 class="mbland_linhvuc_coreStrengths_itemTitle">Công</h3>
-					<p class="mbland_linhvuc_coreStrengths_itemLabel">Giá trị cốt lõi</p>
+					<h3 class="mbland_linhvuc_coreStrengths_itemTitle">đa dạng phân khúc</h3>
+					<p class="mbland_linhvuc_coreStrengths_itemLabel">Mở rộng đầu tư</p>
 				</div>
 				<div class="mbland_linhvuc_coreStrengths_itemHover">
-					<p class="mbland_linhvuc_coreStrengths_itemTag">Công - tâm - trí - tín</p>
-					<p class="mbland_linhvuc_coreStrengths_itemDesc">Cam kết sự công minh trong từng việc làm</p>
+					<p class="mbland_linhvuc_coreStrengths_itemTag">Đô thị · Thương mại · Bất động sản </p>
+					<p class="mbland_linhvuc_coreStrengths_itemDesc">Đa dạng phân khúc & Mở rộng cơ hội đầu tư.</p>
 				</div>
 			</div>
 
 			<div class="mbland_linhvuc_coreStrengths_item">
 				<img src="/wp-content/uploads/2025/10/diamond.svg" alt="Icon kim cương" class="mbland_linhvuc_coreStrengths_itemBg" title="Icon kim cương"/>
 				<div class="mbland_linhvuc_coreStrengths_itemMain">
-					<h3 class="mbland_linhvuc_coreStrengths_itemTitle">Tâm</h3>
-					<p class="mbland_linhvuc_coreStrengths_itemLabel">Giá trị cốt lõi</p>
+					<h3 class="mbland_linhvuc_coreStrengths_itemTitle">Đầu tư chiến lược</h3>
+					<p class="mbland_linhvuc_coreStrengths_itemLabel">Kiến tạo lâu dài</p>
 				</div>
 				<div class="mbland_linhvuc_coreStrengths_itemHover">
-					<p class="mbland_linhvuc_coreStrengths_itemTag">Công - tâm - trí - tín</p>
-					<p class="mbland_linhvuc_coreStrengths_itemDesc">Luôn tận tâm trong công việc - đặt cái tâm vào nghề</p>
+					<p class="mbland_linhvuc_coreStrengths_itemTag">Đô thị · Thương mại · Bất động sản </p>
+					<p class="mbland_linhvuc_coreStrengths_itemDesc">Đa dạng phân khúc & Mở rộng cơ hội đầu tư.</p>
 				</div>
 			</div>
 
 			<div class="mbland_linhvuc_coreStrengths_item">
 				<img src="/wp-content/uploads/2025/10/diamond.svg" alt="Icon kim cương" class="mbland_linhvuc_coreStrengths_itemBg" title="Icon kim cương"/>
 				<div class="mbland_linhvuc_coreStrengths_itemMain">
-					<h3 class="mbland_linhvuc_coreStrengths_itemTitle">Trí</h3>
-					<p class="mbland_linhvuc_coreStrengths_itemLabel">Giá trị cốt lõi</p>
+					<h3 class="mbland_linhvuc_coreStrengths_itemTitle">Phát triển bền vững</h3>
+					<p class="mbland_linhvuc_coreStrengths_itemLabel">Chất lượng & hiệu quả</p>
 				</div>
 				<div class="mbland_linhvuc_coreStrengths_itemHover">
-					<p class="mbland_linhvuc_coreStrengths_itemTag">Công - tâm - trí - tín</p>
-					<p class="mbland_linhvuc_coreStrengths_itemDesc">Phương châm dùng trí tuệ để quản trị</p>
+					<p class="mbland_linhvuc_coreStrengths_itemTag">Đô thị · Thương mại · Bất động sản </p>
+					<p class="mbland_linhvuc_coreStrengths_itemDesc">Đa dạng phân khúc & Mở rộng cơ hội đầu tư.</p>
 				</div>
 			</div>
 
 			<div class="mbland_linhvuc_coreStrengths_item">
 				<img src="/wp-content/uploads/2025/10/diamond.svg" alt="Icon kim cương" class="mbland_linhvuc_coreStrengths_itemBg" title="Icon kim cương"/>
 				<div class="mbland_linhvuc_coreStrengths_itemMain">
-					<h3 class="mbland_linhvuc_coreStrengths_itemTitle">Tín</h3>
-					<p class="mbland_linhvuc_coreStrengths_itemLabel">Giá trị cốt lõi</p>
+					<h3 class="mbland_linhvuc_coreStrengths_itemTitle">Kiểm soát chi phí</h3>
+					<p class="mbland_linhvuc_coreStrengths_itemLabel">Hợp tác lâu dài</p>
 				</div>
 				<div class="mbland_linhvuc_coreStrengths_itemHover">
-					<p class="mbland_linhvuc_coreStrengths_itemTag">Công - tâm - trí - tín</p>
-					<p class="mbland_linhvuc_coreStrengths_itemDesc">Coi trọng chữ tín - Luôn đặt uy tín lên hàng đầu</p>
+					<p class="mbland_linhvuc_coreStrengths_itemTag">Đô thị · Thương mại · Bất động sản </p>
+					<p class="mbland_linhvuc_coreStrengths_itemDesc">Đa dạng phân khúc & Mở rộng cơ hội đầu tư.</p>
+				</div>
+			</div>
+
+			<div class="mbland_linhvuc_coreStrengths_item">
+				<img src="/wp-content/uploads/2025/10/diamond.svg" alt="Icon kim cương" class="mbland_linhvuc_coreStrengths_itemBg" title="Icon kim cương"/>
+				<div class="mbland_linhvuc_coreStrengths_itemMain">
+					<h3 class="mbland_linhvuc_coreStrengths_itemTitle">Hệ sinh thái đối tác</h3>
+					<p class="mbland_linhvuc_coreStrengths_itemLabel">Cam kết & phát triển</p>
+				</div>
+				<div class="mbland_linhvuc_coreStrengths_itemHover">
+					<p class="mbland_linhvuc_coreStrengths_itemTag">Đô thị · Thương mại · Bất động sản </p>
+					<p class="mbland_linhvuc_coreStrengths_itemDesc">Đa dạng phân khúc & Mở rộng cơ hội đầu tư.</p>
+				</div>
+			</div>
+
+			<div class="mbland_linhvuc_coreStrengths_item">
+				<img src="/wp-content/uploads/2025/10/diamond.svg" alt="Icon kim cương" class="mbland_linhvuc_coreStrengths_itemBg" title="Icon kim cương"/>
+				<div class="mbland_linhvuc_coreStrengths_itemMain">
+					<h3 class="mbland_linhvuc_coreStrengths_itemTitle">Đầu tư chiến lược</h3>
+					<p class="mbland_linhvuc_coreStrengths_itemLabel">Kiến tạo lâu dài</p>
+				</div>
+				<div class="mbland_linhvuc_coreStrengths_itemHover">
+					<p class="mbland_linhvuc_coreStrengths_itemTag">Đô thị · Thương mại · Bất động sản </p>
+					<p class="mbland_linhvuc_coreStrengths_itemDesc">Đa dạng phân khúc & Mở rộng cơ hội đầu tư.</p>
+				</div>
+			</div>
+
+			<div class="mbland_linhvuc_coreStrengths_item">
+				<img src="/wp-content/uploads/2025/10/diamond.svg" alt="Icon kim cương" class="mbland_linhvuc_coreStrengths_itemBg" title="Icon kim cương"/>
+				<div class="mbland_linhvuc_coreStrengths_itemMain">
+					<h3 class="mbland_linhvuc_coreStrengths_itemTitle">Phát triển bền vững</h3>
+					<p class="mbland_linhvuc_coreStrengths_itemLabel">Chất lượng & hiệu quả</p>
+				</div>
+				<div class="mbland_linhvuc_coreStrengths_itemHover">
+					<p class="mbland_linhvuc_coreStrengths_itemTag">Đô thị · Thương mại · Bất động sản </p>
+					<p class="mbland_linhvuc_coreStrengths_itemDesc">Đa dạng phân khúc & Mở rộng cơ hội đầu tư.</p>
+				</div>
+			</div>
+
+			<div class="mbland_linhvuc_coreStrengths_item">
+				<img src="/wp-content/uploads/2025/10/diamond.svg" alt="Icon kim cương" class="mbland_linhvuc_coreStrengths_itemBg" title="Icon kim cương"/>
+				<div class="mbland_linhvuc_coreStrengths_itemMain">
+					<h3 class="mbland_linhvuc_coreStrengths_itemTitle">Kiểm soát chi phí</h3>
+					<p class="mbland_linhvuc_coreStrengths_itemLabel">Hợp tác lâu dài</p>
+				</div>
+				<div class="mbland_linhvuc_coreStrengths_itemHover">
+					<p class="mbland_linhvuc_coreStrengths_itemTag">Đô thị · Thương mại · Bất động sản </p>
+					<p class="mbland_linhvuc_coreStrengths_itemDesc">Đa dạng phân khúc & Mở rộng cơ hội đầu tư.</p>
 				</div>
 			</div>
 		</div>
