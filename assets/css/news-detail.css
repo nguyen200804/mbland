@@ -52,6 +52,7 @@
   flex-wrap: wrap;
   gap: 12px;
   padding-bottom: 15px;
+  justify-content: space-between;
 }
 
 .mbland_singlePost_content_date {
@@ -117,6 +118,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  margin-left: auto;
 }
 
 .mbland_singlePost_content_authorAvatar {
@@ -132,7 +134,7 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 100%;
-  color: #555;
+  color: #B70C2C;
 }
 
 /* Header & Title */
