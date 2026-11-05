@@ -836,49 +836,144 @@
 
 
 /* ===== START SECTION FEATURED PROJECT ===== */
-.mbland_linhvuc_featuredProject {}
+.mbland_linhvuc_featuredProject {
+    padding-bottom: 100px;
+}
 
 .mbland_linhvuc_featuredProject_wrapper {}
 
-.mbland_linhvuc_featuredProject_header {}
+.mbland_linhvuc_featuredProject_header {
+    text-align: center;
+}
 
 .mbland_linhvuc_featuredProject_title {}
 
-.mbland_linhvuc_featuredProject_list {}
+.mbland_linhvuc_featuredProject_list {
+    margin-top: 70px;
+    display: flex;
+    gap: 24px;
+}
 
-.mbland_linhvuc_featuredProject_item {}
+.mbland_linhvuc_featuredProject_item {
+    color: #fff;
+    box-shadow: 0px 3px 15px 0px #C2C2C236;
+}
 
-.mbland_linhvuc_featuredProject_itemMedia {}
+.mbland_linhvuc_featuredProject_itemMedia {
+    aspect-ratio: 16/9;
+    overflow: hidden;
+}
 
-.mbland_linhvuc_featuredProject_itemImage {}
+.mbland_linhvuc_featuredProject_itemImage {
+    width: 100%;
+    height: 100%;
+    transform: scale(1);
+    transition: transform .3s ease;
+}
 
-.mbland_linhvuc_featuredProject_itemBody {}
+.mbland_linhvuc_featuredProject_item:hover .mbland_linhvuc_featuredProject_itemImage {
+    transform: scale(1.1);
+}
 
-.mbland_linhvuc_featuredProject_itemHeader {}
+.mbland_linhvuc_featuredProject_itemBody {
+    padding: 35px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
 
-.mbland_linhvuc_featuredProject_itemTitle {}
+.mbland_linhvuc_featuredProject_itemHeader {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
 
-.mbland_linhvuc_featuredProject_itemDesc {}
+.mbland_linhvuc_featuredProject_itemTitle {
+    font-family: 'FZPoppins';
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 30px;
+    letter-spacing: 0%;
+    color: #000;
+    transition: color .3s ease;
+}
 
-.mbland_linhvuc_featuredProject_itemDivider {}
+.mbland_linhvuc_featuredProject_item:hover .mbland_linhvuc_featuredProject_itemTitle {
+    color: #B70C2C;
+}
 
-.mbland_linhvuc_featuredProject_itemLocation {}
+.mbland_linhvuc_featuredProject_itemDesc {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 0%;
+}
 
-.mbland_linhvuc_featuredProject_itemLocationIcon {}
+.mbland_linhvuc_featuredProject_itemDivider {
+    color: unset !important;
+    width: 100%;
+    height: 1px;
+    background: #D9D9D9;
+    border: unset;
+}
+
+.mbland_linhvuc_featuredProject_itemLocation {
+    display: flex;
+    gap: 4px;
+}
+
+.mbland_linhvuc_featuredProject_itemLocationIcon {
+    display: flex;
+}
 
 .mbland_linhvuc_featuredProject_itemLocationIcon svg {}
 
-.mbland_linhvuc_featuredProject_itemLocationText {}
+.mbland_linhvuc_featuredProject_itemLocationText {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
 
-.mbland_linhvuc_featuredProject_itemLocationLabel {}
+.mbland_linhvuc_featuredProject_itemLocationLabel {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 120%;
+    letter-spacing: 0%;
+    text-transform: uppercase;
+    color: #B70C2C;
+}
 
-.mbland_linhvuc_featuredProject_itemLocationValue {}
+.mbland_linhvuc_featuredProject_itemLocationValue {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0%;
+    color: #656565;
+}
 
-.mbland_linhvuc_featuredProject_itemAction {}
+.mbland_linhvuc_featuredProject_itemAction {
+    align-self: flex-end;
+}
 
-.mbland_linhvuc_featuredProject_itemLink {}
+.mbland_linhvuc_featuredProject_itemLink {
+    color: #B70C2C;
+    background-color: #F8F1F2;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 150%;
+    letter-spacing: 0%;
+    text-transform: uppercase;
+    display: inline-block;
+    padding: 0.65em 1.7em;
+    border-radius: 30px;
+    transition: all .3s ease;
+}
 
-.mbland_linhvuc_featuredProject_itemLink:hover {}
+.mbland_linhvuc_featuredProject_itemLink:hover {
+    color: #fff;
+    background-color: #B70C2C;
+}
+
 /* ===== END SECTION FEATURED PROJECT ===== */
 
 

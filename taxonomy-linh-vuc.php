@@ -511,7 +511,7 @@ dựng phương án quy hoạch phù hợp.</p>
 			<div class="mbland_linhvuc_featuredProject_list">
 				<article class="mbland_linhvuc_featuredProject_item">
 					<div class="mbland_linhvuc_featuredProject_itemMedia">
-						<img class="mbland_linhvuc_featuredProject_itemImage" src="" alt="Dự án T18 - Đà Nẵng" />
+						<img class="mbland_linhvuc_featuredProject_itemImage" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg" alt="Dự án T18 - Đà Nẵng" />
 					</div>
 					<div class="mbland_linhvuc_featuredProject_itemBody">
 						<div class="mbland_linhvuc_featuredProject_itemHeader">
@@ -537,7 +537,7 @@ dựng phương án quy hoạch phù hợp.</p>
 				</article>
 				<article class="mbland_linhvuc_featuredProject_item">
 					<div class="mbland_linhvuc_featuredProject_itemMedia">
-						<img class="mbland_linhvuc_featuredProject_itemImage" src="" alt="Dự án T18 - Đà Nẵng" />
+						<img class="mbland_linhvuc_featuredProject_itemImage" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg" alt="Dự án T18 - Đà Nẵng" />
 					</div>
 					<div class="mbland_linhvuc_featuredProject_itemBody">
 						<div class="mbland_linhvuc_featuredProject_itemHeader">
@@ -563,7 +563,7 @@ dựng phương án quy hoạch phù hợp.</p>
 				</article>
 				<article class="mbland_linhvuc_featuredProject_item">
 					<div class="mbland_linhvuc_featuredProject_itemMedia">
-						<img class="mbland_linhvuc_featuredProject_itemImage" src="" alt="Dự án T18 - Đà Nẵng" />
+						<img class="mbland_linhvuc_featuredProject_itemImage" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg" alt="Dự án T18 - Đà Nẵng" />
 					</div>
 					<div class="mbland_linhvuc_featuredProject_itemBody">
 						<div class="mbland_linhvuc_featuredProject_itemHeader">
