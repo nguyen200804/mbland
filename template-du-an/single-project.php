@@ -17,13 +17,24 @@ if (!empty($banner) && is_array($banner)) {
     $banner_title = $banner['title'] ?: get_the_title($post_id); // Fallback title từ title nếu không có
 }
 
-$sub_title = wp_strip_all_tags( get_field('sub_title', $post_id) ?: '' ); // Subtitle từ field
+if ( ! function_exists( 'mbland_clean_plain_text' ) ) {
+    function mbland_clean_plain_text( $text ) {
+        if ( empty( $text ) ) return '';
+        $decoded = html_entity_decode( html_entity_decode( (string) $text, ENT_QUOTES, 'UTF-8' ), ENT_QUOTES, 'UTF-8' );
+        $clean = wp_strip_all_tags( $decoded, true );
+        $clean = preg_replace( '/<[^>]*>/', '', $clean );
+        $clean = str_replace( array( '&nbsp;', '&#160;' ), ' ', $clean );
+        return trim( $clean );
+    }
+}
 
-$short_content = wp_strip_all_tags( get_field('short_content', $post_id) ?: '' ); // Mô tả ngắn từ ACF
+$sub_title     = mbland_clean_plain_text( get_field( 'sub_title', $post_id ) );
 
-$location = wp_strip_all_tags( get_field('location', $post_id) ?: '' ); // Địa chỉ từ field (loại bỏ thẻ p do WYSIWYG)
+$short_content = mbland_clean_plain_text( get_field( 'short_content', $post_id ) );
 
-$scale = wp_strip_all_tags( get_field('scale', $post_id) ?: '' ); // Quy mô từ field (loại bỏ thẻ p do WYSIWYG)
+$location      = mbland_clean_plain_text( get_field( 'location', $post_id ) );
+
+$scale         = mbland_clean_plain_text( get_field( 'scale', $post_id ) );
 
 // Nội dung: Sử dụng wp_kses_post để sanitize
 $content = wp_kses_post(get_field('content', $post_id));
@@ -79,7 +90,7 @@ get_header();
 			<div class="mbland_linhvuc_hero_featuredInfo">
 				<h1 class="mbland_linhvuc_hero_featuredTitle"><?php echo esc_html( get_the_title( $post_id ) ); ?></h1>
 				<?php if ( ! empty( $short_content ) ) : ?>
-				<p class="mbland_linhvuc_hero_featuredSubTitle"><?php echo esc_html( wp_strip_all_tags( $short_content ) ); ?></p>
+				<p class="mbland_linhvuc_hero_featuredSubTitle"><?php echo esc_html( $short_content ); ?></p>
 				<?php endif; ?>
 				<div class="mbland_linhvuc_hero_featuredDecor">
 					<svg viewBox="0 0 27 26" xmlns="http://www.w3.org/2000/svg"><path d="M12.19.691c.3-.921 1.603-.921 1.902 0l2.417 7.438a1 1 0 0 0 .95.69h7.821c.97 0 1.372 1.24.588 1.81l-6.327 4.596a1 1 0 0 0-.363 1.118l2.417 7.438c.299.921-.755 1.688-1.54 1.118l-6.326-4.597a1 1 0 0 0-1.176 0L6.226 24.9c-.783.57-1.838-.197-1.538-1.118l2.416-7.438a1 1 0 0 0-.363-1.118L.414 10.63c-.784-.57-.38-1.81.588-1.81h7.82a1 1 0 0 0 .951-.69z" fill="currentColor"/></svg>
@@ -102,7 +113,7 @@ get_header();
 					</span>
 					<div class="mbland_linhvuc_hero_featuredLocationText">
 						<p class="mbland_linhvuc_hero_featuredLocationLabel">Vị trí DỰ ÁN</p>
-						<p class="mbland_linhvuc_hero_featuredLocationValue"><?php echo esc_html( wp_strip_all_tags( $location ) ); ?></p>
+						<p class="mbland_linhvuc_hero_featuredLocationValue"><?php echo esc_html( $location ); ?></p>
 					</div>
 				</div>
 				<?php endif; ?>
@@ -123,7 +134,7 @@ get_header();
 					</span>
 					<div class="mbland_linhvuc_hero_featuredLocationText">
 						<p class="mbland_linhvuc_hero_featuredLocationLabel">Quy mô bất động sản</p>
-						<p class="mbland_linhvuc_hero_featuredLocationValue"><?php echo esc_html( wp_strip_all_tags( $scale ) ); ?></p>
+						<p class="mbland_linhvuc_hero_featuredLocationValue"><?php echo esc_html( $scale ); ?></p>
 					</div>
 				</div>
 				<?php endif; ?>

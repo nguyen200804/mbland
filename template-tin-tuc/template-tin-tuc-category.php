@@ -5,7 +5,7 @@ Template Name: Tin tức & Danh mục tin tức
 get_header();
 
 if ( is_category() ) {
-    $term = get_queried_object();
+    $term          = get_queried_object();
     $page_title    = $term->name;
     $category_id   = $term->term_id;
     $category_slug = $term->slug;
@@ -14,297 +14,284 @@ if ( is_category() ) {
     $category_id   = 0;
     $category_slug = 'all';
 }
-
-// Kiểm tra nếu là category và không có bài viết nào
-$has_posts = is_category() ? ( $wp_query->found_posts > 0 ) : true;
 ?>
-<section class="hn-tasmania-tintuc">
-<div class="container">
-	<?php echo do_shortcode('[hn_breadcrumb]'); ?>
-	
-	<!-- Tiêu đề trang (chỉ hiển thị ở category archive nếu có bài viết) -->
-	<?php if ( is_category() && $has_posts ) : ?>
-		<header class="page-header">
-			<h1 class="page-title"><?php echo esc_html( $page_title ); ?></h1>
-			<?php echo term_description( $term->term_id, 'category' ); ?>
-		</header>
-	<?php else : ?>
-		<h1 style="display: none;"><?php echo esc_html( $page_title ); ?></h1>
-	<?php endif; ?>
-	
-	<?php if ( ! $has_posts ) : ?>
-		<div class="no-posts-message">Chưa có tin tức trong danh mục này.</div>
-	<?php else : ?>
-		<!-- Section Tin nổi bật (taxonomy 'tin-noi-bat') -->
-		<div class="hn-tasmania-tnb">
-			<div class="hn-tasmania-tnb-wrapper">
-				<?php
-				$tnb_args = array(
-					'post_type'      => 'post',
-					'posts_per_page' => 1,
-					'post_status'    => 'publish',
-					'orderby'        => 'date',
-					'order'          => 'DESC',
-				);
 
-				if ( $category_id > 0 ) {
-					$tnb_args['tax_query'] = array(
-						'relation' => 'AND',
-						array(
-							'taxonomy' => 'tin-noi-bat',
-							'field'    => 'slug',
-							'terms'    => 'tin-noi-bat',
-						),
-						array(
-							'taxonomy' => 'category',
-							'field'    => 'term_id',
-							'terms'    => $category_id,
-						),
-					);
-				} else {
-					$tnb_args['tax_query'] = array(
-						array(
-							'taxonomy' => 'tin-noi-bat',
-							'field'    => 'slug',
-							'terms'    => 'tin-noi-bat',
-						),
-					);
-				}
-
-				$tnb_query = new WP_Query( $tnb_args );
-
-				if ( $tnb_query->have_posts() ) :
-					while ( $tnb_query->have_posts() ) : $tnb_query->the_post();
-						$featured_img = get_the_post_thumbnail_url( get_the_ID() );
-						if ( ! $featured_img ) {
-							$featured_img = get_template_directory_uri() . '/images/default.jpg';
-						}
-						$desc = get_field( 'mo_ta_ngan_tin_tuc', get_the_ID() );
-						$has_tin_noi_bat = has_term( '', 'tin-noi-bat' );
-				?>
-						<div class="hn-tasmania-tnb-item">
-							<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="hn-tasmania-tnb-item-image">
-								<img src="<?php echo esc_url( $featured_img ); ?>" alt="<?php the_title_attribute(); ?>" title="<?php the_title_attribute(); ?>" loading="lazy" decoding="async" fetchpriority="low" />
-							</a>								
-							<div class="hn-tasmania-tnb-item-content">
-								<div class="hn-tasmania-tintuc-date">
-									<div class="hn-tasmania-tintuc-date-image">
-										<img src="/wp-content/uploads/2025/10/clock.svg" alt="Ngày đăng" title="Ngày đăng" loading="lazy" decoding="async" fetchpriority="low" />
-									</div>
-									<p class="hn-tasmania-date"><?php echo get_the_date( 'd/m/Y' ); ?></p>
-									<?php if ( $has_tin_noi_bat ) : ?>
-										<div class="hn-tasmania-tintuc-date-line"></div>
-										<p><?php echo function_exists('pll__') ? pll__('TIN NỔI BẬT') : 'TIN NỔI BẬT'; ?></p>
-									<?php endif; ?>
-								</div>
-								<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
-									<h3 class="small-h3"><?php the_title(); ?></h3>
-								</a>
-								<div class="desc-text tnb-desc"><?php echo wp_kses_post( $desc ? $desc : get_the_excerpt() ); ?></div>
-								<a class="hn-tasmania-tintuc-cta" href="<?php the_permalink(); ?>" title="Xem chi tiết">
-									<div class="hn-tasmania-tintuc-cta-icon">
-										<img src="/wp-content/uploads/2025/10/arrow-right-red.svg" alt="Xem chi tiết" title="Xem chi tiết" loading="lazy" decoding="async" fetchpriority="low" />
-									</div>
-									<?php echo function_exists('pll__') ? pll__('XEM CHI TIẾT') : 'XEM CHI TIẾT'; ?>
-								</a>
-							</div>
-						</div>
-				<?php
-					endwhile;
-					wp_reset_postdata();
-				endif;
-				?>
-			</div>
-		</div>
-	<?php endif; ?>
-</div>
-	
-<?php if ( $has_posts ) : ?>
-<div class="container">
-	<!-- Section Tin tức mới -->
-	<div class="hn-tasmania-ttm">
-		<div class="hn-tasmania-ttm-title">
-			<h2 class="equalh3"><?php echo function_exists('pll__') ? pll__('Tin tức mới') : 'Tin tức mới'; ?></h2>
-			<div class="line"></div>
-		</div>
-		
-		<div class="hn-tasmania-ttm-wrapper">
-			<?php
-			$ttm_args = array(
-				'post_type'      => 'post',
-				'posts_per_page' => 2,
-				'post_status'    => 'publish',
-				'orderby'        => 'date',
-				'order'          => 'DESC',
-			);
-
-			if ( $category_id > 0 ) {
-				$ttm_args['cat'] = $category_id;
-			}
-
-			$ttm_query = new WP_Query( $ttm_args );
-
-			if ( $ttm_query->have_posts() ) :
-				while ( $ttm_query->have_posts() ) : $ttm_query->the_post();
-					$featured_img = get_the_post_thumbnail_url( get_the_ID() );
-					if ( ! $featured_img ) {
-						$featured_img = get_template_directory_uri() . '/images/default.jpg';
-					}
-					$desc = get_field( 'mo_ta_ngan_tin_tuc', get_the_ID() );
-			?>
-					<div class="hn-tasmania-ttm-item">
-						<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="hn-tasmania-ttm-item-image">
-							<img src="<?php echo esc_url( $featured_img ); ?>" alt="<?php the_title_attribute(); ?>" title="<?php the_title_attribute(); ?>" loading="lazy" decoding="async" fetchpriority="low" />
-						</a>
-						<div class="hn-tasmania-ttm-item-content">
-							<div class="hn-tasmania-tintuc-date">
-								<div class="hn-tasmania-tintuc-date-image">
-									<img src="/wp-content/uploads/2025/10/clock.svg" alt="Ngày đăng" title="Ngày đăng" loading="lazy" decoding="async" fetchpriority="low" />
-								</div>
-								<p class="hn-tasmania-date"><?php echo get_the_date( 'd/m/Y' ); ?></p>
-								<div class="hn-tasmania-tintuc-date-line"></div>
-								<p><?php echo function_exists('pll__') ? pll__('TIN MỚI') : 'TIN MỚI'; ?></p>
-							</div>
-							<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
-								<h3 class="small-h3"><?php the_title(); ?></h3>
-							</a>
-							<p class="desc-text"><?php echo wp_kses_post( $desc ? $desc : get_the_excerpt() ); ?></p>
-							<a class="hn-tasmania-tintuc-cta" href="<?php the_permalink(); ?>" title="Xem chi tiết">
-								<div class="hn-tasmania-tintuc-cta-icon">
-									<img src="/wp-content/uploads/2025/10/arrow-right-red.svg" alt="Xem chi tiết" title="Xem chi tiết" loading="lazy" decoding="async" fetchpriority="low" />
-								</div>
-								<?php echo function_exists('pll__') ? pll__('XEM CHI TIẾT') : 'XEM CHI TIẾT'; ?>
-							</a>
-						</div>
-					</div>
-			<?php
-				endwhile;
-				wp_reset_postdata();
-			endif;
-			?>
-		</div>
-	</div>
-</div>
-	
-<div class="container">
-	<!-- Section Tất cả tin tức -->
-	<div class="hn-tasmania-tt">
-		<div class="hn-tasmania-ttm-title">
-			<h2 class="equalh3"><?php echo function_exists('pll__') ? pll__('Tất cả tin tức') : 'Tất cả tin tức'; ?></h2>
-			<div class="line"></div>
-		</div>
-		<div class="hn-tasmania-tt-grid">
-			<?php
-			$grid_args = array(
-				'post_type'      => 'post',
-				'posts_per_page' => 6,
-				'paged'          => 1,
-				'post_status'    => 'publish',
-				'orderby'        => 'date',
-				'order'          => 'DESC',
-			);
-			if ( $category_id > 0 ) {
-				$grid_args['cat'] = $category_id;
-			}
-			$grid_query = new WP_Query( $grid_args );
-
-			if ( $grid_query->have_posts() ) :
-				$i = 0;
-				while ( $grid_query->have_posts() ) : $grid_query->the_post();
-					$featured_img = get_the_post_thumbnail_url( get_the_ID() );
-					if ( ! $featured_img ) {
-						$featured_img = get_template_directory_uri() . '/images/default.jpg';
-					}
-					$desc = get_field( 'mo_ta_ngan_tin_tuc', get_the_ID() );
-					$has_tin_noi_bat = has_term( '', 'tin-noi-bat' );
-					$column_class = ( $i % 3 == 0 ) ? 'first-column' : '';
-				?>
-					<div class="hn-tasmania-tt-grid-item <?php echo esc_attr( $column_class ); ?>">
-						<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="hn-tasmania-tt-grid-item-image">
-							<img src="<?php echo esc_url( $featured_img ); ?>" alt="<?php the_title_attribute(); ?>" title="<?php the_title_attribute(); ?>" loading="lazy" decoding="async" fetchpriority="low" />
-						</a>
-						<div class="hn-tasmania-tt-grid-item-content">
-							<div class="hn-tasmania-tintuc-date">
-								<div class="hn-tasmania-tintuc-date-image">
-									<img src="/wp-content/uploads/2025/10/clock.svg" alt="Ngày đăng" title="Ngày đăng" loading="lazy" decoding="async" fetchpriority="low" />
-								</div>
-								<p class="hn-tasmania-date"><?php echo get_the_date( 'd/m/Y' ); ?></p>
-								<?php if ( $has_tin_noi_bat ) : ?>
-									<div class="hn-tasmania-tintuc-date-line"></div>
-									<p><?php echo function_exists('pll__') ? pll__('TIN NỔI BẬT') : 'TIN NỔI BẬT'; ?></p>
-								<?php endif; ?>
-							</div>
-							<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
-								<h3 class="small-h3"><?php the_title(); ?></h3>
-							</a>
-							<div class="desc-text"><?php echo wp_kses_post( $desc ? $desc : get_the_excerpt() ); ?></div>
-							<a class="hn-tasmania-tintuc-cta" href="<?php the_permalink(); ?>" title="Xem chi tiết">
-								<div class="hn-tasmania-tintuc-cta-icon">
-									<img src="/wp-content/uploads/2025/10/arrow-right-red.svg" alt="Xem chi tiết" title="Xem chi tiết" loading="lazy" decoding="async" fetchpriority="low" />
-								</div>
-								<?php echo function_exists('pll__') ? pll__('XEM CHI TIẾT') : 'XEM CHI TIẾT'; ?>
-							</a>
-						</div>
-					</div>
-				<?php
-					$i++;
-				endwhile;
-				wp_reset_postdata();
-			endif; ?>
-		</div>
-
-        <!-- Load More Button -->
-        <?php if ( $grid_query->have_posts() && $grid_query->max_num_pages > 1 ) : ?>
-        <div class="load-more-container">
-            <button class="load-more-btn" id="load-more-news"><?php echo function_exists('pll__') ? pll__('Xem thêm') : 'Xem thêm'; ?></button>
+<!-- ===== START SECTION BREADCRUMB ===== -->
+<section class="mbland_tintucTemplate_breadcrumb">
+    <div class="container">
+        <div class="mbland_tintucTemplate_breadcrumb_wrapper">
+            <?php echo do_shortcode('[hn_breadcrumb]'); ?>
         </div>
-        <?php endif; ?>
-	</div>
-</div>
-<?php endif; ?>
+    </div>
 </section>
+<!-- ===== END SECTION BREADCRUMB ===== -->
 
-<?php add_action('wp_footer', function () use ( $category_slug ) { ?>
-<script>
-jQuery(document).ready(function($) {
-    var currentPage = 1;
-    var currentCat = '<?php echo esc_js( $category_slug ); ?>';
+<!-- ===== START SECTION POST ===== -->
+<section class="mbland_tintucTemplate_post">
+    <div class="container">
+        <div class="mbland_tintucTemplate_post_wrapper">
+            
+            <!-- 1. Tin nổi bật (Featured Post) -->
+            <div class="mbland_tintucTemplate_post_featuredPost">
+                <?php
+                $tnb_args = array(
+                    'post_type'      => 'post',
+                    'posts_per_page' => 1,
+                    'post_status'    => 'publish',
+                    'orderby'        => 'date',
+                    'order'          => 'DESC',
+                );
 
-    $('#load-more-news').on('click', function() {
-        var btn = $(this);
-        if (btn.hasClass('loading')) return;
-
-        btn.addClass('loading').text('<?php echo function_exists('pll__') ? esc_js( pll__('Đang tải...') ) : 'Đang tải...'; ?>');
-        currentPage++;
-
-        $.ajax({
-            url: '<?php echo admin_url('admin-ajax.php'); ?>',
-            type: 'POST',
-            dataType: 'json',
-            data: {
-                action: 'load_news',
-                page: currentPage,
-                cat: currentCat
-            },
-            success: function(res) {
-                if (res.html) {
-                    $('.hn-tasmania-tt-grid').append(res.html);
+                if ( $category_id > 0 ) {
+                    $tnb_args['tax_query'] = array(
+                        'relation' => 'AND',
+                        array(
+                            'taxonomy' => 'tin-noi-bat',
+                            'field'    => 'slug',
+                            'terms'    => 'tin-noi-bat',
+                        ),
+                        array(
+                            'taxonomy' => 'category',
+                            'field'    => 'term_id',
+                            'terms'    => $category_id,
+                        ),
+                    );
+                } else {
+                    $tnb_args['tax_query'] = array(
+                        array(
+                            'taxonomy' => 'tin-noi-bat',
+                            'field'    => 'slug',
+                            'terms'    => 'tin-noi-bat',
+                        ),
+                    );
                 }
 
-                if (!res.has_more) {
-                    btn.hide();
-                }
+                $tnb_query = new WP_Query( $tnb_args );
 
-                btn.removeClass('loading').text('<?php echo function_exists('pll__') ? esc_js( pll__('Xem thêm') ) : 'Xem thêm'; ?>');
-            },
-            error: function() {
-                btn.removeClass('loading').text('<?php echo function_exists('pll__') ? esc_js( pll__('Xem thêm') ) : 'Xem thêm'; ?>');
-                alert('Có lỗi xảy ra, vui lòng thử lại.');
-            }
-        });
-    });
-});
-</script>
-<?php }, 99); ?>
+                if ( $tnb_query->have_posts() ) :
+                    while ( $tnb_query->have_posts() ) : $tnb_query->the_post();
+                        $featured_img = get_the_post_thumbnail_url( get_the_ID(), 'large' );
+                        if ( ! $featured_img ) {
+                            $featured_img = get_template_directory_uri() . '/images/default.jpg';
+                        }
+                        $desc = get_field( 'mo_ta_ngan_tin_tuc', get_the_ID() );
+                        $has_tin_noi_bat = has_term( '', 'tin-noi-bat' );
+                ?>
+                <article class="mbland_tintucTemplate_featuredCard">
+                    <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="mbland_tintucTemplate_featuredCard_thumb">
+                        <img class="mbland_tintucTemplate_featuredCard_img" src="<?php echo esc_url( $featured_img ); ?>" alt="<?php the_title_attribute(); ?>" title="<?php the_title_attribute(); ?>" loading="lazy" decoding="async" fetchpriority="low" />
+                    </a>								
+                    <div class="mbland_tintucTemplate_featuredCard_content">
+                        <div class="mbland_tintucTemplate_featuredCard_meta">
+                            <span class="mbland_tintucTemplate_featuredCard_metaIcon">
+                                <img src="/wp-content/uploads/2025/10/clock.svg" alt="Ngày đăng" title="Ngày đăng" loading="lazy" decoding="async" fetchpriority="low" />
+                            </span>
+                            <span class="mbland_tintucTemplate_featuredCard_date"><?php echo get_the_date( 'd/m/Y' ); ?></span>
+                            <?php if ( $has_tin_noi_bat ) : ?>
+                                <span class="mbland_tintucTemplate_featuredCard_metaDivider"></span>
+                                <span class="mbland_tintucTemplate_featuredCard_badge"><?php echo function_exists('pll__') ? pll__('TIN NỔI BẬT') : 'TIN NỔI BẬT'; ?></span>
+                            <?php endif; ?>
+                        </div>
+                        <h2 class="mbland_tintucTemplate_featuredCard_title">
+                            <a href="<?php the_permalink(); ?>" class="mbland_tintucTemplate_featuredCard_titleLink" title="<?php the_title_attribute(); ?>">
+                                <?php the_title(); ?>
+                            </a>
+                        </h2>
+                        <div class="mbland_tintucTemplate_featuredCard_desc"><?php echo wp_kses_post( $desc ? $desc : get_the_excerpt() ); ?></div>
+                        <a class="mbland_tintucTemplate_featuredCard_cta" href="<?php the_permalink(); ?>" title="Xem chi tiết">
+                            <span class="mbland_tintucTemplate_featuredCard_ctaIcon">
+                                <img src="/wp-content/uploads/2025/10/arrow-right-red.svg" alt="Xem chi tiết" title="Xem chi tiết" loading="lazy" decoding="async" fetchpriority="low" />
+                            </span>
+                            <span class="mbland_tintucTemplate_featuredCard_ctaLabel"><?php echo function_exists('pll__') ? pll__('XEM CHI TIẾT') : 'XEM CHI TIẾT'; ?></span>
+                        </a>
+                    </div>
+                </article>
+                <?php
+                    endwhile;
+                    wp_reset_postdata();
+                endif;
+                ?>
+            </div>
+
+            <!-- 2. Tin mới (New Post) -->
+            <div class="mbland_tintucTemplate_post_newPost">
+                <div class="mbland_tintucTemplate_newPost_list">
+                    <?php
+                    $ttm_args = array(
+                        'post_type'      => 'post',
+                        'posts_per_page' => 2,
+                        'post_status'    => 'publish',
+                        'orderby'        => 'date',
+                        'order'          => 'DESC',
+                    );
+
+                    if ( $category_id > 0 ) {
+                        $ttm_args['cat'] = $category_id;
+                    }
+
+                    $ttm_query = new WP_Query( $ttm_args );
+
+                    if ( $ttm_query->have_posts() ) :
+                        while ( $ttm_query->have_posts() ) : $ttm_query->the_post();
+                            $featured_img = get_the_post_thumbnail_url( get_the_ID(), 'medium_large' );
+                            if ( ! $featured_img ) {
+                                $featured_img = get_template_directory_uri() . '/images/default.jpg';
+                            }
+                            $desc = get_field( 'mo_ta_ngan_tin_tuc', get_the_ID() );
+                    ?>
+                    <article class="mbland_tintucTemplate_newCard">
+                        <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="mbland_tintucTemplate_newCard_thumb">
+                            <img class="mbland_tintucTemplate_newCard_img" src="<?php echo esc_url( $featured_img ); ?>" alt="<?php the_title_attribute(); ?>" title="<?php the_title_attribute(); ?>" loading="lazy" decoding="async" fetchpriority="low" />
+                        </a>
+                        <div class="mbland_tintucTemplate_newCard_content">
+                            <div class="mbland_tintucTemplate_newCard_meta">
+                                <span class="mbland_tintucTemplate_newCard_metaIcon">
+                                    <img src="/wp-content/uploads/2025/10/clock.svg" alt="Ngày đăng" title="Ngày đăng" loading="lazy" decoding="async" fetchpriority="low" />
+                                </span>
+                                <span class="mbland_tintucTemplate_newCard_date"><?php echo get_the_date( 'd/m/Y' ); ?></span>
+                                <span class="mbland_tintucTemplate_newCard_metaDivider"></span>
+                                <span class="mbland_tintucTemplate_newCard_badge"><?php echo function_exists('pll__') ? pll__('TIN MỚI') : 'TIN MỚI'; ?></span>
+                            </div>
+                            <h3 class="mbland_tintucTemplate_newCard_title">
+                                <a href="<?php the_permalink(); ?>" class="mbland_tintucTemplate_newCard_titleLink" title="<?php the_title_attribute(); ?>">
+                                    <?php the_title(); ?>
+                                </a>
+                            </h3>
+                            <div class="mbland_tintucTemplate_newCard_desc"><?php echo wp_kses_post( $desc ? $desc : get_the_excerpt() ); ?></div>
+                            <a class="mbland_tintucTemplate_newCard_cta" href="<?php the_permalink(); ?>" title="Xem chi tiết">
+                                <span class="mbland_tintucTemplate_newCard_ctaIcon">
+                                    <img src="/wp-content/uploads/2025/10/arrow-right-red.svg" alt="Xem chi tiết" title="Xem chi tiết" loading="lazy" decoding="async" fetchpriority="low" />
+                                </span>
+                                <span class="mbland_tintucTemplate_newCard_ctaLabel"><?php echo function_exists('pll__') ? pll__('XEM CHI TIẾT') : 'XEM CHI TIẾT'; ?></span>
+                            </a>
+                        </div>
+                    </article>
+                    <?php
+                        endwhile;
+                        wp_reset_postdata();
+                    endif;
+                    ?>
+                </div>
+            </div>
+
+            <!-- 3. Danh sách bài viết & Danh mục & Phân trang (List Post) -->
+            <div class="mbland_tintucTemplate_post_listPost">
+                
+                <!-- Danh mục lọc -->
+                <ul class="mbland_tintucTemplate_post_listPostCategories">
+                    <li class="mbland_tintucTemplate_post_listPostCategoriesItem">
+                        <a href="<?php echo esc_url( home_url('/tin-tuc/') ); ?>" class="mbland_tintucTemplate_post_listPostCategoriesLink <?php echo ( $category_id === 0 ) ? 'active' : ''; ?>">
+                            <?php echo function_exists('pll__') ? pll__('Tất cả') : 'Tất cả'; ?>
+                        </a>
+                    </li>
+                    <?php
+                    $all_categories = get_categories( array(
+                        'hide_empty' => true,
+                        'orderby'    => 'name',
+                        'order'      => 'ASC',
+                    ) );
+                    if ( ! empty( $all_categories ) ) :
+                        foreach ( $all_categories as $cat ) :
+                            $is_active = ( $category_id === $cat->term_id ) ? 'active' : '';
+                    ?>
+                    <li class="mbland_tintucTemplate_post_listPostCategoriesItem">
+                        <a href="<?php echo esc_url( get_term_link( $cat ) ); ?>" class="mbland_tintucTemplate_post_listPostCategoriesLink <?php echo esc_attr( $is_active ); ?>">
+                            <?php echo esc_html( $cat->name ); ?>
+                        </a>
+                    </li>
+                    <?php
+                        endforeach;
+                    endif;
+                    ?>
+                </ul>
+
+                <!-- Grid bài viết -->
+                <div class="mbland_tintucTemplate_post_listPostGrid">
+                    <?php
+                    $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : ( ( get_query_var( 'page' ) ) ? get_query_var( 'page' ) : 1 );
+                    $grid_args = array(
+                        'post_type'      => 'post',
+                        'posts_per_page' => 9,
+                        'paged'          => $paged,
+                        'post_status'    => 'publish',
+                        'orderby'        => 'date',
+                        'order'          => 'DESC',
+                    );
+                    if ( $category_id > 0 ) {
+                        $grid_args['cat'] = $category_id;
+                    }
+                    $grid_query = new WP_Query( $grid_args );
+
+                    if ( $grid_query->have_posts() ) :
+                        while ( $grid_query->have_posts() ) : $grid_query->the_post();
+                            $featured_img = get_the_post_thumbnail_url( get_the_ID(), 'medium_large' );
+                            if ( ! $featured_img ) {
+                                $featured_img = get_template_directory_uri() . '/images/default.jpg';
+                            }
+                            $desc = get_field( 'mo_ta_ngan_tin_tuc', get_the_ID() );
+                            $has_tin_noi_bat = has_term( '', 'tin-noi-bat' );
+                    ?>
+                    <article class="mbland_tintucTemplate_postCard">
+                        <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="mbland_tintucTemplate_postCard_thumb">
+                            <img class="mbland_tintucTemplate_postCard_img" src="<?php echo esc_url( $featured_img ); ?>" alt="<?php the_title_attribute(); ?>" title="<?php the_title_attribute(); ?>" loading="lazy" decoding="async" fetchpriority="low" />
+                        </a>
+                        <div class="mbland_tintucTemplate_postCard_content">
+                            <div class="mbland_tintucTemplate_postCard_meta">
+                                <span class="mbland_tintucTemplate_postCard_metaIcon">
+                                    <img src="/wp-content/uploads/2025/10/clock.svg" alt="Ngày đăng" title="Ngày đăng" loading="lazy" decoding="async" fetchpriority="low" />
+                                </span>
+                                <span class="mbland_tintucTemplate_postCard_date"><?php echo get_the_date( 'd/m/Y' ); ?></span>
+                                <?php if ( $has_tin_noi_bat ) : ?>
+                                    <span class="mbland_tintucTemplate_postCard_metaDivider"></span>
+                                    <span class="mbland_tintucTemplate_postCard_badge"><?php echo function_exists('pll__') ? pll__('TIN NỔI BẬT') : 'TIN NỔI BẬT'; ?></span>
+                                <?php endif; ?>
+                            </div>
+                            <h3 class="mbland_tintucTemplate_postCard_title">
+                                <a href="<?php the_permalink(); ?>" class="mbland_tintucTemplate_postCard_titleLink" title="<?php the_title_attribute(); ?>">
+                                    <?php the_title(); ?>
+                                </a>
+                            </h3>
+                            <div class="mbland_tintucTemplate_postCard_desc"><?php echo wp_kses_post( $desc ? $desc : get_the_excerpt() ); ?></div>
+                            <a class="mbland_tintucTemplate_postCard_cta" href="<?php the_permalink(); ?>" title="Xem chi tiết">
+                                <span class="mbland_tintucTemplate_postCard_ctaIcon">
+                                    <img src="/wp-content/uploads/2025/10/arrow-right-red.svg" alt="Xem chi tiết" title="Xem chi tiết" loading="lazy" decoding="async" fetchpriority="low" />
+                                </span>
+                                <span class="mbland_tintucTemplate_postCard_ctaLabel"><?php echo function_exists('pll__') ? pll__('XEM CHI TIẾT') : 'XEM CHI TIẾT'; ?></span>
+                            </a>
+                        </div>
+                    </article>
+                    <?php
+                        endwhile;
+                        wp_reset_postdata();
+                    else :
+                        echo '<p class="mbland_tintucTemplate_noPosts">' . ( function_exists('pll__') ? pll__('Chưa có bài viết nào.') : 'Chưa có bài viết nào.' ) . '</p>';
+                    endif;
+                    ?>
+                </div>
+
+                <!-- Phân trang (Pagination) -->
+                <?php if ( $grid_query->max_num_pages > 1 ) : ?>
+                <div class="mbland_tintucTemplate_post_listPostPagination">
+                    <?php
+                    $big = 999999999;
+                    echo paginate_links( array(
+                        'base'      => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+                        'format'    => '?paged=%#%',
+                        'current'   => max( 1, $paged ),
+                        'total'     => $grid_query->max_num_pages,
+                        'prev_text' => '<svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.5 11L1.5 6L6.5 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+                        'next_text' => '<svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 1L6.5 6L1.5 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+                        'type'      => 'list',
+                    ) );
+                    ?>
+                </div>
+                <?php endif; ?>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- ===== END SECTION POST ===== -->
 
 <?php get_footer(); ?>

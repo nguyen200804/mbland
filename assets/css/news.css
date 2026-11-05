@@ -1,19 +1,23 @@
 .hn-tasmania-tintuc .container:first-child {
   padding-top: 10px;
 }
+
 .hn-tasmania-tintuc-date {
   display: flex;
   align-items: center;
   gap: 10px;
 }
+
 .hn-tasmania-tintuc-date-image {
   display: flex;
   align-items: center;
 }
+
 .hn-tasmania-tintuc-date-image img {
   width: 15px;
   height: 15px;
 }
+
 .hn-tasmania-tintuc-date p {
   font-size: 15px;
   color: var(--color-02);
@@ -21,11 +25,13 @@
   font-weight: 500;
   font-family: "FZPoppins", "GanhType", sans-serif;
 }
+
 .hn-tasmania-tintuc-date-line {
   height: 20px;
   width: 1px;
   border-left: 1px solid var(--color-02);
 }
+
 .hn-tasmania-tintuc-cta {
   display: flex;
   width: 180px;
@@ -37,10 +43,14 @@
   font-weight: 600;
   height: 43px;
   border-radius: 50px;
-  position: relative; /* Để ::before absolute */
-  overflow: hidden; /* Ẩn phần background thừa */
-  transition: color 0.2s ease; /* Chỉ transition color cho text */
+  position: relative;
+  /* Để ::before absolute */
+  overflow: hidden;
+  /* Ẩn phần background thừa */
+  transition: color 0.2s ease;
+  /* Chỉ transition color cho text */
 }
+
 .hn-tasmania-tintuc-cta::before {
   content: "";
   position: absolute;
@@ -53,8 +63,10 @@
   transform: scaleX(0);
   transform-origin: left center;
   transition: transform 0.5s ease;
-  z-index: -1; /* Đặt sau text và icon */
+  z-index: -1;
+  /* Đặt sau text và icon */
 }
+
 .hn-tasmania-tintuc-cta-icon {
   width: 40px;
   height: 40px;
@@ -70,46 +82,57 @@
   color: var(--color-09);
   justify-content: center;
 }
+
 .hn-tasmania-tintuc-cta:hover::before {
-  transform: scaleX(1); /* Background hiện từ trái qua phải */
+  transform: scaleX(1);
+  /* Background hiện từ trái qua phải */
 }
+
 .hn-tasmania-tintuc-cta:hover {
   gap: 0;
 }
+
 .hn-tasmania-tintuc-cta:hover .hn-tasmania-tintuc-cta-icon {
   opacity: 0;
   width: 0;
 }
 
 .page-title {
-	margin-bottom: 0;
+  margin-bottom: 0;
 }
+
 .page-header p {
-	margin-bottom: 15px;
+  margin-bottom: 15px;
 }
+
 /* ================== TIN NỔI BẬT =====================*/
 .hn-tasmania-tnb-item {
   display: flex;
   align-items: center;
   gap: 30px;
 }
+
 .hn-tasmania-tnb-item-content {
   flex: 1;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
+
 .hn-tasmania-tnb-item-content h3 {
   font-weight: 600;
   display: -webkit-box;
-  -webkit-line-clamp: 2; /* Giới hạn 2 dòng */
+  -webkit-line-clamp: 2;
+  /* Giới hạn 2 dòng */
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 .hn-tasmania-tnb-item-content h3:hover {
   color: var(--color-01);
 }
+
 .hn-tasmania-tnb-item-image img {
   display: block;
   width: 700px;
@@ -128,66 +151,80 @@
   gap: 30px;
   grid-template-columns: repeat(2, 1fr);
 }
+
 .hn-tasmania-ttm-title {
   display: flex;
   align-items: center;
   gap: 40px;
   margin-bottom: 20px;
 }
+
 .hn-tasmania-ttm-title h2 {
   white-space: nowrap;
 }
+
 .hn-tasmania-ttm-title .line {
   width: 100%;
   height: 1px;
   border-top: 1px solid var(--color-06);
 }
+
 .hn-tasmania-ttm-item {
   display: flex;
   align-items: center;
   gap: 20px;
   flex: 1;
 }
+
 .hn-tasmania-ttm-item .hn-tasmania-ttm-item-image {
   width: 100%;
 }
+
 .hn-tasmania-ttm-item .hn-tasmania-ttm-item-image,
 .hn-tasmania-ttm-item .hn-tasmania-ttm-item-content {
   flex: 1;
 }
+
 /* ================== TIN TỨC MỚI & GRID (tương tự tnb nhưng grid là column) =====================*/
 .hn-tasmania-tt-grid-item {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
+
 .hn-tasmania-ttm-item-content,
 .hn-tasmania-tt-grid-item-content {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
+
 .hn-tasmania-ttm-item-image img,
 .hn-tasmania-tt-grid-item-image img {
   display: block;
   width: 100%;
   object-fit: cover;
-  height: 240px; /* Chiều cao cố định cho grid nếu cần */
+  height: 240px;
+  /* Chiều cao cố định cho grid nếu cần */
 }
+
 .hn-tasmania-ttm-item-content h3,
 .hn-tasmania-tt-grid-item-content h3 {
   font-weight: 600;
   margin: 0;
   display: -webkit-box;
-  -webkit-line-clamp: 2; /* Giới hạn 2 dòng */
+  -webkit-line-clamp: 2;
+  /* Giới hạn 2 dòng */
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 .hn-tasmania-ttm-item-content h3:hover,
 .hn-tasmania-tt-grid-item-content h3:hover {
   color: var(--color-02);
 }
+
 .hn-tasmania-tabs-list {
   display: flex;
   align-items: center;
@@ -195,6 +232,7 @@
   gap: 20px;
   margin-bottom: 30px;
 }
+
 .hn-tasmania-tab-item {
   display: flex;
   align-items: center;
@@ -203,46 +241,59 @@
   border-radius: 50px;
   border: 1px solid var(--color-05);
 }
+
 .hn-tasmania-tab-item:hover {
   background: var(--color-02);
   border: none;
 }
+
 .hn-tasmania-tab-item:hover a {
   color: var(--color-09);
 }
+
 .hn-tasmania-tab-item.active {
   background: var(--color-02);
   border: none;
 }
+
 .hn-tasmania-tab-item.active a {
   color: var(--color-09);
 }
+
 .hn-tasmania-tt-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
 }
+
 .hn-tasmania-tt-grid-item-image {
   overflow: hidden;
   width: 100%;
 }
+
 .hn-tasmania-tt-grid-item-image img {
   transition: 0.3s ease;
 }
+
 .hn-tasmania-tt-grid-item-image:hover img {
   transform: scale(1.1);
 }
+
 /* Ellipsis cho desc */
 .desc-text {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 2; /* Mặc định 2 dòng */
+  -webkit-line-clamp: 2;
+  /* Mặc định 2 dòng */
   -webkit-box-orient: vertical;
-  line-height: 1.4; /* Điều chỉnh để 1 dòng = khoảng 1.4em */
+  line-height: 1.4;
+  /* Điều chỉnh để 1 dòng = khoảng 1.4em */
 }
+
 .tnb-desc {
-  -webkit-line-clamp: 3; /* 3 dòng cho tin nổi bật */
+  -webkit-line-clamp: 3;
+  /* 3 dòng cho tin nổi bật */
 }
 
 /* 	Phan trang */
@@ -250,6 +301,7 @@
   text-align: center;
   margin-top: 30px;
 }
+
 .pagination-ajax .page-link {
   display: inline-block;
   padding: 8px 16px;
@@ -261,10 +313,12 @@
   font-weight: 500;
   transition: all 0.3s ease;
 }
+
 .pagination-ajax .page-link.is-active {
   background: var(--color-02);
   color: #fff;
 }
+
 .pagination-ajax .page-link.is-disabled {
   opacity: 0.5;
   pointer-events: none;
@@ -275,6 +329,7 @@
   text-align: center;
   margin-top: 40px;
 }
+
 .load-more-btn {
   background: #f9f4ea;
   color: #656565;
@@ -287,10 +342,12 @@
   transition: all 0.3s ease;
   font-size: 16px;
 }
+
 .load-more-btn:hover {
   background: var(--color-02);
   color: #fff;
 }
+
 .load-more-btn.loading {
   opacity: 0.7;
   pointer-events: none;
@@ -300,9 +357,11 @@
   .hn-tasmania-ttm-item {
     flex-direction: column;
   }
+
   .hn-tasmania-tnb-item {
     flex-direction: column;
   }
+
   .hn-tasmania-tnb-item-image img {
     display: block;
     width: 100%;
@@ -311,16 +370,19 @@
     object-fit: cover;
   }
 }
+
 @media (max-width: 1024px) {
   .hn-tasmania-tt-grid {
     grid-template-columns: 1fr 1fr;
   }
 }
+
 @media (max-width: 768px) {
   .hn-tasmania-ttm-wrapper {
     display: flex;
     flex-direction: column;
   }
+
   .hn-tasmania-ttm-item {
     flex-direction: row;
   }
@@ -330,7 +392,159 @@
   .hn-tasmania-ttm-item {
     flex-direction: column;
   }
+
   .hn-tasmania-tt-grid {
     grid-template-columns: 1fr;
   }
 }
+
+
+/* ==========================================================================
+   TIN TỨC TEMPLATE (mbland_tintucTemplate)
+   ========================================================================== */
+
+/* ===== START SECTION BREADCRUMB ===== */
+.mbland_tintucTemplate_breadcrumb {}
+
+.mbland_tintucTemplate_breadcrumb_wrapper {}
+
+/* ===== END SECTION BREADCRUMB ===== */
+
+
+/* ===== START SECTION POST ===== */
+.mbland_tintucTemplate_post {}
+
+.mbland_tintucTemplate_post_wrapper {}
+
+
+/* --- 1. Featured Post (Tin nổi bật) --- */
+.mbland_tintucTemplate_post_featuredPost {}
+
+.mbland_tintucTemplate_featuredCard {}
+
+.mbland_tintucTemplate_featuredCard_thumb {}
+
+.mbland_tintucTemplate_featuredCard_img {}
+
+.mbland_tintucTemplate_featuredCard_content {}
+
+.mbland_tintucTemplate_featuredCard_meta {}
+
+.mbland_tintucTemplate_featuredCard_metaIcon {}
+
+.mbland_tintucTemplate_featuredCard_date {}
+
+.mbland_tintucTemplate_featuredCard_metaDivider {}
+
+.mbland_tintucTemplate_featuredCard_badge {}
+
+.mbland_tintucTemplate_featuredCard_title {}
+
+.mbland_tintucTemplate_featuredCard_titleLink {}
+
+.mbland_tintucTemplate_featuredCard_desc {}
+
+.mbland_tintucTemplate_featuredCard_cta {}
+
+.mbland_tintucTemplate_featuredCard_ctaIcon {}
+
+.mbland_tintucTemplate_featuredCard_ctaLabel {}
+
+
+/* --- 2. New Post (Tin mới) --- */
+.mbland_tintucTemplate_post_newPost {}
+
+.mbland_tintucTemplate_newPost_list {}
+
+.mbland_tintucTemplate_newCard {}
+
+.mbland_tintucTemplate_newCard_thumb {}
+
+.mbland_tintucTemplate_newCard_img {}
+
+.mbland_tintucTemplate_newCard_content {}
+
+.mbland_tintucTemplate_newCard_meta {}
+
+.mbland_tintucTemplate_newCard_metaIcon {}
+
+.mbland_tintucTemplate_newCard_date {}
+
+.mbland_tintucTemplate_newCard_metaDivider {}
+
+.mbland_tintucTemplate_newCard_badge {}
+
+.mbland_tintucTemplate_newCard_title {}
+
+.mbland_tintucTemplate_newCard_titleLink {}
+
+.mbland_tintucTemplate_newCard_desc {}
+
+.mbland_tintucTemplate_newCard_cta {}
+
+.mbland_tintucTemplate_newCard_ctaIcon {}
+
+.mbland_tintucTemplate_newCard_ctaLabel {}
+
+
+/* --- 3. List Post (Danh mục, Grid & Phân trang) --- */
+.mbland_tintucTemplate_post_listPost {}
+
+/* Danh mục Tabs */
+.mbland_tintucTemplate_post_listPostCategories {}
+
+.mbland_tintucTemplate_post_listPostCategoriesItem {}
+
+.mbland_tintucTemplate_post_listPostCategoriesLink {}
+
+.mbland_tintucTemplate_post_listPostCategoriesLink.active {}
+
+/* Grid bài viết */
+.mbland_tintucTemplate_post_listPostGrid {}
+
+.mbland_tintucTemplate_postCard {}
+
+.mbland_tintucTemplate_postCard_thumb {}
+
+.mbland_tintucTemplate_postCard_img {}
+
+.mbland_tintucTemplate_postCard_content {}
+
+.mbland_tintucTemplate_postCard_meta {}
+
+.mbland_tintucTemplate_postCard_metaIcon {}
+
+.mbland_tintucTemplate_postCard_date {}
+
+.mbland_tintucTemplate_postCard_metaDivider {}
+
+.mbland_tintucTemplate_postCard_badge {}
+
+.mbland_tintucTemplate_postCard_title {}
+
+.mbland_tintucTemplate_postCard_titleLink {}
+
+.mbland_tintucTemplate_postCard_desc {}
+
+.mbland_tintucTemplate_postCard_cta {}
+
+.mbland_tintucTemplate_postCard_ctaIcon {}
+
+.mbland_tintucTemplate_postCard_ctaLabel {}
+
+.mbland_tintucTemplate_noPosts {}
+
+/* Phân trang Pagination */
+.mbland_tintucTemplate_post_listPostPagination {}
+
+.mbland_tintucTemplate_post_listPostPagination ul.page-numbers {}
+
+.mbland_tintucTemplate_post_listPostPagination ul.page-numbers li {}
+
+.mbland_tintucTemplate_post_listPostPagination .page-numbers {}
+
+.mbland_tintucTemplate_post_listPostPagination .page-numbers.current {}
+
+.mbland_tintucTemplate_post_listPostPagination .page-numbers:hover {}
+
+/* ===== END SECTION POST ===== */
