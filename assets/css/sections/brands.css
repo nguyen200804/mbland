@@ -18,5 +18,15 @@
 .mbland_brands_list {
   width: 100%;
 }
+
+@media (max-width: 1600px) {
+  .mbland_brands {
+    padding: 92px 0;
+  }
+
+  .mbland_brands_header {
+    max-width: 752px;
+  }
+}
 /* ===== END COMPONENT: BRANDS ===== */
 
