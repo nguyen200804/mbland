@@ -883,45 +883,115 @@ add_action('wp_head', 'custom_og_image', 5);
 
 
 /**
- * NOINDEX TOÀN SITE (dùng cho site dev/staging)
- * Đổi thành false khi muốn bật lại index.
+ * ============================================================================
+ * CÔNG CỤ ÉP NOINDEX & NOFOLLOW TOÀN DIỆN (Dùng cho môi trường Dev / Staging)
+ * ============================================================================
+ * Áp dụng triệt để cho:
+ * - Tất cả Post Types (post, page, custom post types: du-an, linh-vuc...)
+ * - Tất cả Taxonomies & Terms (category, post_tag, taxonomy custom...)
+ * - Tất cả Archives (date, author, post type archive, taxonomy archive...)
+ * - Tìm kiếm, 404, Trang chủ, Feeds, REST API và tệp tin qua HTTP Header.
+ * - Tương thích và ghi đè tất cả plugin SEO: Rank Math, Yoast SEO, AIOSEO, SEOPress...
+ * 
+ * Khi đưa lên Production/Live: Đổi HN_FORCE_NOINDEX thành false.
  */
 define( 'HN_FORCE_NOINDEX', true );
 
-if ( HN_FORCE_NOINDEX ) {
+if ( defined( 'HN_FORCE_NOINDEX' ) && HN_FORCE_NOINDEX ) {
 
-    // 1. WordPress core: tương đương tick "Discourage search engines"
-    add_filter( 'pre_option_blog_public', '__return_zero' );
-    add_filter( 'wp_robots', 'wp_robots_no_robots' );
+    // 1. Cấu hình WordPress Core: Ngăn bot tìm kiếm
+    add_filter( 'pre_option_blog_public', '__return_zero', 9999 );
 
-    // 2. Rank Math SEO
-    add_filter( 'rank_math/frontend/robots', function ( $robots ) {
-        $robots['index']  = 'noindex';
-        $robots['follow'] = 'nofollow';
-        return $robots;
-    }, 99 );
+    // 2. Chuẩn wp_robots của WordPress (áp dụng cho mọi post-type, taxonomy, archive...)
+    add_filter( 'wp_robots', function ( array $robots ) {
+        return array(
+            'noindex'   => true,
+            'nofollow'  => true,
+            'noarchive' => true,
+        );
+    }, 9999 );
 
-    // 3. Yoast SEO
-    add_filter( 'wpseo_robots', function () {
-        return 'noindex, nofollow';
-    }, 99 );
+    // 3. Fallback thẻ Meta trực tiếp trong <head> (ưu tiên 1, phòng theme/plugin không qua wp_robots)
+    remove_action( 'wp_head', 'noindex', 1 ); // Gỡ hàm mặc định của WP (vốn sinh noindex, follow)
+    add_action( 'wp_head', function () {
+        echo '<meta name="robots" content="noindex, nofollow, noarchive" />' . "\n";
+        echo '<meta name="googlebot" content="noindex, nofollow, noarchive" />' . "\n";
+        echo '<meta name="bingbot" content="noindex, nofollow, noarchive" />' . "\n";
+    }, 1 );
 
-    // 4. All in One SEO (AIOSEO)
-    add_filter( 'aioseo_robots_meta', function ( $robots ) {
-        $robots['noindex']  = true;
-        $robots['nofollow'] = true;
-        return $robots;
-    }, 99 );
+    // 4. HTTP Headers X-Robots-Tag (Chặn bot cấp server cho HTML, REST API, JSON, PDF, Media...)
+    add_filter( 'wp_headers', function ( array $headers ) {
+        $headers['X-Robots-Tag'] = 'noindex, nofollow, noarchive';
+        return $headers;
+    }, 9999 );
 
-    // 5. Header HTTP X-Robots-Tag (chặn cả file PDF, ảnh...)
     add_action( 'send_headers', function () {
-        header( 'X-Robots-Tag: noindex, nofollow, noarchive', true );
-    } );
+        if ( ! headers_sent() ) {
+            header( 'X-Robots-Tag: noindex, nofollow, noarchive', true );
+        }
+    }, 9999 );
 
-    // 6. robots.txt ảo của WordPress
+    // 5. Ghi đè Rank Math SEO
+    add_filter( 'rank_math/frontend/robots', function ( $robots ) {
+        if ( ! is_array( $robots ) ) {
+            $robots = array();
+        }
+        $robots['index']     = 'noindex';
+        $robots['follow']    = 'nofollow';
+        $robots['noarchive'] = 'noarchive';
+        return $robots;
+    }, 9999 );
+    add_filter( 'rank_math/sitemap/enable', '__return_false', 9999 );
+
+    // 6. Ghi đè Yoast SEO
+    add_filter( 'wpseo_robots', function () {
+        return 'noindex, nofollow, noarchive';
+    }, 9999 );
+    add_filter( 'wpseo_robots_array', function () {
+        return array(
+            'index'   => 'noindex',
+            'follow'  => 'nofollow',
+            'archive' => 'noarchive',
+        );
+    }, 9999 );
+    add_filter( 'wpseo_googlebot', function () {
+        return 'noindex, nofollow';
+    }, 9999 );
+    add_filter( 'wpseo_bingbot', function () {
+        return 'noindex, nofollow';
+    }, 9999 );
+    add_filter( 'wpseo_enable_xml_sitemap', '__return_false', 9999 );
+
+    // 7. Ghi đè All in One SEO (AIOSEO)
+    add_filter( 'aioseo_robots_meta', function ( $robots ) {
+        if ( ! is_array( $robots ) ) {
+            $robots = array();
+        }
+        $robots['noindex']   = true;
+        $robots['nofollow']  = true;
+        $robots['noarchive'] = true;
+        return $robots;
+    }, 9999 );
+
+    // 8. Ghi đè SEOPress & The SEO Framework (nếu có dùng)
+    add_filter( 'seopress_titles_robots', function () {
+        return 'noindex, nofollow, noarchive';
+    }, 9999 );
+    add_filter( 'the_seo_framework_robots_meta_array', function () {
+        return array(
+            'noindex'   => 'noindex',
+            'nofollow'  => 'nofollow',
+            'noarchive' => 'noarchive',
+        );
+    }, 9999 );
+
+    // 9. Tắt XML Sitemaps mặc định của WordPress (ngăn bot quét danh mục post types/taxonomies)
+    add_filter( 'wp_sitemaps_enabled', '__return_false', 9999 );
+
+    // 10. robots.txt ảo của WordPress chặn toàn bộ bot
     add_filter( 'robots_txt', function () {
         return "User-agent: *\nDisallow: /\n";
-    }, 99 );
+    }, 9999 );
 }
 
 
