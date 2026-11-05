@@ -174,20 +174,42 @@ a.hn-tasmania-cta-btn:hover {
   background-color: #970a21;
 }
 
-@media (max-width: 1560px) {
+
+@media (max-width: 1600px) {
   .container {
-    /* padding: 60px 60px; */
+    max-width: 1320px;
+  }
+}
+
+@media (max-width: 1400px) {}
+
+
+@media (max-width: 1200px) {
+  .container {
+    padding-inline: 32px;
+  }
+}
+
+@media (max-width: 996px) {
+  .container {
+    padding-inline: 28px;
   }
 }
 
 @media (max-width: 768px) {
   .container {
-    /* padding: 30px 40px; */
+    padding-inline: 24px;
   }
 }
 
 @media (max-width: 576px) {
   .container {
-    /* padding: 30px 10px; */
+    padding-inline: 20px;
+  }
+}
+
+@media (max-width: 425px) {
+  .container {
+    padding-inline: 16px;
   }
 }
