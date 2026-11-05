@@ -120,144 +120,6 @@
   width: 100%;
 }
 
-/* --- Responsive Section About --- */
-@media (max-width: 1600px) {
-  .mbland_homepage_about .container {
-    gap: 28px;
-    padding-top: 73px;
-    padding-bottom: 55px;
-  }
-
-  .mbland_homepage_about_title {
-    gap: 22px;
-  }
-
-  .mbland_homepage_about_titleFirst {
-    gap: 18px;
-  }
-
-  .mbland_homepage_about_titleFirst .mbland_homepage_about_titleImage {
-    font-size: 92px;
-  }
-
-  .mbland_homepage_about_titleSecond {
-    font-size: 73px;
-  }
-
-  .mbland_homepage_about_desc {
-    width: 304px;
-  }
-
-  .mbland_homepage_about_desc .mbland_homepage_about_descTitle {
-    font-size: 18px;
-    margin-bottom: 11px;
-  }
-
-  .mbland_homepage_about_scrollToExplore {
-    left: -86px;
-  }
-
-  .mbland_homepage_about_scrollToExplore img {
-    width: 92px;
-  }
-}
-
-@media (max-width: 1400px) {
-  .mbland_homepage_about .container {
-    gap: 25px;
-    padding-top: 64px;
-    padding-bottom: 48px;
-  }
-
-  .mbland_homepage_about_title {
-    gap: 19px;
-  }
-
-  .mbland_homepage_about_title span {
-    font-size: 5em;
-  }
-
-  .mbland_homepage_about_titleFirst {
-    gap: 16px;
-  }
-
-  .mbland_homepage_about_titleFirst .mbland_homepage_about_titleImage {
-    font-size: 81px;
-  }
-
-  .mbland_homepage_about_titleSecond {
-    font-size: 64px;
-  }
-
-  .mbland_homepage_about_desc {
-    width: 266px;
-  }
-
-  .mbland_homepage_about_desc .mbland_homepage_about_descTitle {
-    font-size: 16px;
-    margin-bottom: 10px;
-  }
-
-  .mbland_homepage_about_scrollToExplore {
-    left: -75px;
-  }
-
-  .mbland_homepage_about_scrollToExplore img {
-    width: 81px;
-  }
-}
-
-@media (max-width: 1200px) {
-  .mbland_homepage_about_title span {
-    font-size: 4em;
-  }
-
-  .mbland_homepage_about .container {
-    flex-direction: column;
-  }
-
-  .mbland_homepage_about_desc {
-    width: 70%;
-    align-self: flex-end;
-  }
-
-  .mbland_homepage_about_title {
-    width: 100%;
-  }
-}
-
-@media (max-width: 768px) {
-  .mbland_homepage_about_scrollToExplore {
-    left: 40px;
-    bottom: 60px;
-  }
-}
-
-@media (max-width: 576px) {
-  .mbland_homepage_about a.hn-tasmania-cta-btn {
-    display: none;
-  }
-
-  .mbland_homepage_about_desc {
-    width: 100%;
-  }
-
-  .mbland_homepage_about_scrollToExplore {
-    left: 0;
-    right: 0;
-    bottom: 0px;
-    width: 60px;
-    margin: 0 auto;
-  }
-
-  .mbland_homepage_about_scrollToExplore img {
-    width: 60px;
-  }
-
-  .mbland_homepage_about_titleImage {
-    width: 60%;
-  }
-}
 /* ===== END SECTION ABOUT ===== */
 
 
@@ -370,90 +232,6 @@
   padding-top: 16px;
 }
 
-/* --- Responsive Section Company --- */
-@media (max-width: 1600px) {
-  .mbland_homepage_company_showcase {
-    padding-bottom: 66px;
-  }
-
-  .mbland_homepage_company_introMedia {
-    margin-bottom: -330px;
-    padding: 0 18px 22px;
-  }
-
-  .mbland_homepage_company_introBody {
-    padding-top: 41px;
-  }
-
-  .mbland_homepage_company_showcaseBody {
-    height: 330px;
-  }
-
-  .mbland_homepage_company_introHeader {
-    padding: 11px;
-    border-radius: 0 110px 110px 0;
-    margin-left: -18px;
-    padding-left: 68px;
-  }
-
-  .mbland_homepage_company_introTitle {
-    font-size: 16.5px;
-  }
-
-  .mbland_homepage_company_introContent {
-    padding: 55px 0 55px 50px;
-  }
-
-  .mbland_homepage_company_introBrandName {
-    font-size: 16.5px;
-  }
-
-  .mbland_homepage_company_introDesc {
-    padding-top: 15px;
-  }
-}
-
-@media (max-width: 1400px) {
-  .mbland_homepage_company_showcase {
-    padding-bottom: 58px;
-  }
-
-  .mbland_homepage_company_introMedia {
-    margin-bottom: -289px;
-    padding: 0 16px 19px;
-  }
-
-  .mbland_homepage_company_introBody {
-    padding-top: 36px;
-  }
-
-  .mbland_homepage_company_showcaseBody {
-    height: 289px;
-  }
-
-  .mbland_homepage_company_introHeader {
-    padding: 10px;
-    border-radius: 0 96px 96px 0;
-    margin-left: -16px;
-    padding-left: 60px;
-  }
-
-  .mbland_homepage_company_introTitle {
-    font-size: 14.5px;
-  }
-
-  .mbland_homepage_company_introContent {
-    padding: 48px 0 48px 44px;
-  }
-
-  .mbland_homepage_company_introBrandName {
-    font-size: 14.5px;
-  }
-
-  .mbland_homepage_company_introDesc {
-    padding-top: 13px;
-  }
-}
 /* ===== END SECTION COMPANY ===== */
 
 
@@ -625,82 +403,6 @@ a.mbland_homepage_info_ctaOutline {
   }
 }
 
-/* --- Responsive Section Info --- */
-@media (max-width: 1600px) {
-  .mbland_homepage_info {
-    padding: 62px 0 92px;
-  }
-
-  .mbland_homepage_info .container {
-    margin-top: -29px;
-  }
-
-  .mbland_homepage_info_title {
-    font-size: 229px;
-  }
-
-  .mbland_homepage_info_titleLabel {
-    gap: 9px;
-  }
-
-  .mbland_homepage_info_desc {
-    max-width: 1008px;
-    margin-top: 46px;
-  }
-
-  .mbland_homepage_info_cta {
-    gap: 18px;
-    margin-top: 37px;
-  }
-
-  .mbland_homepage_info_marquee p {
-    font-size: 110px;
-    margin-right: 55px;
-  }
-}
-
-@media (max-width: 1400px) {
-  .mbland_homepage_info {
-    padding: 54px 0 81px;
-  }
-
-  .mbland_homepage_info .container {
-    margin-top: -25px;
-  }
-
-  .mbland_homepage_info_title {
-    font-size: 200px;
-  }
-
-  .mbland_homepage_info_titleLabel {
-    gap: 8px;
-  }
-
-  .mbland_homepage_info_desc {
-    max-width: 882px;
-    margin-top: 40px;
-  }
-
-  .mbland_homepage_info_cta {
-    gap: 16px;
-    margin-top: 32px;
-  }
-
-  .mbland_homepage_info_marquee p {
-    font-size: 96px;
-    margin-right: 48px;
-  }
-}
-
-@media (max-width: 1024px) {
-  .mbland_homepage_info_title img {
-    width: 100%;
-  }
-
-  .mbland_homepage_info_desc {
-    width: 100%;
-  }
-}
 /* ===== END SECTION INFO ===== */
 
 
@@ -863,181 +565,6 @@ a.mbland_homepage_info_ctaOutline {
   display: none;
 }
 
-/* --- Responsive Section Branches --- */
-@media (max-width: 1600px) {
-  .mbland_homepage_branches {
-    padding-top: 92px;
-  }
-
-  .mbland_homepage_branches_header {
-    max-width: 752px;
-    margin-bottom: 66px;
-  }
-
-  .mbland_homepage_branches_btn {
-    margin-top: 22px;
-  }
-
-  .mbland_homepage_branches_list {
-    gap: 9px;
-  }
-
-  .mbland_homepage_branches_link {
-    padding: 37px 18px;
-  }
-
-  .mbland_homepage_branches_arrow {
-    --size: 51px;
-    padding: 9px;
-  }
-
-  .mbland_homepage_branches_number {
-    font-size: 165px;
-  }
-
-  .mbland_homepage_branches_info {
-    padding-top: 28px;
-  }
-
-  .mbland_homepage_branches_name {
-    margin-bottom: 9px;
-  }
-
-  .mbland_homepage_branches_media img {
-    height: 504px;
-  }
-
-  .mbland_homepage_branches_caption {
-    font-size: 26px;
-    bottom: 18px;
-    left: 18px;
-    right: 18px;
-  }
-}
-
-@media (max-width: 1400px) {
-  .mbland_homepage_branches {
-    padding-top: 81px;
-  }
-
-  .mbland_homepage_branches_header {
-    max-width: 658px;
-    margin-bottom: 58px;
-  }
-
-  .mbland_homepage_branches_btn {
-    margin-top: 19px;
-  }
-
-  .mbland_homepage_branches_list {
-    gap: 8px;
-  }
-
-  .mbland_homepage_branches_link {
-    padding: 32px 16px;
-  }
-
-  .mbland_homepage_branches_arrow {
-    --size: 45px;
-    padding: 8px;
-  }
-
-  .mbland_homepage_branches_number {
-    font-size: 144px;
-  }
-
-  .mbland_homepage_branches_info {
-    padding-top: 25px;
-  }
-
-  .mbland_homepage_branches_name {
-    margin-bottom: 8px;
-  }
-
-  .mbland_homepage_branches_media img {
-    height: 441px;
-  }
-
-  .mbland_homepage_branches_caption {
-    font-size: 23px;
-    bottom: 16px;
-    left: 16px;
-    right: 16px;
-  }
-}
-
-@media (max-width: 1024px) {
-  .mbland_homepage_branches_itemActive {
-    position: relative;
-    flex: 2;
-  }
-
-  .mbland_homepage_branches_itemActive .mbland_homepage_branches_media {
-    width: 100%;
-    z-index: 0;
-  }
-
-  .mbland_homepage_branches_itemActive .mbland_homepage_branches_card {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-  }
-
-  .mbland_homepage_branches_link {
-    background: rgba(0, 0, 0, 0.3);
-  }
-
-  .mbland_homepage_branches_number {
-    color: var(--color-09);
-  }
-
-  .mbland_homepage_branches_card .mbland_homepage_branches_number {
-    font-size: 100px;
-  }
-
-  .mbland_homepage_branches_card:hover .mbland_homepage_branches_number {
-    background: none;
-    color: var(--color-09);
-  }
-
-  .mbland_homepage_branches_info {
-    border-top: 1px solid var(--color-09);
-  }
-
-  .mbland_homepage_branches_info h3,
-  .mbland_homepage_branches_info p {
-    color: var(--color-09);
-  }
-}
-
-@media (max-width: 768px) {
-  .mbland_homepage_branches_list {
-    flex-direction: column;
-    gap: 20px;
-    padding: 30px 0;
-  }
-
-  .mbland_homepage_branches_item {
-    width: 100%;
-    height: auto;
-  }
-
-  .mbland_homepage_branches_media img {
-    height: 150px;
-    transition: height 0.3s ease;
-  }
-
-  .mbland_homepage_branches_itemActive .mbland_homepage_branches_media img {
-    height: 400px;
-    object-position: top center;
-  }
-}
-
-@media (max-width: 576px) {
-  .mbland_homepage_branches_number {
-    font-size: 60px;
-  }
-}
 /* ===== END SECTION BRANCHES ===== */
 
 
@@ -1120,68 +647,6 @@ a.mbland_homepage_info_ctaOutline {
   text-align: center;
 }
 
-/* --- Responsive Section Counter --- */
-@media (max-width: 1600px) {
-  .mbland_homepage_counter {
-    padding: 92px 0;
-  }
-
-  .mbland_homepage_counter_lists {
-    gap: 92px;
-  }
-
-  .mbland_homepage_counter_item {
-    padding: 29px;
-    border-radius: 18px;
-    gap: 15px;
-  }
-
-  .mbland_homepage_counter_icon {
-    width: 59px;
-  }
-
-  .mbland_homepage_counter_number {
-    font-size: 44px;
-  }
-
-  .mbland_homepage_counter_title {
-    font-size: 22px;
-  }
-}
-
-@media (max-width: 1400px) {
-  .mbland_homepage_counter {
-    padding: 81px 0;
-  }
-
-  .mbland_homepage_counter_lists {
-    gap: 81px;
-  }
-
-  .mbland_homepage_counter_item {
-    padding: 25px;
-    border-radius: 16px;
-    gap: 13px;
-  }
-
-  .mbland_homepage_counter_icon {
-    width: 52px;
-  }
-
-  .mbland_homepage_counter_number {
-    font-size: 38.5px;
-  }
-
-  .mbland_homepage_counter_title {
-    font-size: 19px;
-  }
-}
-
-@media (max-width: 1200px) {
-  .mbland_homepage_counter_lists {
-    gap: 52px;
-  }
-}
 /* ===== END SECTION COUNTER ===== */
 
 
@@ -1264,90 +729,6 @@ a.mbland_homepage_info_ctaOutline {
   font-family: 'GanhType';
 }
 
-/* --- Responsive Section Activities --- */
-@media (max-width: 1600px) {
-  .mbland_homepage_activities_content h2 {
-    font-size: 46px;
-  }
-
-  .mbland_homepage_activities {
-    padding: 92px 0;
-  }
-
-  .mbland_homepage_activities .container {
-    gap: 37px;
-  }
-
-  .mbland_homepage_activities .swiper-slide {
-    width: 568px;
-  }
-
-  .mbland_homepage_activities_slideImage {
-    margin-bottom: 9px;
-  }
-
-  .mbland_homepage_activities_content {
-    gap: 18px;
-    margin-bottom: 66px;
-  }
-
-  .mbland_homepage_activities_heading {
-    max-width: 752px;
-  }
-}
-
-@media (max-width: 1400px) {
-  .mbland_homepage_activities_content h2 {
-    font-size: 40px;
-  }
-
-  .mbland_homepage_activities {
-    padding: 81px 0;
-  }
-
-  .mbland_homepage_activities .container {
-    gap: 32px;
-    flex-direction: column-reverse;
-  }
-
-  .mbland_homepage_activities .swiper-slide {
-    width: 497px;
-  }
-
-  .mbland_homepage_activities_slideImage {
-    margin-bottom: 8px;
-  }
-
-  .mbland_homepage_activities_content {
-    gap: 16px;
-    margin-bottom: 58px;
-    width: 100%;
-    align-items: flex-start;
-    text-align: left;
-    padding-left: 0;
-  }
-
-  .mbland_homepage_activities_heading {
-    max-width: 658px;
-  }
-}
-
-@media (max-width: 768px) {
-  .mbland_homepage_activities_content h2 {
-    font-size: 32px;
-  }
-
-  .mbland_homepage_activities .swiper-slide {
-    width: 100%;
-    height: auto;
-  }
-}
-
-@media (max-width: 576px) {
-  .mbland_homepage_activities_content h2 {
-    font-size: 28px;
-  }
-}
 /* ===== END SECTION ACTIVITIES ===== */
 
 
@@ -1503,140 +884,6 @@ a.mbland_homepage_info_ctaOutline {
   grid-column: 8 / span 3;
 }
 
-/* --- Responsive Section Projects --- */
-@media (max-width: 1600px) {
-  .mbland_homepage_projects h2 {
-    font-size: 46px;
-  }
-
-  .mbland_homepage_projects {
-    padding: 92px 0;
-  }
-
-  .mbland_homepage_projects_heading {
-    gap: 18px;
-    margin-bottom: 66px;
-  }
-
-  .mbland_homepage_projects_title h2 {
-    margin-bottom: 9px;
-  }
-
-  .mbland_homepage_projects_wrapper {
-    gap: 9px;
-  }
-
-  .mbland_homepage_projects_itemImage img {
-    height: 321px;
-  }
-
-  .mbland_homepage_projects_itemContent {
-    padding: 22px;
-    gap: 18px;
-  }
-
-  .mbland_homepage_projects_itemContent2 .mbland_homepage_projects_viewDetail {
-    margin-left: 37px;
-  }
-
-  .mbland_homepage_projects_itemContent2 .mbland_homepage_projects_itemContentLocation {
-    gap: 9px;
-  }
-}
-
-@media (max-width: 1400px) {
-  .mbland_homepage_projects h2 {
-    font-size: 40px;
-  }
-
-  .mbland_homepage_projects {
-    padding: 81px 0;
-  }
-
-  .mbland_homepage_projects_heading {
-    gap: 16px;
-    margin-bottom: 58px;
-  }
-
-  .mbland_homepage_projects_title h2 {
-    margin-bottom: 8px;
-  }
-
-  .mbland_homepage_projects_wrapper {
-    gap: 8px;
-  }
-
-  .mbland_homepage_projects_itemImage img {
-    height: 281px;
-  }
-
-  .mbland_homepage_projects_itemContent {
-    padding: 19px;
-    gap: 16px;
-  }
-
-  .mbland_homepage_projects_itemContent2 .mbland_homepage_projects_viewDetail {
-    margin-left: 32px;
-  }
-
-  .mbland_homepage_projects_itemContent2 .mbland_homepage_projects_itemContentLocation {
-    gap: 8px;
-  }
-}
-
-@media (max-width: 1200px) {
-  .mbland_homepage_projects_wrapper {
-    grid-template-columns: repeat(5, 1fr);
-  }
-
-  .mbland_homepage_projects_item.mbland_homepage_projects_item1 {
-    grid-column: 1 / span 3;
-  }
-
-  .mbland_homepage_projects_item.mbland_homepage_projects_item2 {
-    grid-column: 4 / span 2;
-  }
-
-  .mbland_homepage_projects_item.mbland_homepage_projects_item3 {
-    grid-column: 1 / span 2;
-  }
-
-  .mbland_homepage_projects_item.mbland_homepage_projects_item4 {
-    grid-column: 3 / span 3;
-  }
-
-  .mbland_homepage_projects_item.mbland_homepage_projects_item5 {
-    grid-column: 1 / span 3;
-  }
-
-  .mbland_homepage_projects_item.mbland_homepage_projects_item6 {
-    grid-column: 4 / span 2;
-  }
-}
-
-@media (max-width: 1024px) {
-  .mbland_homepage_projects_heading .hn-tasmania-cta-btn {
-    align-self: flex-end;
-  }
-}
-
-@media (max-width: 768px) {
-  .mbland_homepage_projects h2 {
-    font-size: 32px;
-  }
-}
-
-@media (max-width: 576px) {
-  .mbland_homepage_projects h2 {
-    font-size: 28px;
-  }
-}
-
-@media (max-width: 480px) {
-  .mbland_homepage_projects_itemContent h3 {
-    font-size: 20px;
-  }
-}
 /* ===== END SECTION PROJECTS ===== */
 
 
@@ -1711,8 +958,274 @@ textarea:focus {
   box-shadow: 0 0 0 3px var(--focus);
 }
 
-/* --- Responsive Section Contact --- */
+
+
+
+
+
+/* ===== START SECTION RESPONSIVE ===== */
+@media (max-width: 1800px) {}
+
 @media (max-width: 1600px) {
+
+  /* --- Shared Headings --- */
+  .mbland_homepage_projects h2,
+  .mbland_homepage_activities_content h2 {
+    font-size: 46px;
+  }
+
+  /* --- Section About --- */
+  .mbland_homepage_about .container {
+    gap: 28px;
+    padding-top: 73px;
+    padding-bottom: 55px;
+  }
+
+  .mbland_homepage_about_title {
+    gap: 22px;
+  }
+
+  .mbland_homepage_about_titleFirst {
+    gap: 18px;
+  }
+
+  .mbland_homepage_about_titleFirst .mbland_homepage_about_titleImage {
+    font-size: 92px;
+  }
+
+  .mbland_homepage_about_titleSecond {
+    font-size: 73px;
+  }
+
+  .mbland_homepage_about_desc {
+    width: 304px;
+  }
+
+  .mbland_homepage_about_desc .mbland_homepage_about_descTitle {
+    font-size: 18px;
+    margin-bottom: 11px;
+  }
+
+  .mbland_homepage_about_scrollToExplore {
+    left: -86px;
+  }
+
+  .mbland_homepage_about_scrollToExplore img {
+    width: 92px;
+  }
+
+  /* --- Section Company --- */
+  .mbland_homepage_company_showcase {
+    padding-bottom: 66px;
+  }
+
+  .mbland_homepage_company_introMedia {
+    margin-bottom: -330px;
+    padding: 0 18px 22px;
+  }
+
+  .mbland_homepage_company_introBody {
+    padding-top: 41px;
+  }
+
+  .mbland_homepage_company_showcaseBody {
+    height: 330px;
+  }
+
+  .mbland_homepage_company_introHeader {
+    padding: 11px;
+    border-radius: 0 110px 110px 0;
+    margin-left: -18px;
+    padding-left: 68px;
+  }
+
+  .mbland_homepage_company_introTitle {
+    font-size: 16.5px;
+  }
+
+  .mbland_homepage_company_introContent {
+    padding: 55px 0 55px 50px;
+  }
+
+  .mbland_homepage_company_introBrandName {
+    font-size: 16.5px;
+  }
+
+  .mbland_homepage_company_introDesc {
+    padding-top: 15px;
+  }
+
+  /* --- Section Info --- */
+  .mbland_homepage_info {
+    padding: 62px 0 92px;
+  }
+
+  .mbland_homepage_info .container {
+    margin-top: -29px;
+  }
+
+  .mbland_homepage_info_title {
+    font-size: 229px;
+  }
+
+  .mbland_homepage_info_titleLabel {
+    gap: 9px;
+  }
+
+  .mbland_homepage_info_desc {
+    max-width: 1008px;
+    margin-top: 46px;
+  }
+
+  .mbland_homepage_info_cta {
+    gap: 18px;
+    margin-top: 37px;
+  }
+
+  .mbland_homepage_info_marquee p {
+    font-size: 110px;
+    margin-right: 55px;
+  }
+
+  /* --- Section Branches --- */
+  .mbland_homepage_branches {
+    padding-top: 92px;
+  }
+
+  .mbland_homepage_branches_header {
+    max-width: 752px;
+    margin-bottom: 66px;
+  }
+
+  .mbland_homepage_branches_btn {
+    margin-top: 22px;
+  }
+
+  .mbland_homepage_branches_list {
+    gap: 9px;
+  }
+
+  .mbland_homepage_branches_link {
+    padding: 37px 18px;
+  }
+
+  .mbland_homepage_branches_arrow {
+    --size: 51px;
+    padding: 9px;
+  }
+
+  .mbland_homepage_branches_number {
+    font-size: 165px;
+  }
+
+  .mbland_homepage_branches_info {
+    padding-top: 28px;
+  }
+
+  .mbland_homepage_branches_name {
+    margin-bottom: 9px;
+  }
+
+  .mbland_homepage_branches_media img {
+    height: 504px;
+  }
+
+  .mbland_homepage_branches_caption {
+    font-size: 26px;
+    bottom: 18px;
+    left: 18px;
+    right: 18px;
+  }
+
+  /* --- Section Counter --- */
+  .mbland_homepage_counter {
+    padding: 92px 0;
+  }
+
+  .mbland_homepage_counter_lists {
+    gap: 92px;
+  }
+
+  .mbland_homepage_counter_item {
+    padding: 29px;
+    border-radius: 18px;
+    gap: 15px;
+  }
+
+  .mbland_homepage_counter_icon {
+    width: 59px;
+  }
+
+  .mbland_homepage_counter_number {
+    font-size: 44px;
+  }
+
+  .mbland_homepage_counter_title {
+    font-size: 22px;
+  }
+
+  /* --- Section Activities --- */
+  .mbland_homepage_activities {
+    padding: 92px 0;
+  }
+
+  .mbland_homepage_activities .container {
+    gap: 37px;
+  }
+
+  .mbland_homepage_activities .swiper-slide {
+    width: 568px;
+  }
+
+  .mbland_homepage_activities_slideImage {
+    margin-bottom: 9px;
+  }
+
+  .mbland_homepage_activities_content {
+    gap: 18px;
+    margin-bottom: 66px;
+  }
+
+  .mbland_homepage_activities_heading {
+    max-width: 752px;
+  }
+
+  /* --- Section Projects --- */
+  .mbland_homepage_projects {
+    padding: 92px 0;
+  }
+
+  .mbland_homepage_projects_heading {
+    gap: 18px;
+    margin-bottom: 66px;
+  }
+
+  .mbland_homepage_projects_title h2 {
+    margin-bottom: 9px;
+  }
+
+  .mbland_homepage_projects_wrapper {
+    gap: 9px;
+  }
+
+  .mbland_homepage_projects_itemImage img {
+    height: 321px;
+  }
+
+  .mbland_homepage_projects_itemContent {
+    padding: 22px;
+    gap: 18px;
+  }
+
+  .mbland_homepage_projects_itemContent2 .mbland_homepage_projects_viewDetail {
+    margin-left: 37px;
+  }
+
+  .mbland_homepage_projects_itemContent2 .mbland_homepage_projects_itemContentLocation {
+    gap: 9px;
+  }
+
+  /* --- Section Contact --- */
   .mbland_homepage_contact_form {
     gap: 29px 22px;
   }
@@ -1738,7 +1251,276 @@ textarea:focus {
   }
 }
 
+
 @media (max-width: 1400px) {
+
+  /* --- Shared Headings --- */
+  .mbland_homepage_projects h2,
+  .mbland_homepage_activities_content h2 {
+    font-size: 40px;
+  }
+
+  /* --- Section About --- */
+  .mbland_homepage_about .container {
+    gap: 25px;
+    padding-top: 64px;
+    padding-bottom: 48px;
+  }
+
+  .mbland_homepage_about_title {
+    gap: 19px;
+  }
+
+  .mbland_homepage_about_title span {
+    font-size: 5em;
+  }
+
+  .mbland_homepage_about_titleFirst {
+    gap: 16px;
+  }
+
+  .mbland_homepage_about_titleFirst .mbland_homepage_about_titleImage {
+    font-size: 81px;
+  }
+
+  .mbland_homepage_about_titleSecond {
+    font-size: 64px;
+  }
+
+  .mbland_homepage_about_desc {
+    width: 266px;
+  }
+
+  .mbland_homepage_about_desc .mbland_homepage_about_descTitle {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .mbland_homepage_about_scrollToExplore {
+    left: -75px;
+  }
+
+  .mbland_homepage_about_scrollToExplore img {
+    width: 81px;
+  }
+
+  /* --- Section Company --- */
+  .mbland_homepage_company_showcase {
+    padding-bottom: 58px;
+  }
+
+  .mbland_homepage_company_introMedia {
+    margin-bottom: -289px;
+    padding: 0 16px 19px;
+  }
+
+  .mbland_homepage_company_introBody {
+    padding-top: 36px;
+  }
+
+  .mbland_homepage_company_showcaseBody {
+    height: 289px;
+  }
+
+  .mbland_homepage_company_introHeader {
+    padding: 10px;
+    border-radius: 0 96px 96px 0;
+    margin-left: -16px;
+    padding-left: 60px;
+  }
+
+  .mbland_homepage_company_introTitle {
+    font-size: 14.5px;
+  }
+
+  .mbland_homepage_company_introContent {
+    padding: 48px 0 48px 44px;
+  }
+
+  .mbland_homepage_company_introBrandName {
+    font-size: 14.5px;
+  }
+
+  .mbland_homepage_company_introDesc {
+    padding-top: 13px;
+  }
+
+  /* --- Section Info --- */
+  .mbland_homepage_info {
+    padding: 54px 0 81px;
+  }
+
+  .mbland_homepage_info .container {
+    margin-top: -25px;
+  }
+
+  .mbland_homepage_info_title {
+    font-size: 172px;
+  }
+
+  .mbland_homepage_info_titleLabel {
+    gap: 8px;
+  }
+
+  .mbland_homepage_info_desc {
+    max-width: 882px;
+    margin-top: 40px;
+  }
+
+  .mbland_homepage_info_cta {
+    gap: 16px;
+    margin-top: 32px;
+  }
+
+  .mbland_homepage_info_marquee p {
+    font-size: 96px;
+    margin-right: 48px;
+  }
+
+  /* --- Section Branches --- */
+  .mbland_homepage_branches {
+    padding-top: 81px;
+  }
+
+  .mbland_homepage_branches_header {
+    max-width: 658px;
+    margin-bottom: 58px;
+  }
+
+  .mbland_homepage_branches_btn {
+    margin-top: 19px;
+  }
+
+  .mbland_homepage_branches_list {
+    gap: 8px;
+  }
+
+  .mbland_homepage_branches_link {
+    padding: 32px 16px;
+  }
+
+  .mbland_homepage_branches_arrow {
+    --size: 45px;
+    padding: 8px;
+  }
+
+  .mbland_homepage_branches_number {
+    font-size: 144px;
+  }
+
+  .mbland_homepage_branches_info {
+    padding-top: 25px;
+  }
+
+  .mbland_homepage_branches_name {
+    margin-bottom: 8px;
+  }
+
+  .mbland_homepage_branches_media img {
+    height: 441px;
+  }
+
+  .mbland_homepage_branches_caption {
+    font-size: 23px;
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+  }
+
+  /* --- Section Counter --- */
+  .mbland_homepage_counter {
+    padding: 81px 0;
+  }
+
+  .mbland_homepage_counter_lists {
+    gap: 81px;
+  }
+
+  .mbland_homepage_counter_item {
+    padding: 25px;
+    border-radius: 16px;
+    gap: 13px;
+  }
+
+  .mbland_homepage_counter_icon {
+    width: 52px;
+  }
+
+  .mbland_homepage_counter_number {
+    font-size: 38.5px;
+  }
+
+  .mbland_homepage_counter_title {
+    font-size: 19px;
+  }
+
+  /* --- Section Activities --- */
+  .mbland_homepage_activities {
+    padding: 81px 0;
+  }
+
+  .mbland_homepage_activities .container {
+    gap: 32px;
+    flex-direction: column-reverse;
+  }
+
+  .mbland_homepage_activities .swiper-slide {
+    width: 497px;
+  }
+
+  .mbland_homepage_activities_slideImage {
+    margin-bottom: 8px;
+  }
+
+  .mbland_homepage_activities_content {
+    gap: 16px;
+    margin-bottom: 58px;
+    width: 100%;
+    /* align-items: flex-start; */
+    text-align: left;
+    padding-left: 0;
+  }
+
+  .mbland_homepage_activities_heading {
+    max-width: 658px;
+  }
+
+  /* --- Section Projects --- */
+  .mbland_homepage_projects {
+    padding: 81px 0;
+  }
+
+  .mbland_homepage_projects_heading {
+    gap: 16px;
+    margin-bottom: 58px;
+  }
+
+  .mbland_homepage_projects_title h2 {
+    margin-bottom: 8px;
+  }
+
+  .mbland_homepage_projects_wrapper {
+    gap: 8px;
+  }
+
+  .mbland_homepage_projects_itemImage img {
+    height: 281px;
+  }
+
+  .mbland_homepage_projects_itemContent {
+    padding: 19px;
+    gap: 16px;
+  }
+
+  .mbland_homepage_projects_itemContent2 .mbland_homepage_projects_viewDetail {
+    margin-left: 32px;
+  }
+
+  .mbland_homepage_projects_itemContent2 .mbland_homepage_projects_itemContentLocation {
+    gap: 8px;
+  }
+
+  /* --- Section Contact --- */
   .mbland_homepage_contact_form {
     gap: 25px 19px;
   }
@@ -1763,4 +1545,290 @@ textarea:focus {
     height: 116px;
   }
 }
-/* ===== END SECTION CONTACT ===== */
+
+@media (max-width: 1200px) {
+
+  /* --- Section About --- */
+  .mbland_homepage_about .container {
+    gap: 25px;
+    padding-top: 64px;
+    padding-bottom: 48px;
+  }
+
+  .mbland_homepage_about_title {
+    gap: 19px;
+  }
+
+  .mbland_homepage_about_title span {
+    font-size: 5em;
+  }
+
+  .mbland_homepage_about_titleFirst {
+    gap: 16px;
+  }
+
+  .mbland_homepage_about_titleFirst .mbland_homepage_about_titleImage {
+    font-size: 81px;
+  }
+
+  .mbland_homepage_about_titleSecond {
+    font-size: 64px;
+  }
+
+  .mbland_homepage_about_desc {
+    width: 266px;
+  }
+
+  .mbland_homepage_about_desc .mbland_homepage_about_descTitle {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .mbland_homepage_about_scrollToExplore {
+    left: 32px;
+    bottom: 32px;
+  }
+
+  .mbland_homepage_about_scrollToExplore img {
+    width: 81px;
+  }
+
+  .mbland_homepage_about_title span {
+    font-size: 4em;
+  }
+
+  .mbland_homepage_about .container {
+    flex-direction: column;
+  }
+
+  .mbland_homepage_about_desc {
+    width: 70%;
+    align-self: flex-end;
+  }
+
+  .mbland_homepage_about_title {
+    width: 100%;
+  }
+
+
+
+  /* Branches */
+  .mbland_homepage_branches_itemActive {
+    position: relative;
+    flex: 2;
+  }
+
+  .mbland_homepage_branches_itemActive .mbland_homepage_branches_media {
+    width: 100%;
+    z-index: 0;
+  }
+
+  .mbland_homepage_branches_itemActive .mbland_homepage_branches_card {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  .mbland_homepage_branches_link {
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  .mbland_homepage_branches_number {
+    color: var(--color-09);
+  }
+
+  .mbland_homepage_branches_card .mbland_homepage_branches_number {
+    font-size: 100px;
+  }
+
+  .mbland_homepage_branches_card:hover .mbland_homepage_branches_number {
+    background: none;
+    color: var(--color-09);
+  }
+
+  .mbland_homepage_branches_info {
+    border-top: 1px solid var(--color-09);
+  }
+
+  .mbland_homepage_branches_info h3,
+  .mbland_homepage_branches_info p {
+    color: var(--color-09);
+  }
+
+
+
+
+  /* Counter list */
+  .mbland_homepage_counter_lists {
+    gap: 52px;
+  }
+
+  /* Projects */
+  .mbland_homepage_projects_wrapper {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .mbland_homepage_projects_item.mbland_homepage_projects_item1 {
+    grid-column: 1 / span 3;
+  }
+
+  .mbland_homepage_projects_item.mbland_homepage_projects_item2 {
+    grid-column: 4 / span 2;
+  }
+
+  .mbland_homepage_projects_item.mbland_homepage_projects_item3 {
+    grid-column: 1 / span 2;
+  }
+
+  .mbland_homepage_projects_item.mbland_homepage_projects_item4 {
+    grid-column: 3 / span 3;
+  }
+
+  .mbland_homepage_projects_item.mbland_homepage_projects_item5 {
+    grid-column: 1 / span 3;
+  }
+
+  .mbland_homepage_projects_item.mbland_homepage_projects_item6 {
+    grid-column: 4 / span 2;
+  }
+}
+
+@media (max-width: 996px) {
+
+  .mbland_homepage_projects h2,
+  .mbland_homepage_activities_content h2 {
+    font-size: 36px;
+  }
+
+  /* Info */
+
+
+  .mbland_homepage_info_title img {
+    width: 100%;
+  }
+
+  .mbland_homepage_info_desc {
+    width: 100%;
+  }
+
+  /* Branches */
+
+
+  /* Projects */
+  /* .mbland_homepage_projects_heading {
+    flex-direction: column;
+  } */
+
+  /* .mbland_homepage_projects_heading .hn-tasmania-cta-btn {
+    align-self: flex-end;
+  } */
+
+  /* .mbland_homepage_projects_wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .mbland_homepage_projects_item.mbland_homepage_projects_item1,
+  .mbland_homepage_projects_item.mbland_homepage_projects_item2,
+  .mbland_homepage_projects_item.mbland_homepage_projects_item3,
+  .mbland_homepage_projects_item.mbland_homepage_projects_item4,
+  .mbland_homepage_projects_item.mbland_homepage_projects_item5,
+  .mbland_homepage_projects_item.mbland_homepage_projects_item6 {
+    grid-column: 1;
+  } */
+}
+
+@media (max-width: 768px) {
+
+  .mbland_homepage_projects h2,
+  .mbland_homepage_activities_content h2 {
+    font-size: 32px;
+  }
+
+  .mbland_homepage_branches_list {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .mbland_homepage_branches_list {
+    padding: 30px 0;
+  }
+
+  .mbland_homepage_branches_item {
+    width: 100%;
+    height: auto;
+  }
+
+  .mbland_homepage_branches_list {
+    flex-direction: column;
+  }
+
+  .mbland_homepage_branches_media img {
+    height: 150px;
+    transition: height 0.3s ease;
+  }
+
+  .mbland_homepage_branches_itemActive .mbland_homepage_branches_media img {
+    height: 400px;
+    object-position: top center;
+  }
+
+  .mbland_homepage_about_scrollToExplore {
+    left: 40px;
+    bottom: 60px;
+  }
+
+  .mbland_homepage_info_title {
+    /* width: 90%; */
+  }
+
+  .mbland_homepage_activities .swiper-slide {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 668px) {}
+
+@media (max-width: 576px) {
+
+  .mbland_homepage_projects h2,
+  .mbland_homepage_activities_content h2 {
+    font-size: 28px;
+  }
+
+  .mbland_homepage_about a.hn-tasmania-cta-btn {
+    display: none;
+  }
+
+  .mbland_homepage_about_desc {
+    width: 100%;
+  }
+
+  .mbland_homepage_about_scrollToExplore {
+    left: 0;
+    right: 0;
+    bottom: 0px;
+    width: 60px;
+    margin: 0 auto;
+  }
+
+  .mbland_homepage_about_scrollToExplore img {
+    width: 60px;
+  }
+
+  .mbland_homepage_about_titleImage {
+    width: 60%;
+  }
+
+  .mbland_homepage_branches_number {
+    font-size: 60px;
+  }
+}
+
+@media (max-width: 425px) {
+  .mbland_homepage_projects_itemContent h3 {
+    font-size: 20px;
+  }
+}
+
+/* ===== END SECTION RESPONSIVE ===== */
