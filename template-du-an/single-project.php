@@ -173,22 +173,22 @@ get_header();
 									$img_alt = is_array( $img ) ? ( $img['alt'] ?? get_the_title( $post_id ) ) : get_the_title( $post_id );
 								?>
 									<div class="swiper-slide mbland_singleProject_gallery_mainSlide">
-										<img class="mbland_singleProject_gallery_mainImage" src="<?php echo esc_url( $img_url ); ?>" alt="<?php echo esc_attr( $img_alt ); ?>" loading="lazy" />
+										<img class="mbland_singleProject_gallery_mainImage" src="<?php echo esc_url( $img_url ); ?>" alt="<?php echo esc_attr( $img_alt ); ?>" loading="lazy" decoding="async" fetchpriority="low" />
 									</div>
 								<?php endforeach; ?>
 							<?php else : ?>
 								<!-- Ảnh mẫu demo khớp theo thiết kế -->
 								<div class="swiper-slide mbland_singleProject_gallery_mainSlide">
-									<img class="mbland_singleProject_gallery_mainImage" src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1200&q=80" alt="Hilton Sky View" />
+									<img class="mbland_singleProject_gallery_mainImage" src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1200&q=80" alt="Hilton Sky View" loading="lazy" decoding="async" fetchpriority="low" />
 								</div>
 								<div class="swiper-slide mbland_singleProject_gallery_mainSlide">
-									<img class="mbland_singleProject_gallery_mainImage" src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80" alt="Kiến trúc xanh & Tiện ích" />
+									<img class="mbland_singleProject_gallery_mainImage" src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80" alt="Kiến trúc xanh & Tiện ích" loading="lazy" decoding="async" fetchpriority="low" />
 								</div>
 								<div class="swiper-slide mbland_singleProject_gallery_mainSlide">
-									<img class="mbland_singleProject_gallery_mainImage" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80" alt="Cảnh quan ven sông" />
+									<img class="mbland_singleProject_gallery_mainImage" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80" alt="Cảnh quan ven sông" loading="lazy" decoding="async" fetchpriority="low" />
 								</div>
 								<div class="swiper-slide mbland_singleProject_gallery_mainSlide">
-									<img class="mbland_singleProject_gallery_mainImage" src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80" alt="Quy hoạch tổng thể" />
+									<img class="mbland_singleProject_gallery_mainImage" src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80" alt="Quy hoạch tổng thể" loading="lazy" decoding="async" fetchpriority="low" />
 								</div>
 							<?php endif; ?>
 						</div>
@@ -203,22 +203,22 @@ get_header();
 									$img_alt = is_array( $img ) ? ( $img['alt'] ?? get_the_title( $post_id ) ) : get_the_title( $post_id );
 								?>
 									<div class="swiper-slide mbland_singleProject_gallery_thumbSlide">
-										<img class="mbland_singleProject_gallery_thumbImage" src="<?php echo esc_url( $img_url ); ?>" alt="<?php echo esc_attr( $img_alt ); ?>" loading="lazy" />
+										<img class="mbland_singleProject_gallery_thumbImage" src="<?php echo esc_url( $img_url ); ?>" alt="<?php echo esc_attr( $img_alt ); ?>" loading="lazy" decoding="async" fetchpriority="low" />
 									</div>
 								<?php endforeach; ?>
 							<?php else : ?>
 								<!-- Ảnh thumbnail mẫu demo -->
 								<div class="swiper-slide mbland_singleProject_gallery_thumbSlide">
-									<img class="mbland_singleProject_gallery_thumbImage" src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=400&q=80" alt="Hilton Sky View" />
+									<img class="mbland_singleProject_gallery_thumbImage" src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=400&q=80" alt="Hilton Sky View" loading="lazy" decoding="async" fetchpriority="low" />
 								</div>
 								<div class="swiper-slide mbland_singleProject_gallery_thumbSlide">
-									<img class="mbland_singleProject_gallery_thumbImage" src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=400&q=80" alt="Kiến trúc xanh & Tiện ích" />
+									<img class="mbland_singleProject_gallery_thumbImage" src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=400&q=80" alt="Kiến trúc xanh & Tiện ích" loading="lazy" decoding="async" fetchpriority="low" />
 								</div>
 								<div class="swiper-slide mbland_singleProject_gallery_thumbSlide">
-									<img class="mbland_singleProject_gallery_thumbImage" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Cảnh quan ven sông" />
+									<img class="mbland_singleProject_gallery_thumbImage" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Cảnh quan ven sông" loading="lazy" decoding="async" fetchpriority="low" />
 								</div>
 								<div class="swiper-slide mbland_singleProject_gallery_thumbSlide">
-									<img class="mbland_singleProject_gallery_thumbImage" src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=400&q=80" alt="Quy hoạch tổng thể" />
+									<img class="mbland_singleProject_gallery_thumbImage" src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=400&q=80" alt="Quy hoạch tổng thể" loading="lazy" decoding="async" fetchpriority="low" />
 								</div>
 							<?php endif; ?>
 						</div>
@@ -387,9 +387,9 @@ document.addEventListener('DOMContentLoaded', function () {
 			</div>
 			<div class="mbland_linhvuc_procedure_itemImage">
 				<ul class="mbland_linhvuc_procedure_itemImageList">
-					<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg"/></li>
-					<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg"/></li>
-					<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg"/></li>
+					<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg" alt="Quy trình thực hiện dự án" loading="lazy" decoding="async" fetchpriority="low" /></li>
+					<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg" alt="Quy trình thực hiện dự án" loading="lazy" decoding="async" fetchpriority="low" /></li>
+					<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg" alt="Quy trình thực hiện dự án" loading="lazy" decoding="async" fetchpriority="low" /></li>
 				</ul>
 			</div>
 
@@ -406,9 +406,9 @@ nguồn lực và định hướng phát triển dự án.</p>
 			</div>
 			<div class="mbland_linhvuc_procedure_itemImage">
 				<ul class="mbland_linhvuc_procedure_itemImageList">
-					<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg"/></li>
-					<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg"/></li>
-					<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg"/></li>
+					<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg" alt="Quy trình thực hiện dự án" loading="lazy" decoding="async" fetchpriority="low" /></li>
+					<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg" alt="Quy trình thực hiện dự án" loading="lazy" decoding="async" fetchpriority="low" /></li>
+					<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg" alt="Quy trình thực hiện dự án" loading="lazy" decoding="async" fetchpriority="low" /></li>
 				</ul>
 			</div>
 
@@ -425,9 +425,9 @@ dựng phương án quy hoạch phù hợp.</p>
 			</div>
 			<div class="mbland_linhvuc_procedure_itemImage">
 				<ul class="mbland_linhvuc_procedure_itemImageList">
-					<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg"/></li>
-					<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg"/></li>
-					<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg"/></li>
+					<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg" alt="Quy trình thực hiện dự án" loading="lazy" decoding="async" fetchpriority="low" /></li>
+					<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg" alt="Quy trình thực hiện dự án" loading="lazy" decoding="async" fetchpriority="low" /></li>
+					<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg" alt="Quy trình thực hiện dự án" loading="lazy" decoding="async" fetchpriority="low" /></li>
 				</ul>
 			</div>
 
@@ -444,9 +444,9 @@ dựng phương án quy hoạch phù hợp.</p>
 			</div>
 			<div class="mbland_linhvuc_procedure_itemImage">
 				<ul class="mbland_linhvuc_procedure_itemImageList">
-					<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg"/></li>
-					<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg"/></li>
-					<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg"/></li>
+					<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg" alt="Quy trình thực hiện dự án" loading="lazy" decoding="async" fetchpriority="low" /></li>
+					<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg" alt="Quy trình thực hiện dự án" loading="lazy" decoding="async" fetchpriority="low" /></li>
+					<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg" alt="Quy trình thực hiện dự án" loading="lazy" decoding="async" fetchpriority="low" /></li>
 				</ul>
 			</div>
 
