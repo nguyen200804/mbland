@@ -37,7 +37,6 @@
 .mbland-ui-btn-detail__icon svg {
   width: 2.5em;
   height: 2.5em;
-  flex-shrink: 0;
 }
 
 .mbland-ui-btn-detail:hover .mbland-ui-btn-detail__icon {

@@ -296,7 +296,7 @@
   border: 1px solid #d7d7d7;
 }
 
-.mbland_tintucTemplate_newCard_button,
+/* .mbland_tintucTemplate_newCard_button,
 .mbland-ui-btn-detail {
   color: #B70C2C;
   font-size: 13px;
@@ -345,7 +345,7 @@
 .mbland_tintucTemplate_newCard_buttonLabel,
 .mbland-ui-btn-detail__label {
   white-space: nowrap;
-}
+} */
 
 
 /* --- 3. List Post (Danh mục, Grid & Phân trang) --- */
