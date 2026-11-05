@@ -110,30 +110,30 @@ $jobs_query = new WP_Query( $jobs_args );
 		</header>
 
 		<!-- Form tìm kiếm -->
-		<form method="get" class="mbland_recruitment_jobs_searchForm form-career" id="careerForm" action="<?php echo esc_url( $page_url ); ?>">
+		<form method="get" class="mbland_recruitment_jobs_searchForm" id="careerForm" action="<?php echo esc_url( $page_url ); ?>">
 			<h3 class="mbland_recruitment_jobs_searchTitle">Tìm công việc</h3>
 			<input type="text" name="keyword" value="<?php echo esc_attr( $keyword ); ?>" class="mbland_recruitment_jobs_searchInput" placeholder="Nhập từ khóa tìm kiếm" autocomplete="off">
 			<button type="submit" class="mbland_recruitment_jobs_searchBtn" id="careerSearchBtn">Tìm kiếm</button>
 		</form>
 
 		<!-- Dropdown bộ lọc cho mobile -->
-		<div class="mbland_recruitment_jobs_filterDropdown hn__filter-dropdown" id="filterDropdownBar"></div>
+		<div class="mbland_recruitment_jobs_filterDropdown" id="filterDropdownBar"></div>
 
 		<!-- Layout tuyển dụng: Bộ lọc (trái) + Danh sách Job (phải) -->
-		<div class="mbland_recruitment_jobs_layout hn__career">
+		<div class="mbland_recruitment_jobs_layout">
 			<!-- Cột trái: Bộ lọc -->
-			<aside class="mbland_recruitment_jobs_sidebar hn__career-left">
-				<div class="mbland_recruitment_jobs_filter hn__filter">
-					<div class="mbland_recruitment_jobs_filterHeader filter-header">
-						<h3 class="mbland_recruitment_jobs_filterTitle title">Bộ lọc</h3>
-						<button type="button" class="mbland_recruitment_jobs_filterReset reset-filter" id="resetFilter">Xóa bộ lọc</button>
+			<aside class="mbland_recruitment_jobs_sidebar">
+				<div class="mbland_recruitment_jobs_filter">
+					<div class="mbland_recruitment_jobs_filterHeader">
+						<h3 class="mbland_recruitment_jobs_filterTitle">Bộ lọc</h3>
+						<button type="button" class="mbland_recruitment_jobs_filterReset" id="resetFilter">Xóa bộ lọc</button>
 					</div>
 
 					<!-- Vị trí ứng tuyển -->
-					<div class="mbland_recruitment_jobs_filterGroup filter-group" id="filter-vitri">
+					<div class="mbland_recruitment_jobs_filterGroup" id="filter-vitri">
 						<h4 class="mbland_recruitment_jobs_filterGroupTitle">Vị trí ứng tuyển</h4>
-						<input type="text" class="mbland_recruitment_jobs_filterInput filter-text" id="vitriInput" placeholder="Nhập vị trí ứng tuyển...">
-						<div class="mbland_recruitment_jobs_filterOptions filter-options">
+						<input type="text" class="mbland_recruitment_jobs_filterInput" id="vitriInput" placeholder="Nhập vị trí ứng tuyển...">
+						<div class="mbland_recruitment_jobs_filterOptions">
 							<label><input type="radio" form="careerForm" name="vi-tri-ung-tuyen" value="all" <?php checked( $vitri, 'all' ); ?>> Tất cả</label>
 							<?php
 							$terms = get_terms( array( 'taxonomy' => 'vi-tri-ung-tuyen', 'hide_empty' => false ) );
@@ -149,10 +149,10 @@ $jobs_query = new WP_Query( $jobs_args );
 					</div>
 
 					<!-- Nơi làm việc -->
-					<div class="mbland_recruitment_jobs_filterGroup filter-group" id="filter-noilamviec">
+					<div class="mbland_recruitment_jobs_filterGroup" id="filter-noilamviec">
 						<h4 class="mbland_recruitment_jobs_filterGroupTitle">Nơi làm việc</h4>
-						<input type="text" class="mbland_recruitment_jobs_filterInput filter-text" id="noilamviecInput" placeholder="Nhập nơi làm việc...">
-						<div class="mbland_recruitment_jobs_filterOptions filter-options">
+						<input type="text" class="mbland_recruitment_jobs_filterInput" id="noilamviecInput" placeholder="Nhập nơi làm việc...">
+						<div class="mbland_recruitment_jobs_filterOptions">
 							<label><input type="radio" form="careerForm" name="noi-lam-viec" value="all" <?php checked( $noilam, 'all' ); ?>> Tất cả</label>
 							<?php
 							$terms = get_terms( array( 'taxonomy' => 'noi-lam-viec', 'hide_empty' => false ) );
@@ -168,9 +168,9 @@ $jobs_query = new WP_Query( $jobs_args );
 					</div>
 
 					<!-- Hình thức làm việc -->
-					<div class="mbland_recruitment_jobs_filterGroup filter-group">
+					<div class="mbland_recruitment_jobs_filterGroup">
 						<h4 class="mbland_recruitment_jobs_filterGroupTitle">Hình thức làm việc</h4>
-						<div class="mbland_recruitment_jobs_filterOptions filter-options">
+						<div class="mbland_recruitment_jobs_filterOptions">
 							<label><input type="radio" form="careerForm" name="hinh-thuc-lam-viec" value="all" <?php checked( $hinhthuc, 'all' ); ?>> Tất cả</label>
 							<?php
 							$terms = get_terms( array( 'taxonomy' => 'hinh-thuc-lam-viec', 'hide_empty' => false ) );
@@ -188,8 +188,8 @@ $jobs_query = new WP_Query( $jobs_args );
 			</aside>
 
 			<!-- Cột phải: Danh sách job & Phân trang (SSR) -->
-			<div class="mbland_recruitment_jobs_content hn__career-right">
-				<div class="mbland_recruitment_jobs_list hn__job-list">
+			<div class="mbland_recruitment_jobs_content">
+				<div class="mbland_recruitment_jobs_list">
 					<?php
 					if ( $jobs_query->have_posts() ) :
 						while ( $jobs_query->have_posts() ) : $jobs_query->the_post();
@@ -280,7 +280,7 @@ $jobs_query = new WP_Query( $jobs_args );
 /* Bộ lọc tuyển dụng: dùng form GET + tải lại trang (page reload), không dùng AJAX */
 document.addEventListener('DOMContentLoaded', function () {
   const form = document.getElementById('careerForm');
-  const filterWrap = document.querySelector('.hn__filter');
+  const filterWrap = document.querySelector('.mbland_recruitment_jobs_filter');
   if (!form) return;
 
   // Không gửi các giá trị mặc định 'all' lên URL cho gọn
@@ -300,7 +300,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // Chọn radio bộ lọc -> tải lại trang với tham số mới
-  document.querySelectorAll('.hn__filter input[type="radio"]').forEach(function (radio) {
+  document.querySelectorAll('.mbland_recruitment_jobs_filter input[type="radio"]').forEach(function (radio) {
     radio.addEventListener('change', function () {
       form.requestSubmit();
     });
@@ -322,8 +322,8 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   [
-    ['vitriInput', '#filter-vitri .filter-options'],
-    ['noilamviecInput', '#filter-noilamviec .filter-options']
+    ['vitriInput', '#filter-vitri .mbland_recruitment_jobs_filterOptions'],
+    ['noilamviecInput', '#filter-noilamviec .mbland_recruitment_jobs_filterOptions']
   ].forEach(function (pair) {
     const input = document.getElementById(pair[0]);
     const options = document.querySelector(pair[1]);
@@ -338,7 +338,7 @@ document.addEventListener('DOMContentLoaded', function () {
   (function buildFilterDropdowns() {
     const bar = document.getElementById('filterDropdownBar');
     if (!filterWrap || !bar) return;
-    const groups = filterWrap.querySelectorAll('.filter-group');
+    const groups = filterWrap.querySelectorAll('.mbland_recruitment_jobs_filterGroup');
     if (groups.length < 3) return;
 
     const headerMobile = document.createElement('div');
