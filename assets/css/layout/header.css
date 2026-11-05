@@ -1,11 +1,11 @@
 /*================== Header ===================*/
 .hn-tasmania-header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    border-bottom: 1px solid var(--color-06);
-    background: var(--color-09);
-    width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid var(--color-06);
+  background: var(--color-09);
+  width: 100%;
 }
 
 .hn-tasmania-header .container {
@@ -47,30 +47,30 @@
 }
 
 .hn-tasmania-header__nav-item:hover {
-  color: var(--color-02);
+  color: var(--primary-color);
 }
 
 .hn-tasmania-header__nav-item:hover>a {
-  color: var(--color-02);
+  color: var(--primary-color);
 }
 
 /* Active state cho parent nav (giống hover) */
 .hn-tasmania-header__nav-item.current-menu-item {
-  border-bottom: 2px solid var(--color-02);
-  color: var(--color-02);
+  border-bottom: 2px solid var(--primary-color);
+  color: var(--primary-color);
 }
 
 .hn-tasmania-header__nav-item.current-menu-item>a {
-  color: var(--color-02);
+  color: var(--primary-color);
 }
 
 /* Nếu parent có active con, cũng apply style tương tự */
 .hn-tasmania-header__nav-item.current-menu-ancestor {
-  border-bottom: 2px solid var(--color-02);
+  border-bottom: 2px solid var(--primary-color);
 }
 
 .hn-tasmania-header__nav-item.current-menu-ancestor>a {
-  color: var(--color-02);
+  color: var(--primary-color);
 }
 
 .hn-tasmania-header__nav-sub-list {
@@ -101,7 +101,7 @@
 }
 
 .hn-tasmania-header__nav-sub-item:hover a {
-  color: var(--color-02);
+  color: var(--primary-color);
 }
 
 /* Active state cho sub nav (giống hover) */
@@ -111,7 +111,7 @@
 }
 
 .hn-tasmania-header__nav-sub-item.current-menu-item a {
-  color: var(--color-02);
+  color: var(--primary-color);
 }
 
 .hn-tasmania-header__nav-item:hover .hn-tasmania-header__nav-sub-list {
@@ -233,7 +233,7 @@
 }
 
 .hn-tasmania-header-menu-nav-list .hn-tasmania-header__nav-item.current-menu-item a {
-  color: var(--color-02);
+  color: var(--primary-color);
   font-weight: 500;
 }
 
@@ -263,7 +263,7 @@
 .hn-tasmania-header-menu-close svg {
   width: 24px;
   height: 24px;
-  fill: #b70c2c;
+  fill: var(--primary-color);
 }
 
 /* Overlay */

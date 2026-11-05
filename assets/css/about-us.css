@@ -203,7 +203,7 @@
 }
 
 .mbland_about_values_item:hover {
-	background-color: #1E499C;
+	background-color: var(--secondary-color);
 }
 
 .mbland_about_values_item:hover .mbland_about_values_title,
@@ -301,7 +301,7 @@
 	font-family: "GanhType", sans-serif;
 	font-size: 250px;
 	font-weight: 600;
-	color: var(--color-02);
+	color: var(--primary-color);
 	display: flex;
 }
 
@@ -309,7 +309,7 @@
 	line-height: 0.8em;
 	align-self: center;
 	font-size: 1.12em;
-	color: #B70C2C;
+	color: var(--primary-color);
 }
 
 .mbland_homepage_info_titleGroup {
@@ -323,7 +323,7 @@
 	font-size: 0.66em;
 	line-height: 0.3em;
 	font-weight: 400;
-	color: var(--color-02);
+	color: var(--primary-color);
 	margin-left: -0.02em;
 }
 
@@ -373,16 +373,16 @@
 	font-size: 0.19em;
 	font-weight: 400;
 	line-height: 0.85em;
-	color: #1E499C;
+	color: var(--secondary-color);
 }
 
 .mbland_homepage_info_titleYear {
 	font-weight: 400;
-	color: #1E499C;
+	color: var(--secondary-color);
 	line-height: 1.2;
 	font-size: 0.08em;
 	padding-left: 0.7em;
-	border-left: 1px solid #1E499C;
+	border-left: 1px solid var(--secondary-color);
 	margin-left: 1.4em;
 }
 
@@ -416,7 +416,7 @@
 	display: inline-block;
 	margin: 0;
 	padding: 0;
-	color: #1E499C;
+	color: var(--secondary-color);
 	line-height: 0.75em;
 	margin-right: 60px;
 	font-weight: 600;
@@ -670,7 +670,7 @@
 .mbland_homepage_company_introBrand {}
 
 .mbland_homepage_company_introBrandName {
-	color: #B70C2C;
+	color: var(--primary-color);
 	font-family: 'FZPoppins';
 	font-weight: 500;
 	font-size: 18px;
@@ -804,7 +804,7 @@
 	line-height: 1.6em;
 	letter-spacing: 0%;
 	text-transform: uppercase;
-	color: #1E499C;
+	color: var(--secondary-color);
 }
 
 .mbland_aboutUs_teamSection_featuredName {
@@ -814,7 +814,7 @@
 	line-height: 1.2em;
 	letter-spacing: 0%;
 	margin-top: 8px;
-	color: #1E499C;
+	color: var(--secondary-color);
 }
 
 .mbland_aboutUs_teamSection_featuredBio {
@@ -916,7 +916,7 @@
 	font-size: 24px;
 	line-height: 120%;
 	letter-spacing: -0.02em;
-	color: #1E499C;
+	color: var(--secondary-color);
 }
 
 .mbland_aboutUs_teamSection_memberDetailPosition {

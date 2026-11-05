@@ -29,7 +29,7 @@
   line-height: 120%;
   text-align: center;
   text-transform: uppercase;
-  color: #1E499C;
+  color: var(--secondary-color);
   margin: 0 0 20px;
 }
 
@@ -106,7 +106,7 @@
   font-size: 24px;
   line-height: 150%;
   text-transform: uppercase;
-  color: var(--color-02);
+  color: var(--primary-color);
   white-space: nowrap;
   margin: 0;
 }
@@ -128,12 +128,12 @@
 }
 
 .mbland_recruitment_jobs_searchInput:focus {
-  box-shadow: 0 0 0 2px var(--color-02);
+  box-shadow: 0 0 0 2px var(--primary-color);
 }
 
 .mbland_recruitment_jobs_searchBtn {
   padding: 12px 30px;
-  background: var(--color-02);
+  background: var(--primary-color);
   border: none;
   color: #fff;
   border-radius: 12px;
@@ -203,7 +203,7 @@
 }
 
 .mbland_recruitment_jobs_filterReset:hover {
-  color: var(--color-02);
+  color: var(--primary-color);
 }
 
 .mbland_recruitment_jobs_filterGroup {
@@ -234,7 +234,7 @@
 }
 
 .mbland_recruitment_jobs_filterInput:focus {
-  border-color: var(--color-02);
+  border-color: var(--primary-color);
 }
 
 .mbland_recruitment_jobs_filterOptions {
@@ -255,15 +255,15 @@
 }
 
 .mbland_recruitment_jobs_filterOptions label:hover {
-  color: var(--color-02);
+  color: var(--primary-color);
 }
 
 .mbland_recruitment_jobs_filterOptions input[type="radio"] {
-  accent-color: var(--color-02);
+  accent-color: var(--primary-color);
 }
 
 .mbland_recruitment_jobs_filterOptions label:has(input[type="radio"]:checked) {
-  color: var(--color-02);
+  color: var(--primary-color);
   font-weight: 600;
 }
 
@@ -303,7 +303,7 @@
 }
 
 .mbland_recruitment_news_heading {
-  color: var(--color-02);
+  color: var(--primary-color);
   min-width: fit-content;
   margin: 0;
   font-family: 'GanhType';

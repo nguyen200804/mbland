@@ -5,7 +5,7 @@
 
 /* --- Button Detail (Nút Xem chi tiết có icon thu gọn khi hover) --- */
 .mbland-ui-btn-detail {
-  color: #B70C2C;
+  color: var(--primary-color);
   font-size: 13px;
   font-weight: 600;
   display: inline-flex;
@@ -18,7 +18,7 @@
 }
 
 .mbland-ui-btn-detail:hover {
-  background-color: #B70C2C;
+  background-color: var(--primary-color);
   color: #fff;
   padding: 0 1.3em;
 }

@@ -234,7 +234,7 @@
 
 .mbland_linhvuc_listProject_filterList {
     display: flex;
-    border: 1px solid #B70C2C;
+    border: 1px solid var(--primary-color);
     border-radius: 100px;
     overflow: hidden;
 }
@@ -250,7 +250,7 @@
     font-size: 20px;
     line-height: 120%;
     letter-spacing: 0.02em;
-    color: #B70C2C;
+    color: var(--primary-color);
     background-color: transparent;
     padding: 1em;
     display: block;
@@ -260,7 +260,7 @@
 
 .mbland_linhvuc_listProject_filterItem:hover .mbland_linhvuc_listProject_filterLink,
 .mbland_linhvuc_listProject_filterLink.active {
-    background-color: #B70C2C;
+    background-color: var(--primary-color);
     color: #fff;
 }
 
@@ -319,7 +319,7 @@
 }
 
 .mbland_linhvuc_listProject_item:hover .mbland_linhvuc_listProject_itemTitleLink {
-    color: #B70C2C;
+    color: var(--primary-color);
 }
 
 .mbland_linhvuc_listProject_itemDesc {
@@ -351,7 +351,7 @@
 }
 
 :where(.mbland_linhvuc_listProject_itemLocationIcon, .mbland_linhvuc_listProject_itemScaleIcon) svg {
-    color: #B70C2C;
+    color: var(--primary-color);
 }
 
 .mbland_linhvuc_listProject_itemLocationText,
@@ -364,7 +364,7 @@
 .mbland_linhvuc_listProject_itemLocationLabel,
 .mbland_linhvuc_listProject_itemScaleLabel {
     font-size: 0.8em;
-    color: #B70C2C;
+    color: var(--primary-color);
     text-transform: uppercase;
     font-weight: 600;
 }
@@ -391,9 +391,9 @@
     font-size: 13px;
     line-height: 150%;
     text-transform: uppercase;
-    color: #B70C2C;
+    color: var(--primary-color);
     background-color: transparent;
-    border: 1px solid #B70C2C;
+    border: 1px solid var(--primary-color);
     padding: 0.8em 3.1em;
     display: inline-block;
     border-radius: 100px;
@@ -403,7 +403,7 @@
 }
 
 .mbland_linhvuc_listProject_itemLink:hover {
-    background-color: #B70C2C;
+    background-color: var(--primary-color);
     color: #fff;
 }
 
@@ -596,7 +596,7 @@
 }
 
 .mbland_linhvuc_coreStrengths_item:hover {
-    background-color: #1E499C;
+    background-color: var(--secondary-color);
 }
 
 .mbland_linhvuc_coreStrengths_item:hover .mbland_linhvuc_coreStrengths_itemTitle,
@@ -725,7 +725,7 @@
     line-height: 0.8em;
     letter-spacing: 0%;
     text-align: center;
-    color: #1E499C;
+    color: var(--secondary-color);
     margin-right: 28px;
     align-content: center;
     position: relative;
@@ -737,7 +737,7 @@
     width: 2px;
     height: 100%;
     position: absolute;
-    background: #1E499C;
+    background: var(--secondary-color);
     left: 50%;
     top: calc(100% - 70px);
 }
@@ -756,7 +756,7 @@
     line-height: 1.4em;
     text-align: center;
     padding: 0.575em 1.45em;
-    background-color: #B70C2C;
+    background-color: var(--primary-color);
     color: #fff;
     border-radius: 100px;
 }
@@ -907,7 +907,7 @@
 }
 
 .mbland_linhvuc_featuredProject_item:hover .mbland_linhvuc_featuredProject_itemTitle {
-    color: #B70C2C;
+    color: var(--primary-color);
 }
 
 .mbland_linhvuc_featuredProject_itemDesc {
@@ -948,7 +948,7 @@
     line-height: 120%;
     letter-spacing: 0%;
     text-transform: uppercase;
-    color: #B70C2C;
+    color: var(--primary-color);
 }
 
 .mbland_linhvuc_featuredProject_itemLocationValue {
@@ -964,7 +964,7 @@
 }
 
 .mbland_linhvuc_featuredProject_itemLink {
-    color: #B70C2C;
+    color: var(--primary-color);
     background-color: #F8F1F2;
     font-weight: 600;
     font-size: 13px;
@@ -979,7 +979,7 @@
 
 .mbland_linhvuc_featuredProject_itemLink:hover {
     color: #fff;
-    background-color: #B70C2C;
+    background-color: var(--primary-color);
 }
 
 /* ===== END SECTION FEATURED PROJECT ===== */

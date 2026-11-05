@@ -89,7 +89,7 @@ function updateActiveNumberStyle() {
     const number = item.querySelector(".number");
     if (item.classList.contains("active")) {
       number.style.background =
-        "linear-gradient(180deg, #b70c2c 0%, rgba(183, 12, 44, 0.05) 100%)";
+        "linear-gradient(180deg, var(--primary-color) 0%, rgba(183, 12, 44, 0.05) 100%)";
       number.style.webkitBackgroundClip = "text";
       number.style.webkitTextFillColor = "transparent";
       number.style.opacity = "1";
@@ -99,7 +99,7 @@ function updateActiveNumberStyle() {
       number.style.webkitBackgroundClip = "unset";
       number.style.webkitTextFillColor = "unset";
       number.style.opacity = "0.4";
-      number.style.webkitTextStroke = "1px #b70c2c";
+      number.style.webkitTextStroke = "1px var(--primary-color)";
     }
   });
 }

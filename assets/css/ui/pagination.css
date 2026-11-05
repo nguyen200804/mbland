@@ -46,11 +46,11 @@
 }
 
 .mbland_pagination .page-numbers:hover {
-  color: var(--color-02, #B70C2C) !important;
+  color: var(--color-02, var(--primary-color)) !important;
 }
 
 .mbland_pagination .page-numbers.current {
-  background-color: var(--color-02, #B70C2C) !important;
+  background-color: var(--color-02, var(--primary-color)) !important;
   color: #fff !important;
 }
 

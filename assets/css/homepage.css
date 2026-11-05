@@ -47,7 +47,7 @@
   font-size: 100px;
   line-height: 0.75em;
   font-weight: 600;
-  color: #1E499C;
+  color: var(--secondary-color);
 }
 
 .mbland_homepage_about_titleSecond {
@@ -56,7 +56,7 @@
   opacity: 0;
   transform: translateY(100%);
   animation: slideUp 1s ease-out 1s forwards;
-  color: #B70C2C;
+  color: var(--primary-color);
   font-size: 80px;
   line-height: 0.9em;
   font-family: 'GanhType';
@@ -77,7 +77,7 @@
 }
 
 .mbland_homepage_about_desc {
-    width: 332px;
+  width: 332px;
 }
 
 .mbland_homepage_about_descIcon {
@@ -89,17 +89,18 @@
   font-size: 20px;
   font-weight: 700;
   text-transform: uppercase;
-  color: var(--color-02);
+  color: var(--primary-color);
   margin-bottom: 12px;
   display: block;
 }
 
 .mbland_homepage_about_desc p {
-    text-align: justify;
-    font-family: 'GanhType';
-    font-weight: 400;
-	
+  text-align: justify;
+  font-family: 'GanhType';
+  font-weight: 400;
+
 }
+
 .mbland_homepage_about_scrollToExplore {
   position: absolute;
   bottom: 30px;
@@ -213,7 +214,7 @@
 .mbland_homepage_company_introBrand {}
 
 .mbland_homepage_company_introBrandName {
-  color: #B70C2C;
+  color: var(--primary-color);
   font-family: 'FZPoppins';
   font-weight: 500;
   font-size: 18px;
@@ -256,7 +257,7 @@
   font-family: "GanhType", sans-serif;
   font-size: 250px;
   font-weight: 600;
-  color: var(--color-02);
+  color: var(--primary-color);
   display: flex;
 }
 
@@ -264,7 +265,7 @@
   line-height: 0.8em;
   align-self: center;
   font-size: 1.12em;
-  color: #B70C2C;
+  color: var(--primary-color);
 }
 
 .mbland_homepage_info_titleGroup {
@@ -278,7 +279,7 @@
   font-size: 0.66em;
   line-height: 0.3em;
   font-weight: 400;
-  color: var(--color-02);
+  color: var(--primary-color);
   margin-left: -0.02em;
 }
 
@@ -328,16 +329,16 @@
   font-size: 0.19em;
   font-weight: 400;
   line-height: 0.85em;
-  color: #1E499C;
+  color: var(--secondary-color);
 }
 
 .mbland_homepage_info_titleYear {
   font-weight: 400;
-  color: #1E499C;
+  color: var(--secondary-color);
   line-height: 1.2;
   font-size: 0.08em;
   padding-left: 0.7em;
-  border-left: 1px solid #1E499C;
+  border-left: 1px solid var(--secondary-color);
   margin-left: 1.4em;
 }
 
@@ -361,8 +362,8 @@
 
 a.mbland_homepage_info_ctaOutline {
   background-color: var(--color-09);
-  color: var(--color-02);
-  border: 1px solid var(--color-02);
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
 }
 
 .mbland_homepage_info_marquee {
@@ -385,7 +386,7 @@ a.mbland_homepage_info_ctaOutline {
   display: inline-block;
   margin: 0;
   padding: 0;
-  color: #1E499C;
+  color: var(--secondary-color);
   line-height: 0.75em;
   margin-right: 60px;
   font-weight: 600;
@@ -422,8 +423,8 @@ a.mbland_homepage_info_ctaOutline {
 }
 
 .mbland_homepage_branches_desc {
-    letter-spacing: 0.05em;
-    font-family: 'GanhType';
+  letter-spacing: 0.05em;
+  font-family: 'GanhType';
 }
 
 .mbland_homepage_branches_btn {
@@ -472,42 +473,42 @@ a.mbland_homepage_info_ctaOutline {
 }
 
 .mbland_homepage_branches_arrow {
-    align-self: flex-end;
-    border-radius: 50%;
-    background-color: #99B5E2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    padding: 10px;
-    --size: 56px;
-    width: var(--size);
-    height: var(--size);
-	transition: background-color .3s ease;
+  align-self: flex-end;
+  border-radius: 50%;
+  background-color: #99B5E2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  padding: 10px;
+  --size: 56px;
+  width: var(--size);
+  height: var(--size);
+  transition: background-color .3s ease;
 }
 
 .mbland_homepage_branches_arrow img {
-	width: 50%;
-	height: 50%;
+  width: 50%;
+  height: 50%;
 }
 
 .mbland_homepage_branches_number {
   font-size: 180px;
-  color: #1E499C;
+  color: var(--secondary-color);
   transition: all 0.3s ease-out;
   line-height: 1;
 }
 
 .mbland_homepage_branches_card:hover .mbland_homepage_branches_number {
   color: transparent;
-  background: linear-gradient(360deg, rgba(183, 12, 44, 0) 0%, #1E499C 100%);
+  background: linear-gradient(360deg, rgba(183, 12, 44, 0) 0%, var(--secondary-color) 100%);
   -webkit-background-clip: text;
   background-clip: text;
 }
 
-.mbland_homepage_branches_card:hover .mbland_homepage_branches_arrow{
-	background-color: #1E499C;
+.mbland_homepage_branches_card:hover .mbland_homepage_branches_arrow {
+  background-color: var(--secondary-color);
 }
 
 .mbland_homepage_branches_info {
@@ -516,13 +517,13 @@ a.mbland_homepage_info_ctaOutline {
 }
 
 .mbland_homepage_branches_info p {
-  color: #1E499C;
+  color: var(--secondary-color);
   opacity: 0.5;
 }
 
 .mbland_homepage_branches_name {
   font-family: 'GanhType', 'FZPoppins', sans-serif;
-  color: #1E499C;
+  color: var(--secondary-color);
   line-height: 1.2;
   margin-bottom: 10px;
 }
@@ -548,16 +549,16 @@ a.mbland_homepage_info_ctaOutline {
 }
 
 .mbland_homepage_branches_caption {
-    font-family: 'GanhType', 'FZPoppins', sans-serif;
-    line-height: 1.2;
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    right: 20px;
-    color: var(--color-08);
-    font-size: 28px;
-    font-weight: 400;
-    text-transform: uppercase;
+  font-family: 'GanhType', 'FZPoppins', sans-serif;
+  line-height: 1.2;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  color: var(--color-08);
+  font-size: 28px;
+  font-weight: 400;
+  text-transform: uppercase;
 }
 
 .mbland_homepage_branches_itemActive .mbland_homepage_branches_caption {
@@ -707,7 +708,7 @@ a.mbland_homepage_info_ctaOutline {
 }
 
 .mbland_homepage_activities_slide:hover h3 {
-  color: var(--color-02);
+  color: var(--primary-color);
 }
 
 .mbland_homepage_activities_content {
@@ -724,8 +725,8 @@ a.mbland_homepage_info_ctaOutline {
 }
 
 .mbland_homepage_activities_desc {
-    letter-spacing: 0.05em;
-    font-family: 'GanhType';
+  letter-spacing: 0.05em;
+  font-family: 'GanhType';
 }
 
 /* ===== END SECTION ACTIVITIES ===== */
@@ -736,8 +737,8 @@ a.mbland_homepage_info_ctaOutline {
 
 /* ===== START SECTION PROJECTS ===== */
 .mbland_homepage_projects {
-    background: #FDF9F2;
-    padding: 100px 0;
+  background: #FDF9F2;
+  padding: 100px 0;
 }
 
 .mbland_homepage_projects_heading {
@@ -752,9 +753,10 @@ a.mbland_homepage_info_ctaOutline {
 .mbland_homepage_projects_title h2 {
   margin-bottom: 10px;
 }
+
 .mbland_homepage_projects_title p {
-      letter-spacing: 0.05em;
-    font-family: 'GanhType';
+  letter-spacing: 0.05em;
+  font-family: 'GanhType';
 }
 
 .mbland_homepage_projects_wrapper {

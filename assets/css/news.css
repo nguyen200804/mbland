@@ -57,7 +57,7 @@
 
 .mbland_tintucTemplate_featuredCard_meta {
   display: flex;
-  color: #B70C2C;
+  color: var(--primary-color);
   font-size: 15px;
   align-items: center;
   margin-bottom: 16px;
@@ -101,7 +101,7 @@
 }
 
 .mbland_tintucTemplate_featuredCard:hover .mbland_tintucTemplate_featuredCard_titleLink {
-  color: #B70C2C;
+  color: var(--primary-color);
 }
 
 .mbland_tintucTemplate_featuredCard_desc {
@@ -139,7 +139,7 @@
   font-size: 13px;
   line-height: 100%;
   text-transform: uppercase;
-  color: #B70C2C;
+  color: var(--primary-color);
   gap: 0.625em;
   display: flex;
 }
@@ -218,7 +218,7 @@
 
 .mbland_tintucTemplate_newCard_meta {
   display: flex;
-  color: #B70C2C;
+  color: var(--primary-color);
   font-size: 15px;
   margin-bottom: 10px;
 }
@@ -267,7 +267,7 @@
 }
 
 .mbland_tintucTemplate_newCard:hover .mbland_tintucTemplate_newCard_titleLink {
-  color: #B70C2C;
+  color: var(--primary-color);
 }
 
 .mbland_tintucTemplate_newCard_desc {
@@ -325,14 +325,14 @@
 }
 
 .mbland_tintucTemplate_post_listPostCategoriesLink:hover {
-  color: #B70C2C;
-  border: 1px solid #B70C2C;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
 }
 
 .mbland_tintucTemplate_post_listPostCategoriesLink.active {
   color: #fff;
-  background-color: #B70C2C;
-  border: 1px solid #B70C2C;
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-color);
 }
 
 /* Grid bài viết */
@@ -371,7 +371,7 @@
 
 .mbland_tintucTemplate_postCard_meta {
   display: flex;
-  color: #B70C2C;
+  color: var(--primary-color);
   font-size: 15px;
   margin-bottom: 10px;
 }
@@ -420,7 +420,7 @@
 }
 
 .mbland_tintucTemplate_postCard:hover .mbland_tintucTemplate_postCard_titleLink {
-  color: #B70C2C;
+  color: var(--primary-color);
 }
 
 .mbland_tintucTemplate_postCard_desc {
@@ -450,7 +450,7 @@
 }
 
 .mbland_tintucTemplate_postCard_cta {
-  color: #B70C2C;
+  color: var(--primary-color);
   font-size: 13px;
   font-weight: 600;
 }
@@ -491,11 +491,11 @@
 }
 
 .mbland_tintucTemplate_post_listPostPagination .page-numbers:hover {
-  color: #B70C2C !important;
+  color: var(--primary-color) !important;
 }
 
 .mbland_tintucTemplate_post_listPostPagination .page-numbers.current {
-  background-color: #B70C2C !important;
+  background-color: var(--primary-color) !important;
   color: #fff !important;
 }
 

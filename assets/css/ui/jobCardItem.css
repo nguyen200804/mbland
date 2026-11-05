@@ -27,7 +27,7 @@
 
 .mbland_jobCard_deadline,
 .hn__job-item .deadline {
-  color: var(--color-02, #B70C2C);
+  color: var(--color-02, var(--primary-color));
   font-weight: 600;
   font-size: 16px;
   margin-bottom: 6px;
@@ -60,7 +60,7 @@
 
 .mbland_jobCard_title a:hover,
 .hn__job-item h2 a:hover {
-  color: var(--color-02, #B70C2C);
+  color: var(--color-02, var(--primary-color));
 }
 
 .mbland_jobCard_info,
@@ -78,8 +78,8 @@
 
 .mbland_jobCard_applyBtn,
 .hn__job-item .apply-btn {
-  border: 1px solid var(--color-02, #B70C2C);
-  color: var(--color-02, #B70C2C);
+  border: 1px solid var(--color-02, var(--primary-color));
+  color: var(--color-02, var(--primary-color));
   border-radius: 30px;
   padding: 10px 26px;
   text-decoration: none;
@@ -94,11 +94,12 @@
 
 .mbland_jobCard_applyBtn:hover,
 .hn__job-item .apply-btn:hover {
-  background: var(--color-02, #B70C2C);
+  background: var(--color-02, var(--primary-color));
   color: #fff;
 }
 
 @media (max-width: 768px) {
+
   .mbland_jobCard,
   .hn__job-item {
     flex-direction: column;
@@ -106,4 +107,3 @@
     gap: 15px;
   }
 }
-

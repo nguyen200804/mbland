@@ -291,7 +291,7 @@
 .hn-tasmania-chitietduan-item-text-wrapper span {
   font-size: 14px;
   font-weight: 600;
-  color: var(--color-02);
+  color: var(--primary-color);
 }
 
 .hn-tasmania-chitietduan-item-text-wrapper .hn-tasmania-chitietduan-text p {
@@ -443,7 +443,7 @@
   font-weight: 600;
   font-size: 50px;
   line-height: 120%;
-  color: #1E499C;
+  color: var(--secondary-color);
 }
 
 .mbland_singleProject_details_content {
@@ -626,7 +626,7 @@
   line-height: 0.8em;
   letter-spacing: 0%;
   text-align: center;
-  color: #1E499C;
+  color: var(--secondary-color);
   margin-right: 28px;
   align-content: center;
   position: relative;
@@ -638,7 +638,7 @@
   width: 2px;
   height: 100%;
   position: absolute;
-  background: #1E499C;
+  background: var(--secondary-color);
   left: 50%;
   top: calc(100% - 70px);
 }
@@ -657,7 +657,7 @@
   line-height: 1.4em;
   text-align: center;
   padding: 0.575em 1.45em;
-  background-color: #B70C2C;
+  background-color: var(--primary-color);
   color: #fff;
   border-radius: 100px;
 }

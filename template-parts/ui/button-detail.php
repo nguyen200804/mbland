@@ -42,7 +42,7 @@ if ( ! empty( $args['class'] ) ) {
 	<span class="mbland-ui-btn-detail__icon" aria-hidden="true">
 		<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<rect width="32" height="32" rx="16" fill="#f0d5d9"/>
-			<path d="m22.163 19.984-.026-9.847-9.846-.025a.724.724 0 1 0 .01 1.43l7.379.031-9.775 9.776a.723.723 0 1 0 1.022 1.021l9.775-9.775.03 7.379a.723.723 0 0 0 1.446-.005z" fill="#b70c2c"/>
+			<path d="m22.163 19.984-.026-9.847-9.846-.025a.724.724 0 1 0 .01 1.43l7.379.031-9.775 9.776a.723.723 0 1 0 1.022 1.021l9.775-9.775.03 7.379a.723.723 0 0 0 1.446-.005z" fill="var(--primary-color)"/>
 		</svg>
 	</span>
 </a>

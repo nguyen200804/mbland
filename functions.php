@@ -231,7 +231,7 @@ if (!class_exists('Popup_Walker_Nav_Menu')) {
                 
                 // Span SVG chỉ nếu có children (cùng div với a, chỉ top-level)
                 if ($this->has_children) {
-                    $item_output .= '<span class="sub-menu-toggle"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 640 640"><path fill="#b70c2c" d="M297.4 470.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L320 402.7 150.6 233.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg></span>';
+                    $item_output .= '<span class="sub-menu-toggle"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 640 640"><path fill="var(--primary-color)" d="M297.4 470.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L320 402.7 150.6 233.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg></span>';
                 }
                 
                 $item_output .= '</div>';  // Đóng div - ul sẽ nằm sau div này trong li
@@ -782,7 +782,7 @@ function hn_breadcrumb_shortcode() {
         transition: color 0.2s;
       }
       .hn-breadcrumb .breadcrumb-list li a:hover {
-        color: var(--color-02);
+        color: var(--primary-color);
       }
       @media (max-width: 1024px){
         .hn-breadcrumb {

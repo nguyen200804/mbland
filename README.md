@@ -146,7 +146,7 @@ get_template_part( 'template-parts/ui/jobCardItem', null, array(
 
 ### 4. Component: Phân trang danh sách (`pagination`)
 
-Component phân trang dùng chung chuẩn giao diện MBLand: nút số trang bo góc màu `#F9F4EA`, trang hiện tại màu đỏ `#B70C2C`, tự động ẩn khi chỉ có 1 trang và hỗ trợ giữ nguyên query parameters.
+Component phân trang dùng chung chuẩn giao diện MBLand: nút số trang bo góc màu `#F9F4EA`, trang hiện tại màu đỏ `var(--primary-color)`, tự động ẩn khi chỉ có 1 trang và hỗ trợ giữ nguyên query parameters.
 
 - **File PHP Component**: [`template-parts/ui/pagination.php`](template-parts/ui/pagination.php)
 - **File CSS**: [`assets/css/ui/pagination.css`](assets/css/ui/pagination.css) *(được nạp tự động toàn trang qua `inc/enqueue.php`)*

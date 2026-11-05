@@ -35,7 +35,7 @@
 .mbland_singleRecruitment_header_title,
 .job-detail-header h1 {
   font-family: "GanhType", sans-serif;
-  color: #1E499C;
+  color: var(--secondary-color);
   margin: 0 0 5px;
   text-transform: uppercase;
   font-weight: 400;
@@ -76,7 +76,7 @@
 
 .mbland_singleRecruitment_header_badge,
 .badges .badge {
-  background: var(--color-02);
+  background: var(--primary-color);
   color: #fff;
   padding: 10px 28px;
   border-radius: 50px;
@@ -142,7 +142,7 @@
 .mbland_singleRecruitment_detail_deadlineText,
 .deadline-title {
   font-weight: 600;
-  color: var(--color-02);
+  color: var(--primary-color);
   font-family: 'Inter';
   font-size: 15px;
   margin: 0;
@@ -187,7 +187,7 @@
   font-weight: 600;
   font-size: 22px;
   line-height: 32px;
-  color: var(--color-02) !important;
+  color: var(--primary-color) !important;
   margin: 25px 0 12px;
 }
 
@@ -201,7 +201,7 @@
   font-family: "FZPoppins", sans-serif;
   font-weight: 600;
   margin: 20px 0 8px;
-  color: var(--color-02) !important;
+  color: var(--primary-color) !important;
   font-size: 19px;
 }
 
@@ -214,7 +214,7 @@
   font-family: "FZPoppins", sans-serif;
   font-weight: 600;
   margin: 15px 0 6px;
-  color: var(--color-02) !important;
+  color: var(--primary-color) !important;
   font-size: 16px;
 }
 
@@ -304,7 +304,7 @@
 .mbland_singleRecruitment_otherJobs_header,
 .related-jobs h2 {
   font-size: 26px;
-  color: var(--color-02);
+  color: var(--primary-color);
   font-weight: 700;
   border-bottom: 1px solid #eee;
   padding-bottom: 15px;
@@ -319,7 +319,7 @@
 
 .mbland_singleRecruitment_otherJobs_heading {
   font-size: 26px;
-  color: var(--color-02);
+  color: var(--primary-color);
   font-weight: 700;
   margin: 0;
   font-family: "FZPoppins", sans-serif;
@@ -328,7 +328,7 @@
 .mbland_singleRecruitment_otherJobs_viewAll,
 .related-jobs .view-all {
   font-size: 16px;
-  color: var(--color-02);
+  color: var(--primary-color);
   text-decoration: none;
   font-weight: 500;
   transition: opacity 0.2s ease;
@@ -360,7 +360,7 @@
 
 .mbland_singleRecruitment_otherJobs_deadline,
 .related-jobs .hn__job-item-other .deadline {
-  color: var(--color-02);
+  color: var(--primary-color);
   font-weight: 600;
   margin-bottom: 6px;
   display: flex;
@@ -400,7 +400,7 @@
 }
 
 .mbland_singleRecruitment_otherJobs_titleLink:hover {
-  color: var(--color-02);
+  color: var(--primary-color);
 }
 
 .mbland_singleRecruitment_otherJobs_info,
@@ -412,8 +412,8 @@
 
 .mbland_singleRecruitment_otherJobs_applyBtn,
 .related-jobs .hn__job-item-other .apply-btn {
-  border: 1px solid var(--color-02);
-  color: var(--color-02);
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
   border-radius: 30px;
   padding: 8px 24px;
   text-decoration: none;
@@ -427,7 +427,7 @@
 
 .mbland_singleRecruitment_otherJobs_applyBtn:hover,
 .related-jobs .hn__job-item-other .apply-btn:hover {
-  background: var(--color-02);
+  background: var(--primary-color);
   color: #fff;
 }
 
