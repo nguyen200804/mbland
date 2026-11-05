@@ -215,7 +215,45 @@ a.hn-tasmania-cta-btn:hover {
   }
 }
 
-@media (max-width: 1400px) {}
+@media (max-width: 1400px) {
+  .container {
+    max-width: 1155px;
+    padding-inline: 32px;
+  }
+
+  h1 {
+    font-size: 2em; /* 36.67px * 1400/1600 = 32.08px */
+  }
+
+  h1,
+  h2 {
+    margin-bottom: 8px;
+  }
+
+  h2,
+  .equalh2,
+  h2.big-h2 {
+    font-size: 2.5em; /* 45.83px * 1400/1600 = 40.1px */
+  }
+
+  h3,
+  .equalh3 {
+    font-size: 1.5em; /* 27.5px * 1400/1600 = 24.06px */
+  }
+
+  h3.small-h3 {
+    font-size: 1em; /* 18.33px * 1400/1600 = 16.04px */
+  }
+
+  a.hn-tasmania-cta-btn {
+    padding: 10px 24px;
+    gap: 8px;
+  }
+
+  a.hn-tasmania-cta-btn img {
+    width: 12px;
+  }
+}
 
 
 @media (max-width: 1200px) {
