@@ -104,3 +104,18 @@ function mbland_recruitment_disable_canonical( $redirect_url ) {
 	return $redirect_url;
 }
 add_filter( 'redirect_canonical', 'mbland_recruitment_disable_canonical' );
+
+/**
+ * Bo loc dung ten tham so = slug taxonomy (vi-tri-ung-tuyen, noi-lam-viec, hinh-thuc-lam-viec).
+ * Neu taxonomy bat query_var, WordPress se them tax_query vao main query cua Page => 404.
+ * Go cac query var nay khoi main query cua Page; template van doc truc tiep tu $_GET.
+ */
+function mbland_recruitment_strip_tax_query_vars( $query_vars ) {
+	if ( isset( $query_vars['pagename'] ) || isset( $query_vars['page_id'] ) ) {
+		foreach ( array( 'vi-tri-ung-tuyen', 'noi-lam-viec', 'hinh-thuc-lam-viec' ) as $tax ) {
+			unset( $query_vars[ $tax ] );
+		}
+	}
+	return $query_vars;
+}
+add_filter( 'request', 'mbland_recruitment_strip_tax_query_vars' );

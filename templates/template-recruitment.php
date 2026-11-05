@@ -8,9 +8,9 @@ get_header();
 // SSR: NHẬN THAM SỐ BỘ LỌC TỪ URL VÀ TRUY VẤN DỮ LIỆU
 // ==========================================================================
 $keyword  = sanitize_text_field( $_GET['keyword'] ?? $_GET['s'] ?? '' );
-$vitri    = sanitize_text_field( $_GET['vitri'] ?? 'all' );
-$noilam   = sanitize_text_field( $_GET['noilamviec'] ?? 'all' );
-$hinhthuc = sanitize_text_field( $_GET['hinhthuc'] ?? 'all' );
+$vitri    = sanitize_text_field( $_GET['vi-tri-ung-tuyen'] ?? 'all' );
+$noilam   = sanitize_text_field( $_GET['noi-lam-viec'] ?? 'all' );
+$hinhthuc = sanitize_text_field( $_GET['hinh-thuc-lam-viec'] ?? 'all' );
 // Phân trang sạch /page/N/ (rewrite rule tại inc/recruitment-pagination.php)
 $paged    = max( 1, intval( get_query_var( 'paged' ) ) );
 $page_url = get_permalink( get_queried_object_id() );
@@ -134,13 +134,13 @@ $jobs_query = new WP_Query( $jobs_args );
 						<h4 class="mbland_recruitment_jobs_filterGroupTitle">Vị trí ứng tuyển</h4>
 						<input type="text" class="mbland_recruitment_jobs_filterInput filter-text" id="vitriInput" placeholder="Nhập vị trí ứng tuyển...">
 						<div class="mbland_recruitment_jobs_filterOptions filter-options">
-							<label><input type="radio" form="careerForm" name="vitri" value="all" <?php checked( $vitri, 'all' ); ?>> Tất cả</label>
+							<label><input type="radio" form="careerForm" name="vi-tri-ung-tuyen" value="all" <?php checked( $vitri, 'all' ); ?>> Tất cả</label>
 							<?php
 							$terms = get_terms( array( 'taxonomy' => 'vi-tri-ung-tuyen', 'hide_empty' => false ) );
 							if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) :
 								foreach ( $terms as $term ) :
 							?>
-								<label><input type="radio" form="careerForm" name="vitri" value="<?php echo esc_attr( $term->slug ); ?>" <?php checked( $vitri, $term->slug ); ?>> <?php echo esc_html( $term->name ); ?></label>
+								<label><input type="radio" form="careerForm" name="vi-tri-ung-tuyen" value="<?php echo esc_attr( $term->slug ); ?>" <?php checked( $vitri, $term->slug ); ?>> <?php echo esc_html( $term->name ); ?></label>
 							<?php
 								endforeach;
 							endif;
@@ -153,13 +153,13 @@ $jobs_query = new WP_Query( $jobs_args );
 						<h4 class="mbland_recruitment_jobs_filterGroupTitle">Nơi làm việc</h4>
 						<input type="text" class="mbland_recruitment_jobs_filterInput filter-text" id="noilamviecInput" placeholder="Nhập nơi làm việc...">
 						<div class="mbland_recruitment_jobs_filterOptions filter-options">
-							<label><input type="radio" form="careerForm" name="noilamviec" value="all" <?php checked( $noilam, 'all' ); ?>> Tất cả</label>
+							<label><input type="radio" form="careerForm" name="noi-lam-viec" value="all" <?php checked( $noilam, 'all' ); ?>> Tất cả</label>
 							<?php
 							$terms = get_terms( array( 'taxonomy' => 'noi-lam-viec', 'hide_empty' => false ) );
 							if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) :
 								foreach ( $terms as $term ) :
 							?>
-								<label><input type="radio" form="careerForm" name="noilamviec" value="<?php echo esc_attr( $term->slug ); ?>" <?php checked( $noilam, $term->slug ); ?>> <?php echo esc_html( $term->name ); ?></label>
+								<label><input type="radio" form="careerForm" name="noi-lam-viec" value="<?php echo esc_attr( $term->slug ); ?>" <?php checked( $noilam, $term->slug ); ?>> <?php echo esc_html( $term->name ); ?></label>
 							<?php
 								endforeach;
 							endif;
@@ -171,13 +171,13 @@ $jobs_query = new WP_Query( $jobs_args );
 					<div class="mbland_recruitment_jobs_filterGroup filter-group">
 						<h4 class="mbland_recruitment_jobs_filterGroupTitle">Hình thức làm việc</h4>
 						<div class="mbland_recruitment_jobs_filterOptions filter-options">
-							<label><input type="radio" form="careerForm" name="hinhthuc" value="all" <?php checked( $hinhthuc, 'all' ); ?>> Tất cả</label>
+							<label><input type="radio" form="careerForm" name="hinh-thuc-lam-viec" value="all" <?php checked( $hinhthuc, 'all' ); ?>> Tất cả</label>
 							<?php
 							$terms = get_terms( array( 'taxonomy' => 'hinh-thuc-lam-viec', 'hide_empty' => false ) );
 							if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) :
 								foreach ( $terms as $term ) :
 							?>
-								<label><input type="radio" form="careerForm" name="hinhthuc" value="<?php echo esc_attr( $term->slug ); ?>" <?php checked( $hinhthuc, $term->slug ); ?>> <?php echo esc_html( $term->name ); ?></label>
+								<label><input type="radio" form="careerForm" name="hinh-thuc-lam-viec" value="<?php echo esc_attr( $term->slug ); ?>" <?php checked( $hinhthuc, $term->slug ); ?>> <?php echo esc_html( $term->name ); ?></label>
 							<?php
 								endforeach;
 							endif;
@@ -214,13 +214,13 @@ $jobs_query = new WP_Query( $jobs_args );
 						$active_params['keyword'] = $keyword;
 					}
 					if ( ! empty( $vitri ) && 'all' !== $vitri ) {
-						$active_params['vitri'] = $vitri;
+						$active_params['vi-tri-ung-tuyen'] = $vitri;
 					}
 					if ( ! empty( $noilam ) && 'all' !== $noilam ) {
-						$active_params['noilamviec'] = $noilam;
+						$active_params['noi-lam-viec'] = $noilam;
 					}
 					if ( ! empty( $hinhthuc ) && 'all' !== $hinhthuc ) {
-						$active_params['hinhthuc'] = $hinhthuc;
+						$active_params['hinh-thuc-lam-viec'] = $hinhthuc;
 					}
 
 					$paginate_args = array(
