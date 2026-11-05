@@ -103,8 +103,8 @@
 
 .mbland_homepage_about_scrollToExplore {
   position: absolute;
-  bottom: 30px;
-  left: 0;
+  bottom: 0;
+  left: -94px;
   cursor: pointer;
 }
 
