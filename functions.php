@@ -87,7 +87,7 @@ function load_custom_single_du_an_template($template) {
 add_filter( 'template_include', 'load_custom_blog_home_template', 99 );
 function load_custom_blog_home_template( $template ) {
     if ( is_home() ) {
-        $news_template = locate_template( 'templates/template-news.php' );
+        $news_template = locate_template( 'template-tin-tuc/template-tin-tuc-category.php' );
         if ( ! empty( $news_template ) ) {
             return $news_template;
         }
