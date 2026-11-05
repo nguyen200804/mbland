@@ -1,0 +1,49 @@
+/* ==========================================================================
+   UI Component: Button Detail
+   Path: assets/css/ui/button-detail.css
+   ========================================================================== */
+
+/* --- Button Detail (Nút Xem chi tiết có icon thu gọn khi hover) --- */
+.mbland-ui-btn-detail {
+  color: #B70C2C;
+  font-size: 13px;
+  font-weight: 600;
+  display: inline-flex;
+  gap: 0.4em;
+  align-items: center;
+  transition: all .3s ease;
+  border-radius: 100px;
+  padding: 0;
+  text-decoration: none;
+}
+
+.mbland-ui-btn-detail:hover {
+  background-color: #B70C2C;
+  color: #fff;
+  padding: 0 1.3em;
+}
+
+.mbland-ui-btn-detail__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5em;
+  height: 2.5em;
+  transition: width .3s ease;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.mbland-ui-btn-detail__icon svg {
+  width: 2.5em;
+  height: 2.5em;
+  flex-shrink: 0;
+}
+
+.mbland-ui-btn-detail:hover .mbland-ui-btn-detail__icon {
+  width: 0;
+}
+
+.mbland-ui-btn-detail__label {
+  white-space: nowrap;
+}

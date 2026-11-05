@@ -174,13 +174,13 @@ if ( is_category() ) {
 								<p class="mbland_tintucTemplate_newCard_authorName"><?php the_author(); ?></p>
 							</div>
 
-                            <a class="mbland_tintucTemplate_newCard_cta" href="<?php the_permalink(); ?>" title="Xem chi tiết">
-								<span class="mbland_tintucTemplate_newCard_ctaLabel"><?php echo function_exists('pll__') ? pll__('XEM CHI TIẾT') : 'XEM CHI TIẾT'; ?></span>
-                                <span class="mbland_tintucTemplate_newCard_ctaIcon">
-                                    <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="32" height="32" rx="16" fill="#f0d5d9"/><g clip-path="url(#a)"><path d="m22.163 19.984-.026-9.847-9.846-.025a.724.724 0 1 0 .01 1.43l7.379.031-9.775 9.776a.723.723 0 1 0 1.022 1.021l9.775-9.775.03 7.379a.723.723 0 0 0 1.446-.005z" fill="#b70c2c"/></g><defs><clipPath id="a"><path fill="#fff" d="M6 6h20v20H6z"/></clipPath></defs></svg>
-
-                                </span>
-                            </a>
+                            <?php
+                            get_template_part( 'template-parts/ui/button-detail', null, array(
+                                'url'   => get_permalink(),
+                                'class' => 'mbland_tintucTemplate_newCard_button',
+                                'title' => the_title_attribute( array( 'echo' => false ) ),
+                            ) );
+                            ?>
                         </div>
                     </article>
                     <?php
