@@ -11,7 +11,9 @@ $keyword  = sanitize_text_field( $_GET['keyword'] ?? $_GET['s'] ?? '' );
 $vitri    = sanitize_text_field( $_GET['vitri'] ?? 'all' );
 $noilam   = sanitize_text_field( $_GET['noilamviec'] ?? 'all' );
 $hinhthuc = sanitize_text_field( $_GET['hinhthuc'] ?? 'all' );
-$paged    = ( get_query_var( 'paged' ) ) ? intval( get_query_var( 'paged' ) ) : ( ( get_query_var( 'page' ) ) ? intval( get_query_var( 'page' ) ) : 1 );
+// Phân trang sạch /page/N/ (rewrite rule tại inc/recruitment-pagination.php)
+$paged    = max( 1, intval( get_query_var( 'paged' ) ) );
+$page_url = get_permalink( get_queried_object_id() );
 
 $jobs_args = array(
 	'post_type'      => 'tuyen-dung',
@@ -108,7 +110,7 @@ $jobs_query = new WP_Query( $jobs_args );
 		</header>
 
 		<!-- Form tìm kiếm -->
-		<form method="get" class="mbland_recruitment_jobs_searchForm form-career" id="careerForm" action="<?php echo esc_url( get_permalink() ); ?>">
+		<form method="get" class="mbland_recruitment_jobs_searchForm form-career" id="careerForm" action="<?php echo esc_url( $page_url ); ?>">
 			<h3 class="mbland_recruitment_jobs_searchTitle">Tìm công việc</h3>
 			<input type="text" name="keyword" value="<?php echo esc_attr( $keyword ); ?>" class="mbland_recruitment_jobs_searchInput" placeholder="Nhập từ khóa tìm kiếm" autocomplete="off">
 			<button type="submit" class="mbland_recruitment_jobs_searchBtn" id="careerSearchBtn">Tìm kiếm</button>
@@ -207,16 +209,6 @@ $jobs_query = new WP_Query( $jobs_args );
 				<?php if ( $jobs_query->max_num_pages > 1 ) : ?>
 				<div class="mbland_recruitment_jobs_pagination">
 					<?php
-					$paginate_args = array(
-						'base'      => str_replace( 999999999, '%#%', esc_url( get_pagenum_link( 999999999 ) ) ),
-						'format'    => '?paged=%#%',
-						'current'   => max( 1, $paged ),
-						'total'     => $jobs_query->max_num_pages,
-						'prev_text' => function_exists( 'pll__' ) ? pll__( 'Trước' ) : 'Trước',
-						'next_text' => function_exists( 'pll__' ) ? pll__( 'Sau' ) : 'Sau',
-						'type'      => 'list',
-					);
-
 					$active_params = array();
 					if ( ! empty( $keyword ) ) {
 						$active_params['keyword'] = $keyword;
@@ -230,6 +222,16 @@ $jobs_query = new WP_Query( $jobs_args );
 					if ( ! empty( $hinhthuc ) && 'all' !== $hinhthuc ) {
 						$active_params['hinhthuc'] = $hinhthuc;
 					}
+
+					$paginate_args = array(
+						'base'      => trailingslashit( $page_url ) . '%_%',
+						'format'    => 'page/%#%/',
+						'current'   => $paged,
+						'total'     => $jobs_query->max_num_pages,
+						'prev_text' => function_exists( 'pll__' ) ? pll__( 'Trước' ) : 'Trước',
+						'next_text' => function_exists( 'pll__' ) ? pll__( 'Sau' ) : 'Sau',
+						'type'      => 'list',
+					);
 					if ( ! empty( $active_params ) ) {
 						$paginate_args['add_args'] = $active_params;
 					}
@@ -316,7 +318,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Xóa bộ lọc -> về URL gốc của trang
   function resetAllFilters() {
-    window.location.href = window.location.origin + window.location.pathname;
+    window.location.href = form.getAttribute('action'); // URL gốc của trang (không có /page/N/)
   }
   document.getElementById('resetFilter')?.addEventListener('click', resetAllFilters);
 

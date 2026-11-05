@@ -22,6 +22,9 @@ require_once HOMENEST_INC_DIR . 'custom-post-types.php';
 // 4. Các hàm hỗ trợ khác (nếu cần)
 require_once HOMENEST_INC_DIR . 'helper-functions.php';
 
+// 5. Phan trang sach /page/N/ cho trang Tuyen dung
+require_once HOMENEST_INC_DIR . 'recruitment-pagination.php';
+
 // KHÔNG CÓ THẺ ĐÓNG PHP ?>
 
 <?php
