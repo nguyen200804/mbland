@@ -279,7 +279,7 @@ get_template_part( 'template-parts/ui/button-detail', null, array(
 							<?php
 get_template_part( 'mbland_tintucTemplate_postCard_cta', null, array(
     'url'   => get_permalink(),
-    'class' => 'mbland_tintucTemplate_newCard_button',
+    'class' => 'mbland_tintucTemplate_postCard_button',
     'title' => the_title_attribute( array( 'echo' => false ) ),
 ) );
 ?>
