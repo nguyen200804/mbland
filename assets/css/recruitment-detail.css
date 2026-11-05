@@ -12,15 +12,16 @@
 }
 
 .mbland_singleRecruitment_header_breadcrumb {
-  padding-top: 10px;
-  padding-bottom: 10px;
+  /* padding-top: 10px; */
+  /* padding-bottom: 10px; */
 }
 
 .mbland_singleRecruitment_header_wrapper,
 .job-detail-header {
   display: flex;
-  padding-bottom: 20px;
+  padding-bottom: 30px;
   border-bottom: 1px solid #c5c5c5;
+  margin-top: 52px;
   margin-bottom: 50px;
   justify-content: space-between;
   gap: 20px;
@@ -34,7 +35,7 @@
 .mbland_singleRecruitment_header_title,
 .job-detail-header h1 {
   font-family: "GanhType", sans-serif;
-  color: var(--color-02);
+  color: #1E499C;
   margin: 0 0 5px;
   text-transform: uppercase;
   font-weight: 400;
@@ -44,18 +45,17 @@
 
 .mbland_singleRecruitment_header_location,
 .job-detail-header .address {
-  color: #444;
-  margin-bottom: 10px;
-  font-family: "FZPoppins", sans-serif;
-  font-size: 15px;
+  color: #a4a4a4;
+  /* margin-bottom: 10px; */
+  font-family: 'Inter';
+  font-size: 16px;
 }
 
 .mbland_singleRecruitment_header_locationLabel,
 .job-detail-header .title {
-  font-family: "FZPoppins", sans-serif;
   font-weight: 500;
-  font-size: 16px;
   line-height: 120%;
+  color: #474746;
 }
 
 .mbland_singleRecruitment_header_meta,
@@ -96,7 +96,7 @@
 .mbland_singleRecruitment_detail_wrapper,
 .job-detail-body {
   display: flex;
-  gap: 40px;
+  gap: 50px;
   align-items: flex-start;
   padding-bottom: 40px;
 }
@@ -105,13 +105,13 @@
 .mbland_singleRecruitment_detail_sidebar,
 .job-sidebar {
   background: #f9f4ea;
-  padding: 24px;
+  padding: 30px;
   border-radius: 16px;
   position: sticky;
   top: 100px;
   align-self: flex-start;
   z-index: 2;
-  width: 320px;
+  width: 300px;
   flex-shrink: 0;
   box-sizing: border-box;
 }
@@ -120,7 +120,7 @@
 .deadline-box {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 15px;
 }
 
 .mbland_singleRecruitment_detail_deadline,
@@ -128,7 +128,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  padding-bottom: 10px;
+  padding-bottom: 15px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
@@ -143,29 +143,28 @@
 .deadline-title {
   font-weight: 600;
   color: var(--color-02);
-  font-family: "FZPoppins", sans-serif;
+  font-family: 'Inter';
   font-size: 15px;
   margin: 0;
 }
 
 .mbland_singleRecruitment_detail_infoItem,
 .section-sidebar {
-  font-family: "FZPoppins", sans-serif;
+  font-family: 'Inter';
   font-weight: 500;
-  line-height: 24px;
-  color: #6b6b6b;
-  font-size: 15px;
+  line-height: 1.5em;
+  font-size: 16px;
 }
 
 .mbland_singleRecruitment_detail_infoLabel,
 .section-sidebar .title {
   color: #191919;
-  font-weight: 600;
+  font-weight: 500;
   margin: 0 0 2px;
 }
 
 .mbland_singleRecruitment_detail_infoValue {
-  color: #555;
+  color: #656565;
   display: block;
 }
 
@@ -209,7 +208,9 @@
 .mbland_singleRecruitment_detail_article h4,
 .mbland_singleRecruitment_detail_article h5,
 .mbland_singleRecruitment_detail_article h6,
-.job-main h4, .job-main h5, .job-main h6 {
+.job-main h4,
+.job-main h5,
+.job-main h6 {
   font-family: "FZPoppins", sans-serif;
   font-weight: 600;
   margin: 15px 0 6px;
@@ -219,7 +220,8 @@
 
 .mbland_singleRecruitment_detail_article p,
 .mbland_singleRecruitment_detail_article span,
-.job-main p, .job-main span {
+.job-main p,
+.job-main span {
   font-family: "FZPoppins", sans-serif;
   font-size: 15.5px;
   line-height: 26px;
@@ -435,14 +437,17 @@
 
 /* ≤ 1600px */
 @media (max-width: 1600px) {
+
   .mbland_singleRecruitment_header_title,
   .job-detail-header h1 {
     font-size: 28px;
   }
+
   .mbland_singleRecruitment_detail_wrapper,
   .job-detail-body {
     gap: 32px;
   }
+
   .mbland_singleRecruitment_otherJobs_grid,
   .related-jobs .hn__job-grid {
     gap: 24px;
@@ -451,24 +456,29 @@
 
 /* ≤ 1400px */
 @media (max-width: 1400px) {
+
   .mbland_singleRecruitment_header_wrapper,
   .job-detail-header {
     margin-bottom: 40px;
   }
+
   .mbland_singleRecruitment_header_title,
   .job-detail-header h1 {
     font-size: 26px;
   }
+
   .mbland_singleRecruitment_header_badge,
   .badges .badge {
     padding: 8px 22px;
     font-size: 14px;
   }
+
   .mbland_singleRecruitment_detail_article h2,
   .job-main h2 {
     font-size: 20px;
     line-height: 30px;
   }
+
   .mbland_singleRecruitment_detail_article li,
   .job-main li {
     font-size: 15px;
@@ -477,15 +487,18 @@
 
 /* ≤ 1200px */
 @media (max-width: 1200px) {
+
   .mbland_singleRecruitment_header_wrapper,
   .job-detail-header {
     gap: 16px;
   }
+
   .mbland_singleRecruitment_detail_sidebar,
   .job-sidebar {
     width: 280px;
     padding: 20px;
   }
+
   .mbland_singleRecruitment_banner_image,
   .banner-section img {
     height: 260px;
@@ -494,25 +507,30 @@
 
 /* ≤ 1024px (Tablet) */
 @media (max-width: 1024px) {
+
   .mbland_singleRecruitment_detail_wrapper,
   .job-detail-body {
     flex-direction: column;
     gap: 30px;
   }
+
   .mbland_singleRecruitment_detail_sidebar,
   .job-sidebar {
     width: 100%;
     position: static;
   }
+
   .mbland_singleRecruitment_detail_infoBox,
   .deadline-box {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
   }
+
   .mbland_singleRecruitment_detail_deadline {
     grid-column: 1 / -1;
   }
+
   .mbland_singleRecruitment_otherJobs_grid,
   .related-jobs .hn__job-grid {
     grid-template-columns: 1fr;
@@ -522,6 +540,7 @@
 
 /* ≤ 768px (Mobile lớn) */
 @media (max-width: 768px) {
+
   .mbland_singleRecruitment_header_wrapper,
   .job-detail-header {
     flex-direction: column;
@@ -529,24 +548,29 @@
     gap: 15px;
     margin-bottom: 30px;
   }
+
   .mbland_singleRecruitment_header_meta,
   .job-detail-header .right {
     width: 100%;
     justify-content: flex-start;
   }
+
   .mbland_singleRecruitment_header_title,
   .job-detail-header h1 {
     font-size: 24px;
   }
+
   .mbland_singleRecruitment_banner_image,
   .banner-section img {
     height: 200px;
   }
+
   .mbland_singleRecruitment_otherJobs,
   .related-jobs {
     margin-top: 40px;
     margin-bottom: 50px;
   }
+
   .mbland_singleRecruitment_otherJobs_heading {
     font-size: 22px;
   }
@@ -554,24 +578,29 @@
 
 /* ≤ 576px (Mobile nhỏ) */
 @media (max-width: 576px) {
+
   .mbland_singleRecruitment_header_title,
   .job-detail-header h1 {
     font-size: 21px;
   }
+
   .mbland_singleRecruitment_header_badge,
   .badges .badge {
     padding: 6px 16px;
     font-size: 13px;
   }
+
   .mbland_singleRecruitment_detail_infoBox,
   .deadline-box {
     grid-template-columns: 1fr;
     gap: 12px;
   }
+
   .mbland_singleRecruitment_banner_image,
   .banner-section img {
     height: 160px;
   }
+
   .mbland_singleRecruitment_otherJobs_title,
   .related-jobs .hn__job-item-other h3 {
     font-size: 17px;

@@ -387,38 +387,74 @@
 }
 
 /* --- Phân trang AJAX --- */
+.mbland_recruitment_jobs_pagination,
 .pagination-ajax {
+  margin-top: 40px;
   text-align: center;
 }
 
+.mbland_recruitment_jobs_pagination ul.page-numbers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mbland_recruitment_jobs_pagination ul.page-numbers .page-numbers,
 .pagination-ajax .page-link {
-  display: inline-block;
-  padding: 8px 16px;
-  margin: 0 4px;
-  color: #656565;
+  min-width: 38px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #F9F4EA;
   border-radius: 8px;
-  background: #f9f4ea;
+  text-align: center;
+  padding: 0 15px;
   font-family: "FZPoppins", sans-serif;
   font-weight: 500;
   font-size: 15px;
   line-height: 100%;
+  color: #656565;
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: all .3s ease;
 }
 
+.mbland_recruitment_jobs_pagination .page-numbers:hover,
 .pagination-ajax .page-link:hover {
-  background: #e8ded0;
+  background-color: #e8ded0;
+  color: var(--color-02);
 }
 
+.mbland_recruitment_jobs_pagination .page-numbers.current,
 .pagination-ajax .page-link.is-active {
-  color: #fff;
-  background: var(--color-02);
+  background-color: var(--color-02) !important;
+  color: #fff !important;
 }
 
-.pagination-ajax .page-link.is-disabled {
-  opacity: 0.5;
-  pointer-events: none;
+.mbland_recruitment_jobs_pagination .page-numbers.dots {
+  background: transparent;
   cursor: default;
+}
+
+.mbland_recruitment_jobs_noPosts {
+  font-family: "FZPoppins", sans-serif;
+  font-size: 16px;
+  color: #656565;
+  text-align: center;
+  padding: 40px 0;
+}
+
+#jobsContentWrapper {
+  transition: opacity 0.25s ease;
+}
+
+#jobsContentWrapper.is-loading {
+  opacity: 0.45;
+  pointer-events: none;
 }
 
 /* --- Mobile filter dropdown --- */

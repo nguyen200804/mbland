@@ -3,6 +3,53 @@
 Template Name: Tuyển Dụng
 */
 get_header();
+
+// ==========================================================================
+// SSR: NHẬN THAM SỐ BỘ LỌC TỪ URL VÀ TRUY VẤN DỮ LIỆU
+// ==========================================================================
+$keyword  = sanitize_text_field( $_GET['keyword'] ?? $_GET['s'] ?? '' );
+$vitri    = sanitize_text_field( $_GET['vitri'] ?? 'all' );
+$noilam   = sanitize_text_field( $_GET['noilamviec'] ?? 'all' );
+$hinhthuc = sanitize_text_field( $_GET['hinhthuc'] ?? 'all' );
+$paged    = ( get_query_var( 'paged' ) ) ? intval( get_query_var( 'paged' ) ) : ( ( get_query_var( 'page' ) ) ? intval( get_query_var( 'page' ) ) : 1 );
+
+$jobs_args = array(
+	'post_type'      => 'tuyen-dung',
+	'posts_per_page' => 6,
+	'paged'          => $paged,
+	'post_status'    => 'publish',
+	'tax_query'      => array( 'relation' => 'AND' ),
+);
+
+if ( ! empty( $vitri ) && 'all' !== $vitri ) {
+	$jobs_args['tax_query'][] = array(
+		'taxonomy' => 'vi-tri-ung-tuyen',
+		'field'    => 'slug',
+		'terms'    => $vitri,
+	);
+}
+
+if ( ! empty( $noilam ) && 'all' !== $noilam ) {
+	$jobs_args['tax_query'][] = array(
+		'taxonomy' => 'noi-lam-viec',
+		'field'    => 'slug',
+		'terms'    => $noilam,
+	);
+}
+
+if ( ! empty( $hinhthuc ) && 'all' !== $hinhthuc ) {
+	$jobs_args['tax_query'][] = array(
+		'taxonomy' => 'hinh-thuc-lam-viec',
+		'field'    => 'slug',
+		'terms'    => $hinhthuc,
+	);
+}
+
+if ( ! empty( $keyword ) ) {
+	$jobs_args['s'] = $keyword;
+}
+
+$jobs_query = new WP_Query( $jobs_args );
 ?>
 
 <!-- ==========================================================================
@@ -61,10 +108,10 @@ get_header();
 		</header>
 
 		<!-- Form tìm kiếm -->
-		<form method="get" class="mbland_recruitment_jobs_searchForm form-career" id="careerForm" onsubmit="return false;">
+		<form method="get" class="mbland_recruitment_jobs_searchForm form-career" id="careerForm" action="<?php echo esc_url( get_permalink() ); ?>">
 			<h3 class="mbland_recruitment_jobs_searchTitle">Tìm công việc</h3>
-			<input type="text" name="s" class="mbland_recruitment_jobs_searchInput" placeholder="Nhập từ khóa tìm kiếm" autocomplete="off">
-			<button type="button" class="mbland_recruitment_jobs_searchBtn" id="careerSearchBtn">Tìm kiếm</button>
+			<input type="text" name="keyword" value="<?php echo esc_attr( $keyword ); ?>" class="mbland_recruitment_jobs_searchInput" placeholder="Nhập từ khóa tìm kiếm" autocomplete="off">
+			<button type="submit" class="mbland_recruitment_jobs_searchBtn" id="careerSearchBtn">Tìm kiếm</button>
 		</form>
 
 		<!-- Dropdown bộ lọc cho mobile -->
@@ -85,13 +132,13 @@ get_header();
 						<h4 class="mbland_recruitment_jobs_filterGroupTitle">Vị trí ứng tuyển</h4>
 						<input type="text" class="mbland_recruitment_jobs_filterInput filter-text" id="vitriInput" placeholder="Nhập vị trí ứng tuyển...">
 						<div class="mbland_recruitment_jobs_filterOptions filter-options">
-							<label><input type="radio" name="vitri" value="all" checked> Tất cả</label>
+							<label><input type="radio" name="vitri" value="all" <?php checked( $vitri, 'all' ); ?>> Tất cả</label>
 							<?php
 							$terms = get_terms( array( 'taxonomy' => 'vi-tri-ung-tuyen', 'hide_empty' => false ) );
 							if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) :
 								foreach ( $terms as $term ) :
 							?>
-								<label><input type="radio" name="vitri" value="<?php echo esc_attr( $term->slug ); ?>"> <?php echo esc_html( $term->name ); ?></label>
+								<label><input type="radio" name="vitri" value="<?php echo esc_attr( $term->slug ); ?>" <?php checked( $vitri, $term->slug ); ?>> <?php echo esc_html( $term->name ); ?></label>
 							<?php
 								endforeach;
 							endif;
@@ -104,13 +151,13 @@ get_header();
 						<h4 class="mbland_recruitment_jobs_filterGroupTitle">Nơi làm việc</h4>
 						<input type="text" class="mbland_recruitment_jobs_filterInput filter-text" id="noilamviecInput" placeholder="Nhập nơi làm việc...">
 						<div class="mbland_recruitment_jobs_filterOptions filter-options">
-							<label><input type="radio" name="noilamviec" value="all" checked> Tất cả</label>
+							<label><input type="radio" name="noilamviec" value="all" <?php checked( $noilam, 'all' ); ?>> Tất cả</label>
 							<?php
 							$terms = get_terms( array( 'taxonomy' => 'noi-lam-viec', 'hide_empty' => false ) );
 							if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) :
 								foreach ( $terms as $term ) :
 							?>
-								<label><input type="radio" name="noilamviec" value="<?php echo esc_attr( $term->slug ); ?>"> <?php echo esc_html( $term->name ); ?></label>
+								<label><input type="radio" name="noilamviec" value="<?php echo esc_attr( $term->slug ); ?>" <?php checked( $noilam, $term->slug ); ?>> <?php echo esc_html( $term->name ); ?></label>
 							<?php
 								endforeach;
 							endif;
@@ -122,13 +169,13 @@ get_header();
 					<div class="mbland_recruitment_jobs_filterGroup filter-group">
 						<h4 class="mbland_recruitment_jobs_filterGroupTitle">Hình thức làm việc</h4>
 						<div class="mbland_recruitment_jobs_filterOptions filter-options">
-							<label><input type="radio" name="hinhthuc" value="all" checked> Tất cả</label>
+							<label><input type="radio" name="hinhthuc" value="all" <?php checked( $hinhthuc, 'all' ); ?>> Tất cả</label>
 							<?php
 							$terms = get_terms( array( 'taxonomy' => 'hinh-thuc-lam-viec', 'hide_empty' => false ) );
 							if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) :
 								foreach ( $terms as $term ) :
 							?>
-								<label><input type="radio" name="hinhthuc" value="<?php echo esc_attr( $term->slug ); ?>"> <?php echo esc_html( $term->name ); ?></label>
+								<label><input type="radio" name="hinhthuc" value="<?php echo esc_attr( $term->slug ); ?>" <?php checked( $hinhthuc, $term->slug ); ?>> <?php echo esc_html( $term->name ); ?></label>
 							<?php
 								endforeach;
 							endif;
@@ -138,11 +185,60 @@ get_header();
 				</div>
 			</aside>
 
-			<!-- Cột phải: Danh sách job -->
-			<div class="mbland_recruitment_jobs_content hn__career-right">
-				<div class="mbland_recruitment_jobs_list hn__job-list">
-					<!-- Danh sách job load động qua AJAX tại đây -->
+			<!-- Cột phải: Danh sách job & Phân trang (SSR) -->
+			<div class="mbland_recruitment_jobs_content hn__career-right" id="jobsContentWrapper">
+				<div class="mbland_recruitment_jobs_list hn__job-list" id="jobsList">
+					<?php
+					if ( $jobs_query->have_posts() ) :
+						while ( $jobs_query->have_posts() ) : $jobs_query->the_post();
+							get_template_part( 'template-parts/ui/jobCardItem' );
+						endwhile;
+					else :
+					?>
+						<p class="mbland_recruitment_jobs_noPosts">
+							<?php echo function_exists( 'pll__' ) ? pll__( 'Không tìm thấy vị trí tuyển dụng phù hợp.' ) : 'Không tìm thấy vị trí tuyển dụng phù hợp.'; ?>
+						</p>
+					<?php
+					endif;
+					?>
 				</div>
+
+				<!-- Phân trang SSR -->
+				<?php if ( $jobs_query->max_num_pages > 1 ) : ?>
+				<div class="mbland_recruitment_jobs_pagination" id="jobsPagination">
+					<?php
+					$paginate_args = array(
+						'base'      => str_replace( 999999999, '%#%', esc_url( get_pagenum_link( 999999999 ) ) ),
+						'format'    => '?paged=%#%',
+						'current'   => max( 1, $paged ),
+						'total'     => $jobs_query->max_num_pages,
+						'prev_text' => function_exists( 'pll__' ) ? pll__( 'Trước' ) : 'Trước',
+						'next_text' => function_exists( 'pll__' ) ? pll__( 'Sau' ) : 'Sau',
+						'type'      => 'list',
+					);
+
+					$active_params = array();
+					if ( ! empty( $keyword ) ) {
+						$active_params['keyword'] = $keyword;
+					}
+					if ( ! empty( $vitri ) && 'all' !== $vitri ) {
+						$active_params['vitri'] = $vitri;
+					}
+					if ( ! empty( $noilam ) && 'all' !== $noilam ) {
+						$active_params['noilamviec'] = $noilam;
+					}
+					if ( ! empty( $hinhthuc ) && 'all' !== $hinhthuc ) {
+						$active_params['hinhthuc'] = $hinhthuc;
+					}
+					if ( ! empty( $active_params ) ) {
+						$paginate_args['add_args'] = $active_params;
+					}
+
+					echo paginate_links( $paginate_args );
+					?>
+				</div>
+				<?php endif; ?>
+				<?php wp_reset_postdata(); ?>
 			</div>
 		</div>
 	</div>
@@ -189,96 +285,148 @@ get_header();
 
 <?php add_action( 'wp_footer', function () { ?>
 <script>
-// Chặn Enter trong toàn bộ form tìm kiếm
-document.getElementById('careerForm')?.addEventListener('keydown', function(e) {
-  if (e.key === 'Enter' || e.keyCode === 13) {
-    e.preventDefault();
-  }
-});
-
 document.addEventListener('DOMContentLoaded', function () {
-  const form = document.querySelector('.form-career');
-  const inputs = document.querySelectorAll('.form-career input, .hn__filter input, .hn__filter .filter-text');
-  const jobList = document.querySelector('.hn__job-list');
+  const form = document.getElementById('careerForm');
+  const filterWrap = document.querySelector('.hn__filter');
+  const container = document.getElementById('jobsContentWrapper');
+  let filterDelayTimer = null;
 
-  // === Reset filter function ===
-  function resetFilters() {
-    const sInput = document.querySelector('.form-career input[name="s"]');
-    if (sInput) sInput.value = '';
+  // === TẠO TARGET URL DỰA VÀO FORM VÀ BỘ LỌC HIỆN TẠI ===
+  function buildTargetUrl(page = 1) {
+    const url = new URL(window.location.origin + window.location.pathname);
+    const params = url.searchParams;
 
-    const vitriInput = document.getElementById('vitriInput');
-    const noilamviecInput = document.getElementById('noilamviecInput');
-    if (vitriInput) vitriInput.value = '';
-    if (noilamviecInput) noilamviecInput.value = '';
+    const keyword = form?.querySelector('input[name="keyword"]')?.value.trim();
+    if (keyword) {
+      params.set('keyword', keyword);
+    }
 
     ['vitri', 'noilamviec', 'hinhthuc'].forEach(name => {
-      const allRadio = document.querySelector(`input[name="${name}"][value="all"]`);
-      if (allRadio) {
-        allRadio.checked = true;
-        allRadio.dispatchEvent(new Event('change', { bubbles: true }));
+      const checked = document.querySelector(`input[name="${name}"]:checked`);
+      if (checked && checked.value && checked.value !== 'all') {
+        params.set(name, checked.value);
       }
     });
 
-    document.querySelectorAll('#filterDropdownBar select').forEach(select => {
-      select.value = 'all';
-      const name = select.name;
-      const targetRadio = document.querySelector(`input[name="${name}"][value="all"]`);
+    if (page > 1) {
+      params.set('paged', page);
+    }
+
+    return url.toString();
+  }
+
+  // === CẬP NHẬT GIAO DIỆN BẰNG FETCH SSR (HOÀN TOÀN KHÔNG DÙNG AJAX ENDPOINT) ===
+  function navigateJobs(targetUrl, pushState = true) {
+    if (!container) return;
+
+    container.classList.add('is-loading');
+
+    fetch(targetUrl)
+      .then(res => {
+        if (!res.ok) throw new Error('HTTP error ' + res.status);
+        return res.text();
+      })
+      .then(html => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const newContent = doc.getElementById('jobsContentWrapper');
+
+        if (newContent) {
+          container.innerHTML = newContent.innerHTML;
+          if (pushState) {
+            window.history.pushState({ url: targetUrl }, '', targetUrl);
+          }
+          bindPaginationEvents();
+        }
+        container.classList.remove('is-loading');
+      })
+      .catch(err => {
+        console.error('Fetch error:', err);
+        container.classList.remove('is-loading');
+        // Fallback tải trang tự nhiên nếu có lỗi
+        window.location.href = targetUrl;
+      });
+  }
+
+  // === XỬ LÝ SỰ KIỆN CLICK PHÂN TRANG ===
+  function bindPaginationEvents() {
+    const paginationLinks = container?.querySelectorAll('#jobsPagination a.page-numbers');
+    if (!paginationLinks) return;
+
+    paginationLinks.forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetUrl = this.getAttribute('href');
+        if (targetUrl) {
+          navigateJobs(targetUrl, true);
+          const scrollTarget = document.querySelector('.mbland_recruitment_jobs');
+          if (scrollTarget) {
+            window.scrollTo({
+              top: scrollTarget.offsetTop - 50,
+              behavior: 'smooth'
+            });
+          }
+        }
+      });
+    });
+  }
+
+  // Khởi tạo sự kiện phân trang ban đầu
+  bindPaginationEvents();
+
+  // === BROWSER BACK / FORWARD (POPSTATE) ===
+  window.addEventListener('popstate', function () {
+    navigateJobs(window.location.href, false);
+    syncControlsFromUrl();
+  });
+
+  // Đồng bộ lại controls khi back/forward
+  function syncControlsFromUrl() {
+    const currentParams = new URLSearchParams(window.location.search);
+    const keywordInput = form?.querySelector('input[name="keyword"]');
+    if (keywordInput) {
+      keywordInput.value = currentParams.get('keyword') || currentParams.get('s') || '';
+    }
+
+    ['vitri', 'noilamviec', 'hinhthuc'].forEach(name => {
+      const val = currentParams.get(name) || 'all';
+      const targetRadio = document.querySelector(`input[name="${name}"][value="${CSS.escape(val)}"]`)
+        || document.querySelector(`input[name="${name}"][value="all"]`);
       if (targetRadio) {
         targetRadio.checked = true;
-        targetRadio.dispatchEvent(new Event('change', { bubbles: true }));
+      }
+
+      const select = document.querySelector(`#filterDropdownBar select[name="${name}"]`);
+      if (select) {
+        select.value = val;
       }
     });
-
-    document.querySelectorAll('.filter-options').forEach(optionsEl => {
-      optionsEl.querySelectorAll('label').forEach(label => {
-        label.style.display = '';
-      });
-    });
-
-    fetchJobs();
   }
 
-  document.getElementById('resetFilter')?.addEventListener('click', resetFilters);
-  document.getElementById('careerSearchBtn')?.addEventListener('click', () => fetchJobs(1));
+  // === SUBMIT TÌM KIẾM ===
+  form?.addEventListener('submit', function (e) {
+    e.preventDefault();
+    navigateJobs(buildTargetUrl(1), true);
+  });
 
-  // === Lọc AJAX ===
-  async function fetchJobs(page = 1) {
-    if (!form || !jobList) return;
-    const data = new FormData(form);
-    document.querySelectorAll('.hn__filter input[type="radio"]:checked').forEach(i => data.append(i.name, i.value));
+  document.getElementById('careerSearchBtn')?.addEventListener('click', function (e) {
+    e.preventDefault();
+    navigateJobs(buildTargetUrl(1), true);
+  });
 
-    const vitriText = document.getElementById('vitriInput')?.value.trim() || '';
-    const noilamText = document.getElementById('noilamviecInput')?.value.trim() || '';
-
-    const res = await fetch('<?php echo admin_url( 'admin-ajax.php' ); ?>', {
-      method: 'POST',
-      body: new URLSearchParams({
-        action: 'filter_jobs',
-        s: data.get('s') || '',
-        vitri: data.get('vitri') || 'all',
-        noilamviec: data.get('noilamviec') || 'all',
-        hinhthuc: data.get('hinhthuc') || 'all',
-        vitri_text: vitriText,
-        noilam_text: noilamText,
-        page: page
-      })
+  // === THAY ĐỔI RADIO FILTER ===
+  const radioInputs = document.querySelectorAll('.hn__filter input[type="radio"]');
+  radioInputs.forEach(radio => {
+    radio.addEventListener('change', function () {
+      clearTimeout(filterDelayTimer);
+      filterDelayTimer = setTimeout(() => {
+        navigateJobs(buildTargetUrl(1), true);
+      }, 100);
     });
+  });
 
-    const html = await res.text();
-    jobList.innerHTML = html;
-
-    // Phân trang AJAX
-    document.querySelectorAll('.pagination-ajax a.page-link').forEach(btn => {
-      btn.addEventListener('click', e => {
-        e.preventDefault();
-        fetchJobs(btn.dataset.page);
-        window.scrollTo({ top: document.querySelector('.mbland_recruitment_jobs')?.offsetTop || 300, behavior: 'smooth' });
-      });
-    });
-  }
-
-  // === Lọc radio options dựa trên input text ===
-  function filterRadioOptions(inputEl, optionsEl, radioName) {
+  // === TÌM KIẾM TRONG DANH SÁCH RADIO (FILTER TEXT) ===
+  function filterRadioList(inputEl, optionsEl, radioName) {
     const val = inputEl.value.toLowerCase().trim();
     const labels = optionsEl.querySelectorAll('label');
     let visibleCount = 0;
@@ -293,7 +441,6 @@ document.addEventListener('DOMContentLoaded', function () {
         label.style.display = 'none';
         if (radio && radio.checked) {
           radio.checked = false;
-          radio.dispatchEvent(new Event('change', { bubbles: true }));
         }
       }
     });
@@ -320,33 +467,57 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (vitriInput && filterVitri) {
     vitriInput.addEventListener('input', () => {
-      filterRadioOptions(vitriInput, filterVitri, 'vitri');
-      clearTimeout(window._delay);
-      window._delay = setTimeout(fetchJobs, 400);
+      filterRadioList(vitriInput, filterVitri, 'vitri');
     });
   }
 
   if (noilamviecInput && filterNoilamviec) {
     noilamviecInput.addEventListener('input', () => {
-      filterRadioOptions(noilamviecInput, filterNoilamviec, 'noilamviec');
-      clearTimeout(window._delay);
-      window._delay = setTimeout(fetchJobs, 400);
+      filterRadioList(noilamviecInput, filterNoilamviec, 'noilamviec');
     });
   }
 
-  // ======= Dropdown build (mobile) =======
-  (function buildFilterDropdowns(){
-    const filterWrap = document.querySelector('.hn__filter');
+  // === RESET BỘ LỌC ===
+  function resetAllFilters() {
+    const keywordInput = form?.querySelector('input[name="keyword"]');
+    if (keywordInput) keywordInput.value = '';
+
+    if (vitriInput) vitriInput.value = '';
+    if (noilamviecInput) noilamviecInput.value = '';
+
+    ['vitri', 'noilamviec', 'hinhthuc'].forEach(name => {
+      const allRadio = document.querySelector(`input[name="${name}"][value="all"]`);
+      if (allRadio) {
+        allRadio.checked = true;
+      }
+    });
+
+    document.querySelectorAll('#filterDropdownBar select').forEach(select => {
+      select.value = 'all';
+    });
+
+    document.querySelectorAll('.filter-options label').forEach(label => {
+      label.style.display = '';
+    });
+
+    const cleanUrl = window.location.origin + window.location.pathname;
+    navigateJobs(cleanUrl, true);
+  }
+
+  document.getElementById('resetFilter')?.addEventListener('click', resetAllFilters);
+
+  // === DROPDOWN CHO MOBILE ===
+  (function buildFilterDropdowns() {
     const bar = document.getElementById('filterDropdownBar');
-    if(!filterWrap || !bar) return;
+    if (!filterWrap || !bar) return;
     const groups = filterWrap.querySelectorAll('.filter-group');
-    if(groups.length < 3) return;
+    if (groups.length < 3) return;
 
     const headerMobile = document.createElement('div');
     headerMobile.className = 'filter-header';
     headerMobile.innerHTML = `
       <h3 class="title">Bộ lọc</h3>
-      <button class="reset-filter" id="resetFilterMobile">Xóa bộ lọc</button>
+      <button type="button" class="reset-filter" id="resetFilterMobile">Xóa bộ lọc</button>
     `;
     bar.appendChild(headerMobile);
 
@@ -358,41 +529,46 @@ document.addEventListener('DOMContentLoaded', function () {
       const labelEl = document.createElement('label');
       labelEl.textContent = titleText || '';
       wrap.appendChild(labelEl);
+
       const select = document.createElement('select');
       select.name = name;
       const optAll = document.createElement('option');
       optAll.value = 'all';
       optAll.textContent = 'Tất cả';
       select.appendChild(optAll);
+
       const seen = new Set();
       labels.forEach(lb => {
         const r = lb.querySelector('input[type="radio"]');
-        if(!r || r.value === 'all') return;
-        if(seen.has(r.value)) return;
+        if (!r || r.value === 'all') return;
+        if (seen.has(r.value)) return;
         seen.add(r.value);
         const op = document.createElement('option');
         op.value = r.value;
         op.textContent = lb.textContent.trim();
-        if(r.checked) op.selected = true;
+        if (r.checked) op.selected = true;
         select.appendChild(op);
       });
+
       const checked = groupEl.querySelector('input[type="radio"]:checked');
-      if(checked && checked.value === 'all') select.value = 'all';
+      if (checked) select.value = checked.value;
+
       select.addEventListener('change', () => {
         const allRadios = filterWrap.querySelectorAll(`input[name="${name}"]`);
-        allRadios.forEach(r => r.checked = false);
-        const target = filterWrap.querySelector(`input[name="${name}"][value="${CSS.escape(select.value)}"]`)
-                       || filterWrap.querySelector(`input[name="${name}"][value="all"]`);
-        if(target){
+        allRadios.forEach(r => (r.checked = false));
+        const target =
+          filterWrap.querySelector(`input[name="${name}"][value="${CSS.escape(select.value)}"]`) ||
+          filterWrap.querySelector(`input[name="${name}"][value="all"]`);
+        if (target) {
           target.checked = true;
-          target.dispatchEvent(new Event('change', { bubbles:true }));
+          target.dispatchEvent(new Event('change', { bubbles: true }));
         }
       });
       wrap.appendChild(select);
       return wrap;
     };
 
-    const getTitle = (idx) => groups[idx].querySelector('h4, h3')?.textContent?.trim() || '';
+    const getTitle = idx => groups[idx].querySelector('h4, h3')?.textContent?.trim() || '';
     bar.appendChild(createSelectFromGroup(groups[0], getTitle(0)));
     bar.appendChild(createSelectFromGroup(groups[1], getTitle(1)));
     bar.appendChild(createSelectFromGroup(groups[2], getTitle(2)));
@@ -400,24 +576,14 @@ document.addEventListener('DOMContentLoaded', function () {
     filterWrap.querySelectorAll('input[type="radio"]').forEach(radio => {
       radio.addEventListener('change', () => {
         const select = bar.querySelector(`select[name="${radio.name}"]`);
-        if(select){ select.value = radio.value; }
+        if (select) {
+          select.value = radio.value;
+        }
       });
     });
 
-    document.getElementById('resetFilterMobile')?.addEventListener('click', resetFilters);
+    document.getElementById('resetFilterMobile')?.addEventListener('click', resetAllFilters);
   })();
-
-  // === Load ban đầu ===
-  fetchJobs();
-
-  // === Filter change ===
-  inputs.forEach(input => {
-    input.addEventListener('input', () => {
-      clearTimeout(window._delay);
-      window._delay = setTimeout(fetchJobs, 400);
-    });
-    input.addEventListener('change', fetchJobs);
-  });
 });
 </script>
 <?php }, 99 ); ?>

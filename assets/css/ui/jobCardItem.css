@@ -1,0 +1,109 @@
+/* ==========================================================================
+   COMPONENT: JOB CARD ITEM
+   File: assets/css/ui/jobCardItem.css
+   Quy ước đặt tên: .mbland_jobCard_{tênPhầnTử}
+   ========================================================================== */
+
+.mbland_jobCard,
+.hn__job-item {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  transition: background-color 0.2s ease;
+}
+
+.mbland_jobCard:last-child,
+.hn__job-item:last-child {
+  border-bottom: none;
+}
+
+.mbland_jobCard_left,
+.job-item-left {
+  flex: 1;
+}
+
+.mbland_jobCard_deadline,
+.hn__job-item .deadline {
+  color: var(--color-02, #B70C2C);
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+.mbland_jobCard_deadlineTitle,
+.hn__job-item .deadline-title {
+  color: #000;
+}
+
+.mbland_jobCard_title,
+.hn__job-item h2 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #000;
+  margin: 8px 0 10px;
+}
+
+.mbland_jobCard_title a,
+.hn__job-item h2 a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1.4em;
+  letter-spacing: 0%;
+  font-family: 'FZPoppins', sans-serif;
+}
+
+.mbland_jobCard_title a:hover,
+.hn__job-item h2 a:hover {
+  color: var(--color-02, #B70C2C);
+}
+
+.mbland_jobCard_info,
+.hn__job-item .info {
+  color: #a4a4a4;
+  margin: 5px 0;
+  font-size: 15px;
+}
+
+.mbland_jobCard_info b,
+.hn__job-item .info b {
+  font-weight: 500 !important;
+  color: rgb(25 25 25 / 80%);
+}
+
+.mbland_jobCard_applyBtn,
+.hn__job-item .apply-btn {
+  border: 1px solid var(--color-02, #B70C2C);
+  color: var(--color-02, #B70C2C);
+  border-radius: 30px;
+  padding: 10px 26px;
+  text-decoration: none;
+  font-weight: 600;
+  white-space: nowrap;
+  text-transform: uppercase;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  display: inline-block;
+}
+
+.mbland_jobCard_applyBtn:hover,
+.hn__job-item .apply-btn:hover {
+  background: var(--color-02, #B70C2C);
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .mbland_jobCard,
+  .hn__job-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+}
+

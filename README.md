@@ -104,6 +104,46 @@ get_template_part( 'template-parts/ui/newCardItem', null, array(
 
 ---
 
+### 3. Component: Card Tuyển Dụng (`jobCardItem`)
+
+Component thẻ bài tuyển dụng dạng ngang gồm: Hạn nộp hồ sơ, Tiêu đề vị trí tuyển dụng, Mức lương, Địa điểm làm việc, và Nút Ứng tuyển ngay.
+
+- **File PHP Component**: [`template-parts/ui/jobCardItem.php`](template-parts/ui/jobCardItem.php)
+- **File CSS**: [`assets/css/ui/jobCardItem.css`](assets/css/ui/jobCardItem.css) *(được nạp tự động toàn trang qua `inc/enqueue.php`)*
+
+#### Cách sử dụng chuẩn trong Loop:
+
+```php
+<?php
+if ( $jobs_query->have_posts() ) :
+    while ( $jobs_query->have_posts() ) : $jobs_query->the_post();
+        get_template_part( 'template-parts/ui/jobCardItem' );
+    endwhile;
+    wp_reset_postdata();
+endif;
+?>
+```
+
+#### Cách gọi ngoài Loop hoặc truyền tham số tùy biến:
+
+```php
+<?php
+get_template_part( 'template-parts/ui/jobCardItem', null, array(
+    'post_id' => $post->ID,         // optional: ID bài viết (mặc định lấy post hiện tại)
+    'class'   => 'my-custom-class', // optional: class CSS bổ sung
+) );
+?>
+```
+
+#### Bảng tham số (Parameters):
+
+| Tham số | Kiểu dữ liệu | Mặc định | Mô tả |
+| :--- | :--- | :--- | :--- |
+| `post_id` | `int` | `get_the_ID()` | ID bài viết tuyển dụng cần hiển thị. |
+| `class` | `string` | `''` | Class CSS tùy biến bổ sung vào thẻ `<article>`. |
+
+---
+
 ## 📐 Quy chuẩn tạo Component mới trong Theme
 
 Khi tạo một component dùng chung mới, các thành viên cần tuân thủ quy tắc sau:

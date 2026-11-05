@@ -314,8 +314,9 @@ add_filter('single_template', 'custom_single_template_for_cong_ty_con');
 // ================================
 // === AJAX lọc tuyển dụng (có phân trang) ===
 // ================================
-add_action('wp_ajax_filter_jobs', 'filter_jobs');
-add_action('wp_ajax_nopriv_filter_jobs', 'filter_jobs');
+// [DEPRECATED] AJAX filter_jobs đã được chuyển sang SSR tại template-recruitment.php
+// add_action('wp_ajax_filter_jobs', 'filter_jobs');
+// add_action('wp_ajax_nopriv_filter_jobs', 'filter_jobs');
 
 function filter_jobs() {
   // --- Nhận dữ liệu từ AJAX ---
