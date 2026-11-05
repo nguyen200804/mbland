@@ -131,6 +131,9 @@ while ( have_posts() ) :
 			<h2 class="mbland_singleRecruitment_otherJobs_heading">
 				<?php echo function_exists( 'pll__' ) ? pll__( 'Tin tuyển dụng khác' ) : 'Tin tuyển dụng khác'; ?>
 			</h2>
+			<span  class="mbland_singleRecruitment_otherJobs_line">
+
+			</span>
 			<a href="<?php echo esc_url( home_url( '/tuyen-dung/' ) ); ?>" class="mbland_singleRecruitment_otherJobs_viewAll" title="<?php echo function_exists( 'pll__' ) ? pll__( 'Về trang tuyển dụng' ) : 'Về trang tuyển dụng'; ?>">
 				<?php echo function_exists( 'pll__' ) ? pll__( 'Về trang tuyển dụng' ) : 'Về trang tuyển dụng'; ?>
 			</a>
@@ -149,46 +152,10 @@ while ( have_posts() ) :
 
 			if ( $related_jobs->have_posts() ) :
 				while ( $related_jobs->have_posts() ) : $related_jobs->the_post();
-					$other_hannop         = get_field( 'han_nop_ho_so', get_the_ID() );
-					$other_luong          = get_field( 'muc_luong', get_the_ID() );
-					$other_terms_noilam   = get_the_terms( get_the_ID(), 'noi-lam-viec' );
-					$other_noilam         = ( $other_terms_noilam && ! is_wp_error( $other_terms_noilam ) )
-						? join( ', ', wp_list_pluck( $other_terms_noilam, 'name' ) )
-						: 'Đang cập nhật';
-					$other_hinhthuc_terms = get_the_terms( get_the_ID(), 'hinh-thuc-lam-viec' );
-					$other_hinhthuc_name  = ( $other_hinhthuc_terms && ! is_wp_error( $other_hinhthuc_terms ) )
-						? $other_hinhthuc_terms[0]->name
-						: 'Full-time';
-			?>
-					<article class="mbland_singleRecruitment_otherJobs_card">
-						<div class="mbland_singleRecruitment_otherJobs_deadline">
-							<span class="mbland_singleRecruitment_otherJobs_deadlineIcon">
-								<img src="/wp-content/uploads/2025/10/clock.svg" alt="Clock" title="Clock" loading="lazy" decoding="async" />
-							</span>
-							<p class="mbland_singleRecruitment_otherJobs_deadlineText">
-								<span class="mbland_singleRecruitment_otherJobs_deadlineLabel"><?php echo function_exists( 'pll__' ) ? pll__( 'Hạn nộp hồ sơ' ) : 'Hạn nộp hồ sơ'; ?>: </span>
-								<?php echo esc_html( $other_hannop ?: 'Đang cập nhật' ); ?>
-							</p>
-						</div>
-
-						<h3 class="mbland_singleRecruitment_otherJobs_title">
-							<a href="<?php the_permalink(); ?>" class="mbland_singleRecruitment_otherJobs_titleLink" title="<?php the_title_attribute(); ?>">
-								[<?php echo esc_html( $other_hinhthuc_name ); ?>] - <?php the_title(); ?>
-							</a>
-						</h3>
-
-						<p class="mbland_singleRecruitment_otherJobs_info">
-							<b><?php echo function_exists( 'pll__' ) ? pll__( 'Mức lương' ) : 'Mức lương'; ?>:</b> <?php echo esc_html( $other_luong ?: 'Thỏa thuận' ); ?>
-						</p>
-						<p class="mbland_singleRecruitment_otherJobs_info">
-							<b><?php echo function_exists( 'pll__' ) ? pll__( 'Địa điểm làm việc' ) : 'Địa điểm làm việc'; ?>:</b> <?php echo esc_html( $other_noilam ); ?>
-						</p>
-
-						<a href="<?php the_permalink(); ?>" class="mbland_singleRecruitment_otherJobs_applyBtn" title="<?php the_title_attribute(); ?>">
-							<?php echo function_exists( 'pll__' ) ? pll__( 'Ứng tuyển ngay' ) : 'Ứng tuyển ngay'; ?>
-						</a>
-					</article>
-			<?php
+					get_template_part( 'template-parts/ui/jobCardItem', null, array(
+						'post_id' => get_the_ID(),
+						'class'   => 'mbland_singleRecruitment_otherJobs_card',
+					) );
 				endwhile;
 				wp_reset_postdata();
 			else :
