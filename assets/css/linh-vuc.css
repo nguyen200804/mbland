@@ -10,7 +10,9 @@
     justify-content: space-between;
 }
 
-.mbland_linhvuc_hero_container {}
+.mbland_linhvuc_hero_container {
+    max-width: 1620px;
+}
 
 .mbland_linhvuc_hero_header {}
 
@@ -75,6 +77,7 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+    max-width: 1620px;
 }
 
 .mbland_linhvuc_hero_featuredInfo {

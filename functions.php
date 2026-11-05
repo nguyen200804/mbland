@@ -83,6 +83,18 @@ function load_custom_single_du_an_template($template) {
     return $template;
 }
 
+// Override template cho trang bài viết chính (Blog / Tin tức) khi được set trong Settings > Reading (is_home)
+add_filter( 'template_include', 'load_custom_blog_home_template', 99 );
+function load_custom_blog_home_template( $template ) {
+    if ( is_home() ) {
+        $news_template = locate_template( 'templates/template-news.php' );
+        if ( ! empty( $news_template ) ) {
+            return $news_template;
+        }
+    }
+    return $template;
+}
+
 // Override template cho single post của post type 'post' - sử dụng file từ subfolder
 add_filter('template_include', 'load_custom_single_tin_tuc_template');
 function load_custom_single_tin_tuc_template($template) {
