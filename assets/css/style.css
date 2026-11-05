@@ -182,7 +182,8 @@ a.hn-tasmania-cta-btn:hover {
   }
 
   h1 {
-    font-size: 2.29em; /* 40px * 11/12 = 36.67px */
+    font-size: 2.29em;
+    /* 40px * 11/12 = 36.67px */
   }
 
   h1,
@@ -193,16 +194,19 @@ a.hn-tasmania-cta-btn:hover {
   h2,
   .equalh2,
   h2.big-h2 {
-    font-size: 2.865em; /* 50px * 11/12 = 45.83px */
+    font-size: 2.865em;
+    /* 50px * 11/12 = 45.83px */
   }
 
   h3,
   .equalh3 {
-    font-size: 1.72em; /* 30px * 11/12 = 27.5px */
+    font-size: 1.72em;
+    /* 30px * 11/12 = 27.5px */
   }
 
   h3.small-h3 {
-    font-size: 1.15em; /* 20px * 11/12 = 18.33px */
+    font-size: 1.15em;
+    /* 20px * 11/12 = 18.33px */
   }
 
   a.hn-tasmania-cta-btn {
@@ -216,13 +220,11 @@ a.hn-tasmania-cta-btn:hover {
 }
 
 @media (max-width: 1400px) {
-  .container {
-    max-width: 1155px;
-    padding-inline: 32px;
-  }
+
 
   h1 {
-    font-size: 2em; /* 36.67px * 1400/1600 = 32.08px */
+    font-size: 2em;
+    /* 36.67px * 1400/1600 = 32.08px */
   }
 
   h1,
@@ -233,16 +235,19 @@ a.hn-tasmania-cta-btn:hover {
   h2,
   .equalh2,
   h2.big-h2 {
-    font-size: 2.5em; /* 45.83px * 1400/1600 = 40.1px */
+    font-size: 2.5em;
+    /* 45.83px * 1400/1600 = 40.1px */
   }
 
   h3,
   .equalh3 {
-    font-size: 1.5em; /* 27.5px * 1400/1600 = 24.06px */
+    font-size: 1.5em;
+    /* 27.5px * 1400/1600 = 24.06px */
   }
 
   h3.small-h3 {
-    font-size: 1em; /* 18.33px * 1400/1600 = 16.04px */
+    font-size: 1em;
+    /* 18.33px * 1400/1600 = 16.04px */
   }
 
   a.hn-tasmania-cta-btn {
