@@ -1,404 +1,3 @@
-.hn-tasmania-tintuc .container:first-child {
-  padding-top: 10px;
-}
-
-.hn-tasmania-tintuc-date {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.hn-tasmania-tintuc-date-image {
-  display: flex;
-  align-items: center;
-}
-
-.hn-tasmania-tintuc-date-image img {
-  width: 15px;
-  height: 15px;
-}
-
-.hn-tasmania-tintuc-date p {
-  font-size: 15px;
-  color: var(--color-02);
-  line-height: 1;
-  font-weight: 500;
-  font-family: "FZPoppins", "GanhType", sans-serif;
-}
-
-.hn-tasmania-tintuc-date-line {
-  height: 20px;
-  width: 1px;
-  border-left: 1px solid var(--color-02);
-}
-
-.hn-tasmania-tintuc-cta {
-  display: flex;
-  width: 180px;
-  align-items: center;
-  gap: 10px;
-  font-size: 16px;
-  color: var(--color-02);
-  white-space: nowrap;
-  font-weight: 600;
-  height: 43px;
-  border-radius: 50px;
-  position: relative;
-  /* Để ::before absolute */
-  overflow: hidden;
-  /* Ẩn phần background thừa */
-  transition: color 0.2s ease;
-  /* Chỉ transition color cho text */
-}
-
-.hn-tasmania-tintuc-cta::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--color-02);
-  border-radius: 50px;
-  transform: scaleX(0);
-  transform-origin: left center;
-  transition: transform 0.5s ease;
-  z-index: -1;
-  /* Đặt sau text và icon */
-}
-
-.hn-tasmania-tintuc-cta-icon {
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: var(--bg-color-01);
-  transition: opacity 0.25s ease, width 0.5s ease;
-}
-
-.hn-tasmania-tintuc-cta:hover {
-  color: var(--color-09);
-  justify-content: center;
-}
-
-.hn-tasmania-tintuc-cta:hover::before {
-  transform: scaleX(1);
-  /* Background hiện từ trái qua phải */
-}
-
-.hn-tasmania-tintuc-cta:hover {
-  gap: 0;
-}
-
-.hn-tasmania-tintuc-cta:hover .hn-tasmania-tintuc-cta-icon {
-  opacity: 0;
-  width: 0;
-}
-
-.page-title {
-  margin-bottom: 0;
-}
-
-.page-header p {
-  margin-bottom: 15px;
-}
-
-/* ================== TIN NỔI BẬT =====================*/
-.hn-tasmania-tnb-item {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-}
-
-.hn-tasmania-tnb-item-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.hn-tasmania-tnb-item-content h3 {
-  font-weight: 600;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  /* Giới hạn 2 dòng */
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.hn-tasmania-tnb-item-content h3:hover {
-  color: var(--color-01);
-}
-
-.hn-tasmania-tnb-item-image img {
-  display: block;
-  width: 700px;
-  height: 406px;
-  object-fit: cover;
-}
-
-/* ================ TIN TỨC MỚI ========================*/
-/* 	.hn-tasmania-ttm-wrapper {
-		display: flex;
-		
-		gap: 30px;
-	} */
-.hn-tasmania-ttm-wrapper {
-  display: grid;
-  gap: 30px;
-  grid-template-columns: repeat(2, 1fr);
-}
-
-.hn-tasmania-ttm-title {
-  display: flex;
-  align-items: center;
-  gap: 40px;
-  margin-bottom: 20px;
-}
-
-.hn-tasmania-ttm-title h2 {
-  white-space: nowrap;
-}
-
-.hn-tasmania-ttm-title .line {
-  width: 100%;
-  height: 1px;
-  border-top: 1px solid var(--color-06);
-}
-
-.hn-tasmania-ttm-item {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  flex: 1;
-}
-
-.hn-tasmania-ttm-item .hn-tasmania-ttm-item-image {
-  width: 100%;
-}
-
-.hn-tasmania-ttm-item .hn-tasmania-ttm-item-image,
-.hn-tasmania-ttm-item .hn-tasmania-ttm-item-content {
-  flex: 1;
-}
-
-/* ================== TIN TỨC MỚI & GRID (tương tự tnb nhưng grid là column) =====================*/
-.hn-tasmania-tt-grid-item {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.hn-tasmania-ttm-item-content,
-.hn-tasmania-tt-grid-item-content {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.hn-tasmania-ttm-item-image img,
-.hn-tasmania-tt-grid-item-image img {
-  display: block;
-  width: 100%;
-  object-fit: cover;
-  height: 240px;
-  /* Chiều cao cố định cho grid nếu cần */
-}
-
-.hn-tasmania-ttm-item-content h3,
-.hn-tasmania-tt-grid-item-content h3 {
-  font-weight: 600;
-  margin: 0;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  /* Giới hạn 2 dòng */
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.hn-tasmania-ttm-item-content h3:hover,
-.hn-tasmania-tt-grid-item-content h3:hover {
-  color: var(--color-02);
-}
-
-.hn-tasmania-tabs-list {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 20px;
-  margin-bottom: 30px;
-}
-
-.hn-tasmania-tab-item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 20px;
-  border-radius: 50px;
-  border: 1px solid var(--color-05);
-}
-
-.hn-tasmania-tab-item:hover {
-  background: var(--color-02);
-  border: none;
-}
-
-.hn-tasmania-tab-item:hover a {
-  color: var(--color-09);
-}
-
-.hn-tasmania-tab-item.active {
-  background: var(--color-02);
-  border: none;
-}
-
-.hn-tasmania-tab-item.active a {
-  color: var(--color-09);
-}
-
-.hn-tasmania-tt-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-}
-
-.hn-tasmania-tt-grid-item-image {
-  overflow: hidden;
-  width: 100%;
-}
-
-.hn-tasmania-tt-grid-item-image img {
-  transition: 0.3s ease;
-}
-
-.hn-tasmania-tt-grid-item-image:hover img {
-  transform: scale(1.1);
-}
-
-/* Ellipsis cho desc */
-.desc-text {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  /* Mặc định 2 dòng */
-  -webkit-box-orient: vertical;
-  line-height: 1.4;
-  /* Điều chỉnh để 1 dòng = khoảng 1.4em */
-}
-
-.tnb-desc {
-  -webkit-line-clamp: 3;
-  /* 3 dòng cho tin nổi bật */
-}
-
-/* 	Phan trang */
-.pagination-ajax {
-  text-align: center;
-  margin-top: 30px;
-}
-
-.pagination-ajax .page-link {
-  display: inline-block;
-  padding: 8px 16px;
-  margin: 0 3px;
-  background: #f9f4ea;
-  color: #656565;
-  border-radius: 8px;
-  font-family: "FZPoppins";
-  font-weight: 500;
-  transition: all 0.3s ease;
-}
-
-.pagination-ajax .page-link.is-active {
-  background: var(--color-02);
-  color: #fff;
-}
-
-.pagination-ajax .page-link.is-disabled {
-  opacity: 0.5;
-  pointer-events: none;
-}
-
-/* Load More Button */
-.load-more-container {
-  text-align: center;
-  margin-top: 40px;
-}
-
-.load-more-btn {
-  background: #f9f4ea;
-  color: #656565;
-  border: none;
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-family: "FZPoppins";
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 16px;
-}
-
-.load-more-btn:hover {
-  background: var(--color-02);
-  color: #fff;
-}
-
-.load-more-btn.loading {
-  opacity: 0.7;
-  pointer-events: none;
-}
-
-@media (max-width: 1200px) {
-  .hn-tasmania-ttm-item {
-    flex-direction: column;
-  }
-
-  .hn-tasmania-tnb-item {
-    flex-direction: column;
-  }
-
-  .hn-tasmania-tnb-item-image img {
-    display: block;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 700 / 406;
-    object-fit: cover;
-  }
-}
-
-@media (max-width: 1024px) {
-  .hn-tasmania-tt-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media (max-width: 768px) {
-  .hn-tasmania-ttm-wrapper {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .hn-tasmania-ttm-item {
-    flex-direction: row;
-  }
-}
-
-@media (max-width: 576px) {
-  .hn-tasmania-ttm-item {
-    flex-direction: column;
-  }
-
-  .hn-tasmania-tt-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-
 /* ==========================================================================
    TIN TỨC TEMPLATE (mbland_tintucTemplate)
    ========================================================================== */
@@ -412,9 +11,15 @@
 
 
 /* ===== START SECTION POST ===== */
-.mbland_tintucTemplate_post {}
+.mbland_tintucTemplate_post {
+  padding-bottom: 72px;
+}
 
-.mbland_tintucTemplate_post_wrapper {}
+.mbland_tintucTemplate_post_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 72px;
+}
 
 
 /* --- 1. Featured Post (Tin nổi bật) --- */
@@ -428,10 +33,18 @@
 .mbland_tintucTemplate_featuredCard_thumb {
   display: flex;
   width: 50%;
+  overflow: hidden;
 }
 
 .mbland_tintucTemplate_featuredCard_img {
   width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  transition: transform .3s ease;
+}
+
+.mbland_tintucTemplate_featuredCard:hover .mbland_tintucTemplate_featuredCard_img {
+  transform: scale(1.1)
 }
 
 .mbland_tintucTemplate_featuredCard_content {
@@ -439,6 +52,7 @@
   display: flex;
   flex-wrap: wrap;
   align-self: center;
+  justify-content: space-between;
 }
 
 .mbland_tintucTemplate_featuredCard_meta {
@@ -478,11 +92,17 @@
   font-size: 20px;
   line-height: 1.5em;
   letter-spacing: 0%;
-  font-family: 'FZPoppins';
   margin-bottom: 8px;
+  font-family: "Fzpoppins";
 }
 
-.mbland_tintucTemplate_featuredCard_titleLink {}
+.mbland_tintucTemplate_featuredCard_titleLink {
+  transition: color .3s ease;
+}
+
+.mbland_tintucTemplate_featuredCard:hover .mbland_tintucTemplate_featuredCard_titleLink {
+  color: #B70C2C;
+}
 
 .mbland_tintucTemplate_featuredCard_desc {
   font-weight: 400;
@@ -498,7 +118,31 @@
   margin-bottom: 20px;
 }
 
-.mbland_tintucTemplate_featuredCard_cta {}
+.mbland_tintucTemplate_featuredCard_author {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  gap: 0.35em;
+  font-weight: 500;
+  color: #656565;
+}
+
+.mbland_tintucTemplate_featuredCard_authorImage {
+  width: 1.9em;
+  height: 1.9em;
+  border-radius: 50%;
+  border: 1px solid #d7d7d7;
+}
+
+.mbland_tintucTemplate_featuredCard_cta {
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 100%;
+  text-transform: uppercase;
+  color: #B70C2C;
+  gap: 0.625em;
+  display: flex;
+}
 
 .mbland_tintucTemplate_featuredCard_ctaIcon {}
 
@@ -508,33 +152,155 @@
 /* --- 2. New Post (Tin mới) --- */
 .mbland_tintucTemplate_post_newPost {}
 
-.mbland_tintucTemplate_newPost_list {}
+.mbland_tintucTemplate_post_newPostHeader {
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+}
 
-.mbland_tintucTemplate_newCard {}
+.mbland_tintucTemplate_post_newPostTitle {
+  font-size: 36px;
+  min-width: fit-content;
+  padding-right: 20px;
+  margin: 0;
+}
 
-.mbland_tintucTemplate_newCard_thumb {}
+.mbland_tintucTemplate_post_newPostLine {
+  width: 100%;
+  height: 1px;
+  background-color: #C5C5C5;
+}
 
-.mbland_tintucTemplate_newCard_img {}
+.mbland_tintucTemplate_newPost_list {
+  display: flex;
+  gap: 20px;
+}
 
-.mbland_tintucTemplate_newCard_content {}
+.mbland_tintucTemplate_newCard {
+  width: 50%;
+  display: flex;
+  gap: 24px;
+  overflow: hidden;
+  border-radius: 12px;
+  background-color: transparent;
+  transition: background-color .3s ease, box-shadow .3s ease;
+}
 
-.mbland_tintucTemplate_newCard_meta {}
+.mbland_tintucTemplate_newCard:hover {
+  background-color: #FDF9F2;
+  box-shadow: 0px 3px 15px 0px #C2C2C236;
+}
 
-.mbland_tintucTemplate_newCard_metaIcon {}
+.mbland_tintucTemplate_newCard_thumb {
+  display: flex;
+  width: 50%;
+  overflow: hidden;
+}
+
+.mbland_tintucTemplate_newCard_img {
+  width: 100%;
+  transition: transform .3s ease;
+}
+
+.mbland_tintucTemplate_newCard:hover .mbland_tintucTemplate_newCard_img {
+  transform: scale(1.1);
+}
+
+.mbland_tintucTemplate_newCard_content {
+  width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  align-self: center;
+  padding: 10px 24px 10px 0;
+}
+
+.mbland_tintucTemplate_newCard_meta {
+  display: flex;
+  color: #B70C2C;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.mbland_tintucTemplate_newCard_metaIcon {
+  width: 1.2em;
+  height: 1.2em;
+  margin-right: 0.35em;
+  align-self: center;
+}
+
+.mbland_tintucTemplate_newCard_metaIcon img {
+  width: 1.2em;
+  height: 1.2em;
+}
 
 .mbland_tintucTemplate_newCard_date {}
 
-.mbland_tintucTemplate_newCard_metaDivider {}
+.mbland_tintucTemplate_newCard_metaDivider {
+  background: rgb(183 12 44 / 30%);
+  width: 1px;
+  min-height: 100%;
+  margin: 0 10px;
+  display: inline-block;
+}
 
-.mbland_tintucTemplate_newCard_badge {}
+.mbland_tintucTemplate_newCard_badge {
+  font-weight: 500;
+}
 
-.mbland_tintucTemplate_newCard_title {}
+.mbland_tintucTemplate_newCard_title {
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 1.5em;
+  letter-spacing: 0%;
+  font-family: 'FZPoppins';
+  margin-bottom: 8px;
+}
 
-.mbland_tintucTemplate_newCard_titleLink {}
+.mbland_tintucTemplate_newCard_titleLink {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: color .3s ease;
+}
 
-.mbland_tintucTemplate_newCard_desc {}
+.mbland_tintucTemplate_newCard:hover .mbland_tintucTemplate_newCard_titleLink {
+  color: #B70C2C;
+}
 
-.mbland_tintucTemplate_newCard_cta {}
+.mbland_tintucTemplate_newCard_desc {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  color: #656565;
+  margin-bottom: 20px;
+}
+
+.mbland_tintucTemplate_newCard_author {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  gap: 0.35em;
+  color: #656565;
+  font-weight: 500;
+}
+
+.mbland_tintucTemplate_newCard_author img {
+  width: 1.875em;
+  height: 1.875em;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid #d7d7d7;
+}
+
+.mbland_tintucTemplate_newCard_cta {
+  color: #B70C2C;
+  font-size: 13px;
+  font-weight: 600;
+}
 
 .mbland_tintucTemplate_newCard_ctaIcon {}
 
@@ -545,42 +311,157 @@
 .mbland_tintucTemplate_post_listPost {}
 
 /* Danh mục Tabs */
-.mbland_tintucTemplate_post_listPostCategories {}
+.mbland_tintucTemplate_post_listPostCategories {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
 
 .mbland_tintucTemplate_post_listPostCategoriesItem {}
 
-.mbland_tintucTemplate_post_listPostCategoriesLink {}
+.mbland_tintucTemplate_post_listPostCategoriesLink {
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: 600;
+  display: inline-block;
+  line-height: 1.5em;
+  padding: 0.7em 1.75em;
+  border: 1px solid #656565;
+  border-radius: 100px;
+  transition: all .3s ease;
+}
 
-.mbland_tintucTemplate_post_listPostCategoriesLink.active {}
+.mbland_tintucTemplate_post_listPostCategoriesLink:hover {
+  color: #B70C2C;
+  border: 1px solid #B70C2C;
+}
+
+.mbland_tintucTemplate_post_listPostCategoriesLink.active {
+  color: #fff;
+  background-color: #B70C2C;
+  border: 1px solid #B70C2C;
+}
 
 /* Grid bài viết */
-.mbland_tintucTemplate_post_listPostGrid {}
+.mbland_tintucTemplate_post_listPostGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px 20px;
+}
 
 .mbland_tintucTemplate_postCard {}
 
-.mbland_tintucTemplate_postCard_thumb {}
+.mbland_tintucTemplate_postCard_thumb {
+  display: flex;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+}
 
-.mbland_tintucTemplate_postCard_img {}
+.mbland_tintucTemplate_postCard_img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .3s ease;
+}
 
-.mbland_tintucTemplate_postCard_content {}
+.mbland_tintucTemplate_postCard:hover .mbland_tintucTemplate_postCard_img {
+  transform: scale(1.1);
+}
 
-.mbland_tintucTemplate_postCard_meta {}
+.mbland_tintucTemplate_postCard_content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px 0 0;
+}
 
-.mbland_tintucTemplate_postCard_metaIcon {}
+.mbland_tintucTemplate_postCard_meta {
+  display: flex;
+  color: #B70C2C;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.mbland_tintucTemplate_postCard_metaIcon {
+  width: 1.2em;
+  height: 1.2em;
+  margin-right: 0.35em;
+  align-self: center;
+}
+
+.mbland_tintucTemplate_postCard_metaIcon img {
+  width: 1.2em;
+  height: 1.2em;
+}
 
 .mbland_tintucTemplate_postCard_date {}
 
-.mbland_tintucTemplate_postCard_metaDivider {}
+.mbland_tintucTemplate_postCard_metaDivider {
+  background: rgb(183 12 44 / 30%);
+  width: 1px;
+  min-height: 100%;
+  margin: 0 10px;
+  display: inline-block;
+}
 
-.mbland_tintucTemplate_postCard_badge {}
+.mbland_tintucTemplate_postCard_badge {
+  font-weight: 500;
+}
 
-.mbland_tintucTemplate_postCard_title {}
+.mbland_tintucTemplate_postCard_title {
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 1.5em;
+  letter-spacing: 0%;
+  font-family: 'FZPoppins';
+  margin-bottom: 8px;
+}
 
-.mbland_tintucTemplate_postCard_titleLink {}
+.mbland_tintucTemplate_postCard_titleLink {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: color .3s ease;
+}
 
-.mbland_tintucTemplate_postCard_desc {}
+.mbland_tintucTemplate_postCard:hover .mbland_tintucTemplate_postCard_titleLink {
+  color: #B70C2C;
+}
 
-.mbland_tintucTemplate_postCard_cta {}
+.mbland_tintucTemplate_postCard_desc {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  color: #656565;
+  margin-bottom: 20px;
+}
+
+.mbland_tintucTemplate_postCard_author {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  gap: 0.35em;
+  color: #656565;
+  font-weight: 500;
+}
+
+.mbland_tintucTemplate_postCard_author img {
+  width: 1.875em;
+  height: 1.875em;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid #d7d7d7;
+}
+
+.mbland_tintucTemplate_postCard_cta {
+  color: #B70C2C;
+  font-size: 13px;
+  font-weight: 600;
+}
 
 .mbland_tintucTemplate_postCard_ctaIcon {}
 
@@ -589,16 +470,41 @@
 .mbland_tintucTemplate_noPosts {}
 
 /* Phân trang Pagination */
+.mbland_tintucTemplate_post_listPostPagination {
+  margin-top: 40px;
+}
+
 .mbland_tintucTemplate_post_listPostPagination {}
 
-.mbland_tintucTemplate_post_listPostPagination ul.page-numbers {}
+.mbland_tintucTemplate_post_listPostPagination ul.page-numbers {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
 
 .mbland_tintucTemplate_post_listPostPagination ul.page-numbers li {}
 
-.mbland_tintucTemplate_post_listPostPagination .page-numbers {}
+.mbland_tintucTemplate_post_listPostPagination ul.page-numbers .page-numbers {
+  min-width: 38px;
+  height: 38px;
+  display: inline-block;
+  background-color: #F9F4EA;
+  border-radius: 8px;
+  align-content: center;
+  text-align: center;
+  padding: 0 15px;
+  font-weight: 500;
+  color: #656565;
+  transition: all .3s ease;
+}
 
-.mbland_tintucTemplate_post_listPostPagination .page-numbers.current {}
+.mbland_tintucTemplate_post_listPostPagination .page-numbers:hover {
+  color: #B70C2C !important;
+}
 
-.mbland_tintucTemplate_post_listPostPagination .page-numbers:hover {}
+.mbland_tintucTemplate_post_listPostPagination .page-numbers.current {
+  background-color: #B70C2C !important;
+  color: #fff !important;
+}
 
 /* ===== END SECTION POST ===== */
