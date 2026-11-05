@@ -7,7 +7,9 @@
   justify-content: space-between;
 }
 
-.mbland_linhvuc_hero_container {}
+.mbland_linhvuc_hero_container {
+  max-width: 1620px;
+}
 
 .mbland_linhvuc_hero_header {}
 
@@ -76,6 +78,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  max-width: 1620px;
 }
 
 .mbland_linhvuc_hero_featuredInfo {
@@ -90,9 +93,19 @@
   font-family: 'FZPoppins';
   font-weight: 600;
   font-size: 36px;
-  line-height: 50px;
+  line-height: 120%;
   letter-spacing: -0.02em;
   color: #fff;
+  margin: 0;
+}
+
+.mbland_linhvuc_hero_featuredSubTitle {
+  color: #fff;
+  font-size: 18px;
+  line-height: 1.65em;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin: 3px 0px;
 }
 
 .mbland_linhvuc_hero_featuredDesc {
@@ -102,12 +115,17 @@
   line-height: 150%;
   letter-spacing: -0.02em;
   color: #fff;
-  padding: 12px 0;
+  padding: 32px 0;
+}
+
+.mbland_linhvuc_hero_featuredDesc * {
+  color: #fff;
 }
 
 .mbland_linhvuc_hero_featuredDecor {
   display: flex;
   gap: 5px;
+  margin-bottom: 20px;
 }
 
 .mbland_linhvuc_hero_featuredDecor svg {
@@ -116,19 +134,20 @@
 }
 
 .mbland_linhvuc_hero_featuredDivider {
-  margin: 24px 0;
+  margin: 0px 0;
 }
 
 .mbland_linhvuc_hero_featuredLocation {
   display: flex;
   font-size: 14px;
+  margin-top: 20px;
 }
 
 .mbland_linhvuc_hero_featuredLocationIcon {
-  width: 1.28em;
-  height: 1.28em;
+  width: 1.45em;
+  height: 1.45em;
   color: #fff;
-  margin-right: 0.35em;
+  margin-right: 0.875em;
 }
 
 .mbland_linhvuc_hero_featuredLocationText {
@@ -139,18 +158,16 @@
 
 .mbland_linhvuc_hero_featuredLocationLabel {
   font-size: 0.85em;
-  font-family: 'FZPoppins';
-  font-weight: 500;
+  font-weight: 600;
   line-height: 120%;
   letter-spacing: 0%;
   text-transform: uppercase;
-  color: #fff;
+  color: #fffc;
 }
 
 .mbland_linhvuc_hero_featuredLocationValue {
   font-size: 1em;
-  font-family: 'FZPoppins';
-  font-weight: 600;
+  font-weight: 500;
   line-height: 120%;
   color: #fff;
 }
@@ -396,7 +413,9 @@
 }
 
 /* ===== START DETAILS & SWIPER GALLERY ===== */
-.mbland_singleProject_details {}
+.mbland_singleProject_details {
+  padding-top: 100px;
+}
 
 .mbland_singleProject_details_wrapper {
   display: flex;
@@ -410,11 +429,30 @@
 
 .mbland_singleProject_details_header {}
 
-.mbland_singleProject_details_title {}
+.mbland_singleProject_details_title {
+  font-family: 'FZPoppins';
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.65em;
+  letter-spacing: 0%;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
 
-.mbland_singleProject_details_subtitle {}
+.mbland_singleProject_details_subtitle {
+  font-weight: 600;
+  font-size: 50px;
+  line-height: 120%;
+  color: #1E499C;
+}
 
-.mbland_singleProject_details_content {}
+.mbland_singleProject_details_content {
+  margin-top: 35px;
+}
+
+.mbland_singleProject_details_content * {
+  line-height: 1.875em;
+}
 
 /* Cột gallery bên phải */
 .mbland_singleProject_details_colGallery {
@@ -438,7 +476,7 @@
   width: 100%;
   height: 480px;
   object-fit: cover;
-  border-radius: 16px;
+  border-radius: 0;
   display: block;
 }
 
@@ -462,7 +500,7 @@
   width: 100%;
   height: 120px;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 0;
   display: block;
 }
 
@@ -470,22 +508,35 @@
 
 
 /* ===== START STATISTICAL ===== */
-.mbland_singleProject_statistical {}
+.mbland_singleProject_statistical {
+  padding-top: 150px;
+}
+
+.mbland_singleProject_statistical .container {
+  max-width: 1620px;
+}
 
 .mbland_singleProject_statistical_wrapper {}
 
 .mbland_singleProject_statistical_list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  gap: 50px 24px;
 }
 
-.mbland_singleProject_statistical_item {}
+.mbland_singleProject_statistical_item {
+  background: #FDF9F2;
+  border: 0.5px solid #E9E9E9;
+  padding: 42px;
+  border-radius: 20px;
+}
 
 .mbland_singleProject_statistical_itemTop {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 0.675em;
+  margin-bottom: 24px;
+  font-size: 36px;
 }
 
 .mbland_singleProject_statistical_itemIcon {
@@ -494,15 +545,32 @@
   justify-content: center;
 }
 
-.mbland_singleProject_statistical_itemIcon svg {}
+.mbland_singleProject_statistical_itemIcon svg {
+  width: 1.4em !important;
+  height: 1.4em !important;
+}
 
-.mbland_singleProject_statistical_itemValue {}
+.mbland_singleProject_statistical_itemValue {
+  font-weight: 700;
+  font-size: 1em;
+  line-height: 120%;
+}
 
 .mbland_singleProject_statistical_itemBody {}
 
-.mbland_singleProject_statistical_itemTitle {}
+.mbland_singleProject_statistical_itemTitle {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 120%;
+  margin-bottom: 8px;
+}
 
-.mbland_singleProject_statistical_itemDesc {}
+.mbland_singleProject_statistical_itemDesc {
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.35em;
+  color: #000000;
+}
 
 /* ===== END STATISTICAL ===== */
 
@@ -680,14 +748,23 @@
 
 /* ===== START FEATURED PROJECTS SLIDER ===== */
 .mbland_singleProject_featuredProject {
-  padding: 100px 0;
-  background: #FDF9F2;
+  padding-bottom: 150px;
+}
+
+.mbland_singleProject_featuredProject .container {
+  max-width: 1620px;
 }
 
 .mbland_singleProject_featuredProject_wrapper {
   display: flex;
   flex-direction: column;
   gap: 40px;
+}
+
+.mbland_singleProject_featuredProject_header {
+  text-align: center;
+  max-width: 880px;
+  margin: 0 auto;
 }
 
 .mbland_singleProject_featuredProject_header h2 {
@@ -805,9 +882,11 @@
 }
 
 @media (max-width: 768px) {
+
   .mbland_singleProject_featuredProject_slider .swiper-slide,
   .mbland_singleProject_featuredProject_slide {
     width: 300px;
   }
 }
+
 /* ===== END FEATURED PROJECTS SLIDER ===== */
