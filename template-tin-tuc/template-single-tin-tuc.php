@@ -125,41 +125,7 @@ $categories         = get_the_category( $post_id );
 
 			if ( $activities_query->have_posts() ) :
 				while ( $activities_query->have_posts() ) : $activities_query->the_post();
-					$activity_img = get_the_post_thumbnail_url( get_the_ID(), 'medium_large' );
-					if ( ! $activity_img ) {
-						$activity_img = get_template_directory_uri() . '/images/default.jpg';
-					}
-					$desc = get_field( 'mo_ta_ngan_tin_tuc', get_the_ID() );
-			?>
-					<article class="mbland_singlePost_activities_card">
-						<a href="<?php the_permalink(); ?>" class="mbland_singlePost_activities_cardThumb" title="<?php the_title_attribute(); ?>">
-							<img class="mbland_singlePost_activities_cardImage" src="<?php echo esc_url( $activity_img ); ?>" alt="<?php the_title_attribute(); ?>" title="<?php the_title_attribute(); ?>" loading="lazy" decoding="async" fetchpriority="low" />
-						</a>
-						<div class="mbland_singlePost_activities_cardContent">
-							<div class="mbland_singlePost_activities_cardMeta">
-								<div class="mbland_singlePost_activities_cardDate">
-									<div class="mbland_singlePost_activities_cardDateIcon">
-										<img src="/wp-content/uploads/2025/10/clock.svg" alt="Ngày đăng" title="Ngày đăng" loading="lazy" decoding="async" />
-									</div>
-									<p class="mbland_singlePost_activities_cardDateText"><?php echo get_the_date( 'd/m/Y' ); ?></p>
-								</div>
-								<div class="mbland_singlePost_activities_cardDivider"></div>
-								<p class="mbland_singlePost_activities_cardBadge"><?php echo function_exists( 'pll__' ) ? pll__( 'TIN MỚI' ) : 'TIN MỚI'; ?></p>
-							</div>
-							<a href="<?php the_permalink(); ?>" class="mbland_singlePost_activities_cardTitleLink" title="<?php the_title_attribute(); ?>">
-								<h3 class="mbland_singlePost_activities_cardTitle"><?php the_title(); ?></h3>
-							</a>
-							<p class="mbland_singlePost_activities_cardDesc"><?php echo wp_kses_post( $desc ? $desc : get_the_excerpt() ); ?></p>
-							<?php
-							get_template_part( 'template-parts/ui/button-detail', null, array(
-								'url'   => get_permalink(),
-								'class' => 'mbland_singlePost_activities_cardButton',
-								'title' => the_title_attribute( array( 'echo' => false ) ),
-							) );
-							?>
-						</div>
-					</article>
-			<?php
+					get_template_part( 'template-parts/ui/newCardItem' );
 				endwhile;
 				wp_reset_postdata();
 			endif;

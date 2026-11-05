@@ -283,6 +283,10 @@
   gap: 30px;
 }
 
+.mbland_singlePost_activities_grid .mbland_tintucTemplate_newCard {
+  width: 100%;
+}
+
 .mbland_singlePost_activities_card {
   display: flex;
   align-items: stretch;
