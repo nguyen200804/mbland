@@ -12,8 +12,8 @@
 }
 
 .mbland_singlePost_hero_breadcrumb {
-  padding-top: 10px;
-  padding-bottom: 10px;
+  /* padding-top: 10px; */
+  /* padding-bottom: 10px; */
 }
 
 .mbland_singlePost_hero_banner {
@@ -33,8 +33,12 @@
    SECTION 2: CONTENT (NGÀY, DANH MỤC, TÁC GIẢ, NỘI DUNG BÀI VIẾT)
    ========================================================================== */
 .mbland_singlePost_content {
-  padding-top: 30px;
-  padding-bottom: 50px;
+  padding-top: 40px;
+  padding-bottom: 72px;
+}
+
+.mbland_singlePost_content .container {
+  max-width: 1100px;
 }
 
 .mbland_singlePost_content_wrapper {
@@ -137,12 +141,14 @@
 }
 
 .mbland_singlePost_content_title {
-  font-family: "FZPoppins", sans-serif;
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 34px;
-  color: var(--color-02) !important;
+  color: #000;
   margin: 0;
+  font-family: Inter;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 50px;
+  letter-spacing: 0%;
+  text-transform: unset !important;
 }
 
 /* Article Typography */
@@ -245,9 +251,9 @@
    SECTION 3: ACTIVITIES (TIN HOẠT ĐỘNG)
    ========================================================================== */
 .mbland_singlePost_activities {
-  padding-top: 40px;
-  padding-bottom: 60px;
-  border-top: 1px solid var(--color-06);
+  padding-top: 0;
+  padding-bottom: 72px;
+  /* border-top: 1px solid var(--color-06); */
 }
 
 .mbland_singlePost_activities_header {
@@ -258,13 +264,11 @@
 }
 
 .mbland_singlePost_activities_heading {
-  font-family: "FZPoppins", sans-serif;
-  font-size: 24px;
+  font-size: 36px;
   font-weight: 600;
-  color: var(--color-02);
   white-space: nowrap;
   margin: 0;
-  text-transform: uppercase;
+  text-transform: unset;
 }
 
 .mbland_singlePost_activities_line {
@@ -409,10 +413,12 @@
   .mbland_singlePost_hero_bannerImage {
     max-height: 480px;
   }
+
   .mbland_singlePost_content_title {
     font-size: 22px;
     line-height: 32px;
   }
+
   .mbland_singlePost_content_article p,
   .mbland_singlePost_content_article span,
   .mbland_singlePost_content_article li {
@@ -426,23 +432,29 @@
   .mbland_singlePost_hero_bannerImage {
     max-height: 420px;
   }
+
   .mbland_singlePost_content_dateText,
   .mbland_singlePost_content_dateBadge {
     font-size: 14px;
   }
+
   .mbland_singlePost_content_title {
     font-size: 21px;
     line-height: 30px;
   }
+
   .mbland_singlePost_content_article h2 {
     font-size: 18px;
   }
+
   .mbland_singlePost_content_article h3 {
     font-size: 16px;
   }
+
   .mbland_singlePost_activities_grid {
     gap: 24px;
   }
+
   .mbland_singlePost_activities_cardImage {
     min-height: 180px;
   }
@@ -453,11 +465,13 @@
   .mbland_singlePost_hero_bannerImage {
     max-height: 360px;
   }
+
   .mbland_singlePost_content_title {
     font-size: clamp(18px, 2.2vw, 20px);
     line-height: 1.4;
     padding-bottom: 14px;
   }
+
   .mbland_singlePost_content_article p,
   .mbland_singlePost_content_article span,
   .mbland_singlePost_content_article li {
@@ -471,18 +485,22 @@
     flex-direction: column;
     gap: 20px;
   }
+
   .mbland_singlePost_activities_card {
     gap: 16px;
     align-items: flex-start;
   }
+
   .mbland_singlePost_activities_cardThumb,
   .mbland_singlePost_activities_cardContent {
     flex: unset;
     width: 100%;
   }
+
   .mbland_singlePost_activities_cardImage {
     height: 220px;
   }
+
   .mbland_singlePost_activities_header {
     margin-bottom: 20px;
   }
@@ -493,33 +511,41 @@
   .mbland_singlePost_hero_breadcrumb {
     padding: 10px 0;
   }
+
   .mbland_singlePost_hero_bannerImage {
     max-height: 280px;
   }
+
   .mbland_singlePost_content_dateText,
   .mbland_singlePost_content_dateBadge {
     font-size: 13px;
   }
+
   .mbland_singlePost_content_title {
     font-size: 18px;
     line-height: 26px;
   }
+
   .mbland_singlePost_content_article p,
   .mbland_singlePost_content_article span,
   .mbland_singlePost_content_article li {
     font-size: 14.5px;
     line-height: 22px;
   }
+
   .mbland_singlePost_activities_cardImage {
     height: 200px;
   }
+
   .mbland_singlePost_activities_heading {
     font-size: 20px;
     white-space: normal;
   }
+
   .mbland_singlePost_activities_line {
     display: none;
   }
+
   .mbland_singlePost_activities_cardDateText,
   .mbland_singlePost_activities_cardBadge {
     font-size: 13px;
@@ -531,31 +557,39 @@
   .mbland_singlePost_hero_bannerImage {
     max-height: 220px;
   }
+
   .mbland_singlePost_content {
     padding-top: 20px;
     padding-bottom: 30px;
   }
+
   .mbland_singlePost_content_meta {
     gap: 8px;
   }
+
   .mbland_singlePost_content_title {
     font-size: 17px;
     line-height: 24px;
   }
+
   .mbland_singlePost_activities {
     padding-top: 30px;
     padding-bottom: 40px;
   }
+
   .mbland_singlePost_activities_card {
     gap: 12px;
     flex-direction: column;
   }
+
   .mbland_singlePost_activities_cardImage {
     height: 180px;
   }
+
   .mbland_singlePost_activities_cardTitle {
     font-size: 16px;
   }
+
   .mbland_singlePost_activities_cardDesc {
     -webkit-line-clamp: 3;
   }

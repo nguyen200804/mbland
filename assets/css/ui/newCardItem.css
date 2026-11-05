@@ -1,0 +1,130 @@
+/* ==========================================================================
+   UI Component: New Card Item (Card bài viết tin mới)
+   Path: assets/css/ui/newCardItem.css
+   ========================================================================== */
+
+.mbland_tintucTemplate_newCard {
+  width: 50%;
+  display: flex;
+  gap: 24px;
+  overflow: hidden;
+  border-radius: 12px;
+  background-color: transparent;
+  transition: background-color .3s ease, box-shadow .3s ease;
+}
+
+.mbland_tintucTemplate_newCard:hover {
+  background-color: #FDF9F2;
+  box-shadow: 0px 3px 15px 0px #C2C2C236;
+}
+
+.mbland_tintucTemplate_newCard_thumb {
+  display: flex;
+  width: 50%;
+  overflow: hidden;
+}
+
+.mbland_tintucTemplate_newCard_img {
+  width: 100%;
+  object-fit: cover;
+  transition: transform .3s ease;
+}
+
+.mbland_tintucTemplate_newCard:hover .mbland_tintucTemplate_newCard_img {
+  transform: scale(1.1);
+}
+
+.mbland_tintucTemplate_newCard_content {
+  width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  align-self: center;
+  padding: 10px 24px 10px 0;
+}
+
+.mbland_tintucTemplate_newCard_meta {
+  display: flex;
+  align-items: center;
+  color: #B70C2C;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.mbland_tintucTemplate_newCard_metaIcon {
+  width: 1.2em;
+  height: 1.2em;
+  margin-right: 0.35em;
+  display: flex;
+  align-items: center;
+}
+
+.mbland_tintucTemplate_newCard_metaIcon img {
+  width: 1.2em;
+  height: 1.2em;
+}
+
+.mbland_tintucTemplate_newCard_date {}
+
+.mbland_tintucTemplate_newCard_metaDivider {
+  background: rgb(183 12 44 / 30%);
+  width: 1px;
+  min-height: 14px;
+  margin: 0 10px;
+  display: inline-block;
+}
+
+.mbland_tintucTemplate_newCard_badge {
+  font-weight: 500;
+}
+
+.mbland_tintucTemplate_newCard_title {
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 1.5em;
+  letter-spacing: 0%;
+  font-family: 'FZPoppins', sans-serif;
+  margin-bottom: 8px;
+}
+
+.mbland_tintucTemplate_newCard_titleLink {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: color .3s ease;
+}
+
+.mbland_tintucTemplate_newCard:hover .mbland_tintucTemplate_newCard_titleLink {
+  color: #B70C2C;
+}
+
+.mbland_tintucTemplate_newCard_desc {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  color: #656565;
+  margin-bottom: 20px;
+}
+
+.mbland_tintucTemplate_newCard_author {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  gap: 0.35em;
+  color: #656565;
+  font-weight: 500;
+}
+
+.mbland_tintucTemplate_newCard_author img {
+  width: 1.875em;
+  height: 1.875em;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid #d7d7d7;
+}
+

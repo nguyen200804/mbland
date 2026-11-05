@@ -99,19 +99,18 @@ if ( is_category() ) {
                         </h2>
                         <div class="mbland_tintucTemplate_featuredCard_desc"><?php echo wp_kses_post( $desc ? $desc : get_the_excerpt() ); ?></div>
 
-						<div  class="mbland_tintucTemplate_featuredCard_author">
-							<img  class="mbland_tintucTemplate_featuredCard_authorImage" src="<?php echo get_avatar_url( get_the_author_meta( 'ID' ) ); ?>" alt="<?php the_author(); ?>" title="<?php the_author(); ?>" loading="lazy" decoding="async" fetchpriority="low" />
+						<div class="mbland_tintucTemplate_featuredCard_author">
+							<img class="mbland_tintucTemplate_featuredCard_authorImage" src="<?php echo get_avatar_url( get_the_author_meta( 'ID' ) ); ?>" alt="<?php the_author(); ?>" title="<?php the_author(); ?>" loading="lazy" decoding="async" fetchpriority="low" />
 							<p class="mbland_tintucTemplate_featuredCard_authorName"><?php the_author(); ?></p>
 						</div>
 
-                        
 						<?php
-get_template_part( 'template-parts/ui/button-detail', null, array(
-    'url'   => get_permalink(),
-    'class' => 'mbland_tintucTemplate_featuredCard_cta',
-    'title' => the_title_attribute( array( 'echo' => false ) ),
-) );
-?>
+						get_template_part( 'template-parts/ui/button-detail', null, array(
+							'url'   => get_permalink(),
+							'class' => 'mbland_tintucTemplate_featuredCard_cta',
+							'title' => the_title_attribute( array( 'echo' => false ) ),
+						) );
+						?>
                     </div>
                 </article>
                 <?php
@@ -145,47 +144,7 @@ get_template_part( 'template-parts/ui/button-detail', null, array(
 
                     if ( $ttm_query->have_posts() ) :
                         while ( $ttm_query->have_posts() ) : $ttm_query->the_post();
-                            $featured_img = get_the_post_thumbnail_url( get_the_ID(), 'medium_large' );
-                            if ( ! $featured_img ) {
-                                $featured_img = get_template_directory_uri() . '/images/default.jpg';
-                            }
-                            $desc = get_field( 'mo_ta_ngan_tin_tuc', get_the_ID() );
-                    ?>
-                    <article class="mbland_tintucTemplate_newCard">
-                        <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="mbland_tintucTemplate_newCard_thumb">
-                            <img class="mbland_tintucTemplate_newCard_img" src="<?php echo esc_url( $featured_img ); ?>" alt="<?php the_title_attribute(); ?>" title="<?php the_title_attribute(); ?>" loading="lazy" decoding="async" fetchpriority="low" />
-                        </a>
-                        <div class="mbland_tintucTemplate_newCard_content">
-                            <div class="mbland_tintucTemplate_newCard_meta">
-                                <span class="mbland_tintucTemplate_newCard_metaIcon">
-                                    <img src="/wp-content/uploads/2025/10/clock.svg" alt="Ngày đăng" title="Ngày đăng" loading="lazy" decoding="async" fetchpriority="low" />
-                                </span>
-                                <span class="mbland_tintucTemplate_newCard_date"><?php echo get_the_date( 'd/m/Y' ); ?></span>
-                                <span class="mbland_tintucTemplate_newCard_metaDivider"></span>
-                                <span class="mbland_tintucTemplate_newCard_badge"><?php echo function_exists('pll__') ? pll__('TIN MỚI') : 'TIN MỚI'; ?></span>
-                            </div>
-                            <h3 class="mbland_tintucTemplate_newCard_title">
-                                <a href="<?php the_permalink(); ?>" class="mbland_tintucTemplate_newCard_titleLink" title="<?php the_title_attribute(); ?>">
-                                    <?php the_title(); ?>
-                                </a>
-                            </h3>
-                            <div class="mbland_tintucTemplate_newCard_desc"><?php echo wp_kses_post( $desc ? $desc : get_the_excerpt() ); ?></div>
-
-							<div  class="mbland_tintucTemplate_newCard_author">
-								<img  class="mbland_tintucTemplate_newCard_authorImage" src="<?php echo get_avatar_url( get_the_author_meta( 'ID' ) ); ?>" alt="<?php the_author(); ?>" title="<?php the_author(); ?>" loading="lazy" decoding="async" fetchpriority="low" />
-								<p class="mbland_tintucTemplate_newCard_authorName"><?php the_author(); ?></p>
-							</div>
-
-                            <?php
-                            get_template_part( 'template-parts/ui/button-detail', null, array(
-                                'url'   => get_permalink(),
-                                'class' => 'mbland_tintucTemplate_newCard_button',
-                                'title' => the_title_attribute( array( 'echo' => false ) ),
-                            ) );
-                            ?>
-                        </div>
-                    </article>
-                    <?php
+                            get_template_part( 'template-parts/ui/newCardItem' );
                         endwhile;
                         wp_reset_postdata();
                     endif;

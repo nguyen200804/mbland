@@ -62,6 +62,48 @@ get_template_part( 'template-parts/ui/button-detail', null, array(
 
 ---
 
+### 2. Component: Card Tin Mới (`newCardItem`)
+
+Component thẻ bài viết dạng ngang (ngang 50% / flex row) gồm: ảnh đại diện hover zoom, ngày đăng, badge 'TIN MỚI', tiêu đề hover đổi màu, mô tả ngắn, avatar + tác giả, và nút Xem chi tiết.
+
+- **File PHP Component**: [`template-parts/ui/newCardItem.php`](template-parts/ui/newCardItem.php)
+- **File CSS**: [`assets/css/ui/newCardItem.css`](assets/css/ui/newCardItem.css) *(được nạp tự động toàn trang qua `inc/enqueue.php`)*
+
+#### Cách sử dụng chuẩn trong Loop:
+
+```php
+<?php
+if ( $ttm_query->have_posts() ) :
+    while ( $ttm_query->have_posts() ) : $ttm_query->the_post();
+        get_template_part( 'template-parts/ui/newCardItem' );
+    endwhile;
+    wp_reset_postdata();
+endif;
+?>
+```
+
+#### Cách gọi ngoài Loop hoặc truyền tham số tùy biến:
+
+```php
+<?php
+get_template_part( 'template-parts/ui/newCardItem', null, array(
+    'post_id' => $post->ID,         // optional: ID bài viết (mặc định lấy post hiện tại)
+    'class'   => 'my-custom-class', // optional: class CSS bổ sung
+    'badge'   => 'TIN NỔI BẬT',     // optional: thay đổi nhãn badge (mặc định 'TIN MỚI')
+) );
+?>
+```
+
+#### Bảng tham số (Parameters):
+
+| Tham số | Kiểu dữ liệu | Mặc định | Mô tả |
+| :--- | :--- | :--- | :--- |
+| `post_id` | `int` | `get_the_ID()` | ID bài viết cần hiển thị. |
+| `class` | `string` | `''` | Class CSS tùy biến bổ sung vào thẻ `<article>`. |
+| `badge` | `string` | `'TIN MỚI'` | Chữ hiển thị trên badge meta (hỗ trợ Polylang). |
+
+---
+
 ## 📐 Quy chuẩn tạo Component mới trong Theme
 
 Khi tạo một component dùng chung mới, các thành viên cần tuân thủ quy tắc sau:
@@ -72,4 +114,3 @@ Khi tạo một component dùng chung mới, các thành viên cần tuân thủ
 4. **Quy tắc gọi Component**:
    - Sử dụng `get_template_part( 'template-parts/ui/ten-component', null, $args )`.
    - **Tuyệt đối không** truyền tên class CSS vào vị trí đường dẫn file của `get_template_part`.
-
