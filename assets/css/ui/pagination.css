@@ -1,0 +1,62 @@
+/* ==========================================================================
+   COMPONENT: PAGINATION
+   File: assets/css/ui/pagination.css
+   Quy ước đặt tên: .mbland_pagination
+   ========================================================================== */
+
+.mbland_pagination {
+  margin-top: 40px;
+  width: 100%;
+}
+
+.mbland_pagination ul.page-numbers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mbland_pagination ul.page-numbers li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mbland_pagination ul.page-numbers .page-numbers {
+  min-width: 38px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #F9F4EA;
+  border-radius: 8px;
+  text-align: center;
+  padding: 0 15px;
+  font-family: "FZPoppins", sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 100%;
+  color: #656565;
+  text-decoration: none;
+  transition: all .3s ease;
+  box-sizing: border-box;
+}
+
+.mbland_pagination .page-numbers:hover {
+  background-color: #e8ded0;
+  color: var(--color-02, #B70C2C) !important;
+}
+
+.mbland_pagination .page-numbers.current {
+  background-color: var(--color-02, #B70C2C) !important;
+  color: #fff !important;
+}
+
+.mbland_pagination .page-numbers.dots {
+  background: transparent;
+  cursor: default;
+}
+

@@ -144,6 +144,56 @@ get_template_part( 'template-parts/ui/jobCardItem', null, array(
 
 ---
 
+### 4. Component: Phân trang danh sách (`pagination`)
+
+Component phân trang dùng chung chuẩn giao diện MBLand: nút số trang bo góc màu `#F9F4EA`, trang hiện tại màu đỏ `#B70C2C`, tự động ẩn khi chỉ có 1 trang và hỗ trợ giữ nguyên query parameters.
+
+- **File PHP Component**: [`template-parts/ui/pagination.php`](template-parts/ui/pagination.php)
+- **File CSS**: [`assets/css/ui/pagination.css`](assets/css/ui/pagination.css) *(được nạp tự động toàn trang qua `inc/enqueue.php`)*
+
+#### Cách sử dụng chuẩn với WP_Query:
+
+```php
+<?php
+get_template_part( 'template-parts/ui/pagination', null, array(
+    'query'   => $grid_query, // WP_Query object
+    'current' => $paged,      // Trang hiện tại
+    'class'   => 'mbland_tintucTemplate_post_listPostPagination', // optional class bổ sung
+) );
+?>
+```
+
+#### Cách sử dụng với rewrite rule `/page/N/` và bộ lọc query args:
+
+```php
+<?php
+get_template_part( 'template-parts/ui/pagination', null, array(
+    'query'    => $jobs_query,
+    'current'  => $paged,
+    'base'     => trailingslashit( $page_url ) . '%_%',
+    'format'   => 'page/%#%/',
+    'add_args' => $active_params, // mảng các tham số lọc cần duy trì trên URL
+    'class'    => 'mbland_recruitment_jobs_pagination',
+) );
+?>
+```
+
+#### Bảng tham số (Parameters):
+
+| Tham số | Kiểu dữ liệu | Mặc định | Mô tả |
+| :--- | :--- | :--- | :--- |
+| `query` | `WP_Query` | `$GLOBALS['wp_query']` | Đối tượng query phân trang. |
+| `total` | `int` | `$query->max_num_pages` | Tổng số trang (nếu muốn truyền thủ công). |
+| `current` | `int` | `get_query_var('paged')` | Số trang hiện tại. |
+| `base` | `string` | URL pagenum chuẩn | Mẫu link cơ sở. |
+| `format` | `string` | `'?paged=%#%'` | Định dạng trang. |
+| `add_args` | `array` | `array()` | Mảng tham số query parameters cần giữ lại qua các trang. |
+| `prev_text` | `string` | `'Trước'` | Nhãn nút Trước (tự động hỗ trợ Polylang). |
+| `next_text` | `string` | `'Sau'` | Nhãn nút Sau (tự động hỗ trợ Polylang). |
+| `class` | `string` | `''` | Class CSS tùy biến bổ sung vào wrapper. |
+
+---
+
 ## 📐 Quy chuẩn tạo Component mới trong Theme
 
 Khi tạo một component dùng chung mới, các thành viên cần tuân thủ quy tắc sau:

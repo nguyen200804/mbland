@@ -206,41 +206,31 @@ $jobs_query = new WP_Query( $jobs_args );
 				</div>
 
 				<!-- Phân trang SSR -->
-				<?php if ( $jobs_query->max_num_pages > 1 ) : ?>
-				<div class="mbland_recruitment_jobs_pagination">
-					<?php
-					$active_params = array();
-					if ( ! empty( $keyword ) ) {
-						$active_params['keyword'] = $keyword;
-					}
-					if ( ! empty( $vitri ) && 'all' !== $vitri ) {
-						$active_params['vi-tri-ung-tuyen'] = $vitri;
-					}
-					if ( ! empty( $noilam ) && 'all' !== $noilam ) {
-						$active_params['noi-lam-viec'] = $noilam;
-					}
-					if ( ! empty( $hinhthuc ) && 'all' !== $hinhthuc ) {
-						$active_params['hinh-thuc-lam-viec'] = $hinhthuc;
-					}
+				<?php
+				$active_params = array();
+				if ( ! empty( $keyword ) ) {
+					$active_params['keyword'] = $keyword;
+				}
+				if ( ! empty( $vitri ) && 'all' !== $vitri ) {
+					$active_params['vi-tri-ung-tuyen'] = $vitri;
+				}
+				if ( ! empty( $noilam ) && 'all' !== $noilam ) {
+					$active_params['noi-lam-viec'] = $noilam;
+				}
+				if ( ! empty( $hinhthuc ) && 'all' !== $hinhthuc ) {
+					$active_params['hinh-thuc-lam-viec'] = $hinhthuc;
+				}
 
-					$paginate_args = array(
-						'base'      => trailingslashit( $page_url ) . '%_%',
-						'format'    => 'page/%#%/',
-						'current'   => $paged,
-						'total'     => $jobs_query->max_num_pages,
-						'prev_text' => function_exists( 'pll__' ) ? pll__( 'Trước' ) : 'Trước',
-						'next_text' => function_exists( 'pll__' ) ? pll__( 'Sau' ) : 'Sau',
-						'type'      => 'list',
-					);
-					if ( ! empty( $active_params ) ) {
-						$paginate_args['add_args'] = $active_params;
-					}
-
-					echo paginate_links( $paginate_args );
-					?>
-				</div>
-				<?php endif; ?>
-				<?php wp_reset_postdata(); ?>
+				get_template_part( 'template-parts/ui/pagination', null, array(
+					'query'    => $jobs_query,
+					'current'  => $paged,
+					'base'     => trailingslashit( $page_url ) . '%_%',
+					'format'   => 'page/%#%/',
+					'add_args' => $active_params,
+					'class'    => 'mbland_recruitment_jobs_pagination',
+				) );
+				wp_reset_postdata();
+				?>
 			</div>
 		</div>
 	</div>

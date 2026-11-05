@@ -254,22 +254,13 @@ get_template_part( 'template-parts/ui/button-detail', null, array(
                 </div>
 
                 <!-- Phân trang (Pagination) -->
-                <?php if ( $grid_query->max_num_pages > 1 ) : ?>
-                <div class="mbland_tintucTemplate_post_listPostPagination">
-                    <?php
-                    $big = 999999999;
-                    echo paginate_links( array(
-                        'base'      => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
-                        'format'    => '?paged=%#%',
-                        'current'   => max( 1, $paged ),
-                        'total'     => $grid_query->max_num_pages,
-                        'prev_text' => 'Trước',
-                        'next_text' => 'Sau',
-                        'type'      => 'list',
-                    ) );
-                    ?>
-                </div>
-                <?php endif; ?>
+                <?php
+                get_template_part( 'template-parts/ui/pagination', null, array(
+                    'query'   => $grid_query,
+                    'current' => $paged,
+                    'class'   => 'mbland_tintucTemplate_post_listPostPagination',
+                ) );
+                ?>
 
             </div>
 
