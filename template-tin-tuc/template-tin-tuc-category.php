@@ -98,11 +98,17 @@ if ( is_category() ) {
                             </a>
                         </h2>
                         <div class="mbland_tintucTemplate_featuredCard_desc"><?php echo wp_kses_post( $desc ? $desc : get_the_excerpt() ); ?></div>
+
+						<div  class="mbland_tintucTemplate_featuredCard_author">
+							<img  class="mbland_tintucTemplate_featuredCard_authorImage" src="<?php echo get_avatar_url( get_the_author_meta( 'ID' ) ); ?>" alt="<?php the_author(); ?>" title="<?php the_author(); ?>" loading="lazy" decoding="async" fetchpriority="low" />
+							<p class="mbland_tintucTemplate_featuredCard_authorName"><?php the_author(); ?></p>
+						</div>
+
                         <a class="mbland_tintucTemplate_featuredCard_cta" href="<?php the_permalink(); ?>" title="Xem chi tiết">
+							<span class="mbland_tintucTemplate_featuredCard_ctaLabel"><?php echo function_exists('pll__') ? pll__('XEM CHI TIẾT') : 'XEM CHI TIẾT'; ?></span>
                             <span class="mbland_tintucTemplate_featuredCard_ctaIcon">
                                 <img src="/wp-content/uploads/2025/10/arrow-right-red.svg" alt="Xem chi tiết" title="Xem chi tiết" loading="lazy" decoding="async" fetchpriority="low" />
                             </span>
-                            <span class="mbland_tintucTemplate_featuredCard_ctaLabel"><?php echo function_exists('pll__') ? pll__('XEM CHI TIẾT') : 'XEM CHI TIẾT'; ?></span>
                         </a>
                     </div>
                 </article>
@@ -115,6 +121,10 @@ if ( is_category() ) {
 
             <!-- 2. Tin mới (New Post) -->
             <div class="mbland_tintucTemplate_post_newPost">
+				<header class="mbland_tintucTemplate_post_newPostHeader">
+					<h2 class="mbland_tintucTemplate_post_newPostTitle">Tin tức mới</h2>
+					<span class="mbland_tintucTemplate_post_newPostLine"></span>
+				</header>
                 <div class="mbland_tintucTemplate_newPost_list">
                     <?php
                     $ttm_args = array(
@@ -158,11 +168,17 @@ if ( is_category() ) {
                                 </a>
                             </h3>
                             <div class="mbland_tintucTemplate_newCard_desc"><?php echo wp_kses_post( $desc ? $desc : get_the_excerpt() ); ?></div>
+
+							<div  class="mbland_tintucTemplate_newCard_author">
+								<img  class="mbland_tintucTemplate_newCard_authorImage" src="<?php echo get_avatar_url( get_the_author_meta( 'ID' ) ); ?>" alt="<?php the_author(); ?>" title="<?php the_author(); ?>" loading="lazy" decoding="async" fetchpriority="low" />
+								<p class="mbland_tintucTemplate_newCard_authorName"><?php the_author(); ?></p>
+							</div>
+
                             <a class="mbland_tintucTemplate_newCard_cta" href="<?php the_permalink(); ?>" title="Xem chi tiết">
+								<span class="mbland_tintucTemplate_newCard_ctaLabel"><?php echo function_exists('pll__') ? pll__('XEM CHI TIẾT') : 'XEM CHI TIẾT'; ?></span>
                                 <span class="mbland_tintucTemplate_newCard_ctaIcon">
                                     <img src="/wp-content/uploads/2025/10/arrow-right-red.svg" alt="Xem chi tiết" title="Xem chi tiết" loading="lazy" decoding="async" fetchpriority="low" />
                                 </span>
-                                <span class="mbland_tintucTemplate_newCard_ctaLabel"><?php echo function_exists('pll__') ? pll__('XEM CHI TIẾT') : 'XEM CHI TIẾT'; ?></span>
                             </a>
                         </div>
                     </article>
@@ -252,11 +268,15 @@ if ( is_category() ) {
                                 </a>
                             </h3>
                             <div class="mbland_tintucTemplate_postCard_desc"><?php echo wp_kses_post( $desc ? $desc : get_the_excerpt() ); ?></div>
+							<div  class="mbland_tintucTemplate_postCard_author">
+								<img  class="mbland_tintucTemplate_postCard_authorImage" src="<?php echo get_avatar_url( get_the_author_meta( 'ID' ) ); ?>" alt="<?php the_author(); ?>" title="<?php the_author(); ?>" loading="lazy" decoding="async" fetchpriority="low" />
+								<p class="mbland_tintucTemplate_postCard_authorName"><?php the_author(); ?></p>
+							</div>
                             <a class="mbland_tintucTemplate_postCard_cta" href="<?php the_permalink(); ?>" title="Xem chi tiết">
+								<span class="mbland_tintucTemplate_postCard_ctaLabel"><?php echo function_exists('pll__') ? pll__('XEM CHI TIẾT') : 'XEM CHI TIẾT'; ?></span>
                                 <span class="mbland_tintucTemplate_postCard_ctaIcon">
                                     <img src="/wp-content/uploads/2025/10/arrow-right-red.svg" alt="Xem chi tiết" title="Xem chi tiết" loading="lazy" decoding="async" fetchpriority="low" />
                                 </span>
-                                <span class="mbland_tintucTemplate_postCard_ctaLabel"><?php echo function_exists('pll__') ? pll__('XEM CHI TIẾT') : 'XEM CHI TIẾT'; ?></span>
                             </a>
                         </div>
                     </article>

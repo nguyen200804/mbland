@@ -420,29 +420,83 @@
 /* --- 1. Featured Post (Tin nổi bật) --- */
 .mbland_tintucTemplate_post_featuredPost {}
 
-.mbland_tintucTemplate_featuredCard {}
+.mbland_tintucTemplate_featuredCard {
+  display: flex;
+  gap: 40px;
+}
 
-.mbland_tintucTemplate_featuredCard_thumb {}
+.mbland_tintucTemplate_featuredCard_thumb {
+  display: flex;
+  width: 50%;
+}
 
-.mbland_tintucTemplate_featuredCard_img {}
+.mbland_tintucTemplate_featuredCard_img {
+  width: 100%;
+}
 
-.mbland_tintucTemplate_featuredCard_content {}
+.mbland_tintucTemplate_featuredCard_content {
+  width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  align-self: center;
+}
 
-.mbland_tintucTemplate_featuredCard_meta {}
+.mbland_tintucTemplate_featuredCard_meta {
+  display: flex;
+  color: #B70C2C;
+  font-size: 15px;
+  align-items: center;
+  margin-bottom: 16px;
+}
 
-.mbland_tintucTemplate_featuredCard_metaIcon {}
+.mbland_tintucTemplate_featuredCard_metaIcon {
+  width: 1.2em;
+  height: 1.2em;
+}
 
-.mbland_tintucTemplate_featuredCard_date {}
+.mbland_tintucTemplate_featuredCard_metaIcon img {
+  width: 100%;
+}
 
-.mbland_tintucTemplate_featuredCard_metaDivider {}
+.mbland_tintucTemplate_featuredCard_date {
+  margin-left: 0.325em;
+}
 
-.mbland_tintucTemplate_featuredCard_badge {}
+.mbland_tintucTemplate_featuredCard_metaDivider {
+  width: 2px;
+  height: 100%;
+  margin: 0 10px;
+  background: rgb(183 12 44 / 30%);
+}
 
-.mbland_tintucTemplate_featuredCard_title {}
+.mbland_tintucTemplate_featuredCard_badge {
+  font-weight: 500;
+}
+
+.mbland_tintucTemplate_featuredCard_title {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.5em;
+  letter-spacing: 0%;
+  font-family: 'FZPoppins';
+  margin-bottom: 8px;
+}
 
 .mbland_tintucTemplate_featuredCard_titleLink {}
 
-.mbland_tintucTemplate_featuredCard_desc {}
+.mbland_tintucTemplate_featuredCard_desc {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6em;
+  letter-spacing: 0%;
+  color: #656565;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  height: 4.8em;
+  margin-bottom: 20px;
+}
 
 .mbland_tintucTemplate_featuredCard_cta {}
 
