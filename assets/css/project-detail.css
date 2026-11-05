@@ -24,18 +24,22 @@
 }
 
 .mbland_linhvuc_hero_inner {
-  background: linear-gradient(270deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.7) 100%);
-  backdrop-filter: blur(4px);
-  padding-top: 50px;
-  padding-bottom: 32px;
+  /* background: linear-gradient(270deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.7) 100%); */
+  /* backdrop-filter: blur(4px); */
+  /* padding-top: 50px; */
+  /* padding-bottom: 32px; */
+  margin-top: 32px;
 }
 
 .mbland_linhvuc_hero_content {
-  max-width: 830px;
+  max-width: fit-content;
+  background: linear-gradient(270deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.7) 100%);
+  backdrop-filter: blur(4px);
+  padding: 12px 100px 12px 24px;
 }
 
 .mbland_linhvuc_hero_breadcrumb {
-  margin-bottom: 12px;
+  /* margin-bottom: 12px; */
 }
 
 .mbland_linhvuc_hero_breadcrumb nav {
@@ -390,3 +394,366 @@
     width: 100%;
   }
 }
+
+/* ===== START DETAILS & SWIPER GALLERY ===== */
+.mbland_singleProject_details {}
+
+.mbland_singleProject_details_wrapper {
+  display: flex;
+  gap: 40px;
+}
+
+/* Cột thông tin bên trái */
+.mbland_singleProject_details_colInfo {
+  flex: 1;
+}
+
+.mbland_singleProject_details_header {}
+
+.mbland_singleProject_details_title {}
+
+.mbland_singleProject_details_subtitle {}
+
+.mbland_singleProject_details_content {}
+
+/* Cột gallery bên phải */
+.mbland_singleProject_details_colGallery {
+  flex: 1;
+}
+
+.mbland_singleProject_gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Swiper chính (Ảnh to) */
+.mbland_singleProject_gallery_main {
+  width: 100%;
+}
+
+.mbland_singleProject_gallery_mainSlide {}
+
+.mbland_singleProject_gallery_mainImage {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  border-radius: 16px;
+  display: block;
+}
+
+/* Swiper thumbnail (Ảnh nhỏ) */
+.mbland_singleProject_gallery_thumbs {
+  width: 100%;
+}
+
+.mbland_singleProject_gallery_thumbSlide {
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.mbland_singleProject_gallery_thumbSlide:hover,
+.mbland_singleProject_gallery_thumbSlide.swiper-slide-thumb-active {
+  opacity: 1;
+}
+
+.mbland_singleProject_gallery_thumbImage {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+
+/* ===== END DETAILS & SWIPER GALLERY ===== */
+
+
+/* ===== START STATISTICAL ===== */
+.mbland_singleProject_statistical {}
+
+.mbland_singleProject_statistical_wrapper {}
+
+.mbland_singleProject_statistical_list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.mbland_singleProject_statistical_item {}
+
+.mbland_singleProject_statistical_itemTop {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.mbland_singleProject_statistical_itemIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mbland_singleProject_statistical_itemIcon svg {}
+
+.mbland_singleProject_statistical_itemValue {}
+
+.mbland_singleProject_statistical_itemBody {}
+
+.mbland_singleProject_statistical_itemTitle {}
+
+.mbland_singleProject_statistical_itemDesc {}
+
+/* ===== END STATISTICAL ===== */
+
+
+
+
+
+
+/* ===== START SECTION PROCEDURE ===== */
+.mbland_linhvuc_procedure {
+  padding-top: 150px;
+}
+
+.mbland_linhvuc_procedure_wrapper {}
+
+.mbland_linhvuc_procedure_heading {
+  max-width: 1080px;
+  margin: 0 auto 72px;
+  text-align: center;
+}
+
+.mbland_linhvuc_procedure_title {
+  margin-bottom: 24px;
+}
+
+.mbland_linhvuc_procedure_desc {
+  font-family: 'GanhType';
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.65em;
+  letter-spacing: 0%;
+  text-align: center;
+}
+
+.mbland_linhvuc_procedure_list {}
+
+.mbland_linhvuc_procedure_item {
+  display: flex;
+  margin-bottom: 120px;
+}
+
+.mbland_linhvuc_procedure_itemContent {
+  width: 45%;
+  padding: 0 28px;
+  display: flex;
+}
+
+.mbland_linhvuc_procedure_itemNumber {
+  min-width: 120px;
+  font-family: 'FZPoppins';
+  font-weight: 500;
+  font-size: 90px;
+  line-height: 0.8em;
+  letter-spacing: 0%;
+  text-align: center;
+  color: #1E499C;
+  margin-right: 28px;
+  align-content: center;
+  position: relative;
+}
+
+.mbland_linhvuc_procedure_item:not(:last-of-type) .mbland_linhvuc_procedure_itemNumber::after {
+  content: "";
+  display: inline-block;
+  width: 2px;
+  height: 100%;
+  position: absolute;
+  background: #1E499C;
+  left: 50%;
+  top: calc(100% - 70px);
+}
+
+.mbland_linhvuc_procedure_itemTexts {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  align-self: center;
+}
+
+.mbland_linhvuc_procedure_itemTag {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.4em;
+  text-align: center;
+  padding: 0.575em 1.45em;
+  background-color: #B70C2C;
+  color: #fff;
+  border-radius: 100px;
+}
+
+.mbland_linhvuc_procedure_itemTitle {
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 40px;
+  letter-spacing: -0.02em;
+}
+
+.mbland_linhvuc_procedure_itemDesc {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.575em;
+}
+
+.mbland_linhvuc_procedure_itemImage {
+  width: 55%;
+  transition: padding-right .3s ease;
+}
+
+.mbland_linhvuc_procedure_item.active .mbland_linhvuc_procedure_itemImage {
+  padding-right: 0%;
+}
+
+.mbland_linhvuc_procedure_itemImageList {
+  display: flex;
+  height: 250px;
+  gap: 8px;
+}
+
+.mbland_linhvuc_procedure_itemImageList::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  flex: 3;
+  transition: flex .3s ease;
+}
+
+.mbland_linhvuc_procedure_item.active .mbland_linhvuc_procedure_itemImageList::after {
+  flex: 0;
+}
+
+.mbland_linhvuc_procedure_itemImageItem::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: #19191980;
+  backdrop-filter: blur(2px);
+  opacity: 1;
+  transition: opacity .3s ease;
+}
+
+.mbland_linhvuc_procedure_itemImageItem {
+  flex: 1;
+  transition: flex .3s ease;
+  position: relative;
+}
+
+/* Active: ảnh đầu mở rộng; khi rê chuột vào list thì nhường cho ảnh đang hover */
+.mbland_linhvuc_procedure_item.active .mbland_linhvuc_procedure_itemImageList:not(:hover) .mbland_linhvuc_procedure_itemImageItem:first-child,
+.mbland_linhvuc_procedure_itemImageItem:hover {
+  flex: 4;
+}
+
+/* Bỏ lớp phủ tối trên ảnh đang mở rộng */
+.mbland_linhvuc_procedure_item.active .mbland_linhvuc_procedure_itemImageList:not(:hover) .mbland_linhvuc_procedure_itemImageItem:first-child::before,
+.mbland_linhvuc_procedure_itemImageItem:hover::before {
+  opacity: 0;
+}
+
+.mbland_linhvuc_procedure_itemImagePhoto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ===== END SECTION PROCEDURE ===== */
+
+
+
+
+
+
+
+
+/* ===== START FEATURED PROJECTS SLIDER ===== */
+.mbland_singleProject_featuredProject {}
+
+.mbland_singleProject_featuredProject_wrapper {}
+
+.mbland_singleProject_featuredProject_header {
+  margin-bottom: 32px;
+}
+
+.mbland_singleProject_featuredProject_title {}
+
+.mbland_singleProject_featuredProject_desc {}
+
+.mbland_singleProject_featuredProject_slider {}
+
+.mbland_singleProject_featuredProject_swiper {
+  width: 100%;
+}
+
+.mbland_singleProject_featuredProject_slide {
+  width: 380px;
+  max-width: 85vw;
+  height: auto;
+}
+
+/* Tích hợp card item từ homepage */
+.mbland_singleProject_featuredProject_slide .mbland_homepage_projects_item {
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  height: 380px;
+}
+
+.mbland_singleProject_featuredProject_slide .mbland_homepage_projects_itemImage {
+  overflow: hidden;
+  height: 100%;
+}
+
+.mbland_singleProject_featuredProject_slide .mbland_homepage_projects_itemImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease, filter 0.4s ease;
+  filter: brightness(0.85);
+}
+
+.mbland_singleProject_featuredProject_slide .mbland_homepage_projects_item:hover .mbland_homepage_projects_itemImage img {
+  transform: scale(1.08);
+  filter: brightness(0.5);
+}
+
+.mbland_singleProject_featuredProject_slide .mbland_homepage_projects_itemContent {
+  position: absolute;
+  inset: 0;
+  padding: 24px;
+  background-image: linear-gradient(to bottom, transparent 40%, rgba(0, 0, 0, 0.9) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  z-index: 2;
+  transition: all 0.35s ease;
+  color: #fff;
+}
+
+.mbland_singleProject_featuredProject_slide .mbland_homepage_projects_itemContent2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.mbland_singleProject_featuredProject_slide .mbland_homepage_projects_itemContent2 a {
+  color: #fff !important;
+  text-decoration: none;
+}
+
+/* ===== END FEATURED PROJECTS SLIDER ===== */

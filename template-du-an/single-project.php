@@ -26,6 +26,9 @@ $scale = get_field('scale', $post_id) ?: ''; // Quy mô từ field
 // Nội dung: Sử dụng wp_kses_post để sanitize
 $content = wp_kses_post(get_field('content', $post_id));
 
+// Album ảnh Gallery
+$gallery = get_field('gallery', $post_id);
+
 // Featured image cho image cuối (sidebar)
 $featured_image_url = get_the_post_thumbnail_url($post_id); // Hoặc 'full' nếu cần kích thước lớn hơn
 $featured_image_alt = get_post_meta(get_post_thumbnail_id($post_id), '_wp_attachment_image_alt', true) ?: get_the_title($post_id);
@@ -136,132 +139,421 @@ get_header();
 
 
 
-
-<section class="hn-chitietduan-banner">
-	<div class="container"><?php echo do_shortcode('[hn_breadcrumb]'); ?></div>
-	<img
-		 src="<?php echo esc_url($banner_url); ?>"
-		 alt="<?php echo esc_attr($banner_alt); ?>"
-		 title="<?php echo esc_attr($banner_title); ?>"
-	/>
-</section>
-
-<section class="hn-chitietduan-content">
+<section class="mbland_singleProject_details">
 	<div class="container">
-		<div class="hn-chitietduan-content-1">
-			<h1 class="equalh2">
-				<?php the_title(); ?>
-			</h1>
-			<subtitle><?php echo wp_kses_post($sub_title); ?></subtitle>
-			<div class="line"></div>
-			<div>
-				<?php echo $content; ?>
-			</div>
-			
-			<div class="hn-tasmania-chitietduan-item">
-				<div class="hn-tasmania-chitietduan-item-icon">
-					<img src="/wp-content/uploads/2025/10/Location.svg" alt="Vị trí" title="Vị trí"/>
-				</div>
-				<div class="hn-tasmania-chitietduan-item-text-wrapper">
-					<span><?php echo pll__('VỊ TRÍ'); ?></span>
-					<div class="hn-tasmania-chitietduan-text">
-						<?php echo wp_kses_post($location); ?>
-					</div>
-				</div>
-			</div>
-			<div class="hn-tasmania-chitietduan-item">
-				<div class="hn-tasmania-chitietduan-item-icon">
-					<img src="/wp-content/uploads/2025/10/quy-mo.svg" alt="Quy mô" title="Quy mô"/>
-				</div>
-				<div class="hn-tasmania-chitietduan-item-text-wrapper">
-					<span><?php echo pll__('QUY MÔ'); ?></span>
-					<div class="hn-tasmania-chitietduan-text">
-						<?php echo wp_kses_post($scale); ?>
-					</div>
+		<div class="mbland_singleProject_details_wrapper">
+			<!-- Cột 1: Thông tin tổng quan dự án -->
+			<div class="mbland_singleProject_details_colInfo">
+				<header class="mbland_singleProject_details_header">
+					<h2 class="mbland_singleProject_details_title">Tổng quan dự án</h2>
+					<p class="mbland_singleProject_details_subtitle"><?php echo esc_html( $sub_title ?: 'Thảo Điền Boutique Marina' ); ?></p>
+				</header>
+				<div class="mbland_singleProject_details_content">
+					<?php if ( ! empty( $content ) ) : ?>
+						<?php echo $content; ?>
+					<?php else : ?>
+						<p>Dự án được quy hoạch theo mô hình tổ hợp khép kín với các tiêu chuẩn quốc tế, mang đến không gian sống đẳng cấp, biệt lập và tiện nghi bậc nhất khu vực.</p>
+					<?php endif; ?>
 				</div>
 			</div>
 
-		</div>
-		<div class="hn-tasmania-chitietduan-item-image">
-			<img
-			 src="<?php echo esc_url($featured_image_url); ?>"
-			 alt="<?php echo esc_attr($featured_image_alt); ?>"
-			 title="<?php echo esc_attr($featured_image_title); ?>"
-		/>
+			<!-- Cột 2: Gallery ảnh dạng Swiper (ảnh to ở trên, 3 ảnh thumbs ở dưới) -->
+			<div class="mbland_singleProject_details_colGallery">
+				<div class="mbland_singleProject_gallery">
+					
+					<!-- Swiper ảnh lớn chính (Main Slider) -->
+					<div class="swiper mbland_singleProject_gallery_main">
+						<div class="swiper-wrapper">
+							<?php if ( ! empty( $gallery ) && is_array( $gallery ) ) : ?>
+								<?php foreach ( $gallery as $img ) : 
+									$img_url = is_array( $img ) ? ( $img['url'] ?? '' ) : ( is_numeric( $img ) ? wp_get_attachment_image_url( $img, 'full' ) : $img );
+									$img_alt = is_array( $img ) ? ( $img['alt'] ?? get_the_title( $post_id ) ) : get_the_title( $post_id );
+								?>
+									<div class="swiper-slide mbland_singleProject_gallery_mainSlide">
+										<img class="mbland_singleProject_gallery_mainImage" src="<?php echo esc_url( $img_url ); ?>" alt="<?php echo esc_attr( $img_alt ); ?>" loading="lazy" />
+									</div>
+								<?php endforeach; ?>
+							<?php else : ?>
+								<!-- Ảnh mẫu demo khớp theo thiết kế -->
+								<div class="swiper-slide mbland_singleProject_gallery_mainSlide">
+									<img class="mbland_singleProject_gallery_mainImage" src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1200&q=80" alt="Hilton Sky View" />
+								</div>
+								<div class="swiper-slide mbland_singleProject_gallery_mainSlide">
+									<img class="mbland_singleProject_gallery_mainImage" src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80" alt="Kiến trúc xanh & Tiện ích" />
+								</div>
+								<div class="swiper-slide mbland_singleProject_gallery_mainSlide">
+									<img class="mbland_singleProject_gallery_mainImage" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80" alt="Cảnh quan ven sông" />
+								</div>
+								<div class="swiper-slide mbland_singleProject_gallery_mainSlide">
+									<img class="mbland_singleProject_gallery_mainImage" src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80" alt="Quy hoạch tổng thể" />
+								</div>
+							<?php endif; ?>
+						</div>
+					</div>
+
+					<!-- Swiper ảnh thumbnail thu nhỏ bên dưới (Thumbs Slider) -->
+					<div class="swiper mbland_singleProject_gallery_thumbs">
+						<div class="swiper-wrapper">
+							<?php if ( ! empty( $gallery ) && is_array( $gallery ) ) : ?>
+								<?php foreach ( $gallery as $img ) : 
+									$img_url = is_array( $img ) ? ( $img['url'] ?? '' ) : ( is_numeric( $img ) ? wp_get_attachment_image_url( $img, 'medium_large' ) : $img );
+									$img_alt = is_array( $img ) ? ( $img['alt'] ?? get_the_title( $post_id ) ) : get_the_title( $post_id );
+								?>
+									<div class="swiper-slide mbland_singleProject_gallery_thumbSlide">
+										<img class="mbland_singleProject_gallery_thumbImage" src="<?php echo esc_url( $img_url ); ?>" alt="<?php echo esc_attr( $img_alt ); ?>" loading="lazy" />
+									</div>
+								<?php endforeach; ?>
+							<?php else : ?>
+								<!-- Ảnh thumbnail mẫu demo -->
+								<div class="swiper-slide mbland_singleProject_gallery_thumbSlide">
+									<img class="mbland_singleProject_gallery_thumbImage" src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=400&q=80" alt="Hilton Sky View" />
+								</div>
+								<div class="swiper-slide mbland_singleProject_gallery_thumbSlide">
+									<img class="mbland_singleProject_gallery_thumbImage" src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=400&q=80" alt="Kiến trúc xanh & Tiện ích" />
+								</div>
+								<div class="swiper-slide mbland_singleProject_gallery_thumbSlide">
+									<img class="mbland_singleProject_gallery_thumbImage" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Cảnh quan ven sông" />
+								</div>
+								<div class="swiper-slide mbland_singleProject_gallery_thumbSlide">
+									<img class="mbland_singleProject_gallery_thumbImage" src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=400&q=80" alt="Quy hoạch tổng thể" />
+								</div>
+							<?php endif; ?>
+						</div>
+					</div>
+
+				</div>
+			</div>
 		</div>
 	</div>
 </section>
 
-<section class="hn-related-projects">
+<!-- Script khởi tạo Swiper Thumbs Gallery -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+	if (typeof Swiper === 'undefined') return;
+
+	// 1. Khởi tạo slider thumbnail bên dưới
+	var galleryThumbs = new Swiper('.mbland_singleProject_gallery_thumbs', {
+		spaceBetween: 12,
+		slidesPerView: 3,
+		freeMode: true,
+		watchSlidesProgress: true,
+	});
+
+	// 2. Khởi tạo slider ảnh lớn bên trên liên kết với thumbnail
+	var galleryMain = new Swiper('.mbland_singleProject_gallery_main', {
+		spaceBetween: 16,
+		thumbs: {
+			swiper: galleryThumbs,
+		},
+	});
+});
+</script>
+
+
+
+
+
+<section class="mbland_singleProject_statistical">
 	<div class="container">
-		<h2><?php echo pll__('Dự án khác'); ?></h2>
-		<p>
-			<?php echo pll__('Tasmania & Partner là tập đoàn đa ngành với những dự án nổi bật trong suốt quá trình phát triển'); ?>
-		</p>
-		<div class="hn-related-projects-slider swiper">
-			<div class="swiper-wrapper">
-				<?php if ($related_query->have_posts()) : ?>
-					<?php while ($related_query->have_posts()) : $related_query->the_post(); ?>
-						<div class="swiper-slide">
-							<?php
-							$banner_image = get_field('banner', get_the_ID());
-							$banner_image_url = $banner_image['url'] ?? '';
-							$banner_image_title = $banner_image['title'] ?? '';
-							$item_title = get_the_title();
-	$item_sub_title = wp_kses_post( get_field('sub_title'));
-    $item_mo_ta = wp_kses_post( get_field( 'short_content' )  );
-    $item_dia_chi = wp_kses_post( get_field( 'location' ));
-							?>
-							<div class="hn-tasmania-projects-item">
-							  <div class="hn-tasmania-projects-item-image">
-								<img
-										src="<?php echo esc_url( $banner_image_url ); ?>"
-										alt="<?php echo esc_attr($banner_image_title ); ?>"
-										title="<?php echo esc_attr($banner_image_title ); ?>"
-									/>
-							  </div>
-							  <div class="hn-tasmania-projects-item-content">
-								  <div class="hn-tasmania-projects-item-content-1">
+		<div class="mbland_singleProject_statistical_wrapper">
+			<div class="mbland_singleProject_statistical_list">
+				
+				<article class="mbland_singleProject_statistical_item">
+					<div class="mbland_singleProject_statistical_itemTop">
+						<span class="mbland_singleProject_statistical_itemIcon">
+							<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<rect width="50" height="50" rx="8" fill="#FFEFEF"/>
+								<path d="M25 18.601L34.5933 13.8005L25 9V18.601ZM25 18.601V25.0016M18.6044 24.9856L9.81055 30.0102C9.56449 30.1497 9.35982 30.3521 9.21742 30.5967C9.07503 30.8412 9 31.1192 9 31.4023C9 31.6854 9.07503 31.9633 9.21742 32.2079C9.35982 32.4525 9.56449 32.6549 9.81055 32.7944L23.4011 40.5712C23.8872 40.8521 24.4387 41 25 41C25.5613 41 26.1128 40.8521 26.5989 40.5712L40.1894 32.7944C40.4355 32.6549 40.6402 32.4525 40.7826 32.2079C40.925 31.9633 41 31.6854 41 31.4023C41 31.1192 40.925 30.8412 40.7826 30.5967C40.6402 30.3521 40.4355 30.1497 40.1894 30.0102L31.3956 25.0016M16.1901 26.3618L33.8099 36.4428M33.8099 26.3618L16.2061 36.4428" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke="#EC1846"/>
+							</svg>
+						</span>
+						<span class="mbland_singleProject_statistical_itemValue">3.209,2 m2</span>
+					</div>
+					<div class="mbland_singleProject_statistical_itemBody">
+						<h3 class="mbland_singleProject_statistical_itemTitle">Tổng diện tích thửa đất</h3>
+						<p class="mbland_singleProject_statistical_itemDesc">Tổng hợp diện tích đất theo hồ sơ pháp lý và thông tin được ghi nhận trên hệ thống.</p>
+					</div>
+				</article>
 
-								  </div>
-								  <div class="hn-tasmania-projects-item-content-2">
-									  <a href="<?php the_permalink(); ?>" title="<?php echo $item_title ?>">
-										<h3 class="small-h3"><?php echo $item_title ?></h3>
-										</a>
-									  <div class="hn-tasmania-projects-item-content-location">
-										  <img src="/wp-content/uploads/2025/10/location.svg" alt="Vị trí" title="Vị trí"/>
-										  <div>
-											  <?php echo $item_dia_chi?>
-										  </div>
-									  </div>
+				<article class="mbland_singleProject_statistical_item">
+					<div class="mbland_singleProject_statistical_itemTop">
+						<span class="mbland_singleProject_statistical_itemIcon">
+							<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<rect width="50" height="50" rx="8" fill="#FFEFEF"/>
+								<path d="M25 18.601L34.5933 13.8005L25 9V18.601ZM25 18.601V25.0016M18.6044 24.9856L9.81055 30.0102C9.56449 30.1497 9.35982 30.3521 9.21742 30.5967C9.07503 30.8412 9 31.1192 9 31.4023C9 31.6854 9.07503 31.9633 9.21742 32.2079C9.35982 32.4525 9.56449 32.6549 9.81055 32.7944L23.4011 40.5712C23.8872 40.8521 24.4387 41 25 41C25.5613 41 26.1128 40.8521 26.5989 40.5712L40.1894 32.7944C40.4355 32.6549 40.6402 32.4525 40.7826 32.2079C40.925 31.9633 41 31.6854 41 31.4023C41 31.1192 40.925 30.8412 40.7826 30.5967C40.6402 30.3521 40.4355 30.1497 40.1894 30.0102L31.3956 25.0016M16.1901 26.3618L33.8099 36.4428M33.8099 26.3618L16.2061 36.4428" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke="#EC1846"/>
+							</svg>
+						</span>
+						<span class="mbland_singleProject_statistical_itemValue">3.209,2 m2</span>
+					</div>
+					<div class="mbland_singleProject_statistical_itemBody">
+						<h3 class="mbland_singleProject_statistical_itemTitle">Tổng diện tích thửa đất</h3>
+						<p class="mbland_singleProject_statistical_itemDesc">Tổng hợp diện tích đất theo hồ sơ pháp lý và thông tin được ghi nhận trên hệ thống.</p>
+					</div>
+				</article>
 
-									  <a href="<?php the_permalink(); ?>" title="<?php echo $item_title ?>" class="hn-tasmania-projects-view-detail">
-										View detail
-										</a>
-								  </div>
-							  </div>
+				<article class="mbland_singleProject_statistical_item">
+					<div class="mbland_singleProject_statistical_itemTop">
+						<span class="mbland_singleProject_statistical_itemIcon">
+							<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<rect width="50" height="50" rx="8" fill="#FFEFEF"/>
+								<path d="M25 18.601L34.5933 13.8005L25 9V18.601ZM25 18.601V25.0016M18.6044 24.9856L9.81055 30.0102C9.56449 30.1497 9.35982 30.3521 9.21742 30.5967C9.07503 30.8412 9 31.1192 9 31.4023C9 31.6854 9.07503 31.9633 9.21742 32.2079C9.35982 32.4525 9.56449 32.6549 9.81055 32.7944L23.4011 40.5712C23.8872 40.8521 24.4387 41 25 41C25.5613 41 26.1128 40.8521 26.5989 40.5712L40.1894 32.7944C40.4355 32.6549 40.6402 32.4525 40.7826 32.2079C40.925 31.9633 41 31.6854 41 31.4023C41 31.1192 40.925 30.8412 40.7826 30.5967C40.6402 30.3521 40.4355 30.1497 40.1894 30.0102L31.3956 25.0016M16.1901 26.3618L33.8099 36.4428M33.8099 26.3618L16.2061 36.4428" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke="#EC1846"/>
+							</svg>
+						</span>
+						<span class="mbland_singleProject_statistical_itemValue">3.209,2 m2</span>
+					</div>
+					<div class="mbland_singleProject_statistical_itemBody">
+						<h3 class="mbland_singleProject_statistical_itemTitle">Tổng diện tích thửa đất</h3>
+						<p class="mbland_singleProject_statistical_itemDesc">Tổng hợp diện tích đất theo hồ sơ pháp lý và thông tin được ghi nhận trên hệ thống.</p>
+					</div>
+				</article>
+
+				<article class="mbland_singleProject_statistical_item">
+					<div class="mbland_singleProject_statistical_itemTop">
+						<span class="mbland_singleProject_statistical_itemIcon">
+							<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<rect width="50" height="50" rx="8" fill="#FFEFEF"/>
+								<path d="M25 18.601L34.5933 13.8005L25 9V18.601ZM25 18.601V25.0016M18.6044 24.9856L9.81055 30.0102C9.56449 30.1497 9.35982 30.3521 9.21742 30.5967C9.07503 30.8412 9 31.1192 9 31.4023C9 31.6854 9.07503 31.9633 9.21742 32.2079C9.35982 32.4525 9.56449 32.6549 9.81055 32.7944L23.4011 40.5712C23.8872 40.8521 24.4387 41 25 41C25.5613 41 26.1128 40.8521 26.5989 40.5712L40.1894 32.7944C40.4355 32.6549 40.6402 32.4525 40.7826 32.2079C40.925 31.9633 41 31.6854 41 31.4023C41 31.1192 40.925 30.8412 40.7826 30.5967C40.6402 30.3521 40.4355 30.1497 40.1894 30.0102L31.3956 25.0016M16.1901 26.3618L33.8099 36.4428M33.8099 26.3618L16.2061 36.4428" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke="#EC1846"/>
+							</svg>
+						</span>
+						<span class="mbland_singleProject_statistical_itemValue">3.209,2 m2</span>
+					</div>
+					<div class="mbland_singleProject_statistical_itemBody">
+						<h3 class="mbland_singleProject_statistical_itemTitle">Tổng diện tích thửa đất</h3>
+						<p class="mbland_singleProject_statistical_itemDesc">Tổng hợp diện tích đất theo hồ sơ pháp lý và thông tin được ghi nhận trên hệ thống.</p>
+					</div>
+				</article>
+
+				<article class="mbland_singleProject_statistical_item">
+					<div class="mbland_singleProject_statistical_itemTop">
+						<span class="mbland_singleProject_statistical_itemIcon">
+							<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<rect width="50" height="50" rx="8" fill="#FFEFEF"/>
+								<path d="M25 18.601L34.5933 13.8005L25 9V18.601ZM25 18.601V25.0016M18.6044 24.9856L9.81055 30.0102C9.56449 30.1497 9.35982 30.3521 9.21742 30.5967C9.07503 30.8412 9 31.1192 9 31.4023C9 31.6854 9.07503 31.9633 9.21742 32.2079C9.35982 32.4525 9.56449 32.6549 9.81055 32.7944L23.4011 40.5712C23.8872 40.8521 24.4387 41 25 41C25.5613 41 26.1128 40.8521 26.5989 40.5712L40.1894 32.7944C40.4355 32.6549 40.6402 32.4525 40.7826 32.2079C40.925 31.9633 41 31.6854 41 31.4023C41 31.1192 40.925 30.8412 40.7826 30.5967C40.6402 30.3521 40.4355 30.1497 40.1894 30.0102L31.3956 25.0016M16.1901 26.3618L33.8099 36.4428M33.8099 26.3618L16.2061 36.4428" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke="#EC1846"/>
+							</svg>
+						</span>
+						<span class="mbland_singleProject_statistical_itemValue">3.209,2 m2</span>
+					</div>
+					<div class="mbland_singleProject_statistical_itemBody">
+						<h3 class="mbland_singleProject_statistical_itemTitle">Tổng diện tích thửa đất</h3>
+						<p class="mbland_singleProject_statistical_itemDesc">Tổng hợp diện tích đất theo hồ sơ pháp lý và thông tin được ghi nhận trên hệ thống.</p>
+					</div>
+				</article>
+
+				<article class="mbland_singleProject_statistical_item">
+					<div class="mbland_singleProject_statistical_itemTop">
+						<span class="mbland_singleProject_statistical_itemIcon">
+							<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<rect width="50" height="50" rx="8" fill="#FFEFEF"/>
+								<path d="M25 18.601L34.5933 13.8005L25 9V18.601ZM25 18.601V25.0016M18.6044 24.9856L9.81055 30.0102C9.56449 30.1497 9.35982 30.3521 9.21742 30.5967C9.07503 30.8412 9 31.1192 9 31.4023C9 31.6854 9.07503 31.9633 9.21742 32.2079C9.35982 32.4525 9.56449 32.6549 9.81055 32.7944L23.4011 40.5712C23.8872 40.8521 24.4387 41 25 41C25.5613 41 26.1128 40.8521 26.5989 40.5712L40.1894 32.7944C40.4355 32.6549 40.6402 32.4525 40.7826 32.2079C40.925 31.9633 41 31.6854 41 31.4023C41 31.1192 40.925 30.8412 40.7826 30.5967C40.6402 30.3521 40.4355 30.1497 40.1894 30.0102L31.3956 25.0016M16.1901 26.3618L33.8099 36.4428M33.8099 26.3618L16.2061 36.4428" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke="#EC1846"/>
+							</svg>
+						</span>
+						<span class="mbland_singleProject_statistical_itemValue">3.209,2 m2</span>
+					</div>
+					<div class="mbland_singleProject_statistical_itemBody">
+						<h3 class="mbland_singleProject_statistical_itemTitle">Tổng diện tích thửa đất</h3>
+						<p class="mbland_singleProject_statistical_itemDesc">Tổng hợp diện tích đất theo hồ sơ pháp lý và thông tin được ghi nhận trên hệ thống.</p>
+					</div>
+				</article>
+
+			</div>
+		</div>
+	</div>
+</section>
+
+
+
+
+
+<!-- ===== START SECTION PROCEDURE  ===== -->
+<section class="mbland_linhvuc_procedure">
+	<div class="container">
+<div class="mbland_linhvuc_procedure_wrapper">
+	<header class="mbland_linhvuc_procedure_heading">
+		<h2 class="mbland_linhvuc_procedure_title">Quy trình phát triển khai dự án</h2>
+		<p class="mbland_linhvuc_procedure_desc">Mỗi dự án được triển khai theo quy trình bài bản, từ nghiên cứu tiềm năng, hoạch định chiến lược đến phát triển và vận hành, nhằm tối ưu hiệu quả đầu tư và kiến tạo giá trị bền vững.</p>
+	</header>
+	<div  class="mbland_linhvuc_procedure_list">
+		<article  class="mbland_linhvuc_procedure_item">
+			<div class="mbland_linhvuc_procedure_itemContent">
+				<span  class="mbland_linhvuc_procedure_itemNumber">01</span>
+				<div  class="mbland_linhvuc_procedure_itemTexts">
+					<p class="mbland_linhvuc_procedure_itemTag">Research & Assessment</p>
+					<h3 class="mbland_linhvuc_procedure_itemTitle">Nghiên cứu & Đánh giá</h3>
+					<p class="mbland_linhvuc_procedure_itemDesc">Phân tích thị trường, khảo sát vị trí, đánh giá tiềm năng phát triểnvà xác định cơ hội đầu tư phù hợp.</p>
+				</div>
+			</div>
+			<div class="mbland_linhvuc_procedure_itemImage">
+				<ul class="mbland_linhvuc_procedure_itemImageList">
+					<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg"/></li>
+					<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg"/></li>
+					<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg"/></li>
+				</ul>
+			</div>
+
+		</article>
+		<article  class="mbland_linhvuc_procedure_item">
+			<div class="mbland_linhvuc_procedure_itemContent">
+				<span  class="mbland_linhvuc_procedure_itemNumber">02</span>
+				<div  class="mbland_linhvuc_procedure_itemTexts">
+					<p class="mbland_linhvuc_procedure_itemTag">Investment Strategy</p>
+					<h3 class="mbland_linhvuc_procedure_itemTitle">Hoạch định chiến lược</h3>
+					<p class="mbland_linhvuc_procedure_itemDesc">Xây dựng phương án đầu tư, đánh giá tính khả thi, xác định 
+nguồn lực và định hướng phát triển dự án.</p>
+				</div>
+			</div>
+			<div class="mbland_linhvuc_procedure_itemImage">
+				<ul class="mbland_linhvuc_procedure_itemImageList">
+					<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg"/></li>
+					<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg"/></li>
+					<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg"/></li>
+				</ul>
+			</div>
+
+		</article>
+		<article  class="mbland_linhvuc_procedure_item">
+			<div class="mbland_linhvuc_procedure_itemContent">
+				<span  class="mbland_linhvuc_procedure_itemNumber">03</span>
+				<div  class="mbland_linhvuc_procedure_itemTexts">
+					<p class="mbland_linhvuc_procedure_itemTag">Legal & Master Planning</p>
+					<h3 class="mbland_linhvuc_procedure_itemTitle">Pháp lý & Quy hoạch</h3>
+					<p class="mbland_linhvuc_procedure_itemDesc">Rà soát hồ sơ pháp lý, hoàn thiện các thủ tục cần thiết và xây 
+dựng phương án quy hoạch phù hợp.</p>
+				</div>
+			</div>
+			<div class="mbland_linhvuc_procedure_itemImage">
+				<ul class="mbland_linhvuc_procedure_itemImageList">
+					<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg"/></li>
+					<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg"/></li>
+					<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg"/></li>
+				</ul>
+			</div>
+
+		</article>
+		<article  class="mbland_linhvuc_procedure_item">
+			<div class="mbland_linhvuc_procedure_itemContent">
+				<span  class="mbland_linhvuc_procedure_itemNumber">04</span>
+				<div  class="mbland_linhvuc_procedure_itemTexts">
+					<p class="mbland_linhvuc_procedure_itemTag">Design & Development</p>
+					<h3 class="mbland_linhvuc_procedure_itemTitle">Thiết kế & Phát triển</h3>
+					<p class="mbland_linhvuc_procedure_itemDesc">Định hình concept kiến trúc, tổ chức không gian, hệ thống tiện 
+ích và giải pháp thiết kế tối ưu.</p>
+				</div>
+			</div>
+			<div class="mbland_linhvuc_procedure_itemImage">
+				<ul class="mbland_linhvuc_procedure_itemImageList">
+					<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg"/></li>
+					<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg"/></li>
+					<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg"/></li>
+				</ul>
+			</div>
+
+		</article>
+
+	</div>
+
+</div>
+	</div>
+
+</section>
+
+<!-- ===== END SECTION PROCEDURE  ===== -->
+
+
+
+
+
+
+<?php get_template_part( 'template-parts/sections/brands' ); ?>
+
+
+
+
+
+<section class="mbland_singleProject_featuredProject">
+	<div class="container">
+		<div class="mbland_singleProject_featuredProject_wrapper">
+			<header class="mbland_singleProject_featuredProject_header">
+				<h2 class="mbland_singleProject_featuredProject_title">Các dự án nổi bật</h2>
+				<p class="mbland_singleProject_featuredProject_desc">MBLand Asset Management là tập đoàn đa ngành với những dự án nổi bật trong suốt quá trình phát triển</p>
+			</header>
+			<div class="mbland_singleProject_featuredProject_slider">
+				<div class="swiper mbland_singleProject_featuredProject_swiper">
+					<div class="swiper-wrapper">
+						<?php
+						if ( isset( $related_query ) && $related_query->have_posts() ) :
+							$i = 1;
+							while ( $related_query->have_posts() ) : $related_query->the_post();
+								$banner_field = get_field('banner');
+								$item_title   = get_the_title();
+								$thumb        = !empty($banner_field) ? ( is_array($banner_field) ? ( $banner_field['url'] ?? '' ) : $banner_field ) : get_the_post_thumbnail_url( get_the_ID() );
+								$thumb        = $thumb ?: '/wp-content/uploads/2025/10/branch-placeholder.jpg';
+						?>
+						<div class="swiper-slide mbland_singleProject_featuredProject_slide">
+							<div class="mbland_homepage_projects_item mbland_homepage_projects_item<?php echo $i; ?>">
+								<div class="mbland_homepage_projects_itemImage">
+									<img loading="lazy" decoding="async" fetchpriority="low"
+										 src="<?php echo esc_url( $thumb ); ?>"
+										 alt="<?php the_title_attribute(); ?>"
+										 title="<?php the_title_attribute(); ?>"
+										 />
+								</div>
+								<div class="mbland_homepage_projects_itemContent">
+									<div class="mbland_homepage_projects_itemContent1">
+
+									</div>
+									<div class="mbland_homepage_projects_itemContent2">
+										<h3 class="small-h3"><a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( $item_title ); ?>"><?php echo esc_html( $item_title ); ?></a></h3>
+										
+										<?php
+										get_template_part( 'template-parts/ui/button', null, array(
+											'url'   => get_permalink(),
+											'label' => '',
+											'class' => 'mbland_homepage_projects_viewDetail',
+											'title' => the_title_attribute( array( 'echo' => false ) ),
+										) );
+										?>
+									</div>
+								</div>
 							</div>
 						</div>
-					<?php endwhile; ?>
-					<?php wp_reset_postdata(); ?>
-				<?php else : ?>
-					<div class="swiper-slide">
-						<p>Không có dự án liên quan.</p>
+						<?php
+								$i++;
+							endwhile;
+							wp_reset_postdata();
+						else :
+							echo '<p>Chưa có dự án nổi bật nào.</p>';
+						endif;
+						?>
 					</div>
-				<?php endif; ?>
+				</div>
 			</div>
 		</div>
-<?php add_action('wp_footer', function () { ?>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const swiper = new Swiper('.hn-related-projects-slider', {
-            // Cấu hình cơ bản: slides per view = 3, space between = 30px
-            slidesPerView: 'auto',
-            spaceBetween: 20,
-        });
-    });
-</script>
-<?php }, 99); ?>
 	</div>
 </section>
+
+<!-- Script khởi tạo Swiper cho Featured Projects Slider -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+	if (typeof Swiper === 'undefined') return;
+
+	new Swiper('.mbland_singleProject_featuredProject_swiper', {
+		slidesPerView: 'auto',
+		spaceBetween: 24,
+		loop: true,
+	});
+});
+</script>
+
+
+
+
+
+<!-- ===== START SECTION CONTACT ===== -->
+<?php get_template_part( 'template-parts/sections/contact-form' ); ?>
+<!-- ===== END SECTION CONTACT ===== -->
+
+
+
+
+
 <?php get_footer(); ?>
