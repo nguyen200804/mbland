@@ -425,7 +425,7 @@
 
 .mbland_recruitment_jobs_pagination .page-numbers:hover,
 .pagination-ajax .page-link:hover {
-  background-color: #e8ded0;
+  /* background-color: #e8ded0; */
   color: var(--color-02);
 }
 

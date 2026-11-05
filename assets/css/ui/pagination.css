@@ -46,7 +46,6 @@
 }
 
 .mbland_pagination .page-numbers:hover {
-  background-color: #e8ded0;
   color: var(--color-02, #B70C2C) !important;
 }
 
@@ -59,4 +58,3 @@
   background: transparent;
   cursor: default;
 }
-
