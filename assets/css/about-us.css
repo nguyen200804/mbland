@@ -3,6 +3,7 @@
 	aspect-ratio: 1920/550;
 	object-fit: cover;
 	width: 100%;
+	height: auto;
 }
 
 /* ===== END HERO SECTION ===== */
@@ -1295,6 +1296,8 @@
 
 .mbland_aboutUs_teamSection_featuredImage {
 	width: 100%;
+	height: auto;
+	object-fit: cover;
 }
 
 /* Members */
