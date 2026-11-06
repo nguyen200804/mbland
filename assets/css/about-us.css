@@ -620,7 +620,7 @@
 
 @media (max-width: 576px) {
 	.mbland_homepage_info {
-		padding: 50px 0 72px;
+		/* padding: 50px 0 72px; */
 	}
 
 	.mbland_homepage_info .container {
@@ -647,7 +647,7 @@
 
 @media (max-width: 425px) {
 	.mbland_homepage_info {
-		padding: 45px 0 60px;
+		/* padding: 45px 0 60px; */
 	}
 
 	.mbland_homepage_info .container {
