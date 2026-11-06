@@ -30,6 +30,7 @@
 	padding-bottom: 40px;
 	max-width: 1230px;
 	margin: 0 auto;
+	text-align: center;
 }
 
 .mbland_about_intro_title {
@@ -39,12 +40,84 @@
 .mbland_about_intro_content {
 	font-family: "FZPoppins";
 	font-weight: 400;
-	font-size: 16px;
-	line-height: 30px;
+	/* font-size: 16px; */
+	line-height: 1.9em;
 	letter-spacing: 0%;
 	text-align: center;
 	color: #656565;
 	padding-bottom: 10px;
+}
+
+
+@media (max-width: 1600px) {
+	.mbland_about_overview {
+		padding: 66px 0 76px;
+	}
+
+	.mbland_about_intro {
+		padding-bottom: 37px;
+	}
+}
+
+@media (max-width: 1400px) {
+	.mbland_about_overview {
+		padding: 63px 0 73px;
+	}
+
+	.mbland_about_intro {
+		padding-bottom: 36px;
+		max-width: 1160px;
+	}
+}
+
+@media (max-width: 1200px) {
+	.mbland_about_overview {
+		padding: 60px 0 70px;
+	}
+
+	.mbland_about_intro {
+		padding-bottom: 34px;
+	}
+}
+
+@media (max-width: 996px) {
+	.mbland_about_overview {
+		padding: 58px 0 68px;
+	}
+
+	.mbland_about_intro {
+		padding-bottom: 33px;
+	}
+}
+
+@media (max-width: 768px) {
+	.mbland_about_overview {
+		padding: 55px 0 65px;
+	}
+
+	.mbland_about_intro {
+		padding-bottom: 31px;
+	}
+}
+
+@media (max-width: 576px) {
+	.mbland_about_overview {
+		padding: 52px 0 62px;
+	}
+
+	.mbland_about_intro {
+		padding-bottom: 29px;
+	}
+}
+
+@media (max-width: 425px) {
+	.mbland_about_overview {
+		padding: 50px 0 60px;
+	}
+
+	.mbland_about_intro {
+		padding-bottom: 28px;
+	}
 }
 
 /* ===== END INTRO ===== */
@@ -56,7 +129,7 @@
 /* ===== START VALUES ===== */
 .mbland_about_values {
 	display: grid;
-	grid-template-columns: repeat(4, 350px);
+	grid-template-columns: repeat(4, 1fr);
 	gap: 10px;
 	justify-content: center;
 }
@@ -79,6 +152,7 @@
 	transform: translate(-50%, -50%);
 	text-align: center;
 	transition: all 0.4s ease;
+	width: calc(100% - 70px);
 }
 
 .mbland_about_values_title {
@@ -193,6 +267,81 @@
 	opacity: 1;
 }
 
+
+
+@media (max-width: 1600px) {
+	.mbland_about_values_item {
+		min-height: 320px;
+	}
+}
+
+@media (max-width: 1400px) {
+	.mbland_about_values_item {
+		padding: 16px;
+		min-height: calc(17vw + 80px);
+	}
+
+	.mbland_about_values_title {
+		font-size: 40px;
+	}
+
+	.mbland_about_values_label {
+		font-size: 10.5px;
+	}
+
+	.mbland_about_values_item::before {
+		inset: 16px;
+	}
+
+	.mbland_about_values_hover {
+		bottom: 28px;
+		left: 28px;
+		right: 28px;
+	}
+
+	.mbland_about_values_tag {
+		padding-bottom: 9px;
+	}
+
+	.mbland_about_values_item:hover .mbland_about_values_center {
+		top: 32px;
+		left: 28px;
+	}
+}
+
+@media (max-width: 1200px) {
+	.mbland_about_values {
+		grid-template-columns: repeat(2, 1fr);
+		max-width: 700px;
+		margin: 0 auto;
+	}
+
+	.mbland_about_values_item {
+		min-height: 330px;
+	}
+}
+
+@media (max-width: 768px) {
+	.mbland_about_values_item {
+		min-height: 46vw;
+	}
+}
+
+@media (max-width: 576px) {
+	.mbland_about_values {
+		grid-template-columns: repeat(1, 1fr);
+		max-width: 420px;
+	}
+
+	.mbland_about_values_item {
+		min-height: min(76vw, 420px);
+	}
+
+	.mbland_about_values_title {
+		font-size: 36px;
+	}
+}
+
 /* ===== END VALUES ===== */
 
 
@@ -203,6 +352,7 @@
 .mbland_homepage_info {
 	position: relative;
 	z-index: 1;
+	padding: 68px 0 100px;
 }
 
 .mbland_homepage_info .container {
@@ -346,6 +496,182 @@
 
 	100% {
 		transform: translateX(-50%);
+	}
+}
+
+
+@media (max-width: 1600px) {
+	.mbland_homepage_info .container {
+		margin-top: -27px;
+	}
+
+	.mbland_homepage_info_title {
+		font-size: 229px;
+	}
+
+	.mbland_homepage_info_desc {
+		margin-top: 46px;
+	}
+
+	.mbland_homepage_info_cta {
+		gap: 18px;
+		margin-top: 38px;
+	}
+
+	.mbland_homepage_info_marquee p {
+		font-size: 110px;
+	}
+}
+
+
+
+@media (max-width: 1400px) {
+	.mbland_homepage_info .container {
+		margin-top: -24px;
+	}
+
+	.mbland_homepage_info_title {
+		font-size: 215px;
+	}
+
+	.mbland_homepage_info_desc {
+		max-width: 1024px;
+		margin-top: 44px;
+	}
+
+	.mbland_homepage_info_cta {
+		gap: 17px;
+		margin-top: 37px;
+	}
+
+	.mbland_homepage_info_marquee p {
+		font-size: 103px;
+	}
+}
+
+@media (max-width: 1200px) {
+	.mbland_homepage_info .container {
+		margin-top: -21px;
+	}
+
+	.mbland_homepage_info_title {
+		font-size: 202px;
+	}
+
+	.mbland_homepage_info_desc {
+		margin-top: 41px;
+	}
+
+	.mbland_homepage_info_cta {
+		gap: 15px;
+		margin-top: 36px;
+	}
+
+	.mbland_homepage_info_marquee p {
+		font-size: 97px;
+	}
+}
+
+
+
+@media (max-width: 996px) {
+	.mbland_homepage_info .container {
+		margin-top: -15px;
+	}
+
+	.mbland_homepage_info_title {
+		font-size: 173px;
+	}
+
+	.mbland_homepage_info_desc {
+		margin-top: 39px;
+	}
+
+	.mbland_homepage_info_cta {
+		gap: 14px;
+		margin-top: 35px;
+	}
+
+	.mbland_homepage_info_marquee p {
+		font-size: 90px;
+	}
+}
+
+@media (max-width: 768px) {
+	.mbland_homepage_info {
+		padding: 50px 0 90px;
+	}
+
+	.mbland_homepage_info_desc {
+		margin-top: 36px;
+	}
+
+	.mbland_homepage_info_cta {
+		gap: 12px;
+		margin-top: 34px;
+	}
+
+	.mbland_homepage_info_marquee p {
+		font-size: 83px;
+	}
+}
+
+
+
+
+
+
+@media (max-width: 576px) {
+	.mbland_homepage_info {
+		padding: 50px 0 72px;
+	}
+
+	.mbland_homepage_info .container {
+		margin-top: -12px;
+	}
+
+	.mbland_homepage_info_title {
+		font-size: 160px;
+	}
+
+	.mbland_homepage_info_desc {
+		margin-top: 34px;
+	}
+
+	.mbland_homepage_info_cta {
+		gap: 11px;
+		margin-top: 33px;
+	}
+
+	.mbland_homepage_info_marquee p {
+		font-size: 77px;
+	}
+}
+
+@media (max-width: 425px) {
+	.mbland_homepage_info {
+		padding: 45px 0 60px;
+	}
+
+	.mbland_homepage_info .container {
+		margin-top: -10px;
+	}
+
+	.mbland_homepage_info_title {
+		font-size: 150px;
+	}
+
+	.mbland_homepage_info_desc {
+		margin-top: 32px;
+	}
+
+	.mbland_homepage_info_cta {
+		gap: 10px;
+		margin-top: 32px;
+	}
+
+	.mbland_homepage_info_marquee p {
+		font-size: 72px;
 	}
 }
 
@@ -496,7 +822,7 @@
 }
 
 .mbland_homepage_company_showcaseBody {
-	height: 360px;
+	height: min(calc(100vw / 16 * 9), 360px);
 	padding-top: 20px;
 	padding-left: 20px;
 }
@@ -539,6 +865,7 @@
 
 .mbland_homepage_company_introBrandLogo {
 	width: 100%;
+	max-width: 700px;
 }
 
 .mbland_homepage_company_introDesc {
@@ -599,6 +926,153 @@
 
 .mbland_homepage_company_showcasePagination .swiper-pagination-bullet-active {
 	opacity: 1;
+}
+
+@media (max-width: 1600px) {
+	.mbland_homepage_company_showcase {
+		padding-bottom: 67px;
+	}
+
+	.mbland_homepage_company_introContent {
+		padding: 54px 0 54px 40px;
+	}
+}
+
+@media (max-width: 1400px) {
+	.mbland_homepage_company_showcase {
+		padding-bottom: 64px;
+	}
+
+	.mbland_homepage_company_introTitle {
+		font-size: 17px;
+	}
+
+	.mbland_homepage_company_introContent {
+		padding: 50px 0 50px 40px;
+	}
+
+	.mbland_homepage_company_introBrandName {
+		font-size: 17px;
+	}
+}
+
+@media (max-width: 1200px) {
+	.mbland_homepage_company_showcase {
+		padding-bottom: 61px;
+	}
+
+	.mbland_homepage_company_introContent {
+		padding: 47px 0 47px 40px;
+	}
+}
+
+@media (max-width: 996px) {
+	.mbland_homepage_company_showcase {
+		padding-bottom: 58px;
+	}
+
+	.mbland_homepage_company_wrapper {
+		flex-direction: column;
+	}
+
+	.mbland_homepage_company_media {
+		min-width: calc(100% + (28px * 2));
+		width: calc(100% + (28px * 2));
+		margin-left: -28px;
+		margin-right: -28px;
+	}
+
+	.mbland_homepage_company_body {
+		width: 100%;
+	}
+
+	.mbland_homepage_company_introMedia {
+		margin-bottom: 0;
+		padding: 0;
+	}
+
+	.mbland_homepage_company_introHeader {
+		margin-left: -28px;
+		padding-left: 28px;
+	}
+
+	.mbland_homepage_company_introContent {
+		padding: 43px 0 43px 0px;
+	}
+}
+
+@media (max-width: 768px) {
+	.mbland_homepage_company_showcase {
+		padding-bottom: 55px;
+	}
+
+	.mbland_homepage_company_media {
+		min-width: calc(100% + (24px * 2));
+		width: calc(100% + (24px * 2));
+		margin-left: -24px;
+		margin-right: -24px;
+	}
+
+	.mbland_homepage_company_introHeader {
+		margin-left: -24px;
+		padding-left: 24px;
+	}
+
+	.mbland_homepage_company_introTitle {
+		font-size: 16px;
+	}
+
+	.mbland_homepage_company_introContent {
+		padding: 38px 0 38px 0px;
+	}
+
+	.mbland_homepage_company_introBrandName {
+		font-size: 16px;
+	}
+}
+
+@media (max-width: 576px) {
+	.mbland_homepage_company_showcase {
+		padding-bottom: 52px;
+	}
+
+	.mbland_homepage_company_media {
+		min-width: calc(100% + (20px * 2));
+		width: calc(100% + (20px * 2));
+		margin-left: -20px;
+		margin-right: -20px;
+	}
+
+	.mbland_homepage_company_introHeader {
+		margin-left: -20px;
+		padding-left: 20px;
+	}
+
+	.mbland_homepage_company_introContent {
+		padding: 35px 0 35px 0px;
+	}
+}
+
+@media (max-width: 425px) {
+	.mbland_homepage_company_showcase {
+		padding-bottom: 50px;
+	}
+
+	.mbland_homepage_company_media {
+		min-width: calc(100% + (16px * 2));
+		width: calc(100% + (16px * 2));
+		margin-left: -16px;
+		margin-right: -16px;
+	}
+
+	.mbland_homepage_company_introHeader {
+		margin-left: -16px;
+		padding-left: 16px;
+	}
+
+	.mbland_homepage_company_introContent {
+		padding: 32px 0 32px 0px;
+	}
 }
 
 /* ===== END SECTION COMPANY ===== */

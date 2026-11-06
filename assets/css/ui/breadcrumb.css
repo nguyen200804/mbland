@@ -40,3 +40,49 @@
 .hn-breadcrumb .breadcrumb-list li a:hover {
 	color: var(--primary-color);
 }
+
+@media (max-width: 1600px) {
+	.hn-breadcrumb {
+		font-size: 17px;
+		margin: 36px 0 26px;
+	}
+}
+
+@media (max-width: 1400px) {
+	.hn-breadcrumb {
+		margin: 33px 0 24px;
+	}
+}
+
+@media (max-width: 1200px) {
+	.hn-breadcrumb {
+		font-size: 16px;
+		margin: 30px 0 21px;
+	}
+}
+
+@media (max-width: 996px) {
+	.hn-breadcrumb {
+		margin: 28px 0 19px;
+	}
+}
+
+@media (max-width: 768px) {
+	.hn-breadcrumb {
+		font-size: 15px;
+		margin: 25px 0 16px;
+	}
+}
+
+@media (max-width: 576px) {
+	.hn-breadcrumb {
+		font-size: 14px;
+		margin: 22px 0 14px;
+	}
+}
+
+@media (max-width: 425px) {
+	.hn-breadcrumb {
+		margin: 20px 0 12px;
+	}
+}
