@@ -543,61 +543,32 @@ function load_news() {
 // SHORTCODE: Logo thương hiệu (marquee auto chạy trái, lặp vô hạn)
 // ========================
 function hn_logo_brand_section() {
-    // Danh sách logo (giữ nguyên/thêm bớt tuỳ bạn)
+    // Danh sách logo [url, alt, width, height]
     $logos = [
-        ['/wp-content/uploads/2025/10/logo-kw.png','KW'],
-        ['/wp-content/uploads/2025/10/logo-JLL.png','JLL'],
-        ['/wp-content/uploads/2025/10/vng.png','VNG'],
-		['/wp-content/uploads/2025/10/aia.png', 'AIA'],
-        ['/wp-content/uploads/2025/10/bithumb.png','Bithumb'],
-        ['/wp-content/uploads/2025/10/tonkin.png','Tonkin'],
-		['/wp-content/uploads/2025/10/Hilton_logo.svg','Hilton'],
-		['/wp-content/uploads/2025/10/Vilaf-logo.jpg','Vilaf'],
-		['/wp-content/uploads/2025/10/Savills_logo.png','Savills'],
-		['/wp-content/uploads/2025/10/Vietcombank_Logo.png','Vietcombank'],
-		['/wp-content/uploads/2025/10/Logo_MB.png','MB Bank'],
-		['/wp-content/uploads/2025/10/Lotte.png','Lotte'],
-		['/wp-content/uploads/2025/10/logo-dg-group.png','DGGroup'],
-		['/wp-content/uploads/2025/10/logo-HAS-architecture.jpg','HAS Architecture'],
-		
-		
+        ['/wp-content/uploads/2025/10/logo-kw.png', 'KW', 1200, 551],
+        ['/wp-content/uploads/2025/10/logo-JLL.png', 'JLL', 1280, 572],
+        ['/wp-content/uploads/2025/10/vng.png', 'VNG', 328, 121],
+        ['/wp-content/uploads/2025/10/aia.png', 'AIA', 740, 740],
+        ['/wp-content/uploads/2025/10/bithumb.png', 'Bithumb', 236, 60],
+        ['/wp-content/uploads/2025/10/tonkin.png', 'Tonkin', 224, 50],
+        ['/wp-content/uploads/2025/10/Hilton_logo.svg', 'Hilton', 1137, 422],
+        ['/wp-content/uploads/2025/10/Vilaf-logo.jpg', 'Vilaf', 819, 229],
+        ['/wp-content/uploads/2025/10/Savills_logo.png', 'Savills', 2048, 2049],
+        ['/wp-content/uploads/2025/10/Vietcombank_Logo.png', 'Vietcombank', 370, 100],
+        ['/wp-content/uploads/2025/10/Logo_MB.png', 'MB Bank', 1200, 539],
+        ['/wp-content/uploads/2025/10/Lotte.png', 'Lotte', 1280, 400],
+        ['/wp-content/uploads/2025/10/logo-dg-group.png', 'DGGroup', 2048, 1647],
+        ['/wp-content/uploads/2025/10/logo-HAS-architecture.jpg', 'HAS Architecture', 2560, 2560],
     ];
 
     ob_start(); ?>
     <div class="logo-brand-marquee">
       <div class="logo-brand-track">
-        <?php foreach ($logos as $lg): ?>
-          <div class="logo-item"><img src="<?php echo esc_url($lg[0]); ?>" loading="lazy" decoding="async" fetchpriority="low" alt="<?php echo esc_attr($lg[1]); ?>" title="<?php echo esc_attr($lg[1]); ?>"></div>
-        <?php endforeach; ?>
-        <?php // Nhân đôi để cuộn seamless ?>
-        <?php foreach ($logos as $lg): ?>
-          <div class="logo-item"><img src="<?php echo esc_url($lg[0]); ?>" loading="lazy" decoding="async" fetchpriority="low" alt="<?php echo esc_attr($lg[1]); ?>" title="<?php echo esc_attr($lg[1]); ?>"></div>
-        <?php endforeach; ?>
-		<?php foreach ($logos as $lg): ?>
-          <div class="logo-item"><img src="<?php echo esc_url($lg[0]); ?>" loading="lazy" decoding="async" fetchpriority="low" alt="<?php echo esc_attr($lg[1]); ?>" title="<?php echo esc_attr($lg[1]); ?>"></div>
-        <?php endforeach; ?>
-		<?php foreach ($logos as $lg): ?>
-          <div class="logo-item"><img src="<?php echo esc_url($lg[0]); ?>" loading="lazy" decoding="async" fetchpriority="low" alt="<?php echo esc_attr($lg[1]); ?>" title="<?php echo esc_attr($lg[1]); ?>"></div>
-        <?php endforeach; ?>
-		<?php foreach ($logos as $lg): ?>
-          <div class="logo-item"><img src="<?php echo esc_url($lg[0]); ?>" loading="lazy" decoding="async" fetchpriority="low" alt="<?php echo esc_attr($lg[1]); ?>" title="<?php echo esc_attr($lg[1]); ?>"></div>
-        <?php endforeach; ?>
-		        <?php foreach ($logos as $lg): ?>
-          <div class="logo-item"><img src="<?php echo esc_url($lg[0]); ?>" loading="lazy" decoding="async" fetchpriority="low" alt="<?php echo esc_attr($lg[1]); ?>" title="<?php echo esc_attr($lg[1]); ?>"></div>
-        <?php endforeach; ?>
-        <?php // Nhân đôi để cuộn seamless ?>
-        <?php foreach ($logos as $lg): ?>
-          <div class="logo-item"><img src="<?php echo esc_url($lg[0]); ?>" loading="lazy" decoding="async" fetchpriority="low" alt="<?php echo esc_attr($lg[1]); ?>" title="<?php echo esc_attr($lg[1]); ?>"></div>
-        <?php endforeach; ?>
-		<?php foreach ($logos as $lg): ?>
-          <div class="logo-item"><img src="<?php echo esc_url($lg[0]); ?>" loading="lazy" decoding="async" fetchpriority="low" alt="<?php echo esc_attr($lg[1]); ?>" title="<?php echo esc_attr($lg[1]); ?>"></div>
-        <?php endforeach; ?>
-		<?php foreach ($logos as $lg): ?>
-          <div class="logo-item"><img src="<?php echo esc_url($lg[0]); ?>" loading="lazy" decoding="async" fetchpriority="low" alt="<?php echo esc_attr($lg[1]); ?>" title="<?php echo esc_attr($lg[1]); ?>"></div>
-        <?php endforeach; ?>
-		<?php foreach ($logos as $lg): ?>
-          <div class="logo-item"><img src="<?php echo esc_url($lg[0]); ?>" loading="lazy" decoding="async" fetchpriority="low" alt="<?php echo esc_attr($lg[1]); ?>" title="<?php echo esc_attr($lg[1]); ?>"></div>
-        <?php endforeach; ?>
+        <?php for ($repeat = 0; $repeat < 10; $repeat++): ?>
+          <?php foreach ($logos as $lg): ?>
+            <div class="logo-item"><img src="<?php echo esc_url($lg[0]); ?>" loading="lazy" decoding="async" fetchpriority="low" alt="<?php echo esc_attr($lg[1]); ?>" title="<?php echo esc_attr($lg[1]); ?>" width="<?php echo esc_attr($lg[2]); ?>" height="<?php echo esc_attr($lg[3]); ?>"></div>
+          <?php endforeach; ?>
+        <?php endfor; ?>
       </div>
     </div>
 
