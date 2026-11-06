@@ -157,7 +157,7 @@ h3.small-h3 {
 }
 
 a.hn-tasmania-cta-btn {
-  padding: 12px 30px;
+  padding: 0.75em 1.9em;
   background-color: var(--primary-color);
   color: var(--color-08);
   border: none;
@@ -214,7 +214,7 @@ a.hn-tasmania-cta-btn:hover {
   }
 
   a.hn-tasmania-cta-btn {
-    padding: 11px 28px;
+
     gap: 9px;
   }
 
@@ -255,7 +255,6 @@ a.hn-tasmania-cta-btn:hover {
   }
 
   a.hn-tasmania-cta-btn {
-    padding: 10px 24px;
     gap: 8px;
   }
 

@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
   new Swiper(".mbland_homepage_activities_swiper", {
     slidesPerView: "auto",
-    spaceBetween: 30,
+    spaceBetween: 0,
     loop: true,
   });
 });
