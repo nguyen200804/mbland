@@ -606,8 +606,8 @@ function hn_logo_brand_section() {
       .logo-brand-marquee{
         width: 100%;
         overflow: hidden;
-        padding: 40px 0;
-        background: #fff;
+        padding: 00px 0;
+        /* background: #fff; */
         /* bo mềm 2 mép bằng mask (ẩn dần) */
         -webkit-mask-image: linear-gradient(to right, transparent 0, #000 40px, #000 calc(100% - 40px), transparent 100%);
                 mask-image: linear-gradient(to right, transparent 0, #000 40px, #000 calc(100% - 40px), transparent 100%);
