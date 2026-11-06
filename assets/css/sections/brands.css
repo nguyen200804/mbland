@@ -8,6 +8,7 @@
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+  margin-bottom: 72px;
 }
 
 .mbland_brands_desc {
@@ -17,26 +18,107 @@
 
 .mbland_brands_list {
   width: 100%;
+  padding: 60px 0;
 }
 
 @media (max-width: 1600px) {
   .mbland_brands {
-    padding: 92px 0;
+    padding: 89px 0;
   }
 
   .mbland_brands_header {
-    max-width: 752px;
+    margin-bottom: 64px;
+  }
+
+  .mbland_brands_list {
+    padding: 52px 0;
   }
 }
+
 @media (max-width: 1400px) {
   .mbland_brands {
-    padding: 81px 0;
+    padding: 83px 0;
   }
 
   .mbland_brands_header {
-    max-width: 658px;
+    max-width: 780px;
+    margin-bottom: 59px;
+  }
+
+  .mbland_brands_list {
+    padding: 47px 0;
+  }
+}
+
+@media (max-width: 1200px) {
+  .mbland_brands {
+    padding: 76px 0;
+  }
+
+  .mbland_brands_header {
+    margin-bottom: 55px;
+  }
+
+  .mbland_brands_list {
+    padding: 43px 0;
+  }
+}
+
+@media (max-width: 996px) {
+  .mbland_brands {
+    padding: 69px 0;
+  }
+
+  .mbland_brands_header {
+    margin-bottom: 50px;
+  }
+
+  .mbland_brands_list {
+    padding: 38px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .mbland_brands {
+    padding: 61px 0;
+  }
+
+  .mbland_brands_header {
+    max-width: 660px;
+    margin-bottom: 44px;
+  }
+
+  .mbland_brands_list {
+    padding: 32px 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .mbland_brands {
+    padding: 55px 0;
+  }
+
+  .mbland_brands_header {
+    margin-bottom: 40px;
+  }
+
+  .mbland_brands_list {
+    padding: 28px 0;
+  }
+}
+
+@media (max-width: 425px) {
+  .mbland_brands {
+    padding: 50px 0;
+  }
+
+  .mbland_brands_header {
+    margin-bottom: 36px;
+  }
+
+  .mbland_brands_list {
+    padding: 24px 0;
   }
 }
 
 /* ===== END COMPONENT: BRANDS ===== */
-

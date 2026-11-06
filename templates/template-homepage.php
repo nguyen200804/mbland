@@ -33,6 +33,8 @@ get_header(); ?>
 					 src="/wp-content/uploads/2025/10/quote.svg"
 					 alt="Qoute Icon"
 					 title="Qoute Icon"
+					 width="21"
+					 height="15"
 					 />
 			</div>
 			<span class="mbland_homepage_about_descTitle">Công - Tâm - Trí - Tín</span>
@@ -47,6 +49,8 @@ get_header(); ?>
 				 src="/wp-content/uploads/2025/10/explore.svg"
 				 alt="Scroll to explore"
 				 title="Scroll to explore"
+				 width="405"
+				 height="309"
 				 />
 		</div>
 	</div>
@@ -55,6 +59,8 @@ get_header(); ?>
 			 src="/wp-content/uploads/2026/11/hero_mbland.jpg"
 			 alt="Hero MBLand"
 			 title="Hero MBLand"
+			 width="2559"
+			 height="1007"
 			 />
 	</div>
 </section>
@@ -124,6 +130,8 @@ get_header(); ?>
           src="/wp-content/uploads/2026/11/gioi-thieu-cong-ty-cua-chung-toi-image-1.jpg"
           alt="Giới thiệu về công ty chúng tôi"
           title="Giới thiệu về công ty chúng tôi"
+          width="1634"
+          height="919"
         />
       </div>
       <div class="mbland_homepage_company_body mbland_homepage_company_introBody">
@@ -138,6 +146,8 @@ get_header(); ?>
               src="/wp-content/uploads/2026/11/logo_mbland-asset-management.png"
               alt="MBLand Asset Management"
               title="MBLand Asset Management"
+              width="1408"
+              height="104"
             />
           </div>
           <p class="mbland_homepage_company_introDesc">
@@ -158,6 +168,8 @@ get_header(); ?>
             src="/wp-content/uploads/2026/11/gioi-thieu-cong-ty-cua-chung-toi-image-2.jpg"
             alt="Giới thiệu về công ty chúng tôi"
             title="Giới thiệu về công ty chúng tôi"
+            width="1553"
+            height="1036"
           />
         </div>
       </div>
@@ -214,6 +226,8 @@ get_header(); ?>
 	// Lấy featured image từ SCF field group (thay 'featured_image' bằng slug thực tế)
 	$scf_image = get_field( 'feature_image', 'term_' . $term->term_id ) ?? []; // Sử dụng 'term_' . term_id cho taxonomy terms
 	$featured_image_url = !empty( $scf_image ) ? $scf_image['url'] : false; // Lấy URL từ array ACF Image field
+	$branch_w = ! empty( $scf_image['width'] ) ? $scf_image['width'] : 800;
+	$branch_h = ! empty( $scf_image['height'] ) ? $scf_image['height'] : 550;
 	$term_link = get_term_link( $term ); // Nếu cần link
 	?>
 	<div class="mbland_homepage_branches_item<?php echo esc_attr( $is_active ); ?>">
@@ -226,6 +240,8 @@ get_header(); ?>
 						 src="/wp-content/uploads/2025/10/arrow-right.svg"
 						 alt="Arrow Up Right"
 						 title="Arrow Up Right"
+						 width="15"
+						 height="15"
 						 />
 				</div>
 				<p class="mbland_homepage_branches_number"><?php echo sprintf( '%02d', $branch_index ); ?></p>
@@ -243,6 +259,8 @@ get_header(); ?>
 				 src="<?php echo esc_url( $featured_image_url ); ?>"
 				 alt="<?php echo esc_attr( $term->name ); ?>"
 				 title="<?php echo esc_attr( $term->name ); ?>"
+				 width="<?php echo esc_attr( $branch_w ); ?>"
+				 height="<?php echo esc_attr( $branch_h ); ?>"
 				 />
 			<?php else : ?>
 			<!-- Fallback: Hình mặc định nếu chưa set field -->
@@ -251,6 +269,8 @@ get_header(); ?>
 				 src="/wp-content/uploads/2025/10/branch-placeholder.jpg"
 			alt="<?php echo esc_attr( $term->name ); ?>"
 			title="<?php echo esc_attr( $term->name ); ?>"
+			width="800"
+			height="550"
 			/>
 			<?php endif; ?>
 			<p class="equalh3 mbland_homepage_branches_caption"><?php echo esc_html( $term->name ); ?></p>
@@ -281,7 +301,7 @@ get_header(); ?>
 
 <!-- ===== START SECTION COUNTER ===== -->
 <section class="mbland_homepage_counter">
-  <img loading="lazy" decoding="async" fetchpriority="low" class="mbland_homepage_counter_background" src="/wp-content/uploads/2026/11/background-counter-section.jpg" alt="" aria-hidden="true" />
+  <img loading="lazy" decoding="async" fetchpriority="low" class="mbland_homepage_counter_background" src="/wp-content/uploads/2026/11/background-counter-section.jpg" alt="" aria-hidden="true" width="2560" height="1440" />
   <div class="container">
     <div class="mbland_homepage_counter_wrapper">
       <div class="mbland_homepage_counter_lists">
@@ -374,8 +394,39 @@ get_header(); ?>
 			$item_sub_title = wp_kses_post( get_field('sub_title'));
 			$item_mo_ta = wp_kses_post( get_field( 'short_content' )  );
 			$item_dia_chi = wp_kses_post( get_field( 'location' ));
-			$thumb = !empty($banner_field) ? $banner_field['url'] : get_the_post_thumbnail_url( get_the_ID() );
+			$thumb = '';
+			$thumb_w = 0;
+			$thumb_h = 0;
+			if ( is_array( $banner_field ) ) {
+				$thumb = ! empty( $banner_field['url'] ) ? $banner_field['url'] : '';
+				$thumb_w = ! empty( $banner_field['width'] ) ? $banner_field['width'] : 0;
+				$thumb_h = ! empty( $banner_field['height'] ) ? $banner_field['height'] : 0;
+			} elseif ( is_numeric( $banner_field ) ) {
+				$banner_img_data = wp_get_attachment_image_src( $banner_field, 'full' );
+				if ( ! empty( $banner_img_data ) ) {
+					$thumb = $banner_img_data[0];
+					$thumb_w = $banner_img_data[1];
+					$thumb_h = $banner_img_data[2];
+				}
+			} elseif ( is_string( $banner_field ) && ! empty( $banner_field ) ) {
+				$thumb = $banner_field;
+			}
+
+			if ( empty( $thumb ) ) {
+				$thumb = get_the_post_thumbnail_url( get_the_ID(), 'full' );
+			}
+
+			if ( ( ! $thumb_w || ! $thumb_h ) && has_post_thumbnail() ) {
+				$post_thumb_data = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' );
+				if ( ! empty( $post_thumb_data ) ) {
+					$thumb_w = $post_thumb_data[1];
+					$thumb_h = $post_thumb_data[2];
+				}
+			}
+
 			$thumb = $thumb ?: '/wp-content/uploads/2025/10/branch-placeholder.jpg'; // ảnh fallback
+			$thumb_w = $thumb_w ?: 600;
+			$thumb_h = $thumb_h ?: 350;
 			?>
 			<div class="mbland_homepage_projects_item mbland_homepage_projects_item<?php echo $i; ?>">
 				<div class="mbland_homepage_projects_itemImage">
@@ -383,6 +434,8 @@ get_header(); ?>
 						 src="<?php echo esc_url( $thumb ); ?>"
 						 alt="<?php the_title_attribute(); ?>"
 						 title="<?php the_title_attribute(); ?>"
+						 width="<?php echo esc_attr( $thumb_w ); ?>"
+						 height="<?php echo esc_attr( $thumb_h ); ?>"
 						 />
 				</div>
 				<div class="mbland_homepage_projects_itemContent">
@@ -469,7 +522,16 @@ get_header(); ?>
 
 					if ( $activities_query->have_posts() ) :
 					while ( $activities_query->have_posts() ) : $activities_query->the_post();
-					$featured_img = get_the_post_thumbnail_url( get_the_ID() );
+					$featured_img = get_the_post_thumbnail_url( get_the_ID(), 'full' );
+					$act_w = 620;
+					$act_h = 360;
+					if ( has_post_thumbnail() ) {
+						$act_thumb_data = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' );
+						if ( ! empty( $act_thumb_data ) ) {
+							$act_w = $act_thumb_data[1];
+							$act_h = $act_thumb_data[2];
+						}
+					}
 					if ( ! $featured_img ) {
 						$featured_img = get_template_directory_uri() . '/images/default-activity.jpg';
 					}
@@ -481,6 +543,8 @@ get_header(); ?>
 								 src="<?php echo esc_url( $featured_img ); ?>"
 								 alt="<?php echo esc_attr( get_the_title() ); ?>"
 								 title="<?php echo esc_attr( get_the_title() ); ?>"
+								 width="<?php echo esc_attr( $act_w ); ?>"
+								 height="<?php echo esc_attr( $act_h ); ?>"
 								 />
 						</div>
 						

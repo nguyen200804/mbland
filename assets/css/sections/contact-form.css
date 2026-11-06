@@ -46,7 +46,7 @@
   font-family: 'FZPoppins';
   font-weight: 800;
   font-size: 36px;
-  line-height: 100%;
+  line-height: 130%;
   letter-spacing: 0.01em;
   text-transform: uppercase;
   color: var(--primary-color);
@@ -56,8 +56,6 @@
   color: var(--primary-color);
   font-size: 18px;
 }
-
-.mbland_contactForm_body {}
 
 .mbland_contactForm_form {
   display: grid;
@@ -77,7 +75,6 @@
 }
 
 .mbland_contactForm_label {
-  font-size: 16px;
   font-weight: 600;
   color: var(--label);
 }
@@ -91,7 +88,7 @@
   background: #fff;
   border: 1px solid var(--border);
   border-radius: 8px;
-  padding: 14px 14px;
+  padding: 1em;
   outline: none;
   height: 64px;
   transition: border-color .15s, box-shadow .15s;
@@ -123,10 +120,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  padding: 17px 24px;
+  gap: 0.75em;
+  padding: 1.22em 1em;
   font: inherit;
-  font-size: 15px;
   font-weight: 700;
   text-transform: uppercase;
   color: #fff;
@@ -146,10 +142,176 @@
   outline-offset: 2px;
 }
 
-.mbland_contactForm_submitLabel {}
-
 .mbland_contactForm_submitIcon {
   width: 18px;
   height: 18px;
   fill: currentColor;
+}
+
+@media (max-width: 1600px) {
+  .mbland_contactForm {
+    padding: 89px 0;
+  }
+
+  .mbland_contactForm_title {
+    font-size: 33px;
+  }
+
+  .mbland_contactForm_desc {
+    font-size: 17px;
+  }
+
+  .mbland_contactForm_form {
+    gap: 29px 21px;
+  }
+
+  .mbland_contactForm_input {
+    height: 61px;
+  }
+}
+
+@media (max-width: 1400px) {
+  .mbland_contactForm {
+    padding: 83px 0;
+  }
+
+  .mbland_contactForm_wrapper {
+    max-width: 768px;
+  }
+
+  .mbland_contactForm_header {
+    margin-bottom: 32px;
+  }
+
+  .mbland_contactForm_title {
+    font-size: 32px;
+  }
+
+  .mbland_contactForm_form {
+    gap: 26px 20px;
+  }
+
+  .mbland_contactForm_input {
+    height: 59px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .mbland_contactForm {
+    padding: 76px 0;
+  }
+
+  .mbland_contactForm_wrapper {
+    max-width: 719px;
+  }
+
+  .mbland_contactForm_title {
+    font-size: 30px;
+  }
+
+  .mbland_contactForm_desc {
+    font-size: 16px;
+  }
+
+  .mbland_contactForm_form {
+    gap: 24px 18px;
+  }
+
+  .mbland_contactForm_input {
+    height: 57px;
+  }
+}
+
+@media (max-width: 996px) {
+  .mbland_contactForm {
+    padding: 69px 0;
+  }
+
+  .mbland_contactForm_title {
+    font-size: 29px;
+  }
+
+  .mbland_contactForm_form {
+    gap: 22px 17px;
+  }
+
+  .mbland_contactForm_input {
+    height: 55px;
+  }
+}
+
+@media (max-width: 768px) {
+  .mbland_contactForm {
+    padding: 61px 0;
+  }
+
+  .mbland_contactForm::before {
+    background-image: unset;
+    background-color: #ffffffcc;
+  }
+
+  .mbland_contactForm_wrapper {
+    max-width: 768px;
+  }
+
+  .mbland_contactForm_title {
+    font-size: 27px;
+  }
+
+  .mbland_contactForm_desc {
+    font-size: 15px;
+  }
+
+  .mbland_contactForm_form {
+    gap: 20px 15px;
+  }
+
+  .mbland_contactForm_input {
+    height: 53px;
+  }
+}
+
+@media (max-width: 576px) {
+  .mbland_contactForm {
+    padding: 55px 0;
+  }
+
+  .mbland_contactForm_title {
+    font-size: 25px;
+  }
+
+  .mbland_contactForm_desc {
+    font-size: 14px;
+  }
+
+  .mbland_contactForm_form {
+    gap: 18px 13px;
+  }
+
+  .mbland_contactForm_input {
+    height: 51px;
+  }
+}
+
+@media (max-width: 425px) {
+  .mbland_contactForm {
+    padding: 50px 0;
+  }
+
+  .mbland_contactForm_title {
+    font-size: 24px;
+  }
+
+  .mbland_contactForm_form {
+    gap: 16px 12px;
+  }
+
+  .mbland_contactForm_input,
+  .mbland_contactForm_textarea {
+    font-size: 14px;
+  }
+
+  .mbland_contactForm_input {
+    height: 50px;
+  }
 }
