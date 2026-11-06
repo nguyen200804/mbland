@@ -93,6 +93,7 @@
 
 .mbland_homepage_about_scrollToExplore img {
   width: 100px;
+  height: auto;
 }
 
 .mbland_homepage_about_banner {
@@ -101,6 +102,7 @@
 
 .mbland_homepage_about_banner img {
   width: 100%;
+  height: auto;
 }
 
 @media (max-width: 1600px) {
