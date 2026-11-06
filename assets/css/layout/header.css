@@ -8,6 +8,12 @@
   width: 100%;
 }
 
+.hn-tasmania-header__logo {
+  max-width: 180px;
+  margin-right: 50px;
+  display: flex;
+}
+
 .hn-tasmania-header .container {
   display: flex;
   justify-content: space-between;
