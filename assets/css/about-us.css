@@ -1279,9 +1279,9 @@
 
 .mbland_aboutUs_teamSection_featuredBio {
 	font-weight: 400;
-	font-size: 16px;
+	/* font-size: 16px; */
 	letter-spacing: 0%;
-	margin-top: 35px;
+	margin-top: 36px;
 }
 
 .mbland_aboutUs_teamSection_featuredText {
@@ -1293,7 +1293,9 @@
 	flex: 61;
 }
 
-.mbland_aboutUs_teamSection_featuredImage {}
+.mbland_aboutUs_teamSection_featuredImage {
+	width: 100%;
+}
 
 /* Members */
 .mbland_aboutUs_teamSection_members {
@@ -1346,7 +1348,7 @@
 
 .mbland_aboutUs_teamSection_memberPosition {
 	font-weight: 400;
-	font-size: 16px;
+	/* font-size: 16px; */
 	line-height: 120%;
 	letter-spacing: -0.02em;
 	color: #D8D8D8;
@@ -1405,5 +1407,226 @@
 }
 
 .mbland_aboutUs_teamSection_memberTimelineYear {}
+
+
+
+@media (max-width: 1600px) {
+	.mbland_aboutUs_teamSection {
+		padding: 113px 0 89px;
+	}
+
+	.mbland_aboutUs_teamSection_header {
+		max-width: 780px;
+	}
+
+	.mbland_aboutUs_teamSection_desc {
+		font-size: 17px;
+	}
+
+	.mbland_aboutUs_teamSection_body {
+		margin-top: 87px;
+	}
+
+	.mbland_aboutUs_teamSection_featuredPosition {
+		font-size: 17px;
+	}
+
+	.mbland_aboutUs_teamSection_featuredName {
+		font-size: 45px;
+	}
+
+	.mbland_aboutUs_teamSection_featuredBio {
+		margin-top: 33px;
+	}
+
+	.mbland_aboutUs_teamSection_members {
+		margin-top: 89px;
+	}
+}
+
+@media (max-width: 1400px) {
+	.mbland_aboutUs_teamSection {
+		padding: 102px 0 81px;
+	}
+
+	.mbland_aboutUs_teamSection_header {
+		max-width: 820px;
+	}
+
+	.mbland_aboutUs_teamSection_body {
+		margin-top: 79px;
+	}
+
+	.mbland_aboutUs_teamSection_featuredName {
+		font-size: 42px;
+	}
+
+	.mbland_aboutUs_teamSection_featuredBio {
+		margin-top: 30px;
+	}
+
+	.mbland_aboutUs_teamSection_members {
+		margin-top: 81px;
+	}
+}
+
+@media (max-width: 1200px) {
+	.mbland_aboutUs_teamSection {
+		padding: 91px 0 76px;
+	}
+
+	.mbland_aboutUs_teamSection_header {
+		max-width: 740px;
+	}
+
+	.mbland_aboutUs_teamSection_desc {
+		font-size: 16px;
+	}
+
+	.mbland_aboutUs_teamSection_body {
+		margin-top: 71px;
+	}
+
+	.mbland_aboutUs_teamSection_featuredPosition {
+		font-size: 16px;
+	}
+
+	.mbland_aboutUs_teamSection_featuredName {
+		font-size: 39px;
+		margin-top: 6px;
+	}
+
+	.mbland_aboutUs_teamSection_members {
+		margin-top: 76px;
+	}
+}
+
+@media (max-width: 996px) {
+	.mbland_aboutUs_teamSection {
+		padding: 81px 0 69px;
+	}
+
+	.mbland_aboutUs_teamSection_body {
+		margin-top: 63px;
+	}
+
+	.mbland_aboutUs_teamSection_featuredName {
+		font-size: 36px;
+		margin-top: 4px;
+	}
+
+	.mbland_aboutUs_teamSection_featuredBio {
+		margin-top: 28px;
+	}
+
+	.mbland_aboutUs_teamSection_members {
+		margin-top: 69px;
+	}
+}
+
+@media (max-width: 768px) {
+	.mbland_aboutUs_teamSection {
+		padding: 68px 0 61px;
+	}
+
+	.mbland_aboutUs_teamSection_desc {
+		font-size: 15px;
+	}
+
+	.mbland_aboutUs_teamSection_body {
+		margin-top: 54px;
+	}
+
+	.mbland_aboutUs_teamSection_featured {
+		gap: 28px;
+		flex-direction: column;
+	}
+
+	.mbland_aboutUs_teamSection_featuredPosition {
+		font-size: 15px;
+	}
+
+	.mbland_aboutUs_teamSection_featuredName {
+		font-size: 33px;
+	}
+
+	.mbland_aboutUs_teamSection_featuredBio {
+		margin-top: 20px;
+	}
+
+	.mbland_aboutUs_teamSection_featuredMedia {
+		max-width: 400px;
+		order: -1;
+		align-self: flex-start;
+	}
+
+	.mbland_aboutUs_teamSection_members {
+		margin-top: 61px;
+	}
+}
+
+@media (max-width: 576px) {
+	.mbland_aboutUs_teamSection {
+		padding: 58px 0 55px;
+	}
+
+	.mbland_aboutUs_teamSection_body {
+		margin-top: 46px;
+	}
+
+	.mbland_aboutUs_teamSection_featuredPosition {
+		font-size: 14px;
+	}
+
+	.mbland_aboutUs_teamSection_featuredName {
+		font-size: 32px;
+	}
+
+	.mbland_aboutUs_teamSection_featuredBio {
+		margin-top: 18px;
+	}
+
+	.mbland_aboutUs_teamSection_members {
+		margin-top: 45px;
+	}
+}
+
+@media (max-width: 425px) {
+	.mbland_aboutUs_teamSection {
+		padding: 50px 0 50px;
+	}
+
+	.mbland_aboutUs_teamSection_desc {
+		font-size: 14px;
+	}
+
+	.mbland_aboutUs_teamSection_body {
+		margin-top: 40px;
+	}
+
+	.mbland_aboutUs_teamSection_featuredPosition {
+		font-size: 13px;
+	}
+
+	.mbland_aboutUs_teamSection_featuredName {
+		font-size: 30px;
+	}
+
+	.mbland_aboutUs_teamSection_members {
+		margin-top: 32px;
+	}
+
+	.mbland_aboutUs_teamSection_member {
+		height: 500px !important;
+	}
+
+	.mbland_aboutUs_teamSection_memberInfo {
+		padding: 28px 20px;
+	}
+
+	.mbland_aboutUs_teamSection_memberDetail {
+		padding: 20px;
+	}
+}
 
 /* ===== END TEAMS ===== */
