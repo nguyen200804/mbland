@@ -227,14 +227,9 @@
 	}
 }
 
-@media (max-width: 1500px) {
-	.mbland_about_values {
-		grid-template-columns: repeat(2, minmax(0, 350px));
-	}
-}
-
 @media (max-width: 1400px) {
 	.mbland_about_values {
+		grid-template-columns: repeat(2, minmax(0, 350px));
 		gap: 24px;
 	}
 
@@ -247,7 +242,7 @@
 	}
 }
 
-@media (max-width: 992px) {
+@media (max-width: 996px) {
 	.mbland_about_values {
 		gap: 16px;
 	}
@@ -526,7 +521,7 @@
 	}
 }
 
-@media (max-width: 992px) {
+@media (max-width: 996px) {
 
 	/* Stack vertically, remove dividers & dots */
 	.mbland_about_goals_list {

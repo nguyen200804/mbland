@@ -369,8 +369,8 @@
   }
 }
 
-/* ≤ 1024px (Tablet) */
-@media (max-width: 1024px) {
+/* ≤ 996px (Tablet) */
+@media (max-width: 996px) {
   .mbland_recruitment_jobs_sidebar {
     display: none;
   }

@@ -253,7 +253,7 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 425px) {
   .hn-tasmania-bds-header {
     flex-direction: column;
     align-items: flex-start;

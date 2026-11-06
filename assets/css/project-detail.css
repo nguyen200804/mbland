@@ -400,7 +400,7 @@
   }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 996px) {
   .hn-related-projects-slider .swiper-slide {
     width: 60%;
   }

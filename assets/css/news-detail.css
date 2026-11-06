@@ -466,8 +466,8 @@
   }
 }
 
-/* ≤ 992px (Tablet) */
-@media (max-width: 992px) {
+/* ≤ 996px (Tablet) */
+@media (max-width: 996px) {
   .mbland_singlePost_hero_bannerImage {
     max-height: 360px;
   }

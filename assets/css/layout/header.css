@@ -360,7 +360,7 @@
   transform: rotate(180deg);
 }
 
-@media (max-width: 992px) {
+@media (max-width: 996px) {
   .pll-switcher-select {
     padding-right: 10px;
     background: transparent;
@@ -373,11 +373,6 @@
 /*
 	 ==================================================== RESPONSIVE =========================================
 	 */
-@media (min-width: 1201px) {
-  .hn-tasmania-header-menu {
-    display: none;
-  }
-}
 
 @media (max-width: 1200px) {
   .hn-tasmania-header__nav {

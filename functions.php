@@ -651,7 +651,7 @@ function hn_logo_brand_section() {
       }
 
       /* Tablet */
-      @media (max-width: 992px){
+      @media (max-width: 996px){
         .logo-brand-track{ gap: 50px;}
         .logo-item img{ height: 50px; }
       }
@@ -784,7 +784,7 @@ function hn_breadcrumb_shortcode() {
       .hn-breadcrumb .breadcrumb-list li a:hover {
         color: var(--primary-color);
       }
-      @media (max-width: 1024px){
+      @media (max-width: 996px){
         .hn-breadcrumb {
           font-size: 14px;
         }

@@ -204,3 +204,98 @@ Khi tạo một component dùng chung mới, các thành viên cần tuân thủ
 4. **Quy tắc gọi Component**:
    - Sử dụng `get_template_part( 'template-parts/ui/ten-component', null, $args )`.
    - **Tuyệt đối không** truyền tên class CSS vào vị trí đường dẫn file của `get_template_part`.
+
+---
+
+## 📱 Quy chuẩn Responsive (Breakpoints CSS)
+
+Để đảm bảo giao diện hiển thị đồng nhất và chuẩn xác trên mọi thiết bị, toàn bộ các file CSS (bao gồm page template, component, layout) **bắt buộc tuân thủ hệ thống Breakpoints cố định** sau:
+
+### 1. Danh sách Breakpoints chuẩn
+
+| Media Query | Loại thiết bị tương ứng | Mô tả / Mục đích sử dụng |
+| :--- | :--- | :--- |
+| `@media (max-width: 1600px)` | Màn hình lớn (Large Desktop / Full HD+) | Tinh chỉnh padding container, font size tiêu đề lớn. |
+| `@media (max-width: 1400px)` | Desktop tiêu chuẩn (Standard Desktop) | Điều chỉnh khoảng cách gap, thu nhỏ nhẹ layout. |
+| `@media (max-width: 1200px)` | Laptop / Desktop nhỏ (Small Desktop) | Giảm cột lưới (grid 4 -> 3 cột), thu nhỏ container. |
+| `@media (max-width: 996px)` | Tablet ngang (Tablet Landscape) | Chuyển layout cột lớn, menu mobile (nếu có), giảm padding section. |
+| `@media (max-width: 768px)` | Tablet dọc / Mobile lớn (Tablet Portrait) | Chuyển flex row sang column, giảm mạnh font size heading. |
+| `@media (max-width: 576px)` | Mobile tiêu chuẩn (Standard Mobile) | Grid chuyển về 1 cột, full width button, tối ưu khoảng chạm (touch). |
+| `@media (max-width: 425px)` | Mobile nhỏ (Small Mobile) | Tối ưu font size, thu hẹp padding mép màn hình tránh tràn viền. |
+
+### 2. Nguyên tắc viết CSS Responsive
+
+1. **Desktop-First (Thứ tự từ lớn đến nhỏ)**:
+   - Viết CSS mặc định cho Desktop ở đầu file hoặc đầu từng block component.
+   - Các block `@media (max-width: ...)` phải sắp xếp theo **thứ tự giảm dần**: `1600px` ➔ `1400px` ➔ `1200px` ➔ `996px` ➔ `768px` ➔ `576px` ➔ `425px`.
+   - Việc tuân thủ thứ tự này đảm bảo CSS kế thừa (cascade) chính xác, breakpoint nhỏ hơn sẽ ghi đè thuộc tính của breakpoint lớn hơn một cách tự nhiên.
+
+2. **Không tự ý thêm breakpoint lẻ**:
+   - Không sử dụng các breakpoint tùy hứng (như `1024px`, `850px`, `600px`, `480px`,...) trừ khi có yêu cầu đặc thù và phải có chú thích rõ ràng.
+
+3. **Cấu trúc khung mẫu (Boilerplate) khi viết CSS**:
+
+```css
+/* ==========================================================================
+   1. BASE / DESKTOP STYLES
+   ========================================================================== */
+.mbland_example {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+/* ==========================================================================
+   2. RESPONSIVE BREAKPOINTS (BẮT BUỘC THEO THỨ TỰ GIẢM DẦN)
+   ========================================================================== */
+
+/* <= 1600px: Large Desktop */
+@media (max-width: 1600px) {
+  .mbland_example {
+    gap: 20px;
+  }
+}
+
+/* <= 1400px: Standard Desktop */
+@media (max-width: 1400px) {
+  .mbland_example {
+    gap: 16px;
+  }
+}
+
+/* <= 1200px: Small Desktop / Laptop */
+@media (max-width: 1200px) {
+  .mbland_example {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* <= 996px: Tablet Landscape */
+@media (max-width: 996px) {
+  .mbland_example {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* <= 768px: Tablet Portrait / Large Mobile */
+@media (max-width: 768px) {
+  .mbland_example {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}
+
+/* <= 576px: Standard Mobile */
+@media (max-width: 576px) {
+  .mbland_example {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* <= 425px: Small Mobile */
+@media (max-width: 425px) {
+  .mbland_example {
+    gap: 8px;
+  }
+}
+```

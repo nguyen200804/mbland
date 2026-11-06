@@ -176,7 +176,7 @@ textarea:focus {
   fill: currentColor;
 }
 
-@media (max-width: 560px) {
+@media (max-width: 576px) {
   .mbland_homepage_contact_form {
     grid-template-columns: 1fr;
   }
