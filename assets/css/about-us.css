@@ -720,10 +720,6 @@
 
 
 
-
-
-
-
 /* Heading with icon */
 .mbland_about_goals_head {
 	display: flex;
@@ -743,15 +739,149 @@
 }
 
 .mbland_about_goals_title {
-	font-size: 36px;
+	font-size: 1em;
 	color: var(--color-02, #8b0000);
 }
 
 .mbland_about_goals_content {
 	font-weight: 400;
-	font-size: 16px;
 	color: #5b4e47;
 	line-height: 1.875em;
+}
+
+@media (max-width: 1600px) {
+	.mbland_about_goals {
+		padding: 89px 0;
+	}
+
+	.mbland_about_goals_list {
+		gap: 77px;
+	}
+
+	.mbland_about_goals_item {
+		padding: 44px 0;
+	}
+
+	.mbland_about_goals_head {
+		font-size: 33px;
+		margin-bottom: 43px;
+	}
+}
+
+@media (max-width: 1400px) {
+	.mbland_about_goals {
+		padding: 83px 0;
+	}
+
+	.mbland_about_goals_list {
+		gap: 68px;
+	}
+
+	.mbland_about_goals_item {
+		padding: 41px 0;
+	}
+
+	.mbland_about_goals_head {
+		font-size: 30px;
+		margin-bottom: 39px;
+	}
+}
+
+@media (max-width: 1200px) {
+	.mbland_about_goals {
+		padding: 76px 0;
+	}
+
+	.mbland_about_goals_list {
+		gap: 50px;
+	}
+
+	.mbland_about_goals_item {
+		padding: 37px 0;
+	}
+
+	.mbland_about_goals_head {
+		font-size: 28px;
+		margin-bottom: 35px;
+	}
+}
+
+@media (max-width: 996px) {
+	.mbland_about_goals {
+		padding: 69px 0;
+	}
+
+	.mbland_about_goals_list {
+		gap: 28px;
+	}
+
+	.mbland_about_goals_item {
+		padding: 34px 0;
+	}
+
+	.mbland_about_goals_head {
+		font-size: 24px;
+		margin-bottom: 25px;
+	}
+}
+
+@media (max-width: 768px) {
+	.mbland_about_goals {
+		padding: 61px 0;
+	}
+
+	.mbland_about_goals_list {
+		border-top: 0px solid rgb(183 12 44 / 30%);
+		border-left: 1px solid rgb(183 12 44 / 30%);
+		flex-direction: column;
+	}
+
+	.mbland_about_goals_item {
+		padding: 0px 0px 0px 30px;
+	}
+
+	.mbland_about_goals_itemDivider {
+		width: 100%;
+		min-width: 100%;
+		min-height: 1px;
+	}
+
+	.mbland_about_goals_head {
+		margin-bottom: 10px;
+	}
+}
+
+@media (max-width: 576px) {
+	.mbland_about_goals {
+		padding: 55px 0;
+	}
+
+	.mbland_about_goals_item {
+		padding: 0px 0px 0px 27px;
+	}
+
+	.mbland_about_goals_head {
+		font-size: 22px;
+	}
+}
+
+@media (max-width: 425px) {
+	.mbland_about_goals {
+		padding: 50px 0;
+	}
+
+	.mbland_about_goals_list {
+		gap: 24px;
+	}
+
+	.mbland_about_goals_item {
+		padding: 0px 0px 0px 24px;
+	}
+
+	.mbland_about_goals_head {
+		font-size: 20px;
+		margin-bottom: 8px;
+	}
 }
 
 /* ===== END GOALS ===== */
