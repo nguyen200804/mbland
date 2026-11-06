@@ -601,7 +601,7 @@ function hn_logo_brand_section() {
         justify-content: center;
       }
       .logo-item img{
-        height: 56px;
+        max-height: 56px;
         width: auto;
         object-fit: contain;
         transition: transform .25s ease;
