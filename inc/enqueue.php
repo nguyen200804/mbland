@@ -27,6 +27,7 @@ function homenest_enqueue_scripts() {
     wp_enqueue_style( 'homenest-ui-new-card-item-style', get_template_directory_uri() . '/assets/css/ui/newCardItem.css', array('homenest-assets-style'), homenest_asset_ver('/assets/css/ui/newCardItem.css') );
     wp_enqueue_style( 'homenest-ui-job-card-item-style', get_template_directory_uri() . '/assets/css/ui/jobCardItem.css', array('homenest-assets-style'), homenest_asset_ver('/assets/css/ui/jobCardItem.css') );
     wp_enqueue_style( 'homenest-ui-pagination-style', get_template_directory_uri() . '/assets/css/ui/pagination.css', array('homenest-assets-style'), homenest_asset_ver('/assets/css/ui/pagination.css') );
+    wp_enqueue_style( 'homenest-ui-breadcrumb-style', get_template_directory_uri() . '/assets/css/ui/breadcrumb.css', array('homenest-assets-style'), homenest_asset_ver('/assets/css/ui/breadcrumb.css') );
 
     // CSS/JS theo template (nap trong <head> / truoc </body>)
     $tpl = ! empty( $GLOBALS['template'] ) ? basename( $GLOBALS['template'] ) : '';

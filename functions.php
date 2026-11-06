@@ -718,49 +718,6 @@ function hn_breadcrumb_shortcode() {
             ?>
         </ul>
     </nav>
-
-    <style>
-      .hn-breadcrumb {
-            font-family: 'GanhType';
-    font-weight: 400;
-    font-style: Regular;
-    font-size: 18px;
-    line-height: 24px;
-    margin: 40px 0 30px;
-      }
-      .hn-breadcrumb .breadcrumb-list {
-        list-style: none;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 6px;
-        padding: 0;
-        margin: 0;
-      }
-      .hn-breadcrumb .breadcrumb-list li {
-        color: #191919;
-      }
-      .hn-breadcrumb .breadcrumb-list li::after {
-        content: "/";
-        margin: 0 6px;
-        color: #aaa;
-      }
-      .hn-breadcrumb .breadcrumb-list li:last-child::after {
-        content: "";
-      }
-      .hn-breadcrumb .breadcrumb-list li a {
-        color: #C5C5C5;
-        text-decoration: none;
-        transition: color 0.2s;
-      }
-      .hn-breadcrumb .breadcrumb-list li a:hover {
-        color: var(--primary-color);
-      }
-      @media (max-width: 996px){
-        .hn-breadcrumb {
-          font-size: 14px;
-        }
-      }
-    </style>
     <?php
     return ob_get_clean();
 }
