@@ -4,24 +4,28 @@
  *
  * Usage:
  * get_template_part( 'template-parts/sections/contact-form', null, array(
- *     'title'     => 'Liên hệ gửi yêu cầu tư vấn', // optional
- *     'desc'      => '...',                        // optional: '' để ẩn mô tả
- *     'bg'        => '/wp-content/uploads/...jpg', // optional: ảnh nền ('' để bỏ ảnh nền)
- *     'action'    => '#',                          // optional: action của form
- *     'class'     => '',                           // optional: class thêm vào <section>
- *     'id_prefix' => '',                           // optional: tiền tố id input, tránh trùng id khi dùng nhiều form / trang
+ *     'title'         => 'Liên hệ gửi yêu cầu tư vấn', // optional
+ *     'desc'          => '...',                        // optional: '' để ẩn mô tả
+ *     'bg'            => '/wp-content/uploads/...jpg', // optional: ảnh nền ('' để bỏ ảnh nền)
+ *     'action'        => '#',                          // optional: action của form
+ *     'class'         => '',                           // optional: class thêm vào <section>
+ *     'id_prefix'     => '',                           // optional: tiền tố id input, tránh trùng id khi dùng nhiều form / trang
+ *     'loading'       => 'lazy',                       // optional: 'lazy' (mặc định cho below-the-fold) hoặc 'eager' (nếu ở đầu trang)
+ *     'fetchpriority' => 'low',                        // optional: 'low' hoặc 'high'
  * ) );
  *
  * @package HomeNest Theme
  */
 
 $args = wp_parse_args( $args, array(
-	'title'     => 'Liên hệ gửi yêu cầu tư vấn',
-	'desc'      => 'Kết nối cùng MBLand Asset Management để khám phá những cơ hội hợp tác và giải pháp đầu tư phù hợp với mục tiêu của bạn.',
-	'bg'        => '/wp-content/uploads/2026/11/background-contact-section.jpg',
-	'action'    => '#',
-	'class'     => '',
-	'id_prefix' => '',
+	'title'         => 'Liên hệ gửi yêu cầu tư vấn',
+	'desc'          => 'Kết nối cùng MBLand Asset Management để khám phá những cơ hội hợp tác và giải pháp đầu tư phù hợp với mục tiêu của bạn.',
+	'bg'            => '/wp-content/uploads/2026/11/background-contact-section.jpg',
+	'action'        => '#',
+	'class'         => '',
+	'id_prefix'     => '',
+	'loading'       => 'lazy',
+	'fetchpriority' => 'low',
 ) );
 
 $classes = array( 'mbland_contactForm' );
@@ -33,7 +37,7 @@ $pfx = $args['id_prefix'] ? sanitize_html_class( $args['id_prefix'] ) . '_' : ''
 <!-- ===== START SECTION CONTACT FORM ===== -->
 <section class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>">
 	<?php if ( $args['bg'] ) : ?>
-		<img loading="lazy" decoding="async" fetchpriority="low" class="mbland_contactForm_background" src="<?php echo esc_url( $args['bg'] ); ?>" alt="" aria-hidden="true" />
+		<img loading="<?php echo esc_attr( $args['loading'] ); ?>" decoding="async" fetchpriority="<?php echo esc_attr( $args['fetchpriority'] ); ?>" class="mbland_contactForm_background" src="<?php echo esc_url( $args['bg'] ); ?>" alt="" aria-hidden="true" width="2560" height="1157" />
 	<?php endif; ?>
 	<div class="container">
 		<div class="mbland_contactForm_wrapper">
