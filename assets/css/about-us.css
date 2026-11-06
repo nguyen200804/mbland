@@ -352,7 +352,6 @@
 .mbland_homepage_info {
 	position: relative;
 	z-index: 1;
-	padding: 68px 0 100px;
 }
 
 .mbland_homepage_info .container {
@@ -598,9 +597,7 @@
 }
 
 @media (max-width: 768px) {
-	.mbland_homepage_info {
-		padding: 50px 0 90px;
-	}
+	.mbland_homepage_info {}
 
 	.mbland_homepage_info_desc {
 		margin-top: 36px;
@@ -984,6 +981,7 @@
 
 	.mbland_homepage_company_body {
 		width: 100%;
+		padding-left: 0;
 	}
 
 	.mbland_homepage_company_introMedia {

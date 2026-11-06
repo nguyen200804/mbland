@@ -9,7 +9,7 @@ get_header();
 		<?php echo do_shortcode('[hn_breadcrumb]'); ?>
 	</div>
 	<div class="mbland_about_hero_image">
-		<img src="/wp-content/uploads/2026/11/hero_aboutus.jpg" class="mbland_about_hero_img"/>
+		<img loading="eager" decoding="async" fetchpriority="high" src="/wp-content/uploads/2026/11/hero_aboutus.jpg" class="mbland_about_hero_img" alt="Hero About Us" title="Hero About Us"/>
 	</div>
 </section>
 
@@ -39,7 +39,7 @@ get_header();
 		<!-- ===== START VALUES ===== -->
 		<div class="mbland_about_values">
 			<div class="mbland_about_values_item">
-				<img src="/wp-content/uploads/2025/10/diamond.svg" alt="Icon kim cương" class="mbland_about_values_bg" title="Icon kim cương"/>
+				<img loading="lazy" decoding="async" fetchpriority="low" src="/wp-content/uploads/2025/10/diamond.svg" alt="Icon kim cương" class="mbland_about_values_bg" title="Icon kim cương"/>
 				<div class="mbland_about_values_center">
 					<h3 class="mbland_about_values_title">Công</h3>
 					<p class="mbland_about_values_label">Giá trị cốt lõi</p>
@@ -51,7 +51,7 @@ get_header();
 			</div>
 
 			<div class="mbland_about_values_item">
-				<img src="/wp-content/uploads/2025/10/diamond.svg" alt="Icon kim cương" class="mbland_about_values_bg" title="Icon kim cương"/>
+				<img loading="lazy" decoding="async" fetchpriority="low" src="/wp-content/uploads/2025/10/diamond.svg" alt="Icon kim cương" class="mbland_about_values_bg" title="Icon kim cương"/>
 				<div class="mbland_about_values_center">
 					<h3 class="mbland_about_values_title">Tâm</h3>
 					<p class="mbland_about_values_label">Giá trị cốt lõi</p>
@@ -63,7 +63,7 @@ get_header();
 			</div>
 
 			<div class="mbland_about_values_item">
-				<img src="/wp-content/uploads/2025/10/diamond.svg" alt="Icon kim cương" class="mbland_about_values_bg" title="Icon kim cương"/>
+				<img loading="lazy" decoding="async" fetchpriority="low" src="/wp-content/uploads/2025/10/diamond.svg" alt="Icon kim cương" class="mbland_about_values_bg" title="Icon kim cương"/>
 				<div class="mbland_about_values_center">
 					<h3 class="mbland_about_values_title">Trí</h3>
 					<p class="mbland_about_values_label">Giá trị cốt lõi</p>
@@ -75,7 +75,7 @@ get_header();
 			</div>
 
 			<div class="mbland_about_values_item">
-				<img src="/wp-content/uploads/2025/10/diamond.svg" alt="Icon kim cương" class="mbland_about_values_bg" title="Icon kim cương"/>
+				<img loading="lazy" decoding="async" fetchpriority="low" src="/wp-content/uploads/2025/10/diamond.svg" alt="Icon kim cương" class="mbland_about_values_bg" title="Icon kim cương"/>
 				<div class="mbland_about_values_center">
 					<h3 class="mbland_about_values_title">Tín</h3>
 					<p class="mbland_about_values_label">Giá trị cốt lõi</p>
@@ -134,7 +134,7 @@ get_header();
 		<div class="mbland_about_goals_list">
 			<div class="mbland_about_goals_item">
 				<div class="mbland_about_goals_head">
-					<img
+					<img loading="lazy" decoding="async" fetchpriority="low"
 						 src="/wp-content/uploads/2025/10/qlementine-icons_target-16.svg"
 						 alt="Tầm Nhìn"
 						 class="mbland_about_goals_icon"
@@ -155,7 +155,7 @@ get_header();
 
 			<div class="mbland_about_goals_item">
 				<div class="mbland_about_goals_head">
-					<img
+					<img loading="lazy" decoding="async" fetchpriority="low"
 						 src="/wp-content/uploads/2025/10/qlementine-icons_target-16.svg"
 						 alt="Sứ Mệnh"
 						 class="mbland_about_goals_icon"
@@ -177,7 +177,7 @@ get_header();
 
 			<div class="mbland_about_goals_item">
 				<div class="mbland_about_goals_head">
-					<img
+					<img loading="lazy" decoding="async" fetchpriority="low"
 						 src="/wp-content/uploads/2025/10/qlementine-icons_target-16.svg"
 						 alt="Giá Trị Cốt Lõi"
 						 class="mbland_about_goals_icon"
@@ -244,17 +244,17 @@ get_header();
 						<div class="swiper-wrapper mbland_homepage_company_showcaseWrapperList">
 							<div class="swiper-slide mbland_homepage_company_showcaseItem">
 								<p class="mbland_homepage_company_showcaseNumber">01</p>
-								<img loading="lazy" decoding="async" class="mbland_homepage_company_showcaseImage mbland_homepage_company_showcaseLogo"
+								<img loading="lazy" decoding="async" fetchpriority="low" class="mbland_homepage_company_showcaseImage mbland_homepage_company_showcaseLogo"
 									 src="/wp-content/uploads/2025/10/logo-fs.png" alt="Logo FS" title="Logo FS" />
 							</div>
 							<div class="swiper-slide mbland_homepage_company_showcaseItem">
 								<p class="mbland_homepage_company_showcaseNumber">02</p>
-								<img loading="lazy" decoding="async" class="mbland_homepage_company_showcaseImage mbland_homepage_company_showcaseLogo"
+								<img loading="lazy" decoding="async" fetchpriority="low" class="mbland_homepage_company_showcaseImage mbland_homepage_company_showcaseLogo"
 									 src="/wp-content/uploads/2025/10/logo-mb-landdanang.png" alt="MBLand Đà Nẵng" title="MBLand Đà Nẵng" />
 							</div>
 							<div class="swiper-slide mbland_homepage_company_showcaseItem">
 								<p class="mbland_homepage_company_showcaseNumber">03</p>
-								<img loading="lazy" decoding="async" class="mbland_homepage_company_showcaseImage mbland_homepage_company_showcaseLogo"
+								<img loading="lazy" decoding="async" fetchpriority="low" class="mbland_homepage_company_showcaseImage mbland_homepage_company_showcaseLogo"
 									 src="/wp-content/uploads/2026/11/MBLand-Tonkin-Hoi-an.png" alt="MBLand Tonkin Hội An" title="MBLand Tonkin Hội An" />
 							</div>
 						</div>
@@ -294,7 +294,7 @@ get_header();
 						</div>
 					</div>
 					<figure class="mbland_aboutUs_teamSection_featuredMedia">
-						<img class="mbland_aboutUs_teamSection_featuredImage" src="/wp-content/uploads/2026/11/Vu-Thanh-Hue.jpg" alt="Vũ Thành Huế" title="Vũ Thành Huế">
+						<img loading="lazy" decoding="async" fetchpriority="low" class="mbland_aboutUs_teamSection_featuredImage" src="/wp-content/uploads/2026/11/Vu-Thanh-Hue.jpg" alt="Vũ Thành Huế" title="Vũ Thành Huế">
 					</figure>
 				</article>
 
@@ -302,7 +302,7 @@ get_header();
 					<div class="swiper-wrapper mbland_aboutUs_teamSection_membersWrapper">
 						<article class="swiper-slide mbland_aboutUs_teamSection_member">
 							<div class="mbland_aboutUs_teamSection_memberCard">
-								<img class="mbland_aboutUs_teamSection_memberImage" src="/wp-content/uploads/2026/11/Vu-Thanh-Hue.jpg" alt="Vũ Thành Huế" title="Vũ Thành Huế">
+								<img loading="lazy" decoding="async" fetchpriority="low" class="mbland_aboutUs_teamSection_memberImage" src="/wp-content/uploads/2026/11/Vu-Thanh-Hue.jpg" alt="Vũ Thành Huế" title="Vũ Thành Huế">
 								<div class="mbland_aboutUs_teamSection_memberInfo">
 									<h3 class="mbland_aboutUs_teamSection_memberName"> Vũ Thị Hương Giang</h3>
 									<p class="mbland_aboutUs_teamSection_memberPosition">Chủ tịch Hội đồng Quản Trị</p>
@@ -323,7 +323,7 @@ get_header();
 						</article>
 						<article class="swiper-slide mbland_aboutUs_teamSection_member">
 							<div class="mbland_aboutUs_teamSection_memberCard">
-								<img class="mbland_aboutUs_teamSection_memberImage" src="/wp-content/uploads/2026/11/Vu-Thanh-Hue.jpg" alt="Vũ Thành Huế" title="Vũ Thành Huế">
+								<img loading="lazy" decoding="async" fetchpriority="low" class="mbland_aboutUs_teamSection_memberImage" src="/wp-content/uploads/2026/11/Vu-Thanh-Hue.jpg" alt="Vũ Thành Huế" title="Vũ Thành Huế">
 								<div class="mbland_aboutUs_teamSection_memberInfo">
 									<h3 class="mbland_aboutUs_teamSection_memberName"> Vũ Thị Hương Giang</h3>
 									<p class="mbland_aboutUs_teamSection_memberPosition">Chủ tịch Hội đồng Quản Trị</p>
@@ -344,7 +344,7 @@ get_header();
 						</article>
 						<article class="swiper-slide mbland_aboutUs_teamSection_member">
 							<div class="mbland_aboutUs_teamSection_memberCard">
-								<img class="mbland_aboutUs_teamSection_memberImage" src="/wp-content/uploads/2026/11/Vu-Thanh-Hue.jpg" alt="Vũ Thành Huế" title="Vũ Thành Huế">
+								<img loading="lazy" decoding="async" fetchpriority="low" class="mbland_aboutUs_teamSection_memberImage" src="/wp-content/uploads/2026/11/Vu-Thanh-Hue.jpg" alt="Vũ Thành Huế" title="Vũ Thành Huế">
 								<div class="mbland_aboutUs_teamSection_memberInfo">
 									<h3 class="mbland_aboutUs_teamSection_memberName"> Vũ Thị Hương Giang</h3>
 									<p class="mbland_aboutUs_teamSection_memberPosition">Chủ tịch Hội đồng Quản Trị</p>
@@ -365,7 +365,7 @@ get_header();
 						</article>
 						<article class="swiper-slide mbland_aboutUs_teamSection_member">
 							<div class="mbland_aboutUs_teamSection_memberCard">
-								<img class="mbland_aboutUs_teamSection_memberImage" src="/wp-content/uploads/2026/11/Vu-Thanh-Hue.jpg" alt="Vũ Thành Huế" title="Vũ Thành Huế">
+								<img loading="lazy" decoding="async" fetchpriority="low" class="mbland_aboutUs_teamSection_memberImage" src="/wp-content/uploads/2026/11/Vu-Thanh-Hue.jpg" alt="Vũ Thành Huế" title="Vũ Thành Huế">
 								<div class="mbland_aboutUs_teamSection_memberInfo">
 									<h3 class="mbland_aboutUs_teamSection_memberName"> Vũ Thị Hương Giang</h3>
 									<p class="mbland_aboutUs_teamSection_memberPosition">Chủ tịch Hội đồng Quản Trị</p>
