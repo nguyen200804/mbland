@@ -41,6 +41,7 @@
   aspect-ratio: 16/9;
   object-fit: cover;
   transition: transform .3s ease;
+  height: auto;
 }
 
 .mbland_tintucTemplate_featuredCard:hover .mbland_tintucTemplate_featuredCard_img {
@@ -201,6 +202,7 @@
 .mbland_tintucTemplate_newCard_img {
   width: 100%;
   transition: transform .3s ease;
+  height: auto;
 }
 
 .mbland_tintucTemplate_newCard:hover .mbland_tintucTemplate_newCard_img {

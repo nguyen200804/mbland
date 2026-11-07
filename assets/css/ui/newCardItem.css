@@ -26,6 +26,7 @@
 
 .mbland_tintucTemplate_newCard_img {
   width: 100%;
+  height: auto;
   object-fit: cover;
   transition: transform .3s ease;
 }
@@ -156,6 +157,7 @@
 }
 
 @media (max-width: 768px) {
+
   .mbland_tintucTemplate_newPost_list,
   .mbland_recruitment_news_grid,
   .mbland_singlePost_activities_grid {

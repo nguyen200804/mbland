@@ -439,6 +439,7 @@
     width: 100%;
     transform: scale(1);
     transition: transform .3s ease;
+    height: auto;
 }
 
 .mbland_linhvuc_listProject_item:hover .mbland_linhvuc_listProject_itemImage {
