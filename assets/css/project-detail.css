@@ -723,6 +723,7 @@
   object-fit: cover;
   border-radius: 0;
   display: block;
+  height: auto;
 }
 
 /* Swiper thumbnail (Ảnh nhỏ) */
@@ -747,6 +748,7 @@
   object-fit: cover;
   border-radius: 0;
   display: block;
+  height: auto;
 }
 
 
