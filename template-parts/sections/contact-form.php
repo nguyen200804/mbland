@@ -17,11 +17,23 @@
  * @package HomeNest Theme
  */
 
+$opt_title  = function_exists( 'get_field' ) ? get_field( 'contact_title', 'option' ) : '';
+$opt_desc   = function_exists( 'get_field' ) ? get_field( 'contact_desc', 'option' ) : '';
+$opt_bg     = function_exists( 'get_field' ) ? get_field( 'contact_bg', 'option' ) : '';
+$opt_action = function_exists( 'get_field' ) ? get_field( 'contact_action', 'option' ) : '';
+
+$bg_url = '';
+if ( is_array( $opt_bg ) && ! empty( $opt_bg['url'] ) ) {
+	$bg_url = $opt_bg['url'];
+} elseif ( is_string( $opt_bg ) && ! empty( $opt_bg ) ) {
+	$bg_url = $opt_bg;
+}
+
 $args = wp_parse_args( $args, array(
-	'title'         => 'Liên hệ gửi yêu cầu tư vấn',
-	'desc'          => 'Kết nối cùng MBLand Asset Management để khám phá những cơ hội hợp tác và giải pháp đầu tư phù hợp với mục tiêu của bạn.',
-	'bg'            => '/wp-content/uploads/2026/11/background-contact-section.jpg',
-	'action'        => '#',
+	'title'         => ! empty( $opt_title ) ? $opt_title : 'Liên hệ gửi yêu cầu tư vấn',
+	'desc'          => ( '' !== $opt_desc && null !== $opt_desc ) ? $opt_desc : 'Kết nối cùng MBLand Asset Management để khám phá những cơ hội hợp tác và giải pháp đầu tư phù hợp với mục tiêu của bạn.',
+	'bg'            => ! empty( $bg_url ) ? $bg_url : '/wp-content/uploads/2026/11/background-contact-section.jpg',
+	'action'        => ! empty( $opt_action ) ? $opt_action : '#',
 	'class'         => '',
 	'id_prefix'     => '',
 	'loading'       => 'lazy',

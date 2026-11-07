@@ -31,6 +31,9 @@ require_once HOMENEST_INC_DIR . 'homepage-fields.php';
 // 7. ACF Fields cho Trang Giới thiệu (Post ID 73, 377)
 require_once HOMENEST_INC_DIR . 'about-fields.php';
 
+// 8. ACF Fields cho Cài đặt chung Theme (Options Page: Brands & Contact Form)
+require_once HOMENEST_INC_DIR . 'theme-options-fields.php';
+
 // KHÔNG CÓ THẺ ĐÓNG PHP ?>
 
 <?php
@@ -549,30 +552,56 @@ function load_news() {
 // SHORTCODE: Logo thương hiệu (marquee auto chạy trái, lặp vô hạn)
 // ========================
 function hn_logo_brand_section() {
-    // Danh sách logo [url, alt, width, height]
-    $logos = [
-        ['/wp-content/uploads/2025/10/logo-kw.png', 'KW', 1200, 551],
-        ['/wp-content/uploads/2025/10/logo-JLL.png', 'JLL', 1280, 572],
-        ['/wp-content/uploads/2025/10/vng.png', 'VNG', 328, 121],
-        ['/wp-content/uploads/2025/10/aia.png', 'AIA', 740, 740],
-        ['/wp-content/uploads/2025/10/bithumb.png', 'Bithumb', 236, 60],
-        ['/wp-content/uploads/2025/10/tonkin.png', 'Tonkin', 224, 50],
-        ['/wp-content/uploads/2025/10/Hilton_logo.svg', 'Hilton', 1137, 422],
-        ['/wp-content/uploads/2025/10/Vilaf-logo.jpg', 'Vilaf', 819, 229],
-        ['/wp-content/uploads/2025/10/Savills_logo.png', 'Savills', 2048, 2049],
-        ['/wp-content/uploads/2025/10/Vietcombank_Logo.png', 'Vietcombank', 370, 100],
-        ['/wp-content/uploads/2025/10/Logo_MB.png', 'MB Bank', 1200, 539],
-        ['/wp-content/uploads/2025/10/Lotte.png', 'Lotte', 1280, 400],
-        ['/wp-content/uploads/2025/10/logo-dg-group.png', 'DGGroup', 2048, 1647],
-        ['/wp-content/uploads/2025/10/logo-HAS-architecture.jpg', 'HAS Architecture', 2560, 2560],
-    ];
+    $logos = array();
+    $acf_brands = function_exists( 'get_field' ) ? get_field( 'brands_list', 'option' ) : array();
+
+    if ( ! empty( $acf_brands ) && is_array( $acf_brands ) ) {
+        foreach ( $acf_brands as $item ) {
+            if ( ! empty( $item['logo'] ) ) {
+                $img_url    = is_array( $item['logo'] ) ? $item['logo']['url'] : $item['logo'];
+                $img_alt    = ! empty( $item['name'] ) ? $item['name'] : ( is_array( $item['logo'] ) && ! empty( $item['logo']['alt'] ) ? $item['logo']['alt'] : 'Brand' );
+                $img_width  = is_array( $item['logo'] ) && ! empty( $item['logo']['width'] ) ? $item['logo']['width'] : 500;
+                $img_height = is_array( $item['logo'] ) && ! empty( $item['logo']['height'] ) ? $item['logo']['height'] : 200;
+                $link       = ! empty( $item['link'] ) ? $item['link'] : '';
+                $logos[]    = array( $img_url, $img_alt, $img_width, $img_height, $link );
+            }
+        }
+    }
+
+    // Danh sách logo mặc định nếu chưa cấu hình ACF
+    if ( empty( $logos ) ) {
+        $logos = [
+            ['/wp-content/uploads/2025/10/logo-kw.png', 'KW', 1200, 551, ''],
+            ['/wp-content/uploads/2025/10/logo-JLL.png', 'JLL', 1280, 572, ''],
+            ['/wp-content/uploads/2025/10/vng.png', 'VNG', 328, 121, ''],
+            ['/wp-content/uploads/2025/10/aia.png', 'AIA', 740, 740, ''],
+            ['/wp-content/uploads/2025/10/bithumb.png', 'Bithumb', 236, 60, ''],
+            ['/wp-content/uploads/2025/10/tonkin.png', 'Tonkin', 224, 50, ''],
+            ['/wp-content/uploads/2025/10/Hilton_logo.svg', 'Hilton', 1137, 422, ''],
+            ['/wp-content/uploads/2025/10/Vilaf-logo.jpg', 'Vilaf', 819, 229, ''],
+            ['/wp-content/uploads/2025/10/Savills_logo.png', 'Savills', 2048, 2049, ''],
+            ['/wp-content/uploads/2025/10/Vietcombank_Logo.png', 'Vietcombank', 370, 100, ''],
+            ['/wp-content/uploads/2025/10/Logo_MB.png', 'MB Bank', 1200, 539, ''],
+            ['/wp-content/uploads/2025/10/Lotte.png', 'Lotte', 1280, 400, ''],
+            ['/wp-content/uploads/2025/10/logo-dg-group.png', 'DGGroup', 2048, 1647, ''],
+            ['/wp-content/uploads/2025/10/logo-HAS-architecture.jpg', 'HAS Architecture', 2560, 2560, ''],
+        ];
+    }
 
     ob_start(); ?>
     <div class="logo-brand-marquee">
       <div class="logo-brand-track">
         <?php for ($repeat = 0; $repeat < 10; $repeat++): ?>
           <?php foreach ($logos as $lg): ?>
-            <div class="logo-item"><img src="<?php echo esc_url($lg[0]); ?>" loading="lazy" decoding="async" fetchpriority="low" alt="<?php echo esc_attr($lg[1]); ?>" title="<?php echo esc_attr($lg[1]); ?>" width="<?php echo esc_attr($lg[2]); ?>" height="<?php echo esc_attr($lg[3]); ?>"></div>
+            <div class="logo-item">
+              <?php if ( ! empty( $lg[4] ) ) : ?>
+                <a href="<?php echo esc_url( $lg[4] ); ?>" target="_blank" rel="noopener noreferrer">
+              <?php endif; ?>
+              <img src="<?php echo esc_url($lg[0]); ?>" loading="lazy" decoding="async" fetchpriority="low" alt="<?php echo esc_attr($lg[1]); ?>" title="<?php echo esc_attr($lg[1]); ?>" width="<?php echo esc_attr($lg[2]); ?>" height="<?php echo esc_attr($lg[3]); ?>">
+              <?php if ( ! empty( $lg[4] ) ) : ?>
+                </a>
+              <?php endif; ?>
+            </div>
           <?php endforeach; ?>
         <?php endfor; ?>
       </div>

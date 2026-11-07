@@ -13,9 +13,12 @@
  * @package HomeNest Theme
  */
 
+$opt_title = function_exists( 'get_field' ) ? get_field( 'brands_title', 'option' ) : '';
+$opt_desc  = function_exists( 'get_field' ) ? get_field( 'brands_desc', 'option' ) : '';
+
 $args = wp_parse_args( $args, array(
-	'title'     => 'Các đối tác của chúng tôi',
-	'desc'      => 'Chúng tôi trân trọng xây dựng những mối quan hệ hợp tác chiến lược, cùng kết nối nguồn lực, phát huy thế mạnh và hướng đến những giá trị phát triển bền vững.',
+	'title'     => ! empty( $opt_title ) ? $opt_title : 'Các đối tác của chúng tôi',
+	'desc'      => ( '' !== $opt_desc && null !== $opt_desc ) ? $opt_desc : 'Chúng tôi trân trọng xây dựng những mối quan hệ hợp tác chiến lược, cùng kết nối nguồn lực, phát huy thế mạnh và hướng đến những giá trị phát triển bền vững.',
 	'class'     => '',
 	'shortcode' => '[logo_brand]',
 ) );
