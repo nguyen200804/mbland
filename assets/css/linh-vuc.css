@@ -1237,12 +1237,12 @@
 
 .mbland_linhvuc_procedure_itemContent {
     width: 45%;
-    padding: 0 28px;
+    padding-right: 28px;
     display: flex;
 }
 
 .mbland_linhvuc_procedure_itemNumber {
-    min-width: 120px;
+    min-width: 1.3333333em;
     font-family: 'FZPoppins';
     font-weight: 500;
     font-size: 90px;
@@ -1250,7 +1250,7 @@
     letter-spacing: 0%;
     text-align: center;
     color: var(--secondary-color);
-    margin-right: 28px;
+    margin-right: 0.311111111111em;
     align-content: center;
     position: relative;
 }
@@ -1288,13 +1288,12 @@
 .mbland_linhvuc_procedure_itemTitle {
     font-weight: 500;
     font-size: 28px;
-    line-height: 40px;
+    line-height: 1.42em;
     letter-spacing: -0.02em;
 }
 
 .mbland_linhvuc_procedure_itemDesc {
     font-weight: 400;
-    font-size: 16px;
     line-height: 1.575em;
 }
 
@@ -1359,6 +1358,281 @@
     height: 100%;
     object-fit: cover;
 }
+
+
+@media (max-width: 1600px) {
+    .mbland_linhvuc_procedure {
+        padding-top: 132px;
+    }
+
+    .mbland_linhvuc_procedure_heading {
+        margin-bottom: 67px;
+    }
+
+    .mbland_linhvuc_procedure_title {
+        margin-bottom: 22px;
+    }
+
+    .mbland_linhvuc_procedure_item {
+        margin-bottom: 105px;
+    }
+
+    .mbland_linhvuc_procedure_item:not(:last-of-type) .mbland_linhvuc_procedure_itemNumber::after {
+        top: calc(100% - 73px);
+    }
+
+    .mbland_linhvuc_procedure_itemTag {
+        font-size: 13px;
+    }
+
+    .mbland_linhvuc_procedure_itemTitle {
+        font-size: 26px;
+    }
+}
+
+@media (max-width: 1400px) {
+    .mbland_linhvuc_procedure {
+        padding-top: 121px;
+    }
+
+    .mbland_linhvuc_procedure_heading {
+        margin-bottom: 64px;
+    }
+
+    .mbland_linhvuc_procedure_title {
+        margin-bottom: 21px;
+    }
+
+    .mbland_linhvuc_procedure_item {
+        margin-bottom: 96px;
+    }
+
+    .mbland_linhvuc_procedure_itemNumber {
+        font-size: 88px;
+    }
+
+    .mbland_linhvuc_procedure_item:not(:last-of-type) .mbland_linhvuc_procedure_itemNumber::after {
+        top: calc(100% - 80px);
+    }
+
+    .mbland_linhvuc_procedure_itemTitle {
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .mbland_linhvuc_procedure {
+        padding-top: 111px;
+    }
+
+    .mbland_linhvuc_procedure_heading {
+        margin-bottom: 61px;
+    }
+
+    .mbland_linhvuc_procedure_title {
+        margin-bottom: 20px;
+    }
+
+    .mbland_linhvuc_procedure_desc {
+        font-size: 17px;
+    }
+
+    .mbland_linhvuc_procedure_item {
+        margin-bottom: 86px;
+    }
+
+    .mbland_linhvuc_procedure_itemNumber {
+        margin-right: 20px;
+    }
+
+    .mbland_linhvuc_procedure_item:not(:last-of-type) .mbland_linhvuc_procedure_itemNumber::after {
+        top: calc(100% - 83px);
+    }
+
+    .mbland_linhvuc_procedure_itemTitle {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 996px) {
+    .mbland_linhvuc_procedure {
+        padding-top: 99px;
+    }
+
+    .mbland_linhvuc_procedure_heading {
+        margin-bottom: 58px;
+    }
+
+    .mbland_linhvuc_procedure_title {
+        margin-bottom: 19px;
+    }
+
+    .mbland_linhvuc_procedure_desc {
+        font-size: 16px;
+    }
+
+    .mbland_linhvuc_procedure_item {
+        margin-bottom: 80px;
+        flex-direction: column;
+    }
+
+    .mbland_linhvuc_procedure_itemContent {
+        width: 100%;
+        padding-right: 0;
+    }
+
+    .mbland_linhvuc_procedure_itemNumber {
+        font-size: 80px;
+    }
+
+    .mbland_linhvuc_procedure_item:not(:last-of-type) .mbland_linhvuc_procedure_itemNumber::after {
+        height: calc(100% + 250px);
+        top: 100%;
+    }
+
+    .mbland_linhvuc_procedure_itemTexts {
+        gap: 5px;
+    }
+
+    .mbland_linhvuc_procedure_itemTag {
+        font-size: 12px;
+    }
+
+    .mbland_linhvuc_procedure_itemTitle {
+        font-size: 23px;
+    }
+
+    .mbland_linhvuc_procedure_itemImage {
+        width: 100%;
+        padding-left: 127px;
+        margin-top: 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .mbland_linhvuc_procedure {
+        padding-top: 87px;
+    }
+
+    .mbland_linhvuc_procedure_heading {
+        margin-bottom: 55px;
+    }
+
+    .mbland_linhvuc_procedure_title {
+        margin-bottom: 18px;
+    }
+
+    .mbland_linhvuc_procedure_desc {
+        font-size: 15px;
+    }
+
+    .mbland_linhvuc_procedure_item {
+        margin-bottom: 72px;
+    }
+
+    .mbland_linhvuc_procedure_itemNumber {
+        font-size: 69px;
+        margin-right: 16px;
+    }
+
+    .mbland_linhvuc_procedure_item:not(:last-of-type) .mbland_linhvuc_procedure_itemNumber::after {
+        height: calc(100% + 197px);
+    }
+
+    .mbland_linhvuc_procedure_itemTitle {
+        font-size: 22px;
+    }
+
+    .mbland_linhvuc_procedure_itemImage {
+        padding-left: 107px;
+    }
+
+    .mbland_linhvuc_procedure_itemImageList {
+        height: 197px;
+    }
+}
+
+@media (max-width: 576px) {
+    .mbland_linhvuc_procedure {
+        padding-top: 76px;
+    }
+
+    .mbland_linhvuc_procedure_heading {
+        margin-bottom: 52px;
+    }
+
+    .mbland_linhvuc_procedure_title {
+        margin-bottom: 17px;
+    }
+
+    .mbland_linhvuc_procedure_desc {
+        font-size: 14px;
+    }
+
+    .mbland_linhvuc_procedure_itemNumber {
+        font-size: 46px;
+        margin-right: 15px;
+    }
+
+    .mbland_linhvuc_procedure_item:not(:last-of-type) .mbland_linhvuc_procedure_itemNumber::after {
+        height: calc(100% + 192px);
+        top: calc(100% - 35px);
+    }
+
+    .mbland_linhvuc_procedure_itemTexts {
+        gap: 4px;
+    }
+
+    .mbland_linhvuc_procedure_itemTag {
+        font-size: 11px;
+    }
+
+    .mbland_linhvuc_procedure_itemTitle {
+        font-size: 21px;
+    }
+
+    .mbland_linhvuc_procedure_itemImage {
+        padding-left: 77px;
+        margin-top: 18px;
+    }
+
+    .mbland_linhvuc_procedure_itemImageList {
+        height: 170px;
+    }
+}
+
+@media (max-width: 425px) {
+    .mbland_linhvuc_procedure {
+        padding-top: 68px;
+    }
+
+    .mbland_linhvuc_procedure_heading {
+        margin-bottom: 50px;
+    }
+
+    .mbland_linhvuc_procedure_title {
+        margin-bottom: 16px;
+    }
+
+    .mbland_linhvuc_procedure_item {
+        margin-bottom: 60px;
+    }
+
+    .mbland_linhvuc_procedure_itemNumber {
+        font-size: 40px;
+        margin-right: 15px;
+    }
+
+    .mbland_linhvuc_procedure_itemImage {
+        padding-left: 70px;
+        margin-top: 14px;
+    }
+
+    .mbland_linhvuc_procedure_itemImageList {
+        gap: 5px;
+    }
+}
+
 
 /* ===== END SECTION PROCEDURE ===== */
 
