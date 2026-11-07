@@ -440,6 +440,7 @@
     transform: scale(1);
     transition: transform .3s ease;
     height: auto;
+    object-fit: cover;
 }
 
 .mbland_linhvuc_listProject_item:hover .mbland_linhvuc_listProject_itemImage {
@@ -1244,6 +1245,7 @@
 .mbland_linhvuc_featuredProject_item {
     color: #fff;
     box-shadow: 0px 3px 15px 0px #C2C2C236;
+    flex: 1;
 }
 
 .mbland_linhvuc_featuredProject_itemMedia {
