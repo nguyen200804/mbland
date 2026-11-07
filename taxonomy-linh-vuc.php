@@ -140,14 +140,43 @@ $projects = new WP_Query( array(
 			</header>
 
 			<div class="mbland_linhvuc_listProject_body">
-				<!-- Xuất các term com trực tiếp của taxonomy=linh-vuc -->
-				<div class="mbland_linhvuc_listProject_filter">
-					<ul class="mbland_linhvuc_listProject_filterList">
-						<li class="mbland_linhvuc_listProject_filterItem"><a class="mbland_linhvuc_listProject_filterLink">Đô thị & Nhà ở</a></li>
-						<li class="mbland_linhvuc_listProject_filterItem"><a class="mbland_linhvuc_listProject_filterLink">Thương mại & Văn phòng</a></li>
-						<li class="mbland_linhvuc_listProject_filterItem"><a class="mbland_linhvuc_listProject_filterLink">Khách sạn & Nghĩ dưỡng</a></li>
-					</ul>
-				</div>
+				<!-- Xuất các term con trực tiếp của taxonomy=linh-vuc -->
+				<?php
+				$child_terms = get_terms( array(
+					'taxonomy'   => 'linh-vuc',
+					'parent'     => ! empty( $current_term->term_id ) ? $current_term->term_id : 0,
+					'hide_empty' => false,
+					'orderby'    => 'name',
+					'order'      => 'ASC',
+				) );
+
+				// Nếu term hiện tại là cấp con và không có con riêng, lấy các term cùng cấp (anh em)
+				if ( ( empty( $child_terms ) || is_wp_error( $child_terms ) ) && ! empty( $current_term->parent ) ) {
+					$child_terms = get_terms( array(
+						'taxonomy'   => 'linh-vuc',
+						'parent'     => $current_term->parent,
+						'hide_empty' => false,
+						'orderby'    => 'name',
+						'order'      => 'ASC',
+					) );
+				}
+				?>
+				<?php if ( ! empty( $child_terms ) && ! is_wp_error( $child_terms ) ) : ?>
+					<div class="mbland_linhvuc_listProject_filter">
+						<ul class="mbland_linhvuc_listProject_filterList">
+							<?php foreach ( $child_terms as $child_term ) : ?>
+								<?php
+								$is_active = ( isset( $current_term->term_id ) && $child_term->term_id === $current_term->term_id ) ? ' active' : '';
+								?>
+								<li class="mbland_linhvuc_listProject_filterItem">
+									<a class="mbland_linhvuc_listProject_filterLink<?php echo esc_attr( $is_active ); ?>" href="<?php echo esc_url( get_term_link( $child_term ) ); ?>">
+										<?php echo esc_html( $child_term->name ); ?>
+									</a>
+								</li>
+							<?php endforeach; ?>
+						</ul>
+					</div>
+				<?php endif; ?>
 				<div class="mbland_linhvuc_listProject_content">
 					<!-- Xuất tất cả post-type=du-an theo term của taxonomy=linh-vuc -->
 					<div class="mbland_linhvuc_listProject_item">
