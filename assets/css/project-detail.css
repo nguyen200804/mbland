@@ -916,7 +916,7 @@
 .mbland_singleProject_statistical_list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 50px 24px;
+  gap: 36px 16px;
 }
 
 .mbland_singleProject_statistical_item {
@@ -955,7 +955,7 @@
 
 .mbland_singleProject_statistical_itemTitle {
   font-weight: 500;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 120%;
   margin-bottom: 8px;
 }
@@ -965,6 +965,140 @@
   font-size: 15px;
   line-height: 1.35em;
   color: #000000;
+}
+
+@media (max-width: 1600px) {
+  .mbland_singleProject_statistical {
+    padding-top: 135px;
+  }
+
+  .mbland_singleProject_statistical .container {
+    max-width: 1480px;
+  }
+
+  .mbland_singleProject_statistical_itemTop {
+    margin-bottom: 22px;
+    font-size: 33px;
+  }
+
+  .mbland_singleProject_statistical_item {
+    border-radius: 18px;
+  }
+}
+
+@media (max-width: 1400px) {
+  .mbland_singleProject_statistical {
+    padding-top: 126px;
+  }
+
+  .mbland_singleProject_statistical_itemTop {
+    margin-bottom: 21px;
+    font-size: 32px;
+  }
+
+  .mbland_singleProject_statistical_itemDesc {
+    font-size: 14px;
+  }
+
+  .mbland_singleProject_statistical_item {
+    border-radius: 17px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .mbland_singleProject_statistical {
+    padding-top: 116px;
+  }
+
+  .mbland_singleProject_statistical_itemTop {
+    margin-bottom: 19px;
+    font-size: 28px;
+  }
+
+  .mbland_singleProject_statistical_item {
+    padding: 36px;
+    border-radius: 16px;
+  }
+}
+
+@media (max-width: 996px) {
+  .mbland_singleProject_statistical {
+    padding-top: 107px;
+  }
+
+  .mbland_singleProject_statistical_itemTop {
+    margin-bottom: 18px;
+    font-size: 29px;
+  }
+
+  .mbland_singleProject_statistical_list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px 16px;
+  }
+
+  .mbland_singleProject_statistical_item {
+    border-radius: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .mbland_singleProject_statistical {
+    padding-top: 96px;
+  }
+
+  .mbland_singleProject_statistical_itemTop {
+    margin-bottom: 16px;
+    font-size: 24px;
+  }
+
+  .mbland_singleProject_statistical_itemDesc {
+    font-size: 13px;
+  }
+
+  .mbland_singleProject_statistical_list {
+    gap: 20px 10px;
+  }
+
+  .mbland_singleProject_statistical_item {
+    padding: 24px;
+    border-radius: 12px;
+  }
+}
+
+@media (max-width: 576px) {
+  .mbland_singleProject_statistical {
+    padding-top: 87px;
+  }
+
+  .mbland_singleProject_statistical_itemTop {
+    margin-bottom: 15px;
+    font-size: 25px;
+  }
+
+  .mbland_singleProject_statistical_list {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 12px 24px;
+  }
+
+  .mbland_singleProject_statistical_item {
+    border-radius: 13px;
+  }
+}
+
+@media (max-width: 425px) {
+  .mbland_singleProject_statistical {
+    padding-top: 80px;
+  }
+
+  .mbland_singleProject_statistical_itemTop {
+    margin-bottom: 14px;
+    font-size: 24px;
+  }
+
+  .mbland_singleProject_statistical_item {
+    padding: 20px;
+    border-radius: 12px;
+  }
 }
 
 /* ===== END STATISTICAL ===== */

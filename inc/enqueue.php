@@ -74,8 +74,9 @@ function homenest_enqueue_scripts() {
         wp_enqueue_style( 'homenest-blog-style', get_template_directory_uri() . '/assets/css/blog.css', array('homenest-style'), homenest_asset_ver('/assets/css/blog.css') );
     }
 
-    // JS Chung
+    // JS Chung & Component dung chung
     wp_enqueue_script( 'homenest-main-script', get_template_directory_uri() . '/assets/js/main.js', array('jquery'), homenest_asset_ver('/assets/js/main.js'), true );
+    wp_enqueue_script( 'homenest-procedure-script', get_template_directory_uri() . '/assets/js/sections/procedure.js', array(), homenest_asset_ver('/assets/js/sections/procedure.js'), true );
 
     // JS riêng cho từng trang
     if ( is_front_page() && is_home() ) {
