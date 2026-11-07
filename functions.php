@@ -34,6 +34,9 @@ require_once HOMENEST_INC_DIR . 'about-fields.php';
 // 8. ACF Fields cho Cài đặt chung Theme (Options Page: Brands & Contact Form)
 require_once HOMENEST_INC_DIR . 'theme-options-fields.php';
 
+// Tắt tính năng tự động đăng ký dịch nhãn (Label, Title, Default value, Instructions) của ACF trong Polylang
+add_filter( 'pll_enable_acf_labels_translation', '__return_false' );
+
 // KHÔNG CÓ THẺ ĐÓNG PHP ?>
 
 <?php
