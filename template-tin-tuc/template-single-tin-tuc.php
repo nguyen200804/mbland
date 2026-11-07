@@ -104,33 +104,15 @@ $categories         = get_the_category( $post_id );
 			<div class="mbland_singlePost_activities_line"></div>
 		</div>
 
-		<div class="mbland_singlePost_activities_grid mbland_recruitment_news_grid mbland_tintucTemplate_newPost_list">
-			<?php
-			$term_ids = ! empty( $categories ) ? wp_list_pluck( $categories, 'term_id' ) : array();
+		<?php
+		$term_ids = ! empty( $categories ) ? wp_list_pluck( $categories, 'term_id' ) : array();
 
-			$activities_args = array(
-				'post_type'      => 'post',
-				'posts_per_page' => 2,
-				'post_status'    => 'publish',
-				'post__not_in'   => array( $post_id ),
-				'orderby'        => 'date',
-				'order'          => 'DESC',
-			);
-
-			if ( ! empty( $term_ids ) ) {
-				$activities_args['category__in'] = $term_ids;
-			}
-
-			$activities_query = new WP_Query( $activities_args );
-
-			if ( $activities_query->have_posts() ) :
-				while ( $activities_query->have_posts() ) : $activities_query->the_post();
-					get_template_part( 'template-parts/ui/newCardItem' );
-				endwhile;
-				wp_reset_postdata();
-			endif;
-			?>
-		</div>
+		get_template_part( 'template-parts/ui/news-grid', null, array(
+			'category__in'   => $term_ids,
+			'post__not_in'   => array( $post_id ),
+			'posts_per_page' => 2,
+		) );
+		?>
 	</div>
 </section>
 

@@ -243,35 +243,18 @@ $jobs_query = new WP_Query( $jobs_args );
 	<div class="container">
 		<div class="mbland_recruitment_news_header">
 			<h2 class="mbland_recruitment_news_heading">
-				<?php echo function_exists( 'pll__' ) ? pll__( 'TIN TỨC LIÊN QUAN' ) : 'TIN TỨC LIÊN QUAN'; ?>
+				<?php echo function_exists( 'pll__' ) ? pll__( 'Tin tức liên quan' ) : 'TIN Tin tức liên quan'; ?>
 			</h2>
 			<div class="mbland_recruitment_news_line"></div>
 		</div>
 
-		<div class="mbland_recruitment_news_grid mbland_tintucTemplate_newPost_list">
-			<?php
-			$related_news_args = array(
-				'post_type'      => 'post',
-				'posts_per_page' => 2,
-				'post_status'    => 'publish',
-				'orderby'        => 'date',
-				'order'          => 'DESC',
-			);
-
-			$related_news_query = new WP_Query( $related_news_args );
-
-			if ( $related_news_query->have_posts() ) :
-				while ( $related_news_query->have_posts() ) : $related_news_query->the_post();
-					get_template_part( 'template-parts/ui/newCardItem', null, array(
-						'post_id' => get_the_ID(),
-						'class'   => 'mbland_recruitment_news_card',
-						'badge'   => function_exists( 'pll__' ) ? pll__( 'TIN NỔI BẬT' ) : 'TIN NỔI BẬT',
-					) );
-				endwhile;
-				wp_reset_postdata();
-			endif;
-			?>
-		</div>
+		<?php
+		get_template_part( 'template-parts/ui/news-grid', null, array(
+			'posts_per_page' => 2,
+			'badge'          => function_exists( 'pll__' ) ? pll__( 'TIN NỔI BẬT' ) : 'TIN NỔI BẬT',
+			'card_class'     => 'mbland_recruitment_news_card',
+		) );
+		?>
 	</div>
 </section>
 

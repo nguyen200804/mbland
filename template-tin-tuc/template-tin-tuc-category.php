@@ -123,33 +123,15 @@ if ( is_category() ) {
             <!-- 2. Tin mới (New Post) -->
             <div class="mbland_tintucTemplate_post_newPost">
 				<header class="mbland_tintucTemplate_post_newPostHeader">
-					<h2 class="mbland_tintucTemplate_post_newPostTitle">Tin tức mới</h2>
+					<h2 class="mbland_tintucTemplate_post_newPostTitle"><?php echo function_exists('pll__') ? pll__('Tin tức mới') : 'Tin tức mới'; ?></h2>
 					<span class="mbland_tintucTemplate_post_newPostLine"></span>
 				</header>
-                <div class="mbland_tintucTemplate_newPost_list mbland_recruitment_news_grid">
-                    <?php
-                    $ttm_args = array(
-                        'post_type'      => 'post',
-                        'posts_per_page' => 2,
-                        'post_status'    => 'publish',
-                        'orderby'        => 'date',
-                        'order'          => 'DESC',
-                    );
-
-                    if ( $category_id > 0 ) {
-                        $ttm_args['cat'] = $category_id;
-                    }
-
-                    $ttm_query = new WP_Query( $ttm_args );
-
-                    if ( $ttm_query->have_posts() ) :
-                        while ( $ttm_query->have_posts() ) : $ttm_query->the_post();
-                            get_template_part( 'template-parts/ui/newCardItem' );
-                        endwhile;
-                        wp_reset_postdata();
-                    endif;
-                    ?>
-                </div>
+                <?php
+                get_template_part( 'template-parts/ui/news-grid', null, array(
+                    'cat'            => $category_id,
+                    'posts_per_page' => 2,
+                ) );
+                ?>
             </div>
 
             <!-- 3. Danh sách bài viết & Danh mục & Phân trang (List Post) -->

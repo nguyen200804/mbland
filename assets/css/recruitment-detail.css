@@ -187,8 +187,9 @@
   font-weight: 600;
   font-size: 22px;
   line-height: 32px;
-  color: var(--primary-color) !important;
+  color: var(--secondary-color) !important;
   margin: 25px 0 12px;
+  text-transform: uppercase;
 }
 
 .mbland_singleRecruitment_detail_article h2:first-child,
@@ -306,8 +307,8 @@
   font-size: 26px;
   color: var(--primary-color);
   font-weight: 700;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 15px;
+  /* border-bottom: 1px solid #eee; */
+  /* padding-bottom: 15px; */
   margin-bottom: 30px;
   display: flex;
   align-items: center;
@@ -318,17 +319,21 @@
 }
 
 .mbland_singleRecruitment_otherJobs_heading {
-  font-size: 26px;
-  color: var(--primary-color);
+  font-size: 36px;
   font-weight: 700;
   margin: 0;
-  font-family: "FZPoppins", sans-serif;
+}
+
+.mbland_singleRecruitment_otherJobs_line {
+  flex: 1;
+  height: 1px;
+  background-color: #C5C5C5;
 }
 
 .mbland_singleRecruitment_otherJobs_viewAll,
 .related-jobs .view-all {
   font-size: 16px;
-  color: var(--primary-color);
+  color: var(--secondary-color);
   text-decoration: none;
   font-weight: 500;
   transition: opacity 0.2s ease;
@@ -337,7 +342,6 @@
 .mbland_singleRecruitment_otherJobs_viewAll:hover,
 .related-jobs .view-all:hover {
   opacity: 0.8;
-  text-decoration: underline;
 }
 
 .mbland_singleRecruitment_otherJobs_grid,
@@ -572,7 +576,11 @@
   }
 
   .mbland_singleRecruitment_otherJobs_heading {
-    font-size: 22px;
+    /* font-size: 22px; */
+  }
+
+  .mbland_singleRecruitment_otherJobs_heading {
+    font-size: 26px;
   }
 }
 
@@ -604,5 +612,17 @@
   .mbland_singleRecruitment_otherJobs_title,
   .related-jobs .hn__job-item-other h3 {
     font-size: 17px;
+  }
+}
+
+
+@media (max-width: 425px) {
+  .mbland_singleRecruitment_otherJobs_heading {
+    font-size: 24px;
+  }
+
+  .mbland_singleRecruitment_otherJobs_viewAll,
+  .related-jobs .view-all {
+    font-size: 14px;
   }
 }

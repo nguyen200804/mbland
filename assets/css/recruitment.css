@@ -444,6 +444,7 @@
 
 /* ≤ 768px (Mobile lớn) */
 @media (max-width: 768px) {
+
   /* Section 3: Xếp dọc trên mobile/tablet */
   .mbland_recruitment_news_grid {
     flex-direction: column;
@@ -455,6 +456,7 @@
     width: 100%;
     gap: 20px;
   }
+
   .mbland_recruitment_intro_title {
     font-size: 32px;
   }
@@ -492,9 +494,7 @@
     white-space: normal;
   }
 
-  .mbland_recruitment_news_line {
-    display: none;
-  }
+  .mbland_recruitment_news_line {}
 }
 
 /* ≤ 576px (Mobile nhỏ) */

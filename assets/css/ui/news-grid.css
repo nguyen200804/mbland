@@ -1,0 +1,80 @@
+/* ==========================================================================
+   UI Component: News Grid (Lưới bài viết tin tức 2 cột)
+   Path: assets/css/ui/news-grid.css
+   Áp dụng đồng bộ cho:
+   - .mbland_recruitment_news_grid (Tuyển dụng)
+   - .mbland_singlePost_activities_grid (Chi tiết tin tức)
+   - .mbland_tintucTemplate_newPost_list (Danh mục tin tức)
+   - .mbland_newsGrid_list (Class chung)
+   ========================================================================== */
+
+.mbland_newsGrid_list,
+.mbland_recruitment_news_grid,
+.mbland_singlePost_activities_grid,
+.mbland_tintucTemplate_newPost_list {
+  display: flex;
+  gap: 20px;
+}
+
+.mbland_newsGrid_list .mbland_tintucTemplate_newCard,
+.mbland_recruitment_news_grid .mbland_tintucTemplate_newCard,
+.mbland_recruitment_news_grid .mbland_recruitment_news_card,
+.mbland_singlePost_activities_grid .mbland_tintucTemplate_newCard,
+.mbland_tintucTemplate_newPost_list .mbland_tintucTemplate_newCard {
+  width: 50%;
+}
+
+/* ==========================================================================
+   RESPONSIVE (MEDIA QUERIES)
+   ========================================================================== */
+
+/* ≤ 1200px */
+@media (max-width: 1200px) {
+  .mbland_newsGrid_list,
+  .mbland_recruitment_news_grid,
+  .mbland_singlePost_activities_grid,
+  .mbland_tintucTemplate_newPost_list {
+    gap: 20px;
+  }
+}
+
+/* ≤ 768px (Tablet nhỏ & Mobile lớn) */
+@media (max-width: 768px) {
+  .mbland_newsGrid_list,
+  .mbland_recruitment_news_grid,
+  .mbland_singlePost_activities_grid,
+  .mbland_tintucTemplate_newPost_list {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .mbland_newsGrid_list .mbland_tintucTemplate_newCard,
+  .mbland_recruitment_news_grid .mbland_tintucTemplate_newCard,
+  .mbland_recruitment_news_grid .mbland_recruitment_news_card,
+  .mbland_singlePost_activities_grid .mbland_tintucTemplate_newCard,
+  .mbland_tintucTemplate_newPost_list .mbland_tintucTemplate_newCard {
+    width: 100%;
+    gap: 20px;
+  }
+}
+
+/* ≤ 576px (Mobile) */
+@media (max-width: 576px) {
+  .mbland_newsGrid_list,
+  .mbland_recruitment_news_grid,
+  .mbland_singlePost_activities_grid,
+  .mbland_tintucTemplate_newPost_list {
+    gap: 16px;
+  }
+}
+
+/* ≤ 425px (Mobile nhỏ) */
+@media (max-width: 425px) {
+  .mbland_newsGrid_list,
+  .mbland_recruitment_news_grid,
+  .mbland_singlePost_activities_grid,
+  .mbland_tintucTemplate_newPost_list {
+    gap: 16px;
+  }
+}
+

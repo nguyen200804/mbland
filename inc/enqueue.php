@@ -25,6 +25,7 @@ function homenest_enqueue_scripts() {
     wp_enqueue_style( 'homenest-contact-form-style', get_template_directory_uri() . '/assets/css/sections/contact-form.css', array('homenest-assets-style'), homenest_asset_ver('/assets/css/sections/contact-form.css') );
     wp_enqueue_style( 'homenest-ui-button-detail-style', get_template_directory_uri() . '/assets/css/ui/button-detail.css', array('homenest-assets-style'), homenest_asset_ver('/assets/css/ui/button-detail.css') );
     wp_enqueue_style( 'homenest-ui-new-card-item-style', get_template_directory_uri() . '/assets/css/ui/newCardItem.css', array('homenest-assets-style'), homenest_asset_ver('/assets/css/ui/newCardItem.css') );
+    wp_enqueue_style( 'homenest-ui-news-grid-style', get_template_directory_uri() . '/assets/css/ui/news-grid.css', array('homenest-assets-style', 'homenest-ui-new-card-item-style'), homenest_asset_ver('/assets/css/ui/news-grid.css') );
     wp_enqueue_style( 'homenest-ui-job-card-item-style', get_template_directory_uri() . '/assets/css/ui/jobCardItem.css', array('homenest-assets-style'), homenest_asset_ver('/assets/css/ui/jobCardItem.css') );
     wp_enqueue_style( 'homenest-ui-pagination-style', get_template_directory_uri() . '/assets/css/ui/pagination.css', array('homenest-assets-style'), homenest_asset_ver('/assets/css/ui/pagination.css') );
     wp_enqueue_style( 'homenest-ui-breadcrumb-style', get_template_directory_uri() . '/assets/css/ui/breadcrumb.css', array('homenest-assets-style'), homenest_asset_ver('/assets/css/ui/breadcrumb.css') );
