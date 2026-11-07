@@ -909,10 +909,9 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    text-align: left;
-    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), top 0.4s cubic-bezier(0.25, 1, 0.5, 1), left 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-    width: max-content;
-    max-width: calc(100% - 70px);
+    text-align: center;
+    transition: transform 0.4s ease, top 0.4s ease;
+    width: calc(100% - 70px);
     pointer-events: none;
     z-index: 2;
 }
@@ -922,7 +921,7 @@
     font-weight: 600;
     font-size: 24px;
     line-height: 1.2em;
-    text-align: left;
+    text-align: center;
     text-transform: uppercase;
     color: #0C1DB7;
     margin-bottom: 8px;
@@ -936,7 +935,7 @@
 .mbland_linhvuc_coreStrengths_itemLabel {
     font-family: "FZPoppins";
     color: #0C1DB7;
-    text-align: left;
+    text-align: center;
     font-weight: 500;
     font-size: 11px;
     line-height: 100%;
@@ -1010,8 +1009,7 @@
 
 .mbland_linhvuc_coreStrengths_item:hover .mbland_linhvuc_coreStrengths_itemMain {
     top: 35px;
-    left: 35px;
-    transform: translate(0, 0);
+    transform: translate(-50%, 0);
 }
 
 .mbland_linhvuc_coreStrengths_item:hover {
@@ -1059,12 +1057,11 @@
     }
 
     .mbland_linhvuc_coreStrengths_itemMain {
-        max-width: calc(100% - 56px);
+        width: calc(100% - 56px);
     }
 
     .mbland_linhvuc_coreStrengths_item:hover .mbland_linhvuc_coreStrengths_itemMain {
         top: 32px;
-        left: 28px;
     }
 }
 
