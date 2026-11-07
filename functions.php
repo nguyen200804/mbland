@@ -133,9 +133,9 @@ if ( ! class_exists( 'Custom_Walker_Nav_Menu' ) ) {
         public function start_lvl( &$output, $depth = 0, $args = null ) {
             $indent = str_repeat( "\t", $depth );
             if ( $depth === 0 ) {
-                $output .= "\n$indent<ul class=\"hn-tasmania-header__nav-sub-list\">\n"; // Sub-list cho cấp 1
+                $output .= "\n$indent<ul class=\"mbland-header__nav-sub-list\">\n"; // Sub-list cho cấp 1
             } else {
-                $output .= "\n$indent<ul class=\"hn-tasmania-header__nav-sub-list\">\n"; // Nếu có cấp sâu hơn
+                $output .= "\n$indent<ul class=\"mbland-header__nav-sub-list\">\n"; // Nếu có cấp sâu hơn
             }
         }
 
@@ -143,15 +143,15 @@ if ( ! class_exists( 'Custom_Walker_Nav_Menu' ) ) {
             $indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
 
             $classes = empty( $item->classes ) ? array() : (array) $item->classes;
-            $classes[] = 'hn-tasmania-header__nav-item'; // Class mặc định cho mọi li
+            $classes[] = 'mbland-header__nav-item'; // Class mặc định cho mọi li
 
             // Thêm class riêng cho sub-item (depth > 0)
             if ( $depth > 0 ) {
-                $classes[] = 'hn-tasmania-header__nav-sub-item';
+                $classes[] = 'mbland-header__nav-sub-item';
             }
 
             if ( in_array( 'menu-item-has-children', $classes ) ) {
-                $classes[] = 'hn-tasmania-header__nav-item-has-children'; // Class cho li có con
+                $classes[] = 'mbland-header__nav-item-has-children'; // Class cho li có con
             }
 
             // Lọc classes để tránh duplicates
@@ -188,16 +188,16 @@ if (!class_exists('Popup_Walker_Nav_Menu')) {
         // Bắt đầu level (ul sub-menu) - Nằm riêng sau div
         function start_lvl(&$output, $depth = 0, $args = null) {
             $indent = str_repeat("\t", $depth);
-            $output .= "\n$indent<ul class=\"hn-tasmania-header__menu-sub-list sub-menu-mobile\">\n";  // <ul> riêng, không wrap vào div
+            $output .= "\n$indent<ul class=\"mbland-header__menu-sub-list sub-menu-mobile\">\n";  // <ul> riêng, không wrap vào div
         }
         
         // Bắt đầu element (li) - Chỉ wrap a + span vào div cho top-level (depth == 0), sub-items không wrap div
         function start_el(&$output, $item, $depth = 0, $args = null, $id = 0) {
             $indent = ($depth) ? str_repeat("\t", $depth) : '';
             $classes = empty($item->classes) ? array() : (array) $item->classes;
-            $classes[] = 'hn-tasmania-header__nav-item menu-item-' . $item->ID;
+            $classes[] = 'mbland-header__nav-item menu-item-' . $item->ID;
             if ($this->has_children) {
-                $classes[] = 'hn-tasmania-header__nav-item-has-children';
+                $classes[] = 'mbland-header__nav-item-has-children';
             }
             
             $class_names = join(' ', apply_filters('nav_menu_css_class', array_filter($classes), $item, $args));

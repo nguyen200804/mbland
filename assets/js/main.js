@@ -28,11 +28,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Toggle sub-menu trên mobile
   if (popup) {
-    var subToggles = popup.querySelectorAll('.hn-tasmania-header__nav-item-has-children .menu-item-block');
+    var subToggles = popup.querySelectorAll('.mbland-header__nav-item-has-children .menu-item-block');
     subToggles.forEach(function(toggle) {
       toggle.addEventListener('click', function(e) {
         e.preventDefault();
-        var parentLi = toggle.closest('.hn-tasmania-header__nav-item-has-children');
+        var parentLi = toggle.closest('.mbland-header__nav-item-has-children');
         if (parentLi) {
           parentLi.classList.toggle('active');
         }

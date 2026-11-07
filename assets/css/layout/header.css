@@ -1,5 +1,5 @@
 /*================== Header ===================*/
-.hn-tasmania-header {
+.mbland-header {
   position: sticky;
   top: 0;
   z-index: 100;
@@ -8,43 +8,44 @@
   width: 100%;
 }
 
-.hn-tasmania-header__logo {
+.mbland-header__logo {
   max-width: 180px;
   margin-right: 50px;
   display: flex;
 }
 
-.hn-tasmania-header .container {
+.mbland-header .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-top: 0;
   padding-bottom: 0;
   margin: 0 auto;
+  height: 90px;
 }
 
-.hn-tasmania-header__logo img {
-  width: 200px;
+.mbland-header__logo img {
+  width: 100%;
   height: auto;
   object-fit: cover;
 }
 
-.hn-tasmania-header-group {
+.mbland-header-group {
   display: flex;
   gap: 10px;
   align-items: center;
 }
 
-.hn-tasmania-header__nav-list {
+.mbland-header__nav-list {
   display: flex;
   gap: 30px;
 }
 
-.hn-tasmania-header__nav-item {
+.mbland-header__nav-item {
   position: relative;
 }
 
-.hn-tasmania-header__nav-item a {
+.mbland-header__nav-item a {
   padding: 30px 0;
   display: inline-block;
   transition: all 0.3s ease-out;
@@ -52,34 +53,34 @@
   font-size: 18px;
 }
 
-.hn-tasmania-header__nav-item:hover {
+.mbland-header__nav-item:hover {
   color: var(--primary-color);
 }
 
-.hn-tasmania-header__nav-item:hover>a {
+.mbland-header__nav-item:hover>a {
   color: var(--primary-color);
 }
 
 /* Active state cho parent nav (giống hover) */
-.hn-tasmania-header__nav-item.current-menu-item {
+.mbland-header__nav-item.current-menu-item {
   border-bottom: 2px solid var(--primary-color);
   color: var(--primary-color);
 }
 
-.hn-tasmania-header__nav-item.current-menu-item>a {
+.mbland-header__nav-item.current-menu-item>a {
   color: var(--primary-color);
 }
 
 /* Nếu parent có active con, cũng apply style tương tự */
-.hn-tasmania-header__nav-item.current-menu-ancestor {
+.mbland-header__nav-item.current-menu-ancestor {
   border-bottom: 2px solid var(--primary-color);
 }
 
-.hn-tasmania-header__nav-item.current-menu-ancestor>a {
+.mbland-header__nav-item.current-menu-ancestor>a {
   color: var(--primary-color);
 }
 
-.hn-tasmania-header__nav-sub-list {
+.mbland-header__nav-sub-list {
   display: none;
   position: absolute;
   top: 100%;
@@ -91,46 +92,46 @@
   /* Thêm shadow cho dropdown nếu cần */
 }
 
-.hn-tasmania-header__nav-sub-item {
+.mbland-header__nav-sub-item {
   transition: all 0.3s ease-out;
 }
 
-.hn-tasmania-header__nav-sub-item a {
+.mbland-header__nav-sub-item a {
   padding: 10px 30px;
   display: block;
   white-space: nowrap;
   transition: all 0.3s ease-out;
 }
 
-.hn-tasmania-header__nav-sub-item:hover {
+.mbland-header__nav-sub-item:hover {
   background-color: var(--bg-color-01);
 }
 
-.hn-tasmania-header__nav-sub-item:hover a {
+.mbland-header__nav-sub-item:hover a {
   color: var(--primary-color);
 }
 
 /* Active state cho sub nav (giống hover) */
-.hn-tasmania-header__nav-sub-item.current-menu-item {
+.mbland-header__nav-sub-item.current-menu-item {
   background-color: var(--bg-color-01);
   border-bottom: none;
 }
 
-.hn-tasmania-header__nav-sub-item.current-menu-item a {
+.mbland-header__nav-sub-item.current-menu-item a {
   color: var(--primary-color);
 }
 
-.hn-tasmania-header__nav-item:hover .hn-tasmania-header__nav-sub-list {
+.mbland-header__nav-item:hover .mbland-header__nav-sub-list {
   display: block;
 }
 
 /* Đảm bảo sub-menu không bị che bởi các element khác */
-.hn-tasmania-header__nav-item-has-children .hn-tasmania-header__nav-sub-list {
+.mbland-header__nav-item-has-children .mbland-header__nav-sub-list {
   z-index: 101;
 }
 
 /* Menu hamburger như button */
-.hn-tasmania-header-menu {
+.mbland-header-menu {
   background: none;
   border: none;
   cursor: pointer;
@@ -141,17 +142,17 @@
   transition: background 0.3s ease;
 }
 
-.hn-tasmania-header-menu:hover {
+.mbland-header-menu:hover {
   background: var(--bg-color-01);
 }
 
-.hn-tasmania-header-menu svg {
+.mbland-header-menu svg {
   width: 24px;
   height: 24px;
 }
 
 /* Popup menu */
-.hn-tasmania-header-menu-popup {
+.mbland-header-menu-popup {
   position: fixed;
   inset: 0;
   width: 100%;
@@ -163,32 +164,32 @@
   max-width: 480px;
 }
 
-.hn-tasmania-header-menu-popup.active {
+.mbland-header-menu-popup.active {
   transform: translateX(0);
 }
 
 /* Nội dung popup */
-.hn-tasmania-header-menu-popup .hn-tasmania-header__logo {
+.mbland-header-menu-popup .mbland-header__logo {
   padding: 20px;
   width: 150px;
 }
 
-.hn-tasmania-header-menu-nav {
+.mbland-header-menu-nav {
   margin-top: 40px;
 }
 
-.hn-tasmania-header-menu-popup .hn-tasmania-header__nav-item {
+.mbland-header-menu-popup .mbland-header__nav-item {
   width: 100%;
   padding: 0 20px;
 }
 
-.hn-tasmania-header-menu-popup .hn-tasmania-header__nav-item a {
+.mbland-header-menu-popup .mbland-header__nav-item a {
   padding: 10px 20px;
   display: block;
 }
 
 /* Sub nav: Chỉ hiện khi toggle (không bọc trong menu-item-block) */
-.hn-tasmania-header-menu-popup .hn-tasmania-header__menu-sub-list {
+.mbland-header-menu-popup .mbland-header__menu-sub-list {
   position: static;
   box-shadow: none;
   margin-top: 10px;
@@ -200,11 +201,11 @@
   border-top: 1px solid var(--color-06);
 }
 
-.hn-tasmania-header-menu-popup .hn-tasmania-header__nav-item-has-children.active .hn-tasmania-header__menu-sub-list {
+.mbland-header-menu-popup .mbland-header__nav-item-has-children.active .mbland-header__menu-sub-list {
   display: block;
 }
 
-.hn-tasmania-header-menu-popup .menu-item-block {
+.mbland-header-menu-popup .menu-item-block {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -212,13 +213,13 @@
   padding: 5px 0;
 }
 
-.hn-tasmania-header-menu-popup .menu-item-block a {
+.mbland-header-menu-popup .menu-item-block a {
   flex: 1;
   margin-right: 10px;
   text-decoration: none;
 }
 
-.hn-tasmania-header-menu-popup .sub-menu-toggle {
+.mbland-header-menu-popup .sub-menu-toggle {
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -229,27 +230,27 @@
 }
 
 /* Xoay SVG khi active (chỉ icon) */
-.hn-tasmania-header-menu-popup .hn-tasmania-header__nav-item-has-children.active .sub-menu-toggle {
+.mbland-header-menu-popup .mbland-header__nav-item-has-children.active .sub-menu-toggle {
   transform: rotate(180deg);
 }
 
-.hn-tasmania-header-menu-nav-list .hn-tasmania-header__nav-item.current-menu-item {
+.mbland-header-menu-nav-list .mbland-header__nav-item.current-menu-item {
   background-color: var(--bg-color-01);
   border-bottom: none;
 }
 
-.hn-tasmania-header-menu-nav-list .hn-tasmania-header__nav-item.current-menu-item a {
+.mbland-header-menu-nav-list .mbland-header__nav-item.current-menu-item a {
   color: var(--primary-color);
   font-weight: 500;
 }
 
-.hn-tasmania-header-menu-nav-list .hn-tasmania-header__nav-item.current-menu-ancestor {
+.mbland-header-menu-nav-list .mbland-header__nav-item.current-menu-ancestor {
   border-bottom: none;
   background: var(--bg-color-01);
 }
 
 /* Nút close X như button */
-.hn-tasmania-header-menu-close {
+.mbland-header-menu-close {
   position: absolute;
   top: 20px;
   right: 20px;
@@ -262,18 +263,18 @@
   transition: background 0.3s ease;
 }
 
-.hn-tasmania-header-menu-close:hover {
+.mbland-header-menu-close:hover {
   background: rgba(255, 255, 255, 0.1);
 }
 
-.hn-tasmania-header-menu-close svg {
+.mbland-header-menu-close svg {
   width: 24px;
   height: 24px;
   fill: var(--primary-color);
 }
 
 /* Overlay */
-.hn-tasmania-header-overlay {
+.mbland-header-overlay {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.5);
@@ -283,7 +284,7 @@
   z-index: 98;
 }
 
-.hn-tasmania-header-overlay.active {
+.mbland-header-overlay.active {
   opacity: 1;
   visibility: visible;
 }
@@ -314,7 +315,7 @@
   background: transparent;
   border: none;
   cursor: pointer;
-  padding: 6px 10px;
+  padding: 6px 0px 6px 10px;
   font-size: 16px;
   font-weight: 500;
   border-left: 1px solid #d9d9d9;
@@ -381,7 +382,7 @@
 	 */
 
 @media (max-width: 1200px) {
-  .hn-tasmania-header__nav {
+  .mbland-header__nav {
     display: none;
     /* Ẩn nav desktop */
   }
@@ -390,17 +391,17 @@
 
 
 
-  .hn-tasmania-header-menu {
+  .mbland-header-menu {
     display: block;
     /* Hiển thị hamburger button */
   }
 
   /* Toggle bằng class .active (JS handle) */
-  .hn-tasmania-header-menu-popup.active {
+  .mbland-header-menu-popup.active {
     transform: translateX(0);
   }
 
-  .hn-tasmania-header-overlay.active {
+  .mbland-header-overlay.active {
     opacity: 1;
     visibility: visible;
   }
@@ -411,5 +412,11 @@
 @media (max-width: 1200px) {
   .header-space {
     min-height: 50px;
+  }
+}
+
+@media (max-width: 425px) {
+  .mbland-header__logo {
+    margin-right: 32px;
   }
 }
