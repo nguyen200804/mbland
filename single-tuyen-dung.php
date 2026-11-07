@@ -154,7 +154,7 @@ while ( have_posts() ) :
 
 			if ( $related_jobs->have_posts() ) :
 				while ( $related_jobs->have_posts() ) : $related_jobs->the_post();
-					get_template_part( 'template-parts/ui/jobCardItem', null, array(
+					get_template_part( 'template-parts/ui/job-card-item', null, array(
 						'post_id' => get_the_ID(),
 						'class'   => 'mbland_singleRecruitment_otherJobs_card',
 					) );

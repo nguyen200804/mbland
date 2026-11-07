@@ -3,10 +3,10 @@
  * Component UI: New Card Item (Card bài viết tin mới)
  *
  * Usage trong WordPress Loop:
- * get_template_part( 'template-parts/ui/newCardItem' );
+ * get_template_part( 'template-parts/ui/new-card-item' );
  *
  * Usage truyền tham số tùy biến:
- * get_template_part( 'template-parts/ui/newCardItem', null, array(
+ * get_template_part( 'template-parts/ui/new-card-item', null, array(
  *     'post_id' => get_the_ID(), // optional: ID bài viết (mặc định lấy post hiện tại)
  *     'class'   => '',           // optional: class CSS bổ sung
  *     'badge'   => '',           // optional: nhãn badge (mặc định 'TIN MỚI', hỗ trợ Polylang)

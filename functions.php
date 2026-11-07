@@ -78,20 +78,15 @@ add_action('init', function() {
 });
 
 
-// Override template cho single post của CPT 'du-an' - sử dụng file từ subfolder
+// Override template cho single post của CPT 'du-an' / 'project'
 add_filter('template_include', 'load_custom_single_du_an_template');
 function load_custom_single_du_an_template($template) {
-    // Kiểm tra điều kiện: Là single post và post type là 'du-an'
-    if (is_single() && get_post_type() === 'du-an') {
-        // Đường dẫn đến file template tùy chỉnh
-        $custom_template = locate_template('template-du-an/single-project.php');
-        
-        // Nếu tìm thấy file, trả về đường dẫn đó; nếu không, fallback về template mặc định
+    if (is_single() && (get_post_type() === 'du-an' || get_post_type() === 'project')) {
+        $custom_template = locate_template('single-project.php');
         if (!empty($custom_template)) {
             return $custom_template;
         }
     }
-    // Trả về template gốc nếu không khớp
     return $template;
 }
 
@@ -99,7 +94,7 @@ function load_custom_single_du_an_template($template) {
 add_filter( 'template_include', 'load_custom_blog_home_template', 99 );
 function load_custom_blog_home_template( $template ) {
     if ( is_home() ) {
-        $news_template = locate_template( 'template-tin-tuc/template-tin-tuc-category.php' );
+        $news_template = locate_template( 'category.php' );
         if ( ! empty( $news_template ) ) {
             return $news_template;
         }
@@ -107,20 +102,15 @@ function load_custom_blog_home_template( $template ) {
     return $template;
 }
 
-// Override template cho single post của post type 'post' - sử dụng file từ subfolder
+// Override template cho single post của post type 'post'
 add_filter('template_include', 'load_custom_single_tin_tuc_template');
 function load_custom_single_tin_tuc_template($template) {
-    // Kiểm tra điều kiện: Là single post và post type là 'post'
     if (is_single() && get_post_type() === 'post') {
-        // Đường dẫn đến file template tùy chỉnh
-        $custom_template = locate_template('template-tin-tuc/template-single-tin-tuc.php');
-        
-        // Nếu tìm thấy file, trả về đường dẫn đó; nếu không, fallback về template mặc định
+        $custom_template = locate_template('single.php');
         if (!empty($custom_template)) {
             return $custom_template;
         }
     }
-    // Trả về template gốc nếu không khớp
     return $template;
 }
 
@@ -269,8 +259,7 @@ if (!class_exists('Popup_Walker_Nav_Menu')) {
 function custom_tin_tuc_category_template($template) {
     // Kiểm tra nếu đang ở trang category archive (sẽ khớp với rewrite rule /tin-tuc/term-slug/)
     if (is_category()) {
-        // Tìm file template tùy chỉnh trong theme (ví dụ: file có Template Name: Tin tức category)
-        $custom_template = locate_template('/template-tin-tuc/template-tin-tuc-category.php');
+        $custom_template = locate_template('category.php');
         
         if (!empty($custom_template)) {
             return $custom_template; 
@@ -287,8 +276,8 @@ add_filter('template_include', 'custom_tin_tuc_category_template', 99);
 function custom_single_template_for_tuyen_dung($template) {
     global $post;
 
-    if ($post->post_type === 'tuyen-dung') {
-        $custom_template = get_stylesheet_directory() . '/template-tuyen-dung/template-single-tuyen-dung.php';
+    if ($post && $post->post_type === 'tuyen-dung') {
+        $custom_template = get_stylesheet_directory() . '/single-tuyen-dung.php';
         if (file_exists($custom_template)) {
             return $custom_template;
         }
@@ -306,8 +295,8 @@ function custom_single_template_for_cong_ty_con($template) {
     global $post;
 
     // Kiểm tra đúng post type "cong-ty-con"
-    if ($post->post_type === 'cong-ty-con') {
-        $custom_template = get_stylesheet_directory() . '/template-cong-ty-con/template-cong-ty-con.php';
+    if ($post && $post->post_type === 'cong-ty-con') {
+        $custom_template = get_stylesheet_directory() . '/templates/template-cong-ty-con.php';
         
         // Nếu file tồn tại thì load template tùy chỉnh
         if (file_exists($custom_template)) {

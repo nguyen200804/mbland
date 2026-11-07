@@ -69,7 +69,7 @@ if ( ! empty( $args['class'] ) ) {
 	<?php
 	while ( $news_query->have_posts() ) :
 		$news_query->the_post();
-		get_template_part( 'template-parts/ui/newCardItem', null, array(
+		get_template_part( 'template-parts/ui/new-card-item', null, array(
 			'post_id' => get_the_ID(),
 			'class'   => $args['card_class'],
 			'badge'   => $args['badge'],

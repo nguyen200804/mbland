@@ -3,10 +3,10 @@
  * Component UI: Job Card Item (Card danh sách bài tuyển dụng)
  *
  * Usage trong WordPress Loop:
- * get_template_part( 'template-parts/ui/jobCardItem' );
+ * get_template_part( 'template-parts/ui/job-card-item' );
  *
  * Usage truyền tham số tùy biến:
- * get_template_part( 'template-parts/ui/jobCardItem', null, array(
+ * get_template_part( 'template-parts/ui/job-card-item', null, array(
  *     'post_id' => get_the_ID(), // optional: ID bài viết (mặc định lấy post hiện tại)
  *     'class'   => '',           // optional: class CSS bổ sung
  * ) );

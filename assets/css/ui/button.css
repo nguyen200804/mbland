@@ -1,0 +1,71 @@
+/**
+ * Component UI: CTA Button
+ * File: assets/css/ui/button.css
+ */
+
+a.hn-tasmania-cta-btn,
+.hn-tasmania-cta-btn {
+  padding: 0.75em 1.9em;
+  background-color: var(--primary-color);
+  color: var(--color-08);
+  border: none;
+  border-radius: 100px;
+  display: inline-flex;
+  gap: 10px;
+  text-transform: uppercase;
+  align-items: center;
+  white-space: nowrap;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+a.hn-tasmania-cta-btn img,
+.hn-tasmania-cta-btn img,
+.hn-tasmania-cta-btn__icon {
+  width: 15px;
+  height: auto;
+}
+
+a.hn-tasmania-cta-btn:hover,
+.hn-tasmania-cta-btn:hover {
+  background-color: #970a21;
+}
+
+/* Variant: Outline */
+.hn-tasmania-cta-btn--outline {
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+
+.hn-tasmania-cta-btn--outline:hover {
+  background-color: var(--primary-color);
+  color: var(--color-08);
+}
+
+@media (max-width: 1600px) {
+  a.hn-tasmania-cta-btn,
+  .hn-tasmania-cta-btn {
+    gap: 9px;
+  }
+
+  a.hn-tasmania-cta-btn img,
+  .hn-tasmania-cta-btn img,
+  .hn-tasmania-cta-btn__icon {
+    width: 14px;
+  }
+}
+
+@media (max-width: 1400px) {
+  a.hn-tasmania-cta-btn,
+  .hn-tasmania-cta-btn {
+    gap: 8px;
+  }
+
+  a.hn-tasmania-cta-btn img,
+  .hn-tasmania-cta-btn img,
+  .hn-tasmania-cta-btn__icon {
+    width: 12px;
+  }
+}
+

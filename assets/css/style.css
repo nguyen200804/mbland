@@ -157,28 +157,6 @@ h3.small-h3 {
   box-sizing: content-box;
 }
 
-a.hn-tasmania-cta-btn {
-  padding: 0.75em 1.9em;
-  background-color: var(--primary-color);
-  color: var(--color-08);
-  border: none;
-  border-radius: 100px;
-  display: inline-flex;
-  gap: 10px;
-  text-transform: uppercase;
-  align-items: center;
-  white-space: nowrap;
-  font-weight: 600;
-  transition: background-color 0.3s ease;
-}
-
-a.hn-tasmania-cta-btn img {
-  width: 15px;
-}
-
-a.hn-tasmania-cta-btn:hover {
-  background-color: #970a21;
-}
 
 
 @media (max-width: 1600px) {
@@ -215,14 +193,7 @@ a.hn-tasmania-cta-btn:hover {
     /* 20px * 11/12 = 18.33px */
   }
 
-  a.hn-tasmania-cta-btn {
 
-    gap: 9px;
-  }
-
-  a.hn-tasmania-cta-btn img {
-    width: 14px;
-  }
 }
 
 @media (max-width: 1400px) {
@@ -256,13 +227,6 @@ a.hn-tasmania-cta-btn:hover {
     /* 18.33px * 1400/1600 = 16.04px */
   }
 
-  a.hn-tasmania-cta-btn {
-    gap: 8px;
-  }
-
-  a.hn-tasmania-cta-btn img {
-    width: 12px;
-  }
 
 
 
