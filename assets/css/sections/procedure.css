@@ -35,6 +35,12 @@
     width: 45%;
     padding-right: 28px;
     display: flex;
+    opacity: 50%;
+    transition: opacity .3s ease;
+}
+
+.mbland_linhvuc_procedure_item.active .mbland_linhvuc_procedure_itemContent {
+    opacity: 1;
 }
 
 .mbland_linhvuc_procedure_itemNumber {
@@ -438,4 +444,3 @@
 }
 
 /* ===== END SECTION PROCEDURE ===== */
-
