@@ -1157,7 +1157,8 @@
 
 .mbland_singleProject_featuredProject_slider .swiper-slide,
 .mbland_singleProject_featuredProject_slide {
-  width: 420px;
+  max-width: 40% !important;
+  margin-right: 16px;
 }
 
 /* Card item lấy y chang từ homepage.css:L766-L860 */
@@ -1256,11 +1257,89 @@
   filter: brightness(0.5);
 }
 
-@media (max-width: 768px) {
+
+@media (max-width: 1600px) {
+  .mbland_singleProject_featuredProject .container {
+    max-width: 1480px;
+  }
+
+  .mbland_singleProject_featuredProject {
+    padding-bottom: 129px;
+  }
+}
+
+@media (max-width: 1400px) {
+  .mbland_singleProject_featuredProject {
+    padding-bottom: 115px;
+  }
+
+  .mbland_singleProject_featuredProject_wrapper {
+    gap: 36px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .mbland_singleProject_featuredProject {
+    padding-bottom: 102px;
+  }
+
+  .mbland_singleProject_featuredProject_wrapper {
+    gap: 32px;
+  }
+
+  .mbland_homepage_projects_itemImage img {
+    height: 300px;
+  }
+}
+
+@media (max-width: 996px) {
+  .mbland_singleProject_featuredProject {
+    padding-bottom: 88px;
+  }
 
   .mbland_singleProject_featuredProject_slider .swiper-slide,
   .mbland_singleProject_featuredProject_slide {
-    width: 300px;
+    max-width: 350px !important;
+    margin-right: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .mbland_singleProject_featuredProject {
+    padding-bottom: 73px;
+  }
+
+  .mbland_homepage_projects_itemImage img {
+    height: 260px;
+  }
+}
+
+@media (max-width: 576px) {
+  .mbland_singleProject_featuredProject {
+    padding-bottom: 60px;
+  }
+
+  .mbland_singleProject_featuredProject_wrapper {
+    gap: 26px;
+  }
+}
+
+@media (max-width: 425px) {
+  .mbland_singleProject_featuredProject {
+    padding-bottom: 50px;
+  }
+
+  .mbland_homepage_projects_itemImage img {
+    height: 240px;
+  }
+
+  .mbland_singleProject_featuredProject_slider .swiper-slide,
+  .mbland_singleProject_featuredProject_slide {
+    max-width: 90% !important;
+  }
+
+  .mbland_singleProject_featuredProject_wrapper {
+    gap: 24px;
   }
 }
 
