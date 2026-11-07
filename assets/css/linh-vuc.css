@@ -431,13 +431,8 @@
     display: flex;
 }
 
-.mbland_linhvuc_listProject_item:nth-of-type(even) .mbland_linhvuc_listProject_itemMedia,
-.mbland_linhvuc_listProject_item.is-even .mbland_linhvuc_listProject_itemMedia {
-    order: 1;
-}
-
-.mbland_linhvuc_listProject_item.is-odd .mbland_linhvuc_listProject_itemMedia {
-    order: 0;
+.mbland_linhvuc_listProject_item:nth-of-type(even) .mbland_linhvuc_listProject_itemMedia {
+    order: 1
 }
 
 .mbland_linhvuc_listProject_itemImage {
@@ -594,14 +589,6 @@
 }
 
 .mbland_linhvuc_listProject_loadMoreLabel {}
-
-.mbland_linhvuc_projects_empty {
-    text-align: center;
-    padding: 60px 20px;
-    font-family: 'GanhType';
-    font-size: 18px;
-    color: #656565;
-}
 
 
 @media (max-width: 1600px) {
@@ -782,8 +769,7 @@
         height: calc(100vw / 16 * 9);
     }
 
-    .mbland_linhvuc_listProject_item:nth-of-type(even) .mbland_linhvuc_listProject_itemMedia,
-    .mbland_linhvuc_listProject_item.is-even .mbland_linhvuc_listProject_itemMedia {
+    .mbland_linhvuc_listProject_item:nth-of-type(even) .mbland_linhvuc_listProject_itemMedia {
         order: 0;
     }
 
