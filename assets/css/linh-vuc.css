@@ -910,10 +910,8 @@
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    transition: transform 0.4s ease, top 0.4s ease;
+    transition: all 0.4s ease;
     width: calc(100% - 70px);
-    pointer-events: none;
-    z-index: 2;
 }
 
 .mbland_linhvuc_coreStrengths_itemTitle {
@@ -925,7 +923,6 @@
     text-transform: uppercase;
     color: #0C1DB7;
     margin-bottom: 8px;
-    transition: color 0.3s ease;
 }
 
 .mbland_linhvuc_coreStrengths_itemTitle.en {
@@ -941,9 +938,9 @@
     line-height: 100%;
     letter-spacing: 36%;
     text-transform: uppercase;
-    transition: color 0.3s ease;
 }
 
+.mbland_linhvuc_coreStrengths_itemBg,
 .mbland_linhvuc_coreStrengths_itemHover {
     display: none;
 }
@@ -955,11 +952,11 @@
     inset: 20px;
     border: 1px solid #0C1DB718;
     pointer-events: none;
-    transition: opacity 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .mbland_linhvuc_coreStrengths_item:hover::before {
-    opacity: 0;
+    display: none;
 }
 
 /* hover */
@@ -1003,13 +1000,14 @@
     right: 0;
     z-index: 1;
     display: block;
-    opacity: 0;
-    transition: opacity 0.3s ease;
 }
 
 .mbland_linhvuc_coreStrengths_item:hover .mbland_linhvuc_coreStrengths_itemMain {
+    position: absolute;
     top: 35px;
-    transform: translate(-50%, 0);
+    left: 35px;
+    text-align: left;
+    transform: translate(0, 0);
 }
 
 .mbland_linhvuc_coreStrengths_item:hover {
@@ -1019,6 +1017,7 @@
 .mbland_linhvuc_coreStrengths_item:hover .mbland_linhvuc_coreStrengths_itemTitle,
 .mbland_linhvuc_coreStrengths_item:hover .mbland_linhvuc_coreStrengths_itemLabel {
     color: #fff;
+    text-align: left;
 }
 
 .mbland_linhvuc_coreStrengths_item:hover .mbland_linhvuc_coreStrengths_itemHover,
@@ -1056,12 +1055,9 @@
         padding-bottom: 9px;
     }
 
-    .mbland_linhvuc_coreStrengths_itemMain {
-        width: calc(100% - 56px);
-    }
-
     .mbland_linhvuc_coreStrengths_item:hover .mbland_linhvuc_coreStrengths_itemMain {
         top: 32px;
+        left: 28px;
     }
 }
 
