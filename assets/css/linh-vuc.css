@@ -382,6 +382,8 @@
     border: 1px solid var(--primary-color);
     border-radius: 100px;
     overflow: hidden;
+    overflow-x: auto;
+    scrollbar-width: none;
 }
 
 .mbland_linhvuc_listProject_filterItem {
@@ -401,6 +403,8 @@
     display: block;
     transition: background-color .3s ease, color .3s ease;
     border-radius: 100px;
+    min-width: 300px;
+    text-wrap: nowrap;
 }
 
 .mbland_linhvuc_listProject_filterItem:hover .mbland_linhvuc_listProject_filterLink,
@@ -884,7 +888,7 @@
 /* ===== START VALUES ===== */
 .mbland_linhvuc_coreStrengths_list {
     display: grid;
-    grid-template-columns: repeat(4, 350px);
+    grid-template-columns: repeat(4, 1fr);
     gap: 10px;
     justify-content: center;
 }
@@ -902,41 +906,45 @@
 
 .mbland_linhvuc_coreStrengths_itemMain {
     position: absolute;
-    width: calc(100% - 70px);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    text-align: center;
-    transition: all 0.4s ease;
+    text-align: left;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), top 0.4s cubic-bezier(0.25, 1, 0.5, 1), left 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    width: max-content;
+    max-width: calc(100% - 70px);
+    pointer-events: none;
+    z-index: 2;
 }
 
 .mbland_linhvuc_coreStrengths_itemTitle {
     font-family: "FZPoppins";
     font-weight: 600;
     font-size: 24px;
-    line-height: 1em;
-    text-align: center;
+    line-height: 1.2em;
+    text-align: left;
     text-transform: uppercase;
     color: #0C1DB7;
     margin-bottom: 8px;
+    transition: color 0.3s ease;
 }
 
 .mbland_linhvuc_coreStrengths_itemTitle.en {
-    font-size: 27px;
+    font-size: 24px;
 }
 
 .mbland_linhvuc_coreStrengths_itemLabel {
     font-family: "FZPoppins";
     color: #0C1DB7;
-    text-align: center;
+    text-align: left;
     font-weight: 500;
     font-size: 11px;
     line-height: 100%;
     letter-spacing: 36%;
     text-transform: uppercase;
+    transition: color 0.3s ease;
 }
 
-.mbland_linhvuc_coreStrengths_itemBg,
 .mbland_linhvuc_coreStrengths_itemHover {
     display: none;
 }
@@ -948,11 +956,11 @@
     inset: 20px;
     border: 1px solid #0C1DB718;
     pointer-events: none;
-    transition: all 0.3s ease;
+    transition: opacity 0.3s ease;
 }
 
 .mbland_linhvuc_coreStrengths_item:hover::before {
-    display: none;
+    opacity: 0;
 }
 
 /* hover */
@@ -988,7 +996,6 @@
     letter-spacing: 0%;
     color: #fdf9f2;
     padding-top: 10px;
-
 }
 
 .mbland_linhvuc_coreStrengths_itemBg {
@@ -997,13 +1004,13 @@
     right: 0;
     z-index: 1;
     display: block;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .mbland_linhvuc_coreStrengths_item:hover .mbland_linhvuc_coreStrengths_itemMain {
-    position: absolute;
     top: 35px;
     left: 35px;
-    text-align: left;
     transform: translate(0, 0);
 }
 
@@ -1014,7 +1021,6 @@
 .mbland_linhvuc_coreStrengths_item:hover .mbland_linhvuc_coreStrengths_itemTitle,
 .mbland_linhvuc_coreStrengths_item:hover .mbland_linhvuc_coreStrengths_itemLabel {
     color: #fff;
-    text-align: left;
 }
 
 .mbland_linhvuc_coreStrengths_item:hover .mbland_linhvuc_coreStrengths_itemHover,
@@ -1023,57 +1029,71 @@
 }
 
 @media (max-width: 1600px) {
-    .mbland_linhvuc_coreStrengths_itemTitle {
-        font-size: 40px;
-    }
-
-    .mbland_linhvuc_coreStrengths_itemTitle.en {
-        font-size: 24px;
+    .mbland_linhvuc_coreStrengths_item {
+        min-height: 320px;
     }
 }
 
 @media (max-width: 1400px) {
-    .mbland_linhvuc_coreStrengths_list {
-        grid-template-columns: repeat(2, minmax(0, 350px));
-        gap: 24px;
+    .mbland_linhvuc_coreStrengths_item {
+        padding: 16px;
+        min-height: calc(17vw + 80px);
     }
 
-    .mbland_linhvuc_coreStrengths_itemTitle {
-        font-size: 36px;
+    .mbland_linhvuc_coreStrengths_itemLabel {
+        font-size: 10.5px;
     }
 
-    .mbland_linhvuc_coreStrengths_itemTitle.en {
-        font-size: 20px;
+    .mbland_linhvuc_coreStrengths_item::before {
+        inset: 16px;
+    }
+
+    .mbland_linhvuc_coreStrengths_itemHover {
+        bottom: 28px;
+        left: 28px;
+        right: 28px;
+    }
+
+    .mbland_linhvuc_coreStrengths_itemTag {
+        padding-bottom: 9px;
+    }
+
+    .mbland_linhvuc_coreStrengths_itemMain {
+        max-width: calc(100% - 56px);
+    }
+
+    .mbland_linhvuc_coreStrengths_item:hover .mbland_linhvuc_coreStrengths_itemMain {
+        top: 32px;
+        left: 28px;
     }
 }
 
-@media (max-width: 996px) {
+@media (max-width: 1200px) {
     .mbland_linhvuc_coreStrengths_list {
-        gap: 16px;
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .mbland_linhvuc_coreStrengths_item {
+        min-height: 330px;
     }
 }
 
 @media (max-width: 768px) {
-    .mbland_linhvuc_coreStrengths_list {
-        grid-template-columns: minmax(0, 350px);
-    }
-
-    .mbland_linhvuc_coreStrengths_itemTitle {
-        font-size: 26px;
-    }
-
-    .mbland_linhvuc_coreStrengths_itemLabel {
-        font-size: 9px;
+    .mbland_linhvuc_coreStrengths_item {
+        min-height: 46vw;
     }
 }
 
 @media (max-width: 576px) {
     .mbland_linhvuc_coreStrengths_list {
-        gap: 12px;
+        grid-template-columns: repeat(1, 1fr);
+        max-width: 420px;
     }
 
-    .mbland_linhvuc_coreStrengths_itemTitle {
-        font-size: 24px;
+    .mbland_linhvuc_coreStrengths_item {
+        min-height: min(76vw, 420px);
     }
 }
 
