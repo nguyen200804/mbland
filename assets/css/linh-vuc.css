@@ -474,7 +474,7 @@
 .mbland_linhvuc_listProject_itemDesc {
     font-family: 'FZPoppins';
     font-weight: 400;
-    /* font-size: 16px; */
+    /* font-size: 13px; */
     line-height: 150%;
     margin-bottom: 8px;
 }
@@ -684,7 +684,8 @@
     }
 
     .mbland_linhvuc_listProject_filterLink {
-        font-size: 17px;
+        font-size: 14px;
+        min-width: 250px;
     }
 
     .mbland_linhvuc_listProject_content {
@@ -782,6 +783,7 @@
 
     .mbland_linhvuc_listProject_loadMore {
         font-size: 15px;
+        margin-top: 24px;
     }
 }
 
@@ -851,6 +853,15 @@
 
     .mbland_linhvuc_listProject_itemTitle {
         font-size: 20px;
+    }
+
+    .mbland_linhvuc_listProject_itemDesc {
+        font-size: 13px;
+    }
+
+    .mbland_linhvuc_listProject_itemLocationValue,
+    .mbland_linhvuc_listProject_itemScaleValue {
+        font-size: 13px;
     }
 }
 
@@ -1294,7 +1305,7 @@
 
 .mbland_linhvuc_procedure_itemDesc {
     font-weight: 400;
-    line-height: 1.575em;
+    /* line-height: 1.575em; */
 }
 
 .mbland_linhvuc_procedure_itemImage {
@@ -1370,7 +1381,7 @@
     }
 
     .mbland_linhvuc_procedure_title {
-        margin-bottom: 22px;
+        margin-bottom: 21px;
     }
 
     .mbland_linhvuc_procedure_item {
@@ -1400,7 +1411,7 @@
     }
 
     .mbland_linhvuc_procedure_title {
-        margin-bottom: 21px;
+        margin-bottom: 19px;
     }
 
     .mbland_linhvuc_procedure_item {
@@ -1430,7 +1441,7 @@
     }
 
     .mbland_linhvuc_procedure_title {
-        margin-bottom: 20px;
+        margin-bottom: 17px;
     }
 
     .mbland_linhvuc_procedure_desc {
@@ -1464,7 +1475,7 @@
     }
 
     .mbland_linhvuc_procedure_title {
-        margin-bottom: 19px;
+        margin-bottom: 15px;
     }
 
     .mbland_linhvuc_procedure_desc {
@@ -1519,7 +1530,7 @@
     }
 
     .mbland_linhvuc_procedure_title {
-        margin-bottom: 18px;
+        margin-bottom: 13px;
     }
 
     .mbland_linhvuc_procedure_desc {
@@ -1540,7 +1551,7 @@
     }
 
     .mbland_linhvuc_procedure_itemTitle {
-        font-size: 22px;
+        font-size: 21px;
     }
 
     .mbland_linhvuc_procedure_itemImage {
@@ -1562,7 +1573,7 @@
     }
 
     .mbland_linhvuc_procedure_title {
-        margin-bottom: 17px;
+        margin-bottom: 11px;
     }
 
     .mbland_linhvuc_procedure_desc {
@@ -1588,7 +1599,7 @@
     }
 
     .mbland_linhvuc_procedure_itemTitle {
-        font-size: 21px;
+        font-size: 19px;
     }
 
     .mbland_linhvuc_procedure_itemImage {
@@ -1607,11 +1618,11 @@
     }
 
     .mbland_linhvuc_procedure_heading {
-        margin-bottom: 50px;
+        margin-bottom: 48px;
     }
 
     .mbland_linhvuc_procedure_title {
-        margin-bottom: 16px;
+        margin-bottom: 10px;
     }
 
     .mbland_linhvuc_procedure_item {
@@ -1619,18 +1630,27 @@
     }
 
     .mbland_linhvuc_procedure_itemNumber {
-        font-size: 40px;
+        font-size: 32px;
         margin-right: 15px;
     }
 
     .mbland_linhvuc_procedure_itemImage {
-        padding-left: 70px;
-        margin-top: 14px;
+        padding-left: 58px;
+        margin-top: 16px;
     }
 
     .mbland_linhvuc_procedure_itemImageList {
         gap: 5px;
     }
+
+    .mbland_linhvuc_procedure_itemDesc {
+        font-size: 13px;
+    }
+
+    .mbland_linhvuc_procedure_itemTag {
+        font-size: 11px;
+    }
+
 }
 
 
@@ -1644,6 +1664,7 @@
 /* ===== START SECTION FEATURED PROJECT ===== */
 .mbland_linhvuc_featuredProject {
     padding-bottom: 100px;
+    padding-top: 30px;
 }
 
 .mbland_linhvuc_featuredProject_wrapper {}
@@ -1655,7 +1676,7 @@
 .mbland_linhvuc_featuredProject_title {}
 
 .mbland_linhvuc_featuredProject_list {
-    margin-top: 70px;
+    margin-top: 72px;
     display: flex;
     gap: 24px;
 }
@@ -1711,7 +1732,7 @@
 .mbland_linhvuc_featuredProject_itemDesc {
     font-weight: 400;
     font-size: 14px;
-    line-height: 22px;
+    line-height: 1.5em;
     letter-spacing: 0%;
 }
 
@@ -1779,5 +1800,136 @@
     color: #fff;
     background-color: var(--primary-color);
 }
+
+
+@media (max-width: 1600px) {
+    .mbland_linhvuc_featuredProject {
+        padding-bottom: 89px;
+        padding-top: 27px;
+    }
+
+    .mbland_linhvuc_featuredProject_list {
+        margin-top: 64px;
+    }
+
+    .mbland_linhvuc_featuredProject_itemBody {
+        padding: 32px 36px;
+    }
+}
+
+@media (max-width: 1400px) {
+    .mbland_linhvuc_featuredProject {
+        padding-bottom: 83px;
+        padding-top: 25px;
+    }
+
+    .mbland_linhvuc_featuredProject_list {
+        margin-top: 59px;
+        gap: 20px;
+    }
+
+    .mbland_linhvuc_featuredProject_itemBody {
+        gap: 21px;
+    }
+
+    .mbland_linhvuc_featuredProject_itemLocationText {
+        gap: 6px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .mbland_linhvuc_featuredProject {
+        padding-bottom: 77px;
+        padding-top: 23px;
+    }
+
+    .mbland_linhvuc_featuredProject_list {
+        margin-top: 55px;
+        gap: 16px;
+    }
+
+    .mbland_linhvuc_featuredProject_itemBody {
+        padding: 30px 28px;
+        gap: 20px;
+    }
+
+    .mbland_linhvuc_featuredProject_itemLocationValue {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 996px) {
+    .mbland_linhvuc_featuredProject {
+        padding-bottom: 69px;
+        padding-top: 21px;
+    }
+
+    .mbland_linhvuc_featuredProject_list {
+        margin-top: 50px;
+    }
+
+    .mbland_linhvuc_featuredProject_itemBody {
+        padding: 28px 20px;
+    }
+
+    .mbland_linhvuc_featuredProject_itemTitle {
+        font-size: 18px;
+    }
+
+    .mbland_linhvuc_featuredProject_itemDesc {
+        font-size: 13px;
+    }
+
+    .mbland_linhvuc_featuredProject_itemLink {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    .mbland_linhvuc_featuredProject {
+        padding-bottom: 61px;
+        padding-top: 19px;
+    }
+
+    .mbland_linhvuc_featuredProject_list {
+        margin-top: 44px;
+        flex-direction: column;
+    }
+
+    .mbland_linhvuc_featuredProject_itemBody {
+        padding: 28px 28px;
+    }
+}
+
+@media (max-width: 576px) {
+    .mbland_linhvuc_featuredProject {
+        padding-bottom: 55px;
+        padding-top: 17px;
+    }
+
+    .mbland_linhvuc_featuredProject_list {
+        margin-top: 40px;
+    }
+
+    .mbland_linhvuc_featuredProject_itemHeader {
+        gap: 4px;
+    }
+}
+
+@media (max-width: 425px) {
+    .mbland_linhvuc_featuredProject {
+        padding-bottom: 50px;
+        padding-top: 16px;
+    }
+
+    .mbland_linhvuc_featuredProject_list {
+        margin-top: 36px;
+    }
+
+    .mbland_linhvuc_featuredProject_itemBody {
+        padding: 28px 24px;
+    }
+}
+
 
 /* ===== END SECTION FEATURED PROJECT ===== */
