@@ -1026,12 +1026,40 @@
 }
 
 @media (max-width: 1600px) {
+    .mbland_linhvuc_coreStrengths {
+        padding-top: 131px;
+    }
+
+    .mbland_linhvuc_coreStrengths_header {
+        padding-bottom: 64px;
+    }
+
+    .mbland_linhvuc_coreStrengths_title {
+        margin-bottom: 22px;
+    }
+
+    .mbland_linhvuc_coreStrengths_desc {
+        font-size: 17px;
+    }
+
     .mbland_linhvuc_coreStrengths_item {
         min-height: 320px;
     }
 }
 
 @media (max-width: 1400px) {
+    .mbland_linhvuc_coreStrengths {
+        padding-top: 119px;
+    }
+
+    .mbland_linhvuc_coreStrengths_header {
+        padding-bottom: 59px;
+    }
+
+    .mbland_linhvuc_coreStrengths_title {
+        margin-bottom: 21px;
+    }
+
     .mbland_linhvuc_coreStrengths_item {
         padding: 16px;
         min-height: calc(17vw + 80px);
@@ -1062,6 +1090,22 @@
 }
 
 @media (max-width: 1200px) {
+    .mbland_linhvuc_coreStrengths {
+        padding-top: 107px;
+    }
+
+    .mbland_linhvuc_coreStrengths_header {
+        padding-bottom: 55px;
+    }
+
+    .mbland_linhvuc_coreStrengths_title {
+        margin-bottom: 20px;
+    }
+
+    .mbland_linhvuc_coreStrengths_desc {
+        font-size: 16px;
+    }
+
     .mbland_linhvuc_coreStrengths_list {
         grid-template-columns: repeat(2, 1fr);
         max-width: 700px;
@@ -1073,13 +1117,59 @@
     }
 }
 
+@media (max-width: 996px) {
+    .mbland_linhvuc_coreStrengths {
+        padding-top: 94px;
+    }
+
+    .mbland_linhvuc_coreStrengths_header {
+        padding-bottom: 50px;
+    }
+
+    .mbland_linhvuc_coreStrengths_title {
+        margin-bottom: 19px;
+    }
+}
+
 @media (max-width: 768px) {
+    .mbland_linhvuc_coreStrengths {
+        padding-top: 81px;
+    }
+
+    .mbland_linhvuc_coreStrengths_header {
+        padding-bottom: 44px;
+    }
+
+    .mbland_linhvuc_coreStrengths_title {
+        margin-bottom: 18px;
+    }
+
+    .mbland_linhvuc_coreStrengths_desc {
+        font-size: 15px;
+    }
+
     .mbland_linhvuc_coreStrengths_item {
         min-height: 46vw;
     }
 }
 
 @media (max-width: 576px) {
+    .mbland_linhvuc_coreStrengths {
+        padding-top: 69px;
+    }
+
+    .mbland_linhvuc_coreStrengths_header {
+        padding-bottom: 40px;
+    }
+
+    .mbland_linhvuc_coreStrengths_title {
+        margin-bottom: 17px;
+    }
+
+    .mbland_linhvuc_coreStrengths_desc {
+        font-size: 14px;
+    }
+
     .mbland_linhvuc_coreStrengths_list {
         grid-template-columns: repeat(1, 1fr);
         max-width: 420px;
@@ -1087,6 +1177,20 @@
 
     .mbland_linhvuc_coreStrengths_item {
         min-height: min(76vw, 420px);
+    }
+}
+
+@media (max-width: 425px) {
+    .mbland_linhvuc_coreStrengths {
+        padding-top: 60px;
+    }
+
+    .mbland_linhvuc_coreStrengths_header {
+        padding-bottom: 36px;
+    }
+
+    .mbland_linhvuc_coreStrengths_title {
+        margin-bottom: 16px;
     }
 }
 
