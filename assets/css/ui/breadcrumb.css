@@ -10,15 +10,14 @@
 
 .hn-breadcrumb .breadcrumb-list {
 	list-style: none;
-	display: flex;
-	flex-wrap: wrap;
-	gap: 6px;
+	display: inline;
 	padding: 0;
 	margin: 0;
 }
 
 .hn-breadcrumb .breadcrumb-list li {
 	color: #191919;
+	display: inline;
 }
 
 .hn-breadcrumb .breadcrumb-list li::after {

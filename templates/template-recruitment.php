@@ -248,7 +248,7 @@ $jobs_query = new WP_Query( $jobs_args );
 			<div class="mbland_recruitment_news_line"></div>
 		</div>
 
-		<div class="mbland_recruitment_news_grid">
+		<div class="mbland_recruitment_news_grid mbland_tintucTemplate_newPost_list">
 			<?php
 			$related_news_args = array(
 				'post_type'      => 'post',

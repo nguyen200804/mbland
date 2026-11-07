@@ -152,7 +152,7 @@
 .mbland_tintucTemplate_post_newPost {}
 
 .mbland_tintucTemplate_post_newPostHeader {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   display: flex;
   align-items: center;
 }
@@ -170,7 +170,9 @@
   background-color: #C5C5C5;
 }
 
-.mbland_tintucTemplate_newPost_list {
+.mbland_tintucTemplate_newPost_list,
+.mbland_recruitment_news_grid,
+.mbland_singlePost_activities_grid {
   display: flex;
   gap: 20px;
 }
@@ -306,7 +308,7 @@
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
-  margin-bottom: 30px;
+  margin-bottom: 24px;
 }
 
 .mbland_tintucTemplate_post_listPostCategoriesItem {}
@@ -510,7 +512,7 @@
   }
 
   .mbland_tintucTemplate_post_newPostTitle {
-    font-size: 33px;
+    font-size: 28px;
   }
 }
 
@@ -536,7 +538,9 @@
     gap: 32px 12px;
   }
 
-  .mbland_tintucTemplate_newPost_list {
+  .mbland_tintucTemplate_newPost_list,
+  .mbland_recruitment_news_grid,
+  .mbland_singlePost_activities_grid {
     flex-direction: column;
     gap: 20px;
   }
@@ -556,7 +560,7 @@
 @media (max-width: 576px) {
   .mbland_tintucTemplate_post_listPostGrid {
     grid-template-columns: repeat(1, 1fr);
-    gap: 32px 12px;
+    gap: 28px 12px;
   }
 
   .mbland_tintucTemplate_newCard_desc {
@@ -585,6 +589,28 @@
   .mbland_tintucTemplate_post_newPostTitle {
     font-size: 28px;
     padding-right: 16px;
+  }
+
+  .mbland_tintucTemplate_newCard_button {
+    font-size: 10px;
+  }
+
+  .mbland_tintucTemplate_newCard_content {
+    padding: 10px 20px 10px 0;
+  }
+
+  .mbland_tintucTemplate_newCard_title {
+    font-size: 15px;
+    margin-bottom: 8px;
+  }
+
+  .mbland_tintucTemplate_newCard_meta {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+
+  .mbland_tintucTemplate_post_listPostCategories {
+    font-size: 13px;
   }
 }
 
@@ -640,6 +666,16 @@
 
   .mbland-ui-btn-detail {
     font-size: 10px;
+  }
+
+  .mbland_tintucTemplate_post_listPostCategoriesLink {
+    font-size: 12px;
+  }
+
+  .mbland_tintucTemplate_newPost_list,
+  .mbland_recruitment_news_grid,
+  .mbland_singlePost_activities_grid {
+    gap: 16px;
   }
 }
 

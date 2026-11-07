@@ -322,7 +322,7 @@
 
 .mbland_recruitment_news_grid {
   display: flex;
-  gap: 30px;
+  gap: 20px;
 }
 
 .mbland_recruitment_news_grid .mbland_tintucTemplate_newCard,
@@ -440,8 +440,11 @@
     outline: none;
     box-sizing: border-box;
   }
+}
 
-  /* Section 3: Xếp dọc trên tablet */
+/* ≤ 768px (Mobile lớn) */
+@media (max-width: 768px) {
+  /* Section 3: Xếp dọc trên mobile/tablet */
   .mbland_recruitment_news_grid {
     flex-direction: column;
     gap: 20px;
@@ -450,11 +453,8 @@
   .mbland_recruitment_news_grid .mbland_tintucTemplate_newCard,
   .mbland_recruitment_news_grid .mbland_recruitment_news_card {
     width: 100%;
+    gap: 20px;
   }
-}
-
-/* ≤ 768px (Mobile lớn) */
-@media (max-width: 768px) {
   .mbland_recruitment_intro_title {
     font-size: 32px;
   }

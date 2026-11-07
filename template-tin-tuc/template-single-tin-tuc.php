@@ -104,7 +104,7 @@ $categories         = get_the_category( $post_id );
 			<div class="mbland_singlePost_activities_line"></div>
 		</div>
 
-		<div class="mbland_singlePost_activities_grid">
+		<div class="mbland_singlePost_activities_grid mbland_recruitment_news_grid mbland_tintucTemplate_newPost_list">
 			<?php
 			$term_ids = ! empty( $categories ) ? wp_list_pluck( $categories, 'term_id' ) : array();
 

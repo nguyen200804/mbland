@@ -280,13 +280,12 @@
 }
 
 .mbland_singlePost_activities_grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
+  display: flex;
+  gap: 20px;
 }
 
 .mbland_singlePost_activities_grid .mbland_tintucTemplate_newCard {
-  width: 100%;
+  width: 50%;
 }
 
 .mbland_singlePost_activities_card {
@@ -457,10 +456,6 @@
     font-size: 16px;
   }
 
-  .mbland_singlePost_activities_grid {
-    gap: 24px;
-  }
-
   .mbland_singlePost_activities_cardImage {
     min-height: 180px;
   }
@@ -485,13 +480,6 @@
     line-height: 24px;
   }
 
-  /* Grid tin hoạt động: Xếp dọc trên tablet */
-  .mbland_singlePost_activities_grid {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-
   .mbland_singlePost_activities_card {
     gap: 16px;
     align-items: flex-start;
@@ -514,6 +502,17 @@
 
 /* ≤ 768px (Mobile lớn) */
 @media (max-width: 768px) {
+  /* Grid tin hoạt động: Xếp dọc trên mobile/tablet */
+  .mbland_singlePost_activities_grid {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .mbland_singlePost_activities_grid .mbland_tintucTemplate_newCard {
+    width: 100%;
+    gap: 20px;
+  }
+
   .mbland_singlePost_hero_breadcrumb {
     padding: 10px 0;
   }

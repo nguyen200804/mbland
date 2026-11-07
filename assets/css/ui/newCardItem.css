@@ -127,3 +127,110 @@
   border-radius: 50%;
   border: 1px solid #d7d7d7;
 }
+
+/* Lưới container chứa bài viết tin mới (Tin mới / Tin tức liên quan / Tin hoạt động) */
+.mbland_tintucTemplate_newPost_list,
+.mbland_recruitment_news_grid,
+.mbland_singlePost_activities_grid {
+  display: flex;
+  gap: 20px;
+}
+
+.mbland_tintucTemplate_newPost_list .mbland_tintucTemplate_newCard,
+.mbland_recruitment_news_grid .mbland_tintucTemplate_newCard,
+.mbland_recruitment_news_grid .mbland_recruitment_news_card,
+.mbland_singlePost_activities_grid .mbland_tintucTemplate_newCard {
+  width: 50%;
+}
+
+/* ==========================================================================
+   RESPONSIVE (MEDIA QUERIES) CHO CARD & LƯỚI TIN MỚI
+   ========================================================================== */
+
+@media (max-width: 1200px) {
+  .mbland_tintucTemplate_newCard {
+    width: 50%;
+    gap: 20px;
+    border-radius: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .mbland_tintucTemplate_newPost_list,
+  .mbland_recruitment_news_grid,
+  .mbland_singlePost_activities_grid {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .mbland_tintucTemplate_newPost_list .mbland_tintucTemplate_newCard,
+  .mbland_recruitment_news_grid .mbland_tintucTemplate_newCard,
+  .mbland_recruitment_news_grid .mbland_recruitment_news_card,
+  .mbland_singlePost_activities_grid .mbland_tintucTemplate_newCard,
+  .mbland_tintucTemplate_newCard {
+    width: 100%;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .mbland_tintucTemplate_newCard_desc {
+    display: none;
+  }
+
+  .mbland_tintucTemplate_newCard {
+    gap: 16px;
+  }
+
+  .mbland_tintucTemplate_newCard_button {
+    font-size: 10px;
+  }
+
+  .mbland_tintucTemplate_newCard_content {
+    padding: 10px 20px 10px 0;
+  }
+
+  .mbland_tintucTemplate_newCard_title {
+    font-size: 15px;
+    margin-bottom: 8px;
+  }
+
+  .mbland_tintucTemplate_newCard_meta {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 425px) {
+  .mbland_tintucTemplate_newCard {
+    gap: 12px;
+  }
+
+  .mbland_tintucTemplate_newCard_thumb {
+    width: 40%;
+  }
+
+  .mbland_tintucTemplate_newCard_content {
+    width: 60%;
+  }
+
+  .mbland_tintucTemplate_newCard_meta {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+
+  .mbland_tintucTemplate_newCard_title {
+    font-size: 15px;
+    margin-bottom: 8px;
+  }
+
+  .mbland_tintucTemplate_newCard_author {
+    font-size: 10px;
+  }
+
+  .mbland_tintucTemplate_newPost_list,
+  .mbland_recruitment_news_grid,
+  .mbland_singlePost_activities_grid {
+    gap: 16px;
+  }
+}

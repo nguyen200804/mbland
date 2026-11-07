@@ -126,7 +126,7 @@ if ( is_category() ) {
 					<h2 class="mbland_tintucTemplate_post_newPostTitle">Tin tức mới</h2>
 					<span class="mbland_tintucTemplate_post_newPostLine"></span>
 				</header>
-                <div class="mbland_tintucTemplate_newPost_list">
+                <div class="mbland_tintucTemplate_newPost_list mbland_recruitment_news_grid">
                     <?php
                     $ttm_args = array(
                         'post_type'      => 'post',
