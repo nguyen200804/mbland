@@ -6,25 +6,27 @@
  * @since 1.0
  */
 
-// Xác định nguồn Options: ưu tiên 'layout' (theo options page), fallback 'option'
-$opt_id = 'option';
-if ( function_exists('get_field') ) {
-	if ( get_field('footer_address', 'layout') || get_field('footer_phone_fax', 'layout') || get_field('footer_logo', 'layout') || have_rows('footer_menu_columns', 'layout') ) {
-		$opt_id = 'layout';
-	}
+// Xác định nguồn Options: hỗ trợ Polylang (ngôn ngữ hiện tại: vi, en...) và các options slug
+$cur_lang    = function_exists('pll_current_language') ? pll_current_language('slug') : '';
+$opt_sources = array();
+if ( ! empty($cur_lang) ) {
+	$opt_sources[] = "layout_{$cur_lang}";
+	$opt_sources[] = "option_{$cur_lang}";
 }
+$opt_sources[] = 'layout';
+$opt_sources[] = 'option';
 
-$get_footer_field = function( $field_name, $default = '' ) use ( $opt_id ) {
+$get_footer_field = function( $field_name, $default = '' ) use ( $opt_sources ) {
 	if ( ! function_exists('get_field') ) {
 		return $default;
 	}
-	$val = get_field( $field_name, $opt_id );
-	if ( ( $val === null || $val === false || $val === '' ) && $opt_id !== 'option' ) {
-		$val = get_field( $field_name, 'option' );
-	} elseif ( ( $val === null || $val === false || $val === '' ) && $opt_id !== 'layout' ) {
-		$val = get_field( $field_name, 'layout' );
+	foreach ( $opt_sources as $source ) {
+		$val = get_field( $field_name, $source );
+		if ( $val !== null && $val !== false && $val !== '' ) {
+			return $val;
+		}
 	}
-	return ( $val !== null && $val !== false && $val !== '' ) ? $val : $default;
+	return $default;
 };
 
 // 1. Logo
@@ -72,7 +74,15 @@ $social_zalo      = ! empty(trim((string)$social_zalo)) ? trim((string)$social_z
 $footer_copyright = $get_footer_field('footer_copyright', '© 2025. MBLand Asset Management. Design by <a class="mbland-footer__copyright-link" href="https://homenest.com.vn/" target="_blank" rel="noopener">HomeNest Software</a>');
 
 // 5. Cột menu (Repeater)
-$menu_source = ( function_exists('have_rows') && have_rows('footer_menu_columns', 'layout') ) ? 'layout' : 'option';
+$menu_source = 'option';
+if ( function_exists('have_rows') ) {
+	foreach ( $opt_sources as $source ) {
+		if ( have_rows('footer_menu_columns', $source) ) {
+			$menu_source = $source;
+			break;
+		}
+	}
+}
 $has_menu_repeater = ( function_exists('have_rows') && have_rows('footer_menu_columns', $menu_source) );
 ?>
 </main>
@@ -109,7 +119,7 @@ $has_menu_repeater = ( function_exists('have_rows') && have_rows('footer_menu_co
 									<path d="M16.025 12.7171L13.9084 12.4755C13.6595 12.4462 13.4072 12.4738 13.1705 12.5561C12.9338 12.6383 12.7188 12.7732 12.5417 12.9505L11.0084 14.4838C8.64286 13.2804 6.72009 11.3576 5.5167 8.99212L7.05837 7.45046C7.4167 7.09212 7.5917 6.59212 7.53337 6.08379L7.2917 3.98379C7.24463 3.5772 7.04959 3.20214 6.74375 2.93012C6.43792 2.65809 6.04268 2.50812 5.63337 2.50879H4.1917C3.25003 2.50879 2.4667 3.29212 2.52503 4.23379C2.9667 11.3505 8.65837 17.0338 15.7667 17.4755C16.7084 17.5338 17.4917 16.7505 17.4917 15.8088V14.3671C17.5 13.5255 16.8667 12.8171 16.025 12.7171Z" />
 								</svg>
 								<span class="mbland-footer__contact-text">
-									Phone &amp; Fax: <a href="tel:<?php echo esc_attr($footer_phone_call); ?>" style="color: inherit; text-decoration: none;"><?php echo esc_html($footer_phone_fax); ?></a>
+									Phone &amp; Fax: <a href="tel:<?php echo esc_attr($footer_phone_call); ?>" style="color: inherit; text-decoration: none;"><?php echo esc_html(preg_replace('/^Phone\s*&\s*Fax\s*:\s*/i', '', (string)$footer_phone_fax)); ?></a>
 								</span>
 							</li>
 						<?php endif; ?>

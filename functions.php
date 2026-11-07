@@ -938,6 +938,209 @@ if ( defined( 'HN_FORCE_NOINDEX' ) && HN_FORCE_NOINDEX ) {
     }, 9999 );
 }
 
+/**
+ * ============================================================================
+ * TOOL: TỰ ĐỘNG ĐIỀN DỮ LIỆU FOOTER CHO ACF OPTIONS (TIẾNG VIỆT & TIẾNG ANH - POLYLANG)
+ * ============================================================================
+ */
+function mbland_seed_footer_data() {
+    if ( ! function_exists( 'update_field' ) ) {
+        return false;
+    }
+
+    // 1. DỮ LIỆU TIẾNG VIỆT (VI)
+    $data_vi = array(
+        'footer_logo'        => '/wp-content/uploads/2026/11/Logo_MBLandAM_horonzial-white.png',
+        'footer_address'     => '113 Nguyễn Văn Hưởng, Phường Thảo Điền, Quận 2, TP.Hồ Chí Minh.',
+        'footer_phone_fax'   => '028 38 258 816',
+        'footer_phone_call'  => '02838258816',
+        'footer_email'       => 'info@tasmaniapartners.vn',
+        'footer_social_title'=> 'Kết nối với chúng tôi',
+        'social_facebook'    => '#',
+        'social_instagram'   => '#',
+        'social_linkedin'    => '#',
+        'social_youtube'     => '#',
+        'social_zalo'        => '#',
+        'footer_copyright'   => '© 2025. MBLand Asset Management. Design by <a class="mbland-footer__copyright-link" href="https://homenest.com.vn/" target="_blank" rel="noopener">HomeNest Software</a>',
+        'footer_menu_columns'=> array(
+            array(
+                'column_title' => 'Menu',
+                'column_links' => array(
+                    array( 'link_label' => 'Trang chủ', 'link_url' => '/', 'is_blank' => 0 ),
+                    array( 'link_label' => 'Giới thiệu chúng tôi', 'link_url' => '#', 'is_blank' => 0 ),
+                    array( 'link_label' => 'Lĩnh vực hoạt động', 'link_url' => '#', 'is_blank' => 0 ),
+                    array( 'link_label' => 'Các đối tác', 'link_url' => '#', 'is_blank' => 0 ),
+                    array( 'link_label' => 'Dự án nổi bật', 'link_url' => '#', 'is_blank' => 0 ),
+                    array( 'link_label' => 'Hoạt động & Sự kiện', 'link_url' => '#', 'is_blank' => 0 ),
+                ),
+            ),
+            array(
+                'column_title' => 'Giới thiệu',
+                'column_links' => array(
+                    array( 'link_label' => 'Giá trị cốt lõi', 'link_url' => '#', 'is_blank' => 0 ),
+                    array( 'link_label' => 'Sứ mệnh & tầm nhìn', 'link_url' => '#', 'is_blank' => 0 ),
+                    array( 'link_label' => 'Hệ thống công ty con', 'link_url' => '#', 'is_blank' => 0 ),
+                    array( 'link_label' => 'Đội ngũ lãnh đạo', 'link_url' => '#', 'is_blank' => 0 ),
+                ),
+            ),
+            array(
+                'column_title' => 'Lĩnh vực hoạt động',
+                'column_links' => array(
+                    array( 'link_label' => 'Bất động sản', 'link_url' => '#', 'is_blank' => 0 ),
+                    array( 'link_label' => 'Dịch vụ & du lịch', 'link_url' => '#', 'is_blank' => 0 ),
+                    array( 'link_label' => 'Đầu tư tài chính', 'link_url' => '#', 'is_blank' => 0 ),
+                ),
+            ),
+            array(
+                'column_title' => 'Tin tức',
+                'column_links' => array(
+                    array( 'link_label' => 'Tin nổi bật', 'link_url' => '#', 'is_blank' => 0 ),
+                    array( 'link_label' => 'Tin tức mới', 'link_url' => '#', 'is_blank' => 0 ),
+                    array( 'link_label' => 'Văn hoá công ty', 'link_url' => '#', 'is_blank' => 0 ),
+                    array( 'link_label' => 'Hoạt động xã hội', 'link_url' => '#', 'is_blank' => 0 ),
+                    array( 'link_label' => 'Tin dự án', 'link_url' => '#', 'is_blank' => 0 ),
+                    array( 'link_label' => 'Tin hoạt động', 'link_url' => '#', 'is_blank' => 0 ),
+                ),
+            ),
+            array(
+                'column_title' => 'Tuyển dụng',
+                'column_links' => array(
+                    array( 'link_label' => 'Tuyển dụng Thành phố Hồ Chí Minh', 'link_url' => '#', 'is_blank' => 0 ),
+                    array( 'link_label' => 'Tuyển dụng Hà Nội', 'link_url' => '#', 'is_blank' => 0 ),
+                    array( 'link_label' => 'Tuyển dụng Đà Nẵng', 'link_url' => '#', 'is_blank' => 0 ),
+                    array( 'link_label' => 'Tuyển dụng Quảng Nam', 'link_url' => '#', 'is_blank' => 0 ),
+                ),
+            ),
+        ),
+    );
+
+    // 2. DỮ LIỆU TIẾNG ANH (EN)
+    $data_en = array(
+        'footer_logo'        => '/wp-content/uploads/2026/11/Logo_MBLandAM_horonzial-white.png',
+        'footer_address'     => '113 Nguyen Van Huong, Thao Dien Ward, District 2, Ho Chi Minh City.',
+        'footer_phone_fax'   => '028 38 258 816',
+        'footer_phone_call'  => '02838258816',
+        'footer_email'       => 'info@tasmaniapartners.vn',
+        'footer_social_title'=> 'Connect with us',
+        'social_facebook'    => '#',
+        'social_instagram'   => '#',
+        'social_linkedin'    => '#',
+        'social_youtube'     => '#',
+        'social_zalo'        => '#',
+        'footer_copyright'   => '© 2025. MBLand Asset Management. Design by <a class="mbland-footer__copyright-link" href="https://homenest.com.vn/" target="_blank" rel="noopener">HomeNest Software</a>',
+        'footer_menu_columns'=> array(
+            array(
+                'column_title' => 'Menu',
+                'column_links' => array(
+                    array( 'link_label' => 'Home', 'link_url' => '/en/', 'is_blank' => 0 ),
+                    array( 'link_label' => 'About Us', 'link_url' => '#', 'is_blank' => 0 ),
+                    array( 'link_label' => 'Fields of Operation', 'link_url' => '#', 'is_blank' => 0 ),
+                    array( 'link_label' => 'Partners', 'link_url' => '#', 'is_blank' => 0 ),
+                    array( 'link_label' => 'Featured Projects', 'link_url' => '#', 'is_blank' => 0 ),
+                    array( 'link_label' => 'News & Events', 'link_url' => '#', 'is_blank' => 0 ),
+                ),
+            ),
+            array(
+                'column_title' => 'About Us',
+                'column_links' => array(
+                    array( 'link_label' => 'Core Values', 'link_url' => '#', 'is_blank' => 0 ),
+                    array( 'link_label' => 'Mission & Vision', 'link_url' => '#', 'is_blank' => 0 ),
+                    array( 'link_label' => 'Subsidiaries', 'link_url' => '#', 'is_blank' => 0 ),
+                    array( 'link_label' => 'Leadership', 'link_url' => '#', 'is_blank' => 0 ),
+                ),
+            ),
+            array(
+                'column_title' => 'Fields of Operation',
+                'column_links' => array(
+                    array( 'link_label' => 'Real Estate', 'link_url' => '#', 'is_blank' => 0 ),
+                    array( 'link_label' => 'Services & Tourism', 'link_url' => '#', 'is_blank' => 0 ),
+                    array( 'link_label' => 'Financial Investment', 'link_url' => '#', 'is_blank' => 0 ),
+                ),
+            ),
+            array(
+                'column_title' => 'News',
+                'column_links' => array(
+                    array( 'link_label' => 'Featured News', 'link_url' => '#', 'is_blank' => 0 ),
+                    array( 'link_label' => 'Latest News', 'link_url' => '#', 'is_blank' => 0 ),
+                    array( 'link_label' => 'Corporate Culture', 'link_url' => '#', 'is_blank' => 0 ),
+                    array( 'link_label' => 'Social Activities', 'link_url' => '#', 'is_blank' => 0 ),
+                    array( 'link_label' => 'Project News', 'link_url' => '#', 'is_blank' => 0 ),
+                    array( 'link_label' => 'Corporate News', 'link_url' => '#', 'is_blank' => 0 ),
+                ),
+            ),
+            array(
+                'column_title' => 'Careers',
+                'column_links' => array(
+                    array( 'link_label' => 'Careers in Ho Chi Minh City', 'link_url' => '#', 'is_blank' => 0 ),
+                    array( 'link_label' => 'Careers in Hanoi', 'link_url' => '#', 'is_blank' => 0 ),
+                    array( 'link_label' => 'Careers in Da Nang', 'link_url' => '#', 'is_blank' => 0 ),
+                    array( 'link_label' => 'Careers in Quang Nam', 'link_url' => '#', 'is_blank' => 0 ),
+                ),
+            ),
+        ),
+    );
+
+    // Cập nhật cho Tiếng Việt (gán cho option, layout, option_vi, layout_vi)
+    $vi_post_ids = array( 'option', 'layout', 'option_vi', 'layout_vi' );
+    foreach ( $vi_post_ids as $pid ) {
+        foreach ( $data_vi as $field_key => $field_val ) {
+            update_field( $field_key, $field_val, $pid );
+        }
+    }
+
+    // Cập nhật cho Tiếng Anh (gán cho option_en, layout_en)
+    $en_post_ids = array( 'option_en', 'layout_en' );
+    foreach ( $en_post_ids as $pid ) {
+        foreach ( $data_en as $field_key => $field_val ) {
+            update_field( $field_key, $field_val, $pid );
+        }
+    }
+
+    return true;
+}
+
+// Xử lý kích hoạt tool từ Admin hoặc URL
+add_action( 'admin_init', function () {
+    if ( ! current_user_can( 'manage_options' ) ) {
+        return;
+    }
+
+    // Kích hoạt qua query URL: ?seed_footer=1
+    if ( isset( $_GET['seed_footer'] ) && $_GET['seed_footer'] == '1' ) {
+        check_admin_referer( 'mbland_seed_footer_nonce' );
+        mbland_seed_footer_data();
+        $redirect_url = remove_query_arg( array( 'seed_footer', '_wpnonce' ) );
+        $redirect_url = add_query_arg( 'footer_seeded', '1', $redirect_url );
+        wp_safe_redirect( $redirect_url );
+        exit;
+    }
+} );
+
+// Hiển thị Banner nút bấm và thông báo trong trang Admin Options
+add_action( 'admin_notices', function () {
+    if ( ! current_user_can( 'manage_options' ) ) {
+        return;
+    }
+
+    // Thông báo thành công
+    if ( isset( $_GET['footer_seeded'] ) && $_GET['footer_seeded'] == '1' ) {
+        echo '<div class="notice notice-success is-dismissible" style="padding: 12px 15px; border-left-color: #46b450;">';
+        echo '<p style="margin: 0; font-size: 14px; font-weight: 600;">✅ Đã điền thành công toàn bộ dữ liệu mẫu Footer cho Tiếng Việt và Tiếng Anh (Polylang)!</p>';
+        echo '</div>';
+    }
+
+    // Nút bấm tiện ích trong trang options layout
+    if ( isset( $_GET['page'] ) && $_GET['page'] === 'layout' && ! isset( $_GET['footer_seeded'] ) ) {
+        $seed_url = wp_nonce_url( admin_url( 'admin.php?page=layout&seed_footer=1' ), 'mbland_seed_footer_nonce' );
+        echo '<div class="notice notice-info" style="padding: 14px 18px; border-left: 4px solid #8A0218; background: #fff;">';
+        echo '<h3 style="margin: 0 0 6px 0; color: #8A0218;">🛠️ Tool tự động điền dữ liệu Footer (MBLand Asset Management)</h3>';
+        echo '<p style="margin: 0 0 12px 0; color: #444;">Nhấn nút bên dưới để tự động nạp sẵn toàn bộ thông tin (Logo, Liên hệ, 5 cột menu chuẩn thiết kế, Bản quyền) cho cả <strong>Tiếng Việt</strong> và <strong>Tiếng Anh (Polylang)</strong>:</p>';
+        echo '<a href="' . esc_url( $seed_url ) . '" class="button button-primary" style="background: #8A0218; border-color: #8A0218; font-weight: 600;" onclick="return confirm(\'Xác nhận nạp dữ liệu mẫu Footer cho cả Tiếng Việt và Tiếng Anh?\');">👉 Nạp nhanh dữ liệu Footer (VI & EN)</a>';
+        echo '</div>';
+    }
+} );
+
+
 
 
 

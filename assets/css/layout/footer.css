@@ -160,6 +160,10 @@
   color: #fff;
 }
 
+.mbland-footer__copyright * {
+  color: #fff;
+}
+
 .mbland-footer__copyright-link {
   color: #fff;
   transition: color .3s ease;
