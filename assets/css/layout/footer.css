@@ -14,7 +14,7 @@
 .mbland-footer__wrapper {
   display: flex;
   flex-direction: column;
-  gap: 80px;
+  gap: 72px;
 }
 
 /* Khối trên (trái): thương hiệu + mạng xã hội */
@@ -22,22 +22,25 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  gap: 40px;
 }
 
 /* Thương hiệu + liên hệ */
 .mbland-footer__brand {}
 
 .mbland-footer__logo-link {
-  display: inline-block;
+  display: inline-flex;
 }
 
 .mbland-footer__logo {
   width: 100%;
+  height: auto;
+  max-height: max-content;
 }
 
 .mbland-footer__contact-list {
-  font-size: 16px;
-  margin-top: 32px;
+  font-size: 15px;
+  margin-top: 28px;
 }
 
 .mbland-footer__contact-item {
@@ -68,7 +71,7 @@
 .mbland-footer__social-title {
   font-family: 'FZPoppins';
   font-weight: 600;
-  font-size: 18px;
+  font-size: 17px;
   line-height: 1em;
   color: #FFFFFFCC;
 }
@@ -82,8 +85,8 @@
 .mbland-footer__social-item {}
 
 .mbland-footer__social-link {
-  min-width: 36px;
-  width: 36px;
+  min-width: 32px;
+  width: 32px;
   display: flex;
 }
 
@@ -111,7 +114,9 @@
 /* Menu (phải) */
 .mbland-footer__nav {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
+  gap: 32px;
 }
 
 .mbland-footer__nav-col {}
@@ -119,7 +124,7 @@
 .mbland-footer__nav-title {
   font-family: 'FZPoppins';
   font-weight: 600;
-  font-size: 18px;
+  font-size: 17px;
   line-height: 1.5em;
   color: #fffc;
   border-bottom: 0.5px solid #fffc;
@@ -128,13 +133,13 @@
 .mbland-footer__nav-list {}
 
 .mbland-footer__nav-item {
-  margin-top: 10px;
+  margin-top: 9px;
   display: flex;
 }
 
 .mbland-footer__nav-link {
   font-weight: 400;
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.5em;
   letter-spacing: 0%;
   color: #fffc;
@@ -174,117 +179,97 @@
 }
 
 
-@media (max-width: 1600px) {
-  .mbland-footer {
-    padding: 55px 0;
-  }
-
-  .mbland-footer .container {
-    max-width: 1421px;
-  }
-
-  .mbland-footer__wrapper {
-    gap: 73px;
-  }
-
-  .mbland-footer__contact-list {
-    font-size: 14.67px;
-    margin-top: 29px;
-  }
-
-  .mbland-footer__contact-item:not(:first-child) {
-    margin-top: 11px;
-  }
-
-  .mbland-footer__social-title {
-    font-size: 16.5px;
-  }
-
-  .mbland-footer__social-list {
-    gap: 9px;
-    margin-top: 9px;
-  }
-
-  .mbland-footer__social-link {
-    min-width: 33px;
-    width: 33px;
-  }
-
+@media (max-width: 1200px) {
   .mbland-footer__nav-title {
-    font-size: 16.5px;
+    font-size: 17px;
+  }
+
+  .mbland-footer__nav-link {
+    font-size: 14px;
   }
 
   .mbland-footer__nav-item {
     margin-top: 9px;
   }
 
+  .mbland-footer__wrapper {
+    gap: 72px;
+  }
+
+  .mbland-footer__contact-list {
+    font-size: 15px;
+    margin-top: 28px;
+  }
+
   .mbland-footer__nav-link {
-    font-size: 13.75px;
-  }
-
-  .mbland-footer__bottom {
-    gap: 9px;
-  }
-
-  .mbland-footer__divider {
-    width: 46px;
+    font-size: 13px;
   }
 }
 
 
-@media (max-width: 1400px) {
-  .mbland-footer {
-    padding: 48px 0;
+@media (max-width: 996px) {
+  .mbland-footer__nav {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .mbland-footer__top {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
   }
 
-  .mbland-footer .container {
-    max-width: 1243px;
+  .mbland-footer__nav {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
   }
+}
 
-  .mbland-footer__wrapper {
-    gap: 64px;
+@media (max-width: 425px) {
+  .mbland-footer__nav {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px 20px;
   }
 
   .mbland-footer__contact-list {
-    font-size: 12.84px;
-    margin-top: 25px;
+    font-size: 14px;
+    margin-top: 16px;
   }
 
   .mbland-footer__contact-item:not(:first-child) {
-    margin-top: 10px;
+    margin-top: 7px;
+  }
+
+  .mbland-footer__top {
+    gap: 30px;
   }
 
   .mbland-footer__social-title {
-    font-size: 14.5px;
-  }
-
-  .mbland-footer__social-list {
-    gap: 8px;
-    margin-top: 8px;
+    font-size: 17px;
   }
 
   .mbland-footer__social-link {
-    min-width: 29px;
-    width: 29px;
-  }
-
-  .mbland-footer__nav-title {
-    font-size: 14.5px;
+    min-width: 32px;
+    width: 32px;
   }
 
   .mbland-footer__nav-item {
     margin-top: 8px;
   }
 
-  .mbland-footer__nav-link {
-    font-size: 12px;
+  .mbland-footer__nav {
+    gap: 24px 16px;
   }
 
-  .mbland-footer__bottom {
-    gap: 8px;
-  }
-
-  .mbland-footer__divider {
-    width: 40px;
+  .mbland-footer__wrapper {
+    gap: 40px;
   }
 }
