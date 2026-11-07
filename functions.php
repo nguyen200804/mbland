@@ -28,6 +28,9 @@ require_once HOMENEST_INC_DIR . 'recruitment-pagination.php';
 // 6. ACF Fields cho Trang chủ (Post ID 7, 359)
 require_once HOMENEST_INC_DIR . 'homepage-fields.php';
 
+// 7. ACF Fields cho Trang Giới thiệu (Post ID 73, 377)
+require_once HOMENEST_INC_DIR . 'about-fields.php';
+
 // KHÔNG CÓ THẺ ĐÓNG PHP ?>
 
 <?php
