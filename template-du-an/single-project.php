@@ -209,22 +209,22 @@ get_header();
 									}
 								?>
 									<div class="swiper-slide mbland_singleProject_gallery_mainSlide">
-										<img class="mbland_singleProject_gallery_mainImage" src="<?php echo esc_url( $img_url ); ?>" alt="<?php echo esc_attr( $img_alt ); ?>" width="<?php echo esc_attr( $img_w ); ?>" height="<?php echo esc_attr( $img_h ); ?>" loading="lazy" decoding="async" fetchpriority="low" />
+										<img class="mbland_singleProject_gallery_mainImage" src="<?php echo esc_url( $img_url ); ?>" alt="<?php echo esc_attr( $img_alt ); ?>" title="<?php echo esc_attr( $img_alt ); ?>" width="<?php echo esc_attr( $img_w ); ?>" height="<?php echo esc_attr( $img_h ); ?>" loading="lazy" decoding="async" fetchpriority="low" />
 									</div>
 								<?php endforeach; ?>
 							<?php else : ?>
 								<!-- Ảnh mẫu demo khớp theo thiết kế -->
 								<div class="swiper-slide mbland_singleProject_gallery_mainSlide">
-									<img class="mbland_singleProject_gallery_mainImage" src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1200&q=80" alt="Hilton Sky View" width="1200" height="900" loading="lazy" decoding="async" fetchpriority="low" />
+									<img class="mbland_singleProject_gallery_mainImage" src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1200&q=80" alt="Hilton Sky View" title="Hilton Sky View" width="1200" height="900" loading="lazy" decoding="async" fetchpriority="low" />
 								</div>
 								<div class="swiper-slide mbland_singleProject_gallery_mainSlide">
-									<img class="mbland_singleProject_gallery_mainImage" src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80" alt="Kiến trúc xanh & Tiện ích" width="1200" height="900" loading="lazy" decoding="async" fetchpriority="low" />
+									<img class="mbland_singleProject_gallery_mainImage" src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80" alt="Kiến trúc xanh & Tiện ích" title="Kiến trúc xanh & Tiện ích" width="1200" height="900" loading="lazy" decoding="async" fetchpriority="low" />
 								</div>
 								<div class="swiper-slide mbland_singleProject_gallery_mainSlide">
-									<img class="mbland_singleProject_gallery_mainImage" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80" alt="Cảnh quan ven sông" width="1200" height="900" loading="lazy" decoding="async" fetchpriority="low" />
+									<img class="mbland_singleProject_gallery_mainImage" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80" alt="Cảnh quan ven sông" title="Cảnh quan ven sông" width="1200" height="900" loading="lazy" decoding="async" fetchpriority="low" />
 								</div>
 								<div class="swiper-slide mbland_singleProject_gallery_mainSlide">
-									<img class="mbland_singleProject_gallery_mainImage" src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80" alt="Quy hoạch tổng thể" width="1200" height="900" loading="lazy" decoding="async" fetchpriority="low" />
+									<img class="mbland_singleProject_gallery_mainImage" src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80" alt="Quy hoạch tổng thể" title="Quy hoạch tổng thể" width="1200" height="900" loading="lazy" decoding="async" fetchpriority="low" />
 								</div>
 							<?php endif; ?>
 						</div>
@@ -254,22 +254,22 @@ get_header();
 									}
 								?>
 									<div class="swiper-slide mbland_singleProject_gallery_thumbSlide">
-										<img class="mbland_singleProject_gallery_thumbImage" src="<?php echo esc_url( $img_url ); ?>" alt="<?php echo esc_attr( $img_alt ); ?>" width="<?php echo esc_attr( $thumb_img_w ); ?>" height="<?php echo esc_attr( $thumb_img_h ); ?>" loading="lazy" decoding="async" fetchpriority="low" />
+										<img class="mbland_singleProject_gallery_thumbImage" src="<?php echo esc_url( $img_url ); ?>" alt="<?php echo esc_attr( $img_alt ); ?>" title="<?php echo esc_attr( $img_alt ); ?>" width="<?php echo esc_attr( $thumb_img_w ); ?>" height="<?php echo esc_attr( $thumb_img_h ); ?>" loading="lazy" decoding="async" fetchpriority="low" />
 									</div>
 								<?php endforeach; ?>
 							<?php else : ?>
 								<!-- Ảnh thumbnail mẫu demo -->
 								<div class="swiper-slide mbland_singleProject_gallery_thumbSlide">
-									<img class="mbland_singleProject_gallery_thumbImage" src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=400&q=80" alt="Hilton Sky View" width="400" height="364" loading="lazy" decoding="async" fetchpriority="low" />
+									<img class="mbland_singleProject_gallery_thumbImage" src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=400&q=80" alt="Hilton Sky View" title="Hilton Sky View" width="400" height="364" loading="lazy" decoding="async" fetchpriority="low" />
 								</div>
 								<div class="swiper-slide mbland_singleProject_gallery_thumbSlide">
-									<img class="mbland_singleProject_gallery_thumbImage" src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=400&q=80" alt="Kiến trúc xanh & Tiện ích" width="400" height="364" loading="lazy" decoding="async" fetchpriority="low" />
+									<img class="mbland_singleProject_gallery_thumbImage" src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=400&q=80" alt="Kiến trúc xanh & Tiện ích" title="Kiến trúc xanh & Tiện ích" width="400" height="364" loading="lazy" decoding="async" fetchpriority="low" />
 								</div>
 								<div class="swiper-slide mbland_singleProject_gallery_thumbSlide">
-									<img class="mbland_singleProject_gallery_thumbImage" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Cảnh quan ven sông" width="400" height="364" loading="lazy" decoding="async" fetchpriority="low" />
+									<img class="mbland_singleProject_gallery_thumbImage" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Cảnh quan ven sông" title="Cảnh quan ven sông" width="400" height="364" loading="lazy" decoding="async" fetchpriority="low" />
 								</div>
 								<div class="swiper-slide mbland_singleProject_gallery_thumbSlide">
-									<img class="mbland_singleProject_gallery_thumbImage" src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=400&q=80" alt="Quy hoạch tổng thể" width="400" height="364" loading="lazy" decoding="async" fetchpriority="low" />
+									<img class="mbland_singleProject_gallery_thumbImage" src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=400&q=80" alt="Quy hoạch tổng thể" title="Quy hoạch tổng thể" width="400" height="364" loading="lazy" decoding="async" fetchpriority="low" />
 								</div>
 							<?php endif; ?>
 						</div>

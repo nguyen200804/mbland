@@ -53,12 +53,12 @@ $grid_query = new WP_Query($grid_args);
 			?>
 					<div class="hn-tasmania-tnb-item">
 						<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="hn-tasmania-tnb-item-image">
-							<img src="<?php echo esc_url($featured_img); ?>" alt="<?php the_title_attribute(); ?>" title="<?php the_title_attribute(); ?>"/>
+							<img src="<?php echo esc_url($featured_img); ?>" alt="<?php the_title_attribute(); ?>" title="<?php the_title_attribute(); ?>" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( $featured_img, 768, 512 ) ); ?> />
 						</a>								
 						<div class="hn-tasmania-tnb-item-content">
 							<div class="hn-tasmania-tintuc-date">
 								<div class="hn-tasmania-tintuc-date-image">
-									<img src="/wp-content/uploads/2025/10/clock.svg" alt="Posted date" title="Posted date"/>
+									<img src="/wp-content/uploads/2025/10/clock.svg" alt="Posted date" title="Posted date" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( '/wp-content/uploads/2025/10/clock.svg', 20, 20 ) ); ?> />
 								</div>
 								<p class="hn-tasmania-date"><?php echo get_the_date('d/m/Y'); ?></p>
 								<?php if ($has_tin_noi_bat): ?>
@@ -72,7 +72,7 @@ $grid_query = new WP_Query($grid_args);
 							<p class="desc-text tnb-desc"><?php echo wp_kses_post($desc ? $desc : get_the_excerpt()); ?></p>
 							<a class="hn-tasmania-tintuc-cta" href="<?php the_permalink(); ?>" title="Read more">
 								<div class="hn-tasmania-tintuc-cta-icon">
-									<img src="/wp-content/uploads/2025/10/arrow-right-red.svg" alt="Read more" title="Read more"/>
+									<img src="/wp-content/uploads/2025/10/arrow-right-red.svg" alt="Read more" title="Read more" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( '/wp-content/uploads/2025/10/arrow-right-red.svg', 15, 15 ) ); ?> />
 								</div>
 								READ MORE
 							</a>
@@ -120,12 +120,12 @@ $grid_query = new WP_Query($grid_args);
 			?>
 					<div class="hn-tasmania-ttm-item">
 						<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="hn-tasmania-ttm-item-image">
-							<img src="<?php echo esc_url($featured_img); ?>" alt="<?php the_title_attribute(); ?>" title="<?php the_title_attribute(); ?>"/>
+							<img src="<?php echo esc_url($featured_img); ?>" alt="<?php the_title_attribute(); ?>" title="<?php the_title_attribute(); ?>" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( $featured_img, 768, 512 ) ); ?> />
 						</a>
 						<div class="hn-tasmania-ttm-item-content">
 							<div class="hn-tasmania-tintuc-date">
 								<div class="hn-tasmania-tintuc-date-image">
-									<img src="/wp-content/uploads/2025/10/clock.svg" alt="Posted date" title="Posted date"/>
+									<img src="/wp-content/uploads/2025/10/clock.svg" alt="Posted date" title="Posted date" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( '/wp-content/uploads/2025/10/clock.svg', 20, 20 ) ); ?> />
 								</div>
 								<p class="hn-tasmania-date"><?php echo get_the_date('d/m/Y'); ?></p>
 								<div class="hn-tasmania-tintuc-date-line"></div>
@@ -137,7 +137,7 @@ $grid_query = new WP_Query($grid_args);
 							<p class="desc-text"><?php echo wp_kses_post($desc ? $desc : get_the_excerpt()); ?></p>
 							<a class="hn-tasmania-tintuc-cta" href="<?php the_permalink(); ?>" title="Read more">
 								<div class="hn-tasmania-tintuc-cta-icon">
-									<img src="/wp-content/uploads/2025/10/arrow-right-red.svg" alt="Read more" title="Read more"/>
+									<img src="/wp-content/uploads/2025/10/arrow-right-red.svg" alt="Read more" title="Read more" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( '/wp-content/uploads/2025/10/arrow-right-red.svg', 15, 15 ) ); ?> />
 								</div>
 								READ MORE
 							</a>
@@ -173,12 +173,12 @@ $grid_query = new WP_Query($grid_args);
 				?>
 					<div class="hn-tasmania-tt-grid-item <?php echo esc_attr($column_class); ?>">
 						<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="hn-tasmania-tt-grid-item-image">
-							<img src="<?php echo esc_url($featured_img); ?>" alt="<?php the_title_attribute(); ?>" title="<?php the_title_attribute(); ?>"/>
+							<img src="<?php echo esc_url($featured_img); ?>" alt="<?php the_title_attribute(); ?>" title="<?php the_title_attribute(); ?>" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( $featured_img, 768, 512 ) ); ?> />
 						</a>
 						<div class="hn-tasmania-tt-grid-item-content">
 							<div class="hn-tasmania-tintuc-date">
 								<div class="hn-tasmania-tintuc-date-image">
-									<img src="/wp-content/uploads/2025/10/clock.svg" alt="Posted date" title="Posted date"/>
+									<img src="/wp-content/uploads/2025/10/clock.svg" alt="Posted date" title="Posted date" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( '/wp-content/uploads/2025/10/clock.svg', 20, 20 ) ); ?> />
 								</div>
 								<p class="hn-tasmania-date"><?php echo get_the_date('d/m/Y'); ?></p>
 								<?php if ($has_tin_noi_bat): ?>
@@ -192,7 +192,7 @@ $grid_query = new WP_Query($grid_args);
 							<p class="desc-text"><?php echo wp_kses_post($desc ? $desc : get_the_excerpt()); ?></p>
 							<a class="hn-tasmania-tintuc-cta" href="<?php the_permalink(); ?>" title="Read more">
 								<div class="hn-tasmania-tintuc-cta-icon">
-									<img src="/wp-content/uploads/2025/10/arrow-right-red.svg" alt="Read more" title="Read more"/>
+									<img src="/wp-content/uploads/2025/10/arrow-right-red.svg" alt="Read more" title="Read more" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( '/wp-content/uploads/2025/10/arrow-right-red.svg', 15, 15 ) ); ?> />
 								</div>
 								READ MORE
 							</a>

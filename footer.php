@@ -15,7 +15,7 @@
 			<div class="mbland-footer__top">
 				<div class="mbland-footer__brand">
 					<a class="mbland-footer__logo-link" href="/">
-						<img class="mbland-footer__logo" src="/wp-content/uploads/2026/11/Logo_MBLandAM_horonzial-white.png" alt="Logo MBLand Asset Management White" title="Logo MBLand Asset Management White">
+						<img class="mbland-footer__logo" src="/wp-content/uploads/2026/11/Logo_MBLandAM_horonzial-white.png" alt="Logo MBLand Asset Management White" title="Logo MBLand Asset Management White" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( '/wp-content/uploads/2026/11/Logo_MBLandAM_horonzial-white.png', 1408, 104 ) ); ?> >
 					</a>
 					<ul class="mbland-footer__contact-list">
 						<li class="mbland-footer__contact-item">

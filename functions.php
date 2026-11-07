@@ -498,12 +498,12 @@ function load_news() {
       ?>
       <div class="hn-tasmania-tt-grid-item">
         <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="hn-tasmania-tt-grid-item-image">
-          <img src="<?php echo esc_url($featured_img); ?>" alt="<?php the_title_attribute(); ?>" />
+          <img src="<?php echo esc_url($featured_img); ?>" alt="<?php the_title_attribute(); ?>" title="<?php the_title_attribute(); ?>" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( $featured_img, 768, 512 ) ); ?> />
         </a>
         <div class="hn-tasmania-tt-grid-item-content">
           <div class="hn-tasmania-tintuc-date">
             <div class="hn-tasmania-tintuc-date-image">
-              <img src="/wp-content/uploads/2025/10/clock.svg" alt="Ngày đăng" title="Ngày đăng"/>
+              <img src="/wp-content/uploads/2025/10/clock.svg" alt="Ngày đăng" title="Ngày đăng" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( '/wp-content/uploads/2025/10/clock.svg', 20, 20 ) ); ?> />
             </div>
             <p class="hn-tasmania-date"><?php echo get_the_date('d/m/Y'); ?></p>
             <?php if ($has_tin_noi_bat) : ?>
@@ -517,7 +517,7 @@ function load_news() {
           <p class="desc-text"><?php echo wp_kses_post($desc ?: get_the_excerpt()); ?></p>
           <a class="hn-tasmania-tintuc-cta" href="<?php the_permalink(); ?>" title="Xem chi tiết">
             <div class="hn-tasmania-tintuc-cta-icon">
-              <img src="/wp-content/uploads/2025/10/arrow-right-red.svg" alt="Xem chi tiết" title="Xem chi tiết"/>
+              <img src="/wp-content/uploads/2025/10/arrow-right-red.svg" alt="Xem chi tiết" title="Xem chi tiết" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( '/wp-content/uploads/2025/10/arrow-right-red.svg', 15, 15 ) ); ?> />
             </div>
             <?php echo pll__('XEM CHI TIẾT'); ?>
           </a>

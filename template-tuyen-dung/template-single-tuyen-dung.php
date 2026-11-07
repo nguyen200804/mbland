@@ -63,7 +63,7 @@ while ( have_posts() ) :
 				<div class="mbland_singleRecruitment_detail_infoBox">
 					<div class="mbland_singleRecruitment_detail_deadline">
 						<span class="mbland_singleRecruitment_detail_deadlineIcon">
-							<img src="/wp-content/uploads/2025/10/clock.svg" alt="Clock" title="Clock" loading="lazy" decoding="async" />
+							<img src="/wp-content/uploads/2025/10/clock.svg" alt="Clock" title="Clock" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( '/wp-content/uploads/2025/10/clock.svg', 20, 20 ) ); ?> />
 						</span>
 						<p class="mbland_singleRecruitment_detail_deadlineText">
 							<?php echo function_exists( 'pll__' ) ? pll__( 'Hạn nộp hồ sơ' ) : 'Hạn nộp hồ sơ'; ?>: <?php echo esc_html( $hannop ?: ( function_exists( 'pll__' ) ? pll__( 'Đang cập nhật' ) : 'Đang cập nhật' ) ); ?>
@@ -117,6 +117,8 @@ while ( have_posts() ) :
 				title="Banner tuyển dụng"
 				loading="lazy"
 				decoding="async"
+				fetchpriority="low"
+				<?php echo trim( mbland_img_size_attr( '/wp-content/uploads/2025/10/Banner-Tuyen-dung-1.png', 1920, 700 ) ); ?>
 			/>
 		</div>
 	</div>

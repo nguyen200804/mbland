@@ -122,7 +122,7 @@
 								$current = array_filter($languages, fn($l) => $l['current_lang']);
 								$current = reset($current);
 								?>
-								<img src="<?php echo esc_url($current['flag']); ?>" alt="<?php echo esc_attr($current['name']); ?>" title="<?php echo esc_attr($current['name']); ?>">
+								<img src="<?php echo esc_url($current['flag']); ?>" alt="<?php echo esc_attr($current['name']); ?>" title="<?php echo esc_attr($current['name']); ?>" loading="eager" decoding="async" fetchpriority="auto" width="16" height="11" >
 								<span><?php echo esc_html($current['name']); ?></span>
 								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24"><path stroke="#1A1D29" stroke-linecap="round" stroke-linejoin="round" d="M6 9.5l6 6 6-6"/></svg>
 							</button>
@@ -132,7 +132,7 @@
 								<?php if (!$lang['current_lang']): ?>
 								<li>
 									<a href="<?php echo esc_url($lang['url']); ?>" title="<?php echo esc_html($lang['name']); ?>">
-										<img src="<?php echo esc_url($lang['flag']); ?>" alt="<?php echo esc_attr($lang['name']); ?>"  title="<?php echo esc_html($lang['name']); ?>">
+										<img src="<?php echo esc_url($lang['flag']); ?>" alt="<?php echo esc_attr($lang['name']); ?>"  title="<?php echo esc_html($lang['name']); ?>" loading="eager" decoding="async" fetchpriority="auto" width="16" height="11" >
 										<span><?php echo esc_html($lang['name']); ?></span>
 									</a>
 								</li>

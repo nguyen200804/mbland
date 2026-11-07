@@ -12,6 +12,10 @@ get_header();
         src="/wp-content/uploads/2025/10/about-banner.png"
         alt="Introduction"
         class="img-banner-gioi-thieu" title="Introduction"
+        loading="eager"
+        decoding="async"
+        fetchpriority="high"
+        <?php echo trim( mbland_img_size_attr( '/wp-content/uploads/2025/10/about-banner.png', 1920, 700 ) ); ?>
       />
     </div>
 
@@ -28,7 +32,7 @@ get_header();
 
     <div class="hn__gia-tri">
       <div class="item-gia-tri">
-        <img src="/wp-content/uploads/2025/10/diamond.svg" alt="icon diamond" class="img-background" title="icon Diamond"/>
+        <img src="/wp-content/uploads/2025/10/diamond.svg" alt="icon diamond" class="img-background" title="icon Diamond" loading="lazy" decoding="async" fetchpriority="low" width="136" height="188" />
         <div class="trans-gia-tri">
           <h3 class="title en">Integrity</h3>
           <p class="content-gia-tri">Core Values</p>
@@ -40,7 +44,7 @@ get_header();
       </div>
 
       <div class="item-gia-tri">
-        <img src="/wp-content/uploads/2025/10/diamond.svg" alt="icon diamond" class="img-background" title="icon Diamond" />
+        <img src="/wp-content/uploads/2025/10/diamond.svg" alt="icon diamond" class="img-background" title="icon Diamond" loading="lazy" decoding="async" fetchpriority="low" width="136" height="188" />
         <div class="trans-gia-tri">
           <h3 class="title en">Compassion</h3>
           <p class="content-gia-tri">Core Values</p>
@@ -52,7 +56,7 @@ get_header();
       </div>
 
       <div class="item-gia-tri">
-        <img src="/wp-content/uploads/2025/10/diamond.svg"  alt="icon diamond" class="img-background" title="icon Diamond" />
+        <img src="/wp-content/uploads/2025/10/diamond.svg"  alt="icon diamond" class="img-background" title="icon Diamond" loading="lazy" decoding="async" fetchpriority="low" width="136" height="188" />
         <div class="trans-gia-tri">
           <h3 class="title en">Wisdom</h3>
           <p class="content-gia-tri">Core Values</p>
@@ -64,7 +68,7 @@ get_header();
       </div>
 
       <div class="item-gia-tri">
-        <img src="/wp-content/uploads/2025/10/diamond.svg" alt="icon diamond" class="img-background" title="icon Diamond"/>
+        <img src="/wp-content/uploads/2025/10/diamond.svg" alt="icon diamond" class="img-background" title="icon Diamond" loading="lazy" decoding="async" fetchpriority="low" width="136" height="188" />
         <div class="trans-gia-tri">
           <h3 class="title en">Trustworthiness</h3>
           <p class="content-gia-tri">Core Values</p>
@@ -89,6 +93,10 @@ get_header();
           src="/wp-content/uploads/2025/10/Ten-year.png"
           alt="Ten years of journey"
           title="Ten years of journey"
+          loading="lazy"
+          decoding="async"
+          fetchpriority="low"
+          <?php echo trim( mbland_img_size_attr( '/wp-content/uploads/2025/10/Ten-year.png', 600, 600 ) ); ?>
         />
       </div>
       <p class="hn-tasmania-info__desc">
@@ -101,7 +109,7 @@ get_header();
     <div class="hn__muc-tieu">
       <div class="muc-tieu-item">
         <div class="img-title">
-          <img src="/wp-content/uploads/2025/10/qlementine-icons_target-16.svg" alt="Vision" class="muc-tieu-icon" title="Vison"/>
+          <img src="/wp-content/uploads/2025/10/qlementine-icons_target-16.svg" alt="Vision" class="muc-tieu-icon" title="Vison" loading="lazy" decoding="async" fetchpriority="low" width="50" height="50" />
           <h3 class="title">Vision</h3>
         </div>
         <p class="content">
@@ -111,7 +119,7 @@ get_header();
 
       <div class="muc-tieu-item">
         <div class="img-title">
-          <img src="/wp-content/uploads/2025/10/qlementine-icons_target-16.svg" alt="Mission" class="muc-tieu-icon" title="Mission"/>
+          <img src="/wp-content/uploads/2025/10/qlementine-icons_target-16.svg" alt="Mission" class="muc-tieu-icon" title="Mission" loading="lazy" decoding="async" fetchpriority="low" width="50" height="50" />
           <h3 class="title">Mission</h3>
         </div>
         <p class="content">
@@ -121,7 +129,7 @@ get_header();
 
       <div class="muc-tieu-item">
         <div class="img-title">
-          <img src="/wp-content/uploads/2025/10/qlementine-icons_target-16.svg" alt="Core Values" class="muc-tieu-icon" title="Core Values"/>
+          <img src="/wp-content/uploads/2025/10/qlementine-icons_target-16.svg" alt="Core Values" class="muc-tieu-icon" title="Core Values" loading="lazy" decoding="async" fetchpriority="low" width="50" height="50" />
           <h3 class="title">Core Values</h3>
         </div>
         <p class="content">
@@ -133,7 +141,7 @@ get_header();
 
   <section class="hn__he-thong">
     <div class="he-thong-main container">
-      <img src="/wp-content/uploads/2025/10/cong-trinh.png" alt="Subsidiary System" class="img-he-thong" title="Subsidiary System"/>
+      <img src="/wp-content/uploads/2025/10/cong-trinh.png" alt="Subsidiary System" class="img-he-thong" title="Subsidiary System" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( '/wp-content/uploads/2025/10/cong-trinh.png', 1200, 800 ) ); ?> />
       <div class="container-he-thong">
         <div class="header-he-thong">
           <span>System of subsidiaries</span>
@@ -178,7 +186,7 @@ get_header();
             <div class="item-carousel <?php echo $active_class; ?>" data-sub-title="Joint Stock Company" data-title="<?php echo esc_attr($title); ?>" data-desc="<?php echo esc_attr($desc); ?>">
               <span class="number"><?php echo str_pad($i, 2, '0', STR_PAD_LEFT); ?></span>
               <?php if ($img_url): ?>
-                <img src="<?php echo esc_url($img_url); ?>" alt="<?php echo esc_attr($title); ?>" class="img-carousel" title="<?php echo esc_attr($title); ?>"/>
+                <img src="<?php echo esc_url($img_url); ?>" alt="<?php echo esc_attr($title); ?>" class="img-carousel" title="<?php echo esc_attr($title); ?>" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( $img_url, 800, 600 ) ); ?> />
               <?php else: ?>
                 <div class="img-carousel" style="width:135px;height:62px;display:flex;align-items:center;justify-content:center;color:#ccc;">
                   No Image
@@ -215,7 +223,7 @@ get_header();
         </p>
       </div>
       <div class="right">
-        <img src="/wp-content/uploads/2025/10/nha-sang-lap-scaled.jpg" alt="Founder" class="img-nguoi-sang-lap" title="Founder"/>
+        <img src="/wp-content/uploads/2025/10/nha-sang-lap-scaled.jpg" alt="Founder" class="img-nguoi-sang-lap" title="Founder" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( '/wp-content/uploads/2025/10/nha-sang-lap-scaled.jpg', 1707, 2560 ) ); ?> />
       </div>
     </div>
   </div>

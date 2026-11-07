@@ -91,6 +91,8 @@ $jobs_query = new WP_Query( $jobs_args );
 				title="Banner tuyển dụng"
 				loading="eager"
 				decoding="async"
+				fetchpriority="high"
+				<?php echo trim( mbland_img_size_attr( '/wp-content/uploads/2025/10/Banner-Tuyen-dung-1.png', 1920, 700 ) ); ?>
 			/>
 		</div>
 	</div>

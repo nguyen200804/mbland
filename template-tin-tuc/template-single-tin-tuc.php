@@ -31,6 +31,7 @@ $categories         = get_the_category( $post_id );
 			loading="eager"
 			decoding="async"
 			fetchpriority="high"
+			<?php echo trim( mbland_img_size_attr( $featured_image_url, 1920, 1080 ) ); ?>
 		/>
 	</div>
 	</div>
@@ -48,7 +49,7 @@ $categories         = get_the_category( $post_id );
 				<!-- Ngày đăng -->
 				<div class="mbland_singlePost_content_date">
 					<span class="mbland_singlePost_content_dateIcon">
-						<img src="/wp-content/uploads/2025/10/clock.svg" alt="Ngày đăng" title="Ngày đăng" loading="lazy" decoding="async" />
+						<img src="/wp-content/uploads/2025/10/clock.svg" alt="Ngày đăng" title="Ngày đăng" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( '/wp-content/uploads/2025/10/clock.svg', 20, 20 ) ); ?> />
 					</span>
 					<p class="mbland_singlePost_content_dateText"><?php echo get_the_date( 'd/m/Y' ); ?></p>
 					<?php
@@ -74,7 +75,7 @@ $categories         = get_the_category( $post_id );
 				<!-- Tác giả -->
 				<span class="mbland_singlePost_content_metaDivider">|</span>
 				<div class="mbland_singlePost_content_author">
-					<img class="mbland_singlePost_content_authorAvatar" src="<?php echo esc_url( get_avatar_url( get_the_author_meta( 'ID' ), array( 'size' => 48 ) ) ); ?>" alt="<?php the_author(); ?>" title="<?php the_author(); ?>" loading="lazy" decoding="async" />
+					<img class="mbland_singlePost_content_authorAvatar" src="<?php echo esc_url( get_avatar_url( get_the_author_meta( 'ID' ), array( 'size' => 48 ) ) ); ?>" alt="<?php the_author(); ?>" title="<?php the_author(); ?>" loading="lazy" decoding="async" fetchpriority="low" width="48" height="48" />
 					<span class="mbland_singlePost_content_authorName"><?php the_author(); ?></span>
 				</div>
 			</div>

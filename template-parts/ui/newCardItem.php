@@ -45,12 +45,12 @@ if ( ! empty( $args['class'] ) ) {
 ?>
 <article class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>">
 	<a href="<?php echo esc_url( $post_url ); ?>" title="<?php echo esc_attr( $post_title ); ?>" class="mbland_tintucTemplate_newCard_thumb">
-		<img class="mbland_tintucTemplate_newCard_img" src="<?php echo esc_url( $featured_img ); ?>" alt="<?php echo esc_attr( $post_title ); ?>" title="<?php echo esc_attr( $post_title ); ?>" loading="lazy" decoding="async" fetchpriority="low" />
+		<img class="mbland_tintucTemplate_newCard_img" src="<?php echo esc_url( $featured_img ); ?>" alt="<?php echo esc_attr( $post_title ); ?>" title="<?php echo esc_attr( $post_title ); ?>" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( $featured_img, 768, 512 ) ); ?> />
 	</a>
 	<div class="mbland_tintucTemplate_newCard_content">
 		<div class="mbland_tintucTemplate_newCard_meta">
 			<span class="mbland_tintucTemplate_newCard_metaIcon">
-				<img src="/wp-content/uploads/2025/10/clock.svg" alt="Ngày đăng" title="Ngày đăng" loading="lazy" decoding="async" fetchpriority="low" />
+				<img src="/wp-content/uploads/2025/10/clock.svg" alt="Ngày đăng" title="Ngày đăng" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( '/wp-content/uploads/2025/10/clock.svg', 20, 20 ) ); ?> />
 			</span>
 			<span class="mbland_tintucTemplate_newCard_date"><?php echo esc_html( $post_date ); ?></span>
 			<?php if ( ! empty( $badge ) ) : ?>
@@ -66,7 +66,7 @@ if ( ! empty( $args['class'] ) ) {
 		<div class="mbland_tintucTemplate_newCard_desc"><?php echo wp_kses_post( $desc ); ?></div>
 
 		<div class="mbland_tintucTemplate_newCard_author">
-			<img class="mbland_tintucTemplate_newCard_authorImage" src="<?php echo esc_url( $author_avatar ); ?>" alt="<?php echo esc_attr( $author_name ); ?>" title="<?php echo esc_attr( $author_name ); ?>" loading="lazy" decoding="async" fetchpriority="low" />
+			<img class="mbland_tintucTemplate_newCard_authorImage" src="<?php echo esc_url( $author_avatar ); ?>" alt="<?php echo esc_attr( $author_name ); ?>" title="<?php echo esc_attr( $author_name ); ?>" loading="lazy" decoding="async" fetchpriority="low" width="96" height="96" />
 			<p class="mbland_tintucTemplate_newCard_authorName"><?php echo esc_html( $author_name ); ?></p>
 		</div>
 

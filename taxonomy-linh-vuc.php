@@ -63,7 +63,7 @@ $projects = new WP_Query( array(
 <!-- ===== START SECTION LINH VUC HERO ===== -->
 <section class="mbland_linhvuc_hero">
 	<?php if ( $term_image_url ) : ?>
-	<img class="mbland_linhvuc_hero_background" src="<?php echo esc_url( $term_image_url ); ?>" alt="<?php echo esc_attr( $term_image_alt ); ?>" title="<?php echo esc_attr( $current_term->name ); ?>" loading="eager" decoding="async" fetchpriority="high" />
+	<img class="mbland_linhvuc_hero_background" src="<?php echo esc_url( $term_image_url ); ?>" alt="<?php echo esc_attr( $term_image_alt ); ?>" title="<?php echo esc_attr( $current_term->name ); ?>" loading="eager" decoding="async" fetchpriority="high" <?php echo trim( mbland_img_size_attr( $term_image_url, 1920, 1080 ) ); ?> />
 	<?php endif; ?>
 	<div class="mbland_linhvuc_hero_inner">
 		<div class="container mbland_linhvuc_hero_container">
@@ -152,7 +152,7 @@ $projects = new WP_Query( array(
 					<!-- Xuất tất cả post-type=du-an theo term của taxonomy=linh-vuc -->
 					<div class="mbland_linhvuc_listProject_item">
 						<div class="mbland_linhvuc_listProject_itemMedia">
-							<img class="mbland_linhvuc_listProject_itemImage"  src="/wp-content/uploads/2025/10/Da-Nang.jpg"/>
+							<img class="mbland_linhvuc_listProject_itemImage"  src="/wp-content/uploads/2025/10/Da-Nang.jpg" alt="Dự án T18 - Đà Nẵng" title="Dự án T18 - Đà Nẵng" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( '/wp-content/uploads/2025/10/Da-Nang.jpg', 800, 600 ) ); ?> />
 						</div>
 						<div class="mbland_linhvuc_listProject_itemBody">
 							<h3 class="mbland_linhvuc_listProject_itemTitle"><a class="mbland_linhvuc_listProject_itemTitleLink">Dự án T18 - Đà Nẵng</a></h3>
@@ -190,7 +190,7 @@ $projects = new WP_Query( array(
 					</div>
 					<div class="mbland_linhvuc_listProject_item">
 						<div class="mbland_linhvuc_listProject_itemMedia">
-							<img class="mbland_linhvuc_listProject_itemImage" src="/wp-content/uploads/2025/10/Da-Nang.jpg"/>
+							<img class="mbland_linhvuc_listProject_itemImage" src="/wp-content/uploads/2025/10/Da-Nang.jpg" alt="Dự án T18 - Đà Nẵng" title="Dự án T18 - Đà Nẵng" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( '/wp-content/uploads/2025/10/Da-Nang.jpg', 800, 600 ) ); ?> />
 						</div>
 						<div class="mbland_linhvuc_listProject_itemBody">
 							<h3 class="mbland_linhvuc_listProject_itemTitle"><a class="mbland_linhvuc_listProject_itemTitleLink">Dự án T18 - Đà Nẵng</a></h3>
@@ -228,7 +228,7 @@ $projects = new WP_Query( array(
 					</div>
 					<div class="mbland_linhvuc_listProject_item">
 						<div class="mbland_linhvuc_listProject_itemMedia">
-							<img class="mbland_linhvuc_listProject_itemImage"  src="/wp-content/uploads/2025/10/Da-Nang.jpg"/>
+							<img class="mbland_linhvuc_listProject_itemImage"  src="/wp-content/uploads/2025/10/Da-Nang.jpg" alt="Dự án T18 - Đà Nẵng" title="Dự án T18 - Đà Nẵng" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( '/wp-content/uploads/2025/10/Da-Nang.jpg', 800, 600 ) ); ?> />
 						</div>
 						<div class="mbland_linhvuc_listProject_itemBody">
 							<h3 class="mbland_linhvuc_listProject_itemTitle"><a class="mbland_linhvuc_listProject_itemTitleLink">Dự án T18 - Đà Nẵng</a></h3>
@@ -298,7 +298,7 @@ $projects = new WP_Query( array(
 
 			<div class="mbland_linhvuc_coreStrengths_list">
 			<div class="mbland_linhvuc_coreStrengths_item">
-				<img src="/wp-content/uploads/2025/10/diamond.svg" alt="Icon kim cương" class="mbland_linhvuc_coreStrengths_itemBg" title="Icon kim cương"/>
+				<img src="/wp-content/uploads/2025/10/diamond.svg" alt="Icon kim cương" class="mbland_linhvuc_coreStrengths_itemBg" title="Icon kim cương" loading="lazy" decoding="async" fetchpriority="low" width="136" height="188" />
 				<div class="mbland_linhvuc_coreStrengths_itemMain">
 					<h3 class="mbland_linhvuc_coreStrengths_itemTitle">đa dạng phân khúc</h3>
 					<p class="mbland_linhvuc_coreStrengths_itemLabel">Mở rộng đầu tư</p>
@@ -310,7 +310,7 @@ $projects = new WP_Query( array(
 			</div>
 
 			<div class="mbland_linhvuc_coreStrengths_item">
-				<img src="/wp-content/uploads/2025/10/diamond.svg" alt="Icon kim cương" class="mbland_linhvuc_coreStrengths_itemBg" title="Icon kim cương"/>
+				<img src="/wp-content/uploads/2025/10/diamond.svg" alt="Icon kim cương" class="mbland_linhvuc_coreStrengths_itemBg" title="Icon kim cương" loading="lazy" decoding="async" fetchpriority="low" width="136" height="188" />
 				<div class="mbland_linhvuc_coreStrengths_itemMain">
 					<h3 class="mbland_linhvuc_coreStrengths_itemTitle">Đầu tư chiến lược</h3>
 					<p class="mbland_linhvuc_coreStrengths_itemLabel">Kiến tạo lâu dài</p>
@@ -322,7 +322,7 @@ $projects = new WP_Query( array(
 			</div>
 
 			<div class="mbland_linhvuc_coreStrengths_item">
-				<img src="/wp-content/uploads/2025/10/diamond.svg" alt="Icon kim cương" class="mbland_linhvuc_coreStrengths_itemBg" title="Icon kim cương"/>
+				<img src="/wp-content/uploads/2025/10/diamond.svg" alt="Icon kim cương" class="mbland_linhvuc_coreStrengths_itemBg" title="Icon kim cương" loading="lazy" decoding="async" fetchpriority="low" width="136" height="188" />
 				<div class="mbland_linhvuc_coreStrengths_itemMain">
 					<h3 class="mbland_linhvuc_coreStrengths_itemTitle">Phát triển bền vững</h3>
 					<p class="mbland_linhvuc_coreStrengths_itemLabel">Chất lượng & hiệu quả</p>
@@ -334,7 +334,7 @@ $projects = new WP_Query( array(
 			</div>
 
 			<div class="mbland_linhvuc_coreStrengths_item">
-				<img src="/wp-content/uploads/2025/10/diamond.svg" alt="Icon kim cương" class="mbland_linhvuc_coreStrengths_itemBg" title="Icon kim cương"/>
+				<img src="/wp-content/uploads/2025/10/diamond.svg" alt="Icon kim cương" class="mbland_linhvuc_coreStrengths_itemBg" title="Icon kim cương" loading="lazy" decoding="async" fetchpriority="low" width="136" height="188" />
 				<div class="mbland_linhvuc_coreStrengths_itemMain">
 					<h3 class="mbland_linhvuc_coreStrengths_itemTitle">Kiểm soát chi phí</h3>
 					<p class="mbland_linhvuc_coreStrengths_itemLabel">Hợp tác lâu dài</p>
@@ -346,7 +346,7 @@ $projects = new WP_Query( array(
 			</div>
 
 			<div class="mbland_linhvuc_coreStrengths_item">
-				<img src="/wp-content/uploads/2025/10/diamond.svg" alt="Icon kim cương" class="mbland_linhvuc_coreStrengths_itemBg" title="Icon kim cương"/>
+				<img src="/wp-content/uploads/2025/10/diamond.svg" alt="Icon kim cương" class="mbland_linhvuc_coreStrengths_itemBg" title="Icon kim cương" loading="lazy" decoding="async" fetchpriority="low" width="136" height="188" />
 				<div class="mbland_linhvuc_coreStrengths_itemMain">
 					<h3 class="mbland_linhvuc_coreStrengths_itemTitle">Hệ sinh thái đối tác</h3>
 					<p class="mbland_linhvuc_coreStrengths_itemLabel">Cam kết & phát triển</p>
@@ -358,7 +358,7 @@ $projects = new WP_Query( array(
 			</div>
 
 			<div class="mbland_linhvuc_coreStrengths_item">
-				<img src="/wp-content/uploads/2025/10/diamond.svg" alt="Icon kim cương" class="mbland_linhvuc_coreStrengths_itemBg" title="Icon kim cương"/>
+				<img src="/wp-content/uploads/2025/10/diamond.svg" alt="Icon kim cương" class="mbland_linhvuc_coreStrengths_itemBg" title="Icon kim cương" loading="lazy" decoding="async" fetchpriority="low" width="136" height="188" />
 				<div class="mbland_linhvuc_coreStrengths_itemMain">
 					<h3 class="mbland_linhvuc_coreStrengths_itemTitle">Đầu tư chiến lược</h3>
 					<p class="mbland_linhvuc_coreStrengths_itemLabel">Kiến tạo lâu dài</p>
@@ -370,7 +370,7 @@ $projects = new WP_Query( array(
 			</div>
 
 			<div class="mbland_linhvuc_coreStrengths_item">
-				<img src="/wp-content/uploads/2025/10/diamond.svg" alt="Icon kim cương" class="mbland_linhvuc_coreStrengths_itemBg" title="Icon kim cương"/>
+				<img src="/wp-content/uploads/2025/10/diamond.svg" alt="Icon kim cương" class="mbland_linhvuc_coreStrengths_itemBg" title="Icon kim cương" loading="lazy" decoding="async" fetchpriority="low" width="136" height="188" />
 				<div class="mbland_linhvuc_coreStrengths_itemMain">
 					<h3 class="mbland_linhvuc_coreStrengths_itemTitle">Phát triển bền vững</h3>
 					<p class="mbland_linhvuc_coreStrengths_itemLabel">Chất lượng & hiệu quả</p>
@@ -382,7 +382,7 @@ $projects = new WP_Query( array(
 			</div>
 
 			<div class="mbland_linhvuc_coreStrengths_item">
-				<img src="/wp-content/uploads/2025/10/diamond.svg" alt="Icon kim cương" class="mbland_linhvuc_coreStrengths_itemBg" title="Icon kim cương"/>
+				<img src="/wp-content/uploads/2025/10/diamond.svg" alt="Icon kim cương" class="mbland_linhvuc_coreStrengths_itemBg" title="Icon kim cương" loading="lazy" decoding="async" fetchpriority="low" width="136" height="188" />
 				<div class="mbland_linhvuc_coreStrengths_itemMain">
 					<h3 class="mbland_linhvuc_coreStrengths_itemTitle">Kiểm soát chi phí</h3>
 					<p class="mbland_linhvuc_coreStrengths_itemLabel">Hợp tác lâu dài</p>
@@ -419,7 +419,7 @@ $projects = new WP_Query( array(
 			<div class="mbland_linhvuc_featuredProject_list">
 				<article class="mbland_linhvuc_featuredProject_item">
 					<div class="mbland_linhvuc_featuredProject_itemMedia">
-						<img class="mbland_linhvuc_featuredProject_itemImage" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg" alt="Dự án T18 - Đà Nẵng" />
+						<img class="mbland_linhvuc_featuredProject_itemImage" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg" alt="Dự án T18 - Đà Nẵng" title="Dự án T18 - Đà Nẵng" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( '/wp-content/uploads/2025/10/Bat-dong-san-1.jpg', 800, 600 ) ); ?> />
 					</div>
 					<div class="mbland_linhvuc_featuredProject_itemBody">
 						<div class="mbland_linhvuc_featuredProject_itemHeader">
@@ -445,7 +445,7 @@ $projects = new WP_Query( array(
 				</article>
 				<article class="mbland_linhvuc_featuredProject_item">
 					<div class="mbland_linhvuc_featuredProject_itemMedia">
-						<img class="mbland_linhvuc_featuredProject_itemImage" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg" alt="Dự án T18 - Đà Nẵng" />
+						<img class="mbland_linhvuc_featuredProject_itemImage" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg" alt="Dự án T18 - Đà Nẵng" title="Dự án T18 - Đà Nẵng" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( '/wp-content/uploads/2025/10/Bat-dong-san-1.jpg', 800, 600 ) ); ?> />
 					</div>
 					<div class="mbland_linhvuc_featuredProject_itemBody">
 						<div class="mbland_linhvuc_featuredProject_itemHeader">
@@ -471,7 +471,7 @@ $projects = new WP_Query( array(
 				</article>
 				<article class="mbland_linhvuc_featuredProject_item">
 					<div class="mbland_linhvuc_featuredProject_itemMedia">
-						<img class="mbland_linhvuc_featuredProject_itemImage" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg" alt="Dự án T18 - Đà Nẵng" />
+						<img class="mbland_linhvuc_featuredProject_itemImage" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg" alt="Dự án T18 - Đà Nẵng" title="Dự án T18 - Đà Nẵng" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( '/wp-content/uploads/2025/10/Bat-dong-san-1.jpg', 800, 600 ) ); ?> />
 					</div>
 					<div class="mbland_linhvuc_featuredProject_itemBody">
 						<div class="mbland_linhvuc_featuredProject_itemHeader">

@@ -31,6 +31,10 @@ get_header();
 			 src="/wp-content/uploads/2025/10/Banner-Tuyen-dung-1.png"
 			 alt="Career banner"
 			 title="Career banner"
+			 loading="eager"
+			 decoding="async"
+			 fetchpriority="high"
+			 <?php echo trim( mbland_img_size_attr( '/wp-content/uploads/2025/10/Banner-Tuyen-dung-1.png', 1920, 700 ) ); ?>
 			 />
       </div>
 

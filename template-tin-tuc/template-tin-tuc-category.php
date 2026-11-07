@@ -79,12 +79,12 @@ if ( is_category() ) {
                 ?>
                 <article class="mbland_tintucTemplate_featuredCard">
                     <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="mbland_tintucTemplate_featuredCard_thumb">
-                        <img class="mbland_tintucTemplate_featuredCard_img" src="<?php echo esc_url( $featured_img ); ?>" alt="<?php the_title_attribute(); ?>" title="<?php the_title_attribute(); ?>" loading="lazy" decoding="async" fetchpriority="low" />
+                        <img class="mbland_tintucTemplate_featuredCard_img" src="<?php echo esc_url( $featured_img ); ?>" alt="<?php the_title_attribute(); ?>" title="<?php the_title_attribute(); ?>" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( $featured_img, 768, 512 ) ); ?> />
                     </a>								
                     <div class="mbland_tintucTemplate_featuredCard_content">
                         <div class="mbland_tintucTemplate_featuredCard_meta">
                             <span class="mbland_tintucTemplate_featuredCard_metaIcon">
-                                <img src="/wp-content/uploads/2025/10/clock.svg" alt="Ngày đăng" title="Ngày đăng" loading="lazy" decoding="async" fetchpriority="low" />
+                                <img src="/wp-content/uploads/2025/10/clock.svg" alt="Ngày đăng" title="Ngày đăng" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( '/wp-content/uploads/2025/10/clock.svg', 20, 20 ) ); ?> />
                             </span>
                             <span class="mbland_tintucTemplate_featuredCard_date"><?php echo get_the_date( 'd/m/Y' ); ?></span>
                             <?php if ( $has_tin_noi_bat ) : ?>
@@ -100,7 +100,7 @@ if ( is_category() ) {
                         <div class="mbland_tintucTemplate_featuredCard_desc"><?php echo wp_kses_post( $desc ? $desc : get_the_excerpt() ); ?></div>
 
 						<div class="mbland_tintucTemplate_featuredCard_author">
-							<img class="mbland_tintucTemplate_featuredCard_authorImage" src="<?php echo get_avatar_url( get_the_author_meta( 'ID' ) ); ?>" alt="<?php the_author(); ?>" title="<?php the_author(); ?>" loading="lazy" decoding="async" fetchpriority="low" />
+							<img class="mbland_tintucTemplate_featuredCard_authorImage" src="<?php echo get_avatar_url( get_the_author_meta( 'ID' ) ); ?>" alt="<?php the_author(); ?>" title="<?php the_author(); ?>" loading="lazy" decoding="async" fetchpriority="low" width="96" height="96" />
 							<p class="mbland_tintucTemplate_featuredCard_authorName"><?php the_author(); ?></p>
 						</div>
 
@@ -193,12 +193,12 @@ if ( is_category() ) {
                     ?>
                     <article class="mbland_tintucTemplate_postCard">
                         <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="mbland_tintucTemplate_postCard_thumb">
-                            <img class="mbland_tintucTemplate_postCard_img" src="<?php echo esc_url( $featured_img ); ?>" alt="<?php the_title_attribute(); ?>" title="<?php the_title_attribute(); ?>" loading="lazy" decoding="async" fetchpriority="low" />
+                            <img class="mbland_tintucTemplate_postCard_img" src="<?php echo esc_url( $featured_img ); ?>" alt="<?php the_title_attribute(); ?>" title="<?php the_title_attribute(); ?>" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( $featured_img, 768, 512 ) ); ?> />
                         </a>
                         <div class="mbland_tintucTemplate_postCard_content">
                             <div class="mbland_tintucTemplate_postCard_meta">
                                 <span class="mbland_tintucTemplate_postCard_metaIcon">
-                                    <img src="/wp-content/uploads/2025/10/clock.svg" alt="Ngày đăng" title="Ngày đăng" loading="lazy" decoding="async" fetchpriority="low" />
+                                    <img src="/wp-content/uploads/2025/10/clock.svg" alt="Ngày đăng" title="Ngày đăng" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( '/wp-content/uploads/2025/10/clock.svg', 20, 20 ) ); ?> />
                                 </span>
                                 <span class="mbland_tintucTemplate_postCard_date"><?php echo get_the_date( 'd/m/Y' ); ?></span>
                                 <?php if ( $has_tin_noi_bat ) : ?>
@@ -213,7 +213,7 @@ if ( is_category() ) {
                             </h3>
                             <div class="mbland_tintucTemplate_postCard_desc"><?php echo wp_kses_post( $desc ? $desc : get_the_excerpt() ); ?></div>
 							<div  class="mbland_tintucTemplate_postCard_author">
-								<img  class="mbland_tintucTemplate_postCard_authorImage" src="<?php echo get_avatar_url( get_the_author_meta( 'ID' ) ); ?>" alt="<?php the_author(); ?>" title="<?php the_author(); ?>" loading="lazy" decoding="async" fetchpriority="low" />
+								<img  class="mbland_tintucTemplate_postCard_authorImage" src="<?php echo get_avatar_url( get_the_author_meta( 'ID' ) ); ?>" alt="<?php the_author(); ?>" title="<?php the_author(); ?>" loading="lazy" decoding="async" fetchpriority="low" width="96" height="96" />
 								<p class="mbland_tintucTemplate_postCard_authorName"><?php the_author(); ?></p>
 							</div>
                            

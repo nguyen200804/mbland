@@ -12,7 +12,7 @@ get_header(); ?>
               <div class="mbland_homepage_about_titleImage">
 				  <img src="/wp-content/uploads/2025/10/Chu-Tasmania-Partners-1.svg"
 					   alt="Chữ Tasmania & Partners"
-					   title="Chữ Tasmania & Partners"/>
+					   title="Chữ Tasmania & Partners" loading="eager" decoding="async" fetchpriority="high" <?php echo trim( mbland_img_size_attr( '/wp-content/uploads/2025/10/Chu-Tasmania-Partners-1.svg', 600, 120 ) ); ?> />
 				</div>
               <a
                 class="hn-tasmania-cta-btn mbland_homepage_about_titleCta"
@@ -24,6 +24,10 @@ get_header(); ?>
                   src="/wp-content/uploads/2025/10/arrow-right.svg"
                   alt="Arrow Right"
                   title="Arrow Right"
+                  loading="eager"
+                  decoding="async"
+                  fetchpriority="auto"
+                  width="15" height="15"
                 />
               </a>
             </div>
@@ -31,7 +35,7 @@ get_header(); ?>
               <div class="mbland_homepage_about_titleImage">
 				  <img src="/wp-content/uploads/2025/10/Chu-Tasmania-Partners-2.svg"
 					   alt="Chữ Tasmania & Partners"
-					   title="Chữ Tasmania & Partners"/>
+					   title="Chữ Tasmania & Partners" loading="eager" decoding="async" fetchpriority="high" <?php echo trim( mbland_img_size_attr( '/wp-content/uploads/2025/10/Chu-Tasmania-Partners-2.svg', 600, 120 ) ); ?> />
 				</div>
             </div>
           </div>
@@ -41,6 +45,10 @@ get_header(); ?>
                 src="/wp-content/uploads/2025/10/quote.svg"
                 alt="Qoute Icon"
                 title="Qoute Icon"
+                loading="eager"
+                decoding="async"
+                fetchpriority="auto"
+                width="21" height="15"
               />
             </div>
             <span class="mbland_homepage_about_descTitle">Fairness – Compassion – Wisdom – Trustworthiness</span>
@@ -53,6 +61,10 @@ get_header(); ?>
               src="/wp-content/uploads/2025/10/explore.svg"
               alt="Scroll to explore"
               title="Scroll to explore"
+              loading="eager"
+              decoding="async"
+              fetchpriority="auto"
+              width="405" height="309"
             />
           </div>
         </div>
@@ -61,6 +73,10 @@ get_header(); ?>
             src="/wp-content/uploads/2025/10/about-banner.png"
             alt="About banner"
             title="About banner"
+            loading="lazy"
+            decoding="async"
+            fetchpriority="low"
+            <?php echo trim( mbland_img_size_attr( '/wp-content/uploads/2025/10/about-banner.png', 1920, 700 ) ); ?>
           />
         </div>
       </section>
@@ -76,6 +92,10 @@ get_header(); ?>
               src="/wp-content/uploads/2025/10/Ten-year.png"
               alt="Mười năm hành trình"
               title="Mười năm hành trình"
+              loading="lazy"
+              decoding="async"
+              fetchpriority="low"
+              <?php echo trim( mbland_img_size_attr( '/wp-content/uploads/2025/10/Ten-year.png', 600, 600 ) ); ?>
             />
           </div>
           <p class="mbland_homepage_info_desc">
@@ -92,6 +112,10 @@ get_header(); ?>
                 src="/wp-content/uploads/2025/10/arrow-right.svg"
                 alt="Arrow Right"
                 title="Arrow Right"
+                loading="lazy"
+                decoding="async"
+                fetchpriority="low"
+                width="15" height="15"
               />
             </a>
             <a
@@ -143,6 +167,10 @@ get_header(); ?>
 						src="/wp-content/uploads/2025/10/arrow-right.svg"
 						alt="Arrow Up Right"
 						title="Arrow Up Right"
+						loading="lazy"
+						decoding="async"
+						fetchpriority="low"
+						width="15" height="15"
 					/>
 				</div>
 				<p class="mbland_homepage_branches_number"><?php echo sprintf( '%02d', $branch_index ); ?></p>
@@ -159,13 +187,21 @@ get_header(); ?>
                     src="<?php echo esc_url( $featured_image_url ); ?>"
                     alt="<?php echo esc_attr( $term->name ); ?>"
                     title="<?php echo esc_attr( $term->name ); ?>"
+                    loading="lazy"
+                    decoding="async"
+                    fetchpriority="low"
+                    <?php echo trim( mbland_img_size_attr( $featured_image_url, 800, 550 ) ); ?>
                 />
             <?php else : ?>
                 <!-- Fallback: Hình mặc định nếu chưa set field -->
                 <img
-                    src="/wp-content/uploads/2025/10/branch-placeholder.jpg" <!-- Thay bằng hình mặc định của bạn -->
+                    src="/wp-content/uploads/2025/10/branch-placeholder.jpg"
                     alt="<?php echo esc_attr( $term->name ); ?>"
                     title="<?php echo esc_attr( $term->name ); ?>"
+                    loading="lazy"
+                    decoding="async"
+                    fetchpriority="low"
+                    width="800" height="550"
                 />
             <?php endif; ?>
             <h2 class="equalh3 mbland_homepage_branches_caption"><?php echo esc_html( $term->name ); ?></h2>
@@ -217,6 +253,10 @@ get_header(); ?>
                         src="<?php echo esc_url( $featured_img ); ?>"
                         alt="<?php echo esc_attr( get_the_title() ); ?>"
                         title="<?php echo esc_attr( get_the_title() ); ?>"
+                        loading="lazy"
+                        decoding="async"
+                        fetchpriority="low"
+                        <?php echo trim( mbland_img_size_attr( $featured_img, 768, 512 ) ); ?>
                       />
                     </div>
                     <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
@@ -249,6 +289,10 @@ get_header(); ?>
           src="/wp-content/uploads/2025/10/arrow-right.svg"
           alt="Arrow Right"
           title="Arrow Right"
+          loading="lazy"
+          decoding="async"
+          fetchpriority="low"
+          width="15" height="15"
         />
       </a>
     </div>
@@ -275,6 +319,10 @@ get_header(); ?>
           src="/wp-content/uploads/2025/10/arrow-right.svg"
           alt="Arrow Right"
           title="Arrow Right"
+          loading="lazy"
+          decoding="async"
+          fetchpriority="low"
+          width="15" height="15"
         />
       </a>
     </div>
@@ -310,6 +358,10 @@ get_header(); ?>
               src="<?php echo esc_url( $thumb ); ?>"
               alt="<?php the_title_attribute(); ?>"
               title="<?php the_title_attribute(); ?>"
+              loading="lazy"
+              decoding="async"
+              fetchpriority="low"
+              <?php echo trim( mbland_img_size_attr( $thumb, 600, 350 ) ); ?>
             />
           </div>
           <div class="mbland_homepage_projects_itemContent">
@@ -321,7 +373,7 @@ get_header(); ?>
 				  	<h3 class="small-h3"><?php echo $item_title ?></h3>
 					</a>
 				  <div class="mbland_homepage_projects_itemContentLocation">
-					  <img src="/wp-content/uploads/2025/10/location.svg" alt="Vị trí" title="Vị trí"/>
+					  <img src="/wp-content/uploads/2025/10/location.svg" alt="Vị trí" title="Vị trí" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( '/wp-content/uploads/2025/10/location.svg', 24, 24 ) ); ?> />
 					  <div>
 						  <?php echo $item_dia_chi?>
 					  </div>

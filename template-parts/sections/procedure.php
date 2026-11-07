@@ -18,9 +18,9 @@
 					</div>
 					<div class="mbland_linhvuc_procedure_itemImage">
 						<ul class="mbland_linhvuc_procedure_itemImageList">
-							<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg" alt="Quy trình thực hiện dự án" loading="lazy" decoding="async" fetchpriority="low" /></li>
-							<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg" alt="Quy trình thực hiện dự án" loading="lazy" decoding="async" fetchpriority="low" /></li>
-							<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg" alt="Quy trình thực hiện dự án" loading="lazy" decoding="async" fetchpriority="low" /></li>
+							<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg" alt="Quy trình thực hiện dự án" title="Quy trình thực hiện dự án" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( '/wp-content/uploads/2025/10/Bat-dong-san-1.jpg', 800, 600 ) ); ?> /></li>
+							<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg" alt="Quy trình thực hiện dự án" title="Quy trình thực hiện dự án" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( '/wp-content/uploads/2025/10/Bat-dong-san-1.jpg', 800, 600 ) ); ?> /></li>
+							<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg" alt="Quy trình thực hiện dự án" title="Quy trình thực hiện dự án" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( '/wp-content/uploads/2025/10/Bat-dong-san-1.jpg', 800, 600 ) ); ?> /></li>
 						</ul>
 					</div>
 				</article>
@@ -36,9 +36,9 @@
 					</div>
 					<div class="mbland_linhvuc_procedure_itemImage">
 						<ul class="mbland_linhvuc_procedure_itemImageList">
-							<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg" alt="Quy trình thực hiện dự án" loading="lazy" decoding="async" fetchpriority="low" /></li>
-							<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg" alt="Quy trình thực hiện dự án" loading="lazy" decoding="async" fetchpriority="low" /></li>
-							<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg" alt="Quy trình thực hiện dự án" loading="lazy" decoding="async" fetchpriority="low" /></li>
+							<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg" alt="Quy trình thực hiện dự án" title="Quy trình thực hiện dự án" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( '/wp-content/uploads/2025/10/Bat-dong-san-1.jpg', 800, 600 ) ); ?> /></li>
+							<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg" alt="Quy trình thực hiện dự án" title="Quy trình thực hiện dự án" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( '/wp-content/uploads/2025/10/Bat-dong-san-1.jpg', 800, 600 ) ); ?> /></li>
+							<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg" alt="Quy trình thực hiện dự án" title="Quy trình thực hiện dự án" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( '/wp-content/uploads/2025/10/Bat-dong-san-1.jpg', 800, 600 ) ); ?> /></li>
 						</ul>
 					</div>
 				</article>
@@ -54,9 +54,9 @@
 					</div>
 					<div class="mbland_linhvuc_procedure_itemImage">
 						<ul class="mbland_linhvuc_procedure_itemImageList">
-							<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg" alt="Quy trình thực hiện dự án" loading="lazy" decoding="async" fetchpriority="low" /></li>
-							<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg" alt="Quy trình thực hiện dự án" loading="lazy" decoding="async" fetchpriority="low" /></li>
-							<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg" alt="Quy trình thực hiện dự án" loading="lazy" decoding="async" fetchpriority="low" /></li>
+							<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg" alt="Quy trình thực hiện dự án" title="Quy trình thực hiện dự án" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( '/wp-content/uploads/2025/10/Bat-dong-san-1.jpg', 800, 600 ) ); ?> /></li>
+							<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg" alt="Quy trình thực hiện dự án" title="Quy trình thực hiện dự án" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( '/wp-content/uploads/2025/10/Bat-dong-san-1.jpg', 800, 600 ) ); ?> /></li>
+							<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg" alt="Quy trình thực hiện dự án" title="Quy trình thực hiện dự án" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( '/wp-content/uploads/2025/10/Bat-dong-san-1.jpg', 800, 600 ) ); ?> /></li>
 						</ul>
 					</div>
 				</article>
@@ -72,9 +72,9 @@
 					</div>
 					<div class="mbland_linhvuc_procedure_itemImage">
 						<ul class="mbland_linhvuc_procedure_itemImageList">
-							<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg" alt="Quy trình thực hiện dự án" loading="lazy" decoding="async" fetchpriority="low" /></li>
-							<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg" alt="Quy trình thực hiện dự án" loading="lazy" decoding="async" fetchpriority="low" /></li>
-							<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg" alt="Quy trình thực hiện dự án" loading="lazy" decoding="async" fetchpriority="low" /></li>
+							<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg" alt="Quy trình thực hiện dự án" title="Quy trình thực hiện dự án" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( '/wp-content/uploads/2025/10/Bat-dong-san-1.jpg', 800, 600 ) ); ?> /></li>
+							<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg" alt="Quy trình thực hiện dự án" title="Quy trình thực hiện dự án" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( '/wp-content/uploads/2025/10/Bat-dong-san-1.jpg', 800, 600 ) ); ?> /></li>
+							<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="/wp-content/uploads/2025/10/Bat-dong-san-1.jpg" alt="Quy trình thực hiện dự án" title="Quy trình thực hiện dự án" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( '/wp-content/uploads/2025/10/Bat-dong-san-1.jpg', 800, 600 ) ); ?> /></li>
 						</ul>
 					</div>
 				</article>

@@ -35,6 +35,7 @@ get_header(); ?>
 					 title="Qoute Icon"
 					 width="21"
 					 height="15"
+					 fetchpriority="auto"
 					 />
 			</div>
 			<span class="mbland_homepage_about_descTitle">Công - Tâm - Trí - Tín</span>
@@ -51,6 +52,7 @@ get_header(); ?>
 				 title="Scroll to explore"
 				 width="405"
 				 height="309"
+				 fetchpriority="auto"
 				 />
 		</div>
 	</div>

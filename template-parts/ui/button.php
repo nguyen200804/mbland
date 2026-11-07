@@ -58,7 +58,9 @@ if ( $args['class'] ) {
 			alt=""
 			aria-hidden="true"
 			loading="<?php echo esc_attr( 'eager' === $args['loading'] ? 'eager' : 'lazy' ); ?>"
-			decoding="async"
+			decoding="async"
+			fetchpriority="<?php echo esc_attr( 'eager' === $args['loading'] ? 'auto' : 'low' ); ?>"
+			width="15" height="15"
 		/>
 	<?php endif; ?>
 </a>
