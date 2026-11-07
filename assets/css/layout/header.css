@@ -171,11 +171,12 @@
 /* Nội dung popup */
 .mbland-header-menu-popup .mbland-header__logo {
   padding: 20px;
-  width: 150px;
+  box-sizing: content-box;
+  /* width: 150px; */
 }
 
 .mbland-header-menu-nav {
-  margin-top: 40px;
+  margin-top: 32px;
 }
 
 .mbland-header-menu-popup .mbland-header__nav-item {
