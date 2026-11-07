@@ -21,7 +21,7 @@ function homenest_enqueue_scripts() {
 
     // CSS component dung chung
     wp_enqueue_style( 'homenest-brands-style', get_template_directory_uri() . '/assets/css/sections/brands.css', array('homenest-assets-style'), homenest_asset_ver('/assets/css/sections/brands.css') );
-
+    wp_enqueue_style( 'homenest-procedure-style', get_template_directory_uri() . '/assets/css/sections/procedure.css', array('homenest-assets-style'), homenest_asset_ver('/assets/css/sections/procedure.css') );
     wp_enqueue_style( 'homenest-contact-form-style', get_template_directory_uri() . '/assets/css/sections/contact-form.css', array('homenest-assets-style'), homenest_asset_ver('/assets/css/sections/contact-form.css') );
     wp_enqueue_style( 'homenest-ui-button-detail-style', get_template_directory_uri() . '/assets/css/ui/button-detail.css', array('homenest-assets-style'), homenest_asset_ver('/assets/css/ui/button-detail.css') );
     wp_enqueue_style( 'homenest-ui-new-card-item-style', get_template_directory_uri() . '/assets/css/ui/newCardItem.css', array('homenest-assets-style'), homenest_asset_ver('/assets/css/ui/newCardItem.css') );
