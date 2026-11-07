@@ -1096,8 +1096,12 @@
   }
 
   .mbland_singleProject_statistical_item {
-    padding: 20px;
-    border-radius: 12px;
+    padding: 24px;
+    border-radius: 10px;
+  }
+
+  .mbland_singleProject_statistical_itemTitle {
+    font-size: 17px;
   }
 }
 

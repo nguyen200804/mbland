@@ -460,7 +460,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	new Swiper('.mbland_singleProject_featuredProject_swiper', {
 		slidesPerView: 'auto',
-		spaceBetween: 24,
+		spaceBetween: 0,
 		loop: true,
 	});
 });
