@@ -19,19 +19,32 @@
 		<?php wp_body_open(); ?>
 		<header class="hn-tasmania-header">
 			<div class="container">
+				<?php
+				$logo_id   = get_theme_mod( 'custom_logo' );
+				$logo_data = $logo_id ? wp_get_attachment_image_src( $logo_id, 'full' ) : null;
+				$logo_url  = $logo_data ? $logo_data[0] : '';
+				$logo_w    = $logo_data ? $logo_data[1] : '';
+				$logo_h    = $logo_data ? $logo_data[2] : '';
+				$logo_alt  = $logo_id ? ( get_post_meta( $logo_id, '_wp_attachment_image_alt', true ) ?: get_bloginfo( 'name' ) ) : get_bloginfo( 'name' );
+				$home_url  = function_exists( 'pll_home_url' ) ? pll_home_url() : home_url( '/' );
+				$site_name = get_bloginfo( 'name' );
+				?>
 				<a
 				   class="hn-tasmania-header__logo"
-				   href="<?php echo pll_home_url(); ?>"
-				   title="MBLand Asset Management"
+				   href="<?php echo esc_url( $home_url ); ?>"
+				   title="<?php echo esc_attr( $site_name ); ?>"
 				   >
-					<?php
-					$logo_id  = get_theme_mod( 'custom_logo' );
-					$logo_url = $logo_id ? wp_get_attachment_image_url( $logo_id, 'full' ) : '';
-					?>
 					<img
 						 src="<?php echo esc_url( $logo_url ); ?>"
-						 alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>"
-						 title="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>"
+						 alt="<?php echo esc_attr( $logo_alt ); ?>"
+						 title="<?php echo esc_attr( $site_name ); ?>"
+						 <?php if ( ! empty( $logo_w ) && ! empty( $logo_h ) ) : ?>
+						 width="<?php echo esc_attr( $logo_w ); ?>"
+						 height="<?php echo esc_attr( $logo_h ); ?>"
+						 <?php endif; ?>
+						 loading="eager"
+						 decoding="async"
+						 fetchpriority="high"
 						 />
 				</a>
 				<div class="hn-tasmania-header-group">
@@ -68,8 +81,19 @@
 						</button>
 
 						<!-- Logo in Popup -->
-						<a class="hn-tasmania-header__logo" href="<?php echo pll_home_url(); ?>" title="Tasmania & Partners">
-							<img src="/wp-content/uploads/2025/10/Logo-Tasmania.png" alt="Logo Tasmania & Partners" title="Tasmania & Partners"/>
+						<a class="hn-tasmania-header__logo" href="<?php echo esc_url( $home_url ); ?>" title="<?php echo esc_attr( $site_name ); ?>">
+							<img
+								src="<?php echo esc_url( $logo_url ); ?>"
+								alt="<?php echo esc_attr( $logo_alt ); ?>"
+								title="<?php echo esc_attr( $site_name ); ?>"
+								<?php if ( ! empty( $logo_w ) && ! empty( $logo_h ) ) : ?>
+								width="<?php echo esc_attr( $logo_w ); ?>"
+								height="<?php echo esc_attr( $logo_h ); ?>"
+								<?php endif; ?>
+								loading="lazy"
+								decoding="async"
+								fetchpriority="low"
+							/>
 						</a>
 
 						<!-- Nav Items in Popup -->
