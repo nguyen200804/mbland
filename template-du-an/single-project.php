@@ -43,9 +43,19 @@ $content = wp_kses_post(get_field('content', $post_id));
 $gallery = get_field('gallery', $post_id);
 
 // Featured image cho image cuối (sidebar)
-$featured_image_url = get_the_post_thumbnail_url($post_id); // Hoặc 'full' nếu cần kích thước lớn hơn
-$featured_image_alt = get_post_meta(get_post_thumbnail_id($post_id), '_wp_attachment_image_alt', true) ?: get_the_title($post_id);
+$featured_thumb_id    = get_post_thumbnail_id($post_id);
+$featured_image_url   = get_the_post_thumbnail_url($post_id, 'full'); // Hoặc 'full' nếu cần kích thước lớn hơn
+$featured_image_alt   = get_post_meta($featured_thumb_id, '_wp_attachment_image_alt', true) ?: get_the_title($post_id);
 $featured_image_title = get_the_title($post_id); // Title fallback từ post title
+$featured_image_width  = 1920;
+$featured_image_height = 1080;
+if ( $featured_thumb_id ) {
+    $featured_image_src = wp_get_attachment_image_src( $featured_thumb_id, 'full' );
+    if ( ! empty( $featured_image_src ) ) {
+        $featured_image_width  = ! empty( $featured_image_src[1] ) ? $featured_image_src[1] : 1920;
+        $featured_image_height = ! empty( $featured_image_src[2] ) ? $featured_image_src[2] : 1080;
+    }
+}
 
 // Dự án liên quan
 $related_args = array(
@@ -73,7 +83,7 @@ get_header();
 <!-- ===== START SECTION LINH VUC HERO ===== -->
 <section class="mbland_linhvuc_hero">
 	<?php if ( $featured_image_url ) : ?>
-	<img class="mbland_linhvuc_hero_background" src="<?php echo esc_url( $featured_image_url ); ?>" alt="<?php echo esc_attr( $featured_image_alt ); ?>" title="<?php echo esc_attr( get_the_title( $post_id ) ); ?>" loading="eager" decoding="async" fetchpriority="high" />
+	<img class="mbland_linhvuc_hero_background" src="<?php echo esc_url( $featured_image_url ); ?>" alt="<?php echo esc_attr( $featured_image_alt ); ?>" title="<?php echo esc_attr( get_the_title( $post_id ) ); ?>" width="<?php echo esc_attr( $featured_image_width ); ?>" height="<?php echo esc_attr( $featured_image_height ); ?>" loading="eager" decoding="async" fetchpriority="high" />
 	<?php endif; ?>
 	<div class="mbland_linhvuc_hero_inner">
 		<div class="container mbland_linhvuc_hero_container">
@@ -180,26 +190,41 @@ get_header();
 						<div class="swiper-wrapper">
 							<?php if ( ! empty( $gallery ) && is_array( $gallery ) ) : ?>
 								<?php foreach ( $gallery as $img ) : 
-									$img_url = is_array( $img ) ? ( $img['url'] ?? '' ) : ( is_numeric( $img ) ? wp_get_attachment_image_url( $img, 'full' ) : $img );
-									$img_alt = is_array( $img ) ? ( $img['alt'] ?? get_the_title( $post_id ) ) : get_the_title( $post_id );
+									$img_w = 1200;
+									$img_h = 900;
+									if ( is_array( $img ) ) {
+										$img_url = $img['url'] ?? '';
+										$img_alt = ! empty( $img['alt'] ) ? $img['alt'] : get_the_title( $post_id );
+										$img_w   = ! empty( $img['width'] ) ? $img['width'] : 1200;
+										$img_h   = ! empty( $img['height'] ) ? $img['height'] : 900;
+									} elseif ( is_numeric( $img ) ) {
+										$img_src = wp_get_attachment_image_src( $img, 'full' );
+										$img_url = $img_src ? $img_src[0] : '';
+										$img_w   = ! empty( $img_src[1] ) ? $img_src[1] : 1200;
+										$img_h   = ! empty( $img_src[2] ) ? $img_src[2] : 900;
+										$img_alt = get_post_meta( $img, '_wp_attachment_image_alt', true ) ?: get_the_title( $post_id );
+									} else {
+										$img_url = (string) $img;
+										$img_alt = get_the_title( $post_id );
+									}
 								?>
 									<div class="swiper-slide mbland_singleProject_gallery_mainSlide">
-										<img class="mbland_singleProject_gallery_mainImage" src="<?php echo esc_url( $img_url ); ?>" alt="<?php echo esc_attr( $img_alt ); ?>" loading="lazy" decoding="async" fetchpriority="low" />
+										<img class="mbland_singleProject_gallery_mainImage" src="<?php echo esc_url( $img_url ); ?>" alt="<?php echo esc_attr( $img_alt ); ?>" width="<?php echo esc_attr( $img_w ); ?>" height="<?php echo esc_attr( $img_h ); ?>" loading="lazy" decoding="async" fetchpriority="low" />
 									</div>
 								<?php endforeach; ?>
 							<?php else : ?>
 								<!-- Ảnh mẫu demo khớp theo thiết kế -->
 								<div class="swiper-slide mbland_singleProject_gallery_mainSlide">
-									<img class="mbland_singleProject_gallery_mainImage" src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1200&q=80" alt="Hilton Sky View" loading="lazy" decoding="async" fetchpriority="low" />
+									<img class="mbland_singleProject_gallery_mainImage" src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1200&q=80" alt="Hilton Sky View" width="1200" height="900" loading="lazy" decoding="async" fetchpriority="low" />
 								</div>
 								<div class="swiper-slide mbland_singleProject_gallery_mainSlide">
-									<img class="mbland_singleProject_gallery_mainImage" src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80" alt="Kiến trúc xanh & Tiện ích" loading="lazy" decoding="async" fetchpriority="low" />
+									<img class="mbland_singleProject_gallery_mainImage" src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80" alt="Kiến trúc xanh & Tiện ích" width="1200" height="900" loading="lazy" decoding="async" fetchpriority="low" />
 								</div>
 								<div class="swiper-slide mbland_singleProject_gallery_mainSlide">
-									<img class="mbland_singleProject_gallery_mainImage" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80" alt="Cảnh quan ven sông" loading="lazy" decoding="async" fetchpriority="low" />
+									<img class="mbland_singleProject_gallery_mainImage" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80" alt="Cảnh quan ven sông" width="1200" height="900" loading="lazy" decoding="async" fetchpriority="low" />
 								</div>
 								<div class="swiper-slide mbland_singleProject_gallery_mainSlide">
-									<img class="mbland_singleProject_gallery_mainImage" src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80" alt="Quy hoạch tổng thể" loading="lazy" decoding="async" fetchpriority="low" />
+									<img class="mbland_singleProject_gallery_mainImage" src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80" alt="Quy hoạch tổng thể" width="1200" height="900" loading="lazy" decoding="async" fetchpriority="low" />
 								</div>
 							<?php endif; ?>
 						</div>
@@ -210,26 +235,41 @@ get_header();
 						<div class="swiper-wrapper">
 							<?php if ( ! empty( $gallery ) && is_array( $gallery ) ) : ?>
 								<?php foreach ( $gallery as $img ) : 
-									$img_url = is_array( $img ) ? ( $img['url'] ?? '' ) : ( is_numeric( $img ) ? wp_get_attachment_image_url( $img, 'medium_large' ) : $img );
-									$img_alt = is_array( $img ) ? ( $img['alt'] ?? get_the_title( $post_id ) ) : get_the_title( $post_id );
+									$thumb_img_w = 400;
+									$thumb_img_h = 364;
+									if ( is_array( $img ) ) {
+										$img_url     = $img['sizes']['medium_large'] ?? ( $img['url'] ?? '' );
+										$img_alt     = ! empty( $img['alt'] ) ? $img['alt'] : get_the_title( $post_id );
+										$thumb_img_w = $img['sizes']['medium_large-width'] ?? ( $img['width'] ?? 400 );
+										$thumb_img_h = $img['sizes']['medium_large-height'] ?? ( $img['height'] ?? 364 );
+									} elseif ( is_numeric( $img ) ) {
+										$img_src     = wp_get_attachment_image_src( $img, 'medium_large' );
+										$img_url     = $img_src ? $img_src[0] : '';
+										$thumb_img_w = ! empty( $img_src[1] ) ? $img_src[1] : 400;
+										$thumb_img_h = ! empty( $img_src[2] ) ? $img_src[2] : 364;
+										$img_alt     = get_post_meta( $img, '_wp_attachment_image_alt', true ) ?: get_the_title( $post_id );
+									} else {
+										$img_url     = (string) $img;
+										$img_alt     = get_the_title( $post_id );
+									}
 								?>
 									<div class="swiper-slide mbland_singleProject_gallery_thumbSlide">
-										<img class="mbland_singleProject_gallery_thumbImage" src="<?php echo esc_url( $img_url ); ?>" alt="<?php echo esc_attr( $img_alt ); ?>" loading="lazy" decoding="async" fetchpriority="low" />
+										<img class="mbland_singleProject_gallery_thumbImage" src="<?php echo esc_url( $img_url ); ?>" alt="<?php echo esc_attr( $img_alt ); ?>" width="<?php echo esc_attr( $thumb_img_w ); ?>" height="<?php echo esc_attr( $thumb_img_h ); ?>" loading="lazy" decoding="async" fetchpriority="low" />
 									</div>
 								<?php endforeach; ?>
 							<?php else : ?>
 								<!-- Ảnh thumbnail mẫu demo -->
 								<div class="swiper-slide mbland_singleProject_gallery_thumbSlide">
-									<img class="mbland_singleProject_gallery_thumbImage" src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=400&q=80" alt="Hilton Sky View" loading="lazy" decoding="async" fetchpriority="low" />
+									<img class="mbland_singleProject_gallery_thumbImage" src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=400&q=80" alt="Hilton Sky View" width="400" height="364" loading="lazy" decoding="async" fetchpriority="low" />
 								</div>
 								<div class="swiper-slide mbland_singleProject_gallery_thumbSlide">
-									<img class="mbland_singleProject_gallery_thumbImage" src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=400&q=80" alt="Kiến trúc xanh & Tiện ích" loading="lazy" decoding="async" fetchpriority="low" />
+									<img class="mbland_singleProject_gallery_thumbImage" src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=400&q=80" alt="Kiến trúc xanh & Tiện ích" width="400" height="364" loading="lazy" decoding="async" fetchpriority="low" />
 								</div>
 								<div class="swiper-slide mbland_singleProject_gallery_thumbSlide">
-									<img class="mbland_singleProject_gallery_thumbImage" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Cảnh quan ven sông" loading="lazy" decoding="async" fetchpriority="low" />
+									<img class="mbland_singleProject_gallery_thumbImage" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Cảnh quan ven sông" width="400" height="364" loading="lazy" decoding="async" fetchpriority="low" />
 								</div>
 								<div class="swiper-slide mbland_singleProject_gallery_thumbSlide">
-									<img class="mbland_singleProject_gallery_thumbImage" src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=400&q=80" alt="Quy hoạch tổng thể" loading="lazy" decoding="async" fetchpriority="low" />
+									<img class="mbland_singleProject_gallery_thumbImage" src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=400&q=80" alt="Quy hoạch tổng thể" width="400" height="364" loading="lazy" decoding="async" fetchpriority="low" />
 								</div>
 							<?php endif; ?>
 						</div>
@@ -407,8 +447,37 @@ document.addEventListener('DOMContentLoaded', function () {
 							while ( $related_query->have_posts() ) : $related_query->the_post();
 								$banner_field = get_field('banner');
 								$item_title   = get_the_title();
-								$thumb        = !empty($banner_field) ? ( is_array($banner_field) ? ( $banner_field['url'] ?? '' ) : $banner_field ) : get_the_post_thumbnail_url( get_the_ID() );
-								$thumb        = $thumb ?: '/wp-content/uploads/2025/10/branch-placeholder.jpg';
+								$thumb_w      = 600;
+								$thumb_h      = 350;
+								$thumb        = '';
+
+								if ( ! empty( $banner_field ) ) {
+									if ( is_array( $banner_field ) ) {
+										$thumb   = $banner_field['url'] ?? '';
+										$thumb_w = ! empty( $banner_field['width'] ) ? $banner_field['width'] : 600;
+										$thumb_h = ! empty( $banner_field['height'] ) ? $banner_field['height'] : 350;
+									} elseif ( is_numeric( $banner_field ) ) {
+										$banner_data = wp_get_attachment_image_src( $banner_field, 'full' );
+										if ( ! empty( $banner_data ) ) {
+											$thumb   = $banner_data[0];
+											$thumb_w = ! empty( $banner_data[1] ) ? $banner_data[1] : 600;
+											$thumb_h = ! empty( $banner_data[2] ) ? $banner_data[2] : 350;
+										}
+									} else {
+										$thumb = (string) $banner_field;
+									}
+								}
+
+								if ( empty( $thumb ) && has_post_thumbnail() ) {
+									$post_thumb_data = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' );
+									if ( ! empty( $post_thumb_data ) ) {
+										$thumb   = $post_thumb_data[0];
+										$thumb_w = ! empty( $post_thumb_data[1] ) ? $post_thumb_data[1] : 600;
+										$thumb_h = ! empty( $post_thumb_data[2] ) ? $post_thumb_data[2] : 350;
+									}
+								}
+
+								$thumb = $thumb ?: '/wp-content/uploads/2025/10/branch-placeholder.jpg';
 						?>
 						<div class="swiper-slide mbland_singleProject_featuredProject_slide">
 							<div class="mbland_homepage_projects_item mbland_homepage_projects_item<?php echo $i; ?>">
@@ -417,6 +486,8 @@ document.addEventListener('DOMContentLoaded', function () {
 										 src="<?php echo esc_url( $thumb ); ?>"
 										 alt="<?php the_title_attribute(); ?>"
 										 title="<?php the_title_attribute(); ?>"
+										 width="<?php echo esc_attr( $thumb_w ); ?>"
+										 height="<?php echo esc_attr( $thumb_h ); ?>"
 										 />
 								</div>
 								<div class="mbland_homepage_projects_itemContent">
