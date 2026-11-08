@@ -1,6 +1,7 @@
 <?php
 /**
  * Đăng ký ACF Options Page & Field Group cho Cài đặt chung: Đối tác (Brands) & Form liên hệ (Contact Form)
+ * Hỗ trợ đa ngôn ngữ Polylang (tách biệt lưu trữ riêng cho từng ngôn ngữ).
  *
  * @package HomeNest Theme
  */
@@ -61,26 +62,26 @@ function mbland_register_shared_sections_acf_fields() {
 				'type'  => 'tab',
 			),
 			array(
-				'key'           => 'field_options_brands_title',
-				'label'         => 'Tiêu đề Section Đối tác',
-				'name'          => 'brands_title',
-				'type'          => 'text',
-				'default_value' => 'Các đối tác của chúng tôi',
+				'key'         => 'field_options_brands_title',
+				'label'       => 'Tiêu đề Section Đối tác',
+				'name'        => 'brands_title',
+				'type'        => 'text',
+				'placeholder' => 'VD: Các đối tác của chúng tôi (hoặc Our Partners)',
 			),
 			array(
-				'key'           => 'field_options_brands_desc',
-				'label'         => 'Mô tả Section Đối tác',
-				'name'          => 'brands_desc',
-				'type'          => 'textarea',
-				'rows'          => 3,
-				'default_value' => 'Chúng tôi trân trọng xây dựng những mối quan hệ hợp tác chiến lược, cùng kết nối nguồn lực, phát huy thế mạnh và hướng đến những giá trị phát triển bền vững.',
+				'key'         => 'field_options_brands_desc',
+				'label'       => 'Mô tả Section Đối tác',
+				'name'        => 'brands_desc',
+				'type'        => 'textarea',
+				'rows'        => 3,
+				'placeholder' => 'Mô tả giới thiệu đối tác...',
 			),
 			array(
 				'key'          => 'field_options_brands_list',
 				'label'        => 'Danh sách Logo Đối tác',
 				'name'         => 'brands_list',
 				'type'         => 'repeater',
-				'instructions' => 'Thêm các logo đối tác để hiển thị trên dải chạy ngang. Nếu để trống, hệ thống sẽ sử dụng danh sách logo mặc định.',
+				'instructions' => 'Thêm các logo đối tác để hiển thị trên dải chạy ngang. Nếu để trống ở ngôn ngữ phụ, hệ thống sẽ tự động dùng danh sách logo mặc định.',
 				'layout'       => 'table',
 				'button_label' => 'Thêm đối tác',
 				'sub_fields'   => array(
@@ -94,18 +95,18 @@ function mbland_register_shared_sections_acf_fields() {
 						'required'      => 1,
 					),
 					array(
-						'key'           => 'field_options_brand_name',
-						'label'         => 'Tên đối tác (Alt text)',
-						'name'          => 'name',
-						'type'          => 'text',
-						'placeholder'   => 'VD: Vietcombank, Savills...',
+						'key'         => 'field_options_brand_name',
+						'label'       => 'Tên đối tác (Alt text)',
+						'name'        => 'name',
+						'type'        => 'text',
+						'placeholder' => 'VD: Vietcombank, Savills...',
 					),
 					array(
-						'key'           => 'field_options_brand_link',
-						'label'         => 'Link website (Tùy chọn)',
-						'name'          => 'link',
-						'type'          => 'url',
-						'placeholder'   => 'https://...',
+						'key'         => 'field_options_brand_link',
+						'label'       => 'Link website (Tùy chọn)',
+						'name'        => 'link',
+						'type'        => 'url',
+						'placeholder' => 'https://...',
 					),
 				),
 			),
@@ -119,19 +120,19 @@ function mbland_register_shared_sections_acf_fields() {
 				'type'  => 'tab',
 			),
 			array(
-				'key'           => 'field_options_contact_title',
-				'label'         => 'Tiêu đề Form liên hệ',
-				'name'          => 'contact_title',
-				'type'          => 'text',
-				'default_value' => 'Liên hệ gửi yêu cầu tư vấn',
+				'key'         => 'field_options_contact_title',
+				'label'       => 'Tiêu đề Form liên hệ',
+				'name'        => 'contact_title',
+				'type'        => 'text',
+				'placeholder' => 'VD: Liên hệ gửi yêu cầu tư vấn (hoặc Contact Us)',
 			),
 			array(
-				'key'           => 'field_options_contact_desc',
-				'label'         => 'Mô tả Form liên hệ',
-				'name'          => 'contact_desc',
-				'type'          => 'textarea',
-				'rows'          => 3,
-				'default_value' => 'Kết nối cùng MBLand Asset Management để khám phá những cơ hội hợp tác và giải pháp đầu tư phù hợp với mục tiêu của bạn.',
+				'key'         => 'field_options_contact_desc',
+				'label'       => 'Mô tả Form liên hệ',
+				'name'        => 'contact_desc',
+				'type'        => 'textarea',
+				'rows'        => 3,
+				'placeholder' => 'Mô tả ngắn gọn về dịch vụ tư vấn...',
 			),
 			array(
 				'key'           => 'field_options_contact_bg',
@@ -143,14 +144,72 @@ function mbland_register_shared_sections_acf_fields() {
 				'instructions'  => 'Ảnh nền kích thước lớn (khuyến nghị 2560x1157px). Nếu để trống sẽ dùng ảnh mặc định.',
 			),
 			array(
-				'key'           => 'field_options_contact_action',
-				'label'         => 'Form Action URL',
-				'name'          => 'contact_action',
-				'type'          => 'text',
-				'default_value' => '#',
-				'instructions'  => 'Đường dẫn nhận dữ liệu form (hoặc để # nếu xử lý bằng AJAX/Plugin khác).',
+				'key'          => 'field_options_contact_action',
+				'label'        => 'Form Action URL',
+				'name'         => 'contact_action',
+				'type'         => 'text',
+				'placeholder'  => '#',
+				'instructions' => 'Đường dẫn nhận dữ liệu form (hoặc để # nếu xử lý bằng AJAX/Plugin khác).',
 			),
 		),
 	) );
 }
 
+/**
+ * 3. Hỗ trợ đa ngôn ngữ (Polylang) cho ACF Options Page:
+ * Tự động phân tách bộ lưu trữ Options theo từng ngôn ngữ.
+ * - Ngôn ngữ mặc định (vi): lưu vào 'options'
+ * - Ngôn ngữ phụ (en, ja...): lưu vào 'options_en', 'options_ja'...
+ */
+add_filter( 'acf/validate_post_id', 'mbland_acf_options_multilingual_post_id', 10, 2 );
+function mbland_acf_options_multilingual_post_id( $post_id, $original_post_id = null ) {
+	if ( 'options' === $post_id || 'option' === $post_id ) {
+		$default_lang = function_exists( 'pll_default_language' ) ? pll_default_language( 'slug' ) : '';
+		$current_lang = '';
+
+		if ( is_admin() ) {
+			// Đang trong WP Admin: kiểm tra tham số lang trên URL hoặc POST
+			if ( isset( $_GET['lang'] ) && 'all' !== $_GET['lang'] ) {
+				$current_lang = sanitize_key( $_GET['lang'] );
+			} elseif ( isset( $_POST['lang'] ) && 'all' !== $_POST['lang'] ) {
+				$current_lang = sanitize_key( $_POST['lang'] );
+			} elseif ( function_exists( 'pll_current_language' ) ) {
+				$current_lang = pll_current_language( 'slug' );
+			}
+		} else {
+			// Ngoài frontend: lấy theo ngôn ngữ đang truy cập
+			if ( function_exists( 'pll_current_language' ) ) {
+				$current_lang = pll_current_language( 'slug' );
+			}
+		}
+
+		if ( empty( $current_lang ) ) {
+			$current_lang = $default_lang;
+		}
+
+		// Nếu là ngôn ngữ phụ (khác ngôn ngữ mặc định), chuyển sang key riêng 'options_{lang}'
+		if ( ! empty( $current_lang ) && ! empty( $default_lang ) && $current_lang !== $default_lang ) {
+			return 'options_' . $current_lang;
+		}
+	}
+	return $post_id;
+}
+
+/**
+ * 4. Fallback tự động ngoài Frontend nếu ngôn ngữ phụ chưa nhập dữ liệu:
+ * Giúp các trường như ảnh nền (contact_bg), danh sách đối tác (brands_list)
+ * nếu chưa nhập ở tiếng Anh thì tự động lấy từ tiếng Việt sang.
+ */
+add_filter( 'acf/load_value', 'mbland_acf_options_multilingual_fallback', 10, 3 );
+function mbland_acf_options_multilingual_fallback( $value, $post_id, $field ) {
+	// Chỉ fallback ngoài frontend, KHÔNG fallback trong admin để tránh gây hiểu nhầm dữ liệu bị đồng bộ
+	if ( ! is_admin() && is_string( $post_id ) && strpos( $post_id, 'options_' ) === 0 ) {
+		if ( null === $value || '' === $value || false === $value || ( is_array( $value ) && empty( $value ) ) ) {
+			$fallback_value = acf_get_value( 'options', $field );
+			if ( ! empty( $fallback_value ) ) {
+				return $fallback_value;
+			}
+		}
+	}
+	return $value;
+}
