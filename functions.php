@@ -37,6 +37,16 @@ require_once HOMENEST_INC_DIR . 'theme-options-fields.php';
 // Tắt tính năng tự động đăng ký dịch nhãn (Label, Title, Default value, Instructions) của ACF trong Polylang
 add_filter( 'pll_enable_acf_labels_translation', '__return_false' );
 
+// Giá trị ACF (Options page, Trang chủ, Giới thiệu...) lưu RIÊNG cho từng ngôn ngữ, không đồng bộ/copy giữa các ngôn ngữ.
+// Các field khai báo bằng PHP không có thiết lập 'translations' nên Polylang dùng mặc định (có thể là sync/ignore).
+add_filter( 'pll_acf_default_translation_setting', function ( $setting, $field = array() ) {
+    $structural = array( 'tab', 'message', 'accordion', 'clone' );
+    if ( isset( $field['type'] ) && in_array( $field['type'], $structural, true ) ) {
+        return $setting;
+    }
+    return 'translate';
+}, 10, 2 );
+
 // KHÔNG CÓ THẺ ĐÓNG PHP ?>
 
 <?php
