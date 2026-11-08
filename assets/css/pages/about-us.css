@@ -957,11 +957,14 @@
 
 .mbland_homepage_company_introHeader {
 	background-color: #8A0218;
-	padding: 12px;
+	padding: 10px 16px 10px 74px;
 	border-radius: 0 120px 120px 0;
 	margin-left: -20px;
 	position: relative;
-	padding-left: 74px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
 }
 
 .mbland_homepage_company_introTitle {
@@ -973,6 +976,42 @@
 	text-transform: uppercase;
 	color: #fff;
 	margin: 0;
+}
+
+.mbland_homepage_company_nav {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	margin-right: 12px;
+	flex-shrink: 0;
+}
+
+.mbland_homepage_company_btn {
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	border: 1px solid rgba(255, 255, 255, 0.4);
+	background: transparent;
+	color: #fff;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	padding: 0;
+	outline: none;
+}
+
+.mbland_homepage_company_btn:hover {
+	background: #fff;
+	color: #8A0218;
+	border-color: #fff;
+}
+
+.mbland_homepage_company_btn.swiper-button-disabled {
+	opacity: 0.35;
+	cursor: not-allowed;
+	pointer-events: none;
 }
 
 .mbland_homepage_company_introContent {
@@ -1016,6 +1055,21 @@
 	display: flex !important;
 	flex-direction: column;
 	justify-content: space-between;
+	cursor: pointer;
+	border: 1px solid transparent;
+	transition: all .3s ease;
+}
+
+.mbland_homepage_company_showcaseItem.active {
+	border-color: #8A0218;
+}
+
+.mbland_homepage_company_showcaseItem.active .mbland_homepage_company_showcaseNumber {
+	-webkit-text-stroke: 0.000em #8A0218;
+	background: linear-gradient(180deg, #8A0218 0%, rgba(138, 2, 24, 0.05) 100%);
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
 }
 
 .mbland_homepage_company_showcaseNumber {
@@ -1175,6 +1229,21 @@
 	.mbland_homepage_company_introHeader {
 		margin-left: -20px;
 		padding-left: 20px;
+	}
+
+	.mbland_homepage_company_nav {
+		gap: 6px;
+		margin-right: 6px;
+	}
+
+	.mbland_homepage_company_btn {
+		width: 30px;
+		height: 30px;
+	}
+
+	.mbland_homepage_company_btn svg {
+		width: 14px;
+		height: 14px;
 	}
 
 	.mbland_homepage_company_introContent {

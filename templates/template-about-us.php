@@ -244,42 +244,57 @@ $goals_list = ! empty( $about_goals['goals'] ) && is_array( $about_goals['goals'
 
 <!-- ==== START SECTION COMPANY ==== -->
 <?php
-$sub_intro_img     = ! empty( $about_subsidiaries['intro_image']['url'] ) ? $about_subsidiaries['intro_image']['url'] : '/wp-content/uploads/2026/11/gioi-thieu-cong-ty-cua-chung-toi-image-1.jpg';
-$sub_intro_w       = ! empty( $about_subsidiaries['intro_image']['width'] ) ? $about_subsidiaries['intro_image']['width'] : 1634;
-$sub_intro_h       = ! empty( $about_subsidiaries['intro_image']['height'] ) ? $about_subsidiaries['intro_image']['height'] : 919;
-$sub_intro_title   = ! empty( $about_subsidiaries['intro_title'] ) ? $about_subsidiaries['intro_title'] : 'Hệ thống Công ty con';
-$sub_brand_prefix  = ! empty( $about_subsidiaries['brand_prefix'] ) ? $about_subsidiaries['brand_prefix'] : 'Công ty Cổ Phần TẬP ĐOÀN';
-$sub_brand_logo    = ! empty( $about_subsidiaries['brand_logo']['url'] ) ? $about_subsidiaries['brand_logo']['url'] : '/wp-content/uploads/2026/11/logo_mbland-asset-management.png';
-$sub_logo_w        = ! empty( $about_subsidiaries['brand_logo']['width'] ) ? $about_subsidiaries['brand_logo']['width'] : 1408;
-$sub_logo_h        = ! empty( $about_subsidiaries['brand_logo']['height'] ) ? $about_subsidiaries['brand_logo']['height'] : 104;
-$sub_intro_desc    = ! empty( $about_subsidiaries['intro_desc'] ) ? $about_subsidiaries['intro_desc'] : 'Với định hướng phát triển bền vững, lấy uy tín và chất lượng làm nền tảng, MBLand Asset Management không ngừng mở rộng hệ sinh thái đầu tư, kết nối các đối tác trong nước và quốc tế, hướng đến kiến tạo những giá trị lâu dài cho khách hàng, đối tác và cộng đồng.';
+$sub_intro_img   = ! empty( $about_subsidiaries['intro_image']['url'] ) ? $about_subsidiaries['intro_image']['url'] : '/wp-content/uploads/2026/11/gioi-thieu-cong-ty-cua-chung-toi-image-1.jpg';
+$sub_intro_w     = ! empty( $about_subsidiaries['intro_image']['width'] ) ? $about_subsidiaries['intro_image']['width'] : 1634;
+$sub_intro_h     = ! empty( $about_subsidiaries['intro_image']['height'] ) ? $about_subsidiaries['intro_image']['height'] : 919;
+$sub_intro_title = ! empty( $about_subsidiaries['intro_title'] ) ? $about_subsidiaries['intro_title'] : 'Hệ thống Công ty con';
 
 $companies_list = ! empty( $about_subsidiaries['companies'] ) && is_array( $about_subsidiaries['companies'] ) ? $about_subsidiaries['companies'] : array(
 	array(
-		'logo' => array(
+		'brand_prefix' => 'CÔNG TY CỔ PHẦN TẬP ĐOÀN',
+		'brand_logo'   => array(
+			'url'    => '/wp-content/uploads/2026/11/logo_mbland-asset-management.png',
+			'width'  => 1408,
+			'height' => 104,
+		),
+		'description'  => 'Với định hướng phát triển bền vững, lấy uy tín và chất lượng làm nền tảng, MBLand Asset Management không ngừng mở rộng hệ sinh thái đầu tư, kết nối các đối tác trong nước và quốc tế, hướng đến kiến tạo những giá trị lâu dài cho khách hàng, đối tác và cộng đồng.',
+	),
+	array(
+		'brand_prefix' => 'CÔNG TY ĐẦU TƯ',
+		'brand_logo'   => array(
 			'url'    => '/wp-content/uploads/2025/10/logo-fs.png',
 			'width'  => 1844,
 			'height' => 841,
 		),
-		'name' => 'Logo FS',
+		'description'  => 'F&S Investment là công ty thành viên chuyên sâu trong lĩnh vực đầu tư tài chính và phát triển dự án, mang lại hiệu quả vượt trội cho đối tác và khách hàng.',
 	),
 	array(
-		'logo' => array(
+		'brand_prefix' => 'CÔNG TY CỔ PHẦN BẤT ĐỘNG SẢN',
+		'brand_logo'   => array(
 			'url'    => '/wp-content/uploads/2025/10/logo-mb-landdanang.png',
 			'width'  => 366,
 			'height' => 134,
 		),
-		'name' => 'MBLand Đà Nẵng',
+		'description'  => 'MBLand Đà Nẵng đóng vai trò phát triển các dự án bất động sản trọng điểm tại miền Trung với chất lượng và đẳng cấp hàng đầu.',
 	),
 	array(
-		'logo' => array(
+		'brand_prefix' => 'CÔNG TY CỔ PHẦN BẤT ĐỘNG SẢN',
+		'brand_logo'   => array(
 			'url'    => '/wp-content/uploads/2026/11/MBLand-Tonkin-Hoi-an.png',
 			'width'  => 196,
 			'height' => 58,
 		),
-		'name' => 'MBLand Tonkin Hội An',
+		'description'  => 'MBLand Tonkin Hội An định hình các sản phẩm bất động sản nghỉ dưỡng cao cấp, kết nối văn hóa bản địa và chuẩn mực quốc tế.',
 	),
 );
+
+// Lấy thông tin công ty đầu tiên để hiển thị mặc định ở trên
+$first_company    = ! empty( $companies_list[0] ) ? $companies_list[0] : array();
+$sub_brand_prefix = ! empty( $first_company['brand_prefix'] ) ? $first_company['brand_prefix'] : 'CÔNG TY CỔ PHẦN TẬP ĐOÀN';
+$sub_brand_logo   = ! empty( $first_company['brand_logo']['url'] ) ? $first_company['brand_logo']['url'] : '/wp-content/uploads/2026/11/logo_mbland-asset-management.png';
+$sub_logo_w       = ! empty( $first_company['brand_logo']['width'] ) ? $first_company['brand_logo']['width'] : 1408;
+$sub_logo_h       = ! empty( $first_company['brand_logo']['height'] ) ? $first_company['brand_logo']['height'] : 104;
+$sub_intro_desc   = ! empty( $first_company['description'] ) ? $first_company['description'] : '';
 ?>
 <section class="mbland_homepage_company">
 	<div class="container">
@@ -297,6 +312,18 @@ $companies_list = ! empty( $about_subsidiaries['companies'] ) && is_array( $abou
 			<div class="mbland_homepage_company_body mbland_homepage_company_introBody">
 				<header class="mbland_homepage_company_introHeader">
 					<h2 class="mbland_homepage_company_introTitle"><?php echo esc_html( $sub_intro_title ); ?></h2>
+					<div class="mbland_homepage_company_nav">
+						<button type="button" class="mbland_homepage_company_btn mbland_homepage_company_btnPrev" aria-label="Previous slide">
+							<svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M15 19L8 12L15 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+							</svg>
+						</button>
+						<button type="button" class="mbland_homepage_company_btn mbland_homepage_company_btnNext" aria-label="Next slide">
+							<svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M9 5L16 12L9 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+							</svg>
+						</button>
+					</div>
 				</header>
 				<div class="mbland_homepage_company_introContent">
 					<div class="mbland_homepage_company_introBrand">
@@ -327,22 +354,27 @@ $companies_list = ! empty( $about_subsidiaries['companies'] ) && is_array( $abou
 						<div class="swiper-wrapper mbland_homepage_company_showcaseWrapperList">
 							<?php
 							foreach ( $companies_list as $c_idx => $c_item ) :
-								$c_num    = sprintf( '%02d', $c_idx + 1 );
-								$c_name   = ! empty( $c_item['name'] ) ? $c_item['name'] : 'Logo công ty';
-								$c_logo   = ! empty( $c_item['logo']['url'] ) ? $c_item['logo']['url'] : '';
-								$c_logo_w = ! empty( $c_item['logo']['width'] ) ? $c_item['logo']['width'] : 300;
-								$c_logo_h = ! empty( $c_item['logo']['height'] ) ? $c_item['logo']['height'] : 150;
+								$c_num      = sprintf( '%02d', $c_idx + 1 );
+								$c_prefix   = ! empty( $c_item['brand_prefix'] ) ? $c_item['brand_prefix'] : '';
+								$c_logo     = ! empty( $c_item['brand_logo']['url'] ) ? $c_item['brand_logo']['url'] : '';
+								$c_logo_w   = ! empty( $c_item['brand_logo']['width'] ) ? $c_item['brand_logo']['width'] : 300;
+								$c_logo_h   = ! empty( $c_item['brand_logo']['height'] ) ? $c_item['brand_logo']['height'] : 150;
+								$c_desc     = ! empty( $c_item['description'] ) ? $c_item['description'] : '';
 								if ( empty( $c_logo ) ) {
 									continue;
 								}
+								$is_active = ( $c_idx === 0 ) ? ' active' : '';
 								?>
-								<div class="swiper-slide mbland_homepage_company_showcaseItem">
+								<div class="swiper-slide mbland_homepage_company_showcaseItem<?php echo esc_attr( $is_active ); ?>"
+									 data-prefix="<?php echo esc_attr( $c_prefix ); ?>"
+									 data-logo="<?php echo esc_url( $c_logo ); ?>"
+									 data-desc="<?php echo esc_attr( $c_desc ); ?>">
 									<p class="mbland_homepage_company_showcaseNumber"><?php echo esc_html( $c_num ); ?></p>
 									<img loading="lazy" decoding="async" fetchpriority="low"
 										 class="mbland_homepage_company_showcaseImage mbland_homepage_company_showcaseLogo"
 										 src="<?php echo esc_url( $c_logo ); ?>"
-										 alt="<?php echo esc_attr( $c_name ); ?>"
-										 title="<?php echo esc_attr( $c_name ); ?>"
+										 alt="<?php echo esc_attr( $c_prefix ); ?>"
+										 title="<?php echo esc_attr( $c_prefix ); ?>"
 										 width="<?php echo esc_attr( $c_logo_w ); ?>"
 										 height="<?php echo esc_attr( $c_logo_h ); ?>"
 									/>

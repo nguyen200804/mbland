@@ -3,12 +3,65 @@
 document.addEventListener("DOMContentLoaded", function () {
   if (typeof Swiper === "undefined") return;
 
-  if (document.querySelector(".mbland_homepage_company_showcaseList")) {
-    new Swiper(".mbland_homepage_company_showcaseList", {
+  const showcaseList = document.querySelector(".mbland_homepage_company_showcaseList");
+  if (showcaseList) {
+    const brandName = document.querySelector(".mbland_homepage_company_introBrandName");
+    const brandLogo = document.querySelector(".mbland_homepage_company_introBrandLogo");
+    const brandDesc = document.querySelector(".mbland_homepage_company_introDesc");
+    const introContent = document.querySelector(".mbland_homepage_company_introContent");
+
+    function updateCompanyInfo(slide) {
+      if (!slide) return;
+      const prefix = slide.getAttribute("data-prefix");
+      const logo = slide.getAttribute("data-logo");
+      const desc = slide.getAttribute("data-desc");
+
+      const allSlides = showcaseList.querySelectorAll(".mbland_homepage_company_showcaseItem");
+      allSlides.forEach((s) => s.classList.remove("active"));
+      slide.classList.add("active");
+
+      if (introContent) {
+        introContent.style.transition = "opacity 0.2s ease";
+        introContent.style.opacity = "0.2";
+        setTimeout(() => {
+          if (brandName && prefix !== null) brandName.textContent = prefix;
+          if (brandLogo && logo) brandLogo.src = logo;
+          if (brandDesc && desc !== null) brandDesc.innerHTML = desc.replace(/\n/g, "<br>");
+          introContent.style.opacity = "1";
+        }, 200);
+      } else {
+        if (brandName && prefix !== null) brandName.textContent = prefix;
+        if (brandLogo && logo) brandLogo.src = logo;
+        if (brandDesc && desc !== null) brandDesc.innerHTML = desc.replace(/\n/g, "<br>");
+      }
+    }
+
+    const swiperShowcase = new Swiper(".mbland_homepage_company_showcaseList", {
       slidesPerView: "auto",
       spaceBetween: 15,
       loop: false,
-      // autoplay: { delay: 3000, disableOnInteraction: false },
+      navigation: {
+        nextEl: ".mbland_homepage_company_btnNext",
+        prevEl: ".mbland_homepage_company_btnPrev",
+      },
+      pagination: {
+        el: ".mbland_homepage_company_showcasePagination",
+        clickable: true,
+      },
+      on: {
+        slideChange: function () {
+          const activeSlide = this.slides[this.activeIndex];
+          updateCompanyInfo(activeSlide);
+        },
+      },
+    });
+
+    const slides = showcaseList.querySelectorAll(".mbland_homepage_company_showcaseItem");
+    slides.forEach((slide, index) => {
+      slide.addEventListener("click", () => {
+        swiperShowcase.slideTo(index);
+        updateCompanyInfo(slide);
+      });
     });
   }
 
