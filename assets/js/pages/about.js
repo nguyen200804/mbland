@@ -24,15 +24,13 @@ document.addEventListener("DOMContentLoaded", function () {
         introContent.style.transition = "opacity 0.2s ease";
         introContent.style.opacity = "0.2";
         setTimeout(() => {
-          if (brandName && prefix !== null) brandName.textContent = prefix;
           if (brandLogo && logo) brandLogo.src = logo;
-          if (brandDesc && desc !== null) brandDesc.innerHTML = desc.replace(/\n/g, "<br>");
+          if (brandDesc && desc !== null && desc !== undefined) brandDesc.innerHTML = desc.replace(/\n/g, "<br>");
           introContent.style.opacity = "1";
         }, 200);
       } else {
-        if (brandName && prefix !== null) brandName.textContent = prefix;
         if (brandLogo && logo) brandLogo.src = logo;
-        if (brandDesc && desc !== null) brandDesc.innerHTML = desc.replace(/\n/g, "<br>");
+        if (brandDesc && desc !== null && desc !== undefined) brandDesc.innerHTML = desc.replace(/\n/g, "<br>");
       }
     }
 
