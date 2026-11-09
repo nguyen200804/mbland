@@ -113,6 +113,7 @@ add_action('init', function() {
   pll_register_string('vi_tri', 'VỊ TRÍ', 'Chi tiet du an');
   pll_register_string('quy_mo', 'QUY MÔ', 'Chi tiet du an');
   pll_register_string('du an khac', 'Dự án khác', 'Chi tiet du an');
+  pll_register_string('tim_hieu_them_du_an', 'Tìm hiểu thêm về dự án', 'Chi tiet du an');
   pll_register_string('mo ta du an khac', 'Tasmania & Partner là tập đoàn đa ngành với những dự án nổi bật trong suốt quá trình phát triển', 'Chi tiet du an');
 
   // Contact Form (Dịch chuỗi trong /wp-admin/admin.php?page=mlang_strings - Group: Contact Form)

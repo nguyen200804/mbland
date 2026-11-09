@@ -142,6 +142,61 @@ $projects = new WP_Query( array(
 	'orderby'        => 'date',
 	'order'          => 'DESC',
 ) );
+
+// ==========================================================================
+// DỰ ÁN HIỂN THỊ Ở HERO (khung nổi bật)
+// Ưu tiên: dự án mới nhất thuộc taxonomy `du-an-noi-bat` (trong lĩnh vực hiện tại)
+// -> nếu không có: dự án mới nhất trong lĩnh vực hiện tại
+// -> nếu vẫn không có: dự án mới nhất của toàn bộ post-type `du-an`.
+// ==========================================================================
+$hero_base_args = array(
+	'post_type'           => 'du-an',
+	'post_status'         => 'publish',
+	'posts_per_page'      => 1,
+	'orderby'             => 'date',
+	'order'               => 'DESC',
+	'no_found_rows'       => true,
+	'ignore_sticky_posts' => true,
+);
+$hero_noi_bat_clause = array(
+	'taxonomy' => 'du-an-noi-bat',
+	'operator' => 'EXISTS',
+);
+
+$hero_attempts = array();
+if ( ! empty( $tax_query ) ) {
+	$hero_attempts[] = array_merge( $hero_base_args, array( 'tax_query' => array( 'relation' => 'AND', $hero_noi_bat_clause, $tax_query ) ) );
+}
+$hero_attempts[] = array_merge( $hero_base_args, array( 'tax_query' => array( $hero_noi_bat_clause ) ) );
+if ( ! empty( $tax_query ) ) {
+	$hero_attempts[] = array_merge( $hero_base_args, array( 'tax_query' => $tax_query ) );
+}
+$hero_attempts[] = $hero_base_args;
+
+$hero_project_id = 0;
+foreach ( $hero_attempts as $hero_attempt_args ) {
+	$hero_query = new WP_Query( $hero_attempt_args );
+	if ( $hero_query->have_posts() ) {
+		$hero_project_id = (int) $hero_query->posts[0]->ID;
+		break;
+	}
+}
+wp_reset_postdata();
+
+$hero_title    = '';
+$hero_desc     = '';
+$hero_location = '';
+$hero_link     = '';
+if ( $hero_project_id ) {
+	$hero_title = get_the_title( $hero_project_id );
+	$hero_link  = get_permalink( $hero_project_id );
+	$hero_desc  = function_exists( 'get_field' ) ? get_field( 'short_content', $hero_project_id ) : '';
+	if ( empty( $hero_desc ) ) {
+		$hero_desc = has_excerpt( $hero_project_id ) ? get_the_excerpt( $hero_project_id ) : wp_trim_words( wp_strip_all_tags( get_post_field( 'post_content', $hero_project_id ) ), 50, '...' );
+	}
+	$hero_location_raw = function_exists( 'get_field' ) ? get_field( 'location', $hero_project_id ) : '';
+	$hero_location     = function_exists( 'mbland_clean_plain_text' ) ? mbland_clean_plain_text( $hero_location_raw ) : wp_strip_all_tags( (string) $hero_location_raw );
+}
 ?>
 
 
@@ -172,11 +227,12 @@ $projects = new WP_Query( array(
 		</div>
 
 	</div>
+	<?php if ( $hero_project_id ) : ?>
 	<div class="mbland_linhvuc_hero_featured">
 		<div class="container mbland_linhvuc_hero_featuredContainer">
 			<div class="mbland_linhvuc_hero_featuredInfo">
-				<p class="mbland_linhvuc_hero_featuredTitle">Thảo Điền Boutique Marina</p>
-				<p class="mbland_linhvuc_hero_featuredDesc">Được quy hoạch theo mô hình tổ hợp khép kín, dự án tích hợp hệ thống tiện ích và dịch vụ hiện đại, bao gồm khách sạn, nhà hàng, bến du thuyền, spa,.... Mang đến trải nghiệm trọn vẹn trong một không gian tiện nghi, riêng tư và đẳng cấp.</p>
+				<p class="mbland_linhvuc_hero_featuredTitle"><?php echo esc_html( $hero_title ); ?></p>
+				<p class="mbland_linhvuc_hero_featuredDesc"><?php echo esc_html( $hero_desc ); ?></p>
 				<div class="mbland_linhvuc_hero_featuredDecor">
 					<svg viewBox="0 0 27 26" xmlns="http://www.w3.org/2000/svg"><path d="M12.19.691c.3-.921 1.603-.921 1.902 0l2.417 7.438a1 1 0 0 0 .95.69h7.821c.97 0 1.372 1.24.588 1.81l-6.327 4.596a1 1 0 0 0-.363 1.118l2.417 7.438c.299.921-.755 1.688-1.54 1.118l-6.326-4.597a1 1 0 0 0-1.176 0L6.226 24.9c-.783.57-1.838-.197-1.538-1.118l2.416-7.438a1 1 0 0 0-.363-1.118L.414 10.63c-.784-.57-.38-1.81.588-1.81h7.82a1 1 0 0 0 .951-.69z" fill="currentColor"/></svg>
 					<svg viewBox="0 0 27 26" xmlns="http://www.w3.org/2000/svg"><path d="M12.19.691c.3-.921 1.603-.921 1.902 0l2.417 7.438a1 1 0 0 0 .95.69h7.821c.97 0 1.372 1.24.588 1.81l-6.327 4.596a1 1 0 0 0-.363 1.118l2.417 7.438c.299.921-.755 1.688-1.54 1.118l-6.326-4.597a1 1 0 0 0-1.176 0L6.226 24.9c-.783.57-1.838-.197-1.538-1.118l2.416-7.438a1 1 0 0 0-.363-1.118L.414 10.63c-.784-.57-.38-1.81.588-1.81h7.82a1 1 0 0 0 .951-.69z" fill="currentColor"/></svg>
@@ -184,6 +240,7 @@ $projects = new WP_Query( array(
 					<svg viewBox="0 0 27 26" xmlns="http://www.w3.org/2000/svg"><path d="M12.19.691c.3-.921 1.603-.921 1.902 0l2.417 7.438a1 1 0 0 0 .95.69h7.821c.97 0 1.372 1.24.588 1.81l-6.327 4.596a1 1 0 0 0-.363 1.118l2.417 7.438c.299.921-.755 1.688-1.54 1.118l-6.326-4.597a1 1 0 0 0-1.176 0L6.226 24.9c-.783.57-1.838-.197-1.538-1.118l2.416-7.438a1 1 0 0 0-.363-1.118L.414 10.63c-.784-.57-.38-1.81.588-1.81h7.82a1 1 0 0 0 .951-.69z" fill="currentColor"/></svg>
 					<svg viewBox="0 0 27 26" xmlns="http://www.w3.org/2000/svg"><path d="M12.19.691c.3-.921 1.603-.921 1.902 0l2.417 7.438a1 1 0 0 0 .95.69h7.821c.97 0 1.372 1.24.588 1.81l-6.327 4.596a1 1 0 0 0-.363 1.118l2.417 7.438c.299.921-.755 1.688-1.54 1.118l-6.326-4.597a1 1 0 0 0-1.176 0L6.226 24.9c-.783.57-1.838-.197-1.538-1.118l2.416-7.438a1 1 0 0 0-.363-1.118L.414 10.63c-.784-.57-.38-1.81.588-1.81h7.82a1 1 0 0 0 .951-.69z" fill="currentColor"/></svg>
 				</div>
+				<?php if ( ! empty( $hero_location ) ) : ?>
 				<hr class="mbland_linhvuc_hero_featuredDivider" />
 				<div class="mbland_linhvuc_hero_featuredLocation">
 					<span class="mbland_linhvuc_hero_featuredLocationIcon"><svg  viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -191,15 +248,16 @@ $projects = new WP_Query( array(
 						</svg>
 					</span>
 					<div class="mbland_linhvuc_hero_featuredLocationText">
-						<p class="mbland_linhvuc_hero_featuredLocationLabel">Vị trí DỰ ÁN</p>
-						<p class="mbland_linhvuc_hero_featuredLocationValue">Số 68 An Phú, Phường An Khánh, Thành phố Hồ Chí Minh</p>
+						<p class="mbland_linhvuc_hero_featuredLocationLabel"><?php echo esc_html( function_exists( 'pll__' ) ? pll__( 'Vị trí DỰ ÁN' ) : 'Vị trí DỰ ÁN' ); ?></p>
+						<p class="mbland_linhvuc_hero_featuredLocationValue"><?php echo esc_html( $hero_location ); ?></p>
 					</div>
 
 				</div>
+				<?php endif; ?>
 			</div>
 			<div class="mbland_linhvuc_hero_featuredAction">
-				<a class="mbland_linhvuc_hero_featuredLink">
-					<span class="mbland_linhvuc_hero_featuredLinkLabel">Tìm hiểu thêm về dự án</span>
+				<a class="mbland_linhvuc_hero_featuredLink" href="<?php echo esc_url( $hero_link ); ?>" title="<?php echo esc_attr( $hero_title ); ?>">
+					<span class="mbland_linhvuc_hero_featuredLinkLabel"><?php echo esc_html( function_exists( 'pll__' ) ? pll__( 'Tìm hiểu thêm về dự án' ) : 'Tìm hiểu thêm về dự án' ); ?></span>
 					<svg class="mbland_linhvuc_hero_featuredLinkIcon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.333 14.333V1H1m13.333 0L1 14.333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor"/></svg>
 				</a>
 
@@ -208,6 +266,7 @@ $projects = new WP_Query( array(
 		</div>
 
 	</div>
+	<?php endif; ?>
 </section>
 <!-- ===== END SECTION LINH VUC HERO ===== -->
 
