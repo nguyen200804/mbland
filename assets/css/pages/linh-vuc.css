@@ -1495,3 +1495,10 @@
 
 
 /* ===== END SECTION FEATURED PROJECT ===== */
+
+/* Tab Lĩnh vực: panel / item / nút Xem thêm bị ẩn bằng thuộc tính hidden */
+.mbland_linhvuc_listProject_panel[hidden],
+.mbland_linhvuc_listProject_item[hidden],
+.mbland_linhvuc_listProject_loadMore[hidden] {
+    display: none !important;
+}

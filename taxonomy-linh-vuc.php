@@ -132,16 +132,94 @@ if ( count( $tax_conditions ) > 1 ) {
 
 $paged = max( 1, (int) get_query_var( 'paged' ), (int) get_query_var( 'page' ) );
 
-// Danh sách dự án thuộc danh mục chỉ định
-$projects = new WP_Query( array(
-	'post_type'      => 'du-an',
-	'post_status'    => 'publish',
-	'posts_per_page' => 12,
-	'paged'          => $paged,
-	'tax_query'      => $tax_query,
-	'orderby'        => 'date',
-	'order'          => 'DESC',
+// ==========================================================================
+// TAB LĨNH VỰC: các term con (hoặc term cùng cấp nếu term hiện tại không có con)
+// Mỗi tab có 1 panel chứa danh sách dự án; chuyển tab bằng JS (không chuyển trang).
+// ==========================================================================
+$lv_tab_terms = get_terms( array(
+	'taxonomy'   => 'linh-vuc',
+	'parent'     => ! empty( $current_term->term_id ) ? $current_term->term_id : 0,
+	'hide_empty' => false,
+	'orderby'    => 'name',
+	'order'      => 'ASC',
 ) );
+if ( ( empty( $lv_tab_terms ) || is_wp_error( $lv_tab_terms ) ) && ! empty( $current_term->parent ) ) {
+	$lv_tab_terms = get_terms( array(
+		'taxonomy'   => 'linh-vuc',
+		'parent'     => $current_term->parent,
+		'hide_empty' => false,
+		'orderby'    => 'name',
+		'order'      => 'ASC',
+	) );
+}
+if ( is_wp_error( $lv_tab_terms ) || empty( $lv_tab_terms ) ) {
+	$lv_tab_terms = array();
+}
+
+$lv_build_projects_query = function ( $term_id, $term_slug ) {
+	return new WP_Query( array(
+		'post_type'      => 'du-an',
+		'post_status'    => 'publish',
+		'posts_per_page' => -1,
+		'no_found_rows'  => true,
+		'orderby'        => 'date',
+		'order'          => 'DESC',
+		'tax_query'      => array(
+			'relation' => 'OR',
+			array(
+				'taxonomy'         => 'linh-vuc',
+				'field'            => 'term_id',
+				'terms'            => (int) $term_id,
+				'include_children' => true,
+			),
+			array(
+				'taxonomy'         => 'danh-muc-du-an',
+				'field'            => 'slug',
+				'terms'            => $term_slug,
+				'include_children' => true,
+			),
+		),
+	) );
+};
+
+// Tab đang mở: term hiện tại (hoặc ?danh-muc=) nếu nằm trong danh sách tab, mặc định tab đầu tiên
+$lv_active_term_id = 0;
+foreach ( $lv_tab_terms as $lv_tab_term ) {
+	if ( (int) $lv_tab_term->term_id === (int) $target_term_id ) {
+		$lv_active_term_id = (int) $lv_tab_term->term_id;
+		break;
+	}
+}
+if ( ! $lv_active_term_id && ! empty( $lv_tab_terms ) ) {
+	$lv_active_term_id = (int) reset( $lv_tab_terms )->term_id;
+}
+
+$lv_panels = array();
+if ( ! empty( $lv_tab_terms ) ) {
+	foreach ( $lv_tab_terms as $lv_tab_term ) {
+		$lv_panels[] = array(
+			'term'   => $lv_tab_term,
+			'query'  => $lv_build_projects_query( $lv_tab_term->term_id, $lv_tab_term->slug ),
+			'active' => ( (int) $lv_tab_term->term_id === $lv_active_term_id ),
+		);
+	}
+} else {
+	// Không có term con/anh em: 1 panel duy nhất (không hiện tab)
+	$lv_panels[] = array(
+		'term'   => $current_term,
+		'query'  => new WP_Query( array(
+			'post_type'      => 'du-an',
+			'post_status'    => 'publish',
+			'posts_per_page' => -1,
+			'no_found_rows'  => true,
+			'tax_query'      => $tax_query,
+			'orderby'        => 'date',
+			'order'          => 'DESC',
+		) ),
+		'active' => true,
+	);
+}
+$lv_per_page = 12;
 
 // ==========================================================================
 // DỰ ÁN HIỂN THỊ Ở HERO (khung nổi bật)
@@ -285,37 +363,22 @@ if ( $hero_project_id ) {
 			</header>
 
 			<div class="mbland_linhvuc_listProject_body">
-				<!-- Xuất các term con trực tiếp của taxonomy=linh-vuc -->
-				<?php
-				$child_terms = get_terms( array(
-					'taxonomy'   => 'linh-vuc',
-					'parent'     => ! empty( $current_term->term_id ) ? $current_term->term_id : 0,
-					'hide_empty' => false,
-					'orderby'    => 'name',
-					'order'      => 'ASC',
-				) );
-
-				// Nếu term hiện tại là cấp con và không có con riêng, lấy các term cùng cấp (anh em)
-				if ( ( empty( $child_terms ) || is_wp_error( $child_terms ) ) && ! empty( $current_term->parent ) ) {
-					$child_terms = get_terms( array(
-						'taxonomy'   => 'linh-vuc',
-						'parent'     => $current_term->parent,
-						'hide_empty' => false,
-						'orderby'    => 'name',
-						'order'      => 'ASC',
-					) );
-				}
-				?>
-				<?php if ( ! empty( $child_terms ) && ! is_wp_error( $child_terms ) ) : ?>
+				<!-- Tab các term con của taxonomy=linh-vuc: bấm để đổi danh sách dự án, không chuyển trang -->
+				<?php if ( ! empty( $lv_tab_terms ) ) : ?>
 					<div class="mbland_linhvuc_listProject_filter">
-						<ul class="mbland_linhvuc_listProject_filterList">
-							<?php foreach ( $child_terms as $child_term ) : ?>
-								<?php
-								$is_active = ( ( isset( $target_term_id ) && (int) $child_term->term_id === (int) $target_term_id ) || ( isset( $target_term_slug ) && $child_term->slug === $target_term_slug ) ) ? ' active' : '';
-								?>
-								<li class="mbland_linhvuc_listProject_filterItem">
-									<a class="mbland_linhvuc_listProject_filterLink<?php echo esc_attr( $is_active ); ?>" href="<?php echo esc_url( get_term_link( $child_term ) ); ?>">
-										<?php echo esc_html( $child_term->name ); ?>
+						<ul class="mbland_linhvuc_listProject_filterList" role="tablist">
+							<?php foreach ( $lv_panels as $lv_panel ) : ?>
+								<?php $lv_pt = $lv_panel['term']; ?>
+								<li class="mbland_linhvuc_listProject_filterItem" role="presentation">
+									<a class="mbland_linhvuc_listProject_filterLink<?php echo $lv_panel['active'] ? ' active' : ''; ?>"
+									   href="<?php echo esc_url( get_term_link( $lv_pt ) ); ?>"
+									   role="tab"
+									   id="lv-tab-<?php echo esc_attr( $lv_pt->term_id ); ?>"
+									   aria-controls="lv-panel-<?php echo esc_attr( $lv_pt->term_id ); ?>"
+									   aria-selected="<?php echo $lv_panel['active'] ? 'true' : 'false'; ?>"
+									   data-tab="<?php echo esc_attr( $lv_pt->term_id ); ?>"
+									   data-slug="<?php echo esc_attr( $lv_pt->slug ); ?>">
+										<?php echo esc_html( $lv_pt->name ); ?>
 									</a>
 								</li>
 							<?php endforeach; ?>
@@ -323,113 +386,40 @@ if ( $hero_project_id ) {
 					</div>
 				<?php endif; ?>
 				<div class="mbland_linhvuc_listProject_content">
-					<!-- Xuất tất cả post-type=du-an theo term của taxonomy=linh-vuc -->
-					<?php if ( $projects->have_posts() ) : ?>
-						<?php while ( $projects->have_posts() ) : $projects->the_post(); ?>
-							<?php
-							$post_id   = get_the_ID();
-							$banner    = function_exists( 'get_field' ) ? get_field( 'banner', $post_id ) : false;
-							$thumb_url = '';
-							$thumb_alt = get_the_title( $post_id );
-
-							if ( ! empty( $banner ) && is_array( $banner ) ) {
-								$thumb_url = isset( $banner['url'] ) ? $banner['url'] : '';
-								if ( ! empty( $banner['alt'] ) ) {
-									$thumb_alt = $banner['alt'];
-								}
-							} elseif ( is_numeric( $banner ) ) {
-								$thumb_url = wp_get_attachment_image_url( (int) $banner, 'large' );
-							} elseif ( is_string( $banner ) && ! empty( $banner ) ) {
-								$thumb_url = $banner;
-							}
-
-							if ( empty( $thumb_url ) && has_post_thumbnail( $post_id ) ) {
-								$thumb_url = get_the_post_thumbnail_url( $post_id, 'large' );
-								$thumb_id  = get_post_thumbnail_id( $post_id );
-								$alt       = get_post_meta( $thumb_id, '_wp_attachment_image_alt', true );
-								if ( ! empty( $alt ) ) {
-									$thumb_alt = $alt;
-								}
-							}
-
-							if ( empty( $thumb_url ) ) {
-								$thumb_url = '/wp-content/uploads/2025/10/Da-Nang.jpg';
-							}
-
-							$short_content = function_exists( 'get_field' ) ? get_field( 'short_content', $post_id ) : '';
-							if ( empty( $short_content ) ) {
-								$short_content = get_the_excerpt( $post_id );
-							}
-
-							$location = function_exists( 'mbland_clean_plain_text' ) ? mbland_clean_plain_text( get_field( 'location', $post_id ) ) : ( function_exists( 'get_field' ) ? get_field( 'location', $post_id ) : '' );
-							$scale    = function_exists( 'mbland_clean_plain_text' ) ? mbland_clean_plain_text( get_field( 'scale', $post_id ) ) : ( function_exists( 'get_field' ) ? get_field( 'scale', $post_id ) : '' );
-							?>
-							<div class="mbland_linhvuc_listProject_item">
-								<div class="mbland_linhvuc_listProject_itemMedia">
-									<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" style="display:flex;width:100%;height:100%;">
-										<img class="mbland_linhvuc_listProject_itemImage" src="<?php echo esc_url( $thumb_url ); ?>" alt="<?php echo esc_attr( $thumb_alt ); ?>" title="<?php echo esc_attr( get_the_title( $post_id ) ); ?>" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( $thumb_url, 800, 600 ) ); ?> />
-									</a>
+					<?php foreach ( $lv_panels as $lv_panel ) : ?>
+						<?php
+						$lv_pt    = $lv_panel['term'];
+						$lv_query = $lv_panel['query'];
+						?>
+						<div class="mbland_linhvuc_listProject_panel"
+							 id="lv-panel-<?php echo esc_attr( $lv_pt->term_id ); ?>"
+							 role="tabpanel"
+							 aria-labelledby="lv-tab-<?php echo esc_attr( $lv_pt->term_id ); ?>"
+							 data-per-page="<?php echo esc_attr( $lv_per_page ); ?>"
+							<?php echo $lv_panel['active'] ? '' : 'hidden'; ?>>
+							<?php if ( $lv_query->have_posts() ) : ?>
+								<?php
+								while ( $lv_query->have_posts() ) :
+									$lv_query->the_post();
+									get_template_part( 'template-parts/ui/linhvuc-project-item' );
+								endwhile;
+								wp_reset_postdata();
+								?>
+								<?php if ( $lv_query->post_count > $lv_per_page ) : ?>
+									<button type="button" class="mbland_linhvuc_listProject_loadMore">
+										<svg class="mbland_linhvuc_listProject_loadMoreIcon" width="16" height="9" viewBox="0 0 16 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M1 1L8 8L15 1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+										</svg>
+										<span class="mbland_linhvuc_listProject_loadMoreLabel"><?php echo esc_html( function_exists( 'pll__' ) ? pll__( 'Xem thêm' ) : 'Xem thêm' ); ?></span>
+									</button>
+								<?php endif; ?>
+							<?php else : ?>
+								<div class="mbland_linhvuc_projects_empty" style="text-align: center; padding: 40px 0; color: #888;">
+									<p><?php echo esc_html( function_exists( 'pll__' ) ? pll__( 'Chưa có dự án nào trong lĩnh vực này.' ) : 'Chưa có dự án nào trong lĩnh vực này.' ); ?></p>
 								</div>
-								<div class="mbland_linhvuc_listProject_itemBody">
-									<h3 class="mbland_linhvuc_listProject_itemTitle">
-										<a class="mbland_linhvuc_listProject_itemTitleLink" href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
-											<?php the_title(); ?>
-										</a>
-									</h3>
-									<?php if ( ! empty( $short_content ) ) : ?>
-										<div class="mbland_linhvuc_listProject_itemDesc">
-											<?php echo wp_kses_post( $short_content ); ?>
-										</div>
-									<?php endif; ?>
-									<hr class="mbland_linhvuc_listProject_itemDivider" />
-									<?php if ( ! empty( $location ) ) : ?>
-										<div class="mbland_linhvuc_listProject_itemLocation">
-											<span class="mbland_linhvuc_listProject_itemLocationIcon">
-												<svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-													<path d="M9 1.125C7.35957 1.12694 5.78688 1.77945 4.62692 2.93941C3.46696 4.09938 2.81444 5.67207 2.8125 7.3125C2.811 8.65299 3.24884 9.95704 4.059 11.025C4.059 11.025 4.22775 11.2472 4.25532 11.2793L9 16.875L13.7469 11.2764C13.7717 11.2466 13.941 11.025 13.941 11.025L13.9416 11.0233C14.7512 9.95574 15.1888 8.65235 15.1875 7.3125C15.1856 5.67207 14.5331 4.09938 13.3731 2.93941C12.2131 1.77945 10.6404 1.12694 9 1.125ZM9 9.5625C8.555 9.5625 8.11998 9.43054 7.74997 9.18331C7.37996 8.93607 7.09157 8.58467 6.92127 8.17354C6.75098 7.7624 6.70642 7.31 6.79324 6.87355C6.88005 6.43709 7.09434 6.03618 7.40901 5.72151C7.72368 5.40684 8.12459 5.19255 8.56105 5.10573C8.99751 5.01892 9.44991 5.06347 9.86104 5.23377C10.2722 5.40407 10.6236 5.69246 10.8708 6.06247C11.118 6.43248 11.25 6.86749 11.25 7.3125C11.2493 7.90901 11.012 8.48087 10.5902 8.90267C10.1684 9.32446 9.59651 9.56176 9 9.5625Z" fill="currentColor"/>
-												</svg>
-											</span>
-											<div class="mbland_linhvuc_listProject_itemLocationText">
-												<p class="mbland_linhvuc_listProject_itemLocationLabel"><?php echo esc_html( function_exists( 'pll__' ) ? pll__( 'Vị trí DỰ ÁN' ) : 'Vị trí DỰ ÁN' ); ?></p>
-												<p class="mbland_linhvuc_listProject_itemLocationValue"><?php echo esc_html( $location ); ?></p>
-											</div>
-										</div>
-									<?php endif; ?>
-									<?php if ( ! empty( $scale ) ) : ?>
-										<div class="mbland_linhvuc_listProject_itemScale">
-											<span class="mbland_linhvuc_listProject_itemScaleIcon">
-												<svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-													<path d="M14.9998 4.16675L9.99977 6.66675V1.66675L14.9998 4.16675Z" fill="var(--primary-color)"/>
-													<path d="M9.99977 6.66675L14.9998 4.16675L9.99977 1.66675V6.66675ZM9.99977 6.66675V10.0001M6.66643 9.99175L2.0831 12.6084C1.95485 12.6811 1.84818 12.7865 1.77396 12.9139C1.69975 13.0412 1.66064 13.186 1.66064 13.3334C1.66064 13.4808 1.69975 13.6256 1.77396 13.753C1.84818 13.8803 1.95485 13.9857 2.0831 14.0584L9.16643 18.1084C9.4198 18.2547 9.70721 18.3317 9.99977 18.3317C10.2923 18.3317 10.5797 18.2547 10.8331 18.1084L17.9164 14.0584C18.0447 13.9857 18.1514 13.8803 18.2256 13.753C18.2998 13.6256 18.3389 13.4808 18.3389 13.3334C18.3389 13.186 18.2998 13.0412 18.2256 12.9139C18.1514 12.7865 18.0447 12.6811 17.9164 12.6084L13.3331 10.0001M5.4081 10.7084L14.5914 15.9584M14.5914 10.7084L5.41643 15.9584" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" stroke="var(--primary-color)"/>
-												</svg>
-											</span>
-											<div class="mbland_linhvuc_listProject_itemScaleText">
-												<p class="mbland_linhvuc_listProject_itemScaleLabel"><?php echo esc_html( function_exists( 'pll__' ) ? pll__( 'Quy mô bất động sản' ) : 'Quy mô bất động sản' ); ?></p>
-												<p class="mbland_linhvuc_listProject_itemScaleValue"><?php echo esc_html( $scale ); ?></p>
-											</div>
-										</div>
-									<?php endif; ?>
-									<a class="mbland_linhvuc_listProject_itemLink" href="<?php the_permalink(); ?>">
-										<?php echo esc_html( function_exists( 'pll__' ) ? pll__( 'Xem chi tiết' ) : 'Xem chi tiết' ); ?>
-									</a>
-								</div>
-							</div>
-						<?php endwhile; ?>
-						<?php wp_reset_postdata(); ?>
-
-						<?php if ( $projects->max_num_pages > 1 ) : ?>
-							<button type="button" class="mbland_linhvuc_listProject_loadMore">
-								<svg class="mbland_linhvuc_listProject_loadMoreIcon" width="16" height="9" viewBox="0 0 16 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-									<path d="M1 1L8 8L15 1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-								</svg>
-								<span class="mbland_linhvuc_listProject_loadMoreLabel"><?php echo esc_html( function_exists( 'pll__' ) ? pll__( 'Xem thêm' ) : 'Xem thêm' ); ?></span>
-							</button>
-						<?php endif; ?>
-					<?php else : ?>
-						<div class="mbland_linhvuc_projects_empty" style="text-align: center; padding: 40px 0; color: #888;">
-							<p><?php echo esc_html( function_exists( 'pll__' ) ? pll__( 'Chưa có dự án nào trong lĩnh vực này.' ) : 'Chưa có dự án nào trong lĩnh vực này.' ); ?></p>
+							<?php endif; ?>
 						</div>
-					<?php endif; ?>
+					<?php endforeach; ?>
 				</div>
 			</div>
 
