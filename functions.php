@@ -1377,15 +1377,27 @@ function mbland_seed_du_an_data() {
             continue;
         }
 
-        // Bỏ qua nếu đã tồn tại
-        $exists = get_posts( array(
+        // Taxonomy linh-vuc (theo slug, hỗ trợ nhiều slug cách nhau bằng dấu phẩy)
+        $slugs = array_filter( array_map( 'sanitize_title', explode( ',', (string) ( $row['termLinhVuc'] ?? '' ) ) ) );
+
+        // Bỏ qua nếu đã tồn tại (trùng tiêu đề + trùng lĩnh vực; cho phép cùng tên khác lĩnh vực)
+        $exists_args = array(
             'post_type'      => 'du-an',
             'post_status'    => 'any',
             'title'          => $title,
             'posts_per_page' => 1,
             'fields'         => 'ids',
             'no_found_rows'  => true,
-        ) );
+            'lang'           => '',
+        );
+        if ( $slugs ) {
+            $exists_args['tax_query'] = array( array(
+                'taxonomy' => 'linh-vuc',
+                'field'    => 'slug',
+                'terms'    => array_values( $slugs ),
+            ) );
+        }
+        $exists = get_posts( $exists_args );
         if ( ! empty( $exists ) ) {
             $result['skipped']++;
             $result['log'][] = "⏭️ Bỏ qua (đã tồn tại): {$title}";
@@ -1408,8 +1420,6 @@ function mbland_seed_du_an_data() {
         mbland_du_an_update_field( 'location',      sanitize_text_field( $row['viTriDuAn'] ?? '' ),      $post_id );
         mbland_du_an_update_field( 'scale',         sanitize_text_field( $row['quyMoBatDongSan'] ?? '' ), $post_id );
 
-        // Taxonomy linh-vuc (theo slug, hỗ trợ nhiều slug cách nhau bằng dấu phẩy)
-        $slugs = array_filter( array_map( 'sanitize_title', explode( ',', (string) ( $row['termLinhVuc'] ?? '' ) ) ) );
         if ( $slugs ) {
             $term_ids = array();
             foreach ( $slugs as $slug ) {
