@@ -99,8 +99,8 @@ get_header();
 		<div class="container mbland_linhvuc_hero_featuredContainer">
 			<div class="mbland_linhvuc_hero_featuredInfo">
 				<h1 class="mbland_linhvuc_hero_featuredTitle"><?php echo esc_html( get_the_title( $post_id ) ); ?></h1>
-				<?php if ( ! empty( $short_content ) ) : ?>
-				<p class="mbland_linhvuc_hero_featuredSubTitle"><?php echo esc_html( $short_content ); ?></p>
+				<?php if ( ! empty( $sub_title ) ) : ?>
+				<p class="mbland_linhvuc_hero_featuredSubTitle"><?php echo esc_html( $sub_title ); ?></p>
 				<?php endif; ?>
 				<div class="mbland_linhvuc_hero_featuredDecor">
 					<svg viewBox="0 0 27 26" xmlns="http://www.w3.org/2000/svg"><path d="M12.19.691c.3-.921 1.603-.921 1.902 0l2.417 7.438a1 1 0 0 0 .95.69h7.821c.97 0 1.372 1.24.588 1.81l-6.327 4.596a1 1 0 0 0-.363 1.118l2.417 7.438c.299.921-.755 1.688-1.54 1.118l-6.326-4.597a1 1 0 0 0-1.176 0L6.226 24.9c-.783.57-1.838-.197-1.538-1.118l2.416-7.438a1 1 0 0 0-.363-1.118L.414 10.63c-.784-.57-.38-1.81.588-1.81h7.82a1 1 0 0 0 .951-.69z" fill="currentColor"/></svg>
@@ -110,8 +110,8 @@ get_header();
 					<svg viewBox="0 0 27 26" xmlns="http://www.w3.org/2000/svg"><path d="M12.19.691c.3-.921 1.603-.921 1.902 0l2.417 7.438a1 1 0 0 0 .95.69h7.821c.97 0 1.372 1.24.588 1.81l-6.327 4.596a1 1 0 0 0-.363 1.118l2.417 7.438c.299.921-.755 1.688-1.54 1.118l-6.326-4.597a1 1 0 0 0-1.176 0L6.226 24.9c-.783.57-1.838-.197-1.538-1.118l2.416-7.438a1 1 0 0 0-.363-1.118L.414 10.63c-.784-.57-.38-1.81.588-1.81h7.82a1 1 0 0 0 .951-.69z" fill="currentColor"/></svg>
 				</div>
 				<hr class="mbland_linhvuc_hero_featuredDivider" />
-				<?php if ( ! empty( $content ) ) : ?>
-				<div class="mbland_linhvuc_hero_featuredDesc"><?php echo $content; ?></div>
+				<?php if ( ! empty( $short_content ) ) : ?>
+				<div class="mbland_linhvuc_hero_featuredDesc"><?php echo esc_html( $short_content ); ?></div>
 				<hr class="mbland_linhvuc_hero_featuredDivider" />
 				<?php endif; ?>
 				
@@ -170,7 +170,7 @@ get_header();
 			<div class="mbland_singleProject_details_colInfo">
 				<header class="mbland_singleProject_details_header">
 					<h2 class="mbland_singleProject_details_title">Tổng quan dự án</h2>
-					<p class="mbland_singleProject_details_subtitle"><?php echo esc_html( $sub_title ?: 'Thảo Điền Boutique Marina' ); ?></p>
+					<p class="mbland_singleProject_details_subtitle"><?php echo esc_html( get_the_title( $post_id ) ); ?></p>
 				</header>
 				<div class="mbland_singleProject_details_content">
 					<?php if ( ! empty( $content ) ) : ?>

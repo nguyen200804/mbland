@@ -441,6 +441,7 @@
     transition: transform .3s ease;
     height: auto;
     object-fit: cover;
+    aspect-ratio: 7/4;
 }
 
 .mbland_linhvuc_listProject_item:hover .mbland_linhvuc_listProject_itemImage {
