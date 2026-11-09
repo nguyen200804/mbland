@@ -926,6 +926,47 @@
   border: 0.5px solid #E9E9E9;
   padding: 42px;
   border-radius: 20px;
+  transition: all .3s ease;
+  box-shadow: 0px 0px 0px 0px #00000026;
+  position: relative;
+  z-index: 0;
+}
+
+.mbland_singleProject_statistical_item::before,
+.mbland_singleProject_statistical_item::after {
+  content: "";
+  position: absolute;
+  background-color: #FFEBEB66;
+  filter: blur(32px);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+
+.mbland_singleProject_statistical_item::before {
+  width: 34%;
+  height: 76%;
+  top: 0;
+  right: 0;
+  transform: translate(26%, -30%);
+}
+
+.mbland_singleProject_statistical_item::after {
+  width: 46%;
+  height: 100%;
+  bottom: 0;
+  left: 0;
+  transform: translate(-10%, 15%);
+}
+
+.mbland_singleProject_statistical_item:hover {
+  border: 0.5px solid #EC1846;
+  box-shadow: 4px 4px 12px 0px #00000026;
+}
+
+.mbland_singleProject_statistical_item:hover::before,
+.mbland_singleProject_statistical_item:hover::after {
+  opacity: 1;
 }
 
 .mbland_singleProject_statistical_itemTop {
@@ -951,6 +992,11 @@
   font-weight: 700;
   font-size: 1em;
   line-height: 120%;
+  transition: color .3s ease;
+}
+
+.mbland_singleProject_statistical_item:hover .mbland_singleProject_statistical_itemValue {
+  color: var(--primary-color);
 }
 
 .mbland_singleProject_statistical_itemBody {}

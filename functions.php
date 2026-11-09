@@ -37,6 +37,9 @@ require_once HOMENEST_INC_DIR . 'theme-options-fields.php';
 // 9. ACF Fields cho Trang Tuyển Dụng (Post ID 64, 405)
 require_once HOMENEST_INC_DIR . 'recruitment-fields.php';
 
+// 10. Tính năng sắp xếp kéo thả cho Taxonomy Lĩnh Vực (linh-vuc)
+require_once HOMENEST_INC_DIR . 'taxonomy-order.php';
+
 // Tắt tính năng tự động đăng ký dịch nhãn (Label, Title, Default value, Instructions) của ACF trong Polylang
 add_filter( 'pll_enable_acf_labels_translation', '__return_false' );
 
