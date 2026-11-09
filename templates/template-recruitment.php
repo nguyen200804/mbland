@@ -127,12 +127,12 @@ $intro_banner_h = ! empty( $recruitment_intro['banner']['height'] ) ? $recruitme
 <?php
 $jobs_title        = ! empty( $recruitment_jobs['title'] ) ? $recruitment_jobs['title'] : 'Cơ hội việc làm';
 $jobs_desc         = ! empty( $recruitment_jobs['desc'] ) ? $recruitment_jobs['desc'] : 'Cơ hội việc làm tại môi trường chuyên nghiệp trong và ngoài nước thuộc lĩnh vực Tài chính – Bất động sản – Du lịch Dịch vụ';
-$jobs_search_title = ! empty( $recruitment_jobs['search_title'] ) ? $recruitment_jobs['search_title'] : 'Tìm công việc';
-$jobs_search_ph    = ! empty( $recruitment_jobs['search_placeholder'] ) ? $recruitment_jobs['search_placeholder'] : 'Nhập từ khóa tìm kiếm';
-$jobs_search_btn   = ! empty( $recruitment_jobs['search_btn_text'] ) ? $recruitment_jobs['search_btn_text'] : 'Tìm kiếm';
-$jobs_filter_title = ! empty( $recruitment_jobs['filter_title'] ) ? $recruitment_jobs['filter_title'] : 'Bộ lọc';
-$jobs_filter_reset = ! empty( $recruitment_jobs['filter_reset_text'] ) ? $recruitment_jobs['filter_reset_text'] : 'Xóa bộ lọc';
-$jobs_empty_text   = ! empty( $recruitment_jobs['empty_text'] ) ? $recruitment_jobs['empty_text'] : ( function_exists( 'pll__' ) ? pll__( 'Không tìm thấy vị trí tuyển dụng phù hợp.' ) : 'Không tìm thấy vị trí tuyển dụng phù hợp.' );
+$jobs_search_title = function_exists( 'pll__' ) ? pll__( ! empty( $recruitment_jobs['search_title'] ) ? $recruitment_jobs['search_title'] : 'Tìm công việc' ) : ( ! empty( $recruitment_jobs['search_title'] ) ? $recruitment_jobs['search_title'] : 'Tìm công việc' );
+$jobs_search_ph    = function_exists( 'pll__' ) ? pll__( ! empty( $recruitment_jobs['search_placeholder'] ) ? $recruitment_jobs['search_placeholder'] : 'Nhập từ khóa tìm kiếm' ) : ( ! empty( $recruitment_jobs['search_placeholder'] ) ? $recruitment_jobs['search_placeholder'] : 'Nhập từ khóa tìm kiếm' );
+$jobs_search_btn   = function_exists( 'pll__' ) ? pll__( ! empty( $recruitment_jobs['search_btn_text'] ) ? $recruitment_jobs['search_btn_text'] : 'Tìm kiếm' ) : ( ! empty( $recruitment_jobs['search_btn_text'] ) ? $recruitment_jobs['search_btn_text'] : 'Tìm kiếm' );
+$jobs_filter_title = function_exists( 'pll__' ) ? pll__( ! empty( $recruitment_jobs['filter_title'] ) ? $recruitment_jobs['filter_title'] : 'Bộ lọc' ) : ( ! empty( $recruitment_jobs['filter_title'] ) ? $recruitment_jobs['filter_title'] : 'Bộ lọc' );
+$jobs_filter_reset = function_exists( 'pll__' ) ? pll__( ! empty( $recruitment_jobs['filter_reset_text'] ) ? $recruitment_jobs['filter_reset_text'] : 'Xóa bộ lọc' ) : ( ! empty( $recruitment_jobs['filter_reset_text'] ) ? $recruitment_jobs['filter_reset_text'] : 'Xóa bộ lọc' );
+$jobs_empty_text   = function_exists( 'pll__' ) ? pll__( ! empty( $recruitment_jobs['empty_text'] ) ? $recruitment_jobs['empty_text'] : 'Không tìm thấy vị trí tuyển dụng phù hợp.' ) : ( ! empty( $recruitment_jobs['empty_text'] ) ? $recruitment_jobs['empty_text'] : 'Không tìm thấy vị trí tuyển dụng phù hợp.' );
 ?>
 <section class="mbland_recruitment_jobs">
 	<div class="container">

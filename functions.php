@@ -64,19 +64,34 @@ add_action('init', function() {
    pll_register_string('Theo dõi chúng tôi', 'theo-doi', 'Footer');	
 	
 	
-//   Recruit
-  pll_register_string('job_link', 'tuyen dung', 'Recruit');
-  pll_register_string('job_deadline', 'Hạn nộp hồ sơ', 'Recruit');
-  pll_register_string('job_salary', 'Mức lương', 'Recruit');
-  pll_register_string('job_address', 'Địa chỉ', 'Recruit');
-  pll_register_string('job_workplace', 'Địa điểm làm việc', 'Recruit');
-  pll_register_string('job_level', 'Cấp bậc', 'Recruit');
-  pll_register_string('job_experience', 'Kinh nghiệm', 'Recruit');
-  pll_register_string('job_update', 'Đang cập nhật', 'Recruit');
-  pll_register_string('job_negotiable', 'Thỏa thuận', 'Recruit');
-  pll_register_string('job_apply_now', 'Ứng tuyển ngay', 'Recruit');
-  pll_register_string('job_related', 'Tin tuyển dụng khác', 'Recruit');
-  pll_register_string('job_back_to_list', 'Về trang tuyển dụng', 'Recruit');
+//   Tuyển dụng (Dịch chuỗi trong /wp-admin/admin.php?page=mlang_strings - Group: Tuyển dụng)
+  pll_register_string('job_search_title', 'Tìm công việc', 'Tuyển dụng');
+  pll_register_string('job_search_placeholder', 'Nhập từ khóa tìm kiếm', 'Tuyển dụng');
+  pll_register_string('job_search_btn', 'Tìm kiếm', 'Tuyển dụng');
+  pll_register_string('job_filter_title', 'Bộ lọc', 'Tuyển dụng');
+  pll_register_string('job_filter_reset', 'Xóa bộ lọc', 'Tuyển dụng');
+  pll_register_string('job_filter_position', 'Vị trí ứng tuyển', 'Tuyển dụng');
+  pll_register_string('job_filter_position_placeholder', 'Nhập vị trí ứng tuyển...', 'Tuyển dụng');
+  pll_register_string('job_filter_location', 'Nơi làm việc', 'Tuyển dụng');
+  pll_register_string('job_filter_location_placeholder', 'Nhập nơi làm việc...', 'Tuyển dụng');
+  pll_register_string('job_filter_type', 'Hình thức làm việc', 'Tuyển dụng');
+  pll_register_string('job_filter_all', 'Tất cả', 'Tuyển dụng');
+  pll_register_string('job_deadline', 'Hạn nộp hồ sơ', 'Tuyển dụng');
+  pll_register_string('job_apply_now', 'Ứng tuyển ngay', 'Tuyển dụng');
+  pll_register_string('job_salary', 'Mức lương', 'Tuyển dụng');
+  pll_register_string('job_workplace', 'Địa điểm làm việc', 'Tuyển dụng');
+  pll_register_string('job_address', 'Địa chỉ', 'Tuyển dụng');
+  pll_register_string('job_level', 'Cấp bậc', 'Tuyển dụng');
+  pll_register_string('job_experience', 'Kinh nghiệm', 'Tuyển dụng');
+  pll_register_string('job_update', 'Đang cập nhật', 'Tuyển dụng');
+  pll_register_string('job_negotiable', 'Thỏa thuận', 'Tuyển dụng');
+  pll_register_string('job_related', 'Tin tuyển dụng khác', 'Tuyển dụng');
+  pll_register_string('job_back_to_list', 'Về trang tuyển dụng', 'Tuyển dụng');
+  pll_register_string('job_empty_text', 'Không tìm thấy vị trí tuyển dụng phù hợp.', 'Tuyển dụng');
+  pll_register_string('job_no_other_posts', 'Hiện chưa có tin tuyển dụng khác.', 'Tuyển dụng');
+  pll_register_string('job_pagination_prev', 'Trước', 'Tuyển dụng');
+  pll_register_string('job_pagination_next', 'Sau', 'Tuyển dụng');
+  pll_register_string('job_link', 'tuyen dung', 'Tuyển dụng');
 	//News 
   pll_register_string('noi bat', 'TIN NỔI BẬT', 'News');
   pll_register_string('xem chi tiet', 'XEM CHI TIẾT', 'News');
