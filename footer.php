@@ -70,6 +70,8 @@ $social_linkedin  = ! empty(trim((string)$social_linkedin)) ? trim((string)$soci
 $social_youtube   = ! empty(trim((string)$social_youtube)) ? trim((string)$social_youtube) : '#';
 $social_zalo      = ! empty(trim((string)$social_zalo)) ? trim((string)$social_zalo) : '#';
 
+$has_social_data = false; // luôn hiển thị đủ icon (link trống = '#')
+
 // 4. Bản quyền
 $footer_copyright = $get_footer_field('footer_copyright', '© 2025. MBLand Asset Management. Design by <a class="mbland-footer__copyright-link" href="https://homenest.com.vn/" target="_blank" rel="noopener">HomeNest Software</a>');
 

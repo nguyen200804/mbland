@@ -155,6 +155,202 @@ function mbland_register_shared_sections_acf_fields() {
 	) );
 }
 
+// 2b. Đăng ký ACF Fields cho Footer (đọc trong footer.php)
+add_action( 'acf/init', 'mbland_register_footer_acf_fields' );
+function mbland_register_footer_acf_fields() {
+	if ( ! function_exists( 'acf_add_local_field_group' ) ) {
+		return;
+	}
+
+	acf_add_local_field_group( array(
+		'key'                   => 'group_theme_footer',
+		'title'                 => 'Cài đặt Footer',
+		'menu_order'            => 1,
+		'position'              => 'normal',
+		'style'                 => 'default',
+		'label_placement'       => 'top',
+		'instruction_placement' => 'label',
+		'active'                => true,
+		'location'              => array(
+			array(
+				array(
+					'param'    => 'options_page',
+					'operator' => '==',
+					'value'    => 'theme-general-settings',
+				),
+			),
+		),
+		'fields'                => array(
+
+			// ---------- TAB: THƯƠNG HIỆU & LIÊN HỆ ----------
+			array(
+				'key'   => 'field_tab_footer_brand',
+				'label' => 'Footer: Thương hiệu & Liên hệ',
+				'type'  => 'tab',
+			),
+			array(
+				'key'           => 'field_footer_logo',
+				'label'         => 'Logo Footer',
+				'name'          => 'footer_logo',
+				'type'          => 'image',
+				'return_format' => 'array',
+				'preview_size'  => 'medium',
+				'instructions'  => 'Logo màu trắng (khuyến nghị PNG nền trong suốt). Để trống sẽ dùng logo mặc định.',
+			),
+			array(
+				'key'         => 'field_footer_address',
+				'label'       => 'Địa chỉ',
+				'name'        => 'footer_address',
+				'type'        => 'text',
+				'placeholder' => '113 Nguyễn Văn Hưởng, Phường Thảo Điền, Quận 2, TP.Hồ Chí Minh.',
+			),
+			array(
+				'key'         => 'field_footer_phone_fax',
+				'label'       => 'Điện thoại & Fax (hiển thị)',
+				'name'        => 'footer_phone_fax',
+				'type'        => 'text',
+				'placeholder' => '028 38 258 816',
+			),
+			array(
+				'key'          => 'field_footer_phone_call',
+				'label'        => 'Số điện thoại gọi (tel:)',
+				'name'         => 'footer_phone_call',
+				'type'         => 'text',
+				'placeholder'  => '02838258816',
+				'instructions' => 'Chỉ nhập số, không khoảng trắng. Để trống sẽ tự lấy từ số hiển thị.',
+			),
+			array(
+				'key'         => 'field_footer_email',
+				'label'       => 'Email',
+				'name'        => 'footer_email',
+				'type'        => 'email',
+				'placeholder' => 'info@tasmaniapartners.vn',
+			),
+
+			// ---------- TAB: MẠNG XÃ HỘI ----------
+			array(
+				'key'   => 'field_tab_footer_social',
+				'label' => 'Footer: Mạng xã hội',
+				'type'  => 'tab',
+			),
+			array(
+				'key'         => 'field_footer_social_title',
+				'label'       => 'Tiêu đề khối mạng xã hội',
+				'name'        => 'footer_social_title',
+				'type'        => 'text',
+				'placeholder' => 'Kết nối với chúng tôi',
+			),
+			array(
+				'key'         => 'field_social_facebook',
+				'label'       => 'Facebook',
+				'name'        => 'social_facebook',
+				'type'        => 'url',
+				'placeholder' => 'https://facebook.com/...',
+			),
+			array(
+				'key'         => 'field_social_instagram',
+				'label'       => 'Instagram',
+				'name'        => 'social_instagram',
+				'type'        => 'url',
+				'placeholder' => 'https://instagram.com/...',
+			),
+			array(
+				'key'         => 'field_social_linkedin',
+				'label'       => 'LinkedIn',
+				'name'        => 'social_linkedin',
+				'type'        => 'url',
+				'placeholder' => 'https://linkedin.com/...',
+			),
+			array(
+				'key'         => 'field_social_youtube',
+				'label'       => 'YouTube',
+				'name'        => 'social_youtube',
+				'type'        => 'url',
+				'placeholder' => 'https://youtube.com/...',
+			),
+			array(
+				'key'         => 'field_social_zalo',
+				'label'       => 'Zalo',
+				'name'        => 'social_zalo',
+				'type'        => 'url',
+				'placeholder' => 'https://zalo.me/...',
+			),
+
+			// ---------- TAB: CỘT MENU ----------
+			array(
+				'key'   => 'field_tab_footer_menu',
+				'label' => 'Footer: Các cột Menu',
+				'type'  => 'tab',
+			),
+			array(
+				'key'          => 'field_footer_menu_columns',
+				'label'        => 'Cột menu Footer',
+				'name'         => 'footer_menu_columns',
+				'type'         => 'repeater',
+				'instructions' => 'Mỗi dòng là một cột menu. Nếu để trống, footer hiển thị menu mặc định.',
+				'layout'       => 'block',
+				'button_label' => 'Thêm cột menu',
+				'sub_fields'   => array(
+					array(
+						'key'   => 'field_footer_column_title',
+						'label' => 'Tiêu đề cột',
+						'name'  => 'column_title',
+						'type'  => 'text',
+					),
+					array(
+						'key'          => 'field_footer_column_links',
+						'label'        => 'Danh sách liên kết',
+						'name'         => 'column_links',
+						'type'         => 'repeater',
+						'layout'       => 'table',
+						'button_label' => 'Thêm liên kết',
+						'sub_fields'   => array(
+							array(
+								'key'   => 'field_footer_link_label',
+								'label' => 'Tên liên kết',
+								'name'  => 'link_label',
+								'type'  => 'text',
+							),
+							array(
+								'key'         => 'field_footer_link_url',
+								'label'       => 'Đường dẫn',
+								'name'        => 'link_url',
+								'type'        => 'text',
+								'placeholder' => '/ hoặc https://...',
+							),
+							array(
+								'key'           => 'field_footer_link_blank',
+								'label'         => 'Mở tab mới',
+								'name'          => 'is_blank',
+								'type'          => 'true_false',
+								'ui'            => 1,
+								'default_value' => 0,
+							),
+						),
+					),
+				),
+			),
+
+			// ---------- TAB: BẢN QUYỀN ----------
+			array(
+				'key'   => 'field_tab_footer_copyright',
+				'label' => 'Footer: Bản quyền',
+				'type'  => 'tab',
+			),
+			array(
+				'key'          => 'field_footer_copyright',
+				'label'        => 'Dòng bản quyền',
+				'name'         => 'footer_copyright',
+				'type'         => 'wysiwyg',
+				'tabs'         => 'all',
+				'toolbar'      => 'basic',
+				'media_upload' => 0,
+				'instructions' => 'Cho phép chèn liên kết. Để trống sẽ dùng nội dung mặc định.',
+			),
+		),
+	) );
+}
+
 /**
  * 3. Hỗ trợ đa ngôn ngữ (Polylang) cho ACF Options Page:
  * Tự động phân tách bộ lưu trữ Options theo từng ngôn ngữ.
