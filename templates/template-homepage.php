@@ -399,16 +399,43 @@ if ( $projects_source === 'manual' && ! empty( $home_projects['projects'] ) ) {
 		'posts_per_page' => count( $project_ids ),
 	) );
 } else {
+	// Tự động: ưu tiên dự án thuộc taxonomy "du-an-noi-bat", nếu chưa đủ số lượng thì bù bằng dự án mới nhất
+	$project_ids = array();
+	if ( taxonomy_exists( 'du-an-noi-bat' ) ) {
+		$featured_ids = get_posts( array(
+			'post_type'      => 'du-an',
+			'post_status'    => 'publish',
+			'posts_per_page' => $projects_limit,
+			'fields'         => 'ids',
+			'no_found_rows'  => true,
+			'tax_query'      => array(
+				array(
+					'taxonomy' => 'du-an-noi-bat',
+					'operator' => 'EXISTS',
+				),
+			),
+		) );
+		$project_ids = array_map( 'intval', $featured_ids );
+	}
+	if ( count( $project_ids ) < $projects_limit ) {
+		$latest_ids  = get_posts( array(
+			'post_type'      => 'du-an',
+			'post_status'    => 'publish',
+			'posts_per_page' => $projects_limit - count( $project_ids ),
+			'post__not_in'   => $project_ids,
+			'fields'         => 'ids',
+			'no_found_rows'  => true,
+			'orderby'        => 'date',
+			'order'          => 'DESC',
+		) );
+		$project_ids = array_merge( $project_ids, array_map( 'intval', $latest_ids ) );
+	}
 	$du_an_query = new WP_Query( array(
 		'post_type'      => 'du-an',
+		'post_status'    => 'publish',
+		'post__in'       => ! empty( $project_ids ) ? $project_ids : array( 0 ),
+		'orderby'        => 'post__in',
 		'posts_per_page' => $projects_limit,
-		'tax_query'      => array(
-			array(
-				'taxonomy' => 'du-an-noi-bat',
-				'field'    => 'slug',
-				'terms'    => array( 'du-an-noi-bat' ),
-			),
-		),
 	) );
 }
 ?>
