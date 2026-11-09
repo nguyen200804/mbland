@@ -63,11 +63,40 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  if (document.querySelector(".mbland_aboutUs_teamSection_members")) {
+  const teamMembersEl = document.querySelector(
+    ".mbland_aboutUs_teamSection_members"
+  );
+  if (teamMembersEl) {
+    // Loop với slidesPerView "auto" cần đủ số slide để lấp đầy khung:
+    // nếu ít thành viên, nhân bản các slide gốc cho đến khi đủ.
+    const teamWrapper = teamMembersEl.querySelector(".swiper-wrapper");
+    const originalSlides = teamWrapper
+      ? Array.from(teamWrapper.children)
+      : [];
+    const MIN_LOOP_SLIDES = 8;
+    if (originalSlides.length > 1) {
+      let total = originalSlides.length;
+      while (total < MIN_LOOP_SLIDES) {
+        originalSlides.forEach((slide) => {
+          const clone = slide.cloneNode(true);
+          clone.setAttribute("aria-hidden", "true");
+          teamWrapper.appendChild(clone);
+          total++;
+        });
+      }
+    }
+
     new Swiper(".mbland_aboutUs_teamSection_members", {
       slidesPerView: "auto",
       spaceBetween: 24,
-      loop: false,
+      loop: originalSlides.length > 1,
+      grabCursor: true,
+      speed: 600,
+      autoplay: {
+        delay: 3500,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
+      },
       // navigation: {
       //   nextEl: ".mbland_aboutUs_teamSection_membersNext",
       //   prevEl: ".mbland_aboutUs_teamSection_membersPrev",

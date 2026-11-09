@@ -1344,6 +1344,11 @@
 	margin-top: 36px;
 }
 
+.mbland_aboutUs_teamSection_featuredBio p {
+	margin-bottom: 1em;
+	line-height: 1.8em;
+}
+
 .mbland_aboutUs_teamSection_featuredText {
 	line-height: 1.8em;
 	margin-bottom: 1em;
