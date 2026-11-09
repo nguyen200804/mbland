@@ -226,7 +226,7 @@ $jobs_empty_text   = ! empty( $recruitment_jobs['empty_text'] ) ? $recruitment_j
 					if ( $jobs_query->have_posts() ) :
 						while ( $jobs_query->have_posts() ) :
 							$jobs_query->the_post();
-							get_template_part( 'template-parts/ui/jobCardItem' );
+							get_template_part( 'template-parts/ui/job-card-item' );
 						endwhile;
 					else :
 					?>
