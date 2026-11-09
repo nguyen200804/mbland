@@ -98,6 +98,7 @@
   letter-spacing: -0.02em;
   color: #fff;
   margin: 0;
+  text-transform: unset;
 }
 
 .mbland_linhvuc_hero_featuredSubTitle {
@@ -693,6 +694,23 @@
 
 .mbland_singleProject_details_content {
   margin-top: 35px;
+}
+
+.mbland_singleProject_details_content p {
+  margin-bottom: 1em;
+}
+
+.mbland_singleProject_details_content ul {
+  /* list-style-type: disc !important; */
+  padding-left: 1.3em;
+}
+
+.mbland_singleProject_details_content :where(ul, ul>li) {
+  list-style-type: disc;
+}
+
+.mbland_singleProject_details_content :where(ol, ol>li) {
+  list-style-type: decimal;
 }
 
 .mbland_singleProject_details_content * {
