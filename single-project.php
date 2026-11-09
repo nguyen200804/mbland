@@ -312,7 +312,17 @@ document.addEventListener('DOMContentLoaded', function () {
 	<div class="container">
 		<div class="mbland_singleProject_statistical_wrapper">
 			<div class="mbland_singleProject_statistical_list">
-				
+				<?php
+				$thong_ke = function_exists( 'get_field' ) ? get_field( 'thong_ke_du_an', $post_id ) : array();
+				if ( ! empty( $thong_ke ) && is_array( $thong_ke ) ) :
+					foreach ( $thong_ke as $stat ) :
+						$stat_value = isset( $stat['con_so'] ) ? mbland_clean_plain_text( $stat['con_so'] ) : '';
+						$stat_title = isset( $stat['tieu_de'] ) ? mbland_clean_plain_text( $stat['tieu_de'] ) : '';
+						$stat_desc  = isset( $stat['mo_ta'] ) ? mbland_clean_plain_text( $stat['mo_ta'] ) : '';
+						if ( $stat_value === '' && $stat_title === '' && $stat_desc === '' ) {
+							continue;
+						}
+				?>
 				<article class="mbland_singleProject_statistical_item">
 					<div class="mbland_singleProject_statistical_itemTop">
 						<span class="mbland_singleProject_statistical_itemIcon">
@@ -321,94 +331,17 @@ document.addEventListener('DOMContentLoaded', function () {
 								<path d="M25 18.601L34.5933 13.8005L25 9V18.601ZM25 18.601V25.0016M18.6044 24.9856L9.81055 30.0102C9.56449 30.1497 9.35982 30.3521 9.21742 30.5967C9.07503 30.8412 9 31.1192 9 31.4023C9 31.6854 9.07503 31.9633 9.21742 32.2079C9.35982 32.4525 9.56449 32.6549 9.81055 32.7944L23.4011 40.5712C23.8872 40.8521 24.4387 41 25 41C25.5613 41 26.1128 40.8521 26.5989 40.5712L40.1894 32.7944C40.4355 32.6549 40.6402 32.4525 40.7826 32.2079C40.925 31.9633 41 31.6854 41 31.4023C41 31.1192 40.925 30.8412 40.7826 30.5967C40.6402 30.3521 40.4355 30.1497 40.1894 30.0102L31.3956 25.0016M16.1901 26.3618L33.8099 36.4428M33.8099 26.3618L16.2061 36.4428" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke="#EC1846"/>
 							</svg>
 						</span>
-						<span class="mbland_singleProject_statistical_itemValue">3.209,2 m2</span>
+						<span class="mbland_singleProject_statistical_itemValue"><?php echo esc_html( $stat_value ); ?></span>
 					</div>
 					<div class="mbland_singleProject_statistical_itemBody">
-						<h3 class="mbland_singleProject_statistical_itemTitle">Tổng diện tích thửa đất</h3>
-						<p class="mbland_singleProject_statistical_itemDesc">Tổng hợp diện tích đất theo hồ sơ pháp lý và thông tin được ghi nhận trên hệ thống.</p>
+						<h3 class="mbland_singleProject_statistical_itemTitle"><?php echo esc_html( $stat_title ); ?></h3>
+						<p class="mbland_singleProject_statistical_itemDesc"><?php echo esc_html( $stat_desc ); ?></p>
 					</div>
 				</article>
-
-				<article class="mbland_singleProject_statistical_item">
-					<div class="mbland_singleProject_statistical_itemTop">
-						<span class="mbland_singleProject_statistical_itemIcon">
-							<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<rect width="50" height="50" rx="8" fill="#FFEFEF"/>
-								<path d="M25 18.601L34.5933 13.8005L25 9V18.601ZM25 18.601V25.0016M18.6044 24.9856L9.81055 30.0102C9.56449 30.1497 9.35982 30.3521 9.21742 30.5967C9.07503 30.8412 9 31.1192 9 31.4023C9 31.6854 9.07503 31.9633 9.21742 32.2079C9.35982 32.4525 9.56449 32.6549 9.81055 32.7944L23.4011 40.5712C23.8872 40.8521 24.4387 41 25 41C25.5613 41 26.1128 40.8521 26.5989 40.5712L40.1894 32.7944C40.4355 32.6549 40.6402 32.4525 40.7826 32.2079C40.925 31.9633 41 31.6854 41 31.4023C41 31.1192 40.925 30.8412 40.7826 30.5967C40.6402 30.3521 40.4355 30.1497 40.1894 30.0102L31.3956 25.0016M16.1901 26.3618L33.8099 36.4428M33.8099 26.3618L16.2061 36.4428" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke="#EC1846"/>
-							</svg>
-						</span>
-						<span class="mbland_singleProject_statistical_itemValue">3.209,2 m2</span>
-					</div>
-					<div class="mbland_singleProject_statistical_itemBody">
-						<h3 class="mbland_singleProject_statistical_itemTitle">Tổng diện tích thửa đất</h3>
-						<p class="mbland_singleProject_statistical_itemDesc">Tổng hợp diện tích đất theo hồ sơ pháp lý và thông tin được ghi nhận trên hệ thống.</p>
-					</div>
-				</article>
-
-				<article class="mbland_singleProject_statistical_item">
-					<div class="mbland_singleProject_statistical_itemTop">
-						<span class="mbland_singleProject_statistical_itemIcon">
-							<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<rect width="50" height="50" rx="8" fill="#FFEFEF"/>
-								<path d="M25 18.601L34.5933 13.8005L25 9V18.601ZM25 18.601V25.0016M18.6044 24.9856L9.81055 30.0102C9.56449 30.1497 9.35982 30.3521 9.21742 30.5967C9.07503 30.8412 9 31.1192 9 31.4023C9 31.6854 9.07503 31.9633 9.21742 32.2079C9.35982 32.4525 9.56449 32.6549 9.81055 32.7944L23.4011 40.5712C23.8872 40.8521 24.4387 41 25 41C25.5613 41 26.1128 40.8521 26.5989 40.5712L40.1894 32.7944C40.4355 32.6549 40.6402 32.4525 40.7826 32.2079C40.925 31.9633 41 31.6854 41 31.4023C41 31.1192 40.925 30.8412 40.7826 30.5967C40.6402 30.3521 40.4355 30.1497 40.1894 30.0102L31.3956 25.0016M16.1901 26.3618L33.8099 36.4428M33.8099 26.3618L16.2061 36.4428" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke="#EC1846"/>
-							</svg>
-						</span>
-						<span class="mbland_singleProject_statistical_itemValue">3.209,2 m2</span>
-					</div>
-					<div class="mbland_singleProject_statistical_itemBody">
-						<h3 class="mbland_singleProject_statistical_itemTitle">Tổng diện tích thửa đất</h3>
-						<p class="mbland_singleProject_statistical_itemDesc">Tổng hợp diện tích đất theo hồ sơ pháp lý và thông tin được ghi nhận trên hệ thống.</p>
-					</div>
-				</article>
-
-				<article class="mbland_singleProject_statistical_item">
-					<div class="mbland_singleProject_statistical_itemTop">
-						<span class="mbland_singleProject_statistical_itemIcon">
-							<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<rect width="50" height="50" rx="8" fill="#FFEFEF"/>
-								<path d="M25 18.601L34.5933 13.8005L25 9V18.601ZM25 18.601V25.0016M18.6044 24.9856L9.81055 30.0102C9.56449 30.1497 9.35982 30.3521 9.21742 30.5967C9.07503 30.8412 9 31.1192 9 31.4023C9 31.6854 9.07503 31.9633 9.21742 32.2079C9.35982 32.4525 9.56449 32.6549 9.81055 32.7944L23.4011 40.5712C23.8872 40.8521 24.4387 41 25 41C25.5613 41 26.1128 40.8521 26.5989 40.5712L40.1894 32.7944C40.4355 32.6549 40.6402 32.4525 40.7826 32.2079C40.925 31.9633 41 31.6854 41 31.4023C41 31.1192 40.925 30.8412 40.7826 30.5967C40.6402 30.3521 40.4355 30.1497 40.1894 30.0102L31.3956 25.0016M16.1901 26.3618L33.8099 36.4428M33.8099 26.3618L16.2061 36.4428" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke="#EC1846"/>
-							</svg>
-						</span>
-						<span class="mbland_singleProject_statistical_itemValue">3.209,2 m2</span>
-					</div>
-					<div class="mbland_singleProject_statistical_itemBody">
-						<h3 class="mbland_singleProject_statistical_itemTitle">Tổng diện tích thửa đất</h3>
-						<p class="mbland_singleProject_statistical_itemDesc">Tổng hợp diện tích đất theo hồ sơ pháp lý và thông tin được ghi nhận trên hệ thống.</p>
-					</div>
-				</article>
-
-				<article class="mbland_singleProject_statistical_item">
-					<div class="mbland_singleProject_statistical_itemTop">
-						<span class="mbland_singleProject_statistical_itemIcon">
-							<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<rect width="50" height="50" rx="8" fill="#FFEFEF"/>
-								<path d="M25 18.601L34.5933 13.8005L25 9V18.601ZM25 18.601V25.0016M18.6044 24.9856L9.81055 30.0102C9.56449 30.1497 9.35982 30.3521 9.21742 30.5967C9.07503 30.8412 9 31.1192 9 31.4023C9 31.6854 9.07503 31.9633 9.21742 32.2079C9.35982 32.4525 9.56449 32.6549 9.81055 32.7944L23.4011 40.5712C23.8872 40.8521 24.4387 41 25 41C25.5613 41 26.1128 40.8521 26.5989 40.5712L40.1894 32.7944C40.4355 32.6549 40.6402 32.4525 40.7826 32.2079C40.925 31.9633 41 31.6854 41 31.4023C41 31.1192 40.925 30.8412 40.7826 30.5967C40.6402 30.3521 40.4355 30.1497 40.1894 30.0102L31.3956 25.0016M16.1901 26.3618L33.8099 36.4428M33.8099 26.3618L16.2061 36.4428" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke="#EC1846"/>
-							</svg>
-						</span>
-						<span class="mbland_singleProject_statistical_itemValue">3.209,2 m2</span>
-					</div>
-					<div class="mbland_singleProject_statistical_itemBody">
-						<h3 class="mbland_singleProject_statistical_itemTitle">Tổng diện tích thửa đất</h3>
-						<p class="mbland_singleProject_statistical_itemDesc">Tổng hợp diện tích đất theo hồ sơ pháp lý và thông tin được ghi nhận trên hệ thống.</p>
-					</div>
-				</article>
-
-				<article class="mbland_singleProject_statistical_item">
-					<div class="mbland_singleProject_statistical_itemTop">
-						<span class="mbland_singleProject_statistical_itemIcon">
-							<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<rect width="50" height="50" rx="8" fill="#FFEFEF"/>
-								<path d="M25 18.601L34.5933 13.8005L25 9V18.601ZM25 18.601V25.0016M18.6044 24.9856L9.81055 30.0102C9.56449 30.1497 9.35982 30.3521 9.21742 30.5967C9.07503 30.8412 9 31.1192 9 31.4023C9 31.6854 9.07503 31.9633 9.21742 32.2079C9.35982 32.4525 9.56449 32.6549 9.81055 32.7944L23.4011 40.5712C23.8872 40.8521 24.4387 41 25 41C25.5613 41 26.1128 40.8521 26.5989 40.5712L40.1894 32.7944C40.4355 32.6549 40.6402 32.4525 40.7826 32.2079C40.925 31.9633 41 31.6854 41 31.4023C41 31.1192 40.925 30.8412 40.7826 30.5967C40.6402 30.3521 40.4355 30.1497 40.1894 30.0102L31.3956 25.0016M16.1901 26.3618L33.8099 36.4428M33.8099 26.3618L16.2061 36.4428" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke="#EC1846"/>
-							</svg>
-						</span>
-						<span class="mbland_singleProject_statistical_itemValue">3.209,2 m2</span>
-					</div>
-					<div class="mbland_singleProject_statistical_itemBody">
-						<h3 class="mbland_singleProject_statistical_itemTitle">Tổng diện tích thửa đất</h3>
-						<p class="mbland_singleProject_statistical_itemDesc">Tổng hợp diện tích đất theo hồ sơ pháp lý và thông tin được ghi nhận trên hệ thống.</p>
-					</div>
-				</article>
-
+				<?php
+					endforeach;
+				endif;
+				?>
 			</div>
 		</div>
 	</div>
