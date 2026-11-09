@@ -1211,13 +1211,13 @@
 }
 
 .mbland_singleProject_featuredProject .container {
-  max-width: 1620px;
+  /* max-width: 1620px; */
 }
 
 .mbland_singleProject_featuredProject_wrapper {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  /* gap: 40px; */
 }
 
 .mbland_singleProject_featuredProject_header {
@@ -1344,7 +1344,7 @@
 
 @media (max-width: 1600px) {
   .mbland_singleProject_featuredProject .container {
-    max-width: 1480px;
+    /* max-width: 1480px; */
   }
 
   .mbland_singleProject_featuredProject {
@@ -1358,7 +1358,7 @@
   }
 
   .mbland_singleProject_featuredProject_wrapper {
-    gap: 36px;
+    /* gap: 36px; */
   }
 }
 
@@ -1368,7 +1368,7 @@
   }
 
   .mbland_singleProject_featuredProject_wrapper {
-    gap: 32px;
+    /* gap: 32px; */
   }
 
   .mbland_homepage_projects_itemImage img {
@@ -1404,7 +1404,7 @@
   }
 
   .mbland_singleProject_featuredProject_wrapper {
-    gap: 26px;
+    /* gap: 26px; */
   }
 }
 
@@ -1423,7 +1423,7 @@
   }
 
   .mbland_singleProject_featuredProject_wrapper {
-    gap: 24px;
+    /* gap: 24px; */
   }
 }
 
@@ -1560,95 +1560,95 @@
 
 @media (max-width: 1600px) {
   .mbland_singleProject_featuredProject_list {
-      margin-top: 64px;
+    margin-top: 64px;
   }
 
   .mbland_singleProject_featuredProject_itemBody {
-      padding: 32px 36px;
+    padding: 32px 36px;
   }
 }
 
 @media (max-width: 1400px) {
   .mbland_singleProject_featuredProject_list {
-      margin-top: 59px;
-      gap: 20px;
+    margin-top: 59px;
+    gap: 20px;
   }
 
   .mbland_singleProject_featuredProject_itemBody {
-      gap: 21px;
+    gap: 21px;
   }
 
   .mbland_singleProject_featuredProject_itemLocationText {
-      gap: 6px;
+    gap: 6px;
   }
 }
 
 @media (max-width: 1200px) {
   .mbland_singleProject_featuredProject_list {
-      margin-top: 55px;
-      gap: 16px;
+    margin-top: 55px;
+    gap: 16px;
   }
 
   .mbland_singleProject_featuredProject_itemBody {
-      padding: 30px 28px;
-      gap: 20px;
+    padding: 30px 28px;
+    gap: 20px;
   }
 
   .mbland_singleProject_featuredProject_itemLocationValue {
-      font-size: 13px;
+    font-size: 13px;
   }
 }
 
 @media (max-width: 996px) {
   .mbland_singleProject_featuredProject_list {
-      margin-top: 50px;
+    margin-top: 50px;
   }
 
   .mbland_singleProject_featuredProject_itemBody {
-      padding: 28px 20px;
+    padding: 28px 20px;
   }
 
   .mbland_singleProject_featuredProject_itemTitle {
-      font-size: 18px;
+    font-size: 18px;
   }
 
   .mbland_singleProject_featuredProject_itemDesc {
-      font-size: 13px;
+    font-size: 13px;
   }
 
   .mbland_singleProject_featuredProject_itemLink {
-      font-size: 12px;
+    font-size: 12px;
   }
 }
 
 @media (max-width: 768px) {
   .mbland_singleProject_featuredProject_list {
-      margin-top: 44px;
-      flex-direction: column;
+    margin-top: 44px;
+    flex-direction: column;
   }
 
   .mbland_singleProject_featuredProject_itemBody {
-      padding: 28px 28px;
+    padding: 28px 28px;
   }
 }
 
 @media (max-width: 576px) {
   .mbland_singleProject_featuredProject_list {
-      margin-top: 40px;
+    margin-top: 40px;
   }
 
   .mbland_singleProject_featuredProject_itemHeader {
-      gap: 4px;
+    gap: 4px;
   }
 }
 
 @media (max-width: 425px) {
   .mbland_singleProject_featuredProject_list {
-      margin-top: 36px;
+    margin-top: 36px;
   }
 
   .mbland_singleProject_featuredProject_itemBody {
-      padding: 28px 24px;
+    padding: 28px 24px;
   }
 }
 
