@@ -371,7 +371,7 @@ document.addEventListener('DOMContentLoaded', function () {
 				<h2 class="mbland_singleProject_featuredProject_title">Các dự án nổi bật</h2>
 				<p class="mbland_singleProject_featuredProject_desc">MBLand Asset Management là tập đoàn đa ngành với những dự án nổi bật trong suốt quá trình phát triển</p>
 			</header>
-			<div class="mbland_linhvuc_featuredProject_list">
+			<div class="mbland_singleProject_featuredProject_list">
 				<?php
 				$featured_args = array(
 					'post_type'      => 'du-an',
@@ -462,46 +462,46 @@ document.addEventListener('DOMContentLoaded', function () {
 
 						$location = function_exists( 'mbland_clean_plain_text' ) ? mbland_clean_plain_text( get_field( 'location', $f_id ) ) : ( function_exists( 'get_field' ) ? get_field( 'location', $f_id ) : '' );
 						?>
-						<article class="mbland_linhvuc_featuredProject_item">
-							<div class="mbland_linhvuc_featuredProject_itemMedia">
+						<article class="mbland_singleProject_featuredProject_item">
+							<div class="mbland_singleProject_featuredProject_itemMedia">
 								<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" style="display:block;width:100%;height:100%;">
-									<img class="mbland_linhvuc_featuredProject_itemImage" src="<?php echo esc_url( $thumb_url ); ?>" alt="<?php echo esc_attr( $thumb_alt ); ?>" title="<?php echo esc_attr( get_the_title( $f_id ) ); ?>" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( $thumb_url, 800, 600 ) ); ?> />
+									<img class="mbland_singleProject_featuredProject_itemImage" src="<?php echo esc_url( $thumb_url ); ?>" alt="<?php echo esc_attr( $thumb_alt ); ?>" title="<?php echo esc_attr( get_the_title( $f_id ) ); ?>" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( $thumb_url, 800, 600 ) ); ?> />
 								</a>
 							</div>
-							<div class="mbland_linhvuc_featuredProject_itemBody">
-								<div class="mbland_linhvuc_featuredProject_itemHeader">
-									<h3 class="mbland_linhvuc_featuredProject_itemTitle">
+							<div class="mbland_singleProject_featuredProject_itemBody">
+								<div class="mbland_singleProject_featuredProject_itemHeader">
+									<h3 class="mbland_singleProject_featuredProject_itemTitle">
 										<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" style="color:inherit;text-decoration:none;">
 											<?php the_title(); ?>
 										</a>
 									</h3>
 									<?php if ( ! empty( $short_desc ) ) : ?>
-										<p class="mbland_linhvuc_featuredProject_itemDesc"><?php echo wp_kses_post( wp_trim_words( $short_desc, 25, '...' ) ); ?></p>
+										<p class="mbland_singleProject_featuredProject_itemDesc"><?php echo wp_kses_post( wp_trim_words( $short_desc, 25, '...' ) ); ?></p>
 									<?php endif; ?>
 								</div>
-								<hr class="mbland_linhvuc_featuredProject_itemDivider" />
+								<hr class="mbland_singleProject_featuredProject_itemDivider" />
 								<?php if ( ! empty( $location ) ) : ?>
-									<div class="mbland_linhvuc_featuredProject_itemLocation">
-										<span class="mbland_linhvuc_featuredProject_itemLocationIcon">
+									<div class="mbland_singleProject_featuredProject_itemLocation">
+										<span class="mbland_singleProject_featuredProject_itemLocationIcon">
 											<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
 												<path d="M7 0.875C5.72411 0.876505 4.50091 1.38402 3.59871 2.28621C2.69652 3.1884 2.18901 4.41161 2.1875 5.6875C2.18633 6.7301 2.52687 7.74436 3.157 8.575C3.157 8.575 3.28825 8.74781 3.30969 8.77275L7 13.125L10.6921 8.77056C10.7113 8.74738 10.843 8.575 10.843 8.575L10.8434 8.57369C11.4731 7.74335 11.8135 6.7296 11.8125 5.6875C11.811 4.41161 11.3035 3.1884 10.4013 2.28621C9.4991 1.38402 8.2759 0.876505 7 0.875ZM7 7.4375C6.65389 7.4375 6.31554 7.33486 6.02776 7.14257C5.73997 6.95028 5.51567 6.67697 5.38321 6.3572C5.25076 6.03743 5.2161 5.68556 5.28363 5.34609C5.35115 5.00663 5.51782 4.6948 5.76257 4.45006C6.00731 4.20532 6.31913 4.03865 6.6586 3.97113C6.99806 3.9036 7.34993 3.93826 7.6697 4.07071C7.98947 4.20316 8.26278 4.42747 8.45507 4.71525C8.64737 5.00304 8.75 5.34138 8.75 5.6875C8.74942 6.15145 8.56486 6.59623 8.2368 6.9243C7.90874 7.25236 7.46395 7.43692 7 7.4375Z" fill="var(--primary-color)"/>
 											</svg>
 										</span>
-										<div class="mbland_linhvuc_featuredProject_itemLocationText">
-											<p class="mbland_linhvuc_featuredProject_itemLocationLabel"><?php echo esc_html( function_exists( 'pll__' ) ? pll__( 'Vị trí địa chỉ' ) : 'Vị trí địa chỉ' ); ?></p>
-											<p class="mbland_linhvuc_featuredProject_itemLocationValue"><?php echo esc_html( $location ); ?></p>
+										<div class="mbland_singleProject_featuredProject_itemLocationText">
+											<p class="mbland_singleProject_featuredProject_itemLocationLabel"><?php echo esc_html( function_exists( 'pll__' ) ? pll__( 'Vị trí địa chỉ' ) : 'Vị trí địa chỉ' ); ?></p>
+											<p class="mbland_singleProject_featuredProject_itemLocationValue"><?php echo esc_html( $location ); ?></p>
 										</div>
 									</div>
 								<?php endif; ?>
-								<div class="mbland_linhvuc_featuredProject_itemAction">
-									<a href="<?php the_permalink(); ?>" class="mbland_linhvuc_featuredProject_itemLink"><?php echo esc_html( function_exists( 'pll__' ) ? pll__( 'Xem chi tiết' ) : 'Xem chi tiết' ); ?></a>
+								<div class="mbland_singleProject_featuredProject_itemAction">
+									<a href="<?php the_permalink(); ?>" class="mbland_singleProject_featuredProject_itemLink"><?php echo esc_html( function_exists( 'pll__' ) ? pll__( 'Xem chi tiết' ) : 'Xem chi tiết' ); ?></a>
 								</div>
 							</div>
 						</article>
 					<?php endwhile; ?>
 					<?php wp_reset_postdata(); ?>
 				<?php else : ?>
-					<div class="mbland_linhvuc_featuredProject_empty" style="text-align:center;width:100%;padding:40px 0;color:#888;">
+					<div class="mbland_singleProject_featuredProject_empty" style="text-align:center;width:100%;padding:40px 0;color:#888;">
 						<p><?php echo esc_html( function_exists( 'pll__' ) ? pll__( 'Chưa có dự án nổi bật nào.' ) : 'Chưa có dự án nổi bật nào.' ); ?></p>
 					</div>
 				<?php endif; ?>
