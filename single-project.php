@@ -371,87 +371,140 @@ document.addEventListener('DOMContentLoaded', function () {
 				<h2 class="mbland_singleProject_featuredProject_title">Các dự án nổi bật</h2>
 				<p class="mbland_singleProject_featuredProject_desc">MBLand Asset Management là tập đoàn đa ngành với những dự án nổi bật trong suốt quá trình phát triển</p>
 			</header>
-			<div class="mbland_singleProject_featuredProject_slider">
-				<div class="swiper mbland_singleProject_featuredProject_swiper">
-					<div class="swiper-wrapper">
+			<div class="mbland_linhvuc_featuredProject_list">
+				<?php
+				$featured_args = array(
+					'post_type'      => 'du-an',
+					'post_status'    => 'publish',
+					'posts_per_page' => 3,
+					'orderby'        => 'date',
+					'order'          => 'DESC',
+				);
+
+				if ( taxonomy_exists( 'du-an-noi-bat' ) ) {
+					$featured_args['tax_query'] = array(
+						array(
+							'taxonomy' => 'du-an-noi-bat',
+							'field'    => 'slug',
+							'terms'    => array( 'du-an-noi-bat', 'featured-projects' ),
+						),
+					);
+				}
+
+				$featured_query = new WP_Query( $featured_args );
+
+				// Fallback: nếu chưa gán taxonomy du-an-noi-bat, lấy 3 dự án theo lĩnh vực hiện tại hoặc mới nhất
+				if ( ! $featured_query->have_posts() ) {
+					$fallback_tax = array();
+					if ( ! empty( $target_term_id ) && taxonomy_exists( 'linh-vuc' ) ) {
+						$fallback_tax[] = array(
+							'taxonomy'         => 'linh-vuc',
+							'field'            => 'term_id',
+							'terms'            => $target_term_id,
+							'include_children' => true,
+						);
+					}
+					$featured_query = new WP_Query( array(
+						'post_type'      => 'du-an',
+						'post_status'    => 'publish',
+						'posts_per_page' => 3,
+						'orderby'        => 'date',
+						'order'          => 'DESC',
+						'tax_query'      => $fallback_tax,
+					) );
+					if ( ! $featured_query->have_posts() ) {
+						$featured_query = new WP_Query( array(
+							'post_type'      => 'du-an',
+							'post_status'    => 'publish',
+							'posts_per_page' => 3,
+							'orderby'        => 'date',
+							'order'          => 'DESC',
+						) );
+					}
+				}
+				?>
+				<?php if ( $featured_query->have_posts() ) : ?>
+					<?php while ( $featured_query->have_posts() ) : $featured_query->the_post(); ?>
 						<?php
-						if ( isset( $related_query ) && $related_query->have_posts() ) :
-							$i = 1;
-							while ( $related_query->have_posts() ) : $related_query->the_post();
-								$banner_field = get_field('banner');
-								$item_title   = get_the_title();
-								$thumb_w      = 600;
-								$thumb_h      = 350;
-								$thumb        = '';
+						$f_id      = get_the_ID();
+						$banner    = function_exists( 'get_field' ) ? get_field( 'banner', $f_id ) : false;
+						$thumb_url = '';
+						$thumb_alt = get_the_title( $f_id );
 
-								if ( ! empty( $banner_field ) ) {
-									if ( is_array( $banner_field ) ) {
-										$thumb   = $banner_field['url'] ?? '';
-										$thumb_w = ! empty( $banner_field['width'] ) ? $banner_field['width'] : 600;
-										$thumb_h = ! empty( $banner_field['height'] ) ? $banner_field['height'] : 350;
-									} elseif ( is_numeric( $banner_field ) ) {
-										$banner_data = wp_get_attachment_image_src( $banner_field, 'full' );
-										if ( ! empty( $banner_data ) ) {
-											$thumb   = $banner_data[0];
-											$thumb_w = ! empty( $banner_data[1] ) ? $banner_data[1] : 600;
-											$thumb_h = ! empty( $banner_data[2] ) ? $banner_data[2] : 350;
-										}
-									} else {
-										$thumb = (string) $banner_field;
-									}
-								}
+						if ( ! empty( $banner ) && is_array( $banner ) ) {
+							$thumb_url = isset( $banner['url'] ) ? $banner['url'] : '';
+							if ( ! empty( $banner['alt'] ) ) {
+								$thumb_alt = $banner['alt'];
+							}
+						} elseif ( is_numeric( $banner ) ) {
+							$thumb_url = wp_get_attachment_image_url( (int) $banner, 'large' );
+						} elseif ( is_string( $banner ) && ! empty( $banner ) ) {
+							$thumb_url = $banner;
+						}
 
-								if ( empty( $thumb ) && has_post_thumbnail() ) {
-									$post_thumb_data = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' );
-									if ( ! empty( $post_thumb_data ) ) {
-										$thumb   = $post_thumb_data[0];
-										$thumb_w = ! empty( $post_thumb_data[1] ) ? $post_thumb_data[1] : 600;
-										$thumb_h = ! empty( $post_thumb_data[2] ) ? $post_thumb_data[2] : 350;
-									}
-								}
+						if ( empty( $thumb_url ) && has_post_thumbnail( $f_id ) ) {
+							$thumb_url = get_the_post_thumbnail_url( $f_id, 'large' );
+							$thumb_id  = get_post_thumbnail_id( $f_id );
+							$alt       = get_post_meta( $thumb_id, '_wp_attachment_image_alt', true );
+							if ( ! empty( $alt ) ) {
+								$thumb_alt = $alt;
+							}
+						}
 
-								$thumb = $thumb ?: '/wp-content/uploads/2025/10/branch-placeholder.jpg';
+						if ( empty( $thumb_url ) ) {
+							$thumb_url = '/wp-content/uploads/2025/10/Bat-dong-san-1.jpg';
+						}
+
+						$short_desc = function_exists( 'get_field' ) ? get_field( 'short_content', $f_id ) : '';
+						if ( empty( $short_desc ) ) {
+							$short_desc = get_the_excerpt( $f_id );
+						}
+
+						$location = function_exists( 'mbland_clean_plain_text' ) ? mbland_clean_plain_text( get_field( 'location', $f_id ) ) : ( function_exists( 'get_field' ) ? get_field( 'location', $f_id ) : '' );
 						?>
-						<div class="swiper-slide mbland_singleProject_featuredProject_slide">
-							<div class="mbland_homepage_projects_item mbland_homepage_projects_item<?php echo $i; ?>">
-								<div class="mbland_homepage_projects_itemImage">
-									<img loading="lazy" decoding="async" fetchpriority="low"
-										 src="<?php echo esc_url( $thumb ); ?>"
-										 alt="<?php the_title_attribute(); ?>"
-										 title="<?php the_title_attribute(); ?>"
-										 width="<?php echo esc_attr( $thumb_w ); ?>"
-										 height="<?php echo esc_attr( $thumb_h ); ?>"
-										 />
+						<article class="mbland_linhvuc_featuredProject_item">
+							<div class="mbland_linhvuc_featuredProject_itemMedia">
+								<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" style="display:block;width:100%;height:100%;">
+									<img class="mbland_linhvuc_featuredProject_itemImage" src="<?php echo esc_url( $thumb_url ); ?>" alt="<?php echo esc_attr( $thumb_alt ); ?>" title="<?php echo esc_attr( get_the_title( $f_id ) ); ?>" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( $thumb_url, 800, 600 ) ); ?> />
+								</a>
+							</div>
+							<div class="mbland_linhvuc_featuredProject_itemBody">
+								<div class="mbland_linhvuc_featuredProject_itemHeader">
+									<h3 class="mbland_linhvuc_featuredProject_itemTitle">
+										<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" style="color:inherit;text-decoration:none;">
+											<?php the_title(); ?>
+										</a>
+									</h3>
+									<?php if ( ! empty( $short_desc ) ) : ?>
+										<p class="mbland_linhvuc_featuredProject_itemDesc"><?php echo wp_kses_post( wp_trim_words( $short_desc, 25, '...' ) ); ?></p>
+									<?php endif; ?>
 								</div>
-								<div class="mbland_homepage_projects_itemContent">
-									<div class="mbland_homepage_projects_itemContent1">
-
+								<hr class="mbland_linhvuc_featuredProject_itemDivider" />
+								<?php if ( ! empty( $location ) ) : ?>
+									<div class="mbland_linhvuc_featuredProject_itemLocation">
+										<span class="mbland_linhvuc_featuredProject_itemLocationIcon">
+											<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+												<path d="M7 0.875C5.72411 0.876505 4.50091 1.38402 3.59871 2.28621C2.69652 3.1884 2.18901 4.41161 2.1875 5.6875C2.18633 6.7301 2.52687 7.74436 3.157 8.575C3.157 8.575 3.28825 8.74781 3.30969 8.77275L7 13.125L10.6921 8.77056C10.7113 8.74738 10.843 8.575 10.843 8.575L10.8434 8.57369C11.4731 7.74335 11.8135 6.7296 11.8125 5.6875C11.811 4.41161 11.3035 3.1884 10.4013 2.28621C9.4991 1.38402 8.2759 0.876505 7 0.875ZM7 7.4375C6.65389 7.4375 6.31554 7.33486 6.02776 7.14257C5.73997 6.95028 5.51567 6.67697 5.38321 6.3572C5.25076 6.03743 5.2161 5.68556 5.28363 5.34609C5.35115 5.00663 5.51782 4.6948 5.76257 4.45006C6.00731 4.20532 6.31913 4.03865 6.6586 3.97113C6.99806 3.9036 7.34993 3.93826 7.6697 4.07071C7.98947 4.20316 8.26278 4.42747 8.45507 4.71525C8.64737 5.00304 8.75 5.34138 8.75 5.6875C8.74942 6.15145 8.56486 6.59623 8.2368 6.9243C7.90874 7.25236 7.46395 7.43692 7 7.4375Z" fill="var(--primary-color)"/>
+											</svg>
+										</span>
+										<div class="mbland_linhvuc_featuredProject_itemLocationText">
+											<p class="mbland_linhvuc_featuredProject_itemLocationLabel"><?php echo esc_html( function_exists( 'pll__' ) ? pll__( 'Vị trí địa chỉ' ) : 'Vị trí địa chỉ' ); ?></p>
+											<p class="mbland_linhvuc_featuredProject_itemLocationValue"><?php echo esc_html( $location ); ?></p>
+										</div>
 									</div>
-									<div class="mbland_homepage_projects_itemContent2">
-										<h3 class="small-h3"><a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( $item_title ); ?>"><?php echo esc_html( $item_title ); ?></a></h3>
-										
-										<?php
-										get_template_part( 'template-parts/ui/button', null, array(
-											'url'   => get_permalink(),
-											'label' => '',
-											'class' => 'mbland_homepage_projects_viewDetail',
-											'title' => the_title_attribute( array( 'echo' => false ) ),
-										) );
-										?>
-									</div>
+								<?php endif; ?>
+								<div class="mbland_linhvuc_featuredProject_itemAction">
+									<a href="<?php the_permalink(); ?>" class="mbland_linhvuc_featuredProject_itemLink"><?php echo esc_html( function_exists( 'pll__' ) ? pll__( 'Xem chi tiết' ) : 'Xem chi tiết' ); ?></a>
 								</div>
 							</div>
-						</div>
-						<?php
-								$i++;
-							endwhile;
-							wp_reset_postdata();
-						else :
-							echo '<p>Chưa có dự án nổi bật nào.</p>';
-						endif;
-						?>
+						</article>
+					<?php endwhile; ?>
+					<?php wp_reset_postdata(); ?>
+				<?php else : ?>
+					<div class="mbland_linhvuc_featuredProject_empty" style="text-align:center;width:100%;padding:40px 0;color:#888;">
+						<p><?php echo esc_html( function_exists( 'pll__' ) ? pll__( 'Chưa có dự án nổi bật nào.' ) : 'Chưa có dự án nổi bật nào.' ); ?></p>
 					</div>
-				</div>
+				<?php endif; ?>
 			</div>
 		</div>
 	</div>
