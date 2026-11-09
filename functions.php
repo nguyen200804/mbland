@@ -89,9 +89,11 @@ add_action('init', function() {
   pll_register_string('job_back_to_list', 'Về trang tuyển dụng', 'Tuyển dụng');
   pll_register_string('job_empty_text', 'Không tìm thấy vị trí tuyển dụng phù hợp.', 'Tuyển dụng');
   pll_register_string('job_no_other_posts', 'Hiện chưa có tin tuyển dụng khác.', 'Tuyển dụng');
-  pll_register_string('job_pagination_prev', 'Trước', 'Tuyển dụng');
-  pll_register_string('job_pagination_next', 'Sau', 'Tuyển dụng');
   pll_register_string('job_link', 'tuyen dung', 'Tuyển dụng');
+
+  // Pagination (Dịch chuỗi trong /wp-admin/admin.php?page=mlang_strings - Group: Pagination)
+  pll_register_string('pagination_prev', 'Trước', 'Pagination');
+  pll_register_string('pagination_next', 'Sau', 'Pagination');
 	//News 
   pll_register_string('noi bat', 'TIN NỔI BẬT', 'News');
   pll_register_string('xem chi tiet', 'XEM CHI TIẾT', 'News');
