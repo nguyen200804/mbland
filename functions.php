@@ -1225,3 +1225,273 @@ add_action( 'admin_notices', function () {
 
 
 
+
+
+/* =========================================================================
+ * TOOL: Nạp dữ liệu Dự án (post_type = du-an) từ file data-du-an.csv
+ * Vị trí file CSV: /wp-content/themes/<theme>/data-du-an.csv
+ * Cách dùng: Vào Dự án (du-an) -> bấm nút "Nạp dữ liệu Dự án từ CSV"
+ *            hoặc URL: /wp-admin/edit.php?post_type=du-an&seed_du_an=1 (cần nonce)
+ *
+ * Mapping cột CSV -> dữ liệu:
+ *   title            -> post_title
+ *   desc             -> ACF 'content'
+ *   shortDesc        -> ACF 'short_content'
+ *   viTriDuAn        -> ACF 'location'
+ *   quyMoBatDongSan  -> ACF 'scale'
+ *   termLinhVuc      -> taxonomy 'linh-vuc' (theo slug)
+ *   urlFeautedImage  -> Featured image (tìm trong Media, file local hoặc tải từ URL)
+ * Chạy lại nhiều lần không tạo trùng (bỏ qua nếu đã có dự án cùng tiêu đề).
+ * ========================================================================= */
+
+/**
+ * Cập nhật field: dùng update_field của ACF nếu có, nếu không thì lưu post meta.
+ */
+function mbland_du_an_update_field( $key, $value, $post_id ) {
+    if ( function_exists( 'update_field' ) ) {
+        update_field( $key, $value, $post_id );
+    } else {
+        update_post_meta( $post_id, $key, $value );
+    }
+}
+
+/**
+ * Lấy attachment ID từ đường dẫn/URL ảnh (tìm có sẵn -> file local -> tải về).
+ *
+ * @return int|WP_Error|0
+ */
+function mbland_du_an_get_image_id( $image_url, $post_id, $title ) {
+    $image_url = trim( (string) $image_url );
+    if ( $image_url === '' ) {
+        return 0;
+    }
+
+    require_once ABSPATH . 'wp-admin/includes/file.php';
+    require_once ABSPATH . 'wp-admin/includes/media.php';
+    require_once ABSPATH . 'wp-admin/includes/image.php';
+
+    $is_remote = (bool) preg_match( '#^https?://#i', $image_url );
+    $path      = $is_remote ? wp_parse_url( $image_url, PHP_URL_PATH ) : $image_url;
+    $path      = '/' . ltrim( (string) $path, '/' );
+
+    // 1. Đã có trong thư viện Media (so khớp theo _wp_attached_file)
+    $uploads = wp_get_upload_dir();
+    $rel     = '';
+    $pos     = strpos( $path, '/uploads/' );
+    if ( $pos !== false ) {
+        $rel = ltrim( substr( $path, $pos + strlen( '/uploads/' ) ), '/' );
+    }
+    if ( $rel !== '' ) {
+        global $wpdb;
+        $found = $wpdb->get_var( $wpdb->prepare(
+            "SELECT post_id FROM {$wpdb->postmeta} WHERE meta_key = '_wp_attached_file' AND meta_value = %s LIMIT 1",
+            $rel
+        ) );
+        if ( $found ) {
+            return (int) $found;
+        }
+    }
+
+    // 2. File đã nằm sẵn trên server (upload tay qua FTP) -> đăng ký vào Media
+    $local = '';
+    if ( $rel !== '' && file_exists( trailingslashit( $uploads['basedir'] ) . $rel ) ) {
+        $local = trailingslashit( $uploads['basedir'] ) . $rel;
+    } elseif ( file_exists( untrailingslashit( ABSPATH ) . $path ) ) {
+        $local = untrailingslashit( ABSPATH ) . $path;
+    }
+    if ( $local !== '' ) {
+        $filetype   = wp_check_filetype( basename( $local ), null );
+        $attachment = array(
+            'post_mime_type' => $filetype['type'] ?: 'image/jpeg',
+            'post_title'     => $title,
+            'post_status'    => 'inherit',
+        );
+        $attach_id = wp_insert_attachment( $attachment, $local, $post_id );
+        if ( ! is_wp_error( $attach_id ) && $attach_id ) {
+            wp_update_attachment_metadata( $attach_id, wp_generate_attachment_metadata( $attach_id, $local ) );
+            return (int) $attach_id;
+        }
+    }
+
+    // 3. Tải ảnh từ URL (đường dẫn tương đối sẽ nối với home_url)
+    $download_url = $is_remote ? $image_url : home_url( $path );
+    $tmp          = download_url( $download_url, 30 );
+    if ( is_wp_error( $tmp ) ) {
+        return $tmp;
+    }
+    $file_array = array(
+        'name'     => basename( wp_parse_url( $download_url, PHP_URL_PATH ) ),
+        'tmp_name' => $tmp,
+    );
+    $attach_id = media_handle_sideload( $file_array, $post_id, $title );
+    if ( is_wp_error( $attach_id ) ) {
+        @unlink( $tmp );
+        return $attach_id;
+    }
+    return (int) $attach_id;
+}
+
+/**
+ * Đọc CSV và tạo các post du-an.
+ *
+ * @return array{created:int, skipped:int, log:string[]}|WP_Error
+ */
+function mbland_seed_du_an_data() {
+    $csv_file = get_template_directory() . '/data-du-an.csv';
+    if ( ! file_exists( $csv_file ) ) {
+        return new WP_Error( 'no_csv', 'Không tìm thấy file: ' . $csv_file );
+    }
+    if ( ! post_type_exists( 'du-an' ) ) {
+        return new WP_Error( 'no_cpt', 'Post type "du-an" chưa được đăng ký.' );
+    }
+
+    $handle = fopen( $csv_file, 'r' );
+    if ( ! $handle ) {
+        return new WP_Error( 'cant_open', 'Không đọc được file CSV.' );
+    }
+
+    // Bỏ BOM UTF-8 nếu có
+    $bom = fread( $handle, 3 );
+    if ( $bom !== "\xEF\xBB\xBF" ) {
+        rewind( $handle );
+    }
+
+    $header = fgetcsv( $handle );
+    if ( ! $header ) {
+        fclose( $handle );
+        return new WP_Error( 'empty_csv', 'File CSV rỗng.' );
+    }
+    $header = array_map( 'trim', $header );
+
+    $result = array( 'created' => 0, 'skipped' => 0, 'log' => array() );
+
+    while ( ( $cols = fgetcsv( $handle ) ) !== false ) {
+        if ( count( $cols ) === 1 && trim( (string) $cols[0] ) === '' ) {
+            continue; // dòng trống
+        }
+        $cols = array_pad( $cols, count( $header ), '' );
+        $row  = array_combine( $header, array_slice( $cols, 0, count( $header ) ) );
+
+        $title = trim( (string) ( $row['title'] ?? '' ) );
+        if ( $title === '' ) {
+            continue;
+        }
+
+        // Bỏ qua nếu đã tồn tại
+        $exists = get_posts( array(
+            'post_type'      => 'du-an',
+            'post_status'    => 'any',
+            'title'          => $title,
+            'posts_per_page' => 1,
+            'fields'         => 'ids',
+            'no_found_rows'  => true,
+        ) );
+        if ( ! empty( $exists ) ) {
+            $result['skipped']++;
+            $result['log'][] = "⏭️ Bỏ qua (đã tồn tại): {$title}";
+            continue;
+        }
+
+        $post_id = wp_insert_post( array(
+            'post_type'   => 'du-an',
+            'post_status' => 'publish',
+            'post_title'  => $title,
+        ), true );
+        if ( is_wp_error( $post_id ) ) {
+            $result['log'][] = "❌ Lỗi tạo \"{$title}\": " . $post_id->get_error_message();
+            continue;
+        }
+
+        // Fields (khớp với single-project.php)
+        mbland_du_an_update_field( 'content',       wp_kses_post( $row['desc'] ?? '' ),                  $post_id );
+        mbland_du_an_update_field( 'short_content', sanitize_textarea_field( $row['shortDesc'] ?? '' ),  $post_id );
+        mbland_du_an_update_field( 'location',      sanitize_text_field( $row['viTriDuAn'] ?? '' ),      $post_id );
+        mbland_du_an_update_field( 'scale',         sanitize_text_field( $row['quyMoBatDongSan'] ?? '' ), $post_id );
+
+        // Taxonomy linh-vuc (theo slug, hỗ trợ nhiều slug cách nhau bằng dấu phẩy)
+        $slugs = array_filter( array_map( 'sanitize_title', explode( ',', (string) ( $row['termLinhVuc'] ?? '' ) ) ) );
+        if ( $slugs ) {
+            $term_ids = array();
+            foreach ( $slugs as $slug ) {
+                $term = get_term_by( 'slug', $slug, 'linh-vuc' );
+                if ( $term ) {
+                    $term_ids[] = (int) $term->term_id;
+                } else {
+                    $result['log'][] = "⚠️ \"{$title}\": không có term linh-vuc slug \"{$slug}\"";
+                }
+            }
+            if ( $term_ids ) {
+                wp_set_object_terms( $post_id, $term_ids, 'linh-vuc' );
+            }
+        }
+
+        // Ảnh đại diện
+        $img_id = mbland_du_an_get_image_id( $row['urlFeautedImage'] ?? '', $post_id, $title );
+        if ( is_wp_error( $img_id ) ) {
+            $result['log'][] = "⚠️ \"{$title}\": lỗi ảnh - " . $img_id->get_error_message();
+        } elseif ( $img_id ) {
+            set_post_thumbnail( $post_id, $img_id );
+        } else {
+            $result['log'][] = "⚠️ \"{$title}\": không có ảnh đại diện";
+        }
+
+        $result['created']++;
+        $result['log'][] = "✅ Đã tạo: {$title} (ID {$post_id})";
+    }
+    fclose( $handle );
+
+    return $result;
+}
+
+// Xử lý kích hoạt tool
+add_action( 'admin_init', function () {
+    if ( ! current_user_can( 'manage_options' ) ) {
+        return;
+    }
+    if ( isset( $_GET['seed_du_an'] ) && $_GET['seed_du_an'] == '1' ) {
+        check_admin_referer( 'mbland_seed_du_an_nonce' );
+        @set_time_limit( 300 );
+        $res = mbland_seed_du_an_data();
+        set_transient( 'mbland_seed_du_an_result_' . get_current_user_id(), $res, 5 * MINUTE_IN_SECONDS );
+        wp_safe_redirect( add_query_arg( 'du_an_seeded', '1', remove_query_arg( array( 'seed_du_an', '_wpnonce' ) ) ) );
+        exit;
+    }
+} );
+
+// Nút bấm + thông báo kết quả trong màn hình danh sách Dự án
+add_action( 'admin_notices', function () {
+    if ( ! current_user_can( 'manage_options' ) ) {
+        return;
+    }
+    $screen = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
+    if ( ! $screen || $screen->id !== 'edit-du-an' ) {
+        return;
+    }
+
+    if ( isset( $_GET['du_an_seeded'] ) ) {
+        $key = 'mbland_seed_du_an_result_' . get_current_user_id();
+        $res = get_transient( $key );
+        delete_transient( $key );
+        if ( is_wp_error( $res ) ) {
+            echo '<div class="notice notice-error"><p>❌ ' . esc_html( $res->get_error_message() ) . '</p></div>';
+        } elseif ( is_array( $res ) ) {
+            echo '<div class="notice notice-success is-dismissible"><p><strong>Hoàn tất: tạo mới ' . (int) $res['created'] . ', bỏ qua ' . (int) $res['skipped'] . ' dự án.</strong></p>';
+            if ( $res['log'] ) {
+                echo '<ul style="list-style:disc;margin-left:20px;">';
+                foreach ( $res['log'] as $line ) {
+                    echo '<li>' . esc_html( $line ) . '</li>';
+                }
+                echo '</ul>';
+            }
+            echo '</div>';
+        }
+        return;
+    }
+
+    $url = wp_nonce_url( admin_url( 'edit.php?post_type=du-an&seed_du_an=1' ), 'mbland_seed_du_an_nonce' );
+    echo '<div class="notice notice-info" style="padding:14px 18px;border-left:4px solid #8A0218;">';
+    echo '<h3 style="margin:0 0 6px;color:#8A0218;">🛠️ Tool nạp Dự án từ data-du-an.csv</h3>';
+    echo '<p style="margin:0 0 12px;">Tạo tự động các dự án (post_type=du-an) từ file CSV trong theme. Dự án trùng tiêu đề sẽ được bỏ qua.</p>';
+    echo '<a href="' . esc_url( $url ) . '" class="button button-primary" style="background:#8A0218;border-color:#8A0218;" onclick="return confirm(\'Xác nhận nạp dữ liệu Dự án từ CSV?\');">👉 Nạp dữ liệu Dự án từ CSV</a>';
+    echo '</div>';
+} );
