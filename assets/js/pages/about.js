@@ -85,37 +85,39 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 // ===== Kéo ngang bằng chuột =====
 const carousel = document.querySelector(".hn__he-thong .carousel-he-thong");
-let isDown = false;
-let isDragging = false;
-let startX;
-let scrollLeft;
+if (carousel) {
+  let isDown = false;
+  let isDragging = false;
+  let startX;
+  let scrollLeft;
 
-carousel.addEventListener("mousedown", (e) => {
-  isDown = true;
-  isDragging = false;
-  carousel.classList.add("active");
-  startX = e.pageX - carousel.offsetLeft;
-  scrollLeft = carousel.scrollLeft;
-});
+  carousel.addEventListener("mousedown", (e) => {
+    isDown = true;
+    isDragging = false;
+    carousel.classList.add("active");
+    startX = e.pageX - carousel.offsetLeft;
+    scrollLeft = carousel.scrollLeft;
+  });
 
-carousel.addEventListener("mouseleave", () => {
-  isDown = false;
-  carousel.classList.remove("active");
-});
+  carousel.addEventListener("mouseleave", () => {
+    isDown = false;
+    carousel.classList.remove("active");
+  });
 
-carousel.addEventListener("mouseup", () => {
-  isDown = false;
-  carousel.classList.remove("active");
-});
+  carousel.addEventListener("mouseup", () => {
+    isDown = false;
+    carousel.classList.remove("active");
+  });
 
-carousel.addEventListener("mousemove", (e) => {
-  if (!isDown) return;
-  e.preventDefault();
-  const x = e.pageX - carousel.offsetLeft;
-  const walk = (x - startX) * 1.2; // tốc độ kéo
-  if (Math.abs(walk) > 10) isDragging = true;
-  carousel.scrollLeft = scrollLeft - walk;
-});
+  carousel.addEventListener("mousemove", (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - carousel.offsetLeft;
+    const walk = (x - startX) * 1.2; // tốc độ kéo
+    if (Math.abs(walk) > 10) isDragging = true;
+    carousel.scrollLeft = scrollLeft - walk;
+  });
+}
 
 // ===== Các hàm hỗ trợ =====
 const items = document.querySelectorAll(".hn__he-thong .item-carousel");

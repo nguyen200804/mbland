@@ -1056,20 +1056,7 @@
 	flex-direction: column;
 	justify-content: space-between;
 	cursor: pointer;
-	border: 1px solid transparent;
 	transition: all .3s ease;
-}
-
-.mbland_homepage_company_showcaseItem.active {
-	border-color: #8A0218;
-}
-
-.mbland_homepage_company_showcaseItem.active .mbland_homepage_company_showcaseNumber {
-	-webkit-text-stroke: 0.000em #8A0218;
-	background: linear-gradient(180deg, #8A0218 0%, rgba(138, 2, 24, 0.05) 100%);
-	background-clip: text;
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
 }
 
 .mbland_homepage_company_showcaseNumber {
@@ -1085,10 +1072,13 @@
 	transition: all .3s ease;
 }
 
-.mbland_homepage_company_showcaseItem:hover .mbland_homepage_company_showcaseNumber {
+.mbland_homepage_company_showcaseItem:hover .mbland_homepage_company_showcaseNumber,
+.mbland_homepage_company_showcaseItem.active .mbland_homepage_company_showcaseNumber {
 	-webkit-text-stroke: 0.000em #0C1DB7;
 	background: linear-gradient(180deg, #0C48B7 0%, rgba(32, 12, 183, 0.05) 100%);
 	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
 }
 
 .mbland_homepage_company_showcaseLogo {
