@@ -988,6 +988,24 @@
   height: 1.4em !important;
 }
 
+.mbland_singleProject_statistical_itemIcon rect {
+  transition: fill .3s ease;
+}
+
+.mbland_singleProject_statistical_item:hover .mbland_singleProject_statistical_itemIcon rect {
+  fill: var(--primary-color) !important;
+}
+
+
+
+.mbland_singleProject_statistical_itemIcon path {
+  transition: stroke .3s ease;
+}
+
+.mbland_singleProject_statistical_item:hover .mbland_singleProject_statistical_itemIcon path {
+  stroke: #fff !important;
+}
+
 .mbland_singleProject_statistical_itemValue {
   font-weight: 700;
   font-size: 1em;
