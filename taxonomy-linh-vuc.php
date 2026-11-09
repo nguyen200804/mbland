@@ -190,9 +190,10 @@ foreach ( $lv_tab_terms as $lv_tab_term ) {
 		break;
 	}
 }
-if ( ! $lv_active_term_id && ! empty( $lv_tab_terms ) ) {
-	$lv_active_term_id = (int) reset( $lv_tab_terms )->term_id;
-}
+// Chưa active tab nào mặc định: chỉ active khi term hiện tại trùng với tab (bỏ mặc định tab đầu tiên)
+// if ( ! $lv_active_term_id && ! empty( $lv_tab_terms ) ) {
+// 	$lv_active_term_id = (int) reset( $lv_tab_terms )->term_id;
+// }
 
 $lv_panels = array();
 if ( ! empty( $lv_tab_terms ) ) {
