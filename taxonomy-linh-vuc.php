@@ -12,6 +12,53 @@ get_header();
 $current_term = get_queried_object();
 $term_slug    = $current_term->slug;
 
+// ==========================================================================
+// DỮ LIỆU ACF CỦA TERM (taxonomy linh-vuc) - có fallback mặc định
+// ==========================================================================
+$lv_term_key = 'term_' . $current_term->term_id;
+$lv_get      = function ( $name ) use ( $lv_term_key ) {
+	return function_exists( 'get_field' ) ? get_field( $name, $lv_term_key ) : '';
+};
+
+$lv_list_title = $lv_get( 'lv_list_title' ) ?: 'Kiến tạo không gian - Nâng tầm bất động sản';
+$lv_list_desc  = $lv_get( 'lv_list_desc' ) ?: 'Phát triển đa dạng phân khúc bất động sản, từ đô thị, nhà ở đến thương mại, văn phòng và nghỉ dưỡng, MBLand Asset Management hướng đến kiến tạo những không gian chất lượng, đáp ứng nhu cầu thị trường và mang lại giá trị đầu tư dài hạn.';
+
+$lv_strengths_title = $lv_get( 'lv_strengths_title' ) ?: 'Khẳng định năng lực, kiến tạo dấu ấn';
+$lv_strengths_desc  = $lv_get( 'lv_strengths_desc' ) ?: 'Tầm nhìn chiến lược và định hướng đầu tư dài hạn, MBLand Asset Management không ngừng mở rộng danh mục dự án, phát huy thế mạnh trong phát triển bất động sản, hướng đến kiến tạo những công trình chất lượng và giá trị bền vững cho thị trường.';
+$lv_strengths_raw   = $lv_get( 'lv_strengths_items' );
+$lv_strengths_items = array();
+if ( ! empty( $lv_strengths_raw ) && is_array( $lv_strengths_raw ) ) {
+	foreach ( $lv_strengths_raw as $row ) {
+		$lv_strengths_items[] = array(
+			'title' => isset( $row['title'] ) ? $row['title'] : '',
+			'label' => isset( $row['label'] ) ? $row['label'] : '',
+			'tag'   => isset( $row['tag'] ) ? $row['tag'] : '',
+			'desc'  => isset( $row['desc'] ) ? $row['desc'] : '',
+		);
+	}
+} else {
+	$lv_default_tag  = 'Đô thị · Thương mại · Bất động sản';
+	$lv_default_desc = 'Đa dạng phân khúc & Mở rộng cơ hội đầu tư.';
+	$lv_defaults     = array(
+		array( 'Đa dạng phân khúc', 'Mở rộng đầu tư' ),
+		array( 'Đầu tư chiến lược', 'Kiến tạo lâu dài' ),
+		array( 'Phát triển bền vững', 'Chất lượng & hiệu quả' ),
+		array( 'Kiểm soát chi phí', 'Hợp tác lâu dài' ),
+		array( 'Hệ sinh thái đối tác', 'Cam kết & phát triển' ),
+		array( 'Đầu tư chiến lược', 'Kiến tạo lâu dài' ),
+		array( 'Phát triển bền vững', 'Chất lượng & hiệu quả' ),
+		array( 'Kiểm soát chi phí', 'Hợp tác lâu dài' ),
+	);
+	foreach ( $lv_defaults as $d ) {
+		$lv_strengths_items[] = array(
+			'title' => $d[0],
+			'label' => $d[1],
+			'tag'   => $lv_default_tag,
+			'desc'  => $lv_default_desc,
+		);
+	}
+}
+
 // Ảnh đại diện của term (ACF field 'feature_image', giống trang chủ) - hỗ trợ return format array / ID / URL
 $term_image     = function_exists( 'get_field' ) ? get_field( 'feature_image', 'term_' . $current_term->term_id ) : false;
 $term_image_url = '';
@@ -174,8 +221,8 @@ $projects = new WP_Query( array(
 	<div class="container">
 		<div class="mbland_linhvuc_listProject_wrapper">
 			<header class="mbland_linhvuc_listProject_header">
-				<h2 class="mbland_linhvuc_listProject_title">Kiến tạo không gian - Nâng tầm bất động sản</h2>
-				<p class="mbland_linhvuc_listProject_desc">Phát triển đa dạng phân khúc bất động sản, từ đô thị, nhà ở đến thương mại, văn phòng và nghỉ dưỡng, MBLand Asset Management hướng đến kiến tạo những không gian chất lượng, đáp ứng nhu cầu thị trường và mang lại giá trị đầu tư dài hạn.</p>
+				<h2 class="mbland_linhvuc_listProject_title"><?php echo esc_html( $lv_list_title ); ?></h2>
+				<p class="mbland_linhvuc_listProject_desc"><?php echo esc_html( $lv_list_desc ); ?></p>
 			</header>
 
 			<div class="mbland_linhvuc_listProject_body">
@@ -344,107 +391,25 @@ $projects = new WP_Query( array(
 		<div class="mbland_linhvuc_coreStrengths_wrapper">
 			<header class="mbland_linhvuc_coreStrengths_header">
 				<h2 class="mbland_linhvuc_coreStrengths_title">
-					Khẳng định năng lực, kiến tạo dấu ấn
+					<?php echo esc_html( $lv_strengths_title ); ?>
 				</h2>
-				<p class="mbland_linhvuc_coreStrengths_desc">Tầm nhìn chiến lược và định hướng đầu tư dài hạn, MBLand Asset Management không ngừng mở rộng danh mục dự án, phát huy thế mạnh trong phát triển bất động sản, hướng đến kiến tạo những công trình chất lượng và giá trị bền vững cho thị trường.</p>
+				<p class="mbland_linhvuc_coreStrengths_desc"><?php echo esc_html( $lv_strengths_desc ); ?></p>
 			</header>
 
 			<div class="mbland_linhvuc_coreStrengths_list">
+			<?php foreach ( $lv_strengths_items as $lv_item ) : ?>
 			<div class="mbland_linhvuc_coreStrengths_item">
 				<img src="/wp-content/uploads/2025/10/diamond.svg" alt="Icon kim cương" class="mbland_linhvuc_coreStrengths_itemBg" title="Icon kim cương" loading="lazy" decoding="async" fetchpriority="low" width="136" height="188" />
 				<div class="mbland_linhvuc_coreStrengths_itemMain">
-					<h3 class="mbland_linhvuc_coreStrengths_itemTitle">đa dạng phân khúc</h3>
-					<p class="mbland_linhvuc_coreStrengths_itemLabel">Mở rộng đầu tư</p>
+					<h3 class="mbland_linhvuc_coreStrengths_itemTitle"><?php echo esc_html( $lv_item['title'] ); ?></h3>
+					<p class="mbland_linhvuc_coreStrengths_itemLabel"><?php echo esc_html( $lv_item['label'] ); ?></p>
 				</div>
 				<div class="mbland_linhvuc_coreStrengths_itemHover">
-					<p class="mbland_linhvuc_coreStrengths_itemTag">Đô thị · Thương mại · Bất động sản </p>
-					<p class="mbland_linhvuc_coreStrengths_itemDesc">Đa dạng phân khúc & Mở rộng cơ hội đầu tư.</p>
+					<p class="mbland_linhvuc_coreStrengths_itemTag"><?php echo esc_html( $lv_item['tag'] ); ?></p>
+					<p class="mbland_linhvuc_coreStrengths_itemDesc"><?php echo esc_html( $lv_item['desc'] ); ?></p>
 				</div>
 			</div>
-
-			<div class="mbland_linhvuc_coreStrengths_item">
-				<img src="/wp-content/uploads/2025/10/diamond.svg" alt="Icon kim cương" class="mbland_linhvuc_coreStrengths_itemBg" title="Icon kim cương" loading="lazy" decoding="async" fetchpriority="low" width="136" height="188" />
-				<div class="mbland_linhvuc_coreStrengths_itemMain">
-					<h3 class="mbland_linhvuc_coreStrengths_itemTitle">Đầu tư chiến lược</h3>
-					<p class="mbland_linhvuc_coreStrengths_itemLabel">Kiến tạo lâu dài</p>
-				</div>
-				<div class="mbland_linhvuc_coreStrengths_itemHover">
-					<p class="mbland_linhvuc_coreStrengths_itemTag">Đô thị · Thương mại · Bất động sản </p>
-					<p class="mbland_linhvuc_coreStrengths_itemDesc">Đa dạng phân khúc & Mở rộng cơ hội đầu tư.</p>
-				</div>
-			</div>
-
-			<div class="mbland_linhvuc_coreStrengths_item">
-				<img src="/wp-content/uploads/2025/10/diamond.svg" alt="Icon kim cương" class="mbland_linhvuc_coreStrengths_itemBg" title="Icon kim cương" loading="lazy" decoding="async" fetchpriority="low" width="136" height="188" />
-				<div class="mbland_linhvuc_coreStrengths_itemMain">
-					<h3 class="mbland_linhvuc_coreStrengths_itemTitle">Phát triển bền vững</h3>
-					<p class="mbland_linhvuc_coreStrengths_itemLabel">Chất lượng & hiệu quả</p>
-				</div>
-				<div class="mbland_linhvuc_coreStrengths_itemHover">
-					<p class="mbland_linhvuc_coreStrengths_itemTag">Đô thị · Thương mại · Bất động sản </p>
-					<p class="mbland_linhvuc_coreStrengths_itemDesc">Đa dạng phân khúc & Mở rộng cơ hội đầu tư.</p>
-				</div>
-			</div>
-
-			<div class="mbland_linhvuc_coreStrengths_item">
-				<img src="/wp-content/uploads/2025/10/diamond.svg" alt="Icon kim cương" class="mbland_linhvuc_coreStrengths_itemBg" title="Icon kim cương" loading="lazy" decoding="async" fetchpriority="low" width="136" height="188" />
-				<div class="mbland_linhvuc_coreStrengths_itemMain">
-					<h3 class="mbland_linhvuc_coreStrengths_itemTitle">Kiểm soát chi phí</h3>
-					<p class="mbland_linhvuc_coreStrengths_itemLabel">Hợp tác lâu dài</p>
-				</div>
-				<div class="mbland_linhvuc_coreStrengths_itemHover">
-					<p class="mbland_linhvuc_coreStrengths_itemTag">Đô thị · Thương mại · Bất động sản </p>
-					<p class="mbland_linhvuc_coreStrengths_itemDesc">Đa dạng phân khúc & Mở rộng cơ hội đầu tư.</p>
-				</div>
-			</div>
-
-			<div class="mbland_linhvuc_coreStrengths_item">
-				<img src="/wp-content/uploads/2025/10/diamond.svg" alt="Icon kim cương" class="mbland_linhvuc_coreStrengths_itemBg" title="Icon kim cương" loading="lazy" decoding="async" fetchpriority="low" width="136" height="188" />
-				<div class="mbland_linhvuc_coreStrengths_itemMain">
-					<h3 class="mbland_linhvuc_coreStrengths_itemTitle">Hệ sinh thái đối tác</h3>
-					<p class="mbland_linhvuc_coreStrengths_itemLabel">Cam kết & phát triển</p>
-				</div>
-				<div class="mbland_linhvuc_coreStrengths_itemHover">
-					<p class="mbland_linhvuc_coreStrengths_itemTag">Đô thị · Thương mại · Bất động sản </p>
-					<p class="mbland_linhvuc_coreStrengths_itemDesc">Đa dạng phân khúc & Mở rộng cơ hội đầu tư.</p>
-				</div>
-			</div>
-
-			<div class="mbland_linhvuc_coreStrengths_item">
-				<img src="/wp-content/uploads/2025/10/diamond.svg" alt="Icon kim cương" class="mbland_linhvuc_coreStrengths_itemBg" title="Icon kim cương" loading="lazy" decoding="async" fetchpriority="low" width="136" height="188" />
-				<div class="mbland_linhvuc_coreStrengths_itemMain">
-					<h3 class="mbland_linhvuc_coreStrengths_itemTitle">Đầu tư chiến lược</h3>
-					<p class="mbland_linhvuc_coreStrengths_itemLabel">Kiến tạo lâu dài</p>
-				</div>
-				<div class="mbland_linhvuc_coreStrengths_itemHover">
-					<p class="mbland_linhvuc_coreStrengths_itemTag">Đô thị · Thương mại · Bất động sản </p>
-					<p class="mbland_linhvuc_coreStrengths_itemDesc">Đa dạng phân khúc & Mở rộng cơ hội đầu tư.</p>
-				</div>
-			</div>
-
-			<div class="mbland_linhvuc_coreStrengths_item">
-				<img src="/wp-content/uploads/2025/10/diamond.svg" alt="Icon kim cương" class="mbland_linhvuc_coreStrengths_itemBg" title="Icon kim cương" loading="lazy" decoding="async" fetchpriority="low" width="136" height="188" />
-				<div class="mbland_linhvuc_coreStrengths_itemMain">
-					<h3 class="mbland_linhvuc_coreStrengths_itemTitle">Phát triển bền vững</h3>
-					<p class="mbland_linhvuc_coreStrengths_itemLabel">Chất lượng & hiệu quả</p>
-				</div>
-				<div class="mbland_linhvuc_coreStrengths_itemHover">
-					<p class="mbland_linhvuc_coreStrengths_itemTag">Đô thị · Thương mại · Bất động sản </p>
-					<p class="mbland_linhvuc_coreStrengths_itemDesc">Đa dạng phân khúc & Mở rộng cơ hội đầu tư.</p>
-				</div>
-			</div>
-
-			<div class="mbland_linhvuc_coreStrengths_item">
-				<img src="/wp-content/uploads/2025/10/diamond.svg" alt="Icon kim cương" class="mbland_linhvuc_coreStrengths_itemBg" title="Icon kim cương" loading="lazy" decoding="async" fetchpriority="low" width="136" height="188" />
-				<div class="mbland_linhvuc_coreStrengths_itemMain">
-					<h3 class="mbland_linhvuc_coreStrengths_itemTitle">Kiểm soát chi phí</h3>
-					<p class="mbland_linhvuc_coreStrengths_itemLabel">Hợp tác lâu dài</p>
-				</div>
-				<div class="mbland_linhvuc_coreStrengths_itemHover">
-					<p class="mbland_linhvuc_coreStrengths_itemTag">Đô thị · Thương mại · Bất động sản </p>
-					<p class="mbland_linhvuc_coreStrengths_itemDesc">Đa dạng phân khúc & Mở rộng cơ hội đầu tư.</p>
-				</div>
-			</div>
+			<?php endforeach; ?>
 		</div>
 		</div>
 
@@ -457,7 +422,13 @@ $projects = new WP_Query( array(
 
 
 
-<?php get_template_part( 'template-parts/sections/procedure' ); ?>
+<?php
+get_template_part( 'template-parts/sections/procedure', null, array(
+	'title' => $lv_get( 'lv_procedure_title' ),
+	'desc'  => $lv_get( 'lv_procedure_desc' ),
+	'items' => $lv_get( 'lv_procedure_items' ),
+) );
+?>
 
 
 

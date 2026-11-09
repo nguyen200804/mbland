@@ -1,12 +1,61 @@
+<?php
+/**
+ * Section "Quy trình phát triển khai dự án".
+ *
+ * Usage:
+ * get_template_part( 'template-parts/sections/procedure', null, array(
+ *     'title' => '',        // optional
+ *     'desc'  => '',        // optional
+ *     'items' => array(),   // optional: mỗi phần tử gồm tag, title, desc, images (mảng ảnh ACF)
+ * ) );
+ * Nếu không truyền dữ liệu sẽ hiển thị nội dung mặc định.
+ */
+$proc_args  = isset( $args ) && is_array( $args ) ? $args : array();
+$proc_items = ( ! empty( $proc_args['items'] ) && is_array( $proc_args['items'] ) ) ? $proc_args['items'] : array();
+$proc_title = ! empty( $proc_args['title'] ) ? $proc_args['title'] : null;
+$proc_desc  = ! empty( $proc_args['desc'] ) ? $proc_args['desc'] : null;
+?>
 <!-- ===== START SECTION PROCEDURE ===== -->
 <section class="mbland_linhvuc_procedure">
 	<div class="container">
 		<div class="mbland_linhvuc_procedure_wrapper">
 			<header class="mbland_linhvuc_procedure_heading">
-				<h2 class="mbland_linhvuc_procedure_title">Quy trình phát triển khai dự án</h2>
-				<p class="mbland_linhvuc_procedure_desc">Mỗi dự án được triển khai theo quy trình bài bản, từ nghiên cứu tiềm năng, hoạch định chiến lược đến phát triển và vận hành, nhằm tối ưu hiệu quả đầu tư và kiến tạo giá trị bền vững.</p>
+				<h2 class="mbland_linhvuc_procedure_title"><?php echo null !== $proc_title ? esc_html( $proc_title ) : 'Quy trình phát triển khai dự án'; ?></h2>
+				<p class="mbland_linhvuc_procedure_desc"><?php echo null !== $proc_desc ? esc_html( $proc_desc ) : 'Mỗi dự án được triển khai theo quy trình bài bản, từ nghiên cứu tiềm năng, hoạch định chiến lược đến phát triển và vận hành, nhằm tối ưu hiệu quả đầu tư và kiến tạo giá trị bền vững.'; ?></p>
 			</header>
 			<div class="mbland_linhvuc_procedure_list">
+				<?php if ( ! empty( $proc_items ) ) : ?>
+					<?php foreach ( $proc_items as $proc_index => $proc_item ) : ?>
+				<article class="mbland_linhvuc_procedure_item">
+					<div class="mbland_linhvuc_procedure_itemContent">
+						<span class="mbland_linhvuc_procedure_itemNumber"><?php echo esc_html( sprintf( '%02d', $proc_index + 1 ) ); ?></span>
+						<div class="mbland_linhvuc_procedure_itemTexts">
+							<?php if ( ! empty( $proc_item['tag'] ) ) : ?>
+							<p class="mbland_linhvuc_procedure_itemTag"><?php echo esc_html( $proc_item['tag'] ); ?></p>
+							<?php endif; ?>
+							<h3 class="mbland_linhvuc_procedure_itemTitle"><?php echo esc_html( isset( $proc_item['title'] ) ? $proc_item['title'] : '' ); ?></h3>
+							<p class="mbland_linhvuc_procedure_itemDesc"><?php echo esc_html( isset( $proc_item['desc'] ) ? $proc_item['desc'] : '' ); ?></p>
+						</div>
+					</div>
+					<?php if ( ! empty( $proc_item['images'] ) && is_array( $proc_item['images'] ) ) : ?>
+					<div class="mbland_linhvuc_procedure_itemImage">
+						<ul class="mbland_linhvuc_procedure_itemImageList">
+							<?php foreach ( $proc_item['images'] as $proc_img ) : ?>
+								<?php
+								$proc_img_url = is_array( $proc_img ) && ! empty( $proc_img['url'] ) ? $proc_img['url'] : ( is_string( $proc_img ) ? $proc_img : '' );
+								if ( ! $proc_img_url ) {
+									continue;
+								}
+								$proc_img_alt = ( is_array( $proc_img ) && ! empty( $proc_img['alt'] ) ) ? $proc_img['alt'] : ( isset( $proc_item['title'] ) ? $proc_item['title'] : '' );
+								?>
+							<li class="mbland_linhvuc_procedure_itemImageItem"><img class="mbland_linhvuc_procedure_itemImagePhoto" src="<?php echo esc_url( $proc_img_url ); ?>" alt="<?php echo esc_attr( $proc_img_alt ); ?>" title="<?php echo esc_attr( $proc_img_alt ); ?>" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( $proc_img_url, 800, 600 ) ); ?> /></li>
+							<?php endforeach; ?>
+						</ul>
+					</div>
+					<?php endif; ?>
+				</article>
+					<?php endforeach; ?>
+				<?php else : ?>
 				<article class="mbland_linhvuc_procedure_item">
 					<div class="mbland_linhvuc_procedure_itemContent">
 						<span class="mbland_linhvuc_procedure_itemNumber">01</span>
@@ -78,6 +127,7 @@
 						</ul>
 					</div>
 				</article>
+				<?php endif; ?>
 			</div>
 		</div>
 	</div>

@@ -1226,7 +1226,7 @@
   height: 350px;
   object-fit: cover;
   transition: 0.3s ease;
-  filter: brightness(0.8);
+  filter: brightness(1);
 }
 
 .mbland_homepage_projects_itemContent {
@@ -1302,7 +1302,7 @@
 
 .mbland_homepage_projects_item:hover .mbland_homepage_projects_itemImage img {
   transform: scale(1.1);
-  filter: brightness(0.5);
+  filter: brightness(1);
 }
 
 

@@ -40,6 +40,9 @@ require_once HOMENEST_INC_DIR . 'recruitment-fields.php';
 // 10. Sắp xếp (kéo thả) thứ tự term cho taxonomy linh-vuc
 require_once HOMENEST_INC_DIR . 'taxonomy-order.php';
 
+// 11. ACF Fields cho Taxonomy Lĩnh vực (linh-vuc)
+require_once HOMENEST_INC_DIR . 'linh-vuc-fields.php';
+
 // Tắt tính năng tự động đăng ký dịch nhãn (Label, Title, Default value, Instructions) của ACF trong Polylang
 add_filter( 'pll_enable_acf_labels_translation', '__return_false' );
 
