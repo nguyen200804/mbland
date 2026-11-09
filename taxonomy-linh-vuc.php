@@ -262,6 +262,28 @@ foreach ( $hero_attempts as $hero_attempt_args ) {
 }
 wp_reset_postdata();
 
+// Chưa có tab nào active: hiện panel "tất cả" = mọi dự án thuộc danh mục hiện tại, trừ dự án đang hiện ở hero
+if ( ! empty( $lv_tab_terms ) && ! $lv_active_term_id ) {
+	$lv_all_args = array(
+		'post_type'      => 'du-an',
+		'post_status'    => 'publish',
+		'posts_per_page' => -1,
+		'no_found_rows'  => true,
+		'orderby'        => 'date',
+		'order'          => 'DESC',
+		'post__not_in'   => $hero_project_id ? array( $hero_project_id ) : array(),
+	);
+	if ( ! empty( $tax_query ) ) {
+		$lv_all_args['tax_query'] = $tax_query;
+	}
+	$lv_panels[] = array(
+		'term'   => $current_term,
+		'query'  => new WP_Query( $lv_all_args ),
+		'active' => true,
+		'is_all' => true,
+	);
+}
+
 $hero_title    = '';
 $hero_desc     = '';
 $hero_location = '';
@@ -369,7 +391,12 @@ if ( $hero_project_id ) {
 					<div class="mbland_linhvuc_listProject_filter">
 						<ul class="mbland_linhvuc_listProject_filterList" role="tablist">
 							<?php foreach ( $lv_panels as $lv_panel ) : ?>
-								<?php $lv_pt = $lv_panel['term']; ?>
+								<?php
+								if ( ! empty( $lv_panel['is_all'] ) ) {
+									continue; // panel "tất cả" không có tab riêng
+								}
+								$lv_pt = $lv_panel['term'];
+								?>
 								<li class="mbland_linhvuc_listProject_filterItem" role="presentation">
 									<a class="mbland_linhvuc_listProject_filterLink<?php echo $lv_panel['active'] ? ' active' : ''; ?>"
 									   href="<?php echo esc_url( get_term_link( $lv_pt ) ); ?>"
