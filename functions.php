@@ -89,8 +89,21 @@ add_action('init', function() {
 	
   pll_register_string('vi_tri', 'VỊ TRÍ', 'Chi tiet du an');
   pll_register_string('quy_mo', 'QUY MÔ', 'Chi tiet du an');
-    pll_register_string('du an khac', 'Dự án khác', 'Chi tiet du an');
-	  pll_register_string('mo ta du an khac', 'Tasmania & Partner là tập đoàn đa ngành với những dự án nổi bật trong suốt quá trình phát triển', 'Chi tiet du an');
+  pll_register_string('du an khac', 'Dự án khác', 'Chi tiet du an');
+  pll_register_string('mo ta du an khac', 'Tasmania & Partner là tập đoàn đa ngành với những dự án nổi bật trong suốt quá trình phát triển', 'Chi tiet du an');
+
+  // Contact Form (Dịch chuỗi trong /wp-admin/admin.php?page=mlang_strings - Group: Contact Form)
+  pll_register_string('contact_form_title', 'Liên hệ gửi yêu cầu tư vấn', 'Contact Form');
+  pll_register_string('contact_form_desc', 'Kết nối cùng MBLand Asset Management để khám phá những cơ hội hợp tác và giải pháp đầu tư phù hợp với mục tiêu của bạn.', 'Contact Form', true);
+  pll_register_string('contact_form_fullname_label', 'Họ và tên', 'Contact Form');
+  pll_register_string('contact_form_fullname_ph', 'Nhập họ & tên của bạn tại đây', 'Contact Form');
+  pll_register_string('contact_form_email_label', 'Email', 'Contact Form');
+  pll_register_string('contact_form_email_ph', 'mbland@gmail.com', 'Contact Form');
+  pll_register_string('contact_form_phone_label', 'Số điện thoại', 'Contact Form');
+  pll_register_string('contact_form_phone_ph', 'Nhập số điện thoại của bạn', 'Contact Form');
+  pll_register_string('contact_form_message_label', 'Nhập nội dung bạn muốn tư vấn', 'Contact Form');
+  pll_register_string('contact_form_message_ph', 'Nhập nội dung bạn muốn tư vấn', 'Contact Form');
+  pll_register_string('contact_form_submit_btn', 'Gửi yêu cầu', 'Contact Form');
 });
 
 

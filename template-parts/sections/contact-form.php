@@ -29,9 +29,12 @@ if ( is_array( $opt_bg ) && ! empty( $opt_bg['url'] ) ) {
 	$bg_url = $opt_bg;
 }
 
+$default_title = function_exists( 'pll__' ) ? pll__( 'Liên hệ gửi yêu cầu tư vấn' ) : 'Liên hệ gửi yêu cầu tư vấn';
+$default_desc  = function_exists( 'pll__' ) ? pll__( 'Kết nối cùng MBLand Asset Management để khám phá những cơ hội hợp tác và giải pháp đầu tư phù hợp với mục tiêu của bạn.' ) : 'Kết nối cùng MBLand Asset Management để khám phá những cơ hội hợp tác và giải pháp đầu tư phù hợp với mục tiêu của bạn.';
+
 $args = wp_parse_args( $args, array(
-	'title'         => ! empty( $opt_title ) ? $opt_title : 'Liên hệ gửi yêu cầu tư vấn',
-	'desc'          => ( '' !== $opt_desc && null !== $opt_desc ) ? $opt_desc : 'Kết nối cùng MBLand Asset Management để khám phá những cơ hội hợp tác và giải pháp đầu tư phù hợp với mục tiêu của bạn.',
+	'title'         => ! empty( $opt_title ) ? $opt_title : $default_title,
+	'desc'          => ( '' !== $opt_desc && null !== $opt_desc ) ? $opt_desc : $default_desc,
 	'bg'            => ! empty( $bg_url ) ? $bg_url : '/wp-content/uploads/2026/11/background-contact-section.jpg',
 	'action'        => ! empty( $opt_action ) ? $opt_action : '#',
 	'class'         => '',
@@ -39,6 +42,16 @@ $args = wp_parse_args( $args, array(
 	'loading'       => 'lazy',
 	'fetchpriority' => 'low',
 ) );
+
+$lbl_fullname = function_exists( 'pll__' ) ? pll__( 'Họ và tên' ) : 'Họ và tên';
+$ph_fullname  = function_exists( 'pll__' ) ? pll__( 'Nhập họ & tên của bạn tại đây' ) : 'Nhập họ & tên của bạn tại đây';
+$lbl_email    = function_exists( 'pll__' ) ? pll__( 'Email' ) : 'Email';
+$ph_email     = function_exists( 'pll__' ) ? pll__( 'mbland@gmail.com' ) : 'mbland@gmail.com';
+$lbl_phone    = function_exists( 'pll__' ) ? pll__( 'Số điện thoại' ) : 'Số điện thoại';
+$ph_phone     = function_exists( 'pll__' ) ? pll__( 'Nhập số điện thoại của bạn' ) : 'Nhập số điện thoại của bạn';
+$lbl_message  = function_exists( 'pll__' ) ? pll__( 'Nhập nội dung bạn muốn tư vấn' ) : 'Nhập nội dung bạn muốn tư vấn';
+$ph_message   = function_exists( 'pll__' ) ? pll__( 'Nhập nội dung bạn muốn tư vấn' ) : 'Nhập nội dung bạn muốn tư vấn';
+$btn_submit   = function_exists( 'pll__' ) ? pll__( 'Gửi yêu cầu' ) : 'Gửi yêu cầu';
 
 $classes = array( 'mbland_contactForm' );
 if ( $args['class'] ) {
@@ -62,28 +75,28 @@ $pfx = $args['id_prefix'] ? sanitize_html_class( $args['id_prefix'] ) . '_' : ''
 			<div class="mbland_contactForm_body">
 				<form class="mbland_contactForm_form" action="<?php echo esc_url( $args['action'] ); ?>" method="post">
 					<div class="mbland_contactForm_field mbland_contactForm_fieldFull">
-						<label class="mbland_contactForm_label" for="<?php echo esc_attr( $pfx ); ?>fullname">Họ và tên</label>
-						<input class="mbland_contactForm_input" type="text" id="<?php echo esc_attr( $pfx ); ?>fullname" name="fullname" placeholder="Nhập họ &amp; tên của bạn tại đây" autocomplete="name" required>
+						<label class="mbland_contactForm_label" for="<?php echo esc_attr( $pfx ); ?>fullname"><?php echo esc_html( $lbl_fullname ); ?></label>
+						<input class="mbland_contactForm_input" type="text" id="<?php echo esc_attr( $pfx ); ?>fullname" name="fullname" placeholder="<?php echo esc_attr( $ph_fullname ); ?>" autocomplete="name" required>
 					</div>
 
 					<div class="mbland_contactForm_field">
-						<label class="mbland_contactForm_label" for="<?php echo esc_attr( $pfx ); ?>email">Email</label>
-						<input class="mbland_contactForm_input" type="email" id="<?php echo esc_attr( $pfx ); ?>email" name="email" placeholder="mbland@gmail.com" autocomplete="email" required>
+						<label class="mbland_contactForm_label" for="<?php echo esc_attr( $pfx ); ?>email"><?php echo esc_html( $lbl_email ); ?></label>
+						<input class="mbland_contactForm_input" type="email" id="<?php echo esc_attr( $pfx ); ?>email" name="email" placeholder="<?php echo esc_attr( $ph_email ); ?>" autocomplete="email" required>
 					</div>
 
 					<div class="mbland_contactForm_field">
-						<label class="mbland_contactForm_label" for="<?php echo esc_attr( $pfx ); ?>phone">Số điện thoại</label>
-						<input class="mbland_contactForm_input" type="tel" id="<?php echo esc_attr( $pfx ); ?>phone" name="phone" placeholder="Nhập số điện thoại của bạn" autocomplete="tel" pattern="[0-9+\s]{9,15}" required>
+						<label class="mbland_contactForm_label" for="<?php echo esc_attr( $pfx ); ?>phone"><?php echo esc_html( $lbl_phone ); ?></label>
+						<input class="mbland_contactForm_input" type="tel" id="<?php echo esc_attr( $pfx ); ?>phone" name="phone" placeholder="<?php echo esc_attr( $ph_phone ); ?>" autocomplete="tel" pattern="[0-9+\s]{9,15}" required>
 					</div>
 
 					<div class="mbland_contactForm_field mbland_contactForm_fieldFull">
-						<label class="mbland_contactForm_label" for="<?php echo esc_attr( $pfx ); ?>message">Nhập nội dung bạn muốn tư vấn</label>
-						<textarea class="mbland_contactForm_textarea" id="<?php echo esc_attr( $pfx ); ?>message" name="message" placeholder="Nhập nội dung bạn muốn tư vấn"></textarea>
+						<label class="mbland_contactForm_label" for="<?php echo esc_attr( $pfx ); ?>message"><?php echo esc_html( $lbl_message ); ?></label>
+						<textarea class="mbland_contactForm_textarea" id="<?php echo esc_attr( $pfx ); ?>message" name="message" placeholder="<?php echo esc_attr( $ph_message ); ?>"></textarea>
 					</div>
 
 					<div class="mbland_contactForm_submitWrap">
 						<button type="submit" class="mbland_contactForm_submitButton">
-							<span class="mbland_contactForm_submitLabel">Gửi yêu cầu</span>
+							<span class="mbland_contactForm_submitLabel"><?php echo esc_html( $btn_submit ); ?></span>
 							<svg class="mbland_contactForm_submitIcon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg>
 						</button>
 					</div>
