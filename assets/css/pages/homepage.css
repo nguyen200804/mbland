@@ -630,6 +630,10 @@ a.mbland_homepage_info_ctaOutline {
   border: 1px solid var(--primary-color);
 }
 
+a.mbland_homepage_info_ctaOutline:hover {
+  color: #fff;
+}
+
 .mbland_homepage_info_marquee {
   z-index: 0;
   width: 100%;
@@ -1432,7 +1436,7 @@ a.mbland_homepage_info_ctaOutline {
   height: 350px;
   object-fit: cover;
   transition: 0.3s ease;
-  filter: brightness(0.8);
+  filter: brightness(1);
 }
 
 .mbland_homepage_projects_itemContent {
@@ -1442,7 +1446,7 @@ a.mbland_homepage_info_ctaOutline {
   height: 100%;
   top: 10%;
   left: 0;
-  background-image: linear-gradient(to bottom, #0000 50%, #000f 100%);
+  background-image: linear-gradient(to bottom, #00000000 50%, #000000 100%);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -1451,6 +1455,7 @@ a.mbland_homepage_info_ctaOutline {
   gap: 20px;
   color: var(--color-09);
   opacity: 0;
+  background-color: transparent;
 }
 
 .mbland_homepage_projects_item:hover .mbland_homepage_projects_itemContent {
@@ -1501,7 +1506,7 @@ a.mbland_homepage_info_ctaOutline {
 
 .mbland_homepage_projects_item:hover .mbland_homepage_projects_itemImage img {
   transform: scale(1.1);
-  filter: brightness(0.5);
+  /* filter: brightness(0.5); */
 }
 
 .mbland_homepage_projects_item.mbland_homepage_projects_item1 {
