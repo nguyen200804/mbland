@@ -102,7 +102,7 @@ add_action('init', function() {
   pll_register_string('contact_form_phone_label', 'Số điện thoại', 'Contact Form');
   pll_register_string('contact_form_phone_ph', 'Nhập số điện thoại của bạn', 'Contact Form');
   pll_register_string('contact_form_message_label', 'Nhập nội dung bạn muốn tư vấn', 'Contact Form');
-  pll_register_string('contact_form_message_ph', 'Nhập nội dung bạn muốn tư vấn', 'Contact Form');
+  pll_register_string('contact_form_message_ph', 'Nhập nội dung bạn muốn tư vấn...', 'Contact Form');
   pll_register_string('contact_form_submit_btn', 'Gửi yêu cầu', 'Contact Form');
 });
 

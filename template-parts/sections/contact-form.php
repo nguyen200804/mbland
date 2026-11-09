@@ -50,7 +50,7 @@ $ph_email     = function_exists( 'pll__' ) ? pll__( 'mbland@gmail.com' ) : 'mbla
 $lbl_phone    = function_exists( 'pll__' ) ? pll__( 'Số điện thoại' ) : 'Số điện thoại';
 $ph_phone     = function_exists( 'pll__' ) ? pll__( 'Nhập số điện thoại của bạn' ) : 'Nhập số điện thoại của bạn';
 $lbl_message  = function_exists( 'pll__' ) ? pll__( 'Nhập nội dung bạn muốn tư vấn' ) : 'Nhập nội dung bạn muốn tư vấn';
-$ph_message   = function_exists( 'pll__' ) ? pll__( 'Nhập nội dung bạn muốn tư vấn' ) : 'Nhập nội dung bạn muốn tư vấn';
+$ph_message   = function_exists( 'pll__' ) ? pll__( 'Nhập nội dung bạn muốn tư vấn...' ) : 'Nhập nội dung bạn muốn tư vấn...';
 $btn_submit   = function_exists( 'pll__' ) ? pll__( 'Gửi yêu cầu' ) : 'Gửi yêu cầu';
 
 $classes = array( 'mbland_contactForm' );
