@@ -1,8 +1,19 @@
 <?php
-/*
-Template Name: Tuyển Dụng
-*/
+/**
+ * Template Name: Tuyển Dụng
+ */
+
 get_header();
+
+// ==========================================================================
+// LẤY DỮ LIỆU TỪ ACF FIELD GROUPS
+// ==========================================================================
+$recruitment_intro = get_field( 'recruitment_intro' ) ?: array();
+$recruitment_jobs  = get_field( 'recruitment_jobs' ) ?: array();
+$recruitment_news  = get_field( 'recruitment_news' ) ?: array();
+
+// Jobs settings
+$jobs_per_page = ! empty( $recruitment_jobs['posts_per_page'] ) ? max( 1, intval( $recruitment_jobs['posts_per_page'] ) ) : 6;
 
 // ==========================================================================
 // SSR: NHẬN THAM SỐ BỘ LỌC TỪ URL VÀ TRUY VẤN DỮ LIỆU
@@ -17,7 +28,7 @@ $page_url = get_permalink( get_queried_object_id() );
 
 $jobs_args = array(
 	'post_type'      => 'tuyen-dung',
-	'posts_per_page' => 6,
+	'posts_per_page' => $jobs_per_page,
 	'paged'          => $paged,
 	'post_status'    => 'publish',
 	'tax_query'      => array( 'relation' => 'AND' ),
@@ -57,6 +68,13 @@ $jobs_query = new WP_Query( $jobs_args );
 <!-- ==========================================================================
      SECTION 1: BREADCRUMB, NỘI DUNG GIỚI THIỆU (TITLE & TEXT), BANNER
      ========================================================================== -->
+<?php
+$intro_title    = ! empty( $recruitment_intro['title'] ) ? $recruitment_intro['title'] : 'MBLand Asset Management';
+$intro_content  = ! empty( $recruitment_intro['content'] ) ? $recruitment_intro['content'] : '';
+$intro_banner   = ! empty( $recruitment_intro['banner']['url'] ) ? $recruitment_intro['banner']['url'] : '/wp-content/uploads/2025/10/Banner-Tuyen-dung-1.png';
+$intro_banner_w = ! empty( $recruitment_intro['banner']['width'] ) ? $recruitment_intro['banner']['width'] : 1920;
+$intro_banner_h = ! empty( $recruitment_intro['banner']['height'] ) ? $recruitment_intro['banner']['height'] : 700;
+?>
 <section class="mbland_recruitment_intro">
 	<div class="container">
 		<div class="mbland_recruitment_intro_breadcrumb">
@@ -64,35 +82,40 @@ $jobs_query = new WP_Query( $jobs_args );
 		</div>
 
 		<div class="mbland_recruitment_intro_content">
-			<h1 class="mbland_recruitment_intro_title">Tasmania & partners</h1>
+			<h1 class="mbland_recruitment_intro_title"><?php echo esc_html( $intro_title ); ?></h1>
 			<div class="mbland_recruitment_intro_desc">
-				<p>
-					Được thành lập vào năm 2015, Tasmania & Partners là tập đoàn đa ngành, đã
-					và đang đầu tư một số dự án trong và ngoài nước thuộc lĩnh vực Tài chính
-					- Bất động sản - Du lịch Dịch vụ dưới thương hiệu của một số Công ty con
-					- Công ty liên kết như MBland Holdings, F&S Investment, Tonkin
-					Properties, Golden Field,.. với các dự án trọng điểm tại Đà Nẵng, Hội
-					An, Quảng Ngãi, Hà Nội, Quảng Ninh, Nha Trang, Tp Hồ Chí Minh,...
-				</p>
-				<p>
-					Tasmania & Partners đã và đang hợp tác với nhiều đối tác tại thị trường
-					Châu Âu và Châu Á để mở rộng đầu tư và phát triển tại Úc, Singapore,
-					Hungary, Thái Lan, Hy Lạp,... dưới các thương hiệu Blooming Elite,
-					Sentosa Holdings và Moni Galery,...
-				</p>
+				<?php if ( ! empty( $intro_content ) ) : ?>
+					<?php echo wp_kses_post( $intro_content ); ?>
+				<?php else : ?>
+					<p>
+						Được thành lập vào năm 2015, MBLand Asset Management là tập đoàn đa ngành, đã
+						và đang đầu tư một số dự án trong và ngoài nước thuộc lĩnh vực Tài chính
+						- Bất động sản - Du lịch Dịch vụ dưới thương hiệu của một số Công ty con
+						- Công ty liên kết như MBland Holdings, F&S Investment, Tonkin
+						Properties, Golden Field,.. với các dự án trọng điểm tại Đà Nẵng, Hội
+						An, Quảng Ngãi, Hà Nội, Quảng Ninh, Nha Trang, Tp Hồ Chí Minh,...
+					</p>
+					<p>
+						MBLand Asset Management đã và đang hợp tác với nhiều đối tác tại thị trường
+						Châu Âu và Châu Á để mở rộng đầu tư và phát triển tại Úc, Singapore,
+						Hungary, Thái Lan, Hy Lạp,... dưới các thương hiệu Blooming Elite,
+						Sentosa Holdings và Moni Galery,...
+					</p>
+				<?php endif; ?>
 			</div>
 		</div>
 
 		<div class="mbland_recruitment_intro_banner">
 			<img
 				class="mbland_recruitment_intro_bannerImage"
-				src="/wp-content/uploads/2025/10/Banner-Tuyen-dung-1.png"
-				alt="Banner tuyển dụng"
-				title="Banner tuyển dụng"
+				src="<?php echo esc_url( $intro_banner ); ?>"
+				alt="<?php echo esc_attr( $intro_title ); ?>"
+				title="<?php echo esc_attr( $intro_title ); ?>"
 				loading="eager"
 				decoding="async"
 				fetchpriority="high"
-				<?php echo trim( mbland_img_size_attr( '/wp-content/uploads/2025/10/Banner-Tuyen-dung-1.png', 1920, 700 ) ); ?>
+				width="<?php echo esc_attr( $intro_banner_w ); ?>"
+				height="<?php echo esc_attr( $intro_banner_h ); ?>"
 			/>
 		</div>
 	</div>
@@ -101,21 +124,28 @@ $jobs_query = new WP_Query( $jobs_args );
 <!-- ==========================================================================
      SECTION 2: HEADING (TITLE & TEXT), LIST TUYỂN DỤNG & BỘ LỌC
      ========================================================================== -->
+<?php
+$jobs_title        = ! empty( $recruitment_jobs['title'] ) ? $recruitment_jobs['title'] : 'Cơ hội việc làm';
+$jobs_desc         = ! empty( $recruitment_jobs['desc'] ) ? $recruitment_jobs['desc'] : 'Cơ hội việc làm tại môi trường chuyên nghiệp trong và ngoài nước thuộc lĩnh vực Tài chính – Bất động sản – Du lịch Dịch vụ';
+$jobs_search_title = ! empty( $recruitment_jobs['search_title'] ) ? $recruitment_jobs['search_title'] : 'Tìm công việc';
+$jobs_search_ph    = ! empty( $recruitment_jobs['search_placeholder'] ) ? $recruitment_jobs['search_placeholder'] : 'Nhập từ khóa tìm kiếm';
+$jobs_search_btn   = ! empty( $recruitment_jobs['search_btn_text'] ) ? $recruitment_jobs['search_btn_text'] : 'Tìm kiếm';
+$jobs_filter_title = ! empty( $recruitment_jobs['filter_title'] ) ? $recruitment_jobs['filter_title'] : 'Bộ lọc';
+$jobs_filter_reset = ! empty( $recruitment_jobs['filter_reset_text'] ) ? $recruitment_jobs['filter_reset_text'] : 'Xóa bộ lọc';
+$jobs_empty_text   = ! empty( $recruitment_jobs['empty_text'] ) ? $recruitment_jobs['empty_text'] : ( function_exists( 'pll__' ) ? pll__( 'Không tìm thấy vị trí tuyển dụng phù hợp.' ) : 'Không tìm thấy vị trí tuyển dụng phù hợp.' );
+?>
 <section class="mbland_recruitment_jobs">
 	<div class="container">
 		<header class="mbland_recruitment_jobs_header">
-			<h2 class="mbland_recruitment_jobs_title">Cơ hội việc làm</h2>
-			<p class="mbland_recruitment_jobs_desc">
-				Cơ hội việc làm tại môi trường chuyên nghiệp trong và ngoài nước thuộc
-				lĩnh vực Tài chính – Bất động sản – Du lịch Dịch vụ
-			</p>
+			<h2 class="mbland_recruitment_jobs_title"><?php echo esc_html( $jobs_title ); ?></h2>
+			<p class="mbland_recruitment_jobs_desc"><?php echo nl2br( esc_html( $jobs_desc ) ); ?></p>
 		</header>
 
 		<!-- Form tìm kiếm -->
 		<form method="get" class="mbland_recruitment_jobs_searchForm" id="careerForm" action="<?php echo esc_url( $page_url ); ?>">
-			<h3 class="mbland_recruitment_jobs_searchTitle">Tìm công việc</h3>
-			<input type="text" name="keyword" value="<?php echo esc_attr( $keyword ); ?>" class="mbland_recruitment_jobs_searchInput" placeholder="Nhập từ khóa tìm kiếm" autocomplete="off">
-			<button type="submit" class="mbland_recruitment_jobs_searchBtn" id="careerSearchBtn">Tìm kiếm</button>
+			<h3 class="mbland_recruitment_jobs_searchTitle"><?php echo esc_html( $jobs_search_title ); ?></h3>
+			<input type="text" name="keyword" value="<?php echo esc_attr( $keyword ); ?>" class="mbland_recruitment_jobs_searchInput" placeholder="<?php echo esc_attr( $jobs_search_ph ); ?>" autocomplete="off">
+			<button type="submit" class="mbland_recruitment_jobs_searchBtn" id="careerSearchBtn"><?php echo esc_html( $jobs_search_btn ); ?></button>
 		</form>
 
 		<!-- Dropdown bộ lọc cho mobile -->
@@ -127,16 +157,16 @@ $jobs_query = new WP_Query( $jobs_args );
 			<aside class="mbland_recruitment_jobs_sidebar">
 				<div class="mbland_recruitment_jobs_filter">
 					<div class="mbland_recruitment_jobs_filterHeader">
-						<h3 class="mbland_recruitment_jobs_filterTitle">Bộ lọc</h3>
-						<button type="button" class="mbland_recruitment_jobs_filterReset" id="resetFilter">Xóa bộ lọc</button>
+						<h3 class="mbland_recruitment_jobs_filterTitle"><?php echo esc_html( $jobs_filter_title ); ?></h3>
+						<button type="button" class="mbland_recruitment_jobs_filterReset" id="resetFilter"><?php echo esc_html( $jobs_filter_reset ); ?></button>
 					</div>
 
 					<!-- Vị trí ứng tuyển -->
 					<div class="mbland_recruitment_jobs_filterGroup" id="filter-vitri">
-						<h4 class="mbland_recruitment_jobs_filterGroupTitle">Vị trí ứng tuyển</h4>
-						<input type="text" class="mbland_recruitment_jobs_filterInput" id="vitriInput" placeholder="Nhập vị trí ứng tuyển...">
+						<h4 class="mbland_recruitment_jobs_filterGroupTitle"><?php echo function_exists( 'pll__' ) ? pll__( 'Vị trí ứng tuyển' ) : 'Vị trí ứng tuyển'; ?></h4>
+						<input type="text" class="mbland_recruitment_jobs_filterInput" id="vitriInput" placeholder="<?php echo esc_attr( function_exists( 'pll__' ) ? pll__( 'Nhập vị trí ứng tuyển...' ) : 'Nhập vị trí ứng tuyển...' ); ?>">
 						<div class="mbland_recruitment_jobs_filterOptions">
-							<label><input type="radio" form="careerForm" name="vi-tri-ung-tuyen" value="all" <?php checked( $vitri, 'all' ); ?>> Tất cả</label>
+							<label><input type="radio" form="careerForm" name="vi-tri-ung-tuyen" value="all" <?php checked( $vitri, 'all' ); ?>> <?php echo function_exists( 'pll__' ) ? pll__( 'Tất cả' ) : 'Tất cả'; ?></label>
 							<?php
 							$terms = get_terms( array( 'taxonomy' => 'vi-tri-ung-tuyen', 'hide_empty' => false ) );
 							if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) :
@@ -152,10 +182,10 @@ $jobs_query = new WP_Query( $jobs_args );
 
 					<!-- Nơi làm việc -->
 					<div class="mbland_recruitment_jobs_filterGroup" id="filter-noilamviec">
-						<h4 class="mbland_recruitment_jobs_filterGroupTitle">Nơi làm việc</h4>
-						<input type="text" class="mbland_recruitment_jobs_filterInput" id="noilamviecInput" placeholder="Nhập nơi làm việc...">
+						<h4 class="mbland_recruitment_jobs_filterGroupTitle"><?php echo function_exists( 'pll__' ) ? pll__( 'Nơi làm việc' ) : 'Nơi làm việc'; ?></h4>
+						<input type="text" class="mbland_recruitment_jobs_filterInput" id="noilamviecInput" placeholder="<?php echo esc_attr( function_exists( 'pll__' ) ? pll__( 'Nhập nơi làm việc...' ) : 'Nhập nơi làm việc...' ); ?>">
 						<div class="mbland_recruitment_jobs_filterOptions">
-							<label><input type="radio" form="careerForm" name="noi-lam-viec" value="all" <?php checked( $noilam, 'all' ); ?>> Tất cả</label>
+							<label><input type="radio" form="careerForm" name="noi-lam-viec" value="all" <?php checked( $noilam, 'all' ); ?>> <?php echo function_exists( 'pll__' ) ? pll__( 'Tất cả' ) : 'Tất cả'; ?></label>
 							<?php
 							$terms = get_terms( array( 'taxonomy' => 'noi-lam-viec', 'hide_empty' => false ) );
 							if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) :
@@ -171,9 +201,9 @@ $jobs_query = new WP_Query( $jobs_args );
 
 					<!-- Hình thức làm việc -->
 					<div class="mbland_recruitment_jobs_filterGroup">
-						<h4 class="mbland_recruitment_jobs_filterGroupTitle">Hình thức làm việc</h4>
+						<h4 class="mbland_recruitment_jobs_filterGroupTitle"><?php echo function_exists( 'pll__' ) ? pll__( 'Hình thức làm việc' ) : 'Hình thức làm việc'; ?></h4>
 						<div class="mbland_recruitment_jobs_filterOptions">
-							<label><input type="radio" form="careerForm" name="hinh-thuc-lam-viec" value="all" <?php checked( $hinhthuc, 'all' ); ?>> Tất cả</label>
+							<label><input type="radio" form="careerForm" name="hinh-thuc-lam-viec" value="all" <?php checked( $hinhthuc, 'all' ); ?>> <?php echo function_exists( 'pll__' ) ? pll__( 'Tất cả' ) : 'Tất cả'; ?></label>
 							<?php
 							$terms = get_terms( array( 'taxonomy' => 'hinh-thuc-lam-viec', 'hide_empty' => false ) );
 							if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) :
@@ -194,13 +224,14 @@ $jobs_query = new WP_Query( $jobs_args );
 				<div class="mbland_recruitment_jobs_list">
 					<?php
 					if ( $jobs_query->have_posts() ) :
-						while ( $jobs_query->have_posts() ) : $jobs_query->the_post();
-							get_template_part( 'template-parts/ui/job-card-item' );
+						while ( $jobs_query->have_posts() ) :
+							$jobs_query->the_post();
+							get_template_part( 'template-parts/ui/jobCardItem' );
 						endwhile;
 					else :
 					?>
 						<p class="mbland_recruitment_jobs_noPosts">
-							<?php echo function_exists( 'pll__' ) ? pll__( 'Không tìm thấy vị trí tuyển dụng phù hợp.' ) : 'Không tìm thấy vị trí tuyển dụng phù hợp.'; ?>
+							<?php echo esc_html( $jobs_empty_text ); ?>
 						</p>
 					<?php
 					endif;
@@ -241,19 +272,24 @@ $jobs_query = new WP_Query( $jobs_args );
 <!-- ==========================================================================
      SECTION 3: TIN TỨC LIÊN QUAN
      ========================================================================== -->
+<?php
+$news_title    = ! empty( $recruitment_news['title'] ) ? $recruitment_news['title'] : ( function_exists( 'pll__' ) ? pll__( 'Tin tức liên quan' ) : 'Tin tức liên quan' );
+$news_badge    = ! empty( $recruitment_news['badge'] ) ? $recruitment_news['badge'] : ( function_exists( 'pll__' ) ? pll__( 'TIN NỔI BẬT' ) : 'TIN NỔI BẬT' );
+$news_per_page = ! empty( $recruitment_news['posts_per_page'] ) ? max( 1, intval( $recruitment_news['posts_per_page'] ) ) : 2;
+?>
 <section class="mbland_recruitment_news">
 	<div class="container">
 		<div class="mbland_recruitment_news_header">
 			<h2 class="mbland_recruitment_news_heading">
-				<?php echo function_exists( 'pll__' ) ? pll__( 'Tin tức liên quan' ) : 'TIN Tin tức liên quan'; ?>
+				<?php echo esc_html( $news_title ); ?>
 			</h2>
 			<div class="mbland_recruitment_news_line"></div>
 		</div>
 
 		<?php
 		get_template_part( 'template-parts/ui/news-grid', null, array(
-			'posts_per_page' => 2,
-			'badge'          => function_exists( 'pll__' ) ? pll__( 'TIN NỔI BẬT' ) : 'TIN NỔI BẬT',
+			'posts_per_page' => $news_per_page,
+			'badge'          => $news_badge,
 			'card_class'     => 'mbland_recruitment_news_card',
 		) );
 		?>
