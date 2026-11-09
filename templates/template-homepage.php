@@ -269,27 +269,15 @@ if ( ! empty( $home_branches['terms'] ) && is_array( $home_branches['terms'] ) )
 		'orderby'    => 'name',
 		'order'      => 'ASC',
 	) );
-	// Nếu có term_order, get_terms() đã tự động sắp xếp chuẩn theo term_order.
-	// Chỉ fallback $desired_order khi các term chưa từng được sắp xếp.
+	$desired_order = array( 'bat-dong-san', 'dich-vu-du-lich', 'dau-tu-tai-chinh', 'real-estate', 'hospitality', 'commercial' );
 	if ( ! empty( $branches_terms ) && ! is_wp_error( $branches_terms ) ) {
-		$has_custom_order = false;
-		foreach ( $branches_terms as $t ) {
-			$to = get_term_meta( $t->term_id, 'term_order', true );
-			if ( '' !== $to && false !== $to && (int) $to > 0 ) {
-				$has_custom_order = true;
-				break;
-			}
-		}
-		if ( ! $has_custom_order ) {
-			$desired_order = array( 'bat-dong-san', 'dich-vu-du-lich', 'dau-tu-tai-chinh', 'real-estate', 'hospitality', 'commercial' );
-			usort( $branches_terms, function( $a, $b ) use ( $desired_order ) {
-				$pos_a = array_search( $a->slug, $desired_order );
-				$pos_b = array_search( $b->slug, $desired_order );
-				$pos_a = $pos_a === false ? count( $desired_order ) : $pos_a;
-				$pos_b = $pos_b === false ? count( $desired_order ) : $pos_b;
-				return $pos_a - $pos_b;
-			} );
-		}
+		usort( $branches_terms, function( $a, $b ) use ( $desired_order ) {
+			$pos_a = array_search( $a->slug, $desired_order );
+			$pos_b = array_search( $b->slug, $desired_order );
+			$pos_a = $pos_a === false ? count( $desired_order ) : $pos_a;
+			$pos_b = $pos_b === false ? count( $desired_order ) : $pos_b;
+			return $pos_a - $pos_b;
+		} );
 	}
 }
 ?>
