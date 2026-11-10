@@ -83,7 +83,7 @@ get_header();
 <!-- ===== START SECTION LINH VUC HERO ===== -->
 <section class="mbland_linhvuc_hero">
 	<?php if ( $featured_image_url ) : ?>
-	<img class="mbland_linhvuc_hero_background" src="<?php echo esc_url( $featured_image_url ); ?>" alt="<?php echo esc_attr( $featured_image_alt ); ?>" title="<?php echo esc_attr( get_the_title( $post_id ) ); ?>" width="<?php echo esc_attr( $featured_image_width ); ?>" height="<?php echo esc_attr( $featured_image_height ); ?>" loading="eager" decoding="async" fetchpriority="high" />
+	<img class="mbland_linhvuc_hero_background" src="<?php echo esc_url( $featured_image_url ); ?>" alt="<?php echo esc_attr( $featured_image_alt ); ?>" title="<?php echo esc_attr( get_the_title( $post_id ) ); ?>" width="<?php echo esc_attr( $featured_image_width ); ?>" height="<?php echo esc_attr( $featured_image_height ); ?>" loading="eager" decoding="async" fetchpriority="high"<?php echo homenest_srcset_attr( $featured_thumb_id, '100vw' ); ?> />
 	<?php endif; ?>
 	<div class="mbland_linhvuc_hero_inner">
 		<div class="container mbland_linhvuc_hero_container">

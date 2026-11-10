@@ -113,6 +113,21 @@ function homenest_get_hero_banner() {
  * Preload ban hero (srcset responsive) + preconnect CDN Swiper => giam LCP tren mobile.
  */
 function homenest_head_hints() {
+    // Trang chi tiet du an: preload anh hero (LCP) voi srcset responsive
+    if ( is_singular( 'du-an' ) ) {
+        echo '<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>' . "\n";
+        $thumb_id = get_post_thumbnail_id();
+        $url      = $thumb_id ? wp_get_attachment_image_url( $thumb_id, 'full' ) : '';
+        if ( $url ) {
+            $srcset = wp_get_attachment_image_srcset( $thumb_id, 'full' );
+            printf(
+                '<link rel="preload" as="image" href="%s"%s fetchpriority="high">' . "\n",
+                esc_url( $url ),
+                $srcset ? ' imagesrcset="' . esc_attr( $srcset ) . '" imagesizes="100vw"' : ''
+            );
+        }
+        return;
+    }
     if ( ! homenest_is_homepage() ) {
         return;
     }
@@ -136,7 +151,7 @@ add_action( 'wp_head', 'homenest_head_hints', 1 );
  * Swiper CSS khong chan render tren trang chu (slider nam cuoi trang).
  */
 function homenest_async_swiper_css( $tag, $handle ) {
-    if ( 'swiper-css' === $handle && homenest_is_homepage() ) {
+    if ( 'swiper-css' === $handle && ( homenest_is_homepage() || is_singular( 'du-an' ) ) ) {
         $async = str_replace( "media='all'", "media='print' onload=\"this.media='all'\"", $tag );
         return $async . '<noscript>' . $tag . '</noscript>';
     }
