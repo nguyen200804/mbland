@@ -112,13 +112,13 @@ while ( have_posts() ) :
 		<div class="mbland_singleRecruitment_banner_wrapper">
 			<img
 				class="mbland_singleRecruitment_banner_image"
-				src="/wp-content/uploads/2025/10/Banner-Tuyen-dung-1.png"
+				src="/wp-content/uploads/2026/11/Banner-Tuyen-dung-1.jpg"
 				alt="Banner tuyển dụng"
 				title="Banner tuyển dụng"
 				loading="lazy"
 				decoding="async"
 				fetchpriority="low"
-				<?php echo trim( mbland_img_size_attr( '/wp-content/uploads/2025/10/Banner-Tuyen-dung-1.png', 1920, 700 ) ); ?>
+				<?php echo trim( mbland_img_size_attr( '/wp-content/uploads/2026/11/Banner-Tuyen-dung-1.jpg', 1920, 700 ) ); ?>
 			/>
 		</div>
 	</div>
