@@ -1697,3 +1697,13 @@ a.mbland_homepage_info_ctaOutline:hover {
     contain-intrinsic-size: auto 1200px;
   }
 }
+
+
+/* Mobile: bo do tre animation tieu de hero de LCP xuat hien som */
+@media (max-width: 768px) {
+  .mbland_homepage_about_titleFirst .mbland_homepage_about_titleImage,
+  .mbland_homepage_about_titleSecond {
+    animation-delay: 0s;
+    animation-duration: 0.4s;
+  }
+}

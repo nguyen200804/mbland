@@ -155,3 +155,27 @@ function homenest_srcset_attr( $id, $sizes = '(max-width: 768px) 100vw, 800px' )
     $srcset = wp_get_attachment_image_srcset( $id, 'full' );
     return $srcset ? sprintf( ' srcset="%s" sizes="%s"', esc_attr( $srcset ), esc_attr( $sizes ) ) : '';
 }
+
+
+/**
+ * Preload font above-the-fold (tieu de hero) tren trang chu.
+ */
+function homenest_preload_fonts() {
+    if ( ! homenest_is_homepage() ) {
+        return;
+    }
+    $base = get_template_directory_uri() . '/assets/font/';
+    printf( '<link rel="preload" as="font" type="font/woff2" href="%s" crossorigin>' . "\n", esc_url( $base . 'fz-poppins/FZ%20Poppins-SemiBold.woff2' ) );
+    printf( '<link rel="preload" as="font" type="font/otf" href="%s" crossorigin>' . "\n", esc_url( $base . 'ganh-type/Ganh%20Type%20-%20Regular.otf' ) );
+}
+add_action( 'wp_head', 'homenest_preload_fonts', 2 );
+
+/**
+ * Bo jquery-migrate o frontend (khong can, giam 1 request chan render).
+ */
+function homenest_remove_jquery_migrate( $scripts ) {
+    if ( ! is_admin() && isset( $scripts->registered['jquery'] ) ) {
+        $scripts->registered['jquery']->deps = array_diff( $scripts->registered['jquery']->deps, array( 'jquery-migrate' ) );
+    }
+}
+add_action( 'wp_default_scripts', 'homenest_remove_jquery_migrate' );

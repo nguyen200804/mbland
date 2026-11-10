@@ -25,6 +25,7 @@
 				$logo_url  = $logo_data ? $logo_data[0] : '';
 				$logo_w    = $logo_data ? $logo_data[1] : '';
 				$logo_h    = $logo_data ? $logo_data[2] : '';
+				$logo_srcset = homenest_srcset_attr( $logo_id, '180px' );
 				$logo_alt  = $logo_id ? ( get_post_meta( $logo_id, '_wp_attachment_image_alt', true ) ?: get_bloginfo( 'name' ) ) : get_bloginfo( 'name' );
 				$home_url  = function_exists( 'pll_home_url' ) ? pll_home_url() : home_url( '/' );
 				$site_name = get_bloginfo( 'name' );
@@ -36,6 +37,7 @@
 				   >
 					<img
 						 src="<?php echo esc_url( $logo_url ); ?>"
+						 <?php echo $logo_srcset; ?>
 						 alt="<?php echo esc_attr( $logo_alt ); ?>"
 						 title="<?php echo esc_attr( $site_name ); ?>"
 						 <?php if ( ! empty( $logo_w ) && ! empty( $logo_h ) ) : ?>
@@ -44,7 +46,6 @@
 						 <?php endif; ?>
 						 loading="eager"
 						 decoding="async"
-						 fetchpriority="high"
 						 />
 				</a>
 				<div class="mbland-header-group">
@@ -84,6 +85,7 @@
 						<a class="mbland-header__logo" href="<?php echo esc_url( $home_url ); ?>" title="<?php echo esc_attr( $site_name ); ?>">
 							<img
 								src="<?php echo esc_url( $logo_url ); ?>"
+								<?php echo $logo_srcset; ?>
 								alt="<?php echo esc_attr( $logo_alt ); ?>"
 								title="<?php echo esc_attr( $site_name ); ?>"
 								<?php if ( ! empty( $logo_w ) && ! empty( $logo_h ) ) : ?>
