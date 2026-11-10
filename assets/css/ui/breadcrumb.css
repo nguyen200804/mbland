@@ -32,8 +32,7 @@
 
 .hn-breadcrumb .breadcrumb-list li a {
 	color: #2e2e2e;
-	text-decoration: underline;
-	text-underline-offset: 3px;
+	text-decoration: none;
 	transition: color 0.2s;
 }
 
