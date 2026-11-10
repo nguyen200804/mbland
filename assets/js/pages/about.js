@@ -42,10 +42,6 @@ document.addEventListener("DOMContentLoaded", function () {
         nextEl: ".mbland_homepage_company_btnNext",
         prevEl: ".mbland_homepage_company_btnPrev",
       },
-      pagination: {
-        el: ".mbland_homepage_company_showcasePagination",
-        clickable: true,
-      },
       on: {
         slideChange: function () {
           const activeSlide = this.slides[this.activeIndex];

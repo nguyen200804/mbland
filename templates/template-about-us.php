@@ -403,7 +403,6 @@ $sub_intro_desc = ! empty( $first_company['description'] ) ? $first_company['des
 								</div>
 							<?php endforeach; ?>
 						</div>
-						<div class="swiper-pagination mbland_homepage_company_showcasePagination"></div>
 					</div>
 				</div>
 			</div>
