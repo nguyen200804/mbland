@@ -172,12 +172,12 @@ function homenest_head_hints() {
 add_action( 'wp_head', 'homenest_head_hints', 1 );
 
 /**
- * Swiper CSS khong chan render tren trang chu (slider nam cuoi trang).
+ * CSS cac section duoi fold khong chan render tren trang hero.
  */
 function homenest_async_swiper_css( $tag, $handle ) {
-    // CSS cua cac section nam duoi fold: tai bat dong bo de khong chan render hero (LCP)
+    // CSS cua cac section nam duoi fold: tai bat dong bo de khong chan render hero (LCP).
+    // Luu y: KHONG dua swiper-css vao day - Swiper do kich thuoc luc khoi tao nen can CSS san sang.
     $below_fold = array(
-        'swiper-css',
         'homenest-footer-style',
         'homenest-brands-style',
         'homenest-procedure-style',
