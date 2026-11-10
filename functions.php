@@ -860,8 +860,7 @@ function homenest_new_category_flush_rules($term_id, $taxonomy) {
 function hn_enqueue_swiper_assets() {
     // Chi tai Swiper o trang thuc su dung (trang chu, gioi thieu, chi tiet du an)
     $tpl = ! empty( $GLOBALS['template'] ) ? basename( $GLOBALS['template'] ) : '';
-    // Trang chu: homepage.js tu tai Swiper khi slider sap vao viewport (lazy).
-    if ( ! ( 'template-about-us.php' === $tpl || is_page_template( 'templates/template-about-us.php' ) || is_singular( 'du-an' ) || 'single-project.php' === $tpl ) ) {
+    if ( ! ( homenest_is_homepage() || 'template-about-us.php' === $tpl || is_page_template( 'templates/template-about-us.php' ) || is_singular( 'du-an' ) || 'single-project.php' === $tpl ) ) {
         return;
     }
     // ✅ Thêm CSS

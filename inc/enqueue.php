@@ -83,7 +83,7 @@ function homenest_enqueue_scripts() {
     }
 
     if ( 'template-homepage.php' === $tpl || is_page_template( 'templates/template-homepage.php' ) || is_front_page() ) {
-        wp_enqueue_script( 'homenest-homepage-script', get_template_directory_uri() . '/assets/js/pages/homepage.js', array(), homenest_asset_ver( '/assets/js/pages/homepage.js' ), true );
+        wp_enqueue_script( 'homenest-homepage-script', get_template_directory_uri() . '/assets/js/pages/homepage.js', array( 'swiper-js' ), homenest_asset_ver( '/assets/js/pages/homepage.js' ), true );
     }
 
     // JS Chung & Section dung chung
