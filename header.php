@@ -37,7 +37,6 @@
 				   >
 					<img
 						 src="<?php echo esc_url( $logo_url ); ?>"
-						 <?php echo $logo_srcset; ?>
 						 alt="<?php echo esc_attr( $logo_alt ); ?>"
 						 title="<?php echo esc_attr( $site_name ); ?>"
 						 <?php if ( ! empty( $logo_w ) && ! empty( $logo_h ) ) : ?>
@@ -85,7 +84,6 @@
 						<a class="mbland-header__logo" href="<?php echo esc_url( $home_url ); ?>" title="<?php echo esc_attr( $site_name ); ?>">
 							<img
 								src="<?php echo esc_url( $logo_url ); ?>"
-								<?php echo $logo_srcset; ?>
 								alt="<?php echo esc_attr( $logo_alt ); ?>"
 								title="<?php echo esc_attr( $site_name ); ?>"
 								<?php if ( ! empty( $logo_w ) && ! empty( $logo_h ) ) : ?>
