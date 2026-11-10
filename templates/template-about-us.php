@@ -198,7 +198,7 @@ $goals_list = ! empty( $about_goals['goals'] ) && is_array( $about_goals['goals'
 	),
 );
 ?>
-<section class="mbland_about_goals">
+<section class="mbland_about_goals" id="su-menh-tam-nhin">
 	<div class="container mbland_about_goals_container">
 		<div class="mbland_about_goals_list">
 			<?php
@@ -313,7 +313,7 @@ $sub_logo_w     = ! empty( $first_top_img['width'] ) ? $first_top_img['width'] :
 $sub_logo_h     = ! empty( $first_top_img['height'] ) ? $first_top_img['height'] : 104;
 $sub_intro_desc = ! empty( $first_company['description'] ) ? $first_company['description'] : '';
 ?>
-<section class="mbland_homepage_company">
+<section class="mbland_homepage_company" id="he-thong-cong-ty-con">
 	<div class="container">
 		<div class="mbland_homepage_company_wrapper mbland_homepage_company_introWrapper">
 			<div class="mbland_homepage_company_media mbland_homepage_company_introMedia">
@@ -429,7 +429,7 @@ $featured_bio  = ! empty( $about_team['featured_bio'] ) ? $about_team['featured_
 
 $team_members = ! empty( $about_team['members'] ) && is_array( $about_team['members'] ) ? $about_team['members'] : array();
 ?>
-<section class="mbland_aboutUs_teamSection">
+<section class="mbland_aboutUs_teamSection" id="doi-ngu-lanh-dao">
 	<div class="container mbland_aboutUs_teamSection_container">
 		<div class="mbland_aboutUs_teamSection_wrapper">
 			<header class="mbland_aboutUs_teamSection_header">
