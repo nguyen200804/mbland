@@ -75,11 +75,11 @@ function homenest_enqueue_scripts() {
     }
 
     if ( 'template-homepage.php' === $tpl || is_page_template( 'templates/template-homepage.php' ) || is_front_page() ) {
-        wp_enqueue_script( 'homenest-homepage-script', get_template_directory_uri() . '/assets/js/pages/homepage.js', array( 'swiper-js' ), homenest_asset_ver( '/assets/js/pages/homepage.js' ), true );
+        wp_enqueue_script( 'homenest-homepage-script', get_template_directory_uri() . '/assets/js/pages/homepage.js', array(), homenest_asset_ver( '/assets/js/pages/homepage.js' ), true );
     }
 
     // JS Chung & Section dung chung
-    wp_enqueue_script( 'homenest-main-script', get_template_directory_uri() . '/assets/js/main.js', array( 'jquery' ), homenest_asset_ver( '/assets/js/main.js' ), true );
+    wp_enqueue_script( 'homenest-main-script', get_template_directory_uri() . '/assets/js/main.js', array(), homenest_asset_ver( '/assets/js/main.js' ), true );
     wp_enqueue_script( 'homenest-procedure-script', get_template_directory_uri() . '/assets/js/sections/procedure.js', array(), homenest_asset_ver( '/assets/js/sections/procedure.js' ), true );
 }
 add_action( 'wp_enqueue_scripts', 'homenest_enqueue_scripts' );
@@ -116,7 +116,7 @@ function homenest_head_hints() {
     if ( ! homenest_is_homepage() ) {
         return;
     }
-    echo '<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>' . "\n";
+    echo '<link rel="dns-prefetch" href="//cdn.jsdelivr.net">' . "\n";
 
     $hero   = homenest_get_hero_banner();
     $srcset = $hero['id'] ? wp_get_attachment_image_srcset( $hero['id'], 'full' ) : '';
@@ -179,3 +179,32 @@ function homenest_remove_jquery_migrate( $scripts ) {
     }
 }
 add_action( 'wp_default_scripts', 'homenest_remove_jquery_migrate' );
+
+
+/**
+ * Google Analytics (gtag) tai tre: chi nap gtag.js khi nguoi dung tuong tac
+ * (cuon, cham, click, phim) hoac sau 8s ke tu khi trang load xong.
+ * => gtag.js (~177 KiB) khong con nam trong qua trinh tai trang ban dau.
+ *
+ * KICH HOAT: tat chen GA trong plugin hien tai (tranh dem trung), sau do
+ * them dong sau vao wp-config.php hoac dau functions.php:
+ *     define( 'HOMENEST_GA_ID', 'G-03RBP91ZEZ' );
+ */
+function homenest_delayed_gtag() {
+    if ( ! defined( 'HOMENEST_GA_ID' ) || ! HOMENEST_GA_ID || is_admin() ) {
+        return;
+    }
+    $id = esc_js( HOMENEST_GA_ID );
+    ?>
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());gtag('config','<?php echo $id; ?>');
+(function(){var done=false,ev=['scroll','pointerdown','touchstart','keydown','mousemove'];
+function load(){if(done)return;done=true;ev.forEach(function(e){removeEventListener(e,load,{passive:true});});
+var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=<?php echo $id; ?>';document.head.appendChild(s);}
+ev.forEach(function(e){addEventListener(e,load,{passive:true,once:true});});
+addEventListener('load',function(){setTimeout(load,8000);});})();
+</script>
+    <?php
+}
+add_action( 'wp_head', 'homenest_delayed_gtag', 20 );
