@@ -32,10 +32,10 @@ function homenest_enqueue_scripts() {
     // CSS UI component dung chung
     wp_enqueue_style( 'homenest-ui-button-style', get_template_directory_uri() . '/assets/css/ui/button.css', array( 'homenest-assets-style' ), homenest_asset_ver( '/assets/css/ui/button.css' ) );
     wp_enqueue_style( 'homenest-ui-button-detail-style', get_template_directory_uri() . '/assets/css/ui/button-detail.css', array( 'homenest-assets-style' ), homenest_asset_ver( '/assets/css/ui/button-detail.css' ) );
-    if ( ! $is_home ) wp_enqueue_style( 'homenest-ui-new-card-item-style', get_template_directory_uri() . '/assets/css/ui/new-card-item.css', array( 'homenest-assets-style' ), homenest_asset_ver( '/assets/css/ui/new-card-item.css' ) );
-    if ( ! $is_home ) wp_enqueue_style( 'homenest-ui-news-grid-style', get_template_directory_uri() . '/assets/css/ui/news-grid.css', array( 'homenest-assets-style', 'homenest-ui-new-card-item-style' ), homenest_asset_ver( '/assets/css/ui/news-grid.css' ) );
-    if ( ! $is_home ) wp_enqueue_style( 'homenest-ui-job-card-item-style', get_template_directory_uri() . '/assets/css/ui/job-card-item.css', array( 'homenest-assets-style' ), homenest_asset_ver( '/assets/css/ui/job-card-item.css' ) );
-    if ( ! $is_home ) wp_enqueue_style( 'homenest-ui-pagination-style', get_template_directory_uri() . '/assets/css/ui/pagination.css', array( 'homenest-assets-style' ), homenest_asset_ver( '/assets/css/ui/pagination.css' ) );
+    if ( ! $is_home && ! is_singular( 'du-an' ) ) wp_enqueue_style( 'homenest-ui-new-card-item-style', get_template_directory_uri() . '/assets/css/ui/new-card-item.css', array( 'homenest-assets-style' ), homenest_asset_ver( '/assets/css/ui/new-card-item.css' ) );
+    if ( ! $is_home && ! is_singular( 'du-an' ) ) wp_enqueue_style( 'homenest-ui-news-grid-style', get_template_directory_uri() . '/assets/css/ui/news-grid.css', array( 'homenest-assets-style', 'homenest-ui-new-card-item-style' ), homenest_asset_ver( '/assets/css/ui/news-grid.css' ) );
+    if ( ! $is_home && ! is_singular( 'du-an' ) ) wp_enqueue_style( 'homenest-ui-job-card-item-style', get_template_directory_uri() . '/assets/css/ui/job-card-item.css', array( 'homenest-assets-style' ), homenest_asset_ver( '/assets/css/ui/job-card-item.css' ) );
+    if ( ! $is_home && ! is_singular( 'du-an' ) ) wp_enqueue_style( 'homenest-ui-pagination-style', get_template_directory_uri() . '/assets/css/ui/pagination.css', array( 'homenest-assets-style' ), homenest_asset_ver( '/assets/css/ui/pagination.css' ) );
     if ( ! $is_home ) wp_enqueue_style( 'homenest-ui-breadcrumb-style', get_template_directory_uri() . '/assets/css/ui/breadcrumb.css', array( 'homenest-assets-style' ), homenest_asset_ver( '/assets/css/ui/breadcrumb.css' ) );
 
     // CSS theo template / trang (nam trong assets/css/pages/)
@@ -151,7 +151,15 @@ add_action( 'wp_head', 'homenest_head_hints', 1 );
  * Swiper CSS khong chan render tren trang chu (slider nam cuoi trang).
  */
 function homenest_async_swiper_css( $tag, $handle ) {
-    if ( 'swiper-css' === $handle && ( homenest_is_homepage() || is_singular( 'du-an' ) ) ) {
+    // CSS cua cac section nam duoi fold: tai bat dong bo de khong chan render hero (LCP)
+    $below_fold = array(
+        'swiper-css',
+        'homenest-footer-style',
+        'homenest-brands-style',
+        'homenest-procedure-style',
+        'homenest-contact-form-style',
+    );
+    if ( in_array( $handle, $below_fold, true ) && ( homenest_is_homepage() || is_singular( 'du-an' ) ) ) {
         $async = str_replace( "media='all'", "media='print' onload=\"this.media='all'\"", $tag );
         return $async . '<noscript>' . $tag . '</noscript>';
     }
