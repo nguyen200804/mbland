@@ -65,7 +65,7 @@
 
 .mbland_jobCard_info,
 .hn__job-item .info {
-  color: #a4a4a4;
+  color: #4b4b4b;
   margin: 5px 0;
   font-size: 15px;
 }
@@ -73,7 +73,7 @@
 .mbland_jobCard_info b,
 .hn__job-item .info b {
   font-weight: 500 !important;
-  color: rgb(25 25 25 / 80%);
+  color: rgb(0 0 0);
 }
 
 .mbland_jobCard_applyBtn,
