@@ -452,7 +452,7 @@ document.addEventListener('DOMContentLoaded', function () {
 						}
 
 						if ( empty( $thumb_url ) ) {
-							$thumb_url = '/wp-content/uploads/2025/10/Bat-dong-san-1.jpg';
+							$thumb_url = '/wp-content/uploads/2026/11/Bat-dong-san-1.jpg';
 						}
 
 						$short_desc = function_exists( 'get_field' ) ? get_field( 'short_content', $f_id ) : '';
