@@ -83,7 +83,12 @@ $hero_banner_h     = ! empty( $home_hero['banner']['height'] ) ? $home_hero['ban
 		</div>
 	</div>
 	<div class="mbland_homepage_about_banner">
+		<?php
+		$hero_banner_data   = homenest_get_hero_banner();
+		$hero_banner_srcset = $hero_banner_data['id'] ? wp_get_attachment_image_srcset( $hero_banner_data['id'], 'full' ) : '';
+		?>
 		<img loading="eager" decoding="async" fetchpriority="high"
+			 <?php if ( $hero_banner_srcset ) : ?>srcset="<?php echo esc_attr( $hero_banner_srcset ); ?>" sizes="100vw"<?php endif; ?>
 			 src="<?php echo esc_url( $hero_banner ); ?>"
 			 alt="<?php echo esc_attr( $hero_title_first . ' ' . $hero_title_second ); ?>"
 			 title="<?php echo esc_attr( $hero_title_first . ' ' . $hero_title_second ); ?>"
@@ -189,8 +194,9 @@ $company_showcase_h    = ! empty( $home_company['showcase_image']['height'] ) ? 
 	<div class="container">
 		<div class="mbland_homepage_company_wrapper mbland_homepage_company_introWrapper">
 			<div class="mbland_homepage_company_media mbland_homepage_company_introMedia">
-				<img loading="lazy" decoding="async" fetchpriority="low"
+				<img loading="lazy" decoding="async"
 					class="mbland_homepage_company_image mbland_homepage_company_introImage"
+					<?php echo homenest_srcset_attr( ! empty( $home_company['intro_image']['ID'] ) ? $home_company['intro_image']['ID'] : attachment_url_to_postid( $company_intro_img ), '(max-width: 768px) 100vw, 1000px' ); ?>
 					src="<?php echo esc_url( $company_intro_img ); ?>"
 					alt="<?php echo esc_attr( $company_title ); ?>"
 					title="<?php echo esc_attr( $company_title ); ?>"
@@ -205,7 +211,7 @@ $company_showcase_h    = ! empty( $home_company['showcase_image']['height'] ) ? 
 				<div class="mbland_homepage_company_introContent">
 					<div class="mbland_homepage_company_introBrand">
 						<p class="mbland_homepage_company_introBrandName"><?php echo esc_html( $company_brand_prefix ); ?></p>
-						<img loading="lazy" decoding="async" fetchpriority="low"
+						<img loading="lazy" decoding="async"
 							class="mbland_homepage_company_introBrandLogo"
 							src="<?php echo esc_url( $company_brand_logo ); ?>"
 							alt="<?php echo esc_attr( $company_brand_prefix ); ?>"
@@ -227,8 +233,9 @@ $company_showcase_h    = ! empty( $home_company['showcase_image']['height'] ) ? 
 			<div class="mbland_homepage_company_wrapper mbland_homepage_company_showcaseWrapper">
 				<div class="mbland_homepage_company_media mbland_homepage_company_showcaseMedia"></div>
 				<div class="mbland_homepage_company_body mbland_homepage_company_showcaseBody">
-					<img loading="lazy" decoding="async" fetchpriority="low"
+					<img loading="lazy" decoding="async"
 						class="mbland_homepage_company_image mbland_homepage_company_showcaseImage"
+						<?php echo homenest_srcset_attr( ! empty( $home_company['showcase_image']['ID'] ) ? $home_company['showcase_image']['ID'] : attachment_url_to_postid( $company_showcase_img ), '(max-width: 768px) 100vw, 1000px' ); ?>
 						src="<?php echo esc_url( $company_showcase_img ); ?>"
 						alt="<?php echo esc_attr( $company_title ); ?>"
 						title="<?php echo esc_attr( $company_title ); ?>"
@@ -317,7 +324,7 @@ if ( ! empty( $home_branches['terms'] ) && is_array( $home_branches['terms'] ) )
 					<div class="mbland_homepage_branches_card">
 						<a href="<?php echo esc_url( $term_link ); ?>" class="mbland_homepage_branches_link" title="<?php echo esc_attr( $term->name ); ?>">
 							<div class="mbland_homepage_branches_arrow">
-								<img loading="lazy" decoding="async" fetchpriority="low"
+								<img loading="lazy" decoding="async"
 									class="mbland_homepage_branches_icon"
 									src="/wp-content/uploads/2025/10/arrow-right.svg"
 									alt="Arrow Up Right"
@@ -336,8 +343,9 @@ if ( ! empty( $home_branches['terms'] ) && is_array( $home_branches['terms'] ) )
 
 					<div class="mbland_homepage_branches_media">
 						<?php if ( $featured_image_url ) : ?>
-							<img loading="lazy" decoding="async" fetchpriority="low"
+							<img loading="lazy" decoding="async"
 								class="mbland_homepage_branches_image"
+								<?php echo homenest_srcset_attr( ! empty( $scf_image['ID'] ) ? $scf_image['ID'] : 0, '(max-width: 768px) 100vw, 800px' ); ?>
 								src="<?php echo esc_url( $featured_image_url ); ?>"
 								alt="<?php echo esc_attr( $term->name ); ?>"
 								title="<?php echo esc_attr( $term->name ); ?>"
@@ -345,7 +353,7 @@ if ( ! empty( $home_branches['terms'] ) && is_array( $home_branches['terms'] ) )
 								height="<?php echo esc_attr( $branch_h ); ?>"
 							/>
 						<?php else : ?>
-							<img loading="lazy" decoding="async" fetchpriority="low"
+							<img loading="lazy" decoding="async"
 								class="mbland_homepage_branches_image"
 								src="<?php echo esc_url( $branches_placeholder ); ?>"
 								alt="<?php echo esc_attr( $term->name ); ?>"
@@ -469,14 +477,17 @@ if ( $projects_source === 'manual' && ! empty( $home_projects['projects'] ) ) {
 					$thumb        = '';
 					$thumb_w      = 0;
 					$thumb_h      = 0;
+					$thumb_id     = 0;
 
 					if ( is_array( $banner_field ) ) {
+						$thumb_id = ! empty( $banner_field['ID'] ) ? (int) $banner_field['ID'] : 0;
 						$thumb   = ! empty( $banner_field['url'] ) ? $banner_field['url'] : '';
 						$thumb_w = ! empty( $banner_field['width'] ) ? $banner_field['width'] : 0;
 						$thumb_h = ! empty( $banner_field['height'] ) ? $banner_field['height'] : 0;
 					} elseif ( is_numeric( $banner_field ) ) {
 						$banner_img_data = wp_get_attachment_image_src( $banner_field, 'full' );
 						if ( ! empty( $banner_img_data ) ) {
+							$thumb_id = (int) $banner_field;
 							$thumb   = $banner_img_data[0];
 							$thumb_w = $banner_img_data[1];
 							$thumb_h = $banner_img_data[2];
@@ -487,6 +498,7 @@ if ( $projects_source === 'manual' && ! empty( $home_projects['projects'] ) ) {
 
 					if ( empty( $thumb ) ) {
 						$thumb = get_the_post_thumbnail_url( get_the_ID(), 'full' );
+						$thumb_id = get_post_thumbnail_id();
 					}
 
 					if ( ( ! $thumb_w || ! $thumb_h ) && has_post_thumbnail() ) {
@@ -503,7 +515,8 @@ if ( $projects_source === 'manual' && ! empty( $home_projects['projects'] ) ) {
 					?>
 					<div class="mbland_homepage_projects_item mbland_homepage_projects_item<?php echo esc_attr( $i ); ?>">
 						<div class="mbland_homepage_projects_itemImage">
-							<img loading="lazy" decoding="async" fetchpriority="low"
+							<img loading="lazy" decoding="async"
+								 <?php echo homenest_srcset_attr( $thumb_id, '(max-width: 768px) 100vw, 800px' ); ?>
 								 src="<?php echo esc_url( $thumb ); ?>"
 								 alt="<?php the_title_attribute(); ?>"
 								 title="<?php the_title_attribute(); ?>"
@@ -631,7 +644,8 @@ if ( $activities_source === 'manual' && ! empty( $home_activities['posts'] ) ) {
 								<div class="swiper-slide mbland_homepage_activities_slide">
 									<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
 										<div class="mbland_homepage_activities_slideImage">
-											<img loading="lazy" decoding="async" fetchpriority="low"
+											<img loading="lazy" decoding="async"
+												 <?php echo homenest_srcset_attr( get_post_thumbnail_id(), '(max-width: 768px) 85vw, 620px' ); ?>
 												 src="<?php echo esc_url( $featured_img ); ?>"
 												 alt="<?php the_title_attribute(); ?>"
 												 title="<?php the_title_attribute(); ?>"

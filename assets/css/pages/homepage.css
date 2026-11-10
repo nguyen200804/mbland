@@ -1689,3 +1689,11 @@ a.mbland_homepage_info_ctaOutline:hover {
 }
 
 /* ===== END SECTION PROJECTS ===== */
+
+/* Hoan hoi render section du an o duoi fold tren mobile (giam thoi gian render ban dau) */
+@media (max-width: 768px) {
+  .mbland_homepage_projects {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 1200px;
+  }
+}

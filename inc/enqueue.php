@@ -10,7 +10,13 @@ function homenest_asset_ver( $path ) {
     return file_exists( $file ) ? (string) filemtime( $file ) : '1.0';
 }
 
+function homenest_is_homepage() {
+    $tpl = ! empty( $GLOBALS['template'] ) ? basename( $GLOBALS['template'] ) : '';
+    return 'template-homepage.php' === $tpl || is_page_template( 'templates/template-homepage.php' ) || is_front_page();
+}
+
 function homenest_enqueue_scripts() {
+    $is_home = homenest_is_homepage();
     // CSS Chung
     wp_enqueue_style( 'homenest-style', get_stylesheet_uri(), array(), homenest_asset_ver( '/style.css' ) );
     wp_enqueue_style( 'homenest-fonts', get_template_directory_uri() . '/assets/css/fonts.css', array(), homenest_asset_ver( '/assets/css/fonts.css' ) );
@@ -20,17 +26,17 @@ function homenest_enqueue_scripts() {
 
     // CSS Section dung chung
     wp_enqueue_style( 'homenest-brands-style', get_template_directory_uri() . '/assets/css/sections/brands.css', array( 'homenest-assets-style' ), homenest_asset_ver( '/assets/css/sections/brands.css' ) );
-    wp_enqueue_style( 'homenest-procedure-style', get_template_directory_uri() . '/assets/css/sections/procedure.css', array( 'homenest-assets-style' ), homenest_asset_ver( '/assets/css/sections/procedure.css' ) );
+    if ( ! $is_home ) wp_enqueue_style( 'homenest-procedure-style', get_template_directory_uri() . '/assets/css/sections/procedure.css', array( 'homenest-assets-style' ), homenest_asset_ver( '/assets/css/sections/procedure.css' ) );
     wp_enqueue_style( 'homenest-contact-form-style', get_template_directory_uri() . '/assets/css/sections/contact-form.css', array( 'homenest-assets-style' ), homenest_asset_ver( '/assets/css/sections/contact-form.css' ) );
 
     // CSS UI component dung chung
     wp_enqueue_style( 'homenest-ui-button-style', get_template_directory_uri() . '/assets/css/ui/button.css', array( 'homenest-assets-style' ), homenest_asset_ver( '/assets/css/ui/button.css' ) );
     wp_enqueue_style( 'homenest-ui-button-detail-style', get_template_directory_uri() . '/assets/css/ui/button-detail.css', array( 'homenest-assets-style' ), homenest_asset_ver( '/assets/css/ui/button-detail.css' ) );
-    wp_enqueue_style( 'homenest-ui-new-card-item-style', get_template_directory_uri() . '/assets/css/ui/new-card-item.css', array( 'homenest-assets-style' ), homenest_asset_ver( '/assets/css/ui/new-card-item.css' ) );
-    wp_enqueue_style( 'homenest-ui-news-grid-style', get_template_directory_uri() . '/assets/css/ui/news-grid.css', array( 'homenest-assets-style', 'homenest-ui-new-card-item-style' ), homenest_asset_ver( '/assets/css/ui/news-grid.css' ) );
-    wp_enqueue_style( 'homenest-ui-job-card-item-style', get_template_directory_uri() . '/assets/css/ui/job-card-item.css', array( 'homenest-assets-style' ), homenest_asset_ver( '/assets/css/ui/job-card-item.css' ) );
-    wp_enqueue_style( 'homenest-ui-pagination-style', get_template_directory_uri() . '/assets/css/ui/pagination.css', array( 'homenest-assets-style' ), homenest_asset_ver( '/assets/css/ui/pagination.css' ) );
-    wp_enqueue_style( 'homenest-ui-breadcrumb-style', get_template_directory_uri() . '/assets/css/ui/breadcrumb.css', array( 'homenest-assets-style' ), homenest_asset_ver( '/assets/css/ui/breadcrumb.css' ) );
+    if ( ! $is_home ) wp_enqueue_style( 'homenest-ui-new-card-item-style', get_template_directory_uri() . '/assets/css/ui/new-card-item.css', array( 'homenest-assets-style' ), homenest_asset_ver( '/assets/css/ui/new-card-item.css' ) );
+    if ( ! $is_home ) wp_enqueue_style( 'homenest-ui-news-grid-style', get_template_directory_uri() . '/assets/css/ui/news-grid.css', array( 'homenest-assets-style', 'homenest-ui-new-card-item-style' ), homenest_asset_ver( '/assets/css/ui/news-grid.css' ) );
+    if ( ! $is_home ) wp_enqueue_style( 'homenest-ui-job-card-item-style', get_template_directory_uri() . '/assets/css/ui/job-card-item.css', array( 'homenest-assets-style' ), homenest_asset_ver( '/assets/css/ui/job-card-item.css' ) );
+    if ( ! $is_home ) wp_enqueue_style( 'homenest-ui-pagination-style', get_template_directory_uri() . '/assets/css/ui/pagination.css', array( 'homenest-assets-style' ), homenest_asset_ver( '/assets/css/ui/pagination.css' ) );
+    if ( ! $is_home ) wp_enqueue_style( 'homenest-ui-breadcrumb-style', get_template_directory_uri() . '/assets/css/ui/breadcrumb.css', array( 'homenest-assets-style' ), homenest_asset_ver( '/assets/css/ui/breadcrumb.css' ) );
 
     // CSS theo template / trang (nam trong assets/css/pages/)
     $tpl = ! empty( $GLOBALS['template'] ) ? basename( $GLOBALS['template'] ) : '';
@@ -69,7 +75,7 @@ function homenest_enqueue_scripts() {
     }
 
     if ( 'template-homepage.php' === $tpl || is_page_template( 'templates/template-homepage.php' ) || is_front_page() ) {
-        wp_enqueue_script( 'homenest-homepage-script', get_template_directory_uri() . '/assets/js/pages/homepage.js', array(), homenest_asset_ver( '/assets/js/pages/homepage.js' ), true );
+        wp_enqueue_script( 'homenest-homepage-script', get_template_directory_uri() . '/assets/js/pages/homepage.js', array( 'swiper-js' ), homenest_asset_ver( '/assets/js/pages/homepage.js' ), true );
     }
 
     // JS Chung & Section dung chung
@@ -77,3 +83,75 @@ function homenest_enqueue_scripts() {
     wp_enqueue_script( 'homenest-procedure-script', get_template_directory_uri() . '/assets/js/sections/procedure.js', array(), homenest_asset_ver( '/assets/js/sections/procedure.js' ), true );
 }
 add_action( 'wp_enqueue_scripts', 'homenest_enqueue_scripts' );
+
+
+/**
+ * Lay du lieu anh hero trang chu (ACF home_hero.banner) kem fallback.
+ * Dung chung cho template va preload trong <head>.
+ *
+ * @return array{id:int,url:string,w:int,h:int}
+ */
+function homenest_get_hero_banner() {
+    static $cache = null;
+    if ( null !== $cache ) {
+        return $cache;
+    }
+    $hero   = function_exists( 'get_field' ) ? ( get_field( 'home_hero' ) ?: array() ) : array();
+    $banner = ! empty( $hero['banner'] ) && is_array( $hero['banner'] ) ? $hero['banner'] : array();
+    $url    = ! empty( $banner['url'] ) ? $banner['url'] : '/wp-content/uploads/2026/11/hero_mbland.jpg';
+    $id     = ! empty( $banner['ID'] ) ? (int) $banner['ID'] : (int) attachment_url_to_postid( $url );
+    $cache  = array(
+        'id'  => $id,
+        'url' => $url,
+        'w'   => ! empty( $banner['width'] ) ? (int) $banner['width'] : 2559,
+        'h'   => ! empty( $banner['height'] ) ? (int) $banner['height'] : 1007,
+    );
+    return $cache;
+}
+
+/**
+ * Preload ban hero (srcset responsive) + preconnect CDN Swiper => giam LCP tren mobile.
+ */
+function homenest_head_hints() {
+    if ( ! homenest_is_homepage() ) {
+        return;
+    }
+    echo '<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>' . "\n";
+
+    $hero   = homenest_get_hero_banner();
+    $srcset = $hero['id'] ? wp_get_attachment_image_srcset( $hero['id'], 'full' ) : '';
+    if ( $srcset ) {
+        printf(
+            '<link rel="preload" as="image" href="%s" imagesrcset="%s" imagesizes="100vw" fetchpriority="high">' . "\n",
+            esc_url( $hero['url'] ),
+            esc_attr( $srcset )
+        );
+    } else {
+        printf( '<link rel="preload" as="image" href="%s" fetchpriority="high">' . "\n", esc_url( $hero['url'] ) );
+    }
+}
+add_action( 'wp_head', 'homenest_head_hints', 1 );
+
+/**
+ * Swiper CSS khong chan render tren trang chu (slider nam cuoi trang).
+ */
+function homenest_async_swiper_css( $tag, $handle ) {
+    if ( 'swiper-css' === $handle && homenest_is_homepage() ) {
+        $async = str_replace( "media='all'", "media='print' onload=\"this.media='all'\"", $tag );
+        return $async . '<noscript>' . $tag . '</noscript>';
+    }
+    return $tag;
+}
+add_filter( 'style_loader_tag', 'homenest_async_swiper_css', 10, 2 );
+
+/**
+ * Tra ve thuoc tinh srcset + sizes (chuoi HTML) cho 1 attachment ID, rong neu khong co.
+ */
+function homenest_srcset_attr( $id, $sizes = '(max-width: 768px) 100vw, 800px' ) {
+    $id = (int) $id;
+    if ( ! $id ) {
+        return '';
+    }
+    $srcset = wp_get_attachment_image_srcset( $id, 'full' );
+    return $srcset ? sprintf( ' srcset="%s" sizes="%s"', esc_attr( $srcset ), esc_attr( $sizes ) ) : '';
+}
