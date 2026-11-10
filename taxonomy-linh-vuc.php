@@ -62,13 +62,16 @@ if ( ! empty( $lv_strengths_raw ) && is_array( $lv_strengths_raw ) ) {
 // Ảnh đại diện của term (ACF field 'feature_image', giống trang chủ) - hỗ trợ return format array / ID / URL
 $term_image     = function_exists( 'get_field' ) ? get_field( 'feature_image', 'term_' . $current_term->term_id ) : false;
 $term_image_url = '';
+$term_image_id  = 0;
 $term_image_alt = $current_term->name;
 if ( is_array( $term_image ) ) {
 	$term_image_url = isset( $term_image['url'] ) ? $term_image['url'] : '';
+	$term_image_id  = isset( $term_image['ID'] ) ? (int) $term_image['ID'] : 0;
 	if ( ! empty( $term_image['alt'] ) ) {
 		$term_image_alt = $term_image['alt'];
 	}
 } elseif ( is_numeric( $term_image ) ) {
+	$term_image_id  = (int) $term_image;
 	$term_image_url = wp_get_attachment_image_url( (int) $term_image, 'full' );
 } elseif ( is_string( $term_image ) ) {
 	$term_image_url = $term_image;
@@ -305,7 +308,7 @@ if ( $hero_project_id ) {
 <!-- ===== START SECTION LINH VUC HERO ===== -->
 <section class="mbland_linhvuc_hero">
 	<?php if ( $term_image_url ) : ?>
-	<img class="mbland_linhvuc_hero_background" src="<?php echo esc_url( $term_image_url ); ?>" alt="<?php echo esc_attr( $term_image_alt ); ?>" title="<?php echo esc_attr( $current_term->name ); ?>" loading="eager" decoding="async" fetchpriority="high" <?php echo trim( mbland_img_size_attr( $term_image_url, 1920, 1080 ) ); ?> />
+	<img class="mbland_linhvuc_hero_background" src="<?php echo esc_url( $term_image_url ); ?>" alt="<?php echo esc_attr( $term_image_alt ); ?>" title="<?php echo esc_attr( $current_term->name ); ?>" loading="eager" decoding="async" fetchpriority="high"<?php echo homenest_srcset_attr( $term_image_id, '100vw' ); ?> <?php echo trim( mbland_img_size_attr( $term_image_url, 1920, 1080 ) ); ?> />
 	<?php endif; ?>
 	<div class="mbland_linhvuc_hero_inner">
 		<div class="container mbland_linhvuc_hero_container">

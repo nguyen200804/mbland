@@ -15,6 +15,14 @@ function homenest_is_homepage() {
     return 'template-homepage.php' === $tpl || is_page_template( 'templates/template-homepage.php' ) || is_front_page();
 }
 
+/**
+ * Cac trang co anh hero la LCP (trang chu, chi tiet du an, linh vuc):
+ * toi uu CSS chan render va preload anh hero.
+ */
+function homenest_is_hero_page() {
+    return homenest_is_homepage() || is_singular( 'du-an' ) || is_tax( 'linh-vuc' );
+}
+
 function homenest_enqueue_scripts() {
     $is_home = homenest_is_homepage();
     // CSS Chung
@@ -32,10 +40,10 @@ function homenest_enqueue_scripts() {
     // CSS UI component dung chung
     wp_enqueue_style( 'homenest-ui-button-style', get_template_directory_uri() . '/assets/css/ui/button.css', array( 'homenest-assets-style' ), homenest_asset_ver( '/assets/css/ui/button.css' ) );
     wp_enqueue_style( 'homenest-ui-button-detail-style', get_template_directory_uri() . '/assets/css/ui/button-detail.css', array( 'homenest-assets-style' ), homenest_asset_ver( '/assets/css/ui/button-detail.css' ) );
-    if ( ! $is_home && ! is_singular( 'du-an' ) ) wp_enqueue_style( 'homenest-ui-new-card-item-style', get_template_directory_uri() . '/assets/css/ui/new-card-item.css', array( 'homenest-assets-style' ), homenest_asset_ver( '/assets/css/ui/new-card-item.css' ) );
-    if ( ! $is_home && ! is_singular( 'du-an' ) ) wp_enqueue_style( 'homenest-ui-news-grid-style', get_template_directory_uri() . '/assets/css/ui/news-grid.css', array( 'homenest-assets-style', 'homenest-ui-new-card-item-style' ), homenest_asset_ver( '/assets/css/ui/news-grid.css' ) );
-    if ( ! $is_home && ! is_singular( 'du-an' ) ) wp_enqueue_style( 'homenest-ui-job-card-item-style', get_template_directory_uri() . '/assets/css/ui/job-card-item.css', array( 'homenest-assets-style' ), homenest_asset_ver( '/assets/css/ui/job-card-item.css' ) );
-    if ( ! $is_home && ! is_singular( 'du-an' ) ) wp_enqueue_style( 'homenest-ui-pagination-style', get_template_directory_uri() . '/assets/css/ui/pagination.css', array( 'homenest-assets-style' ), homenest_asset_ver( '/assets/css/ui/pagination.css' ) );
+    if ( ! homenest_is_hero_page() ) wp_enqueue_style( 'homenest-ui-new-card-item-style', get_template_directory_uri() . '/assets/css/ui/new-card-item.css', array( 'homenest-assets-style' ), homenest_asset_ver( '/assets/css/ui/new-card-item.css' ) );
+    if ( ! homenest_is_hero_page() ) wp_enqueue_style( 'homenest-ui-news-grid-style', get_template_directory_uri() . '/assets/css/ui/news-grid.css', array( 'homenest-assets-style', 'homenest-ui-new-card-item-style' ), homenest_asset_ver( '/assets/css/ui/news-grid.css' ) );
+    if ( ! homenest_is_hero_page() ) wp_enqueue_style( 'homenest-ui-job-card-item-style', get_template_directory_uri() . '/assets/css/ui/job-card-item.css', array( 'homenest-assets-style' ), homenest_asset_ver( '/assets/css/ui/job-card-item.css' ) );
+    if ( ! homenest_is_hero_page() ) wp_enqueue_style( 'homenest-ui-pagination-style', get_template_directory_uri() . '/assets/css/ui/pagination.css', array( 'homenest-assets-style' ), homenest_asset_ver( '/assets/css/ui/pagination.css' ) );
     if ( ! $is_home ) wp_enqueue_style( 'homenest-ui-breadcrumb-style', get_template_directory_uri() . '/assets/css/ui/breadcrumb.css', array( 'homenest-assets-style' ), homenest_asset_ver( '/assets/css/ui/breadcrumb.css' ) );
 
     // CSS theo template / trang (nam trong assets/css/pages/)
@@ -128,6 +136,22 @@ function homenest_head_hints() {
         }
         return;
     }
+    // Trang linh vuc: preload anh hero (ACF feature_image cua term)
+    if ( is_tax( 'linh-vuc' ) ) {
+        $term  = get_queried_object();
+        $field = ( $term && function_exists( 'get_field' ) ) ? get_field( 'feature_image', 'term_' . $term->term_id ) : false;
+        $id    = is_array( $field ) ? (int) ( $field['ID'] ?? 0 ) : ( is_numeric( $field ) ? (int) $field : 0 );
+        $url   = $id ? wp_get_attachment_image_url( $id, 'full' ) : '';
+        if ( $url ) {
+            $srcset = wp_get_attachment_image_srcset( $id, 'full' );
+            printf(
+                '<link rel="preload" as="image" href="%s"%s fetchpriority="high">' . "\n",
+                esc_url( $url ),
+                $srcset ? ' imagesrcset="' . esc_attr( $srcset ) . '" imagesizes="100vw"' : ''
+            );
+        }
+        return;
+    }
     if ( ! homenest_is_homepage() ) {
         return;
     }
@@ -159,7 +183,7 @@ function homenest_async_swiper_css( $tag, $handle ) {
         'homenest-procedure-style',
         'homenest-contact-form-style',
     );
-    if ( in_array( $handle, $below_fold, true ) && ( homenest_is_homepage() || is_singular( 'du-an' ) ) ) {
+    if ( in_array( $handle, $below_fold, true ) && homenest_is_hero_page() ) {
         $async = str_replace( "media='all'", "media='print' onload=\"this.media='all'\"", $tag );
         return $async . '<noscript>' . $tag . '</noscript>';
     }
