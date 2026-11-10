@@ -357,7 +357,7 @@ if ( $hero_project_id ) {
 				<?php endif; ?>
 			</div>
 			<div class="mbland_linhvuc_hero_featuredAction">
-				<a class="mbland_linhvuc_hero_featuredLink" href="<?php echo esc_url( $hero_link ); ?>" title="<?php echo esc_attr( $hero_title ); ?>">
+				<a class="mbland_linhvuc_hero_featuredLink" href="<?php echo esc_url( $hero_link ); ?>" title="<?php echo esc_attr( $hero_title ); ?>" aria-label="<?php echo esc_attr( $hero_title ); ?>">
 					<span class="mbland_linhvuc_hero_featuredLinkLabel"><?php echo esc_html( function_exists( 'pll__' ) ? pll__( 'Tìm hiểu thêm về dự án' ) : 'Tìm hiểu thêm về dự án' ); ?></span>
 					<svg class="mbland_linhvuc_hero_featuredLinkIcon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.333 14.333V1H1m13.333 0L1 14.333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor"/></svg>
 				</a>
@@ -434,7 +434,7 @@ if ( $hero_project_id ) {
 								wp_reset_postdata();
 								?>
 								<?php if ( $lv_query->post_count > $lv_per_page ) : ?>
-									<button type="button" class="mbland_linhvuc_listProject_loadMore">
+									<button type="button" class="mbland_linhvuc_listProject_loadMore" aria-label="<?php echo esc_attr( function_exists( 'pll__' ) ? pll__( 'Xem thêm' ) : 'Xem thêm' ); ?>">
 										<svg class="mbland_linhvuc_listProject_loadMoreIcon" width="16" height="9" viewBox="0 0 16 9" fill="none" xmlns="http://www.w3.org/2000/svg">
 											<path d="M1 1L8 8L15 1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 										</svg>
@@ -610,14 +610,14 @@ get_template_part( 'template-parts/sections/procedure', null, array(
 						?>
 						<article class="mbland_linhvuc_featuredProject_item">
 							<div class="mbland_linhvuc_featuredProject_itemMedia">
-								<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" style="display:block;width:100%;height:100%;">
+								<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" style="display:block;width:100%;height:100%;" aria-label="<?php the_title_attribute(); ?>">
 									<img class="mbland_linhvuc_featuredProject_itemImage" src="<?php echo esc_url( $thumb_url ); ?>" alt="<?php echo esc_attr( $thumb_alt ); ?>" title="<?php echo esc_attr( get_the_title( $f_id ) ); ?>" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( $thumb_url, 800, 600 ) ); ?> />
 								</a>
 							</div>
 							<div class="mbland_linhvuc_featuredProject_itemBody">
 								<div class="mbland_linhvuc_featuredProject_itemHeader">
 									<h3 class="mbland_linhvuc_featuredProject_itemTitle">
-										<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" style="color:inherit;text-decoration:none;">
+										<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" style="color:inherit;text-decoration:none;" aria-label="<?php the_title_attribute(); ?>">
 											<?php the_title(); ?>
 										</a>
 									</h3>
@@ -640,7 +640,7 @@ get_template_part( 'template-parts/sections/procedure', null, array(
 									</div>
 								<?php endif; ?>
 								<div class="mbland_linhvuc_featuredProject_itemAction">
-									<a href="<?php the_permalink(); ?>" class="mbland_linhvuc_featuredProject_itemLink"><?php echo esc_html( function_exists( 'pll__' ) ? pll__( 'Xem chi tiết' ) : 'Xem chi tiết' ); ?></a>
+									<a href="<?php the_permalink(); ?>" class="mbland_linhvuc_featuredProject_itemLink" aria-label="<?php echo esc_attr( ( function_exists( 'pll__' ) ? pll__( 'Xem chi tiết' ) : 'Xem chi tiết' ) . ': ' . get_the_title() ); ?>"><?php echo esc_html( function_exists( 'pll__' ) ? pll__( 'Xem chi tiết' ) : 'Xem chi tiết' ); ?></a>
 								</div>
 							</div>
 						</article>

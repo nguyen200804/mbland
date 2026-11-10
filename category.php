@@ -78,7 +78,7 @@ if ( is_category() ) {
                         $has_tin_noi_bat = has_term( '', 'tin-noi-bat' );
                 ?>
                 <article class="mbland_tintucTemplate_featuredCard">
-                    <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="mbland_tintucTemplate_featuredCard_thumb">
+                    <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="mbland_tintucTemplate_featuredCard_thumb" aria-label="<?php the_title_attribute(); ?>">
                         <img class="mbland_tintucTemplate_featuredCard_img" src="<?php echo esc_url( $featured_img ); ?>" alt="<?php the_title_attribute(); ?>" title="<?php the_title_attribute(); ?>" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( $featured_img, 768, 512 ) ); ?> />
                     </a>								
                     <div class="mbland_tintucTemplate_featuredCard_content">
@@ -93,7 +93,7 @@ if ( is_category() ) {
                             <?php endif; ?>
                         </div>
                         <h2 class="mbland_tintucTemplate_featuredCard_title">
-                            <a href="<?php the_permalink(); ?>" class="mbland_tintucTemplate_featuredCard_titleLink" title="<?php the_title_attribute(); ?>">
+                            <a href="<?php the_permalink(); ?>" class="mbland_tintucTemplate_featuredCard_titleLink" title="<?php the_title_attribute(); ?>" aria-label="<?php the_title_attribute(); ?>">
                                 <?php the_title(); ?>
                             </a>
                         </h2>
@@ -192,7 +192,7 @@ if ( is_category() ) {
                             $has_tin_noi_bat = has_term( '', 'tin-noi-bat' );
                     ?>
                     <article class="mbland_tintucTemplate_postCard">
-                        <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="mbland_tintucTemplate_postCard_thumb">
+                        <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="mbland_tintucTemplate_postCard_thumb" aria-label="<?php the_title_attribute(); ?>">
                             <img class="mbland_tintucTemplate_postCard_img" src="<?php echo esc_url( $featured_img ); ?>" alt="<?php the_title_attribute(); ?>" title="<?php the_title_attribute(); ?>" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( $featured_img, 768, 512 ) ); ?> />
                         </a>
                         <div class="mbland_tintucTemplate_postCard_content">
@@ -207,7 +207,7 @@ if ( is_category() ) {
                                 <?php endif; ?>
                             </div>
                             <h3 class="mbland_tintucTemplate_postCard_title">
-                                <a href="<?php the_permalink(); ?>" class="mbland_tintucTemplate_postCard_titleLink" title="<?php the_title_attribute(); ?>">
+                                <a href="<?php the_permalink(); ?>" class="mbland_tintucTemplate_postCard_titleLink" title="<?php the_title_attribute(); ?>" aria-label="<?php the_title_attribute(); ?>">
                                     <?php the_title(); ?>
                                 </a>
                             </h3>

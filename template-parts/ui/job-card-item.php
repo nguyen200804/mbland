@@ -40,7 +40,7 @@ if ( ! empty( $args['class'] ) ) {
 			<?php echo esc_html( $hannop ?: ( function_exists( 'pll__' ) ? pll__( 'Đang cập nhật' ) : 'Đang cập nhật' ) ); ?>
 		</div>
 		<h2 class="mbland_jobCard_title">
-			<a href="<?php echo esc_url( $permalink ); ?>" title="<?php echo esc_attr( $title ); ?>">
+			<a href="<?php echo esc_url( $permalink ); ?>" title="<?php echo esc_attr( $title ); ?>" aria-label="<?php echo esc_attr( $title ); ?>">
 				<?php echo esc_html( $title ); ?>
 			</a>
 		</h2>
@@ -52,7 +52,7 @@ if ( ! empty( $args['class'] ) ) {
 		</p>
 	</div>
 	<div class="mbland_jobCard_right">
-		<a href="<?php echo esc_url( $permalink ); ?>" class="mbland_jobCard_applyBtn apply-btn" title="<?php echo esc_attr( $title ); ?>">
+		<a href="<?php echo esc_url( $permalink ); ?>" class="mbland_jobCard_applyBtn apply-btn" title="<?php echo esc_attr( $title ); ?>" aria-label="<?php echo esc_attr( ( function_exists( 'pll__' ) ? pll__( 'Ứng tuyển ngay' ) : 'Ứng tuyển ngay' ) . ': ' . $title ); ?>">
 			<?php echo function_exists( 'pll__' ) ? pll__( 'Ứng tuyển ngay' ) : 'Ứng tuyển ngay'; ?>
 		</a>
 	</div>

@@ -471,7 +471,7 @@ function filter_jobs() {
 		    <p class="info"><b><?php echo pll__('Mức lương'); ?>:</b> <?php echo $luong ?: pll__('Thỏa thuận'); ?></p>
 		    <p class="info"><b><?php echo pll__('Địa điểm làm việc'); ?>:</b> <?php echo $noilam ?: pll__('Đang cập nhật'); ?></p>
 		  </div>
-		  <a href="<?php the_permalink(); ?>" class="apply-btn" title="<?php the_title(); ?>"><?php echo pll__('Ứng tuyển ngay'); ?></a>
+		  <a href="<?php the_permalink(); ?>" class="apply-btn" title="<?php the_title(); ?>" aria-label="<?php echo esc_attr( pll__('Ứng tuyển ngay') . ': ' . get_the_title() ); ?>"><?php echo pll__('Ứng tuyển ngay'); ?></a>
 	  </div>
 
       <?php
@@ -484,17 +484,17 @@ if ($total_pages > 1) {
 
   // Nút "Trước" (luôn hiện)
   $prev_disabled = ($paged <= 1) ? ' is-disabled' : '';
-  echo '<a href="#" class="page-link page-prev' . $prev_disabled . '" data-page="' . max(1, $paged - 1) . '">Trước</a>';
+  echo '<a href="#" class="page-link page-prev' . $prev_disabled . '" aria-label="Trang trước" data-page="' . max(1, $paged - 1) . '">Trước</a>';
 
   // Số trang
   for ($i = 1; $i <= $total_pages; $i++) {
     $class = 'page-link' . ($i == $paged ? ' is-active' : '');
-    echo '<a href="#" class="' . $class . '" data-page="' . $i . '">' . $i . '</a>';
+    echo '<a href="#" class="' . $class . '" aria-label="Trang ' . $i . '"' . ($i == $paged ? ' aria-current="page"' : '') . ' data-page="' . $i . '">' . $i . '</a>';
   }
 
   // Nút "Sau" (luôn hiện)
   $next_disabled = ($paged >= $total_pages) ? ' is-disabled' : '';
-  echo '<a href="#" class="page-link page-next' . $next_disabled . '" data-page="' . min($total_pages, $paged + 1) . '">Sau</a>';
+  echo '<a href="#" class="page-link page-next' . $next_disabled . '" aria-label="Trang sau" data-page="' . min($total_pages, $paged + 1) . '">Sau</a>';
 
   echo '</div>';
 }
@@ -548,7 +548,7 @@ function load_news() {
       $has_tin_noi_bat = has_term('', 'tin-noi-bat');
       ?>
       <div class="hn-tasmania-tt-grid-item">
-        <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="hn-tasmania-tt-grid-item-image">
+        <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="hn-tasmania-tt-grid-item-image" aria-label="<?php the_title_attribute(); ?>">
           <img src="<?php echo esc_url($featured_img); ?>" alt="<?php the_title_attribute(); ?>" title="<?php the_title_attribute(); ?>" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( $featured_img, 768, 512 ) ); ?> />
         </a>
         <div class="hn-tasmania-tt-grid-item-content">
@@ -562,11 +562,11 @@ function load_news() {
               <p><?php echo pll__('TIN NỔI BẬT'); ?></p>
             <?php endif; ?>
           </div>
-          <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
+          <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" aria-label="<?php the_title_attribute(); ?>">
             <h3 class="small-h3"><?php the_title(); ?></h3>
           </a>
           <p class="desc-text"><?php echo wp_kses_post($desc ?: get_the_excerpt()); ?></p>
-          <a class="hn-tasmania-tintuc-cta" href="<?php the_permalink(); ?>" title="Xem chi tiết">
+          <a class="hn-tasmania-tintuc-cta" href="<?php the_permalink(); ?>" title="Xem chi tiết" aria-label="<?php echo esc_attr( pll__('XEM CHI TIẾT') . ': ' . get_the_title() ); ?>">
             <div class="hn-tasmania-tintuc-cta-icon">
               <img src="/wp-content/uploads/2025/10/arrow-right-red.svg" alt="Xem chi tiết" title="Xem chi tiết" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( '/wp-content/uploads/2025/10/arrow-right-red.svg', 15, 15 ) ); ?> />
             </div>
@@ -637,7 +637,7 @@ function hn_logo_brand_section() {
           <?php foreach ($logos as $lg): ?>
             <div class="logo-item">
               <?php if ( ! empty( $lg[4] ) ) : ?>
-                <a href="<?php echo esc_url( $lg[4] ); ?>" target="_blank" rel="noopener noreferrer">
+                <a href="<?php echo esc_url( $lg[4] ); ?>" target="_blank" rel="noopener noreferrer" aria-label="<?php echo esc_attr( $lg[1] ); ?>">
               <?php endif; ?>
               <img src="<?php echo esc_url($lg[0]); ?>" loading="lazy" decoding="async" fetchpriority="low" alt="<?php echo esc_attr($lg[1]); ?>" title="<?php echo esc_attr($lg[1]); ?>" width="<?php echo esc_attr($lg[2]); ?>" height="<?php echo esc_attr($lg[3]); ?>">
               <?php if ( ! empty( $lg[4] ) ) : ?>
@@ -739,7 +739,7 @@ function hn_breadcrumb_shortcode() {
     <nav class="hn-breadcrumb" aria-label="Breadcrumb">
         <ul class="breadcrumb-list">
             <li>
-                <a href="<?php echo home_url(); ?>" title="<?php echo esc_attr(pll__('Trang chủ')); ?>">
+                <a href="<?php echo home_url(); ?>" title="<?php echo esc_attr(pll__('Trang chủ')); ?>" aria-label="<?php echo esc_attr(pll__('Trang chủ')); ?>">
                     <?php echo pll__('Trang chủ'); ?>
                 </a>
             </li>

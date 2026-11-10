@@ -44,7 +44,7 @@ if ( ! empty( $args['class'] ) ) {
 }
 ?>
 <article class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>">
-	<a href="<?php echo esc_url( $post_url ); ?>" title="<?php echo esc_attr( $post_title ); ?>" class="mbland_tintucTemplate_newCard_thumb">
+	<a href="<?php echo esc_url( $post_url ); ?>" title="<?php echo esc_attr( $post_title ); ?>" class="mbland_tintucTemplate_newCard_thumb" aria-label="<?php echo esc_attr( $post_title ); ?>">
 		<img class="mbland_tintucTemplate_newCard_img" src="<?php echo esc_url( $featured_img ); ?>" alt="<?php echo esc_attr( $post_title ); ?>" title="<?php echo esc_attr( $post_title ); ?>" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( $featured_img, 768, 512 ) ); ?> />
 	</a>
 	<div class="mbland_tintucTemplate_newCard_content">
@@ -59,7 +59,7 @@ if ( ! empty( $args['class'] ) ) {
 			<?php endif; ?>
 		</div>
 		<h3 class="mbland_tintucTemplate_newCard_title">
-			<a href="<?php echo esc_url( $post_url ); ?>" class="mbland_tintucTemplate_newCard_titleLink" title="<?php echo esc_attr( $post_title ); ?>">
+			<a href="<?php echo esc_url( $post_url ); ?>" class="mbland_tintucTemplate_newCard_titleLink" title="<?php echo esc_attr( $post_title ); ?>" aria-label="<?php echo esc_attr( $post_title ); ?>">
 				<?php echo esc_html( $post_title ); ?>
 			</a>
 		</h3>

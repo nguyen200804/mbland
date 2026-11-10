@@ -162,7 +162,7 @@ $cta_secondary   = ! empty( $home_info['cta_secondary'] ) ? $home_info['cta_seco
 				?>
 				<a class="hn-tasmania-cta-btn mbland_homepage_info_ctaOutline"
 				   href="<?php echo esc_url( $cta_secondary['url'] ); ?>"
-				   title="<?php echo esc_attr( ! empty( $cta_secondary['title'] ) ? $cta_secondary['title'] : 'Lĩnh vực hoạt động' ); ?>">
+				   title="<?php echo esc_attr( ! empty( $cta_secondary['title'] ) ? $cta_secondary['title'] : 'Lĩnh vực hoạt động' ); ?>" aria-label="<?php echo esc_attr( ! empty( $cta_secondary['title'] ) ? $cta_secondary['title'] : 'Lĩnh vực hoạt động' ); ?>">
 					<?php echo esc_html( ! empty( $cta_secondary['title'] ) ? $cta_secondary['title'] : 'LĨNH VỰC HOẠT ĐỘNG' ); ?>
 				</a>
 			<?php endif; ?>
@@ -322,7 +322,7 @@ if ( ! empty( $home_branches['terms'] ) && is_array( $home_branches['terms'] ) )
 				?>
 				<div class="mbland_homepage_branches_item<?php echo esc_attr( $is_active ); ?>">
 					<div class="mbland_homepage_branches_card">
-						<a href="<?php echo esc_url( $term_link ); ?>" class="mbland_homepage_branches_link" title="<?php echo esc_attr( $term->name ); ?>">
+						<a href="<?php echo esc_url( $term_link ); ?>" class="mbland_homepage_branches_link" title="<?php echo esc_attr( $term->name ); ?>" aria-label="<?php echo esc_attr( $term->name ); ?>">
 							<div class="mbland_homepage_branches_arrow">
 								<img loading="lazy" decoding="async"
 									class="mbland_homepage_branches_icon"
@@ -528,7 +528,7 @@ if ( $projects_source === 'manual' && ! empty( $home_projects['projects'] ) ) {
 							<div class="mbland_homepage_projects_itemContent1"></div>
 							<div class="mbland_homepage_projects_itemContent2">
 								<h3 class="small-h3">
-									<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( $item_title ); ?>">
+									<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( $item_title ); ?>" aria-label="<?php echo esc_attr( $item_title ); ?>">
 										<?php echo esc_html( $item_title ); ?>
 									</a>
 								</h3>
@@ -642,7 +642,7 @@ if ( $activities_source === 'manual' && ! empty( $home_activities['posts'] ) ) {
 								}
 								?>
 								<div class="swiper-slide mbland_homepage_activities_slide">
-									<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
+									<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" aria-label="<?php the_title_attribute(); ?>">
 										<div class="mbland_homepage_activities_slideImage">
 											<img loading="lazy" decoding="async"
 												 <?php echo homenest_srcset_attr( get_post_thumbnail_id(), '(max-width: 768px) 85vw, 620px' ); ?>

@@ -45,13 +45,13 @@ $scale    = function_exists( 'mbland_clean_plain_text' ) ? mbland_clean_plain_te
 ?>
 <div class="mbland_linhvuc_listProject_item">
 	<div class="mbland_linhvuc_listProject_itemMedia">
-		<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" style="display:flex;width:100%;height:100%;">
+		<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" style="display:flex;width:100%;height:100%;" aria-label="<?php the_title_attribute(); ?>">
 			<img class="mbland_linhvuc_listProject_itemImage" src="<?php echo esc_url( $thumb_url ); ?>" alt="<?php echo esc_attr( $thumb_alt ); ?>" title="<?php echo esc_attr( get_the_title( $post_id ) ); ?>" loading="lazy" decoding="async" fetchpriority="low" <?php echo trim( mbland_img_size_attr( $thumb_url, 800, 600 ) ); ?> />
 		</a>
 	</div>
 	<div class="mbland_linhvuc_listProject_itemBody">
 		<h3 class="mbland_linhvuc_listProject_itemTitle">
-			<a class="mbland_linhvuc_listProject_itemTitleLink" href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
+			<a class="mbland_linhvuc_listProject_itemTitleLink" href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" aria-label="<?php the_title_attribute(); ?>">
 				<?php the_title(); ?>
 			</a>
 		</h3>
@@ -88,7 +88,7 @@ $scale    = function_exists( 'mbland_clean_plain_text' ) ? mbland_clean_plain_te
 				</div>
 			</div>
 		<?php endif; ?>
-		<a class="mbland_linhvuc_listProject_itemLink" href="<?php the_permalink(); ?>">
+		<a class="mbland_linhvuc_listProject_itemLink" href="<?php the_permalink(); ?>" aria-label="<?php echo esc_attr( ( function_exists( 'pll__' ) ? pll__( 'Xem chi tiết' ) : 'Xem chi tiết' ) . ': ' . get_the_title() ); ?>">
 			<?php echo esc_html( function_exists( 'pll__' ) ? pll__( 'Xem chi tiết' ) : 'Xem chi tiết' ); ?>
 		</a>
 	</div>
