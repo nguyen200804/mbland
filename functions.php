@@ -1457,6 +1457,10 @@ function h2_import_du_an_from_tasmania() {
 
             if ( ! empty($existing) ) {
                 $skipped++;
+                // Them &sync_acf=1 vao URL de dong bo lai ACF cho bai da import
+                if ( ! empty($_GET['sync_acf']) && ! empty($remote_post['acf']) && is_array($remote_post['acf']) ) {
+                    h2_import_acf_fields( $existing[0], $remote_post['acf'], $errors );
+                }
                 // Vẫn lưu vào map để xử lý translations sau
                 $id_map[ $remote_post['id'] ] = $existing[0];
                 continue;
@@ -1533,32 +1537,9 @@ function h2_import_du_an_from_tasmania() {
             }
 
             // 4. ACF
-            if ( ! empty($remote_post['acf']) && is_array($remote_post['acf']) && function_exists('update_field') ) {
-                foreach ( $remote_post['acf'] as $field_key => $field_value ) {
-                    if ( is_array($field_value) && isset($field_value['url']) ) {
-                        $img_id = h2_sideload_image( $field_value['url'], $new_post_id );
-                        if ( $img_id && ! is_wp_error($img_id) ) {
-                            update_field( $field_key, $img_id, $new_post_id );
-                        }
-                    } elseif ( is_array($field_value) && isset($field_value[0]['url']) ) {
-                        $gallery_ids = [];
-                        foreach ( $field_value as $img ) {
-                            if ( ! empty($img['url']) ) {
-                                $img_id = h2_sideload_image( $img['url'], $new_post_id );
-                                if ( $img_id && ! is_wp_error($img_id) ) {
-                                    $gallery_ids[] = $img_id;
-                                }
-                            }
-                        }
-                        if ( $gallery_ids ) {
-                            update_field( $field_key, $gallery_ids, $new_post_id );
-                        }
-                    } else {
-                        update_field( $field_key, $field_value, $new_post_id );
-                    }
-                }
+            if ( ! empty($remote_post['acf']) && is_array($remote_post['acf']) ) {
+                h2_import_acf_fields( $new_post_id, $remote_post['acf'], $errors );
             }
-
             // 5. Set ngôn ngữ
             if ( function_exists('pll_set_post_language') && ! empty($remote_post['lang']) ) {
                 pll_set_post_language( $new_post_id, $remote_post['lang'] );
@@ -1618,6 +1599,71 @@ function h2_import_du_an_from_tasmania() {
     exit;
 }
 
+/**
+ * Dong bo toan bo truong ACF (de quy: group, repeater, flexible, gallery, image, link...).
+ * - Anh/file duoc tai ve media site dich va thay bang ID moi.
+ * - Truong khong ton tai tren site dich duoc ghi vao $errors de de doi chieu.
+ */
+function h2_import_acf_fields( $post_id, array $acf, array &$errors ) {
+    if ( ! function_exists('update_field') ) {
+        return;
+    }
+    foreach ( $acf as $field_name => $field_value ) {
+        if ( function_exists('acf_get_field') && ! acf_get_field( $field_name ) ) {
+            $errors[] = "Bài #{$post_id}: field ACF '{$field_name}' không tồn tại trên site này (cần tạo field group trùng tên).";
+            continue;
+        }
+        if ( $field_value === null ) {
+            continue;
+        }
+        $converted = h2_acf_convert_value( $field_value, $post_id );
+        update_field( $field_name, $converted, $post_id );
+    }
+}
+
+/**
+ * Nhan dien mang la anh/file ACF (co url + dau hieu attachment), khac voi truong Link (url/title/target).
+ */
+function h2_acf_is_attachment( $v ) {
+    return is_array($v) && ! empty($v['url']) && ( isset($v['mime_type']) || isset($v['sizes']) || isset($v['filename']) || ( isset($v['ID']) && isset($v['type']) ) );
+}
+
+function h2_acf_convert_value( $value, $post_id ) {
+    if ( ! is_array($value) ) {
+        return $value;
+    }
+    if ( h2_acf_is_attachment($value) ) {
+        $id = h2_sideload_image_cached( $value['url'], $post_id );
+        return ( $id && ! is_wp_error($id) ) ? $id : '';
+    }
+    $out = [];
+    foreach ( $value as $k => $v ) {
+        $out[$k] = h2_acf_convert_value( $v, $post_id );
+    }
+    return $out;
+}
+
+/**
+ * Sideload co cache theo URL goc de khong tai trung anh khi chay lai.
+ */
+function h2_sideload_image_cached( $url, $post_id = 0 ) {
+    $existing = get_posts([
+        'post_type'      => 'attachment',
+        'post_status'    => 'inherit',
+        'meta_key'       => '_h2_source_url',
+        'meta_value'     => $url,
+        'posts_per_page' => 1,
+        'fields'         => 'ids',
+    ]);
+    if ( ! empty($existing) ) {
+        return $existing[0];
+    }
+    $id = h2_sideload_image( $url, $post_id );
+    if ( $id && ! is_wp_error($id) ) {
+        update_post_meta( $id, '_h2_source_url', $url );
+    }
+    return $id;
+}
 function h2_sideload_image( $image_url, $post_id = 0 ) {
     require_once ABSPATH . 'wp-admin/includes/file.php';
     require_once ABSPATH . 'wp-admin/includes/media.php';
