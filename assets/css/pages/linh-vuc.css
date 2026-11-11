@@ -432,6 +432,7 @@
     overflow: hidden;
     overflow-x: auto;
     scrollbar-width: none;
+    /* flex-wrap: wrap; */
 }
 
 .mbland_linhvuc_listProject_filterItem {
@@ -451,7 +452,6 @@
     display: block;
     transition: background-color .3s ease, color .3s ease;
     border-radius: 100px;
-    min-width: 300px;
     text-wrap: nowrap;
 }
 
@@ -736,7 +736,6 @@
 
     .mbland_linhvuc_listProject_filterLink {
         font-size: 14px;
-        min-width: 250px;
     }
 
     .mbland_linhvuc_listProject_content {
@@ -836,6 +835,21 @@
         font-size: 15px;
         margin-top: 24px;
     }
+
+    .mbland_linhvuc_listProject_filterList {
+        border: 0px solid var(--primary-color);
+        border-radius: 0;
+        gap: 10px;
+    }
+
+    .mbland_linhvuc_listProject_filterItem {
+        border: 1px solid var(--primary-color);
+        border-radius: 100px
+    }
+
+    .mbland_linhvuc_listProject_filterItem {
+        flex: unset;
+    }
 }
 
 @media (max-width: 576px) {
@@ -913,6 +927,14 @@
     .mbland_linhvuc_listProject_itemLocationValue,
     .mbland_linhvuc_listProject_itemScaleValue {
         font-size: 13px;
+    }
+
+    .mbland_linhvuc_listProject_filterLink {
+        font-size: 12px;
+    }
+
+    .mbland_linhvuc_listProject_itemLink {
+        font-size: 12px;
     }
 }
 
@@ -1213,6 +1235,54 @@
     .mbland_linhvuc_coreStrengths_item {
         min-height: 46vw;
     }
+
+    .mbland_linhvuc_coreStrengths_item {
+        background-color: var(--secondary-color);
+    }
+
+    .mbland_linhvuc_coreStrengths_item .mbland_linhvuc_coreStrengths_itemMain {
+        top: 32px;
+        left: 28px;
+    }
+
+    .mbland_linhvuc_coreStrengths_item .mbland_linhvuc_coreStrengths_itemTitle,
+    .mbland_linhvuc_coreStrengths_item .mbland_linhvuc_coreStrengths_itemLabel {
+        color: #fff;
+        text-align: left;
+    }
+
+    .mbland_linhvuc_coreStrengths_item .mbland_linhvuc_coreStrengths_itemMain {
+        position: absolute;
+        top: 35px;
+        left: 35px;
+        text-align: left;
+        transform: translate(0, 0);
+    }
+
+    .mbland_linhvuc_coreStrengths_itemTitle {
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 1.2em;
+        text-align: left;
+        text-transform: uppercase;
+        color: #0C1DB7;
+        margin-bottom: 8px;
+    }
+
+    .mbland_linhvuc_coreStrengths_itemLabel {
+        color: #0C1DB7;
+        text-align: left;
+        font-weight: 500;
+        font-size: 11px;
+        line-height: 100%;
+        letter-spacing: 36%;
+        text-transform: uppercase;
+    }
+
+    .mbland_linhvuc_coreStrengths_item .mbland_linhvuc_coreStrengths_itemHover,
+    .mbland_linhvuc_coreStrengths_item .mbland_linhvuc_coreStrengths_itemBg {
+        opacity: 1;
+    }
 }
 
 @media (max-width: 576px) {
@@ -1233,7 +1303,7 @@
     }
 
     .mbland_linhvuc_coreStrengths_list {
-        grid-template-columns: repeat(1, 1fr);
+        /* grid-template-columns: repeat(1, 1fr); */
         max-width: 420px;
     }
 
@@ -1253,6 +1323,40 @@
 
     .mbland_linhvuc_coreStrengths_title {
         margin-bottom: 16px;
+    }
+
+    .mbland_linhvuc_coreStrengths_item .mbland_linhvuc_coreStrengths_itemMain {
+        top: 20px !important;
+        left: 16px !important;
+        width: calc(100% - 32px);
+    }
+
+    .mbland_linhvuc_coreStrengths_itemHover {
+        bottom: 16px;
+        left: 16px;
+        right: 16px;
+    }
+
+    .mbland_linhvuc_coreStrengths_itemTag {
+        font-size: 10px;
+    }
+
+    .mbland_linhvuc_coreStrengths_itemDesc {
+        font-size: 12px;
+    }
+
+    .mbland_linhvuc_coreStrengths_itemTitle {
+        font-size: 16px;
+    }
+
+    .mbland_linhvuc_coreStrengths_itemLabel {
+        font-weight: 400;
+        font-size: 10px;
+        letter-spacing: 8%;
+    }
+
+    .mbland_linhvuc_coreStrengths_item {
+        min-height: min(55vw, 420px);
     }
 }
 
