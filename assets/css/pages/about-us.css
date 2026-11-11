@@ -1438,7 +1438,7 @@
 
 .mbland_aboutUs_teamSection_memberName {
 	font-weight: 700;
-	font-size: 20px;
+	font-size: 24px;
 	line-height: 120%;
 	letter-spacing: -0.02em;
 	color: #fff;
@@ -1446,7 +1446,6 @@
 
 .mbland_aboutUs_teamSection_memberPosition {
 	font-weight: 400;
-	/* font-size: 16px; */
 	line-height: 120%;
 	letter-spacing: -0.02em;
 	color: #D8D8D8;
@@ -1473,7 +1472,7 @@
 
 .mbland_aboutUs_teamSection_memberDetailName {
 	font-weight: 700;
-	font-size: 20px;
+	font-size: 16px;
 	line-height: 120%;
 	letter-spacing: -0.02em;
 	color: var(--secondary-color);
@@ -1482,16 +1481,16 @@
 .mbland_aboutUs_teamSection_memberDetailPosition {
 	color: #000A65;
 	font-weight: 400;
-	font-size: 16px;
+	font-size: 12px;
 	line-height: 120%;
 	letter-spacing: -0.02em;
-	margin-top: 8px;
+	margin-top: 4px;
 }
 
 .mbland_aboutUs_teamSection_memberTimeline {
-	font-size: 13px;
+	font-size: 12px;
 	list-style-type: disc;
-	margin-top: 32px;
+	margin-top: 16px;
 	list-style: unset !important;
 	padding-left: 1.3em;
 }
@@ -1501,7 +1500,7 @@
 }
 
 .mbland_aboutUs_teamSection_memberTimelineItem+.mbland_aboutUs_teamSection_memberTimelineItem {
-	margin-top: 14px;
+	margin-top: 4px;
 }
 
 .mbland_aboutUs_teamSection_memberTimelineYear {}
@@ -1723,7 +1722,12 @@
 	}
 
 	.mbland_aboutUs_teamSection_memberDetail {
-		padding: 20px;
+		padding: 16px;
+	}
+
+	.mbland_aboutUs_teamSection_memberTimeline {
+		font-size: 11px;
+		letter-spacing: -0.25px;
 	}
 }
 
