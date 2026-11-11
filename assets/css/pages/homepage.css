@@ -1417,6 +1417,10 @@ a.mbland_homepage_info_ctaOutline:hover {
     /* margin-bottom: 50px; */
   }
 
+  .mbland_homepage_activities_heading {
+    text-align: center;
+  }
+
   .mbland_homepage_activities_cta {
     align-self: center;
     margin: 0 auto;
