@@ -418,10 +418,13 @@ if ( $projects_source === 'manual' && ! empty( $home_projects['projects'] ) ) {
 			'posts_per_page' => $projects_limit,
 			'fields'         => 'ids',
 			'no_found_rows'  => true,
+			'orderby'        => 'date',
+			'order'          => 'DESC',
 			'tax_query'      => array(
 				array(
 					'taxonomy' => 'du-an-noi-bat',
-					'operator' => 'EXISTS',
+					'field'    => 'slug',
+					'terms'    => array( 'du-an-noi-bat', 'featured-projects' ),
 				),
 			),
 		) );
