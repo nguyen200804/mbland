@@ -256,7 +256,7 @@ if ( $hero_query->have_posts() ) {
 }
 wp_reset_postdata();
 
-// Chưa có tab nào active: hiện panel "tất cả" = mọi dự án thuộc danh mục hiện tại, trừ dự án đang hiện ở hero
+// Chưa có tab nào active: hiện panel "tất cả" = mọi dự án thuộc danh mục hiện tại (kể cả dự án đang hiện ở hero)
 if ( ! empty( $lv_tab_terms ) && ! $lv_active_term_id ) {
 	$lv_all_args = array(
 		'post_type'      => 'du-an',
@@ -265,7 +265,6 @@ if ( ! empty( $lv_tab_terms ) && ! $lv_active_term_id ) {
 		'no_found_rows'  => true,
 		'orderby'        => 'date',
 		'order'          => 'DESC',
-		'post__not_in'   => $hero_project_id ? array( $hero_project_id ) : array(),
 	);
 	if ( ! empty( $tax_query ) ) {
 		$lv_all_args['tax_query'] = $tax_query;
