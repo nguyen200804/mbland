@@ -1085,6 +1085,7 @@
 	height: 62px !important;
 	object-fit: contain !important;
 	object-position: left;
+	width: fit-content !important;
 }
 
 .mbland_homepage_company_showcasePagination.swiper-pagination {
@@ -1167,6 +1168,8 @@
 	.mbland_homepage_company_introHeader {
 		margin-left: -28px;
 		padding-left: 28px;
+		max-width: max-content;
+		padding-right: 28px;
 	}
 
 	.mbland_homepage_company_introContent {
@@ -1189,10 +1192,11 @@
 	.mbland_homepage_company_introHeader {
 		margin-left: -24px;
 		padding-left: 24px;
+		padding-right: 24px;
 	}
 
 	.mbland_homepage_company_introTitle {
-		font-size: 16px;
+		font-size: 14px;
 	}
 
 	.mbland_homepage_company_introContent {
@@ -1200,7 +1204,11 @@
 	}
 
 	.mbland_homepage_company_introBrandName {
-		font-size: 16px;
+		font-size: 14px;
+	}
+
+	.mbland_homepage_company_nav {
+		display: none;
 	}
 }
 
@@ -1219,6 +1227,7 @@
 	.mbland_homepage_company_introHeader {
 		margin-left: -20px;
 		padding-left: 20px;
+		padding-right: 24px;
 	}
 
 	.mbland_homepage_company_nav {
@@ -1246,6 +1255,10 @@
 		padding-bottom: 50px;
 	}
 
+	.mbland_homepage_company_showcaseItem {
+		padding: 24px 35px 24px;
+	}
+
 	.mbland_homepage_company_media {
 		min-width: calc(100% + (16px * 2));
 		width: calc(100% + (16px * 2));
@@ -1256,11 +1269,23 @@
 	.mbland_homepage_company_introHeader {
 		margin-left: -16px;
 		padding-left: 16px;
+		padding-right: 20px;
 	}
 
 	.mbland_homepage_company_introContent {
 		padding: 32px 0 32px 0px;
 	}
+
+	.mbland_homepage_company_showcaseLogo {
+		height: 55px !important;
+		max-width: 120px;
+
+	}
+
+	.mbland_homepage_company_showcaseNumber {
+		font-size: 80px;
+	}
+
 }
 
 /* ===== END SECTION COMPANY ===== */
