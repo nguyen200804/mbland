@@ -325,22 +325,75 @@
 @media (max-width: 768px) {
 	.mbland_about_values_item {
 		min-height: 46vw;
+		background-color: var(--secondary-color);
+	}
+
+	.mbland_about_values_hover {
+		opacity: 1 !important;
+	}
+
+	.mbland_about_values_item .mbland_about_values_center {
+		top: 40px !important;
+		left: 32px !important;
+		text-align: left !important;
+		transform: translate(0, 0) !important;
+	}
+
+	.mbland_about_values_item .mbland_about_values_title,
+	.mbland_about_values_item .mbland_about_values_label {
+		color: #fff;
+		text-align: left;
+	}
+
+	.mbland_about_values_title {
+		text-align: left;
 	}
 }
 
 @media (max-width: 576px) {
 	.mbland_about_values {
-		grid-template-columns: repeat(1, 1fr);
-		max-width: 420px;
+		gap: 12px;
 	}
 
 	.mbland_about_values_item {
-		min-height: min(76vw, 420px);
+		min-height: min(76vw, 210px);
 	}
 
 	.mbland_about_values_title {
-		font-size: 36px;
+		font-size: 24px;
 	}
+
+	.mbland_about_values_label {
+		font-size: 10.5px;
+		letter-spacing: 10%;
+	}
+
+	.mbland_about_values_tag {
+		font-size: 11px;
+	}
+
+
+
+	.mbland_about_values_hover {
+		bottom: 16px;
+		left: 16px;
+		right: 16px;
+	}
+
+	.mbland_about_values_desc {
+		font-size: 13px;
+		line-height: 18px;
+		padding-top: 10px;
+	}
+
+	.mbland_about_values_item .mbland_about_values_center {
+		top: 20px !important;
+		left: 16px !important;
+		text-align: left !important;
+		transform: translate(0, 0) !important;
+	}
+
+
 }
 
 /* ===== END VALUES ===== */
