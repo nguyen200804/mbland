@@ -49,7 +49,9 @@
   margin: 0;
 }
 
-.mbland_linhvuc_hero_breadcrumb li {
+.mbland_linhvuc_hero_breadcrumb li,
+.mbland_linhvuc_hero_breadcrumb li a,
+.mbland_linhvuc_hero_breadcrumb li::after {
   color: #fff !important;
 }
 

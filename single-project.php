@@ -43,19 +43,14 @@ $content = wp_kses_post(get_field('content', $post_id));
 $gallery = get_field('gallery', $post_id);
 
 // Featured image cho image cuối (sidebar)
-$featured_thumb_id    = get_post_thumbnail_id($post_id);
-$featured_image_url   = get_the_post_thumbnail_url($post_id, 'full'); // Hoặc 'full' nếu cần kích thước lớn hơn
-$featured_image_alt   = get_post_meta($featured_thumb_id, '_wp_attachment_image_alt', true) ?: get_the_title($post_id);
-$featured_image_title = get_the_title($post_id); // Title fallback từ post title
-$featured_image_width  = 1920;
-$featured_image_height = 1080;
-if ( $featured_thumb_id ) {
-    $featured_image_src = wp_get_attachment_image_src( $featured_thumb_id, 'full' );
-    if ( ! empty( $featured_image_src ) ) {
-        $featured_image_width  = ! empty( $featured_image_src[1] ) ? $featured_image_src[1] : 1920;
-        $featured_image_height = ! empty( $featured_image_src[2] ) ? $featured_image_src[2] : 1080;
-    }
-}
+// Ảnh hero: ưu tiên trường ACF "banner", nếu không có thì dùng ảnh đại diện (xem homenest_get_project_hero)
+$hero_image            = homenest_get_project_hero( $post_id );
+$featured_thumb_id     = $hero_image['id'];
+$featured_image_url    = $hero_image['url'];
+$featured_image_alt    = $hero_image['alt'] ?: get_the_title($post_id);
+$featured_image_title  = get_the_title($post_id); // Title fallback từ post title
+$featured_image_width  = $hero_image['width'];
+$featured_image_height = $hero_image['height'];
 
 // Dự án liên quan
 $related_args = array(

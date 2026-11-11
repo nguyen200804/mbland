@@ -94,6 +94,59 @@ add_action( 'wp_enqueue_scripts', 'homenest_enqueue_scripts' );
 
 
 /**
+ * Anh hero trang chi tiet du an: uu tien ACF "banner" (array / ID / URL), neu khong co dung anh dai dien.
+ *
+ * @return array{id:int,url:string,alt:string,width:int,height:int}
+ */
+function homenest_get_project_hero( $post_id ) {
+    $post_id = (int) $post_id;
+    $banner  = function_exists( 'get_field' ) ? get_field( 'banner', $post_id ) : false;
+    $id      = 0;
+    $url     = '';
+    $alt     = '';
+
+    if ( is_array( $banner ) ) {
+        $id  = ! empty( $banner['ID'] ) ? (int) $banner['ID'] : ( ! empty( $banner['id'] ) ? (int) $banner['id'] : 0 );
+        $url = ! empty( $banner['url'] ) ? $banner['url'] : '';
+        $alt = ! empty( $banner['alt'] ) ? $banner['alt'] : '';
+    } elseif ( is_numeric( $banner ) && (int) $banner > 0 ) {
+        $id  = (int) $banner;
+        $url = (string) wp_get_attachment_image_url( $id, 'full' );
+    } elseif ( is_string( $banner ) && '' !== $banner ) {
+        $url = $banner;
+        $id  = (int) attachment_url_to_postid( $url );
+    }
+
+    // Fallback: anh dai dien
+    if ( '' === $url ) {
+        $id  = (int) get_post_thumbnail_id( $post_id );
+        $url = $id ? (string) wp_get_attachment_image_url( $id, 'full' ) : '';
+    }
+
+    if ( '' === $alt && $id ) {
+        $alt = (string) get_post_meta( $id, '_wp_attachment_image_alt', true );
+    }
+
+    $width  = 1920;
+    $height = 1080;
+    if ( $id ) {
+        $src = wp_get_attachment_image_src( $id, 'full' );
+        if ( ! empty( $src[1] ) && ! empty( $src[2] ) ) {
+            $width  = (int) $src[1];
+            $height = (int) $src[2];
+        }
+    }
+
+    return array(
+        'id'     => $id,
+        'url'    => $url,
+        'alt'    => $alt,
+        'width'  => $width,
+        'height' => $height,
+    );
+}
+
+/**
  * Lay du lieu anh hero trang chu (ACF home_hero.banner) kem fallback.
  * Dung chung cho template va preload trong <head>.
  *
@@ -124,8 +177,9 @@ function homenest_head_hints() {
     // Trang chi tiet du an: preload anh hero (LCP) voi srcset responsive
     if ( is_singular( 'du-an' ) ) {
         echo '<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>' . "\n";
-        $thumb_id = get_post_thumbnail_id();
-        $url      = $thumb_id ? wp_get_attachment_image_url( $thumb_id, 'full' ) : '';
+        $hero     = homenest_get_project_hero( get_queried_object_id() );
+        $thumb_id = $hero['id'];
+        $url      = $hero['url'];
         if ( $url ) {
             $srcset = wp_get_attachment_image_srcset( $thumb_id, 'full' );
             printf(
