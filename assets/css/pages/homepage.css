@@ -1288,8 +1288,21 @@ a.mbland_homepage_info_ctaOutline:hover {
   gap: 40px;
 }
 
+.mbland_homepage_activities_wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
 .mbland_homepage_activities_slider {
   overflow: hidden;
+  margin-top: 72px;
+  width: 100%;
+}
+
+.mbland_homepage_activities_cta {
+  align-self: center;
+  margin-top: 12px;
 }
 
 .mbland_homepage_activities .swiper-slide {
@@ -1404,6 +1417,16 @@ a.mbland_homepage_info_ctaOutline:hover {
     /* margin-bottom: 50px; */
   }
 
+  .mbland_homepage_activities_cta {
+    align-self: center;
+    margin: 0 auto;
+    margin-top: 28px;
+    order: 1;
+    width: 53%;
+    justify-content: center;
+  }
+
+
   .mbland_homepage_activities_slider {
     margin-top: 50px;
   }
@@ -1434,7 +1457,7 @@ a.mbland_homepage_info_ctaOutline:hover {
   }
  */
   .mbland_homepage_activities_slider {
-    margin-top: 40px;
+    margin-top: 32px;
   }
 }
 
