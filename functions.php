@@ -1389,8 +1389,7 @@ function h2_import_du_an_from_tasmania() {
         return;
     }
 
-    // ĐỔI KEY NÀY
-    $secret_key = 'YOUR_SECRET_KEY';
+    $secret_key = 'YOUR_SECRET_KEY'; // ← Đổi key của bạn
 
     if ( ! isset($_GET['key']) || $_GET['key'] !== $secret_key ) {
         wp_die('Sai key bảo mật.');
@@ -1439,11 +1438,18 @@ function h2_import_du_an_from_tasmania() {
         }
 
         foreach ( $posts as $remote_post ) {
-            $slug = $remote_post['slug'];
 
-            // Bỏ qua nếu đã tồn tại
-            $existing = get_page_by_path( $slug, OBJECT, 'du-an' );
-            if ( $existing ) {
+            // === Kiểm tra đã import chưa (theo ID gốc) ===
+            $existing = get_posts([
+                'post_type'      => 'du-an',
+                'meta_key'       => '_source_post_id',
+                'meta_value'     => $remote_post['id'],
+                'posts_per_page' => 1,
+                'fields'         => 'ids',
+                'post_status'    => 'any',
+            ]);
+
+            if ( ! empty($existing) ) {
                 $skipped++;
                 continue;
             }
@@ -1454,7 +1460,7 @@ function h2_import_du_an_from_tasmania() {
                 'post_content'  => $remote_post['content']['rendered'],
                 'post_status'   => $remote_post['status'],
                 'post_type'     => 'du-an',
-                'post_name'     => $slug,
+                'post_name'     => $remote_post['slug'],
                 'post_date'     => $remote_post['date'],
                 'post_date_gmt' => $remote_post['date_gmt'],
             ];
@@ -1462,9 +1468,12 @@ function h2_import_du_an_from_tasmania() {
             $new_post_id = wp_insert_post( $post_data, true );
 
             if ( is_wp_error($new_post_id) ) {
-                $errors[] = 'Không tạo được: ' . $slug;
+                $errors[] = 'Không tạo được: ' . $remote_post['slug'] . ' - ' . $new_post_id->get_error_message();
                 continue;
             }
+
+            // Lưu ID gốc để lần sau không bị trùng
+            update_post_meta( $new_post_id, '_source_post_id', $remote_post['id'] );
 
             // 2. Taxonomy
             foreach ( $taxonomies as $tax ) {
@@ -1512,9 +1521,8 @@ function h2_import_du_an_from_tasmania() {
             // 4. ACF Fields
             if ( ! empty($remote_post['acf']) && is_array($remote_post['acf']) && function_exists('update_field') ) {
                 foreach ( $remote_post['acf'] as $field_key => $field_value ) {
-                    // Xử lý field dạng image / gallery / file
                     if ( is_array($field_value) && isset($field_value['url']) ) {
-                        // Single image
+                        // Image
                         $img_id = h2_sideload_image( $field_value['url'], $new_post_id );
                         if ( $img_id && ! is_wp_error($img_id) ) {
                             update_field( $field_key, $img_id, $new_post_id );
@@ -1534,7 +1542,6 @@ function h2_import_du_an_from_tasmania() {
                             update_field( $field_key, $gallery_ids, $new_post_id );
                         }
                     } else {
-                        // Text, number, true/false, select, textarea, wysiwyg...
                         update_field( $field_key, $field_value, $new_post_id );
                     }
                 }
@@ -1549,11 +1556,10 @@ function h2_import_du_an_from_tasmania() {
         }
 
         $page++;
-        usleep(400000); // 0.4s
+        usleep(400000);
 
     } while ( count($posts) === $per_page );
 
-    // Kết quả
     echo '<div style="padding:40px;font-family:sans-serif;max-width:800px">';
     echo '<h2>Import hoàn tất</h2>';
     echo '<p><strong>Đã import:</strong> ' . $imported . '</p>';
@@ -1570,9 +1576,6 @@ function h2_import_du_an_from_tasmania() {
     exit;
 }
 
-/**
- * Download ảnh về Media Library
- */
 function h2_sideload_image( $image_url, $post_id = 0 ) {
     require_once ABSPATH . 'wp-admin/includes/file.php';
     require_once ABSPATH . 'wp-admin/includes/media.php';
