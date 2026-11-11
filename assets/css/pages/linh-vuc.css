@@ -187,7 +187,7 @@
         inset -1px -1px 0 rgb(255 255 255 / 0.1),
         0 8px 32px rgb(0 0 0 / 0.15);
     text-transform: uppercase;
-    font-weight: 600;
+    font-weight: 400;
 }
 
 .mbland_linhvuc_hero_featuredLinkLabel {}
@@ -300,10 +300,27 @@
 
     .mbland_linhvuc_hero_featuredTitle {
         font-size: 29px;
+        margin-bottom: 10px;
     }
 
     .mbland_linhvuc_hero_breadcrumb {
         display: none;
+    }
+
+    .mbland_linhvuc_hero_featuredDesc {
+        display: none
+    }
+
+    .mbland_linhvuc_hero_featuredDecor {
+        /* display: none; */
+    }
+
+    .mbland_linhvuc_hero_featuredDivider {
+        /* display: none; */
+    }
+
+    .mbland_linhvuc_hero_featuredAction {
+        margin: 0 auto;
     }
 }
 
