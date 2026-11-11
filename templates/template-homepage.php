@@ -293,7 +293,11 @@ if ( ! empty( $home_branches['terms'] ) && is_array( $home_branches['terms'] ) )
 		<header class="mbland_homepage_branches_header">
 			<h2 class="mbland_homepage_branches_title"><?php echo esc_html( $branches_title ); ?></h2>
 			<p class="mbland_homepage_branches_desc"><?php echo nl2br( esc_html( $branches_desc ) ); ?></p>
-			<?php
+			
+		</header>
+	</div>
+
+	<?php
 			if ( ! empty( $branches_cta['url'] ) ) {
 				get_template_part( 'template-parts/ui/button', null, array(
 					'url'   => $branches_cta['url'],
@@ -303,8 +307,6 @@ if ( ! empty( $home_branches['terms'] ) && is_array( $home_branches['terms'] ) )
 				) );
 			}
 			?>
-		</header>
-	</div>
 
 	<div class="mbland_homepage_branches_list">
 		<?php
