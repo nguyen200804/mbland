@@ -1600,27 +1600,77 @@ function h2_import_du_an_from_tasmania() {
 }
 
 /**
- * Dong bo toan bo truong ACF (de quy: group, repeater, flexible, gallery, image, link...).
- * - Anh/file duoc tai ve media site dich va thay bang ID moi.
- * - Truong khong ton tai tren site dich duoc ghi vao $errors de de doi chieu.
+ * Dong bo truong ACF tu REST cua site nguon.
+ * REST nguon tra moi field kem 1 khoa phu "<ten>_source" (label/type/formatted_value) -> bo qua khoa phu,
+ * chi dung "type" de biet field la image/file/gallery.
+ * Field image/file/gallery tren REST chi tra ID anh CUA SITE NGUON -> goi REST media de lay URL, tai ve media site dich, doi sang ID moi.
+ * Field khong ton tai tren site dich duoc ghi vao $errors.
  */
 function h2_import_acf_fields( $post_id, array $acf, array &$errors ) {
     if ( ! function_exists('update_field') ) {
         return;
     }
     foreach ( $acf as $field_name => $field_value ) {
+        if ( substr( $field_name, -7 ) === '_source' ) {
+            continue;
+        }
         if ( function_exists('acf_get_field') && ! acf_get_field( $field_name ) ) {
             $errors[] = "Bài #{$post_id}: field ACF '{$field_name}' không tồn tại trên site này (cần tạo field group trùng tên).";
             continue;
         }
-        if ( $field_value === null ) {
+        if ( $field_value === null || $field_value === false ) {
             continue;
         }
-        $converted = h2_acf_convert_value( $field_value, $post_id );
-        update_field( $field_name, $converted, $post_id );
+        $type = isset( $acf[ $field_name . '_source' ]['type'] ) ? $acf[ $field_name . '_source' ]['type'] : '';
+
+        if ( in_array( $type, [ 'image', 'file' ], true ) ) {
+            $new_id = h2_import_remote_attachment( $field_value, $post_id );
+            if ( $new_id ) {
+                update_field( $field_name, $new_id, $post_id );
+            } elseif ( $field_value !== '' ) {
+                $errors[] = "Bài #{$post_id}: không tải được ảnh/file cho field '{$field_name}'.";
+            }
+            continue;
+        }
+
+        if ( $type === 'gallery' && is_array( $field_value ) ) {
+            $ids = [];
+            foreach ( $field_value as $item ) {
+                $new_id = h2_import_remote_attachment( $item, $post_id );
+                if ( $new_id ) {
+                    $ids[] = $new_id;
+                }
+            }
+            update_field( $field_name, $ids, $post_id );
+            continue;
+        }
+
+        update_field( $field_name, h2_acf_convert_value( $field_value, $post_id ), $post_id );
     }
 }
 
+/**
+ * Nhan 1 gia tri anh tu REST nguon (ID so, URL, hoac mang co url) -> tra ve ID attachment tren site dich (hoac 0).
+ */
+function h2_import_remote_attachment( $value, $post_id ) {
+    $url = '';
+    if ( is_array( $value ) && ! empty( $value['url'] ) ) {
+        $url = $value['url'];
+    } elseif ( is_numeric( $value ) && (int) $value > 0 ) {
+        $res = wp_remote_get( 'https://tasmaniapartners.vn/wp-json/wp/v2/media/' . (int) $value . '?_fields=source_url', [ 'timeout' => 60, 'sslverify' => false ] );
+        if ( ! is_wp_error( $res ) && wp_remote_retrieve_response_code( $res ) === 200 ) {
+            $data = json_decode( wp_remote_retrieve_body( $res ), true );
+            $url  = isset( $data['source_url'] ) ? $data['source_url'] : '';
+        }
+    } elseif ( is_string( $value ) && filter_var( $value, FILTER_VALIDATE_URL ) ) {
+        $url = $value;
+    }
+    if ( ! $url ) {
+        return 0;
+    }
+    $id = h2_sideload_image_cached( $url, $post_id );
+    return ( $id && ! is_wp_error( $id ) ) ? (int) $id : 0;
+}
 /**
  * Nhan dien mang la anh/file ACF (co url + dau hieu attachment), khac voi truong Link (url/title/target).
  */
