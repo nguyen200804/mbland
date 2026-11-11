@@ -451,7 +451,7 @@ if ( $projects_source === 'manual' && ! empty( $home_projects['projects'] ) ) {
 ?>
 <section class="mbland_homepage_projects">
 	<div class="container">
-		<div class="mbland_homepage_projects_heading">
+		
 			<div class="mbland_homepage_projects_title">
 				<h2><?php echo esc_html( $projects_title ); ?></h2>
 				<p><?php echo nl2br( esc_html( $projects_desc ) ); ?></p>
@@ -466,7 +466,6 @@ if ( $projects_source === 'manual' && ! empty( $home_projects['projects'] ) ) {
 				) );
 			}
 			?>
-		</div>
 
 		<div class="mbland_homepage_projects_wrapper">
 			<?php
