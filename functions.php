@@ -1375,3 +1375,222 @@ add_action( 'admin_notices', function () {
     echo '<a href="' . esc_url( $url_over ) . '" class="button" onclick="return confirm(\'Ghi đè thống kê của TẤT CẢ dự án (kể cả đã có dữ liệu)?\');">Ghi đè tất cả</a>';
     echo '</div>';
 } );
+
+
+/**
+ * Import du-an + ACF từ tasmaniapartners.vn
+ * Trigger: /wp-admin/?run_import_du_an=1&key=YOUR_SECRET_KEY
+ */
+
+add_action('admin_init', 'h2_import_du_an_from_tasmania');
+
+function h2_import_du_an_from_tasmania() {
+    if ( ! isset($_GET['run_import_du_an']) || $_GET['run_import_du_an'] != '1' ) {
+        return;
+    }
+
+    // ĐỔI KEY NÀY
+    $secret_key = 'YOUR_SECRET_KEY';
+
+    if ( ! isset($_GET['key']) || $_GET['key'] !== $secret_key ) {
+        wp_die('Sai key bảo mật.');
+    }
+
+    if ( ! current_user_can('manage_options') ) {
+        wp_die('Bạn không có quyền.');
+    }
+
+    set_time_limit(0);
+    ini_set('memory_limit', '512M');
+
+    $source_url = 'https://tasmaniapartners.vn/wp-json/wp/v2/du-an';
+    $per_page   = 30;
+    $page       = 1;
+    $imported   = 0;
+    $skipped    = 0;
+    $errors     = [];
+
+    $taxonomies = ['danh-muc-du-an', 'du-an-noi-bat', 'linh-vuc'];
+
+    do {
+        $response = wp_remote_get( add_query_arg([
+            'per_page' => $per_page,
+            'page'     => $page,
+            '_embed'   => 1,
+        ], $source_url ), [
+            'timeout'   => 90,
+            'sslverify' => false,
+        ]);
+
+        if ( is_wp_error($response) ) {
+            $errors[] = 'Lỗi kết nối page ' . $page . ': ' . $response->get_error_message();
+            break;
+        }
+
+        if ( wp_remote_retrieve_response_code($response) !== 200 ) {
+            $errors[] = 'HTTP lỗi ở page ' . $page;
+            break;
+        }
+
+        $posts = json_decode( wp_remote_retrieve_body($response), true );
+
+        if ( empty($posts) || ! is_array($posts) ) {
+            break;
+        }
+
+        foreach ( $posts as $remote_post ) {
+            $slug = $remote_post['slug'];
+
+            // Bỏ qua nếu đã tồn tại
+            $existing = get_page_by_path( $slug, OBJECT, 'du-an' );
+            if ( $existing ) {
+                $skipped++;
+                continue;
+            }
+
+            // 1. Tạo post
+            $post_data = [
+                'post_title'    => wp_strip_all_tags( $remote_post['title']['rendered'] ),
+                'post_content'  => $remote_post['content']['rendered'],
+                'post_status'   => $remote_post['status'],
+                'post_type'     => 'du-an',
+                'post_name'     => $slug,
+                'post_date'     => $remote_post['date'],
+                'post_date_gmt' => $remote_post['date_gmt'],
+            ];
+
+            $new_post_id = wp_insert_post( $post_data, true );
+
+            if ( is_wp_error($new_post_id) ) {
+                $errors[] = 'Không tạo được: ' . $slug;
+                continue;
+            }
+
+            // 2. Taxonomy
+            foreach ( $taxonomies as $tax ) {
+                if ( empty($remote_post[$tax]) ) continue;
+
+                $term_ids = [];
+                foreach ( $remote_post[$tax] as $term_id_remote ) {
+                    $term_res = wp_remote_get( "https://tasmaniapartners.vn/wp-json/wp/v2/{$tax}/{$term_id_remote}" );
+                    if ( is_wp_error($term_res) ) continue;
+
+                    $term_data = json_decode( wp_remote_retrieve_body($term_res), true );
+                    if ( empty($term_data['name']) ) continue;
+
+                    $term = term_exists( $term_data['slug'], $tax );
+                    if ( ! $term ) {
+                        $term = wp_insert_term( $term_data['name'], $tax, [
+                            'slug' => $term_data['slug'],
+                        ]);
+                    }
+
+                    if ( ! is_wp_error($term) ) {
+                        $term_ids[] = (int) $term['term_id'];
+                    }
+                }
+
+                if ( $term_ids ) {
+                    wp_set_object_terms( $new_post_id, $term_ids, $tax );
+                }
+            }
+
+            // 3. Featured Image
+            if ( ! empty($remote_post['featured_media']) ) {
+                $media_res = wp_remote_get( "https://tasmaniapartners.vn/wp-json/wp/v2/media/{$remote_post['featured_media']}" );
+                if ( ! is_wp_error($media_res) ) {
+                    $media = json_decode( wp_remote_retrieve_body($media_res), true );
+                    if ( ! empty($media['source_url']) ) {
+                        $image_id = h2_sideload_image( $media['source_url'], $new_post_id );
+                        if ( $image_id && ! is_wp_error($image_id) ) {
+                            set_post_thumbnail( $new_post_id, $image_id );
+                        }
+                    }
+                }
+            }
+
+            // 4. ACF Fields
+            if ( ! empty($remote_post['acf']) && is_array($remote_post['acf']) && function_exists('update_field') ) {
+                foreach ( $remote_post['acf'] as $field_key => $field_value ) {
+                    // Xử lý field dạng image / gallery / file
+                    if ( is_array($field_value) && isset($field_value['url']) ) {
+                        // Single image
+                        $img_id = h2_sideload_image( $field_value['url'], $new_post_id );
+                        if ( $img_id && ! is_wp_error($img_id) ) {
+                            update_field( $field_key, $img_id, $new_post_id );
+                        }
+                    } elseif ( is_array($field_value) && isset($field_value[0]['url']) ) {
+                        // Gallery
+                        $gallery_ids = [];
+                        foreach ( $field_value as $img ) {
+                            if ( ! empty($img['url']) ) {
+                                $img_id = h2_sideload_image( $img['url'], $new_post_id );
+                                if ( $img_id && ! is_wp_error($img_id) ) {
+                                    $gallery_ids[] = $img_id;
+                                }
+                            }
+                        }
+                        if ( $gallery_ids ) {
+                            update_field( $field_key, $gallery_ids, $new_post_id );
+                        }
+                    } else {
+                        // Text, number, true/false, select, textarea, wysiwyg...
+                        update_field( $field_key, $field_value, $new_post_id );
+                    }
+                }
+            }
+
+            // 5. Polylang
+            if ( function_exists('pll_set_post_language') && ! empty($remote_post['lang']) ) {
+                pll_set_post_language( $new_post_id, $remote_post['lang'] );
+            }
+
+            $imported++;
+        }
+
+        $page++;
+        usleep(400000); // 0.4s
+
+    } while ( count($posts) === $per_page );
+
+    // Kết quả
+    echo '<div style="padding:40px;font-family:sans-serif;max-width:800px">';
+    echo '<h2>Import hoàn tất</h2>';
+    echo '<p><strong>Đã import:</strong> ' . $imported . '</p>';
+    echo '<p><strong>Bỏ qua (đã có):</strong> ' . $skipped . '</p>';
+
+    if ( $errors ) {
+        echo '<h3 style="color:#c00">Lỗi:</h3><ul>';
+        foreach ( $errors as $e ) echo '<li>' . esc_html($e) . '</li>';
+        echo '</ul>';
+    }
+
+    echo '<p style="color:red;font-weight:bold">→ Sau khi xong hãy xóa code này ngay!</p>';
+    echo '</div>';
+    exit;
+}
+
+/**
+ * Download ảnh về Media Library
+ */
+function h2_sideload_image( $image_url, $post_id = 0 ) {
+    require_once ABSPATH . 'wp-admin/includes/file.php';
+    require_once ABSPATH . 'wp-admin/includes/media.php';
+    require_once ABSPATH . 'wp-admin/includes/image.php';
+
+    $tmp = download_url( $image_url );
+    if ( is_wp_error($tmp) ) return $tmp;
+
+    $file_array = [
+        'name'     => basename( parse_url($image_url, PHP_URL_PATH) ),
+        'tmp_name' => $tmp,
+    ];
+
+    $id = media_handle_sideload( $file_array, $post_id );
+
+    if ( is_wp_error($id) ) {
+        @unlink($tmp);
+    }
+
+    return $id;
+}
