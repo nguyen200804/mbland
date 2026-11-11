@@ -813,6 +813,7 @@ a.mbland_homepage_info_ctaOutline:hover {
   .mbland_homepage_info_cta {
     gap: 11px;
     margin-top: 33px;
+    flex-wrap: nowrap;
   }
 
   .mbland_homepage_info_marquee p {
@@ -838,8 +839,13 @@ a.mbland_homepage_info_ctaOutline:hover {
   }
 
   .mbland_homepage_info_cta {
-    gap: 10px;
+    gap: 5px;
     margin-top: 32px;
+    font-size: 11.5px;
+  }
+
+  .mbland_homepage_info_cta .hn-tasmania-cta-btn {
+    padding: 1.2em 1.5em;
   }
 
   .mbland_homepage_info_marquee p {
@@ -1701,6 +1707,7 @@ a.mbland_homepage_info_ctaOutline:hover {
 
 /* Mobile: bo do tre animation tieu de hero de LCP xuat hien som */
 @media (max-width: 768px) {
+
   .mbland_homepage_about_titleFirst .mbland_homepage_about_titleImage,
   .mbland_homepage_about_titleSecond {
     animation-delay: 0s;
