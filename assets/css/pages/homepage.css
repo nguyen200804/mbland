@@ -1435,6 +1435,12 @@ a.mbland_homepage_info_ctaOutline:hover {
   padding: 100px 0;
 }
 
+.mbland_homepage_projects .container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between
+}
+
 .mbland_homepage_projects_heading {
   display: flex;
   align-items: center;
@@ -1452,11 +1458,16 @@ a.mbland_homepage_info_ctaOutline:hover {
   font-family: 'GanhType';
 }
 
+.mbland_homepage_projects_button {
+  align-self: center;
+}
+
 .mbland_homepage_projects_wrapper {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   gap: 10px;
   margin-top: 72px;
+  width: 100%;
 }
 
 .mbland_homepage_projects_item {
@@ -1620,6 +1631,10 @@ a.mbland_homepage_info_ctaOutline:hover {
   .mbland_homepage_projects_itemContent2 .mbland_homepage_projects_viewDetail {
     margin-left: 24px;
   }
+
+  .mbland_homepage_projects_title {
+    margin-bottom: 16px;
+  }
 }
 
 @media (max-width: 996px) {
@@ -1683,9 +1698,21 @@ a.mbland_homepage_info_ctaOutline:hover {
     flex-direction: column;
   }
 
-  .mbland_homepage_projects_wrapper {
+  .mbland_homepage_projects_title {
+    text-align: center;
+  }
 
-    margin-top: 44px;
+  .mbland_homepage_projects_wrapper {
+    margin-top: 32px;
+  }
+
+  .mbland_homepage_projects_button {
+    order: 1;
+    margin: 0 auto;
+    margin-top: 32px;
+    display: flex !important;
+    width: 53%;
+    justify-content: center;
   }
 }
 
@@ -1699,7 +1726,7 @@ a.mbland_homepage_info_ctaOutline:hover {
   }
 
   .mbland_homepage_projects_wrapper {
-    margin-top: 40px;
+    margin-top: 18px;
     grid-template-columns: repeat(1, 1fr);
   }
 
@@ -1723,7 +1750,7 @@ a.mbland_homepage_info_ctaOutline:hover {
   }
 
   .mbland_homepage_projects_wrapper {
-    margin-top: 36px;
+    margin-top: 16px;
   }
 
   .mbland_homepage_projects_itemImage img {
