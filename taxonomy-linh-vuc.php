@@ -105,32 +105,17 @@ if ( empty( $target_term_id ) && ! empty( $current_term->term_id ) ) {
 	$target_term_slug = $current_term->slug;
 }
 
-// Xây dựng tax_query lọc theo danh mục chỉ định
-$tax_conditions = array();
-
-if ( ! empty( $target_term_id ) ) {
-	$tax_conditions[] = array(
-		'taxonomy'         => 'linh-vuc',
-		'field'            => 'term_id',
-		'terms'            => $target_term_id,
-		'include_children' => true,
-	);
-}
-
-if ( ! empty( $target_term_slug ) ) {
-	$tax_conditions[] = array(
-		'taxonomy'         => 'danh-muc-du-an',
-		'field'            => 'slug',
-		'terms'            => $target_term_slug,
-		'include_children' => true,
-	);
-}
-
+// Xây dựng tax_query lọc bài viết thuần túy theo taxonomy=linh-vuc (kèm các danh mục con include_children)
 $tax_query = array();
-if ( count( $tax_conditions ) > 1 ) {
-	$tax_query = array_merge( array( 'relation' => 'OR' ), $tax_conditions );
-} elseif ( count( $tax_conditions ) === 1 ) {
-	$tax_query = $tax_conditions;
+if ( ! empty( $target_term_id ) ) {
+	$tax_query = array(
+		array(
+			'taxonomy'         => 'linh-vuc',
+			'field'            => 'term_id',
+			'terms'            => $target_term_id,
+			'include_children' => true,
+		),
+	);
 }
 
 $paged = max( 1, (int) get_query_var( 'paged' ), (int) get_query_var( 'page' ) );
@@ -168,17 +153,10 @@ $lv_build_projects_query = function ( $term_id, $term_slug ) {
 		'orderby'        => 'date',
 		'order'          => 'DESC',
 		'tax_query'      => array(
-			'relation' => 'OR',
 			array(
 				'taxonomy'         => 'linh-vuc',
 				'field'            => 'term_id',
 				'terms'            => (int) $term_id,
-				'include_children' => true,
-			),
-			array(
-				'taxonomy'         => 'danh-muc-du-an',
-				'field'            => 'slug',
-				'terms'            => $term_slug,
 				'include_children' => true,
 			),
 		),
