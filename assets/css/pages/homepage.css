@@ -1360,8 +1360,10 @@ a.mbland_homepage_info_ctaOutline:hover {
     padding: 89px 0;
   }
 
-  .mbland_homepage_activities_content {
-    margin-bottom: 64px;
+  .mbland_homepage_activities_content {}
+
+  .mbland_homepage_activities_slider {
+    margin-top: 64px;
   }
 }
 
@@ -1371,7 +1373,11 @@ a.mbland_homepage_info_ctaOutline:hover {
   }
 
   .mbland_homepage_activities_content {
-    margin-bottom: 59px;
+    /* margin-bottom: 59px; */
+  }
+
+  .mbland_homepage_activities_slider {
+    margin-top: 59px;
   }
 }
 
@@ -1381,7 +1387,11 @@ a.mbland_homepage_info_ctaOutline:hover {
   }
 
   .mbland_homepage_activities_content {
-    margin-bottom: 55px;
+    /* margin-bottom: 55px; */
+  }
+
+  .mbland_homepage_activities_slider {
+    margin-top: 55px;
   }
 }
 
@@ -1391,7 +1401,11 @@ a.mbland_homepage_info_ctaOutline:hover {
   }
 
   .mbland_homepage_activities_content {
-    margin-bottom: 50px;
+    /* margin-bottom: 50px; */
+  }
+
+  .mbland_homepage_activities_slider {
+    margin-top: 50px;
   }
 }
 
@@ -1402,8 +1416,11 @@ a.mbland_homepage_info_ctaOutline:hover {
 
   .mbland_homepage_activities_content {
     align-items: flex-start;
-    margin-bottom: 44px;
     flex-direction: column;
+  }
+
+  .mbland_homepage_activities_slider {
+    margin-top: 44px;
   }
 }
 
@@ -1412,8 +1429,12 @@ a.mbland_homepage_info_ctaOutline:hover {
     padding: 55px 0;
   }
 
-  .mbland_homepage_activities_content {
+  /* .mbland_homepage_activities_content {
     margin-bottom: 40px;
+  }
+ */
+  .mbland_homepage_activities_slider {
+    margin-top: 40px;
   }
 }
 
@@ -1422,8 +1443,12 @@ a.mbland_homepage_info_ctaOutline:hover {
     padding: 50px 0;
   }
 
-  .mbland_homepage_activities_content {
+  /* .mbland_homepage_activities_content {
     margin-bottom: 36px;
+  } */
+
+  .mbland_homepage_activities_slider {
+    margin-top: 36px;
   }
 }
 

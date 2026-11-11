@@ -602,7 +602,7 @@ if ( $activities_source === 'manual' && ! empty( $home_activities['posts'] ) ) {
 <section class="mbland_homepage_activities">
 	<div class="container">
 		<div class="mbland_homepage_activities_wrapper">
-			<div class="mbland_homepage_activities_content">
+			
 				<div class="mbland_homepage_activities_heading">
 					<h2 class="mbland_homepage_activities_title"><?php echo esc_html( $activities_title ); ?></h2>
 					<p class="mbland_homepage_activities_desc"><?php echo nl2br( esc_html( $activities_desc ) ); ?></p>
@@ -617,7 +617,7 @@ if ( $activities_source === 'manual' && ! empty( $home_activities['posts'] ) ) {
 					) );
 				}
 				?>
-			</div>
+			
 
 			<div class="mbland_homepage_activities_slider">
 				<div class="swiper mbland_homepage_activities_swiper">
