@@ -204,12 +204,22 @@ if ( ! empty( $lv_tab_terms ) ) {
 $lv_per_page = 12;
 
 // ==========================================================================
-// DỰ ÁN HIỂN THỊ Ở HERO (khung nổi bật)
-// Ưu tiên: dự án mới nhất thuộc taxonomy `du-an-noi-bat` (trong lĩnh vực hiện tại)
-// -> nếu không có: dự án mới nhất trong lĩnh vực hiện tại
-// -> nếu vẫn không có: dự án mới nhất của toàn bộ post-type `du-an`.
+// DỰ ÁN HIỂN THỊ Ở HERO (.mbland_linhvuc_hero_featured)
+// Lấy post-type=du-an có term=du-an-noi-bat của taxonomy=du-an-noi-bat (hoặc featured-projects cho EN),
+// nếu có từ 2 trở lên thì lấy bài mới nhất (ORDER BY date DESC LIMIT 1).
 // ==========================================================================
-$hero_base_args = array(
+$hero_noi_bat_terms = array( 'du-an-noi-bat', 'featured-projects' );
+
+// Ưu tiên 1: Dự án nổi bật nằm trong lĩnh vực hiện tại (nếu có $tax_query)
+$hero_tax_query = array(
+	array(
+		'taxonomy' => 'du-an-noi-bat',
+		'field'    => 'slug',
+		'terms'    => $hero_noi_bat_terms,
+	),
+);
+
+$hero_query_args = array(
 	'post_type'           => 'du-an',
 	'post_status'         => 'publish',
 	'posts_per_page'      => 1,
@@ -217,29 +227,32 @@ $hero_base_args = array(
 	'order'               => 'DESC',
 	'no_found_rows'       => true,
 	'ignore_sticky_posts' => true,
-);
-$hero_noi_bat_clause = array(
-	'taxonomy' => 'du-an-noi-bat',
-	'operator' => 'EXISTS',
+	'tax_query'           => ! empty( $tax_query ) ? array(
+		'relation' => 'AND',
+		$hero_tax_query[0],
+		$tax_query[0],
+	) : $hero_tax_query,
 );
 
-$hero_attempts = array();
-if ( ! empty( $tax_query ) ) {
-	$hero_attempts[] = array_merge( $hero_base_args, array( 'tax_query' => array( 'relation' => 'AND', $hero_noi_bat_clause, $tax_query ) ) );
+$hero_query = new WP_Query( $hero_query_args );
+
+// Fallback: nếu trong lĩnh vực hiện tại chưa gán nổi bật, lấy dự án có term=du-an-noi-bat mới nhất toàn hệ thống
+if ( ! $hero_query->have_posts() ) {
+	$hero_query = new WP_Query( array(
+		'post_type'           => 'du-an',
+		'post_status'         => 'publish',
+		'posts_per_page'      => 1,
+		'orderby'             => 'date',
+		'order'               => 'DESC',
+		'no_found_rows'       => true,
+		'ignore_sticky_posts' => true,
+		'tax_query'           => $hero_tax_query,
+	) );
 }
-$hero_attempts[] = array_merge( $hero_base_args, array( 'tax_query' => array( $hero_noi_bat_clause ) ) );
-if ( ! empty( $tax_query ) ) {
-	$hero_attempts[] = array_merge( $hero_base_args, array( 'tax_query' => $tax_query ) );
-}
-$hero_attempts[] = $hero_base_args;
 
 $hero_project_id = 0;
-foreach ( $hero_attempts as $hero_attempt_args ) {
-	$hero_query = new WP_Query( $hero_attempt_args );
-	if ( $hero_query->have_posts() ) {
-		$hero_project_id = (int) $hero_query->posts[0]->ID;
-		break;
-	}
+if ( $hero_query->have_posts() ) {
+	$hero_project_id = (int) $hero_query->posts[0]->ID;
 }
 wp_reset_postdata();
 
