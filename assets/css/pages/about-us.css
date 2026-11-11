@@ -1033,6 +1033,7 @@
 .mbland_homepage_company_introBrandLogo {
 	width: 100%;
 	max-width: 700px;
+	max-height: 60px;
 }
 
 .mbland_homepage_company_introDesc {
@@ -1279,11 +1280,16 @@
 	.mbland_homepage_company_showcaseLogo {
 		height: 55px !important;
 		max-width: 120px;
-
 	}
 
 	.mbland_homepage_company_showcaseNumber {
 		font-size: 80px;
+	}
+
+	.mbland_homepage_company_introBrandLogo {
+		height: 36px !important;
+		object-fit: contain !important;
+		object-position: left center;
 	}
 
 }
