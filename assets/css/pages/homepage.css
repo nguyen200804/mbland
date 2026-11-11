@@ -412,6 +412,8 @@
   .mbland_homepage_company_introHeader {
     margin-left: -28px;
     padding-left: 28px;
+    max-width: max-content;
+    padding-right: 28px;
   }
 
   .mbland_homepage_company_introContent {
@@ -466,6 +468,7 @@
   .mbland_homepage_company_introHeader {
     margin-left: -20px;
     padding-left: 20px;
+    padding-right: 24px;
   }
 
   .mbland_homepage_company_introContent {
@@ -488,6 +491,7 @@
   .mbland_homepage_company_introHeader {
     margin-left: -16px;
     padding-left: 16px;
+    padding-right: 20px;
   }
 
   .mbland_homepage_company_introTitle {
