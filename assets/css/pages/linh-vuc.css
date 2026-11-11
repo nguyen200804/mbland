@@ -125,7 +125,7 @@
 
 .mbland_linhvuc_hero_featuredLocation {
     display: flex;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .mbland_linhvuc_hero_featuredLocationIcon {
@@ -384,6 +384,11 @@
     .mbland_linhvuc_hero_featuredLink {
         font-size: 12px;
     }
+
+    .mbland_linhvuc_hero_featuredLocation {
+        font-size: 12px;
+    }
+
 }
 
 /* ===== END HERO ===== */
