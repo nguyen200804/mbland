@@ -228,13 +228,12 @@
 
 .mbland_about_values_desc {
 	font-family: "FZPoppins";
-	font-weight: 500;
+	font-weight: 300;
 	font-size: 15px;
 	line-height: 150%;
 	letter-spacing: 0%;
 	color: #fdf9f2;
 	padding-top: 10px;
-
 }
 
 .mbland_about_values_bg {
@@ -381,8 +380,8 @@
 	}
 
 	.mbland_about_values_desc {
-		font-size: 13px;
-		line-height: 18px;
+		font-size: 12px;
+		line-height: 16px;
 		padding-top: 10px;
 	}
 
