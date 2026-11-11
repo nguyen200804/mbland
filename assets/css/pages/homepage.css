@@ -490,6 +490,14 @@
     padding-left: 16px;
   }
 
+  .mbland_homepage_company_introTitle {
+    font-size: 14px;
+  }
+
+  .mbland_homepage_company_introBrandName {
+    font-size: 14px;
+  }
+
   .mbland_homepage_company_introContent {
     padding: 32px 0 32px 0px;
   }
