@@ -1424,6 +1424,11 @@ function h2_import_du_an_from_tasmania() {
 
     $taxonomies = ['danh-muc-du-an', 'du-an-noi-bat', 'linh-vuc'];
 
+    // Dong bo cay term (cha/con + ngon ngu) truoc khi gan term cho bai
+    foreach ( $taxonomies as $sync_tax ) {
+        h2_sync_term_hierarchy( $sync_tax, $errors );
+    }
+
     do {
         $response = wp_remote_get( add_query_arg([
             'per_page' => $per_page,
@@ -1578,6 +1583,66 @@ function h2_import_du_an_from_tasmania() {
     echo '<p style="color:red;font-weight:bold">→ Sau khi xong hãy xóa code này ngay!</p>';
     echo '</div>';
     exit;
+}
+
+/**
+ * Dong bo cay term tu site nguon: tao term con thieu, gan dung term cha (hierarchical), gan ngon ngu Polylang.
+ * Can thiet de truy van `include_children` (vd /linh-vuc/bat-dong-san/ gom ca danh muc con) hoat dong dung.
+ */
+function h2_sync_term_hierarchy( $tax, array &$errors ) {
+    if ( ! taxonomy_exists( $tax ) ) {
+        $errors[] = "Taxonomy '{$tax}' chưa được đăng ký trên site này.";
+        return;
+    }
+    $res = wp_remote_get( "https://tasmaniapartners.vn/wp-json/wp/v2/{$tax}?per_page=100&_fields=id,slug,name,parent,lang", [ 'timeout' => 60, 'sslverify' => false ] );
+    if ( is_wp_error( $res ) || wp_remote_retrieve_response_code( $res ) !== 200 ) {
+        return;
+    }
+    $remote = json_decode( wp_remote_retrieve_body( $res ), true );
+    if ( ! is_array( $remote ) ) {
+        return;
+    }
+
+    $by_id = [];
+    foreach ( $remote as $r ) {
+        $by_id[ $r['id'] ] = $r;
+    }
+
+    // 1. Dam bao term ton tai (cha truoc con khong can thiet: parent gan o buoc 2)
+    $local = []; // remote_id => local term_id
+    foreach ( $remote as $r ) {
+        $slug = $r['slug'];
+        $term = get_term_by( 'slug', $slug, $tax );
+        if ( ! $term ) {
+            $ins = wp_insert_term( html_entity_decode( $r['name'], ENT_QUOTES, 'UTF-8' ), $tax, [ 'slug' => $slug ] );
+            if ( is_wp_error( $ins ) ) {
+                $errors[] = "Không tạo được term {$tax}/{$slug}: " . $ins->get_error_message();
+                continue;
+            }
+            $local[ $r['id'] ] = (int) $ins['term_id'];
+        } else {
+            $local[ $r['id'] ] = (int) $term->term_id;
+        }
+    }
+
+    // 2. Gan cha + ngon ngu
+    foreach ( $remote as $r ) {
+        if ( empty( $local[ $r['id'] ] ) ) {
+            continue;
+        }
+        $tid = $local[ $r['id'] ];
+
+        if ( ! empty( $r['parent'] ) && ! empty( $local[ $r['parent'] ] ) ) {
+            $term = get_term( $tid, $tax );
+            if ( $term && ! is_wp_error( $term ) && (int) $term->parent !== (int) $local[ $r['parent'] ] ) {
+                wp_update_term( $tid, $tax, [ 'parent' => (int) $local[ $r['parent'] ] ] );
+            }
+        }
+
+        if ( function_exists( 'pll_set_term_language' ) && ! empty( $r['lang'] ) && function_exists( 'pll_get_term_language' ) && ! pll_get_term_language( $tid ) ) {
+            pll_set_term_language( $tid, $r['lang'] );
+        }
+    }
 }
 
 /**
