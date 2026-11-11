@@ -88,11 +88,11 @@ document.addEventListener("DOMContentLoaded", function () {
       loop: originalSlides.length > 1,
       grabCursor: true,
       speed: 600,
-      autoplay: {
-        delay: 3500,
-        disableOnInteraction: false,
-        pauseOnMouseEnter: true,
-      },
+      // autoplay: {
+      //   delay: 3500,
+      //   disableOnInteraction: false,
+      //   pauseOnMouseEnter: true,
+      // },
       // navigation: {
       //   nextEl: ".mbland_aboutUs_teamSection_membersNext",
       //   prevEl: ".mbland_aboutUs_teamSection_membersPrev",

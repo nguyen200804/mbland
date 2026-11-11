@@ -1287,7 +1287,7 @@
 	}
 
 	.mbland_homepage_company_introBrandLogo {
-		height: 36px !important;
+		height: 32px !important;
 		object-fit: contain !important;
 		object-position: left center;
 	}
@@ -1438,7 +1438,7 @@
 
 .mbland_aboutUs_teamSection_memberName {
 	font-weight: 700;
-	font-size: 24px;
+	font-size: 20px;
 	line-height: 120%;
 	letter-spacing: -0.02em;
 	color: #fff;
@@ -1473,7 +1473,7 @@
 
 .mbland_aboutUs_teamSection_memberDetailName {
 	font-weight: 700;
-	font-size: 24px;
+	font-size: 20px;
 	line-height: 120%;
 	letter-spacing: -0.02em;
 	color: var(--secondary-color);
