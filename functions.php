@@ -1409,6 +1409,12 @@ function h2_import_du_an_from_tasmania() {
     $skipped    = 0;
     $errors     = [];
 
+    // Mapping: source_id => new_post_id
+    $id_map = [];
+
+    // Lưu thông tin translations để xử lý sau
+    $translations_data = [];
+
     $taxonomies = ['danh-muc-du-an', 'du-an-noi-bat', 'linh-vuc'];
 
     do {
@@ -1439,7 +1445,7 @@ function h2_import_du_an_from_tasmania() {
 
         foreach ( $posts as $remote_post ) {
 
-            // === Kiểm tra đã import chưa (theo ID gốc) ===
+            // Kiểm tra đã import chưa
             $existing = get_posts([
                 'post_type'      => 'du-an',
                 'meta_key'       => '_source_post_id',
@@ -1451,6 +1457,8 @@ function h2_import_du_an_from_tasmania() {
 
             if ( ! empty($existing) ) {
                 $skipped++;
+                // Vẫn lưu vào map để xử lý translations sau
+                $id_map[ $remote_post['id'] ] = $existing[0];
                 continue;
             }
 
@@ -1468,12 +1476,18 @@ function h2_import_du_an_from_tasmania() {
             $new_post_id = wp_insert_post( $post_data, true );
 
             if ( is_wp_error($new_post_id) ) {
-                $errors[] = 'Không tạo được: ' . $remote_post['slug'] . ' - ' . $new_post_id->get_error_message();
+                $errors[] = 'Không tạo được: ' . $remote_post['slug'];
                 continue;
             }
 
-            // Lưu ID gốc để lần sau không bị trùng
+            // Lưu ID gốc
             update_post_meta( $new_post_id, '_source_post_id', $remote_post['id'] );
+            $id_map[ $remote_post['id'] ] = $new_post_id;
+
+            // Lưu thông tin translations để xử lý sau
+            if ( ! empty($remote_post['translations']) ) {
+                $translations_data[ $remote_post['id'] ] = $remote_post['translations'];
+            }
 
             // 2. Taxonomy
             foreach ( $taxonomies as $tax ) {
@@ -1518,17 +1532,15 @@ function h2_import_du_an_from_tasmania() {
                 }
             }
 
-            // 4. ACF Fields
+            // 4. ACF
             if ( ! empty($remote_post['acf']) && is_array($remote_post['acf']) && function_exists('update_field') ) {
                 foreach ( $remote_post['acf'] as $field_key => $field_value ) {
                     if ( is_array($field_value) && isset($field_value['url']) ) {
-                        // Image
                         $img_id = h2_sideload_image( $field_value['url'], $new_post_id );
                         if ( $img_id && ! is_wp_error($img_id) ) {
                             update_field( $field_key, $img_id, $new_post_id );
                         }
                     } elseif ( is_array($field_value) && isset($field_value[0]['url']) ) {
-                        // Gallery
                         $gallery_ids = [];
                         foreach ( $field_value as $img ) {
                             if ( ! empty($img['url']) ) {
@@ -1547,7 +1559,7 @@ function h2_import_du_an_from_tasmania() {
                 }
             }
 
-            // 5. Polylang
+            // 5. Set ngôn ngữ
             if ( function_exists('pll_set_post_language') && ! empty($remote_post['lang']) ) {
                 pll_set_post_language( $new_post_id, $remote_post['lang'] );
             }
@@ -1560,10 +1572,40 @@ function h2_import_du_an_from_tasmania() {
 
     } while ( count($posts) === $per_page );
 
+    // =====================================================
+    // 6. Đồng bộ Polylang translations
+    // =====================================================
+    if ( function_exists('pll_save_post_translations') && ! empty($translations_data) ) {
+
+        $processed = []; // tránh xử lý trùng
+
+        foreach ( $translations_data as $source_id => $trans ) {
+
+            // Bỏ qua nếu đã xử lý
+            if ( isset($processed[$source_id]) ) continue;
+
+            $lang_map = []; // ['en' => new_id, 'vi' => new_id]
+
+            foreach ( $trans as $lang => $sid ) {
+                if ( isset($id_map[$sid]) ) {
+                    $lang_map[$lang] = $id_map[$sid];
+                    $processed[$sid] = true;
+                }
+            }
+
+            // Chỉ nối khi có ít nhất 2 ngôn ngữ
+            if ( count($lang_map) >= 2 ) {
+                pll_save_post_translations( $lang_map );
+            }
+        }
+    }
+
+    // Kết quả
     echo '<div style="padding:40px;font-family:sans-serif;max-width:800px">';
     echo '<h2>Import hoàn tất</h2>';
     echo '<p><strong>Đã import:</strong> ' . $imported . '</p>';
     echo '<p><strong>Bỏ qua (đã có):</strong> ' . $skipped . '</p>';
+    echo '<p><strong>Đã đồng bộ Polylang:</strong> ' . count($translations_data) . ' nhóm</p>';
 
     if ( $errors ) {
         echo '<h3 style="color:#c00">Lỗi:</h3><ul>';
