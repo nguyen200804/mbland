@@ -474,8 +474,10 @@ if ( $projects_source === 'manual' && ! empty( $home_projects['projects'] ) ) {
 			if ( $du_an_query->have_posts() ) :
 				$i = 1;
 				while ( $du_an_query->have_posts() ) :
-					$item_title = get_the_title();
-$thumb      = '';
+    $du_an_query->the_post();
+    $item_title = get_the_title();
+    $thumb      = '';
+    // ...phần còn lại giữ nguyên
 $thumb_w    = 0;
 $thumb_h    = 0;
 
