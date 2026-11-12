@@ -55,6 +55,92 @@ $content = wp_kses_post(get_field('content', $post_id));
 // Album ảnh Gallery
 $gallery = get_field('gallery', $post_id);
 
+// Album ảnh ở cột gallery = ảnh đại diện (post thumbnail) đứng đầu + các ảnh trong ACF gallery.
+// Tự loại ảnh trùng (theo attachment ID hoặc URL).
+$project_images = array();
+$seen_img_ids   = array();
+$seen_img_urls  = array();
+
+$push_project_image = function ( $att_id, $fallback_url = '', $fallback_alt = '' ) use ( &$project_images, &$seen_img_ids, &$seen_img_urls, $post_id ) {
+	$att_id    = (int) $att_id;
+	$full_url  = '';
+	$thumb_url = '';
+	$w  = 1200;
+	$h  = 900;
+	$tw = 400;
+	$th = 364;
+	$alt = $fallback_alt;
+
+	if ( $att_id ) {
+		$full = wp_get_attachment_image_src( $att_id, 'full' );
+		$med  = wp_get_attachment_image_src( $att_id, 'medium_large' );
+		if ( $full ) {
+			$full_url = $full[0];
+			$w        = ! empty( $full[1] ) ? $full[1] : 1200;
+			$h        = ! empty( $full[2] ) ? $full[2] : 900;
+		}
+		if ( $med ) {
+			$thumb_url = $med[0];
+			$tw        = ! empty( $med[1] ) ? $med[1] : 400;
+			$th        = ! empty( $med[2] ) ? $med[2] : 364;
+		} else {
+			$thumb_url = $full_url;
+		}
+		$meta_alt = get_post_meta( $att_id, '_wp_attachment_image_alt', true );
+		if ( ! empty( $meta_alt ) ) {
+			$alt = $meta_alt;
+		}
+	}
+
+	if ( empty( $full_url ) ) {
+		$full_url  = $fallback_url;
+		$thumb_url = $fallback_url;
+	}
+	if ( empty( $full_url ) ) {
+		return;
+	}
+	if ( ( $att_id && isset( $seen_img_ids[ $att_id ] ) ) || isset( $seen_img_urls[ $full_url ] ) ) {
+		return;
+	}
+	if ( $att_id ) {
+		$seen_img_ids[ $att_id ] = true;
+	}
+	$seen_img_urls[ $full_url ] = true;
+
+	$project_images[] = array(
+		'full'  => $full_url,
+		'thumb' => $thumb_url ?: $full_url,
+		'alt'   => $alt ?: get_the_title( $post_id ),
+		'w'     => $w,
+		'h'     => $h,
+		'tw'    => $tw,
+		'th'    => $th,
+	);
+};
+
+// 1) Ảnh đại diện của dự án (đứng đầu album)
+$thumb_att_id = get_post_thumbnail_id( $post_id );
+if ( $thumb_att_id ) {
+	$push_project_image( $thumb_att_id, '', get_the_title( $post_id ) );
+}
+
+// 2) Các ảnh trong ACF gallery (hỗ trợ return format array / ID / URL)
+if ( ! empty( $gallery ) && is_array( $gallery ) ) {
+	foreach ( $gallery as $g_img ) {
+		if ( is_array( $g_img ) ) {
+			$push_project_image(
+				isset( $g_img['ID'] ) ? $g_img['ID'] : 0,
+				isset( $g_img['url'] ) ? $g_img['url'] : '',
+				! empty( $g_img['alt'] ) ? $g_img['alt'] : get_the_title( $post_id )
+			);
+		} elseif ( is_numeric( $g_img ) ) {
+			$push_project_image( $g_img, '', get_the_title( $post_id ) );
+		} elseif ( is_string( $g_img ) && $g_img !== '' ) {
+			$push_project_image( 0, $g_img, get_the_title( $post_id ) );
+		}
+	}
+}
+
 // Featured image cho image cuối (sidebar)
 // Ảnh hero: ưu tiên trường ACF "banner", nếu không có thì dùng ảnh đại diện (xem homenest_get_project_hero)
 $hero_image            = homenest_get_project_hero( $post_id );
@@ -199,39 +285,21 @@ get_header();
 				</div>
 			</div>
 
-			<!-- Cột 2: Gallery ảnh dạng Swiper (ảnh to ở trên, 3 ảnh thumbs ở dưới) -->
+			<!-- Cột 2: Gallery ảnh dạng Swiper (ảnh đại diện + ACF gallery; ảnh to ở trên, 3 ảnh thumbs ở dưới) -->
 			<div class="mbland_singleProject_details_colGallery">
 				<div class="mbland_singleProject_gallery">
-					
+
 					<!-- Swiper ảnh lớn chính (Main Slider) -->
 					<div class="swiper mbland_singleProject_gallery_main">
 						<div class="swiper-wrapper">
-							<?php if ( ! empty( $gallery ) && is_array( $gallery ) ) : ?>
-								<?php foreach ( $gallery as $img ) : 
-									$img_w = 1200;
-									$img_h = 900;
-									if ( is_array( $img ) ) {
-										$img_url = $img['url'] ?? '';
-										$img_alt = ! empty( $img['alt'] ) ? $img['alt'] : get_the_title( $post_id );
-										$img_w   = ! empty( $img['width'] ) ? $img['width'] : 1200;
-										$img_h   = ! empty( $img['height'] ) ? $img['height'] : 900;
-									} elseif ( is_numeric( $img ) ) {
-										$img_src = wp_get_attachment_image_src( $img, 'full' );
-										$img_url = $img_src ? $img_src[0] : '';
-										$img_w   = ! empty( $img_src[1] ) ? $img_src[1] : 1200;
-										$img_h   = ! empty( $img_src[2] ) ? $img_src[2] : 900;
-										$img_alt = get_post_meta( $img, '_wp_attachment_image_alt', true ) ?: get_the_title( $post_id );
-									} else {
-										$img_url = (string) $img;
-										$img_alt = get_the_title( $post_id );
-									}
-								?>
+							<?php if ( ! empty( $project_images ) ) : ?>
+								<?php foreach ( $project_images as $pi_idx => $pi ) : ?>
 									<div class="swiper-slide mbland_singleProject_gallery_mainSlide">
-										<img class="mbland_singleProject_gallery_mainImage" src="<?php echo esc_url( $img_url ); ?>" alt="<?php echo esc_attr( $img_alt ); ?>" title="<?php echo esc_attr( $img_alt ); ?>" width="<?php echo esc_attr( $img_w ); ?>" height="<?php echo esc_attr( $img_h ); ?>" loading="lazy" decoding="async" fetchpriority="low" />
+										<img class="mbland_singleProject_gallery_mainImage" src="<?php echo esc_url( $pi['full'] ); ?>" alt="<?php echo esc_attr( $pi['alt'] ); ?>" title="<?php echo esc_attr( $pi['alt'] ); ?>" width="<?php echo esc_attr( $pi['w'] ); ?>" height="<?php echo esc_attr( $pi['h'] ); ?>" loading="<?php echo 0 === $pi_idx ? 'eager' : 'lazy'; ?>" decoding="async" fetchpriority="<?php echo 0 === $pi_idx ? 'high' : 'low'; ?>" />
 									</div>
 								<?php endforeach; ?>
 							<?php else : ?>
-								<!-- Ảnh mẫu demo khớp theo thiết kế -->
+								<!-- Ảnh mẫu demo khi dự án chưa có ảnh đại diện / gallery -->
 								<div class="swiper-slide mbland_singleProject_gallery_mainSlide">
 									<img class="mbland_singleProject_gallery_mainImage" src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1200&q=80" alt="Hilton Sky View" title="Hilton Sky View" width="1200" height="900" loading="lazy" decoding="async" fetchpriority="low" />
 								</div>
@@ -251,28 +319,10 @@ get_header();
 					<!-- Swiper ảnh thumbnail thu nhỏ bên dưới (Thumbs Slider) -->
 					<div class="swiper mbland_singleProject_gallery_thumbs">
 						<div class="swiper-wrapper">
-							<?php if ( ! empty( $gallery ) && is_array( $gallery ) ) : ?>
-								<?php foreach ( $gallery as $img ) : 
-									$thumb_img_w = 400;
-									$thumb_img_h = 364;
-									if ( is_array( $img ) ) {
-										$img_url     = $img['sizes']['medium_large'] ?? ( $img['url'] ?? '' );
-										$img_alt     = ! empty( $img['alt'] ) ? $img['alt'] : get_the_title( $post_id );
-										$thumb_img_w = $img['sizes']['medium_large-width'] ?? ( $img['width'] ?? 400 );
-										$thumb_img_h = $img['sizes']['medium_large-height'] ?? ( $img['height'] ?? 364 );
-									} elseif ( is_numeric( $img ) ) {
-										$img_src     = wp_get_attachment_image_src( $img, 'medium_large' );
-										$img_url     = $img_src ? $img_src[0] : '';
-										$thumb_img_w = ! empty( $img_src[1] ) ? $img_src[1] : 400;
-										$thumb_img_h = ! empty( $img_src[2] ) ? $img_src[2] : 364;
-										$img_alt     = get_post_meta( $img, '_wp_attachment_image_alt', true ) ?: get_the_title( $post_id );
-									} else {
-										$img_url     = (string) $img;
-										$img_alt     = get_the_title( $post_id );
-									}
-								?>
+							<?php if ( ! empty( $project_images ) ) : ?>
+								<?php foreach ( $project_images as $pi ) : ?>
 									<div class="swiper-slide mbland_singleProject_gallery_thumbSlide">
-										<img class="mbland_singleProject_gallery_thumbImage" src="<?php echo esc_url( $img_url ); ?>" alt="<?php echo esc_attr( $img_alt ); ?>" title="<?php echo esc_attr( $img_alt ); ?>" width="<?php echo esc_attr( $thumb_img_w ); ?>" height="<?php echo esc_attr( $thumb_img_h ); ?>" loading="lazy" decoding="async" fetchpriority="low" />
+										<img class="mbland_singleProject_gallery_thumbImage" src="<?php echo esc_url( $pi['thumb'] ); ?>" alt="<?php echo esc_attr( $pi['alt'] ); ?>" title="<?php echo esc_attr( $pi['alt'] ); ?>" width="<?php echo esc_attr( $pi['tw'] ); ?>" height="<?php echo esc_attr( $pi['th'] ); ?>" loading="lazy" decoding="async" fetchpriority="low" />
 									</div>
 								<?php endforeach; ?>
 							<?php else : ?>
