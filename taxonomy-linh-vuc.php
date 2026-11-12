@@ -311,7 +311,7 @@ if ( $hero_project_id ) {
 <!-- ===== START SECTION LINH VUC HERO ===== -->
 <section class="mbland_linhvuc_hero">
 	<?php if ( $term_image_url ) : ?>
-	<img class="mbland_linhvuc_hero_background" src="<?php echo esc_url( $term_image_url ); ?>" alt="<?php echo esc_attr( $term_image_alt ); ?>" title="<?php echo esc_attr( $current_term->name ); ?>" loading="eager" decoding="async" fetchpriority="high"<?php echo homenest_srcset_attr( $term_image_id, '100vw' ); ?> <?php echo trim( mbland_img_size_attr( $term_image_url, 1920, 1080 ) ); ?> />
+	<img class="mbland_linhvuc_hero_background" src="<?php echo esc_url( $term_image_url ); ?>" alt="<?php echo esc_attr( $term_image_alt ); ?>" title="<?php echo esc_attr( $current_term->name ); ?>" loading="eager" decoding="async" fetchpriority="high" <?php echo trim( mbland_img_size_attr( $term_image_url, 1920, 1080 ) ); ?> />
 	<?php endif; ?>
 	<div class="mbland_linhvuc_hero_inner">
 		<div class="container mbland_linhvuc_hero_container">
