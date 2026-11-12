@@ -7,19 +7,19 @@
  */
 
 $post_id   = get_the_ID();
-$banner    = function_exists( 'get_field' ) ? get_field( 'banner', $post_id ) : false;
+$image     = function_exists( 'get_field' ) ? get_field( 'featured_image', $post_id ) : false;
 $thumb_url = '';
 $thumb_alt = get_the_title( $post_id );
 
-if ( ! empty( $banner ) && is_array( $banner ) ) {
-	$thumb_url = isset( $banner['url'] ) ? $banner['url'] : '';
-	if ( ! empty( $banner['alt'] ) ) {
-		$thumb_alt = $banner['alt'];
+if ( ! empty( $image ) && is_array( $image ) ) {
+	$thumb_url = isset( $image['url'] ) ? $image['url'] : '';
+	if ( ! empty( $image['alt'] ) ) {
+		$thumb_alt = $image['alt'];
 	}
-} elseif ( is_numeric( $banner ) ) {
-	$thumb_url = wp_get_attachment_image_url( (int) $banner, 'large' );
-} elseif ( is_string( $banner ) && ! empty( $banner ) ) {
-	$thumb_url = $banner;
+} elseif ( is_numeric( $image ) ) {
+	$thumb_url = wp_get_attachment_image_url( (int) $image, 'large' );
+} elseif ( is_string( $image ) && ! empty( $image ) ) {
+	$thumb_url = $image;
 }
 
 if ( empty( $thumb_url ) && has_post_thumbnail( $post_id ) ) {
