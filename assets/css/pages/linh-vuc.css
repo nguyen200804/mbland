@@ -493,8 +493,8 @@
     transform: scale(1);
     transition: transform .3s ease;
     height: auto;
-    object-fit: cover;
-    aspect-ratio: 7/4;
+    object-fit: contain;
+    /* aspect-ratio: 7/4; */
 }
 
 .mbland_linhvuc_listProject_item:hover .mbland_linhvuc_listProject_itemImage {
@@ -1407,7 +1407,7 @@
 }
 
 .mbland_linhvuc_featuredProject_itemMedia {
-    aspect-ratio: 16/9;
+    /* aspect-ratio: 16/9; */
     overflow: hidden;
 }
 
