@@ -83,19 +83,14 @@ $hero_banner_h     = ! empty( $home_hero['banner']['height'] ) ? $home_hero['ban
 		</div>
 	</div>
 	<div class="mbland_homepage_about_banner">
-		<?php
-		$hero_banner_data   = homenest_get_hero_banner();
-		$hero_banner_srcset = $hero_banner_data['id'] ? wp_get_attachment_image_srcset( $hero_banner_data['id'], 'full' ) : '';
-		?>
-		<img loading="eager" decoding="async" fetchpriority="high"
-			 <?php if ( $hero_banner_srcset ) : ?>srcset="<?php echo esc_attr( $hero_banner_srcset ); ?>" sizes="100vw"<?php endif; ?>
-			 src="<?php echo esc_url( $hero_banner ); ?>"
-			 alt="<?php echo esc_attr( $hero_title_first . ' ' . $hero_title_second ); ?>"
-			 title="<?php echo esc_attr( $hero_title_first . ' ' . $hero_title_second ); ?>"
-			 width="<?php echo esc_attr( $hero_banner_w ); ?>"
-			 height="<?php echo esc_attr( $hero_banner_h ); ?>"
-			 />
-	</div>
+	<img loading="eager" decoding="async" fetchpriority="high"
+		 src="<?php echo esc_url( $hero_banner ); ?>"
+		 alt="<?php echo esc_attr( $hero_title_first . ' ' . $hero_title_second ); ?>"
+		 title="<?php echo esc_attr( $hero_title_first . ' ' . $hero_title_second ); ?>"
+		 width="<?php echo esc_attr( $hero_banner_w ); ?>"
+		 height="<?php echo esc_attr( $hero_banner_h ); ?>"
+		 />
+</div>
 </section>
 <!-- ===== END SECTION ABOUT ===== -->
 
@@ -196,7 +191,6 @@ $company_showcase_h    = ! empty( $home_company['showcase_image']['height'] ) ? 
 			<div class="mbland_homepage_company_media mbland_homepage_company_introMedia">
 				<img loading="lazy" decoding="async"
 					class="mbland_homepage_company_image mbland_homepage_company_introImage"
-					<?php echo homenest_srcset_attr( ! empty( $home_company['intro_image']['ID'] ) ? $home_company['intro_image']['ID'] : attachment_url_to_postid( $company_intro_img ), '(max-width: 768px) 100vw, 1000px' ); ?>
 					src="<?php echo esc_url( $company_intro_img ); ?>"
 					alt="<?php echo esc_attr( $company_title ); ?>"
 					title="<?php echo esc_attr( $company_title ); ?>"
@@ -235,7 +229,6 @@ $company_showcase_h    = ! empty( $home_company['showcase_image']['height'] ) ? 
 				<div class="mbland_homepage_company_body mbland_homepage_company_showcaseBody">
 					<img loading="lazy" decoding="async"
 						class="mbland_homepage_company_image mbland_homepage_company_showcaseImage"
-						<?php echo homenest_srcset_attr( ! empty( $home_company['showcase_image']['ID'] ) ? $home_company['showcase_image']['ID'] : attachment_url_to_postid( $company_showcase_img ), '(max-width: 768px) 100vw, 1000px' ); ?>
 						src="<?php echo esc_url( $company_showcase_img ); ?>"
 						alt="<?php echo esc_attr( $company_title ); ?>"
 						title="<?php echo esc_attr( $company_title ); ?>"
@@ -347,7 +340,6 @@ if ( ! empty( $home_branches['terms'] ) && is_array( $home_branches['terms'] ) )
 						<?php if ( $featured_image_url ) : ?>
 							<img loading="lazy" decoding="async"
 								class="mbland_homepage_branches_image"
-								<?php echo homenest_srcset_attr( ! empty( $scf_image['ID'] ) ? $scf_image['ID'] : 0, '(max-width: 768px) 100vw, 800px' ); ?>
 								src="<?php echo esc_url( $featured_image_url ); ?>"
 								alt="<?php echo esc_attr( $term->name ); ?>"
 								title="<?php echo esc_attr( $term->name ); ?>"
@@ -482,52 +474,49 @@ if ( $projects_source === 'manual' && ! empty( $home_projects['projects'] ) ) {
 			if ( $du_an_query->have_posts() ) :
 				$i = 1;
 				while ( $du_an_query->have_posts() ) :
-					$du_an_query->the_post();
-					$banner_field = get_field( 'banner' );
-					$item_title   = get_the_title();
-					$thumb        = '';
-					$thumb_w      = 0;
-					$thumb_h      = 0;
-					$thumb_id     = 0;
+					$item_title = get_the_title();
+$thumb      = '';
+$thumb_w    = 0;
+$thumb_h    = 0;
 
-					if ( is_array( $banner_field ) ) {
-						$thumb_id = ! empty( $banner_field['ID'] ) ? (int) $banner_field['ID'] : 0;
-						$thumb   = ! empty( $banner_field['url'] ) ? $banner_field['url'] : '';
-						$thumb_w = ! empty( $banner_field['width'] ) ? $banner_field['width'] : 0;
-						$thumb_h = ! empty( $banner_field['height'] ) ? $banner_field['height'] : 0;
-					} elseif ( is_numeric( $banner_field ) ) {
-						$banner_img_data = wp_get_attachment_image_src( $banner_field, 'full' );
-						if ( ! empty( $banner_img_data ) ) {
-							$thumb_id = (int) $banner_field;
-							$thumb   = $banner_img_data[0];
-							$thumb_w = $banner_img_data[1];
-							$thumb_h = $banner_img_data[2];
-						}
-					} elseif ( is_string( $banner_field ) && ! empty( $banner_field ) ) {
-						$thumb = $banner_field;
-					}
+// 1) Ưu tiên ảnh đại diện (featured image)
+if ( has_post_thumbnail() ) {
+	$post_thumb_data = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' );
+	if ( ! empty( $post_thumb_data ) ) {
+		$thumb   = $post_thumb_data[0];
+		$thumb_w = $post_thumb_data[1];
+		$thumb_h = $post_thumb_data[2];
+	}
+}
 
-					if ( empty( $thumb ) ) {
-						$thumb = get_the_post_thumbnail_url( get_the_ID(), 'full' );
-						$thumb_id = get_post_thumbnail_id();
-					}
+// 2) Fallback: trường ACF "banner"
+if ( empty( $thumb ) ) {
+	$banner_field = get_field( 'banner' );
 
-					if ( ( ! $thumb_w || ! $thumb_h ) && has_post_thumbnail() ) {
-						$post_thumb_data = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' );
-						if ( ! empty( $post_thumb_data ) ) {
-							$thumb_w = $post_thumb_data[1];
-							$thumb_h = $post_thumb_data[2];
-						}
-					}
+	if ( is_array( $banner_field ) ) {
+		$thumb   = ! empty( $banner_field['url'] ) ? $banner_field['url'] : '';
+		$thumb_w = ! empty( $banner_field['width'] ) ? $banner_field['width'] : 0;
+		$thumb_h = ! empty( $banner_field['height'] ) ? $banner_field['height'] : 0;
+	} elseif ( is_numeric( $banner_field ) ) {
+		$banner_img_data = wp_get_attachment_image_src( $banner_field, 'full' );
+		if ( ! empty( $banner_img_data ) ) {
+			$thumb   = $banner_img_data[0];
+			$thumb_w = $banner_img_data[1];
+			$thumb_h = $banner_img_data[2];
+		}
+	} elseif ( is_string( $banner_field ) && ! empty( $banner_field ) ) {
+		$thumb = $banner_field;
+	}
+}
 
-					$thumb   = $thumb ?: '/wp-content/uploads/2025/10/branch-placeholder.jpg';
-					$thumb_w = $thumb_w ?: 600;
-					$thumb_h = $thumb_h ?: 350;
+// 3) Fallback cuối: ảnh placeholder
+$thumb   = $thumb ?: '/wp-content/uploads/2025/10/branch-placeholder.jpg';
+$thumb_w = $thumb_w ?: 600;
+$thumb_h = $thumb_h ?: 350;
 					?>
 					<div class="mbland_homepage_projects_item mbland_homepage_projects_item<?php echo esc_attr( $i ); ?>">
 						<div class="mbland_homepage_projects_itemImage">
 							<img loading="lazy" decoding="async"
-								 <?php echo homenest_srcset_attr( $thumb_id, '(max-width: 768px) 100vw, 800px' ); ?>
 								 src="<?php echo esc_url( $thumb ); ?>"
 								 alt="<?php the_title_attribute(); ?>"
 								 title="<?php the_title_attribute(); ?>"
@@ -656,7 +645,6 @@ if ( $activities_source === 'manual' && ! empty( $home_activities['posts'] ) ) {
 									<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" aria-label="<?php the_title_attribute(); ?>">
 										<div class="mbland_homepage_activities_slideImage">
 											<img loading="lazy" decoding="async"
-												 <?php echo homenest_srcset_attr( get_post_thumbnail_id(), '(max-width: 768px) 85vw, 620px' ); ?>
 												 src="<?php echo esc_url( $featured_img ); ?>"
 												 alt="<?php the_title_attribute(); ?>"
 												 title="<?php the_title_attribute(); ?>"
