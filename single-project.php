@@ -285,9 +285,9 @@ get_header();
 				</div>
 
 								<?php if ( ! empty( $location ) || ! empty( $scale ) ) : ?>
-				<div class="mbland_singleProject_details_meta" style="display:flex;flex-direction:column;gap:20px;margin-top:30px;">
+				<div class="mbland_singleProject_details_meta" style="display:flex;flex-direction:column;gap:10px;margin-top:30px;">
 					<?php if ( ! empty( $location ) ) : ?>
-					<div class="mbland_linhvuc_hero_featuredLocation" style="display:flex;align-items:flex-start;gap:12px;">
+					<div class="mbland_linhvuc_hero_featuredLocation" style="display:flex;align-items:flex-start;">
 						<span class="mbland_linhvuc_hero_featuredLocationIcon" style="display:inline-flex;flex-shrink:0;width:20px;height:20px;color:var(--primary-color);"><svg viewBox="0 0 18 18" width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path d="M9 1.125C7.35957 1.12694 5.78688 1.77945 4.62692 2.93941C3.46696 4.09938 2.81444 5.67207 2.8125 7.3125C2.811 8.65299 3.24884 9.95704 4.059 11.025C4.059 11.025 4.22775 11.2472 4.25532 11.2793L9 16.875L13.7469 11.2764C13.7717 11.2466 13.941 11.025 13.941 11.025L13.9416 11.0233C14.7512 9.95574 15.1888 8.65235 15.1875 7.3125C15.1856 5.67207 14.5331 4.09938 13.3731 2.93941C12.2131 1.77945 10.6404 1.12694 9 1.125ZM9 9.5625C8.555 9.5625 8.11998 9.43054 7.74997 9.18331C7.37996 8.93607 7.09157 8.58467 6.92127 8.17354C6.75098 7.7624 6.70642 7.31 6.79324 6.87355C6.88005 6.43709 7.09434 6.03618 7.40901 5.72151C7.72368 5.40684 8.12459 5.19255 8.56105 5.10573C8.99751 5.01892 9.44991 5.06347 9.86104 5.23377C10.2722 5.40407 10.6236 5.69246 10.8708 6.06247C11.118 6.43248 11.25 6.86749 11.25 7.3125C11.2493 7.90901 11.012 8.48087 10.5902 8.90267C10.1684 9.32446 9.59651 9.56176 9 9.5625Z" fill="currentColor"/>
 							</svg>
@@ -300,7 +300,7 @@ get_header();
 					<?php endif; ?>
 
 					<?php if ( ! empty( $scale ) ) : ?>
-					<div class="mbland_linhvuc_hero_featuredLocation" style="display:flex;align-items:flex-start;gap:12px;">
+					<div class="mbland_linhvuc_hero_featuredLocation" style="display:flex;align-items:flex-start;">
 						<span class="mbland_linhvuc_hero_featuredLocationIcon" style="display:inline-flex;flex-shrink:0;width:20px;height:20px;color:var(--primary-color);"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<g clip-path="url(#clip_scale_details)">
 								<path d="M15.0003 4.16675L10.0003 6.66675V1.66675L15.0003 4.16675Z" fill="currentColor"/>
