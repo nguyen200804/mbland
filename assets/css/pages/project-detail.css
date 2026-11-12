@@ -696,7 +696,7 @@
 
 .mbland_singleProject_details_content {
   margin-top: 35px;
-  /* display: -webkit-box; */
+  display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
