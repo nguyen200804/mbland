@@ -739,14 +739,26 @@ function hn_breadcrumb_shortcode() {
     <nav class="hn-breadcrumb" aria-label="Breadcrumb">
         <ul class="breadcrumb-list">
             <li>
-                <a href="<?php echo home_url(); ?>" title="<?php echo esc_attr(pll__('Trang chủ')); ?>" aria-label="<?php echo esc_attr(pll__('Trang chủ')); ?>">
-                    <?php echo pll__('Trang chủ'); ?>
+                <a href="<?php echo esc_url(home_url('/')); ?>" title="<?php echo esc_attr(pll__('Trang chủ')); ?>" aria-label="<?php echo esc_attr(pll__('Trang chủ')); ?>">
+                    <?php echo esc_html(pll__('Trang chủ')); ?>
                 </a>
             </li>
 
             <?php
+            // 📍 Trang bài viết (Posts page) - trang "Tin tức" / "News"
+            if (is_home() && !is_front_page()) {
+                $posts_page_id = (int) get_option('page_for_posts');
+                if ($posts_page_id && function_exists('pll_get_post')) {
+                    $translated = pll_get_post($posts_page_id);
+                    if ($translated) {
+                        $posts_page_id = (int) $translated;
+                    }
+                }
+                $posts_page_title = $posts_page_id ? get_the_title($posts_page_id) : pll__('Tin tức');
+                echo '<li>' . esc_html($posts_page_title) . '</li>';
+
             // 📍 Taxonomy / Category
-            if (is_category() || is_tax()) {
+            } elseif (is_category() || is_tax()) {
                 $term = get_queried_object();
                 $taxonomy = $term->taxonomy;
                 $ancestors = array_reverse(get_ancestors($term->term_id, $taxonomy));
@@ -758,12 +770,26 @@ function hn_breadcrumb_shortcode() {
 
             // 📍 Single post (bài viết Tin tức)
             } elseif (is_single() && get_post_type() === 'post') {
-                $tin_tuc_cat = get_category_by_slug('tin-tuc');
-                if ($tin_tuc_cat) {
-                    echo '<li><a href="' . esc_url(get_category_link($tin_tuc_cat->term_id)) . '" title="' . esc_attr__('Tin tức', 'textdomain') . '">Tin tức</a></li>';
-                } else {
-                    echo '<li><a href="' . esc_url(home_url('/tin-tuc')) . '" title="' . esc_attr__('Tin tức', 'textdomain') . '">Tin tức</a></li>';
+                $news_url   = '';
+                $news_title = pll__('Tin tức');
+
+                // Ưu tiên trang Posts page (đúng ngôn ngữ) thay vì hard-code
+                $posts_page_id = (int) get_option('page_for_posts');
+                if ($posts_page_id && function_exists('pll_get_post')) {
+                    $translated = pll_get_post($posts_page_id);
+                    if ($translated) {
+                        $posts_page_id = (int) $translated;
+                    }
                 }
+                if ($posts_page_id) {
+                    $news_url   = get_permalink($posts_page_id);
+                    $news_title = get_the_title($posts_page_id);
+                } else {
+                    $tin_tuc_cat = get_category_by_slug('tin-tuc');
+                    $news_url = $tin_tuc_cat ? get_category_link($tin_tuc_cat->term_id) : home_url('/tin-tuc');
+                }
+
+                echo '<li><a href="' . esc_url($news_url) . '" title="' . esc_attr($news_title) . '">' . esc_html($news_title) . '</a></li>';
                 echo '<li>' . esc_html(get_the_title()) . '</li>';
 
             // 📍 Custom Post Type
@@ -799,8 +825,12 @@ function hn_breadcrumb_shortcode() {
     return ob_get_clean();
 }
 add_shortcode('hn_breadcrumb', 'hn_breadcrumb_shortcode');
+
 add_action('init', function() {
-  pll_register_string('breadcrumb_home', 'Trang chủ');
+    if (function_exists('pll_register_string')) {
+        pll_register_string('breadcrumb_home', 'Trang chủ');
+        pll_register_string('breadcrumb_news', 'Tin tức');
+    }
 });
 
 
