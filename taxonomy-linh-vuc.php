@@ -5,12 +5,24 @@
  *
  * Dữ liệu: lấy các dự án (post type `du-an`) thuộc term `danh-muc-du-an` có cùng slug với term `linh-vuc` hiện tại.
  *
+ * Đã sửa: mọi WP_Query / get_terms đều lọc theo ngôn ngữ hiện tại (Polylang) để không bị lẫn ngôn ngữ khác.
+ *
  * @package HomeNest Theme
  */
 get_header();
 
 $current_term = get_queried_object();
 $term_slug    = $current_term->slug;
+
+// ==========================================================================
+// NGÔN NGỮ HIỆN TẠI (Polylang) - dùng chung cho mọi query bên dưới
+// Nếu không có Polylang thì mảng rỗng => không lọc.
+// ==========================================================================
+$cur_lang = function_exists( 'pll_current_language' ) ? pll_current_language( 'slug' ) : '';
+if ( empty( $cur_lang ) && function_exists( 'pll_get_term_language' ) && ! empty( $current_term->term_id ) ) {
+	$cur_lang = (string) pll_get_term_language( $current_term->term_id, 'slug' );
+}
+$lv_lang_arg = $cur_lang ? array( 'lang' => $cur_lang ) : array();
 
 // ==========================================================================
 // DỮ LIỆU ACF CỦA TERM (taxonomy linh-vuc) - có fallback mặc định
@@ -124,28 +136,28 @@ $paged = max( 1, (int) get_query_var( 'paged' ), (int) get_query_var( 'page' ) )
 // TAB LĨNH VỰC: các term con (hoặc term cùng cấp nếu term hiện tại không có con)
 // Mỗi tab có 1 panel chứa danh sách dự án; chuyển tab bằng JS (không chuyển trang).
 // ==========================================================================
-$lv_tab_terms = get_terms( array(
+$lv_tab_terms = get_terms( array_merge( array(
 	'taxonomy'   => 'linh-vuc',
 	'parent'     => ! empty( $current_term->term_id ) ? $current_term->term_id : 0,
 	'hide_empty' => false,
 	'orderby'    => 'name',
 	'order'      => 'ASC',
-) );
+), $lv_lang_arg ) );
 if ( ( empty( $lv_tab_terms ) || is_wp_error( $lv_tab_terms ) ) && ! empty( $current_term->parent ) ) {
-	$lv_tab_terms = get_terms( array(
+	$lv_tab_terms = get_terms( array_merge( array(
 		'taxonomy'   => 'linh-vuc',
 		'parent'     => $current_term->parent,
 		'hide_empty' => false,
 		'orderby'    => 'name',
 		'order'      => 'ASC',
-	) );
+	), $lv_lang_arg ) );
 }
 if ( is_wp_error( $lv_tab_terms ) || empty( $lv_tab_terms ) ) {
 	$lv_tab_terms = array();
 }
 
-$lv_build_projects_query = function ( $term_id, $term_slug ) {
-	return new WP_Query( array(
+$lv_build_projects_query = function ( $term_id, $term_slug ) use ( $lv_lang_arg ) {
+	return new WP_Query( array_merge( array(
 		'post_type'      => 'du-an',
 		'post_status'    => 'publish',
 		'posts_per_page' => -1,
@@ -160,10 +172,10 @@ $lv_build_projects_query = function ( $term_id, $term_slug ) {
 				'include_children' => true,
 			),
 		),
-	) );
+	), $lv_lang_arg ) );
 };
 
-// Tab đang mở: term hiện tại (hoặc ?danh-muc=) nếu nằm trong danh sách tab, mặc định tab đầu tiên
+// Tab đang mở: term hiện tại (hoặc ?danh-muc=) nếu nằm trong danh sách tab
 $lv_active_term_id = 0;
 foreach ( $lv_tab_terms as $lv_tab_term ) {
 	if ( (int) $lv_tab_term->term_id === (int) $target_term_id ) {
@@ -189,7 +201,7 @@ if ( ! empty( $lv_tab_terms ) ) {
 	// Không có term con/anh em: 1 panel duy nhất (không hiện tab)
 	$lv_panels[] = array(
 		'term'   => $current_term,
-		'query'  => new WP_Query( array(
+		'query'  => new WP_Query( array_merge( array(
 			'post_type'      => 'du-an',
 			'post_status'    => 'publish',
 			'posts_per_page' => -1,
@@ -197,7 +209,7 @@ if ( ! empty( $lv_tab_terms ) ) {
 			'tax_query'      => $tax_query,
 			'orderby'        => 'date',
 			'order'          => 'DESC',
-		) ),
+		), $lv_lang_arg ) ),
 		'active' => true,
 	);
 }
@@ -207,10 +219,10 @@ $lv_per_page = 12;
 // DỰ ÁN HIỂN THỊ Ở HERO (.mbland_linhvuc_hero_featured)
 // Lấy post-type=du-an có term=du-an-noi-bat của taxonomy=du-an-noi-bat (hoặc featured-projects cho EN),
 // nếu có từ 2 trở lên thì lấy bài mới nhất (ORDER BY date DESC LIMIT 1).
+// Luôn lọc theo ngôn ngữ hiện tại.
 // ==========================================================================
 $hero_noi_bat_terms = array( 'du-an-noi-bat', 'featured-projects' );
 
-// Ưu tiên 1: Dự án nổi bật nằm trong lĩnh vực hiện tại (nếu có $tax_query)
 $hero_tax_query = array(
 	array(
 		'taxonomy' => 'du-an-noi-bat',
@@ -219,7 +231,8 @@ $hero_tax_query = array(
 	),
 );
 
-$hero_query_args = array(
+// Ưu tiên 1: Dự án nổi bật nằm trong lĩnh vực hiện tại (nếu có $tax_query)
+$hero_query_args = array_merge( array(
 	'post_type'           => 'du-an',
 	'post_status'         => 'publish',
 	'posts_per_page'      => 1,
@@ -232,13 +245,13 @@ $hero_query_args = array(
 		$hero_tax_query[0],
 		$tax_query[0],
 	) : $hero_tax_query,
-);
+), $lv_lang_arg );
 
 $hero_query = new WP_Query( $hero_query_args );
 
-// Fallback: nếu trong lĩnh vực hiện tại chưa gán nổi bật, lấy dự án có term=du-an-noi-bat mới nhất toàn hệ thống
+// Fallback: nếu trong lĩnh vực hiện tại chưa gán nổi bật, lấy dự án nổi bật mới nhất (cùng ngôn ngữ)
 if ( ! $hero_query->have_posts() ) {
-	$hero_query = new WP_Query( array(
+	$hero_query = new WP_Query( array_merge( array(
 		'post_type'           => 'du-an',
 		'post_status'         => 'publish',
 		'posts_per_page'      => 1,
@@ -247,7 +260,7 @@ if ( ! $hero_query->have_posts() ) {
 		'no_found_rows'       => true,
 		'ignore_sticky_posts' => true,
 		'tax_query'           => $hero_tax_query,
-	) );
+	), $lv_lang_arg ) );
 }
 
 $hero_project_id = 0;
@@ -258,14 +271,14 @@ wp_reset_postdata();
 
 // Chưa có tab nào active: hiện panel "tất cả" = mọi dự án thuộc danh mục hiện tại (kể cả dự án đang hiện ở hero)
 if ( ! empty( $lv_tab_terms ) && ! $lv_active_term_id ) {
-	$lv_all_args = array(
+	$lv_all_args = array_merge( array(
 		'post_type'      => 'du-an',
 		'post_status'    => 'publish',
 		'posts_per_page' => -1,
 		'no_found_rows'  => true,
 		'orderby'        => 'date',
 		'order'          => 'DESC',
-	);
+	), $lv_lang_arg );
 	if ( ! empty( $tax_query ) ) {
 		$lv_all_args['tax_query'] = $tax_query;
 	}
@@ -504,22 +517,28 @@ get_template_part( 'template-parts/sections/procedure', null, array(
 
 
 
+<!-- ===== START SECTION FEATURED PROJECT ===== -->
 <section class="mbland_linhvuc_featuredProject">
 	<div class="container">
 		<div class="mbland_linhvuc_featuredProject_wrapper">
 			<header class="mbland_linhvuc_featuredProject_header">
-				<h2 class="mbland_linhvuc_featuredProject_title">Các dự án nổi bật</h2>
+				<h2 class="mbland_linhvuc_featuredProject_title"><?php echo esc_html( function_exists( 'pll__' ) ? pll__( 'Các dự án nổi bật' ) : 'Các dự án nổi bật' ); ?></h2>
 			</header>
 			<div class="mbland_linhvuc_featuredProject_list">
 				<?php
-				$featured_args = array(
-					'post_type'      => 'du-an',
-					'post_status'    => 'publish',
-					'posts_per_page' => 3,
-					'orderby'        => 'date',
-					'order'          => 'DESC',
-				);
+				// Tham số nền: luôn kèm lang để không lẫn ngôn ngữ khác
+				$lv_featured_base = array_merge( array(
+					'post_type'           => 'du-an',
+					'post_status'         => 'publish',
+					'posts_per_page'      => 3,
+					'orderby'             => 'date',
+					'order'               => 'DESC',
+					'no_found_rows'       => true,
+					'ignore_sticky_posts' => true,
+				), $lv_lang_arg );
 
+				// 1) Dự án nổi bật (đúng ngôn ngữ)
+				$featured_args = $lv_featured_base;
 				if ( taxonomy_exists( 'du-an-noi-bat' ) ) {
 					$featured_args['tax_query'] = array(
 						array(
@@ -529,37 +548,27 @@ get_template_part( 'template-parts/sections/procedure', null, array(
 						),
 					);
 				}
-
 				$featured_query = new WP_Query( $featured_args );
 
-				// Fallback: nếu chưa gán taxonomy du-an-noi-bat, lấy 3 dự án theo lĩnh vực hiện tại hoặc mới nhất
+				// 2) Fallback: theo lĩnh vực hiện tại (vẫn giữ lang)
 				if ( ! $featured_query->have_posts() ) {
-					$fallback_tax = array();
+					$fallback_args = $lv_featured_base;
 					if ( ! empty( $target_term_id ) && taxonomy_exists( 'linh-vuc' ) ) {
-						$fallback_tax[] = array(
-							'taxonomy'         => 'linh-vuc',
-							'field'            => 'term_id',
-							'terms'            => $target_term_id,
-							'include_children' => true,
+						$fallback_args['tax_query'] = array(
+							array(
+								'taxonomy'         => 'linh-vuc',
+								'field'            => 'term_id',
+								'terms'            => $target_term_id,
+								'include_children' => true,
+							),
 						);
 					}
-					$featured_query = new WP_Query( array(
-						'post_type'      => 'du-an',
-						'post_status'    => 'publish',
-						'posts_per_page' => 3,
-						'orderby'        => 'date',
-						'order'          => 'DESC',
-						'tax_query'      => $fallback_tax,
-					) );
-					if ( ! $featured_query->have_posts() ) {
-						$featured_query = new WP_Query( array(
-							'post_type'      => 'du-an',
-							'post_status'    => 'publish',
-							'posts_per_page' => 3,
-							'orderby'        => 'date',
-							'order'          => 'DESC',
-						) );
-					}
+					$featured_query = new WP_Query( $fallback_args );
+				}
+
+				// 3) Fallback cuối: dự án mới nhất (vẫn giữ lang)
+				if ( ! $featured_query->have_posts() ) {
+					$featured_query = new WP_Query( $lv_featured_base );
 				}
 				?>
 				<?php if ( $featured_query->have_posts() ) : ?>
@@ -648,6 +657,7 @@ get_template_part( 'template-parts/sections/procedure', null, array(
 		</div>
 	</div>
 </section>
+<!-- ===== END SECTION FEATURED PROJECT ===== -->
 
 
 
@@ -663,4 +673,3 @@ get_template_part( 'template-parts/sections/procedure', null, array(
 
 
 <?php get_footer(); ?>
-
