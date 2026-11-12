@@ -22,7 +22,7 @@
   height: 100%;
   top: 0;
   left: 0;
-  object-fit: contain;
+  object-fit: cover;
   filter: brightness(0.8);
 }
 
@@ -1445,7 +1445,7 @@
 }
 
 .mbland_singleProject_featuredProject_itemMedia {
-  aspect-ratio: 16/9;
+  /* aspect-ratio: 16/9; */
   overflow: hidden;
 }
 
