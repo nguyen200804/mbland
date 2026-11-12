@@ -6,6 +6,19 @@ Template Name: Chi tiết dự án
 // Lấy ID của page/post hiện tại
 $post_id = get_the_ID();
 
+// ==========================================================================
+// NGÔN NGỮ HIỆN TẠI (Polylang) - dùng chung cho mọi query bên dưới
+// Ưu tiên ngôn ngữ của chính bài dự án này; nếu không có Polylang thì không lọc.
+// ==========================================================================
+$cur_lang = '';
+if ( function_exists( 'pll_get_post_language' ) ) {
+	$cur_lang = (string) pll_get_post_language( $post_id, 'slug' );
+}
+if ( empty( $cur_lang ) && function_exists( 'pll_current_language' ) ) {
+	$cur_lang = (string) pll_current_language( 'slug' );
+}
+$lv_lang_arg = $cur_lang ? array( 'lang' => $cur_lang ) : array();
+
 // Lấy dữ liệu từ ACF fields
 $banner = get_field('banner', $post_id);
 $banner_url = '';
@@ -52,8 +65,8 @@ $featured_image_title  = get_the_title($post_id); // Title fallback từ post ti
 $featured_image_width  = $hero_image['width'];
 $featured_image_height = $hero_image['height'];
 
-// Dự án liên quan
-$related_args = array(
+// Dự án liên quan (cùng ngôn ngữ)
+$related_args = array_merge( array(
     'post_type' => 'du-an', // Thay nếu post type khác
     'post__not_in' => array($post_id),
     'posts_per_page' => 10,
@@ -67,8 +80,18 @@ $related_args = array(
             'operator' => 'NOT IN',
         ),
     ),
-);
+), $lv_lang_arg );
 $related_query = new WP_Query($related_args);
+
+// Lĩnh vực của dự án hiện tại (dùng cho fallback "dự án nổi bật")
+$current_linh_vuc_ids = array();
+if ( taxonomy_exists( 'linh-vuc' ) ) {
+	$current_linh_vuc_ids = wp_get_post_terms( $post_id, 'linh-vuc', array( 'fields' => 'ids' ) );
+	if ( is_wp_error( $current_linh_vuc_ids ) ) {
+		$current_linh_vuc_ids = array();
+	}
+}
+
 get_header();
 ?>
 
@@ -117,7 +140,7 @@ get_header();
 						</svg>
 					</span>
 					<div class="mbland_linhvuc_hero_featuredLocationText">
-						<p class="mbland_linhvuc_hero_featuredLocationLabel">Vị trí DỰ ÁN</p>
+						<p class="mbland_linhvuc_hero_featuredLocationLabel"><?php echo esc_html( function_exists( 'pll__' ) ? pll__( 'Vị trí DỰ ÁN' ) : 'Vị trí DỰ ÁN' ); ?></p>
 						<p class="mbland_linhvuc_hero_featuredLocationValue"><?php echo esc_html( $location ); ?></p>
 					</div>
 				</div>
@@ -138,7 +161,7 @@ get_header();
 </svg>
 					</span>
 					<div class="mbland_linhvuc_hero_featuredLocationText">
-						<p class="mbland_linhvuc_hero_featuredLocationLabel">Quy mô bất động sản</p>
+						<p class="mbland_linhvuc_hero_featuredLocationLabel"><?php echo esc_html( function_exists( 'pll__' ) ? pll__( 'Quy mô bất động sản' ) : 'Quy mô bất động sản' ); ?></p>
 						<p class="mbland_linhvuc_hero_featuredLocationValue"><?php echo esc_html( $scale ); ?></p>
 					</div>
 				</div>
@@ -164,7 +187,7 @@ get_header();
 			<!-- Cột 1: Thông tin tổng quan dự án -->
 			<div class="mbland_singleProject_details_colInfo">
 				<header class="mbland_singleProject_details_header">
-					<h2 class="mbland_singleProject_details_title">Tổng quan dự án</h2>
+					<h2 class="mbland_singleProject_details_title"><?php echo esc_html( function_exists( 'pll__' ) ? pll__( 'Tổng quan dự án' ) : 'Tổng quan dự án' ); ?></h2>
 					<p class="mbland_singleProject_details_subtitle"><?php echo esc_html( get_the_title( $post_id ) ); ?></p>
 				</header>
 				<div class="mbland_singleProject_details_content">
@@ -359,23 +382,30 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
+<!-- ===== START SECTION FEATURED PROJECT ===== -->
 <section class="mbland_singleProject_featuredProject">
 	<div class="container">
 		<div class="mbland_singleProject_featuredProject_wrapper">
 			<header class="mbland_singleProject_featuredProject_header">
-				<h2 class="mbland_singleProject_featuredProject_title">Các dự án nổi bật</h2>
-				<p class="mbland_singleProject_featuredProject_desc">MBLand Asset Management là tập đoàn đa ngành với những dự án nổi bật trong suốt quá trình phát triển</p>
+				<h2 class="mbland_singleProject_featuredProject_title"><?php echo esc_html( function_exists( 'pll__' ) ? pll__( 'Các dự án nổi bật' ) : 'Các dự án nổi bật' ); ?></h2>
+				<p class="mbland_singleProject_featuredProject_desc"><?php echo esc_html( function_exists( 'pll__' ) ? pll__( 'MBLand Asset Management là tập đoàn đa ngành với những dự án nổi bật trong suốt quá trình phát triển' ) : 'MBLand Asset Management là tập đoàn đa ngành với những dự án nổi bật trong suốt quá trình phát triển' ); ?></p>
 			</header>
 			<div class="mbland_singleProject_featuredProject_list">
 				<?php
-				$featured_args = array(
-					'post_type'      => 'du-an',
-					'post_status'    => 'publish',
-					'posts_per_page' => 3,
-					'orderby'        => 'date',
-					'order'          => 'DESC',
-				);
+				// Tham số nền: luôn kèm lang + loại trừ dự án đang xem để không lẫn ngôn ngữ khác
+				$lv_featured_base = array_merge( array(
+					'post_type'           => 'du-an',
+					'post_status'         => 'publish',
+					'posts_per_page'      => 3,
+					'orderby'             => 'date',
+					'order'               => 'DESC',
+					'no_found_rows'       => true,
+					'ignore_sticky_posts' => true,
+					'post__not_in'        => array( $post_id ),
+				), $lv_lang_arg );
 
+				// 1) Dự án nổi bật (đúng ngôn ngữ)
+				$featured_args = $lv_featured_base;
 				if ( taxonomy_exists( 'du-an-noi-bat' ) ) {
 					$featured_args['tax_query'] = array(
 						array(
@@ -385,56 +415,44 @@ document.addEventListener('DOMContentLoaded', function () {
 						),
 					);
 				}
-
 				$featured_query = new WP_Query( $featured_args );
 
-				// Fallback: nếu chưa gán taxonomy du-an-noi-bat, lấy 3 dự án theo lĩnh vực hiện tại hoặc mới nhất
-				if ( ! $featured_query->have_posts() ) {
-					$fallback_tax = array();
-					if ( ! empty( $target_term_id ) && taxonomy_exists( 'linh-vuc' ) ) {
-						$fallback_tax[] = array(
+				// 2) Fallback: cùng lĩnh vực với dự án hiện tại (vẫn giữ lang)
+				if ( ! $featured_query->have_posts() && ! empty( $current_linh_vuc_ids ) ) {
+					$fallback_args              = $lv_featured_base;
+					$fallback_args['tax_query'] = array(
+						array(
 							'taxonomy'         => 'linh-vuc',
 							'field'            => 'term_id',
-							'terms'            => $target_term_id,
+							'terms'            => $current_linh_vuc_ids,
 							'include_children' => true,
-						);
-					}
-					$featured_query = new WP_Query( array(
-						'post_type'      => 'du-an',
-						'post_status'    => 'publish',
-						'posts_per_page' => 3,
-						'orderby'        => 'date',
-						'order'          => 'DESC',
-						'tax_query'      => $fallback_tax,
-					) );
-					if ( ! $featured_query->have_posts() ) {
-						$featured_query = new WP_Query( array(
-							'post_type'      => 'du-an',
-							'post_status'    => 'publish',
-							'posts_per_page' => 3,
-							'orderby'        => 'date',
-							'order'          => 'DESC',
-						) );
-					}
+						),
+					);
+					$featured_query = new WP_Query( $fallback_args );
+				}
+
+				// 3) Fallback cuối: dự án mới nhất (vẫn giữ lang)
+				if ( ! $featured_query->have_posts() ) {
+					$featured_query = new WP_Query( $lv_featured_base );
 				}
 				?>
 				<?php if ( $featured_query->have_posts() ) : ?>
 					<?php while ( $featured_query->have_posts() ) : $featured_query->the_post(); ?>
 						<?php
 						$f_id      = get_the_ID();
-						$banner    = function_exists( 'get_field' ) ? get_field( 'banner', $f_id ) : false;
+						$f_banner  = function_exists( 'get_field' ) ? get_field( 'banner', $f_id ) : false;
 						$thumb_url = '';
 						$thumb_alt = get_the_title( $f_id );
 
-						if ( ! empty( $banner ) && is_array( $banner ) ) {
-							$thumb_url = isset( $banner['url'] ) ? $banner['url'] : '';
-							if ( ! empty( $banner['alt'] ) ) {
-								$thumb_alt = $banner['alt'];
+						if ( ! empty( $f_banner ) && is_array( $f_banner ) ) {
+							$thumb_url = isset( $f_banner['url'] ) ? $f_banner['url'] : '';
+							if ( ! empty( $f_banner['alt'] ) ) {
+								$thumb_alt = $f_banner['alt'];
 							}
-						} elseif ( is_numeric( $banner ) ) {
-							$thumb_url = wp_get_attachment_image_url( (int) $banner, 'large' );
-						} elseif ( is_string( $banner ) && ! empty( $banner ) ) {
-							$thumb_url = $banner;
+						} elseif ( is_numeric( $f_banner ) ) {
+							$thumb_url = wp_get_attachment_image_url( (int) $f_banner, 'large' );
+						} elseif ( is_string( $f_banner ) && ! empty( $f_banner ) ) {
+							$thumb_url = $f_banner;
 						}
 
 						if ( empty( $thumb_url ) && has_post_thumbnail( $f_id ) ) {
@@ -455,7 +473,7 @@ document.addEventListener('DOMContentLoaded', function () {
 							$short_desc = get_the_excerpt( $f_id );
 						}
 
-						$location = function_exists( 'mbland_clean_plain_text' ) ? mbland_clean_plain_text( get_field( 'location', $f_id ) ) : ( function_exists( 'get_field' ) ? get_field( 'location', $f_id ) : '' );
+						$f_location = mbland_clean_plain_text( function_exists( 'get_field' ) ? get_field( 'location', $f_id ) : '' );
 						?>
 						<article class="mbland_singleProject_featuredProject_item">
 							<div class="mbland_singleProject_featuredProject_itemMedia">
@@ -475,7 +493,7 @@ document.addEventListener('DOMContentLoaded', function () {
 									<?php endif; ?>
 								</div>
 								<hr class="mbland_singleProject_featuredProject_itemDivider" />
-								<?php if ( ! empty( $location ) ) : ?>
+								<?php if ( ! empty( $f_location ) ) : ?>
 									<div class="mbland_singleProject_featuredProject_itemLocation">
 										<span class="mbland_singleProject_featuredProject_itemLocationIcon">
 											<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -484,7 +502,7 @@ document.addEventListener('DOMContentLoaded', function () {
 										</span>
 										<div class="mbland_singleProject_featuredProject_itemLocationText">
 											<p class="mbland_singleProject_featuredProject_itemLocationLabel"><?php echo esc_html( function_exists( 'pll__' ) ? pll__( 'Vị trí địa chỉ' ) : 'Vị trí địa chỉ' ); ?></p>
-											<p class="mbland_singleProject_featuredProject_itemLocationValue"><?php echo esc_html( $location ); ?></p>
+											<p class="mbland_singleProject_featuredProject_itemLocationValue"><?php echo esc_html( $f_location ); ?></p>
 										</div>
 									</div>
 								<?php endif; ?>
@@ -504,6 +522,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		</div>
 	</div>
 </section>
+<!-- ===== END SECTION FEATURED PROJECT ===== -->
 
 <!-- Script khởi tạo Swiper cho Featured Projects Slider -->
 <script>
